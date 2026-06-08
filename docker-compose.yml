@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  # ============================================================
+  # Docusaurus Documentation Site
+  # ============================================================
+  docs:
+    build:
+      context: ./site
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - ./tutorials:/app/tutorials:ro
+    restart: unless-stopped
+    environment:
+      - SITE_URL=${SITE_URL:-https://docs.contextual-intelligence.org}
+    networks:
+      - docmakerai
+
+  # ============================================================
+  # RAG API Service (optional — Sprint 4+)
+  # ============================================================
+  rag-api:
+    build:
+      context: ./rag
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./tutorials:/app/tutorials:ro
+      - chroma_data:/app/chroma_db
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - CHROMA_DB_PATH=/app/chroma_db
+    restart: unless-stopped
+    profiles:
+      - rag
+      - full
+    networks:
+      - docmakerai
+
+  # ============================================================
+  # Reverse Proxy (Caddy)
+  # ============================================================
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - SITE_URL=${SITE_URL:-https://docs.contextual-intelligence.org}
+    restart: unless-stopped
+    profiles:
+      - production
+      - full
+    depends_on:
+      - docs
+      - rag-api
+    networks:
+      - docmakerai
+
+networks:
+  docmakerai:
+    driver: bridge
+
+volumes:
+  chroma_data:
+  caddy_data:
+  caddy_config:
