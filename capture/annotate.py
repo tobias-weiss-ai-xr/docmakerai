@@ -37,16 +37,16 @@ def _build_header_text(step_label, step_number, locale):
     return f"{circled} {prefix} {step_number}: {step_label}"
 
 
-def _draw_header(img, draw, text):
+def _draw_header(img, text):
     overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
     overlay_draw = ImageDraw.Draw(overlay)
     overlay_draw.rectangle([(0, 0), (img.width, HEADER_HEIGHT)], fill=HEADER_BG)
     img = Image.alpha_composite(img, overlay)
-    draw = ImageDraw.Draw(img)
 
+    draw = ImageDraw.Draw(img)
     font = _load_font(22)
     draw.text((12, (HEADER_HEIGHT - 22) // 2), text, fill=HEADER_TEXT, font=font)
-    return img, draw
+    return img
 
 
 def _draw_circle_highlight(img, highlight):
@@ -107,10 +107,9 @@ def annotate_frame(frame_path, step_label, step_number, highlights, locale, outp
     except Exception:
         return None
 
-    draw = ImageDraw.Draw(img)
     text = _build_header_text(step_label, step_number, locale)
 
-    img, draw = _draw_header(img, draw, text)
+    img = _draw_header(img, text)
 
     for hl in highlights or []:
         hl_type = hl.get("type", "")
