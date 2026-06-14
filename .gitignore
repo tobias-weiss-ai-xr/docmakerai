@@ -39,3 +39,5 @@ Thumbs.db
 logs/
 *.log
 npm-debug.log*
+capture/segments/
+capture/__pycache__/

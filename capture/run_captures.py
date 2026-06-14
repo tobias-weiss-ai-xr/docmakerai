@@ -110,7 +110,7 @@ class StepTracker:
 
     def build_gif(self, locale: str = "de") -> bool:
         """Annotate raw frames and assemble GIF."""
-        from capture.annotate import build_segment_gif
+        from annotate import build_segment_gif
 
         meta_path = self.write_metadata()
         gif_path = GIF_DIR / f"{self.workflow_name}.gif"
@@ -357,8 +357,10 @@ async def run_calendar_share(page, locale="de"):
             await gear_btn.click()
             await page.wait_for_timeout(1500)
         await t.capture(page, "Kalender-Einstellungen" if locale == "de" else "Calendar settings", [], duration=1500)
+        await t.capture(page, "Berechtigungen verwalten" if locale == "de" else "Manage permissions", [], duration=2000)
     except Exception:
         await t.capture(page, "Kalenderansicht" if locale == "de" else "Calendar view", [], duration=1000)
+        await t.capture(page, "Keine Einstellungen gefunden" if locale == "de" else "No settings found", [], duration=1000)
     t.build_gif(locale)
 
 async def run_freebusy(page, locale="de"):
