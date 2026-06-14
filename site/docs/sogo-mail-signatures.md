@@ -16,6 +16,8 @@ sender identities (e.g., work vs. personal email).
 1. Click the **gear icon** ⚙ (Settings) in the top toolbar
 2. Select **Mail** → **Signatures**
 
+![Mail signatures settings](./assets/01-mail-signatures.png)
+
 ### Step 2: Add a New Signature
 
 Click **Add Signature** or the **+** button.

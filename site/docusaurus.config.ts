@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   url: process.env.SITE_URL || 'https://docs.contextual-intelligence.org',
-  baseUrl: '/',
+  baseUrl: process.env.BASE_URL || '/',
 
   organizationName: 'tobias-weiss-ai-xr',
   projectName: 'docmakerai',

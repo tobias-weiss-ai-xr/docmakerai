@@ -28,6 +28,8 @@ and select **Properties** or **Sharing**.
 
 ### Step 2: Choose a Calendar to Share
 
+![Calendar settings with sharing options](./assets/01-calendar-settings.png)
+
 In the calendar list, you will see all your calendars:
 
 - **Personal** — Your default calendar
