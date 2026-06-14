@@ -34,6 +34,8 @@ You need the web address (URL) of an iCal feed. Common examples:
 3. Click the **gear icon** ⚙ next to the calendar section header
 4. Select **Subscribe to URL**
 
+![Calendar view with subscription options](./assets/01-calendar-view.png)
+
 ### Step 3: Enter the Feed URL
 
 In the subscription dialog:

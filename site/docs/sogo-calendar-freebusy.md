@@ -22,6 +22,8 @@ meeting — directly from the event creation dialog.
 1. Open the **Calendar** module
 2. Click **+** to create a new event, or click an existing event to edit
 
+![Event dialog with attendee options](./assets/01-event-dialog.png)
+
 ### Step 2: Open Free/Busy View
 
 1. In the event dialog, click the **Attendees** section
@@ -31,6 +33,9 @@ meeting — directly from the event creation dialog.
 ### Step 3: Add a Colleague
 
 1. In the free/busy grid, click **Add Person** or **Check Availability**
+
+![Free/busy availability grid](./assets/02-freebusy-grid.png)
+
 2. Start typing a colleague's name
 3. Select them from the auto-complete list
 4. Repeat for each person you want to check

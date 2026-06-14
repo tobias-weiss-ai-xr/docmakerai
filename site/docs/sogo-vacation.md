@@ -23,7 +23,7 @@ in the calendar when you're on vacation or out of office.
 1. Click the **gear icon** ⚙ (Settings) in the top toolbar
 2. Select **Vacation** from the settings menu
 
-![Vacation settings menu](./assets/02-dashboard.png)
+![Vacation settings menu](./assets/01-vacation-settings.png)
 
 ### Step 2: Enable Auto-Reply
 

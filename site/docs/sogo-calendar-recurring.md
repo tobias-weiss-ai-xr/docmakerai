@@ -23,6 +23,9 @@ configuring reminders so you never miss them.
 
 1. Open the **Calendar** module
 2. Click the **+** (plus) button or double-click a time slot
+
+![Calendar week view](./assets/01-calendar-recurring-view.png)
+
 3. The new event dialog appears
 
 ### Step 2: Set Basic Details
@@ -35,6 +38,8 @@ Fill in:
 ### Step 3: Configure Recurrence
 
 Click the **Repeat** or **Recurrence** section to expand it:
+
+![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
 | Option | Description | Example Use |
 |--------|-------------|-------------|
@@ -62,6 +67,8 @@ repetition:
 
 Click **Save**. The event is created with a recurrence icon 🔄
 indicating it repeats.
+
+![Recurring event saved in calendar](./assets/03-recurring-saved.png)
 
 ## Part 2: Adding Alarms (Reminders)
 

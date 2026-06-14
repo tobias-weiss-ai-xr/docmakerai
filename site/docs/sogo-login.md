@@ -21,6 +21,8 @@ Open your web browser and navigate to your SOGo instance URL (e.g.,
 `https://demo.sogo.nu/SOGo/`). You will see the SOGo login page with
 username and password fields.
 
+![SOGo login page](./assets/00-login-page.png)
+
 ### Step 2: Enter Your Username
 
 Type your SOGo username into the **Username** field. This is typically
