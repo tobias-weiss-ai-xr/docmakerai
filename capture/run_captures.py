@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 from pathlib import Path
+import json
 from PIL import Image
 from playwright.async_api import async_playwright
 
@@ -11,6 +12,8 @@ ROOT = Path(__file__).resolve().parent
 SCREENSHOT_DIR = ROOT / "screenshots"
 GIF_DIR = ROOT / "gifs"
 ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
+SEGMENTS_DIR = ROOT / "segments"
+ANNOTATED_DIR = ROOT / "screenshots"
 
 SOGO_URL = os.environ.get("SOGO_URL", "https://localhost:9443/SOGo/")
 USERNAME = os.environ.get("SOGO_USERNAME", "testuser")
@@ -55,6 +58,70 @@ def verify_all_screenshots(dir_path):
         mark = "✓" if ok else "✗"
         print(f"  {mark}  {name}: {reason}")
     return passed, total, results
+
+
+class StepTracker:
+    """Accumulates frame metadata during a workflow capture.
+
+    Usage:
+        tracker = StepTracker("calendar-create-event")
+        await tracker.capture(page, "Kalenderansicht", [], duration=1200)
+        await tracker.capture(page, "Doppelklick...",
+            [{"bbox": {...}, "type": "circle"}], duration=1500, pause_ms=2000)
+        tracker.build_gif(locale="de")
+    """
+
+    def __init__(self, workflow_name: str):
+        self.workflow_name = workflow_name
+        self.frames: list[dict] = []
+        self.frame_dir = SEGMENTS_DIR / workflow_name
+        self.frame_dir.mkdir(parents=True, exist_ok=True)
+
+    async def capture(
+        self,
+        page,
+        step_label: str,
+        highlights: list,
+        duration: int = 1000,
+        pause_ms: int = 0,
+    ):
+        """Screenshot and record metadata."""
+        if pause_ms > 0:
+            await page.wait_for_timeout(pause_ms)
+
+        frame_id = f"frame-{len(self.frames) + 1:03d}"
+        path = self.frame_dir / f"{frame_id}.png"
+        await page.screenshot(path=str(path))
+
+        self.frames.append({
+            "file": f"{frame_id}.png",
+            "step": step_label,
+            "duration": duration,
+            "highlights": highlights,
+        })
+        print(f"  [{self.workflow_name}] {step_label}")
+
+    def write_metadata(self) -> Path:
+        """Write frames.json to the segment directory."""
+        meta_path = self.frame_dir / "frames.json"
+        with open(meta_path, "w") as f:
+            json.dump(self.frames, f, indent=2, ensure_ascii=False)
+        return meta_path
+
+    def build_gif(self, locale: str = "de") -> bool:
+        """Annotate raw frames and assemble GIF."""
+        from capture.annotate import build_segment_gif
+
+        meta_path = self.write_metadata()
+        gif_path = GIF_DIR / f"{self.workflow_name}.gif"
+        return build_segment_gif(
+            frames_dir=self.frame_dir,
+            metadata_path=meta_path,
+            output_path=gif_path,
+            locale=locale,
+            annotated_dir=ANNOTATED_DIR,
+        )
+
 
 def pad_prefix(existing_files, prefix_length=2):
     used = set()
