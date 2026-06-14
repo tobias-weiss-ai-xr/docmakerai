@@ -21,7 +21,7 @@ including setting time, adding attendees, and configuring reminders.
 In the sidebar navigation on the left, click **Calendar**
 to open the calendar view.
 
-![Calendar module in sidebar](../../assets/03-calendar-view.png)
+![Calendar module in sidebar](./assets/03-calendar-view.png)
 
 The calendar opens in **Week view** by default. You can switch between
 Day, Week, Month, and Year views using the buttons in the top toolbar.
