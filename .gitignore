@@ -14,9 +14,9 @@ site/.docusaurus/
 dist/
 build/
 
-# Generated docs
-docs/
-data/
+# Root-level generated docs (no longer used, kept for safety)
+/docs/
+/data/
 
 # IDE
 .vscode/
@@ -33,25 +33,3 @@ Thumbs.db
 logs/
 *.log
 npm-debug.log*
-
-# Playwright
-test-results/
-playwright-report/
-.playwright-mcp/
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-.venv/
-venv/
-*.egg-info/
-
-# Docker
-.docker/
-
-# Vector DB
-*.chroma
-*.chroma.sqlite3

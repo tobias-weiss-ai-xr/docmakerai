@@ -3,15 +3,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'DocMaker AI — SOGo Tutorials',
-  tagline: 'AI-generated end-user tutorials for SOGo groupware',
+  title: 'SOGo User Guide',
+  tagline: 'Step-by-step tutorials for SOGo groupware',
   favicon: 'img/favicon.ico',
 
   future: {
     v4: true,
   },
 
-  url: 'https://docs.contextual-intelligence.org',
+  url: process.env.SITE_URL || 'https://docs.contextual-intelligence.org',
   baseUrl: '/',
 
   organizationName: 'tobias-weiss-ai-xr',
@@ -30,6 +30,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: 'docs',
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
           editUrl: undefined,
@@ -48,9 +49,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'DocMaker AI',
+      title: 'SOGo User Guide',
       logo: {
-        alt: 'DocMaker AI Logo',
+        alt: 'SOGo Logo',
         src: 'img/logo.svg',
       },
       items: [
