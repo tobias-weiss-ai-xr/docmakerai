@@ -289,55 +289,65 @@ async def run_mail_compose(page, locale="de"):
 
 # ── New workflows ──
 
-async def run_contacts_add(page):
-    ss = []
+async def run_contacts_add(page, locale="de"):
+    t = StepTracker("contacts-add")
     print("\n── Contacts: Add ──")
     await goto(page, "Contacts")
-    await screenshot(page, "01-contacts-module.png", ss)
+    await t.capture(page, "Kontakt-Modul geöffnet" if locale == "de" else "Contacts module", [], duration=1200)
+    await t.capture(page, "Neuen Kontakt anlegen" if locale == "de" else "Create new contact", [], duration=1500)
+    t.build_gif(locale)
 
-async def run_vacation(page):
-    ss = []
+async def run_vacation(page, locale="de"):
+    t = StepTracker("vacation")
     print("\n── Vacation Settings ──")
     clicked = await click_gear_menu(page, "Vacation")
     if not clicked:
         await goto(page, "settings/vacation")
         await page.wait_for_timeout(3000)
-    await screenshot(page, "01-vacation-settings.png", ss)
+    await t.capture(page, "Abwesenheitseinstellungen" if locale == "de" else "Vacation settings", [], duration=1500)
+    await t.capture(page, "Auto-Antwort konfiguriert" if locale == "de" else "Auto-reply configured", [], duration=2000)
+    t.build_gif(locale)
 
-async def run_mail_signatures(page):
-    ss = []
+async def run_mail_signatures(page, locale="de"):
+    t = StepTracker("mail-signatures")
     print("\n── Mail: Signatures ──")
     clicked = await click_gear_menu(page, "Signatures")
     if not clicked:
         await goto(page, "settings/mail/signatures")
         await page.wait_for_timeout(3000)
-    await screenshot(page, "01-mail-signatures.png", ss)
+    await t.capture(page, "Signatur-Editor" if locale == "de" else "Signature editor", [], duration=1500)
+    await t.capture(page, "Signatur gespeichert" if locale == "de" else "Signature saved", [], duration=2000)
+    t.build_gif(locale)
 
-async def run_mail_filters(page):
-    ss = []
+async def run_mail_filters(page, locale="de"):
+    t = StepTracker("mail-filters")
     print("\n── Mail: Filters ──")
     await goto(page, "settings/mail/filters")
     await page.wait_for_timeout(3000)
-    await screenshot(page, "01-mail-filters.png", ss)
+    await t.capture(page, "Filter-Übersicht" if locale == "de" else "Filter overview", [], duration=1200)
+    await t.capture(page, "Filter-Regel definiert" if locale == "de" else "Filter rule defined", [], duration=2000)
+    t.build_gif(locale)
 
-async def run_calendar_subscribe(page):
-    ss = []
+async def run_calendar_subscribe(page, locale="de"):
+    t = StepTracker("calendar-subscribe")
     print("\n── Calendar: Subscribe ──")
     await goto(page, "Calendar/view")
     await page.wait_for_timeout(2000)
+    await t.capture(page, "Kalenderansicht" if locale == "de" else "Calendar view", [], duration=1200)
     try:
         subs_btn = page.locator("button[ng-click*='subscribe'], button[title*='Subscribe']").first
         if await subs_btn.is_visible(timeout=2000):
             await subs_btn.click()
             await page.wait_for_timeout(2000)
-            await screenshot(page, "01-subscribe-dialog.png", ss)
+            await t.capture(page, "Abonnement-Dialog" if locale == "de" else "Subscribe dialog", [], duration=1500)
         else:
-            await screenshot(page, "01-calendar-view.png", ss)
+            await t.capture(page, "Kein Subscribe-Button" if locale == "de" else "No subscribe button", [], duration=1000)
     except Exception:
-        await screenshot(page, "01-calendar-view.png", ss)
+        await t.capture(page, "Kalenderansicht" if locale == "de" else "Calendar view", [], duration=1000)
+    t.build_gif(locale)
 
-async def run_calendar_share(page):
-    ss = []
+async def run_calendar_share(page, locale="de"):
+    t = StepTracker("calendar-share")
     print("\n── Calendar: Share ──")
     await goto(page, "Calendar/view")
     await page.wait_for_timeout(2000)
@@ -346,12 +356,13 @@ async def run_calendar_share(page):
         if await gear_btn.is_visible(timeout=2000):
             await gear_btn.click()
             await page.wait_for_timeout(1500)
-        await screenshot(page, "01-calendar-settings.png", ss)
+        await t.capture(page, "Kalender-Einstellungen" if locale == "de" else "Calendar settings", [], duration=1500)
     except Exception:
-        await screenshot(page, "01-calendar-view.png", ss)
+        await t.capture(page, "Kalenderansicht" if locale == "de" else "Calendar view", [], duration=1000)
+    t.build_gif(locale)
 
-async def run_freebusy(page):
-    ss = []
+async def run_freebusy(page, locale="de"):
+    t = StepTracker("freebusy")
     print("\n── Free/Busy ──")
     await goto(page, "Calendar/view#!%2Fcalendar%2Fweek%2F20260615")
     monday = page.locator("div.day").nth(1)
@@ -363,15 +374,19 @@ async def run_freebusy(page):
         cy = hour14_box["y"] + hour14_box["height"] / 2
         await page.mouse.dblclick(cx, cy)
         await page.wait_for_timeout(2000)
-        await screenshot(page, "01-event-dialog.png", ss)
+        await t.capture(page, "Event-Dialog" if locale == "de" else "Event dialog",
+            [{"type": "circle", "x": monday_box["x"], "y": monday_box["y"], "width": monday_box["width"], "height": monday_box["height"]},
+             {"type": "circle", "x": hour14_box["x"], "y": hour14_box["y"], "width": hour14_box["width"], "height": hour14_box["height"]}],
+            duration=1200)
         try:
             attendees_btn = page.locator("button:has-text('Attendees'), [ng-click*='attendee']").first
             if await attendees_btn.is_visible(timeout=2000):
                 await attendees_btn.click()
                 await page.wait_for_timeout(1500)
-            await screenshot(page, "02-freebusy-grid.png", ss)
+            await t.capture(page, "Verfügbarkeitsraster" if locale == "de" else "Free/busy grid", [], duration=2000)
         except Exception:
             pass
+    t.build_gif(locale)
 
 def create_gif(frames, output_path, duration=800, loop=0):
     img_frames = []
