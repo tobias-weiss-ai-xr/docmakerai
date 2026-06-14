@@ -14,6 +14,12 @@ site/.docusaurus/
 dist/
 build/
 
+# Capture artifacts (intermediate)
+capture/screenshots/
+capture/gifs/
+/{SCREENSHOT_DIR}/
+capture/{SCREENSHOT_DIR}/
+
 # Root-level generated docs (no longer used, kept for safety)
 /docs/
 /data/
