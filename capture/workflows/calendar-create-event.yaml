@@ -12,13 +12,17 @@ steps:
 
   - id: type-username
     action: type
-    selector: "[ng-model='app.creds.username'], input[name='username']"
+    selector: "[ng-model='app.creds.username']"
     value: "${SOGO_USERNAME}"
 
   - id: type-password
     action: type
-    selector: "#passwordField, input[name='password']"
+    selector: "#passwordField"
     value: "${SOGO_PASSWORD}"
+
+  - id: toggle-remember
+    action: toggle
+    selector: "md-switch[ng-model='app.creds.rememberLogin']"
 
   - id: submit-login
     action: click
@@ -27,54 +31,38 @@ steps:
     screenshot: 02-dashboard.png
 
   - id: open-calendar
-    action: click
-    selector: "a[href*='Calendar'], nav a:has-text('Calendar')"
-    wait_after: 2
+    action: navigate
+    url: "${SOGO_URL}so/testuser/Calendar/view"
+    wait_after: 3
     screenshot: 03-calendar-view.png
     gif_start: true
 
-  - id: click-new-event
-    action: click
-    selector: "button:has-text('New'), button:has-text('+'), .btn-new-event"
-    wait_after: 1
+  - id: dblclick-create-event
+    action: dblclick
+    selector: "div.day.weekEndDay div.day"
+    wait_after: 2
     screenshot: 04-new-event-dialog.png
 
   - id: fill-title
     action: type
-    selector: "input[name='title'], input[id*='title'], input[placeholder*='Title']"
+    selector: "[ng-model='editor.component.summary']"
     value: "Team Standup"
 
-  - id: set-date
+  - id: fill-location
     action: type
-    selector: "input[name='startDate'], input[placeholder*='Start']"
-    value: "${EVENT_DATE}"
-
-  - id: set-time
-    action: type
-    selector: "input[name='startTime'], input[placeholder*='Time']"
-    value: "10:00"
-
-  - id: set-end-time
-    action: type
-    selector: "input[name='endTime'], input[placeholder*='End']"
-    value: "11:00"
-
-  - id: add-attendee
-    action: type
-    selector: "input[placeholder*='Attendee'], input[placeholder*='attendee']"
-    value: "${SOGO_RECIPIENT}"
-    wait_after: 1
+    selector: "[ng-model='editor.component.location']"
+    value: "Conference Room B"
 
   - id: set-alarm
     action: click
-    selector: "button:has-text('Alarm'), button:has-text('Reminder'), label:has-text('Reminder')"
+    selector: "button[ng-click*='toggleAlarm']"
     wait_after: 1
     screenshot: 05-alarm-settings.png
 
   - id: save-event
     action: click
-    selector: "button:has-text('Save'), button:has-text('OK'), input[value='Save']"
-    wait_after: 2
+    selector: "button[type='submit']:has-text('Save')"
+    wait_after: 3
     screenshot: 06-event-created.png
     gif_end: true
     gif_name: calendar-create-event.gif

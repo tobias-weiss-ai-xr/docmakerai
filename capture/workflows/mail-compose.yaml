@@ -19,6 +19,10 @@ steps:
     selector: "#passwordField, input[name='password']"
     value: "${SOGO_PASSWORD}"
 
+  - id: toggle-remember
+    action: toggle
+    selector: "md-switch[ng-model='app.creds.rememberLogin']"
+
   - id: submit-login
     action: click
     selector: "button[type='submit']"
