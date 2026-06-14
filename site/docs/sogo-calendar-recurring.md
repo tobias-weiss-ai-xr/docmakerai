@@ -14,8 +14,8 @@ configuring reminders so you never miss them.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 
 ## Part 1: Creating a Recurring Event
 
@@ -91,7 +91,7 @@ A popup notification appears in your browser when the reminder fires.
   </TabItem>
   <TabItem value="email" label="Email">
 
-An email is sent to your SOGo email address.
+An email is sent to your SOGo 5 email address.
 
 1. Select **Email** as the alarm type
 2. Choose the timing
@@ -133,7 +133,7 @@ Click **Add Alarm** to add additional reminders.
 
 1. Open the event dialog
 2. Set **Repeat** to **None**
-3. Save — SOGo asks if you want to keep existing future events
+3. Save — SOGo 5 asks if you want to keep existing future events
 4. Choose **Delete all future events** or **Keep them as individual events**
 
 ## Troubleshooting
@@ -142,7 +142,7 @@ Click **Add Alarm** to add additional reminders.
 
 - Make sure you're editing a new or existing event in the **Calendar**
   module, not an invitation received via email
-- Some SOGo themes hide the Repeat section behind a "More options" button
+- Some SOGo 5 themes hide the Repeat section behind a "More options" button
 
 ### Alarm not firing
 
@@ -152,6 +152,6 @@ Click **Add Alarm** to add additional reminders.
 
 ## Conclusion
 
-You have learned to create recurring events and set up alarms in SOGo.
+You have learned to create recurring events and set up alarms in SOGo 5.
 These features are essential for regular meetings, deadlines, and
 important dates.

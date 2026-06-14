@@ -11,8 +11,8 @@ in the calendar when you're on vacation or out of office.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 - Vacation/auto-reply must be enabled by your administrator
   (`SOGoVacationEnabled = YES`)
 
@@ -100,7 +100,7 @@ checking free/busy.
 
 ### Send a Test Email
 
-1. Send an email to your SOGo address from another account
+1. Send an email to your SOGo 5 address from another account
 2. You should receive the auto-reply within a few minutes
 3. The auto-reply only fires once per sender (per configured rule)
 

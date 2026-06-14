@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "SOGo 5 Benutzerhandbuch",
+    "description": "The navbar title"
+  },
+  "item.Tutorials": {
+    "message": "Tutorials",
+    "description": "Navbar item with label Tutorials"
+  },
+  "item.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

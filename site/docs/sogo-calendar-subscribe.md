@@ -1,18 +1,18 @@
 ---
 title: "Subscribe to an iCal Feed"
-description: "Import external calendars (holidays, team calendars) into SOGo"
+description: "Import external calendars (holidays, team calendars) into SOGo 5"
 sidebar_label: "Subscribe to an iCal Feed"
 ---
 
 # Subscribe to an iCal Feed
 
-Import external calendars into your SOGo calendar — public holidays,
+Import external calendars into your SOGo 5 calendar — public holidays,
 team calendars, or any `.ics` feed available online.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 - A URL to an iCal feed (`.ics` file or CalDAV endpoint)
 
 ## Step-by-Step Instructions
@@ -25,7 +25,7 @@ You need the web address (URL) of an iCal feed. Common examples:
 |--------|-------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
-| Shared SOGo calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
+| Shared SOGo 5 calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
 
 ### Step 2: Open Calendar Settings
 
@@ -101,12 +101,12 @@ The calendar is removed from your view. The source is unaffected.
 
 ### Events have wrong times
 
-- SOGo converts all dates to your configured timezone
+- SOGo 5 converts all dates to your configured timezone
 - Check your timezone in **Settings** → **General** → **Timezone**
 - Some iCal feeds don't include timezone info — these default to UTC
 
 ## Conclusion
 
 iCal subscriptions let you overlay external calendars onto your
-SOGo view — perfect for public holidays, team schedules, and
+SOGo 5 view — perfect for public holidays, team schedules, and
 third-party calendar feeds.

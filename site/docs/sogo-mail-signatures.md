@@ -24,7 +24,7 @@ Click **Add Signature** or the **+** button.
 
 ### Step 3: Write Your Signature
 
-Enter your signature text. SOGo supports **plain text** signatures.
+Enter your signature text. SOGo 5 supports **plain text** signatures.
 
 **Recommended signature format:**
 ```
@@ -63,12 +63,12 @@ When composing a message, you can insert a signature:
 
 ## Part 3: HTML Signatures (Advanced)
 
-SOGo primarily supports plain text signatures. For rich signatures
+SOGo 5 primarily supports plain text signatures. For rich signatures
 with images or formatting:
 
 1. Create your HTML signature in an external editor
 2. Copy the formatted content (e.g., from Gmail or Outlook)
-3. Paste it into the signature field — SOGo preserves basic formatting
+3. Paste it into the signature field — SOGo 5 preserves basic formatting
 
 :::tip
 **Best practice:** Keep signatures plain text for maximum
@@ -78,7 +78,7 @@ compatibility across email clients.
 ## Part 4: Managing Identities
 
 Identities let you send email as different addresses from the same
-SOGo account.
+SOGo 5 account.
 
 ### Step 1: Open Settings
 
@@ -87,7 +87,7 @@ Go to **Settings** → **Mail** → **Identities**
 ### Step 2: View Your Identities
 
 You'll see your primary identity (the email address associated with
-your SOGo account). Additional identities may appear if configured
+your SOGo 5 account). Additional identities may appear if configured
 by your administrator.
 
 ### Step 3: Add an Auxiliary Identity

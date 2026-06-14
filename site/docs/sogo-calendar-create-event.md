@@ -1,18 +1,18 @@
 ---
 title: "Create a Calendar Event"
-description: "Step-by-step guide to creating events in the SOGo calendar"
+description: "Step-by-step guide to creating events in the SOGo 5 calendar"
 sidebar_label: "Create a Calendar Event"
 ---
 
 # Create a Calendar Event
 
-This tutorial walks you through creating a new event in SOGo's calendar,
+This tutorial walks you through creating a new event in SOGo 5's calendar,
 including setting time, adding attendees, and configuring reminders.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 
 ## Step-by-Step Instructions
 
@@ -68,7 +68,7 @@ If you want to invite other people:
    - **Optional** — Welcome but not required
 5. Repeat for each additional attendee
 
-SOGo will send an email invitation to each attendee when you save the event.
+SOGo 5 will send an email invitation to each attendee when you save the event.
 
 ### Step 5: Set a Reminder (Optional)
 
@@ -82,7 +82,7 @@ To receive a reminder before the event:
    - **1 day before**
    - **Custom** — enter your own time
 3. Choose the reminder method:
-   - **Display** — A popup notification in SOGo
+   - **Display** — A popup notification in SOGo 5
    - **Email** — An email sent to your address
 
 ### Step 6: Add a Description (Optional)
@@ -107,7 +107,7 @@ the end of the semester).
 
 ### Step 8: Save the Event
 
-Click **Save** or **OK** (depending on your SOGo version) to create the event.
+Click **Save** or **OK** (depending on your SOGo 5 version) to create the event.
 
 The event will appear on your calendar. If you added attendees, they will
 receive an email invitation that they can accept or decline.

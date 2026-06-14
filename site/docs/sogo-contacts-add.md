@@ -1,18 +1,18 @@
 ---
 title: "Add a Contact"
-description: "Learn how to add and organize contacts in the SOGo address book"
+description: "Learn how to add and organize contacts in the SOGo 5 address book"
 sidebar_label: "Add a Contact"
 ---
 
 # Add a Contact
 
-This tutorial explains how to add contacts to your SOGo address book
+This tutorial explains how to add contacts to your SOGo 5 address book
 and organize them into groups.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 
 ## Step-by-Step Instructions
 
@@ -117,6 +117,6 @@ Make sure the correct address book is selected before importing.
 
 ## Conclusion
 
-You have successfully added a contact to your SOGo address book.
-Contacts are available throughout SOGo — when composing email, inviting
+You have successfully added a contact to your SOGo 5 address book.
+Contacts are available throughout SOGo 5 — when composing email, inviting
 attendees to calendar events, or searching for colleagues.
