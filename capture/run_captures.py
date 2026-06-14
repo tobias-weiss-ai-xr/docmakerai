@@ -175,51 +175,75 @@ async def click_gear_menu(page, menu_item):
 
 # ── Existing workflows ──
 
-async def run_calendar_create_event(page):
-    ss, gif = [], []
+async def run_calendar_create_event(page, locale="de"):
+    t = StepTracker("calendar-create-event")
     print("\n── Calendar: Create Event ──")
     await goto(page, "Calendar/view#!%2Fcalendar%2Fweek%2F20260615")
-    await screenshot(page, "01-calendar-create-view.png", ss, gif)
+    await t.capture(page, "Kalender in Wochenansicht" if locale == "de" else "Calendar in week view", [], duration=1200)
+
     monday = page.locator("div.day").nth(1)
     hour10 = page.locator("div.hour:has-text('10:00')").first
     monday_box = await monday.bounding_box()
     hour10_box = await hour10.bounding_box()
+
     if monday_box and hour10_box:
         cx = monday_box["x"] + monday_box["width"] / 2
         cy = hour10_box["y"] + hour10_box["height"] / 2
         await page.mouse.dblclick(cx, cy)
-        await page.wait_for_timeout(2000)
-        await screenshot(page, "02-event-dialog.png", ss)
+        await t.capture(page,
+            "Doppelklick auf Montag 10:00" if locale == "de" else "Double-click Monday 10:00",
+            [{"type": "circle", "x": monday_box["x"], "y": monday_box["y"], "width": monday_box["width"], "height": monday_box["height"]},
+             {"type": "circle", "x": hour10_box["x"], "y": hour10_box["y"], "width": hour10_box["width"], "height": hour10_box["height"]}],
+            duration=1500, pause_ms=2000)
+
+        await t.capture(page,
+            "Event-Dialog: Titel eingeben" if locale == "de" else "Event dialog: enter title",
+            [], duration=800)
+
         ti = page.locator("[ng-model='editor.component.summary']").first
         await ti.fill("Team Standup")
         li = page.locator("[ng-model='editor.component.location']").first
         await li.fill("Conference Room B")
-        await screenshot(page, "03-event-details.png", ss)
+
+        title_box = await ti.bounding_box()
+        await t.capture(page,
+            "Formular ausgefüllt" if locale == "de" else "Form filled",
+            [{"type": "circle", "x": title_box["x"], "y": title_box["y"], "width": title_box["width"], "height": title_box["height"]}] if title_box else [],
+            duration=800)
+
         sb = page.locator("button[ng-click*='editor.save']").first
         if await sb.is_visible():
             await sb.click()
         else:
             await page.locator("button[type='submit']:has-text('Save')").first.click()
         await page.wait_for_timeout(3000)
-        await screenshot(page, "04-event-saved.png", ss, gif)
-    create_gif(gif, GIF_DIR / "calendar-create-event.gif")
 
-async def run_calendar_recurring(page):
-    ss, gif = [], []
+        await t.capture(page,
+            "Event gespeichert" if locale == "de" else "Event saved",
+            [], duration=2000)
+
+    t.build_gif(locale)
+
+async def run_calendar_recurring(page, locale="de"):
+    t = StepTracker("calendar-recurring")
     print("\n── Calendar: Recurring Event ──")
     await goto(page, "Calendar/view#!%2Fcalendar%2Fweek%2F20260615")
-    await screenshot(page, "01-calendar-recurring-view.png", ss, gif)
+    await t.capture(page, "Kalender in Wochenansicht" if locale == "de" else "Calendar in week view", [], duration=1200)
+
     monday = page.locator("div.day").nth(1)
     hour11 = page.locator("div.hour:has-text('11:00')").first
     monday_box = await monday.bounding_box()
     hour11_box = await hour11.bounding_box()
+
     if monday_box and hour11_box:
         cx = monday_box["x"] + monday_box["width"] / 2
         cy = hour11_box["y"] + hour11_box["height"] / 2
         await page.mouse.dblclick(cx, cy)
         await page.wait_for_timeout(2000)
+
         ti = page.locator("[ng-model='editor.component.summary']").first
         await ti.fill("Weekly Team Standup")
+
         rs = page.locator("[ng-model='editor.component.repeat.frequency']").first
         if await rs.is_visible():
             await rs.click()
@@ -228,27 +252,40 @@ async def run_calendar_recurring(page):
             if await wk.is_visible():
                 await wk.click()
                 await page.wait_for_timeout(500)
-        await screenshot(page, "02-recurrence-options.png", ss)
+
+        rs_box = await rs.bounding_box()
+        await t.capture(page,
+            "Wiederholung auf Wöchentlich gesetzt" if locale == "de" else "Recurrence set to Weekly",
+            [{"type": "circle", "x": rs_box["x"], "y": rs_box["y"], "width": rs_box["width"], "height": rs_box["height"]}] if rs_box else [],
+            duration=1500)
+
         sb = page.locator("button[ng-click*='editor.save']").first
         if await sb.is_visible():
             await sb.click()
         else:
             await page.locator("button[type='submit']:has-text('Save')").first.click()
         await page.wait_for_timeout(3000)
-        await screenshot(page, "03-recurring-saved.png", ss, gif)
-    create_gif(gif, GIF_DIR / "calendar-recurring.gif")
 
-async def run_mail_compose(page):
-    ss, gif = [], []
+        await t.capture(page,
+            "Serien-Event gespeichert" if locale == "de" else "Recurring event saved",
+            [], duration=2000)
+
+    t.build_gif(locale)
+
+async def run_mail_compose(page, locale="de"):
+    t = StepTracker("mail-compose")
     print("\n── Mail: Compose ──")
     await goto(page, "Mail/view#!%2FMail%2F0%2Finbox", 5000)
-    await screenshot(page, "01-mail-inbox.png", ss, gif)
+    await t.capture(page, "Posteingang" if locale == "de" else "Mail inbox", [], duration=1200)
+
     await page.evaluate("window.location.hash = '#!/Mail/0/compose'")
     await page.wait_for_timeout(3000)
-    await screenshot(page, "02-compose-window.png", ss)
-    await screenshot(page, "03-attachment.png", ss)
-    await screenshot(page, "04-message-sent.png", ss, gif)
-    create_gif(gif, GIF_DIR / "mail-compose.gif")
+    await t.capture(page, "Compose-Fenster" if locale == "de" else "Compose window", [], duration=1500)
+
+    await t.capture(page, "Anhang hinzufügen" if locale == "de" else "Add attachment", [], duration=1000)
+    await t.capture(page, "Nachricht fertig" if locale == "de" else "Message ready", [], duration=2000)
+
+    t.build_gif(locale)
 
 # ── New workflows ──
 
