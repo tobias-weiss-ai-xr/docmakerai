@@ -21,7 +21,7 @@ and organize them into groups.
 In the sidebar navigation on the left, click **Contacts**
 to open your address book.
 
-![Contacts module in sidebar](https://placehold.co/600x100?text=Contacts+Sidebar+Button)
+![Contacts module in sidebar](../../assets/02-dashboard.png)
 
 The contacts view shows your address book with any existing contacts.
 On the left, you'll see your address books and contact groups.
