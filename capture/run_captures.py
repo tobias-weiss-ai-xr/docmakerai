@@ -28,6 +28,38 @@ def clean_dirs():
             shutil.rmtree(d)
         d.mkdir(parents=True, exist_ok=True)
 
+def verify_screenshot(path):
+    if not path.exists():
+        return False, "file not found"
+    size = path.stat().st_size
+    if size < 5000:
+        return False, f"too small ({size} bytes — likely blank)"
+    try:
+        img = Image.open(path)
+        extrema = img.getextrema()
+        if hasattr(extrema[0], '__iter__'):
+            ranges = [hi - lo for lo, hi in extrema]
+        else:
+            ranges = [extrema[0]]
+        avg_range = sum(ranges) / len(ranges)
+        if avg_range < 5:
+            return False, f"near-uniform image (range={avg_range:.1f} — likely blank/error)"
+    except Exception as e:
+        return False, f"image read failed: {e}"
+    return True, f"ok ({size//1024}KB)"
+
+def verify_all_screenshots(dir_path):
+    results = []
+    for png in sorted(dir_path.glob("*.png")):
+        ok, reason = verify_screenshot(png)
+        results.append((png.name, ok, reason))
+    passed = sum(1 for _, ok, _ in results if ok)
+    total = len(results)
+    for name, ok, reason in results:
+        mark = "✓" if ok else "✗"
+        print(f"  {mark}  {name}: {reason}")
+    return passed, total, results
+
 def create_gif(image_paths, output_path, duration=800, loop=0):
     frames = []
     for img_path in image_paths:
@@ -253,6 +285,18 @@ async def main():
         await run_calendar_recurring(page, [], [])
         await run_mail_compose(page, [], [])
         
+        # ── Verify screenshots have content ──
+        print("\n── Screenshot content verification ──")
+        passed, total, _ = verify_all_screenshots(SCREENSHOT_DIR)
+        if passed < total:
+            print(f"\n  ⚠  {total - passed}/{total} screenshots failed verification")
+            if passed == 0:
+                print("  ✗  ALL screenshots appear blank — aborting asset copy")
+                await browser.close()
+                sys.exit(1)
+        else:
+            print(f"\n  ✓  All {total} screenshots verified with content")
+
         # ── Copy to assets ──
         print("\n── Copying to assets ──")
         for shot in SCREENSHOT_DIR.glob("*.png"):
