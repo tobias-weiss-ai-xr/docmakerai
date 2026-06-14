@@ -1,18 +1,18 @@
 ---
 title: "Share a Calendar"
-description: "Share your SOGo calendar with colleagues and set permissions"
+description: "Share your SOGo 5 calendar with colleagues and set permissions"
 sidebar_label: "Share a Calendar"
 ---
 
 # Share a Calendar
 
-This tutorial explains how to share your SOGo calendar with other users
+This tutorial explains how to share your SOGo 5 calendar with other users
 and control what they can see or do.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 - You have at least one calendar (e.g., the default "Personal" calendar)
 
 ## Step-by-Step Instructions
@@ -82,7 +82,7 @@ If you use a CalDAV client (Thunderbird, macOS Calendar, iOS):
    ```
    https://your-sogo-instance/SOGo/dav/your-username/calendar/personal/
    ```
-3. Enter your SOGo credentials
+3. Enter your SOGo 5 credentials
 4. The calendar will sync automatically
 
 Shared calendars will appear under the same CalDAV endpoint for users

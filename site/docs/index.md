@@ -3,13 +3,13 @@ sidebar_label: "Overview"
 sidebar_position: 1
 ---
 
-# SOGo User Guide
+# SOGo 5 User Guide
 
-Step-by-step tutorials for SOGo groupware — email, calendar, contacts, and more.
+Step-by-step tutorials for SOGo 5 groupware — email, calendar, contacts, and more.
 
 ## Getting Started
 
-- [Login to SOGo](./sogo-login) — Access your SOGo webmail account
+- [Login to SOGo 5](./sogo-login) — Access your SOGo 5 webmail account
 
 ## Calendar
 

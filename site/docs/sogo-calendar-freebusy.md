@@ -11,9 +11,9 @@ meeting — directly from the event creation dialog.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
-- The colleague has a SOGo account and has shared their free/busy info
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
+- The colleague has a SOGo 5 account and has shared their free/busy info
 
 ## Step-by-Step Instructions
 
@@ -54,7 +54,7 @@ The grid shows time slots for each person:
 ### Step 5: Find a Common Slot
 
 Look for a time when all attendees are green.
-SOGo may suggest the next available slot automatically.
+SOGo 5 may suggest the next available slot automatically.
 
 ### Step 6: Confirm the Time
 
@@ -63,7 +63,7 @@ The event's start/end time updates to match.
 
 ## What Others See
 
-By default, SOGo is configured so that other users can see:
+By default, SOGo 5 is configured so that other users can see:
 
 | Permission | What's Visible |
 |------------|----------------|
@@ -78,7 +78,7 @@ Your administrator can change default permission levels via the
 
 ### Colleague not showing up
 
-- Check they have a SOGo account
+- Check they have a SOGo 5 account
 - They may not have free/busy sharing enabled
 - They might be in a different address book — try typing their full email
 

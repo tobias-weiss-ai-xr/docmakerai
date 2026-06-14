@@ -1,18 +1,18 @@
 ---
 title: "Compose and Send an Email"
-description: "Learn how to write, format, and send emails in SOGo"
+description: "Learn how to write, format, and send emails in SOGo 5"
 sidebar_label: "Compose and Send an Email"
 ---
 
 # Compose and Send an Email
 
 This tutorial covers the basics of composing and sending emails
-using SOGo's webmail interface.
+using SOGo 5's webmail interface.
 
 ## Prerequisites
 
-- A SOGo account with valid credentials
-- You are logged into SOGo
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
 
 ## Step-by-Step Instructions
 
@@ -43,7 +43,7 @@ Fill in the recipient fields:
 | **Bcc** | Blind carbon copy — recipients receive a copy, hidden from other recipients |
 
 **Tips:**
-- Start typing a name — SOGo will suggest matching contacts from your address book
+- Start typing a name — SOGo 5 will suggest matching contacts from your address book
 - You can also enter full email addresses directly
 - Use **Cc** for people who need to be informed but are not directly responsible
 - Use **Bcc** for mailing lists or when recipients should not see each other
@@ -98,7 +98,7 @@ Once your message is complete:
 1. Review the recipient, subject, and content
 2. Click **Send**
 
-SOGo will deliver the message. A copy is saved in your **Sent** folder.
+SOGo 5 will deliver the message. A copy is saved in your **Sent** folder.
 
 ### Step 8: Save as Draft (Optional)
 
@@ -124,6 +124,6 @@ If you are not ready to send:
 
 ## Conclusion
 
-You have successfully composed and sent an email in SOGo. You can now
+You have successfully composed and sent an email in SOGo 5. You can now
 manage your inbox, organize messages into folders, and set up email
 filters for automatic sorting.

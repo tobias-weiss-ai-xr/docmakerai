@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'SOGo User Guide',
-  tagline: 'Step-by-step tutorials for SOGo groupware',
+  title: 'SOGo 5 User Guide',
+  tagline: 'Step-by-step tutorials for SOGo 5 groupware',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -22,7 +22,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'de'],
+    localeConfigs: {
+      en: { label: 'English' },
+      de: { label: 'Deutsch' },
+    },
   },
 
   presets: [
@@ -49,7 +53,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'SOGo User Guide',
+      title: 'SOGo 5 User Guide',
       logo: {
         alt: 'SOGo Logo',
         src: 'img/logo.svg',
@@ -60,6 +64,10 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Tutorials',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/tobias-weiss-ai-xr/docmakerai',
@@ -75,7 +83,7 @@ const config: Config = {
           title: 'Tutorials',
           items: [
             {
-              label: 'SOGo Basics',
+              label: 'SOGo 5 Basics',
               to: '/',
             },
           ],

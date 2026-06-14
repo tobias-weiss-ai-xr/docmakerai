@@ -66,7 +66,7 @@ Move important messages elsewhere first.
 
 ## Part 2: Automatic Filters (Sieve)
 
-SOGo uses **Sieve** scripts for server-side mail filtering.
+SOGo 5 uses **Sieve** scripts for server-side mail filtering.
 Filters run when email arrives — before you see it in your inbox.
 
 ### Step 1: Open Filter Settings
@@ -147,7 +147,7 @@ Action:    Move to folder "Newsletters"
 ### Filters not working
 
 - Check that Sieve is enabled (`SOGoSieveScriptsEnabled = YES`)
-- Verify your Sieve server address in the SOGo configuration
+- Verify your Sieve server address in the SOGo 5 configuration
 - Test with a simple filter first (e.g., move all mail from yourself)
 - Check server logs for Sieve compilation errors
 
