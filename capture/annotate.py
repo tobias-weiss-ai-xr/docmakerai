@@ -100,7 +100,7 @@ def annotate_frame(frame_path, step_label, step_number, highlights, locale, outp
         output_path: Where to save the annotated PNG.
 
     Returns:
-        Path to the annotated file, or None on failure.
+        PIL Image with overlays drawn, or None on failure.
     """
     try:
         img = Image.open(frame_path).convert("RGBA")
@@ -121,7 +121,7 @@ def annotate_frame(frame_path, step_label, step_number, highlights, locale, outp
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(output_path, "PNG")
-    return str(output_path)
+    return img
 
 
 def build_segment_gif(frames_dir, metadata_path, output_path, locale, annotated_dir):
@@ -151,10 +151,10 @@ def build_segment_gif(frames_dir, metadata_path, output_path, locale, annotated_
     pil_frames = []
     durations = []
 
-    for entry in frames_meta:
+    for i, entry in enumerate(frames_meta):
         filename = entry.get("file", "")
         step_label = entry.get("step", "")
-        step_number = entry.get("step_number", 1)
+        step_number = i + 1
         duration = entry.get("duration", 800)
         highlights = entry.get("highlights", [])
 
@@ -163,14 +163,13 @@ def build_segment_gif(frames_dir, metadata_path, output_path, locale, annotated_
             continue
 
         annotated_path = annotated_dir / filename
-        result = annotate_frame(str(src), step_label, step_number,
-                                highlights, locale, str(annotated_path))
-        if result is None:
+        img = annotate_frame(str(src), step_label, step_number,
+                             highlights, locale, str(annotated_path))
+        if img is None:
             continue
 
         try:
-            frame = Image.open(annotated_path).convert("P", palette=Image.Palette.ADAPTIVE)
-            pil_frames.append(frame)
+            pil_frames.append(img.convert("P", palette=Image.Palette.ADAPTIVE))
             durations.append(duration)
         except Exception:
             continue
