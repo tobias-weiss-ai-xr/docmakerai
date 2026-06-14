@@ -388,19 +388,6 @@ async def run_freebusy(page, locale="de"):
             pass
     t.build_gif(locale)
 
-def create_gif(frames, output_path, duration=800, loop=0):
-    img_frames = []
-    for fp in frames:
-        if fp.exists():
-            img = Image.open(fp).convert("P", palette=Image.Palette.ADAPTIVE)
-            img_frames.append(img)
-    if len(img_frames) >= 2:
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        img_frames[0].save(output_path, save_all=True, append_images=img_frames[1:],
-                           duration=duration, loop=loop, optimize=True)
-        print(f"  ✓  GIF: {output_path.name} ({len(img_frames)} frames)")
-        shutil.copy2(S(output_path), S(ASSETS_DIR / output_path.name))
-
 async def main():
     clean_dirs()
     async with async_playwright() as p:
@@ -408,24 +395,25 @@ async def main():
         context = await browser.new_context(
             ignore_https_errors=True,
             viewport={"width": 1280, "height": 800},
-            locale="en-US"
+            locale="en-US",
         )
         page = await context.new_page()
         await login(page)
-        await run_calendar_create_event(page)
-        await run_calendar_recurring(page)
-        await run_mail_compose(page)
-        await run_contacts_add(page)
-        await run_vacation(page)
-        await run_mail_signatures(page)
-        await run_mail_filters(page)
-        await run_calendar_subscribe(page)
-        await run_calendar_share(page)
-        await run_freebusy(page)
 
-        # Verify
-        print("\n── Screenshot content verification ──")
-        passed, total, _ = verify_all_screenshots(SCREENSHOT_DIR)
+        locale = "de"
+        await run_calendar_create_event(page, locale)
+        await run_calendar_recurring(page, locale)
+        await run_mail_compose(page, locale)
+        await run_contacts_add(page, locale)
+        await run_vacation(page, locale)
+        await run_mail_signatures(page, locale)
+        await run_mail_filters(page, locale)
+        await run_calendar_subscribe(page, locale)
+        await run_calendar_share(page, locale)
+        await run_freebusy(page, locale)
+
+        print("\n── Annotated screenshot verification ──")
+        passed, total, _ = verify_all_screenshots(ANNOTATED_DIR)
         if passed < total:
             print(f"\n  ⚠  {total - passed}/{total} failed")
             if passed == 0:
@@ -433,17 +421,15 @@ async def main():
                 await browser.close()
                 sys.exit(1)
         else:
-            print(f"\n  ✓  All {total} verified")
+            print(f"\n  ✓  All {total} annotated frames verified")
 
-        # Copy to assets
-        print("\n── Copying to assets ──")
-        for shot in sorted(SCREENSHOT_DIR.glob("*.png")):
-            shutil.copy2(S(shot), S(ASSETS_DIR / shot.name))
-            print(f"  ✓  {shot.name}")
-        for gif in GIF_DIR.glob("*.gif"):
+        print("\n── Copying GIFs to assets ──")
+        for gif in sorted(GIF_DIR.glob("*.gif")):
             shutil.copy2(S(gif), S(ASSETS_DIR / gif.name))
             print(f"  ✓  {gif.name}")
+
         await browser.close()
+
     print("\n── All captures complete! ──")
 
 if __name__ == "__main__":
