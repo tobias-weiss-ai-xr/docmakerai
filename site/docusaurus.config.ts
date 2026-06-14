@@ -76,7 +76,7 @@ const config: Config = {
           items: [
             {
               label: 'SOGo Basics',
-              to: '/category/sogo',
+              to: '/',
             },
           ],
         },
