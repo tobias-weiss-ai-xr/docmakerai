@@ -1,0 +1,77 @@
+name: "Set Up Recurring Event with Alarms"
+description: "Create a weekly recurring event with email reminder in SOGo calendar"
+base_url: "${SOGO_URL}"
+auth:
+  username: "${SOGO_USERNAME}"
+  password: "${SOGO_PASSWORD}"
+steps:
+  - id: goto-login
+    action: navigate
+    url: "${SOGO_URL}"
+
+  - id: type-username
+    action: type
+    selector: "[ng-model='app.creds.username'], input[name='username']"
+    value: "${SOGO_USERNAME}"
+
+  - id: type-password
+    action: type
+    selector: "#passwordField, input[name='password']"
+    value: "${SOGO_PASSWORD}"
+
+  - id: submit-login
+    action: click
+    selector: "button[type='submit']"
+    wait_after: 5
+
+  - id: open-calendar
+    action: click
+    selector: "a[href*='Calendar'], nav a:has-text('Calendar')"
+    wait_after: 2
+    screenshot: 01-calendar-view.png
+    gif_start: true
+
+  - id: click-new-event
+    action: click
+    selector: "button:has-text('New'), button:has-text('+')"
+    wait_after: 1
+
+  - id: fill-title
+    action: type
+    selector: "input[name='title'], input[id*='title']"
+    value: "Weekly Team Standup"
+
+  - id: open-recurrence
+    action: click
+    selector: "button:has-text('Repeat'), button:has-text('Recurrence'), label:has-text('Repeat')"
+    wait_after: 1
+    screenshot: 02-recurrence-options.png
+
+  - id: set-recurrence-weekly
+    action: click
+    selector: "input[value='weekly'], select[name='frequency'] option[value='weekly'], label:has-text('Weekly')"
+    wait_after: 1
+
+  - id: set-recurrence-end
+    action: type
+    selector: "input[placeholder*='end'], input[name='repeatUntil']"
+    value: "2026-12-31"
+
+  - id: open-alarm
+    action: click
+    selector: "button:has-text('Alarm'), button:has-text('Reminder')"
+    wait_after: 1
+    screenshot: 03-alarm-email.png
+
+  - id: set-alarm-email
+    action: click
+    selector: "label:has-text('Email'), input[value='email']"
+    wait_after: 1
+
+  - id: save-event
+    action: click
+    selector: "button:has-text('Save'), button:has-text('OK')"
+    wait_after: 2
+    screenshot: 04-recurring-event-saved.png
+    gif_end: true
+    gif_name: calendar-recurring.gif
