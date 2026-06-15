@@ -42,7 +42,7 @@ Click the **Repeat** or **Recurrence** section to expand it:
 ![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
 | Option | Description | Example Use |
-|--------|-------------|-------------|
+|:-------|:------------|:-------------|
 | **Daily** | Repeats every N days | Morning check-in |
 | **Weekly** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |
 | **Bi-weekly** | Repeats every 2 weeks | Sprint planning |
@@ -157,3 +157,72 @@ Click **Add Alarm** to add additional reminders.
 You have learned to create recurring events and set up alarms in SOGo 5.
 These features are essential for regular meetings, deadlines, and
 important dates.
+
+## Accessibility
+
+### Keyboard Navigation
+
+SOGo 5 supports full keyboard navigation for recurring events.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| | Create new event | `N` or `+` |
+| | Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
+| | Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
+| | Set recurrence end | Tab to end fields |
+| | Set interval | Arrow key + Tab |
+| | Save recurring event | `Ctrl+S` or `Enter` |
+
+### Screen Reader Workflow
+
+**Creating Recurring Event**
+
+**Step 1: Create New Event**
+1. `Alt+M` to focus sidebar
+2. Arrow keys to "Calendar"
+3. Press `N` or `+` for new event
+
+**Step 2: Open Recurrence Settings**
+1. Event dialog opens
+2. Tab to "Recurrence" label or press `Ctrl+Shift+R`
+3. Press `Space` to expand recurrence section
+
+**Step 3: Set Recurrence Frequency**
+1. Focus on frequency dropdown
+2. Arrow key to select (Daily/Weekly/Monthly/Yearly)
+3. Press `Enter`
+
+**Step 4: Set Recurrence Details**
+1. Tab to interval field (e.g., "Every 2 days")
+2. Type interval number, arrow to select unit
+3. Tab to end date/occurrence count
+4. Specify when recurrence should end
+
+**Step 5: Save Recurring Event**
+1. Tab to "Save" button
+2. Press `Enter`
+3. Screen reader announces series created
+
+**Common Screen Reader Announcements:**
+
+| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+|--------------------------------------|------------------------|-------------------|
+| "Recurrence, check box" | Recurrence available | Press Space to enable |
+| "Frequency, radio button" | How often to repeat | Arrow to select type |
+| "Every, edit" | Recurrence interval | Type number, select unit |
+| "Until, date picker" | When to end recurrence | Tab, select end date |
+| "Occurrences, edit" | How many times to repeat | Type number or leave blank |
+| "Recurring event created" | Success | Event series saved |
+
+### Visual Content Descriptions
+
+**calendar-recurring.gif:** This 3.2-second animated GIF shows creating a recurring event.
+
+- **Frame 1 (0-0.8s):** Create event dialog open with title, date, time fields filled
+- **Frame 2 (0.8-2.2s):** Recurrence section expanded, frequency dropdown showing "Weekly" selected, interval set to "Every 1 week", specific weekdays checked (Monday, Wednesday, Friday)
+- **Frame 3 (2.2-3.2s):** Event details saved, confirmation showing recurring icon in calendar, series indicator visible
+
+### High Contrast Mode
+
+SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
