@@ -80,6 +80,8 @@ Filters run when email arrives — before you see it in your inbox.
 
 Click **Add Filter** or the **+** button.
 
+![Creating a new mail filter](./assets/mail-filters.gif)
+
 ### Step 3: Define Conditions
 
 Choose when the filter should apply:
