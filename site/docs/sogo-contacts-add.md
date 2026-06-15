@@ -32,6 +32,8 @@ Click the **+** (plus) button to add a new contact.
 
 A blank contact form will appear.
 
+![Step 2: Add New Contact](./assets/contacts-add.gif)
+
 ### Step 3: Enter Contact Information
 
 Fill in the contact's details. The most commonly used fields are:
