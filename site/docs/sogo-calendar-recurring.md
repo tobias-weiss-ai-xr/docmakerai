@@ -41,7 +41,7 @@ Click the **Repeat** or **Recurrence** section to expand it:
 
 ![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
-| Option | Description | Example Use |
+| Option | Description: What this option does | Example Use |
 |:-------|:------------|:-------------|
 | **Daily** | Repeats every N days | Morning check-in |
 | **Weekly** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |

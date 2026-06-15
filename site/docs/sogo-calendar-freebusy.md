@@ -46,7 +46,7 @@ meeting — directly from the event creation dialog.
 
 The grid shows time slots for each person:
 
-| Color | Meaning |
+| Color | Meaning: Availability status |
 |:-------|:---------|
 | ✅ **Green** | Available |
 | ❌ **Red** | Busy (has an event) |
@@ -67,7 +67,7 @@ The event's start/end time updates to match.
 
 By default, SOGo 5 is configured so that other users can see:
 
-| Permission | What's Visible |
+| Permission | What's Visible: What others can see |
 |:-----------|:----------------|
 | **Free/Busy** | Only whether you're available or busy (no details) |
 | **View (read-only)** | Event titles and times |
