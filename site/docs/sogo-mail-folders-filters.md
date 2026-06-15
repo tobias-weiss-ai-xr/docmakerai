@@ -86,7 +86,7 @@ Click **Add Filter** or the **+** button.
 
 Choose when the filter should apply:
 
-| Condition | Example |
+| Condition | Example: When this condition matches |
 | :--- | :--- |
 | **From contains** | `@example.com` → all mail from that domain |
 | **Subject contains** | `[Spam]` → flag potential spam |
@@ -101,7 +101,7 @@ You can combine multiple conditions:
 
 Choose what happens when conditions are met:
 
-| Action | Use Case |
+| Action | Use Case: When to apply |
 | :--- | :--- |
 | **Move to folder** | Sort into the right folder |
 | **Copy to folder** | Keep a copy in inbox + file in folder |

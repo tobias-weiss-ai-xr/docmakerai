@@ -41,7 +41,7 @@ Email: john.doe@company.com
 
 Select when the signature is inserted:
 
-| Option | Behavior |
+| Option | Behavior: How signature is inserted |
 |:-------|:----------|
 | **Append to new messages only** | Signature added to new emails, not replies |
 | **Append to all messages** | Added to both new and replied/forwarded messages |
