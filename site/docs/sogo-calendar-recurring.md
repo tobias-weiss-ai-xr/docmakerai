@@ -54,6 +54,8 @@ For **weekly** recurrence, you can select multiple days
 (e.g., Monday, Wednesday, Friday) by checking the boxes.
 :::
 
+![Configuring weekly recurrence in SOGo 5](./assets/calendar-recurring.gif)
+
 ### Step 4: Set an End Date (Recommended)
 
 Always set an end date for recurring events to prevent infinite

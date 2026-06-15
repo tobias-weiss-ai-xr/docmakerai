@@ -59,6 +59,8 @@ Choose what the user can do:
 **Recommended for most cases:** **Modify** allows a colleague to create
 and edit events in your calendar.
 
+![Step 4: Set permissions for calendar sharing](./assets/calendar-share.gif)
+
 ### Step 5: Confirm the Share
 
 Click **OK** or **Save** to apply the permission. The user will now be
