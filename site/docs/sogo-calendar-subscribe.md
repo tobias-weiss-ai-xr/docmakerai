@@ -22,7 +22,7 @@ team calendars, or any `.ics` feed available online.
 You need the web address (URL) of an iCal feed. Common examples:
 
 | Source | Example URL |
-|--------|-------------|
+|:-------|:------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
 | Shared SOGo 5 calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
@@ -49,7 +49,7 @@ In the subscription dialog:
 ### Step 4: Configure Sync Options
 
 | Option | Description |
-|--------|-------------|
+|:-------|:------------|
 | **Refresh interval** | How often to check for updates (every hour, daily, etc.) |
 | **Remove reminders** | Strip alarm information from external events |
 | **Remove attachments** | Don't download external file attachments |
@@ -112,3 +112,74 @@ The calendar is removed from your view. The source is unaffected.
 iCal subscriptions let you overlay external calendars onto your
 SOGo 5 view — perfect for public holidays, team schedules, and
 third-party calendar feeds.
+
+## Accessibility
+
+### Keyboard Navigation
+
+SOGo 5 supports full keyboard navigation for subscribing to calendars.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| | Open subscription dialog | `Ctrl+Shift+S` or gear icon |
+| | Select calendar type | Arrow keys in dropdown |
+| | Enter calendar URL | Tab to URL field, type |
+| | Display name field | Tab, type name |
+| | Refresh frequency | Arrow key to select |
+| | Subscribe or save | `Ctrl+S` or `Enter` |
+
+### Screen Reader Workflow
+
+**Subscribing to External Calendar**
+
+**Step 1: Navigate to Calendar Module**
+1. `Alt+M` to focus sidebar
+2. Arrow keys to "Calendar"
+3. `Enter` to open calendar view
+
+**Step 2: Open Subscription Dialog**
+1. Gear icon settings or press `Ctrl+Shift+S`
+2. "Subscribe to Calendar" option
+3. Press `Enter`
+
+**Step 3: Select Calendar Type**
+1. Tab to calendar type dropdown
+2. Arrow keys to select (iCal, CalDAV, etc.)
+3. Press `Enter`
+
+**Step 4: Enter Calendar Details**
+1. Tab to URL field
+2. Type or paste calendar URL
+3. Tab to display name field
+4. Type friendly name (e.g., "Team Calendar")
+5. Tab to refresh frequency
+6. Select frequency with arrow keys
+
+**Step 5: Complete Subscription**
+1. Tab to "Subscribe" or "Save" button
+2. Press `Enter`
+3. Screen reader announces calendar added
+
+**Common Screen Reader Announcements:**
+
+| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+|--------------------------------------|------------------------|-------------------|
+| "Subscribe to calendar, dialog" | Subscription dialog open | Select calendar type |
+| "Calendar type, combo box" | Calendar format selector | Arrow to select type |
+| "URL, edit" | Calendar address field | Type full calendar URL |
+| "Display name, edit" | Friendly calendar name | Type memorable name |
+| "Refresh frequency" | How often to sync | Arrow to select interval |
+| "Calendar subscribed" | Success | Calendar now visible |
+
+### Visual Content Descriptions
+
+**calendar-subscribe.gif:** This 3-second animated GIF shows subscribing to an external calendar.
+
+- **Frame 1 (0-0.8s):** Calendar view with Calendars list on left
+- **Frame 2 (0.8-2s):** Subscription dialog open, calendar type dropdown showing "iCal/ICS" selected, URL field populated with calendar address, display name "Team Calendar" typed
+- **Frame 3 (2-3s):** Calendar list now shows "Team Calendar" with subscribed icon, refresh frequency set to "Every 30 minutes"
+
+### High Contrast Mode
+
+SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

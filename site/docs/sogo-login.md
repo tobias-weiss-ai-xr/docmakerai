@@ -47,3 +47,65 @@ ready to use SOGo 5's features.
 
 You have successfully logged into SOGo 5. You can now access your email,
 calendar, contacts, and other modules from the sidebar navigation.
+
+## Accessibility
+
+### Keyboard Navigation
+
+SOGo 5 supports full keyboard navigation. No mouse required for login.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|----------------------------------|---------------------------|
+| | Focus username field | `Tab` | First form field |
+| | Focus password field | `Tab` | Second form field |
+| | Submit login | `Enter` | Activates Login button |
+| | Focus remember toggle | `Tab` | Remember login checkbox |
+| | Navigate after login | `Tab` | Explores UI alternatives |
+
+**Screen Reader Workflow:**
+
+**Step 1: Navigate to SOGo URL**
+- Enter `https://demo.sogo.nu/SOGo/` in browser address bar
+- Screen reader announces login page with username and password fields
+
+**Step 2: Enter Username**
+- `Tab` to username field
+- Type your SOGo username
+- Screen reader announces: "Username, edit"
+
+**Step 3: Enter Password**
+- `Tab` to password field
+- Type your password
+- Screen reader announces: "Password, edit, type asterisks"
+- Note: Password not announced for security (asterisks displayed)
+
+**Step 4: Optional: Remember Login**
+- `Tab` to remember login checkbox
+- Press `Space` to toggle check
+- Screen reader announces: "Remember login, checkbox, not checked" or "checked"
+
+**Step 5: Submit Login**
+- `Tab` to Login button
+- Press `Enter` or `Space`
+- Screen reader announces: "Login, button"
+
+**Step 6: Verify Success**
+- Screen reader announces: "Dashboard" or main navigation items
+- Confirmation: You are now logged in with access to Mail, Calendar, Contacts
+
+**Common Screen Reader Announcements:**
+
+| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+|-------------------------------|----------------------|-----------------|
+| "Username, edit" | Field ready for input | Type your username |
+| "Password, edit" | Field ready for input | Type your password |
+| "Invalid username" | Authentication failed | Check credentials and retry |
+| "Login, button" | Submit login action | Press Enter to submit |
+| "Dashboard" | Login successful | Proceed to use SOGo features |
+
+### Visual Content Descriptions
+
+**Login page:** Standard login form with username and password fields, "Remember login" checkbox, and Login button. Clean, centered layout on white background.
+
+**Duration:** Static image  
+**Size:** 33 KB

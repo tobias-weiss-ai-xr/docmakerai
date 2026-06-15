@@ -39,7 +39,7 @@ A blank contact form will appear.
 Fill in the contact's details. The most commonly used fields are:
 
 | Field | Description | Recommended |
-|-------|-------------|-------------|
+| :--- | :--- | :--- |
 | **First Name** | Given name | ✅ Always |
 | **Last Name** | Family name | ✅ Always |
 | **Email** | Primary email address | ✅ Always |
@@ -58,7 +58,7 @@ but you can customize it (e.g., "John D. (IT Support)").
 Scroll down to access more fields:
 
 | Section | Fields |
-|---------|--------|
+| :--- | :--- |
 | **Address** | Street, City, ZIP, Country |
 | **Other Email** | Secondary email addresses |
 | **Website** | Personal or work URL |
@@ -122,3 +122,113 @@ Make sure the correct address book is selected before importing.
 You have successfully added a contact to your SOGo 5 address book.
 Contacts are available throughout SOGo 5 — when composing email, inviting
 attendees to calendar events, or searching for colleagues.
+
+## Accessibility
+
+### Keyboard Navigation
+
+SOGo 5 supports full keyboard navigation for contacts management.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|----------------------------------|---------------------------|
+| | Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
+| | New contact | `+` or `C` | Creates new contact |
+| | Navigate contacts | `J` / `K` | Next/previous contact |
+| | Search contacts | `/` | Focus search field |
+| | Edit contact | `E` | Edit selected contact |
+| | Delete contact | `D` | Delete selected contact |
+| | Cancel | `Escape` | Close dialog |
+
+### Screen Reader Workflow
+
+**Step 1: Navigate to Contacts Module**
+1. `Alt+M` or `Tab` to sidebar
+2. Arrow keys to "Contacts"
+3. `Enter` to activate Contacts module
+4. Screen reader: "Contacts module, heading, level 2"
+
+**Step 2: Create New Contact**
+1. Focus on "+" button (top of contacts list)
+2. Screen reader: "New contact, button"
+3. `Enter` to activate
+
+**Step 3: Complete Contact Form**
+
+Form fields appear in this order (screen reader focus sequence):
+
+1. **First Name** - recommended
+   - Type first name
+   - `Tab` to next field
+
+2. **Last Name** - recommended
+   - Type last name
+   - `Tab` to next field
+
+3. **Email** - recommended
+   - Type primary email address
+   - Screen reader: "Email, edit, text@domain.com, editable combobox"
+
+**Optional fields (tab through or skip with `Shift+Tab`):**
+
+4. **Phone** - main phone number
+5. **Mobile** - mobile phone number
+6. **Company** - organization or company
+7. **Job Title** - position at work
+
+**Additional sections (scroll or `Tab` further):**
+
+8. **Address** section
+   - Street, City, ZIP, Country fields
+9. **Other Email** - secondary email addresses
+10. **Website** - personal or work URL
+11. **IM** - IM handles
+12. **Notes** - free-text notes
+
+**Step 4: Choose Address Book (if applicable)**
+- `Tab` to Address Book dropdown
+- `Arrow` keys to select from "Personal", "Shared", etc.
+- `Enter` to confirm
+
+**Step 5: Save Contact**
+- `Tab` to Save button
+- `Enter` to activate
+- Screen reader announces: "Contact saved"
+- Contact appears in contact list
+
+**Common Screen Reader Announcements:**
+
+| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+|-------------------------------|----------------------|-----------------|
+| "Email, editable combobox" | Email field with suggestions | Type email to see suggestions |
+| "Select address book, combo box" | Choose where to save contact | `Arrow` to select, `Enter` to confirm |
+| "Contact saved" | Success | Contact now in address book |
+| "Please enter a valid email" | Invalid email format | Fix email address |
+
+**Keyboard Shortcuts in Contact Form:**
+- `Ctrl+S` or `Cmd+S` → Save (alias for Enter on Save button)
+- `Escape` → Cancel/discard
+- `Tab` → Next field
+- `Shift+Tab` → Previous field
+
+### Visual Content Descriptions
+
+**contacts-add.gif:** This 3.5-second animated GIF shows adding a contact in SOGo 5's address book interface.
+
+- **Frame 1 (0-1.7s):** Contacts module view showing existing contacts (address book list on left, contact items in main view)
+- **Frame 2 (1.7-3.5s):** "+" button clicked (highlighted), blank contact form appears with fields for First Name, Last Name, Email, Phone, Company, Job Title
+
+**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above.
+
+**Duration:** 3.5 seconds, 2 frames  
+**File size:** 18 KB
+
+### High Contrast Mode
+
+SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-vision users:
+
+**Browser/OS-Level High Contrast:**
+1. **Windows:** `Win+Ctrl+C` toggles high contrast → Settings → Ease of Access → High Contrast
+2. **macOS:** `System Preferences → Accessibility → Display → Increase contrast`
+3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
+**Contact Form Accessibility:** All form fields have associated labels. Use `Tab` to navigate between fields. Screen readers will announce field labels and current values.
