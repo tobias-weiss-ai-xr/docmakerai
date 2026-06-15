@@ -33,7 +33,7 @@ Toggle **Enable auto-reply** to **ON**.
 
 ### Step 3: Set the Date Range
 
-| Field | Description | Example |
+| Field | Description: What this field is for | Example: Example value |
 |:------|:------------|:--------|
 | **Start date** | When your absence begins | 2026-07-15 |
 | **End date** | When you return | 2026-07-28 |
@@ -68,7 +68,7 @@ John Doe
 
 ### Step 5: Choose Reply Options
 
-| Option | Description |
+| Option | Description: What this option does |
 |:-------|:------------|
 | **Send reply to** | Everyone, or only people in your contacts/address book |
 | **Repeated replies** | Send once per sender (default) or every time they write |
