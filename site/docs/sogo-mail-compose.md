@@ -32,6 +32,8 @@ Click the **Compose** button in the toolbar above your message list.
 
 A new message composition window will open.
 
+![Step 2: Compose New Message](./assets/mail-compose.gif)
+
 ### Step 3: Address Your Message
 
 Fill in the recipient fields:
