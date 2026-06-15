@@ -38,6 +38,8 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
+![Creating a new event in the SOGo 5 calendar](./assets/calendar-create-event.gif)
+
 ### Step 3: Enter Event Details
 
 Fill in the event details:
