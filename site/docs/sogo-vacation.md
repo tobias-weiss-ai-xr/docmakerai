@@ -29,6 +29,8 @@ in the calendar when you're on vacation or out of office.
 
 Toggle **Enable auto-reply** to **ON**.
 
+![Step 2: Enable Auto-Reply](./assets/vacation.gif)
+
 ### Step 3: Set the Date Range
 
 | Field | Description | Example |
