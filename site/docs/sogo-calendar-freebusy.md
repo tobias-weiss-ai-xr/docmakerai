@@ -40,6 +40,8 @@ meeting — directly from the event creation dialog.
 3. Select them from the auto-complete list
 4. Repeat for each person you want to check
 
+![Free/busy grid showing colleague availability](./assets/freebusy.gif)
+
 ### Step 4: Read the Grid
 
 The grid shows time slots for each person:
