@@ -22,6 +22,8 @@ sender identities (e.g., work vs. personal email).
 
 Click **Add Signature** or the **+** button.
 
+![Add a new email signature in SOGo 5](./assets/mail-signatures.gif)
+
 ### Step 3: Write Your Signature
 
 Enter your signature text. SOGo 5 supports **plain text** signatures.
