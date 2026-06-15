@@ -109,3 +109,7 @@ SOGo 5 supports full keyboard navigation. No mouse required for login.
 
 **Duration:** Static image  
 **Size:** 33 KB
+
+### High Contrast Mode
+
+SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
