@@ -44,6 +44,8 @@ In the subscription dialog:
 2. **Name:** Enter a display name (e.g., "German Holidays")
 3. **Color:** Choose a calendar color for visibility
 
+![Subscribe to iCal feed dialog](./assets/calendar-subscribe.gif)
+
 ### Step 4: Configure Sync Options
 
 | Option | Description |
