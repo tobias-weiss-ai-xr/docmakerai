@@ -138,6 +138,9 @@ capture/
 
 ## Phase 2: GIFs in Tutorial-Seiten einbetten
 
+**Status:** ✅ Basic GIFs embedded (10/10 core tutorials, 1 GIF per page).
+⚠️ Annotierte Multi-Step GIFs (1-3 pro Seite) noch aus Phase 1 ausstehend.
+
 **Ziel:** Jede Tutorial-Seite zeigt 1-3 annotierte GIFs inline an den passenden
 Stellen. Die GIFs enthalten bereits Schritt-Indikatoren und UI-Markierungen
 (aus Phase 1), sodass sie ohne zusätzlichen Text verständlich sind.
@@ -195,18 +198,18 @@ Alternativ: Zwei GIF-Sets generieren (`*-de.gif`, `*-en.gif`).
 | Phase | Aufwand | Schritte |
 |---|---|---|
 | **Phase 1: Annotation-Engine + Capture** | ~3h | annotate.py schreiben → Step Tracker → run_captures.py refaktorieren → alle Workflows → Captures laufen lassen → GIFs erzeugen |
-| **Phase 2: GIFs einbetten** | ~1h | Markdowns editieren, GIF-Referenzen pro Schritt einfügen |
+| **Phase 2: GIFs einbetten** | ✅ Done (basic) | 10/10 Tutorials mit je 1 GIF; annotierte Multi-Step GIFs ausstehend |
 | **Phase 3: Optimierung** | ~1h | GIF-Größen prüfen, Farben optimieren, ggf. croppen |
 
 ---
 
 ## Nächster Schritt
 
-Phase 1 umsetzen:
+Phase 1 umsetzen (Annotated GIF Pipeline):
 1. `capture/annotate.py` schreiben (Pillow Overlay-Engine)
 2. `run_captures.py` mit Step-Tracker-Metadaten erweitern
 3. Alle 10 Workflows mit GIF-Segmenten ausstatten
 4. Capture-Durchlauf + GIF-Erzeugung
 5. GIFs nach `site/docs/assets/` kopieren
 
-Dann Phase 2: GIFs in Tutorial-Markdowns einbinden.
+Danach Phase 2 verfeinern: Basic GIFs durch annotierte Multi-Step-GIFs ersetzen (1-3 pro Tutorial).
