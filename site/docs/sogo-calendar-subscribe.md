@@ -21,7 +21,7 @@ team calendars, or any `.ics` feed available online.
 
 You need the web address (URL) of an iCal feed. Common examples:
 
-| Source | Example URL |
+| Source | Example URL: Calendar address example |
 |:-------|:------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
@@ -48,7 +48,7 @@ In the subscription dialog:
 
 ### Step 4: Configure Sync Options
 
-| Option | Description |
+| Option | Description: What this option does |
 |:-------|:------------|
 | **Refresh interval** | How often to check for updates (every hour, daily, etc.) |
 | **Remove reminders** | Strip alarm information from external events |
