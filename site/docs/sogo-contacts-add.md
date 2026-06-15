@@ -38,7 +38,7 @@ A blank contact form will appear.
 
 Fill in the contact's details. The most commonly used fields are:
 
-| Field | Description | Recommended |
+| Field | Description: What to enter | Recommended: Always fill? |
 | :--- | :--- | :--- |
 | **First Name** | Given name | ✅ Always |
 | **Last Name** | Family name | ✅ Always |
@@ -57,7 +57,7 @@ but you can customize it (e.g., "John D. (IT Support)").
 
 Scroll down to access more fields:
 
-| Section | Fields |
+| Section | Fields: Available details |
 | :--- | :--- |
 | **Address** | Street, City, ZIP, Country |
 | **Other Email** | Secondary email addresses |
