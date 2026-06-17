@@ -22,7 +22,7 @@ sender identities (e.g., work vs. personal email).
 
 Click **Add Signature** or the **+** button.
 
-![Add a new email signature in SOGo 5](./assets/mail-signatures.gif)
+![Add a new email signature in SOGo 5](./assets/mail-signatures.webp)
 
 ### Step 3: Write Your Signature
 
@@ -226,7 +226,7 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 ### Visual Content Descriptions
 
-**mail-signatures.gif:** This 3-second animated GIF shows creating a new email signature in SOGo 5.
+**mail-signatures.webp:** This 3-second animated GIF shows creating a new email signature in SOGo 5.
 
 - **Frame 1 (0-1s):** Settings screen with Mail → Signatures selected, cursor hovering over "Add Signature" button
 - **Frame 2 (1-2s):** Signature editor open with name field filled ("Professional") and user typing signature text (name, title, contact info)

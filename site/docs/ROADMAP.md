@@ -153,14 +153,14 @@ direkt unter der Schritt-Überschrift:
 ```
 ### Schritt 2: Doppelklick auf Zeitslot
 
-![Schritt 2: Doppelklick öffnet Event-Dialog](./assets/calendar-create-event-dblclick.gif)
+![Schritt 2: Doppelklick öffnet Event-Dialog](./assets/calendar-create-event-dblclick.webp)
 
 Doppelklicken Sie auf den gewünschten Zeitpunkt im Kalender.
 Der Event-Dialog öffnet sich automatisch.
 
 ### Schritt 3: Formular ausfüllen
 
-![Schritt 3: Titel und Ort eingeben](./assets/calendar-create-event-form.gif)
+![Schritt 3: Titel und Ort eingeben](./assets/calendar-create-event-form.webp)
 
 Geben Sie den Titel und optional den Ort des Events ein.
 ```
@@ -176,7 +176,7 @@ Geben Sie den Titel und optional den Ort des Events ein.
 Annotierte GIFs enthalten deutschen Text (Schritt-Indikatoren), da die
 Tutorials auf Deutsch primär sind. Englische Variante: Die Overlay-Texte
 werden via Konfiguration umgeschaltet (`locale='de' | 'en'` im Annotator).
-Alternativ: Zwei GIF-Sets generieren (`*-de.gif`, `*-en.gif`).
+Alternativ: Zwei WebP-Sets generieren (`*-de.webp`, `*-en.webp`).
 
 ---
 

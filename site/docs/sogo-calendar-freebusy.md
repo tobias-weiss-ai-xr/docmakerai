@@ -40,7 +40,7 @@ meeting — directly from the event creation dialog.
 3. Select them from the auto-complete list
 4. Repeat for each person you want to check
 
-![Free/busy grid showing colleague availability](./assets/freebusy.gif)
+![Free/busy grid showing colleague availability](./assets/freebusy.webp)
 
 ### Step 4: Read the Grid
 
@@ -178,7 +178,7 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 ### Visual Content Descriptions
 
-**[freebusy.gif]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 5.
+**[freebusy.webp]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 5.
 
 - **Frame 1 (0–1.0s):** User opens the Calendar module and clicks **+** to create a new event. The event creation dialog appears
 - **Frame 2 (1.0–2.5s):** User clicks the Attendees section and then clicks **Free/Busy** button. The free/busy time grid opens showing the user's own calendar with colored time slots

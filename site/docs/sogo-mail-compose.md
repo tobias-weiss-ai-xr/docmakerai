@@ -32,7 +32,7 @@ Click the **Compose** button in the toolbar above your message list.
 
 A new message composition window will open.
 
-![Step 2: Compose New Message](./assets/mail-compose.gif)
+![Step 2: Compose New Message](./assets/mail-compose.webp)
 
 ### Step 3: Address Your Message
 
@@ -224,7 +224,7 @@ Form fields in focus order:
 
 ### Visual Content Descriptions
 
-**mail-compose.gif:** This 4-second animated GIF shows composing and sending an email in SOGo 5.
+**mail-compose.webp:** This 4-second animated GIF shows composing and sending an email in SOGo 5.
 
 - **Frame 1 (0-1s):** Inbox view with Compose button highlighted in the toolbar
 - **Frame 2 (1-2s):** Compose window opens with cursor in To field, user types recipient email

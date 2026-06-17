@@ -1,0 +1,18 @@
+{
+  "workflow": "contacts-import-export",
+  "video_file": "page@692b97c0feb931bb89641de0058df143.webm",
+  "duration_s": 3.6,
+  "raw_frames": 22,
+  "annotated_frames": 22,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 2.7966000000089406,
+      "label": "Kontaktliste",
+      "number": 1,
+      "highlights": []
+    }
+  ],
+  "webp_file": "contacts-import-export.webp",
+  "webp_size_kb": 12
+}

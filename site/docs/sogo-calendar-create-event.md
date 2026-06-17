@@ -38,7 +38,7 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
-![Creating a new event in the SOGo 5 calendar](./assets/calendar-create-event.gif)
+![Creating a new event in the SOGo 5 calendar](./assets/calendar-create-event.webp)
 
 ### Step 3: Enter Event Details
 
@@ -229,7 +229,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**calendar-create-event.gif:** This 6-second animated GIF shows creating a calendar event in SOGo 5's week view.
+**calendar-create-event.webp:** This 6-second animated GIF shows creating a calendar event in SOGo 5's week view.
 
 - **Frame 1 (0-1.2s):** Calendar grid in week view with Monday 10:00 highlighted (focus ring)
 - **Frame 2 (1.2-2.4s):** Event dialog opens from double-click, cursor in Title field

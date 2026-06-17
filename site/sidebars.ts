@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Getting Started',
-      items: ['sogo-login'],
+      items: ['sogo-login', 'sogo-logout'],
     },
     {
       type: 'category',
@@ -14,6 +14,9 @@ const sidebars: SidebarsConfig = {
       items: [
         'sogo-calendar-create-event',
         'sogo-calendar-recurring',
+        'sogo-calendar-views',
+        'sogo-calendar-edit-delete',
+        'sogo-calendar-ical',
         'sogo-calendar-share',
         'sogo-calendar-subscribe',
         'sogo-calendar-freebusy',
@@ -23,17 +26,40 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Mail',
       items: [
+        'sogo-mail-read',
         'sogo-mail-compose',
         'sogo-mail-signatures',
+        'sogo-mail-folder-management',
+        'sogo-mail-reply-forward-delete',
         'sogo-mail-folders-filters',
       ],
     },
     {
       type: 'category',
-      label: 'Additional Features',
+      label: 'Contacts',
       items: [
         'sogo-contacts-add',
+        'sogo-contacts-edit-delete',
+        'sogo-contacts-import-export',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Settings & Tools',
+      items: [
+        'sogo-password-change',
+        'sogo-preferences',
         'sogo-vacation',
+        'sogo-global-search',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Advanced & Advanced Features',
+      items: [
+        'sogo-delegation',
+        'sogo-tasks',
+        'sogo-resource-booking',
       ],
     },
   ],

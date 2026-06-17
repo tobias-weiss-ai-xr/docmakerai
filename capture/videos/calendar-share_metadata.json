@@ -1,0 +1,30 @@
+{
+  "workflow": "calendar-share",
+  "video_file": "page@8ab2f638a4490073e6d7757849deb86b.webm",
+  "duration_s": 5.84,
+  "raw_frames": 35,
+  "annotated_frames": 35,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 4.525000000014901,
+      "label": "Kalenderansicht",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 5.557500000014901,
+      "label": "Freigabe-Dialog",
+      "number": 2,
+      "highlights": []
+    },
+    {
+      "time_s": 6.06820000000298,
+      "label": "Berechtigungen verwalten",
+      "number": 3,
+      "highlights": []
+    }
+  ],
+  "webp_file": "calendar-share.webp",
+  "webp_size_kb": 95
+}

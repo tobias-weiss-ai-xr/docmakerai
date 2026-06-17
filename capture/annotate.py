@@ -104,7 +104,7 @@ def annotate_frame(
         step_number: 1-based step number.
         highlights: List of highlight dicts (keys: type, x, y, width, height).
         locale: Language code ("en" or "de").
-        output_path: Where to save the annotated PNG.
+        output_path: If provided, save annotated PNG to this path.
 
     Returns:
         PIL Image with overlays drawn, or None on failure.
@@ -115,7 +115,6 @@ def annotate_frame(
         return None
 
     text = _build_header_text(step_label, step_number, locale)
-
     img = _draw_header(img, text)
 
     for hl in highlights or []:
@@ -125,31 +124,78 @@ def annotate_frame(
         elif hl_type == "arrow":
             img = _draw_arrow_highlight(img, hl)
 
-    output_path = Path(output_path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    img.convert("RGB").save(output_path, "PNG")
-    return img
+    if output_path:
+        output_path = Path(output_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        img.convert("RGB").save(output_path, "PNG")
+
+    return img.convert("RGB")
 
 
-def build_segment_gif(
+def _save_animation(
+    pil_frames: list[Image.Image],
+    durations: list[int],
+    output_path: Path,
+    fmt: str = "WEBP",
+) -> bool:
+    """Save annotated frames as animated GIF or WebP.
+
+    WebP produces much smaller files with 24-bit color (vs GIF's 256 colors)
+    and is natively supported in all modern browsers via <img> tag.
+    """
+    try:
+        if fmt == "WEBP":
+            pil_frames[0].save(
+                output_path,
+                save_all=True,
+                append_images=pil_frames[1:],
+                duration=durations,
+                loop=0,
+                format="WEBP",
+                lossless=False,
+                quality=85,
+                method=6,  # slowest/best compression
+            )
+        else:
+            # GIF fallback
+            gif_frames = []
+            for f in pil_frames:
+                gif_frames.append(f.convert("P", palette=Image.Palette.ADAPTIVE))
+            gif_frames[0].save(
+                output_path,
+                save_all=True,
+                append_images=gif_frames[1:],
+                duration=durations,
+                loop=0,
+                format="GIF",
+                optimize=True,
+            )
+        return True
+    except Exception:
+        return False
+
+
+def build_segment_animation(
     frames_dir: str | Path,
     metadata_path: str | Path,
     output_path: str | Path,
     locale: str = "de",
     annotated_dir: str | Path = "",
+    fmt: str = "WEBP",
 ) -> bool:
-    """Annotate frames and assemble into an animated GIF.
+    """Annotate frames and assemble into an animated WebP or GIF.
 
     Args:
         frames_dir: Directory containing raw PNG frames.
         metadata_path: Path to frames.json (list of dicts with keys:
                        file, step, duration, highlights).
-        output_path: Where to save the animated GIF.
+        output_path: Where to save the animated output.
         locale: Language code ("en" or "de").
         annotated_dir: Directory to save annotated intermediate PNGs.
+        fmt: Output format — "WEBP" (default) or "GIF".
 
     Returns:
-        True if the GIF was saved, False otherwise.
+        True if the animation was saved, False otherwise.
     """
     try:
         with open(metadata_path) as f:
@@ -182,7 +228,7 @@ def build_segment_gif(
             continue
 
         try:
-            pil_frames.append(img.convert("P", palette=Image.Palette.ADAPTIVE))
+            pil_frames.append(img.convert("RGB"))
             durations.append(duration)
         except Exception:
             continue
@@ -193,12 +239,4 @@ def build_segment_gif(
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    pil_frames[0].save(
-        output_path,
-        save_all=True,
-        append_images=pil_frames[1:],
-        duration=durations,
-        loop=0,
-    )
-
-    return True
+    return _save_animation(pil_frames, durations, output_path, fmt)

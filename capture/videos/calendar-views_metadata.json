@@ -1,0 +1,18 @@
+{
+  "workflow": "calendar-views",
+  "video_file": "page@5e91ba879189bf2ec1e0a85efab8b25f.webm",
+  "duration_s": 3.2,
+  "raw_frames": 19,
+  "annotated_frames": 19,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 2.7437000000029803,
+      "label": "Standard-Wochenansicht",
+      "number": 1,
+      "highlights": []
+    }
+  ],
+  "webp_file": "calendar-views.webp",
+  "webp_size_kb": 38
+}

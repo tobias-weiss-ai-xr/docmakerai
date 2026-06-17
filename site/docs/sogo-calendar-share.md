@@ -59,7 +59,7 @@ Choose what the user can do:
 **Recommended for most cases:** **Modify** allows a colleague to create
 and edit events in your calendar.
 
-![Step 4: Set permissions for calendar sharing](./assets/calendar-share.gif)
+![Step 4: Set permissions for calendar sharing](./assets/calendar-share.webp)
 
 ### Step 5: Confirm the Share
 
@@ -183,7 +183,7 @@ SOGo 5 supports full keyboard navigation for calendar sharing features.
 
 ### Visual Content Descriptions
 
-**[calendar-share.gif]:** Animated demonstration of sharing a calendar with a colleague in SOGo 5.
+**[calendar-share.webp]:** Animated demonstration of sharing a calendar with a colleague in SOGo 5.
 
 - **Frame 1 (0–1.5s):** User right-clicks the "Personal" calendar in the left sidebar and selects **Properties** from the context menu
 - **Frame 2 (1.5–3.5s):** Properties dialog opens to the Permissions tab. User clicks **Add User** and begins typing a colleague's name

@@ -1,0 +1,51 @@
+{
+  "workflow": "freebusy",
+  "video_file": "page@1b84814fdef7c4e89b2e71edf5768ef3.webm",
+  "duration_s": 9.76,
+  "raw_frames": 59,
+  "annotated_frames": 59,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 4.6185,
+      "label": "Kalender in Wochenansicht",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 7.6717999999970194,
+      "label": "Doppelklick auf 14:00",
+      "number": 2,
+      "highlights": [
+        {
+          "type": "circle",
+          "x": 725.140625,
+          "y": 17,
+          "width": 91.15625,
+          "height": 960
+        },
+        {
+          "type": "circle",
+          "x": 726.140625,
+          "y": 577,
+          "width": 90.15625,
+          "height": 40
+        }
+      ]
+    },
+    {
+      "time_s": 8.54690000000596,
+      "label": "Titel: Team Meeting",
+      "number": 3,
+      "highlights": []
+    },
+    {
+      "time_s": 9.0605,
+      "label": "Verfügbarkeitsprüfung",
+      "number": 4,
+      "highlights": []
+    }
+  ],
+  "webp_file": "freebusy.webp",
+  "webp_size_kb": 214
+}

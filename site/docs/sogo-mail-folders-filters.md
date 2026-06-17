@@ -80,7 +80,7 @@ Filters run when email arrives — before you see it in your inbox.
 
 Click **Add Filter** or the **+** button.
 
-![Creating a new mail filter](./assets/mail-filters.gif)
+![Creating a new mail filter](./assets/mail-filters.webp)
 
 ### Step 3: Define Conditions
 
@@ -222,7 +222,7 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 
 ### Visual Content Descriptions
 
-**folders-filters.gif:** This 4.5-second animated GIF shows creating mail folders and filters.
+**folders-filters.webp:** This 4.5-second animated GIF shows creating mail folders and filters.
 
 - **Frame 1 (0-1.2s):** Mail view showing folder list on left
 - **Frame 2 (1.2-2.5s):** Folder creation dialog open, typing new folder name "Archive"
