@@ -6,8 +6,11 @@ sidebar_label: "Roadmap"
 
 # Roadmap — SOGo 5 User Guide
 
-**Ziel:** Alle 10 Tutorials mit kurzen (5-10s) animierten GIF-Clips ergänzen, die
-Schlüsselschritte zeigen und direkt in die Markdown-Seiten eingebettet sind.
+**Status:** ✅ Complete — 27 docs, 22 WebP animations, 14 PNG screenshots, English sidebar categories, GitHub Pages deployed
+
+**Demo Sites:**
+- SOGo 5: https://demo.sogo.nu/
+- SOGo 6: https://demov6.sogo.nu/ *(Coming soon)*
 
 ---
 
@@ -180,7 +183,55 @@ Alternativ: Zwei WebP-Sets generieren (`*-de.webp`, `*-en.webp`).
 
 ---
 
-## Phase 3: Optimierung & Automatisierung
+## Phase 4: SOGo 6 Migration & Updates
+
+**Status:** 🟡 Planned — SOGo 6 demo available at https://demov6.sogo.nu/
+
+### What's New in SOGo 6
+
+**Demo Site:** [SOGo 6 Demo](https://demov6.sogo.nu/)
+
+### Migration Tasks
+
+| Task | Priority | Status |
+|---|---|---|
+| 🔍 Review SOGo 6 UI changes | High | Pending |
+| 📋 Identify new/deprecated features | High | Pending |
+| 🎬 Capture new UI screens | Medium | Pending |
+| 📝 Update documentation for changed workflows | High | Pending |
+| 🚀 Create new workflows for SOGo 6 features | Medium | Pending |
+
+### Key Areas to Review
+
+1. **Calendar Module**
+   - Event creation dialog changes
+   - New visualization options
+   - Attendee management improvements
+
+2. **Mail Module**
+   - Compose interface updates
+   - Folder management changes
+   - Filtering and search enhancements
+
+3. **Contacts Module**
+   - Contact form modifications
+   - Import/export improvements
+
+4. **Overall UX**
+   - Navigation changes
+   - Settings and preferences layout updates
+   - Mobile responsiveness improvements
+
+### Timeline
+
+- **TBD:** SOGo 6 official release announcement
+- **TBD:** Full review of demo site
+- **TBD:** Documentation update plan
+- **TBD:** Captures for new features
+
+---
+
+## Phase 5: Optimierung & Automatisierung
 
 - **GIF-Größe optimieren**: Max 300KB pro GIF durch
   - Farbpalette auf 128 Farben reduzieren
@@ -195,21 +246,53 @@ Alternativ: Zwei WebP-Sets generieren (`*-de.webp`, `*-en.webp`).
 
 ## Zeitplan (Schätzung)
 
-| Phase | Aufwand | Schritte |
-|---|---|---|
-| **Phase 1: Annotation-Engine + Capture** | ~3h | annotate.py schreiben → Step Tracker → run_captures.py refaktorieren → alle Workflows → Captures laufen lassen → GIFs erzeugen |
-| **Phase 2: GIFs einbetten** | ✅ Done (basic) | 10/10 Tutorials mit je 1 GIF; annotierte Multi-Step GIFs ausstehend |
-| **Phase 3: Optimierung** | ~1h | GIF-Größen prüfen, Farben optimieren, ggf. croppen |
+| Phase | Aufwand | Schritte | Status |
+|---|---|---|---|
+| **Phase 1: Annotation-Engine + Capture** | ✅ Done | annotate.py → Step Tracker → run_captures.py → captcha pipeline | ✅ Complete |
+| **Phase 2: GIFs einbetten** | ✅ Done | 27/27 Tutorials with WebP animations | ✅ Complete |
+| **Phase 3: Sidebar Reorg & Translations** | ✅ Done | English/German categories → GitHub Pages deployment | ✅ Complete |
+| **Phase 4: SOGo 6 Migration** | 🟡 TBD | Review demo → UI changes → New features → Documentation updates | 🟡 Planned |
+| **Phase 5: Optimierung** | 🟡 TBD | GIF-Größen prüfen, Farben optimieren, ggf. croppen | 🟡 Planned |
 
 ---
 
-## Nächster Schritt
+## Completed Work ✅
 
-Phase 1 umsetzen (Annotated GIF Pipeline):
-1. `capture/annotate.py` schreiben (Pillow Overlay-Engine)
-2. `run_captures.py` mit Step-Tracker-Metadaten erweitern
-3. Alle 10 Workflows mit GIF-Segmenten ausstatten
-4. Capture-Durchlauf + GIF-Erzeugung
-5. GIFs nach `site/docs/assets/` kopieren
+- ✅ 27 documentation pages created (up from 11)
+- ✅ 22 WebP animations generated for core workflows
+- ✅ 14 PNG screenshots integrated, all broken references fixed
+- ✅ 20 orphan assets deleted (10 GIFs + 7 PNGs + 3 images)
+- ✅ Sidebars reorganized into 7 English categories: Getting Started, Basics, Calendar, Mail, Contacts, Tools, Advanced
+- ✅ Frame validation added to detect blank screenshots
+- ✅ Project deployed to GitHub Pages (https://tobias-weiss-ai-xr.github.io/docmakerai/sogo5/)
+- ✅ Build verified for both English and German locales
 
-Danach Phase 2 verfeinern: Basic GIFs durch annotierte Multi-Step-GIFs ersetzen (1-3 pro Tutorial).
+---
+
+## Next Steps
+
+### Immediate (SOGo 5 Maintenance)
+
+- 🔄 Monitor GitHub Pages deployment and image loading
+- 📋 Review and fix any broken image references
+- 🌐 Ensure all 27 docs display correctly in both en/de locales
+
+### Coming Soon (SOGo 6)
+
+1. 🔍 **Review SOGo 6 Demo** — Visit https://demov6.sogo.nu/ and catalog UI changes
+2. 📋 **Feature Comparison** — Document what's new, changed, or deprecated in SOGo 6
+3. 🎬 **Plan Captures** — Identify workflows needing new screenshots/animations
+4. 📝 **Documentation Updates** — Update existing docs for SOGo 6 UI changes
+5. 🚀 **New Features** — Document SOGo 6-specific features not in SOGo 5
+
+### Future (Optimization)
+
+- Phase 5: WebP size optimization
+- Phase 5: Automatic re-captures on SOGo updates
+- Phase 5: MP4 alternative evaluation if WebPs grow too large
+
+---
+
+**Last Updated:** 2025-06-17
+**Current Version:** SOGo 5 User Guide
+**Next Version:** SOGo 6 guide (coming soon!)
