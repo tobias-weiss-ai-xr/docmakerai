@@ -1,0 +1,36 @@
+{
+  "workflow": "vacation",
+  "video_file": "page@1180f66fee2ac8da187c7fc6b4fc98e4.webm",
+  "duration_s": 3.96,
+  "raw_frames": 24,
+  "annotated_frames": 24,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 3.5226999999880793,
+      "label": "Abwesenheitseinstellungen geöffnet",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 4.037099999994039,
+      "label": "Auto-Antwort aktiviert",
+      "number": 2,
+      "highlights": []
+    },
+    {
+      "time_s": 4.04259999999404,
+      "label": "Nachricht eingegeben",
+      "number": 3,
+      "highlights": []
+    },
+    {
+      "time_s": 4.044899999991059,
+      "label": "Auto-Antwort konfiguriert",
+      "number": 4,
+      "highlights": []
+    }
+  ],
+  "webp_file": "vacation.webp",
+  "webp_size_kb": 5
+}

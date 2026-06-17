@@ -1,0 +1,24 @@
+{
+  "workflow": "calendar-subscribe",
+  "video_file": "page@1139eb7a6557dcdd6bc65456d890d857.webm",
+  "duration_s": 5.32,
+  "raw_frames": 32,
+  "annotated_frames": 32,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 4.47029999999702,
+      "label": "Kalenderansicht",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 5.495899999991059,
+      "label": "Kalender abonniert",
+      "number": 2,
+      "highlights": []
+    }
+  ],
+  "webp_file": "calendar-subscribe.webp",
+  "webp_size_kb": 61
+}

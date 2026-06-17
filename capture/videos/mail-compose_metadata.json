@@ -1,0 +1,32 @@
+{
+  "workflow": "mail-compose",
+  "video_file": "page@c7c64e463d05a1da57cbbf1392372652.webm",
+  "duration_s": 9.28,
+  "raw_frames": 56,
+  "annotated_frames": 56,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 6.430899999991059,
+      "label": "E-Mail-Ansicht (kein IMAP-Server verfügbar)",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 8.4735,
+      "label": "E-Mail-Konto (nur Konfiguration)",
+      "number": 2,
+      "highlights": [
+        {
+          "type": "circle",
+          "x": 16,
+          "y": 88.203125,
+          "width": 170.484375,
+          "height": 15.59375
+        }
+      ]
+    }
+  ],
+  "webp_file": "mail-compose.webp",
+  "webp_size_kb": 24
+}

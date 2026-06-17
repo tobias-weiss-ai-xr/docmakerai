@@ -1,0 +1,57 @@
+{
+  "workflow": "calendar-create-event",
+  "video_file": "page@78521db0dbe99f1666bc3f9446f057cb.webm",
+  "duration_s": 14.64,
+  "raw_frames": 88,
+  "annotated_frames": 88,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 4.770700000017881,
+      "label": "Kalender in Wochenansicht",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 6.329000000014902,
+      "label": "Doppelklick auf Montag 10:00",
+      "number": 2,
+      "highlights": [
+        {
+          "type": "circle",
+          "x": 725.140625,
+          "y": -10.140625,
+          "width": 91.15625,
+          "height": 960
+        },
+        {
+          "type": "circle",
+          "x": 726.140625,
+          "y": 389.859375,
+          "width": 90.15625,
+          "height": 40
+        }
+      ]
+    },
+    {
+      "time_s": 9.165700000017882,
+      "label": "Titel eingegeben: Team Standup",
+      "number": 3,
+      "highlights": []
+    },
+    {
+      "time_s": 10.96420000001788,
+      "label": "Ort eingegeben",
+      "number": 4,
+      "highlights": []
+    },
+    {
+      "time_s": 14.840900000005961,
+      "label": "Event gespeichert",
+      "number": 5,
+      "highlights": []
+    }
+  ],
+  "webp_file": "calendar-create-event.webp",
+  "webp_size_kb": 372
+}

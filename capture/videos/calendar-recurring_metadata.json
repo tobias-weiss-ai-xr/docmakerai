@@ -1,0 +1,50 @@
+{
+  "workflow": "calendar-recurring",
+  "video_file": "page@f402f2eed84aa30c57ba85c69af60269.webm",
+  "duration_s": 15.36,
+  "raw_frames": 92,
+  "annotated_frames": 92,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 4.63529999999702,
+      "label": "Kalender in Wochenansicht",
+      "number": 1,
+      "highlights": []
+    },
+    {
+      "time_s": 8.19320000000298,
+      "label": "Neues Event Dialog",
+      "number": 2,
+      "highlights": []
+    },
+    {
+      "time_s": 9.48220000000298,
+      "label": "Titel: Weekly Team Standup",
+      "number": 3,
+      "highlights": []
+    },
+    {
+      "time_s": 11.73229999999702,
+      "label": "Wiederholung auf Wöchentlich gesetzt",
+      "number": 4,
+      "highlights": [
+        {
+          "type": "circle",
+          "x": 274,
+          "y": 684,
+          "width": 680,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "time_s": 15.58829999999702,
+      "label": "Serien-Event gespeichert",
+      "number": 5,
+      "highlights": []
+    }
+  ],
+  "webp_file": "calendar-recurring.webp",
+  "webp_size_kb": 323
+}

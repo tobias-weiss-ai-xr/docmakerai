@@ -1,0 +1,18 @@
+{
+  "workflow": "mail-read",
+  "video_file": "page@581929686d8f2096a7960c957218bc2e.webm",
+  "duration_s": 2.96,
+  "raw_frames": 18,
+  "annotated_frames": 18,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 2.5140999999940394,
+      "label": "Mailinbox geoffnet",
+      "number": 1,
+      "highlights": []
+    }
+  ],
+  "webp_file": "mail-read.webp",
+  "webp_size_kb": 3
+}

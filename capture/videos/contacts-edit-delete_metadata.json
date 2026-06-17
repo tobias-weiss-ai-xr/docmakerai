@@ -1,0 +1,18 @@
+{
+  "workflow": "contacts-edit-delete",
+  "video_file": "page@2ec4629d52aa8814300a111faed96551.webm",
+  "duration_s": 3.12,
+  "raw_frames": 19,
+  "annotated_frames": 19,
+  "fps": 6,
+  "steps": [
+    {
+      "time_s": 2.7764000000059603,
+      "label": "Kontaktliste geoffnet",
+      "number": 1,
+      "highlights": []
+    }
+  ],
+  "webp_file": "contacts-edit-delete.webp",
+  "webp_size_kb": 40
+}
