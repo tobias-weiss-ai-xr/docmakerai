@@ -20,7 +20,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from typing import Any, Optional
-from PIL import Image
+from PIL import Image, ImageOps
 from annotate import annotate_frame
 
 
@@ -197,6 +197,55 @@ def get_video_duration(video_path: Path) -> float:
     return float(result.stdout.strip())
 
 
+def is_frame_valid(frame_path: Path) -> bool:
+    """Check if a frame has meaningful content (not blank/all-white/all-black)."""
+    try:
+        img = Image.open(frame_path)
+        gray = img.convert("L")
+        pixels = list(gray.getdata())
+        if len(set(pixels)) == 1:
+            return False
+        near_white = sum(1 for p in pixels if p > 245)
+        if near_white > len(pixels) * 0.98:
+            return False
+        near_black = sum(1 for p in pixels if p < 10)
+        if near_black > len(pixels) * 0.98:
+            return False
+        bright_pixels = [p for p in pixels if p > 20 and p < 235]
+        if len(bright_pixels) < len(pixels) * 0.05:
+            return False
+        stats = ImageOps.eval(gray, lambda m: m.std() * 100)
+        variation = stats[0]
+        if variation < 5:
+            return False
+        return True
+    except Exception:
+        return False
+
+
+def validate_frames(raw_frames: list[Path], workflow_name: str) -> tuple[bool, str]:
+    """
+    Validate that extracted frames contain meaningful content.
+    
+    Returns (is_valid, error_message).
+    """
+    if len(raw_frames) < 4:
+        return False, f"Too few frames ({len(raw_frames)}) for {workflow_name}"
+    check_indices = [0, len(raw_frames) // 2, -1]
+    for idx in check_indices:
+        frame = raw_frames[idx]
+        if not is_frame_valid(frame):
+            return False, f"{workflow_name}: Frame {idx + 1} appears blank (all white/black or uniform)"
+    sample_indices = [len(raw_frames) * i // 10 for i in range(1, 10)]
+    sample_size = sum(1 for idx in sample_indices if idx < len(raw_frames))
+    valid_count = 0
+    for idx in sample_indices:
+        if idx < len(raw_frames) and is_frame_valid(raw_frames[idx]):
+            valid_count += 1
+    if valid_count < sample_size * 0.8:
+        return False, f"{workflow_name}: {sample_size - valid_count}/{sample_size} sample frames appear blank"
+    return True, ""
+
 class WorkflowRecorder:
     """Records a browser workflow via Playwright video and produces
     an annotated animated WebP.
@@ -279,6 +328,16 @@ class WorkflowRecorder:
         if len(raw_frames) < 4:
             return None
 
+        # Validate frames have meaningful content (not blank)
+        frame_valid, frame_error = validate_frames(raw_frames, self.workflow_name)
+        if not frame_valid:
+            print(f"  Frame validation failed: {frame_error}")
+            if not keep_raw_video:
+                shutil.rmtree(raw_dir, ignore_errors=True)
+            if video_path.exists():
+                video_path.unlink(missing_ok=True)
+            return None
+
         # Map frames to steps
         mapping = map_frames_to_steps(len(raw_frames), duration, self.steps)
 
@@ -289,6 +348,11 @@ class WorkflowRecorder:
         )
 
         if len(annotated_frames) < 4:
+            if not keep_raw_video:
+                shutil.rmtree(raw_dir, ignore_errors=True)
+                shutil.rmtree(annotated_dir, ignore_errors=True)
+                if video_path.exists():
+                    video_path.unlink(missing_ok=True)
             return None
 
         # Assemble WebP
