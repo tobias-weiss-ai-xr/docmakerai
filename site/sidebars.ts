@@ -5,12 +5,17 @@ const sidebars: SidebarsConfig = {
     'index',
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Erste Schritte',
       items: ['sogo-login', 'sogo-logout'],
     },
     {
       type: 'category',
-      label: 'Calendar',
+      label: 'Grundfunktionen',
+      items: ['sogo-preferences', 'sogo-password-change', 'sogo-vacation'],
+    },
+    {
+      type: 'category',
+      label: 'Kalender',
       items: [
         'sogo-calendar-create-event',
         'sogo-calendar-recurring',
@@ -24,7 +29,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Mail',
+      label: 'E-Mail',
       items: [
         'sogo-mail-read',
         'sogo-mail-compose',
@@ -36,7 +41,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Contacts',
+      label: 'Kontakte',
       items: [
         'sogo-contacts-add',
         'sogo-contacts-edit-delete',
@@ -45,17 +50,12 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Settings & Tools',
-      items: [
-        'sogo-password-change',
-        'sogo-preferences',
-        'sogo-vacation',
-        'sogo-global-search',
-      ],
+      label: 'Werkzeuge',
+      items: ['sogo-global-search'],
     },
     {
       type: 'category',
-      label: 'Advanced & Advanced Features',
+      label: 'Fortgeschritten',
       items: [
         'sogo-delegation',
         'sogo-tasks',
