@@ -1,0 +1,9 @@
+# Capture pipeline output
+screenshots/
+gifs/
+videos/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
