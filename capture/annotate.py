@@ -9,10 +9,9 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from PIL import Image, ImageDraw, ImageFont
-
 
 HEADER_HEIGHT = 50
 HEADER_BG = (30, 30, 30, 200)
@@ -30,13 +29,14 @@ def _load_font(size: int = 22) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
         return ImageFont.truetype(
             "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size
         )
-    except (IOError, OSError):
+    except OSError:
         return ImageFont.load_default()
 
 
 def _build_header_text(step_label: str, step_number: int, locale: str) -> str:
     prefix = "Step" if locale == "en" else "Schritt"
-    circled = CIRCLED_NUMBERS[step_number - 1] if 1 <= step_number <= len(CIRCLED_NUMBERS) else str(step_number)
+    max_n = len(CIRCLED_NUMBERS)
+    circled = CIRCLED_NUMBERS[step_number - 1] if 1 <= step_number <= max_n else str(step_number)
     return f"{circled} {prefix} {step_number}: {step_label}"
 
 
@@ -94,8 +94,8 @@ def annotate_frame(
     step_number: int,
     highlights: list[dict[str, Any]],
     locale: str = "de",
-    output_path: Optional[str | Path] = None,
-) -> Optional[Image.Image]:
+    output_path: str | Path | None = None,
+) -> Image.Image | None:
     """Draw step header and UI highlights on a screenshot.
 
     Args:

@@ -12,12 +12,19 @@ Usage:
   python run_captures.py
 """
 
+from __future__ import annotations
+
 import asyncio
 import os
 import shutil
 from pathlib import Path
-from playwright.async_api import async_playwright, BrowserContext
-from video_pipeline import WorkflowRecorder
+
+from playwright.async_api import BrowserContext, Page, async_playwright
+
+try:
+    from capture.video_pipeline import WorkflowRecorder
+except ImportError:
+    from video_pipeline import WorkflowRecorder
 
 ROOT = Path(__file__).resolve().parent
 VIDEO_DIR = ROOT / "videos"
@@ -33,14 +40,14 @@ FPS = 6
 LOCALE = "de"
 
 
-def clean_dirs():
+def clean_dirs() -> None:
     for d in [VIDEO_DIR, GIF_DIR, ASSETS_DIR, SCREENSHOT_DIR]:
         if d.exists():
             shutil.rmtree(d)
         d.mkdir(parents=True, exist_ok=True)
 
 
-async def login(page):
+async def login(page: Page) -> None:
     print("── Login ──")
     await page.goto(SOGO_URL, wait_until="networkidle", timeout=30000)
     await page.wait_for_timeout(2000)
@@ -52,7 +59,7 @@ async def login(page):
     await page.wait_for_timeout(5000)
 
 
-async def goto(page, url_suffix, wait_ms=3000):
+async def goto(page: Page, url_suffix: str, wait_ms: int = 3000) -> None:
     await page.goto(
         f"{SOGO_URL}so/{USERNAME}/{url_suffix}",
         wait_until="networkidle",
@@ -63,7 +70,7 @@ async def goto(page, url_suffix, wait_ms=3000):
 
 # ── Workflow Runners ──
 
-async def record_calendar_create_event(context: BrowserContext):
+async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     """Create a calendar event via double-click, typing title and location."""
     rec = WorkflowRecorder("calendar-create-event", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -115,7 +122,7 @@ async def record_calendar_create_event(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_recurring(context: BrowserContext):
+async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     """Create a recurring weekly event with alarm."""
     rec = WorkflowRecorder("calendar-recurring", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -174,7 +181,7 @@ async def record_calendar_recurring(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_compose(context: BrowserContext):
+async def record_mail_compose(context: BrowserContext) -> Path | None:
     """Navigate to Mail UI (compose not available without IMAP server)."""
     rec = WorkflowRecorder("mail-compose", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -195,7 +202,7 @@ async def record_mail_compose(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_contacts_add(context: BrowserContext):
+async def record_contacts_add(context: BrowserContext) -> Path | None:
     """Add a new contact."""
     rec = WorkflowRecorder("contacts-add", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -255,7 +262,7 @@ async def record_contacts_add(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_vacation(context: BrowserContext):
+async def record_vacation(context: BrowserContext) -> Path | None:
     """Configure vacation auto-reply."""
     rec = WorkflowRecorder("vacation", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -329,7 +336,7 @@ async def record_vacation(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_signatures(context: BrowserContext):
+async def record_mail_signatures(context: BrowserContext) -> Path | None:
     """Create email signature."""
     rec = WorkflowRecorder("mail-signatures", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -381,7 +388,7 @@ async def record_mail_signatures(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_filters(context: BrowserContext):
+async def record_mail_filters(context: BrowserContext) -> Path | None:
     """Create mail filter rule."""
     rec = WorkflowRecorder("mail-filters", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -432,7 +439,7 @@ async def record_mail_filters(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_subscribe(context: BrowserContext):
+async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
     """Subscribe to external calendar."""
     rec = WorkflowRecorder("calendar-subscribe", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -478,7 +485,7 @@ async def record_calendar_subscribe(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_share(context: BrowserContext):
+async def record_calendar_share(context: BrowserContext) -> Path | None:
     """Share calendar with another user."""
     rec = WorkflowRecorder("calendar-share", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -537,7 +544,7 @@ async def record_calendar_share(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_freebusy(context: BrowserContext):
+async def record_freebusy(context: BrowserContext) -> Path | None:
     """Create event with attendee availability check."""
     rec = WorkflowRecorder("freebusy", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -596,7 +603,7 @@ async def record_freebusy(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_logout(context: BrowserContext):
+async def record_logout(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("logout", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Calendar/view", 2000)
@@ -626,7 +633,7 @@ async def record_logout(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_preferences(context: BrowserContext):
+async def record_preferences(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("preferences", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
 
@@ -662,7 +669,7 @@ async def record_preferences(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_views(context: BrowserContext):
+async def record_calendar_views(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("calendar-views", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Calendar/view", 2000)
@@ -711,7 +718,7 @@ async def record_calendar_views(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_contacts_edit_delete(context: BrowserContext):
+async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("contacts-edit-delete", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Contacts", 2000)
@@ -760,7 +767,7 @@ async def record_contacts_edit_delete(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_edit_delete(context: BrowserContext):
+async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("calendar-edit-delete", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Calendar/view", 2000)
@@ -810,7 +817,7 @@ async def record_calendar_edit_delete(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_global_search(context: BrowserContext):
+async def record_global_search(context: BrowserContext) -> Path | None:
     """Demonstrate global search."""
     rec = WorkflowRecorder("global-search", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
@@ -851,7 +858,7 @@ async def record_global_search(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_read(context: BrowserContext):
+async def record_mail_read(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("mail-read", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Mailview/0/view", 2000)
@@ -868,7 +875,7 @@ async def record_mail_read(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_folder_management(context: BrowserContext):
+async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("mail-folder-management", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Mailview/0/view", 2000)
@@ -887,7 +894,7 @@ async def record_mail_folder_management(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_mail_reply_forward_delete(context: BrowserContext):
+async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("mail-reply-forward-delete", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Mailview/0/view", 2000)
@@ -920,7 +927,7 @@ async def record_mail_reply_forward_delete(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_password_change(context: BrowserContext):
+async def record_password_change(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("password-change", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await rec.step(page, "Einstellungen-Menu", highlights=[])
@@ -936,7 +943,7 @@ async def record_password_change(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_calendar_ical(context: BrowserContext):
+async def record_calendar_ical(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("calendar-ical", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Calendar/view", 2000)
@@ -958,7 +965,7 @@ async def record_calendar_ical(context: BrowserContext):
     return await rec.finish(page)
 
 
-async def record_contacts_import_export(context: BrowserContext):
+async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     rec = WorkflowRecorder("contacts-import-export", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Contacts", 2000)
@@ -986,7 +993,7 @@ async def record_contacts_import_export(context: BrowserContext):
 
 # ── Runner ──
 
-async def main():
+async def main() -> None:
     clean_dirs()
 
     async with async_playwright() as p:
@@ -1055,7 +1062,7 @@ async def main():
                         print(f"  ✓  {webp_path.name}")
                         results.append((name, True, 0))
                 else:
-                    print(f"  ✗  Failed")
+                    print("  ✗  Failed")
                     results.append((name, False, 0))
             except Exception as e:
                 print(f"  ✗  Error: {e}")
