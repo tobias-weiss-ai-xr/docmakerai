@@ -13,15 +13,19 @@ Workflow:
   6. ffmpeg assembles annotated frames into final animated WebP
 """
 
-import asyncio
 import json
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import Any, Optional
-from PIL import Image, ImageOps
-from annotate import annotate_frame
+from typing import Any
+
+from PIL import Image
+
+try:
+    from capture.annotate import annotate_frame
+except ImportError:
+    from annotate import annotate_frame
 
 
 def extract_frames(
@@ -96,7 +100,7 @@ def annotate_frames(
     """Annotate raw frames with step headers and return annotated paths."""
     annotated_dir.mkdir(parents=True, exist_ok=True)
     annotated_paths = []
-    for raw_path, meta in zip(raw_frames, mapping):
+    for raw_path, meta in zip(raw_frames, mapping, strict=False):
         out_path = annotated_dir / raw_path.name
         img = annotate_frame(
             raw_path,
@@ -214,11 +218,8 @@ def is_frame_valid(frame_path: Path) -> bool:
         bright_pixels = [p for p in pixels if p > 20 and p < 235]
         if len(bright_pixels) < len(pixels) * 0.05:
             return False
-        stats = ImageOps.eval(gray, lambda m: m.std() * 100)
-        variation = stats[0]
-        if variation < 5:
-            return False
-        return True
+        pixel_range = max(pixels) - min(pixels)
+        return pixel_range >= 20
     except Exception:
         return False
 
@@ -226,7 +227,7 @@ def is_frame_valid(frame_path: Path) -> bool:
 def validate_frames(raw_frames: list[Path], workflow_name: str) -> tuple[bool, str]:
     """
     Validate that extracted frames contain meaningful content.
-    
+
     Returns (is_valid, error_message).
     """
     if len(raw_frames) < 4:
@@ -235,7 +236,8 @@ def validate_frames(raw_frames: list[Path], workflow_name: str) -> tuple[bool, s
     for idx in check_indices:
         frame = raw_frames[idx]
         if not is_frame_valid(frame):
-            return False, f"{workflow_name}: Frame {idx + 1} appears blank (all white/black or uniform)"
+            msg = f"{workflow_name}: Frame {idx + 1} appears blank"
+            return False, msg
     sample_indices = [len(raw_frames) * i // 10 for i in range(1, 10)]
     sample_size = sum(1 for idx in sample_indices if idx < len(raw_frames))
     valid_count = 0
@@ -243,7 +245,8 @@ def validate_frames(raw_frames: list[Path], workflow_name: str) -> tuple[bool, s
         if idx < len(raw_frames) and is_frame_valid(raw_frames[idx]):
             valid_count += 1
     if valid_count < sample_size * 0.8:
-        return False, f"{workflow_name}: {sample_size - valid_count}/{sample_size} sample frames appear blank"
+        msg = f"{workflow_name}: {sample_size - valid_count}/{sample_size} frames blank"
+        return False, msg
     return True, ""
 
 class WorkflowRecorder:
@@ -274,8 +277,8 @@ class WorkflowRecorder:
         self.fps = fps
         self.locale = locale
         self.steps: list[dict] = []
-        self._start_time: Optional[float] = None
-        self._page_created_time: Optional[float] = None
+        self._start_time: float | None = None
+        self._page_created_time: float | None = None
 
     async def start(self, context) -> Any:
         """Create a new page in *context* and start recording."""
@@ -288,7 +291,7 @@ class WorkflowRecorder:
         self,
         page,
         label: str,
-        highlights: Optional[list] = None,
+        highlights: list | None = None,
     ):
         """Record a step annotation with the current page timestamp."""
         now = await page.evaluate("performance.now()")
@@ -302,7 +305,7 @@ class WorkflowRecorder:
             }
         )
 
-    async def finish(self, page, keep_raw_video: bool = False) -> Optional[Path]:
+    async def finish(self, page, keep_raw_video: bool = False) -> Path | None:
         """Close the page, process video, and return the WebP path.
 
         Returns None on failure.

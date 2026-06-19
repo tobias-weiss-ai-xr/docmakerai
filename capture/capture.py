@@ -20,21 +20,21 @@ Environment variables:
   EVENT_DATE     Date for test events (YYYY-MM-DD)
 """
 
-import os
-import sys
-import re
-import json
-import shutil
 import argparse
+import json
+import os
+import re
+import shutil
 import subprocess
+import sys
+import time
 from pathlib import Path
-from string import Template
 
 import yaml
 from PIL import Image
 
 
-def load_env(env_path: Path = None):
+def load_env(env_path: Path | None = None) -> None:
     """Load .env file into environment variables."""
     if env_path is None:
         env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -73,11 +73,11 @@ def env_substitute(value: str) -> str:
     return pattern.sub(replacer, value)
 
 
-def ensure_dir(path: Path):
+def ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
 
-def clean_dir(path: Path):
+def clean_dir(path: Path) -> None:
     if path.exists():
         shutil.rmtree(path)
     path.mkdir(parents=True)
@@ -86,7 +86,7 @@ def clean_dir(path: Path):
 # ── GIF Generation ────────────────────────────────────────────────────
 
 def create_gif(image_paths: list[Path], output_path: Path,
-               duration: int = 800, loop: int = 0):
+               duration: int = 800, loop: int = 0) -> None:
     """Create an animated GIF from a list of PNG images."""
     if not image_paths:
         print("  ⚠  No screenshots to create GIF")
@@ -119,12 +119,10 @@ def create_gif(image_paths: list[Path], output_path: Path,
 def generate_playwright_script(workflow: dict) -> str:
     """Generate a Playwright Python script from a workflow definition."""
     name = workflow.get("name", "Unnamed Workflow")
-    base_url = env_substitute(workflow.get("base_url", ""))
-    auth = workflow.get("auth", {})
     steps = workflow.get("steps", [])
 
     # Ensure unique run ID for this execution
-    run_id = str(int(__import__("time").time()))
+    run_id = str(int(time.time()))
 
     lines = [
         "import asyncio",
@@ -146,7 +144,10 @@ def generate_playwright_script(workflow: dict) -> str:
         "",
         '    async with async_playwright() as p:',
         '        browser = await p.chromium.launch(headless=True)',
-        "        context = await browser.new_context(viewport={'width': 1280, 'height': 800}, ignore_https_errors=True)",
+        (  # noqa: E501
+            '        context = await browser.new_context('
+            'viewport={"width": 1280, "height": 800}, ignore_https_errors=True)'
+        ),
         "        page = await context.new_page()",
         "",
     ]
@@ -176,7 +177,7 @@ def generate_playwright_script(workflow: dict) -> str:
         if action == "navigate":
             resolved_url = env_substitute(url)
             lines.append(f"        await page.goto({json.dumps(resolved_url)})")
-            lines.append(f"        await page.wait_for_load_state('networkidle')")
+            lines.append("        await page.wait_for_load_state('networkidle')")
 
         elif action == "click":
             lines.append(f"        await page.click({json.dumps(selector)})")
@@ -185,18 +186,24 @@ def generate_playwright_script(workflow: dict) -> str:
             resolved_value = env_substitute(value)
             lines.append(f"        await page.click({json.dumps(selector)})")
             lines.append(f"        await page.fill({json.dumps(selector)}, '')")
-            lines.append(f"        await page.type({json.dumps(selector)}, {json.dumps(resolved_value)}, delay=50)")
+            lines.append(
+                f"        await page.type({json.dumps(selector)}, "
+                f"{json.dumps(resolved_value)}, delay=50)"
+            )
 
         elif action == "select":
             resolved_value = env_substitute(value)
-            lines.append(f"        await page.select_option({json.dumps(selector)}, {json.dumps(resolved_value)})")
+            lines.append(
+                f"        await page.select_option({json.dumps(selector)}, "
+                f"{json.dumps(resolved_value)})"
+            )
 
         elif action == "dblclick":
             lines.append(f"        await page.dblclick({json.dumps(selector)})")
 
         elif action == "toggle":
             lines.append(f"        await page.click({json.dumps(selector)})")
-            lines.append(f"        await page.wait_for_timeout(300)")
+            lines.append("        await page.wait_for_timeout(300)")
 
         elif action == "wait":
             lines.append(f"        await page.wait_for_timeout({int(value or 1) * 1000})")
@@ -205,33 +212,36 @@ def generate_playwright_script(workflow: dict) -> str:
         if take_screenshot:
             filename = env_substitute(take_screenshot)
             filepath = f"{{SCREENSHOT_DIR}}/{filename}"
-            lines.append(f"        await page.screenshot(path={json.dumps(filepath)}, full_page=False)")
+            lines.append(
+                f"        await page.screenshot(path={json.dumps(filepath)}, full_page=False)"
+            )
             lines.append(f"        screenshots.append({json.dumps(filepath)})")
 
         # GIF tracking
         if gif_start:
             lines.append("        gif_frames = []")
             lines.append("        gif_active = True")
-            lines.append(f"        gif_name = {json.dumps(gif_name_val) if gif_name_val else 'None'}")
-            # Take starting screenshot for GIF
+            lines.append(f"gif_name = {json.dumps(gif_name_val) if gif_name_val else 'None'}")
             gif_file = f"{{SCREENSHOT_DIR}}/_gif_frame_{step_id}.png"
-            lines.append(f"        await page.screenshot(path={json.dumps(gif_file)}, full_page=False)")
+            lines.append(
+                f"        await page.screenshot(path={json.dumps(gif_file)}, full_page=False)"
+            )
             lines.append(f"        gif_frames.append({json.dumps(gif_file)})")
 
         if gif_end:
-            # Take ending screenshot
             gif_file = f"{{SCREENSHOT_DIR}}/_gif_frame_{step_id}.png"
-            lines.append(f"        await page.screenshot(path={json.dumps(gif_file)}, full_page=False)")
+            lines.append(
+                f"        await page.screenshot(path={json.dumps(gif_file)}, full_page=False)"
+            )
             lines.append(f"        gif_frames.append({json.dumps(gif_file)})")
             lines.append("        gif_active = False")
-            # Override gif_name if set on this step
             if gif_name_val:
-                lines.append(f"        gif_name = {json.dumps(env_substitute(gif_name_val))}")
-            lines.append(f"""
+                lines.append(f"gif_name = {json.dumps(env_substitute(gif_name_val))}")
+            lines.append("""
         # Generate GIF
         import subprocess
         from pathlib import Path
-        gif_output = Path(f"{{GIF_DIR}}/{{gif_name or 'animation.gif'}}")
+        gif_output = Path(f"{GIF_DIR}/{gif_name or 'animation.gif'}")
         gif_output.parent.mkdir(parents=True, exist_ok=True)
         if len(gif_frames) >= 2:
             from PIL import Image
@@ -247,13 +257,13 @@ def generate_playwright_script(workflow: dict) -> str:
                 loop=0,
                 optimize=True,
             )
-            print(f'GIF created: {{gif_output}}')
+            print(f'GIF created: {gif_output}')
             # Copy to assets
             import shutil
-            assets_dir = Path(f'{{ASSETS_DIR}}')
+            assets_dir = Path(f'{ASSETS_DIR}')
             assets_dir.mkdir(parents=True, exist_ok=True)
             shutil.copy2(str(gif_output), str(assets_dir / gif_output.name))
-            print(f'GIF copied to assets: {{assets_dir / gif_output.name}}')
+            print(f'GIF copied to assets: {assets_dir / gif_output.name}')
 """)
 
         # Optional wait after
@@ -280,7 +290,7 @@ def generate_playwright_script(workflow: dict) -> str:
     return "\n".join(lines)
 
 
-def run_workflow(workflow_path: Path):
+def run_workflow(workflow_path: Path) -> bool:
     """Load a workflow YAML and execute it via Playwright."""
     print(f"\n{'='*60}")
     print(f"  Workflow: {workflow_path.name}")
@@ -306,7 +316,7 @@ def run_workflow(workflow_path: Path):
         f.write(script)
 
     # Execute
-    print(f"  Running Playwright...")
+    print("  Running Playwright...")
     result = subprocess.run(
         [sys.executable, str(script_path)],
         capture_output=True,
@@ -315,20 +325,20 @@ def run_workflow(workflow_path: Path):
     )
 
     if result.returncode != 0:
-        print(f"  ✗  Error running workflow:")
+        print("  ✗  Error running workflow:")
         print(f"     {result.stderr.strip()}")
         return False
 
     print(result.stdout)
     if result.stderr:
         print(f"  Stderr: {result.stderr.strip()}")
-    print(f"  ✓  Workflow completed")
+    print("  ✓  Workflow completed")
     return True
 
 
 # ── CLI ────────────────────────────────────────────────────────────────
 
-def list_workflows():
+def list_workflows() -> None:
     """List available workflow YAML files."""
     workflows = sorted(WORKFLOW_DIR.glob("*.yaml"))
     if not workflows:
@@ -344,7 +354,7 @@ def list_workflows():
         print()
 
 
-def run_all():
+def run_all() -> None:
     """Run all workflows in sequence."""
     workflows = sorted(WORKFLOW_DIR.glob("*.yaml"))
     if not workflows:
@@ -368,7 +378,7 @@ def run_all():
     print(f"{'='*60}")
 
 
-def main():
+def main() -> None:
     load_env()
     parser = argparse.ArgumentParser(
         description="DocMaker AI — Capture Pipeline",
