@@ -23,8 +23,6 @@ SOGo 5 password change depends on your organization's configuration:
 | **Administrator portal** | Admin panel | Administrator changes password for you |
 | **External tool** | University/company portal | Change password via your organization's account management |
 
-![Preferences menu in SOGo 5](./assets/password-change.webp)
-
 ## Step-by-Step Instructions
 
 ### If Self-Service Password Change Is Enabled

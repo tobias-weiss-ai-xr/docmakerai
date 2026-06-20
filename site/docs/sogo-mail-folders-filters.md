@@ -9,6 +9,12 @@ sidebar_label: "Mail Folders & Filters"
 Learn how to keep your inbox organized using folders and
 automatic message filters (Sieve scripts).
 
+## Prerequisites
+
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
+- You have at least one email received in your inbox
+
 ## Part 1: Managing Folders
 
 ### Step 1: Open the Mail Module
@@ -79,8 +85,6 @@ Filters run when email arrives — before you see it in your inbox.
 ### Step 2: Create a New Filter
 
 Click **Add Filter** or the **+** button.
-
-![Creating a new mail filter](./assets/mail-filters.webp)
 
 ### Step 3: Define Conditions
 
@@ -219,14 +223,6 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 | "Condition, combo box" | Filter condition dropdown | Arrow key to select |
 | "Action, list grid" | Available filter actions | Arrow to select action |
 | "Filter saved" | Success | Filter now active |
-
-### Visual Content Descriptions
-
-**folders-filters.webp:** This 4.5-second animated GIF shows creating mail folders and filters.
-
-- **Frame 1 (0-1.2s):** Mail view showing folder list on left
-- **Frame 2 (1.2-2.5s):** Folder creation dialog open, typing new folder name "Archive"
-- **Frame 3 (2.5-4.5s):** Filters dialog open, creating new filter with condition "From contains @example.com" set to move to Archive folder
 
 ### High Contrast Mode
 

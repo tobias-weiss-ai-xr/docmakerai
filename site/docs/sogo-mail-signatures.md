@@ -9,6 +9,12 @@ sidebar_label: "Mail Signatures & Identities"
 Configure professional email signatures and manage multiple
 sender identities (e.g., work vs. personal email).
 
+## Prerequisites
+
+- A SOGo 5 account with valid credentials
+- You are logged into SOGo 5
+- Access to the Mail module
+
 ## Part 1: Creating an Email Signature
 
 ### Step 1: Open Settings
@@ -22,7 +28,7 @@ sender identities (e.g., work vs. personal email).
 
 Click **Add Signature** or the **+** button.
 
-![Add a new email signature in SOGo 5](./assets/mail-signatures.webp)
+![Mail signatures settings](./assets/01-mail-signatures.png)
 
 ### Step 3: Write Your Signature
 
@@ -223,19 +229,6 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 | "Mail Preferences Saved" | Settings updated successfully | Continue to next task |
 | "From, combo box" | Sender identity selector | Arrow keys to change identity |
 | "Delete signature, button" | Remove this signature | Press Enter, confirm |
-
-### Visual Content Descriptions
-
-**mail-signatures.webp:** This 3-second animated GIF shows creating a new email signature in SOGo 5.
-
-- **Frame 1 (0-1s):** Settings screen with Mail → Signatures selected, cursor hovering over "Add Signature" button
-- **Frame 2 (1-2s):** Signature editor open with name field filled ("Professional") and user typing signature text (name, title, contact info)
-- **Frame 3 (2-3s):** Save button clicked, signature appears in the signatures list with confirmation message
-
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow: Creating an Email Signature** above. It provides the same information in text format suitable for screen readers.
-
-**Duration:** 3 seconds, 3 frames  
-**File size:** 22 KB (approximate)
 
 ### High Contrast Mode
 

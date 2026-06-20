@@ -29,8 +29,6 @@ The folder list shows your default folders:
 - **Trash** — Holds deleted emails
 - **Spam** — Contains messages identified as spam
 
-![Navigating through mail folders in SOGo 5](./assets/mail-folder-management.webp)
-
 ### Step 3: Create a New Folder
 
 1. Right-click in the folder list area

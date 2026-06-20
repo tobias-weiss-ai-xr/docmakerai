@@ -19,8 +19,6 @@ Customize your SOGo 5 experience by adjusting personal preferences such as langu
 
 Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preferences page.
 
-![Opening Preferences](./assets/preferences.webp)
-
 ### Step 2: General Settings
 
 The **General** tab allows you to configure:

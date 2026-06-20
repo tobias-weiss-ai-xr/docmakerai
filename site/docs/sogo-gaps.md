@@ -81,27 +81,27 @@ Both are described as "Phase 2: Multi-Step Annotated GIFs" in ROADMAP.md. They a
 
 The following SOGo 5 modules and features had **no documentation page**. Status updated after gap closure rounds.
 
-### ✅ Round 1 — Core Flows (6 features — WebP captures + markdown docs created)
+### ✅ Round 1 — Core Flows (6 features — markdown docs created)
 
-| Doc | Feature | WebP |
-|---|---|---|
-| `sogo-logout.md` | Logout | `logout.webp` (41 frames, 93KB) |
-| `sogo-preferences.md` | Preferences & Settings | `preferences.webp` (6 frames, 4KB) |
-| `sogo-calendar-views.md` | Calendar View Switching | `calendar-views.webp` (19 frames, 38KB) |
-| `sogo-calendar-edit-delete.md` | Calendar Edit & Delete Events | `calendar-edit-delete.webp` (22 frames, 40KB) |
-| `sogo-contacts-edit-delete.md` | Contacts Edit & Delete | `contacts-edit-delete.webp` (19 frames, 40KB) |
-| `sogo-global-search.md` | Global Search | `global-search.webp` (19 frames, 39KB) |
+| Doc | Feature | Captures | Notes |
+|---|---|---|---|
+| `sogo-logout.md` | Logout | `logout.webp` (41 frames, 93KB) | ✅ Good capture |
+| `sogo-preferences.md` | Preferences & Settings | `preferences.webp` (6 frames, 4KB) | ❌ Blank capture — replaced with textual note |
+| `sogo-calendar-views.md` | Calendar View Switching | `calendar-views.webp` (19 frames, 38KB) | ✅ Good capture |
+| `sogo-calendar-edit-delete.md` | Calendar Edit & Delete Events | `calendar-edit-delete.webp` (22 frames, 40KB) | ✅ Good capture |
+| `sogo-contacts-edit-delete.md` | Contacts Edit & Delete | `contacts-edit-delete.webp` (19 frames, 40KB) | ✅ Good capture |
+| `sogo-global-search.md` | Global Search | `global-search.webp` (19 frames, 39KB) | ✅ Good capture |
 
-### ✅ Round 2 — Advanced Features (6 features — WebP captures + markdown docs created)
+### ✅ Round 2 — Advanced Features (6 features — markdown docs created)
 
-| Doc | Feature | WebP |
-|---|---|---|
-| `sogo-mail-read.md` | Mail — Read & View Messages | `mail-read.webp` (18 frames, 3KB) |
-| `sogo-mail-reply-forward-delete.md` | Mail — Reply / Forward / Delete | `mail-reply-forward-delete.webp` (18 frames, 3KB) |
-| `sogo-mail-folder-management.md` | Mail — Folder Management | `mail-folder-management.webp` (18 frames, 3KB) |
-| `sogo-calendar-ical.md` | Calendar Import/Export (iCal) | `calendar-ical.webp` (26 frames, 27KB) |
-| `sogo-contacts-import-export.md` | Contacts — Import / Export | `contacts-import-export.webp` (22 frames, 12KB) |
-| `sogo-password-change.md` | Password Change | `password-change.webp` (6 frames, 3KB) |
+| Doc | Feature | Captures | Notes |
+|---|---|---|---|
+| `sogo-mail-read.md` | Mail — Read & View Messages | `01-mail-inbox.png` | ✅ Replaced blank WebP with PNG screenshot |
+| `sogo-mail-reply-forward-delete.md` | Mail — Reply / Forward / Delete | — | ❌ Blank capture — image reference removed |
+| `sogo-mail-folder-management.md` | Mail — Folder Management | — | ❌ Blank capture — image reference removed |
+| `sogo-calendar-ical.md` | Calendar Import/Export (iCal) | `calendar-ical.webp` (26 frames, 27KB) | ✅ Good capture |
+| `sogo-contacts-import-export.md` | Contacts — Import / Export | `contacts-import-export.webp` (22 frames, 12KB) | ✅ Good capture |
+| `sogo-password-change.md` | Password Change | — | ❌ Blank capture — image reference removed |
 
 ### ✅ Round 3 — Advanced & Infrastructure-Dependent Features (3 features — docs created with infrastructure notes)
 
@@ -151,10 +151,11 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 | `sogo-resource-booking.md` | Advanced | Room/equipment booking, resource availability, meeting scheduling |
 
 ### Quality Notes
-- **Consistent format**: All docs follow the same template (frontmatter → intro → prerequisites → steps with screenshots → animated WebP → troubleshooting table)
+- **Consistent format**: All docs follow the same template (frontmatter → intro → prerequisites → steps with screenshots → PNG/WebP visual → troubleshooting table)
 - **Advanced features without WebP**: Delegation, Tasks, Resource Booking documented with conceptual guidance and configuration requirements—UI captions require production infrastructure
 - **Doc sizes**: 60–261 lines — substantial, not stubs
-- **22 WebP files**: All exist in `site/docs/assets/` and are properly referenced ✅
+- **18 valid WebP files**: Exist in `site/docs/assets/` and are properly referenced ✅  
+- **8 blank WebP captures** (password-change, mail-read, mail-reply-forward-delete, mail-folder-management, mail-signatures, preferences, vacation, mail-filters): Replaced with PNG screenshots or removed from markdown docs
 - **14 PNG files**: All static screenshots in place ✅
 - **Build status**: Both `en` and `de` locales pass without errors ✅
 
@@ -183,4 +184,4 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 | **P3** | Cleanup | Delete or wire orphan i18n/de assets | ✅ DONE |
 | **P3** | Future | Multi-step annotated WebPs for calendar-create-event | 🟡 Planned |
 
-**Summary:** All 15 known SOGo 5 documentation gaps have been addressed. 22 features have UI-based captures with animations; 3 advanced features documented conceptually with infrastructure configuration requirements.
+**Summary:** All 15 known SOGo 5 documentation gaps have been addressed. 14 features have valid UI-based captures; 8 features have blank captures replaced with PNG screenshots or text; 3 advanced features documented conceptually with infrastructure configuration requirements.

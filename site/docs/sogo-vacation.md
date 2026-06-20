@@ -29,8 +29,6 @@ in the calendar when you're on vacation or out of office.
 
 Toggle **Enable auto-reply** to **ON**.
 
-![Step 2: Enable Auto-Reply](./assets/vacation.webp)
-
 ### Step 3: Set the Date Range
 
 | Field | Description: What this field is for | Example: Example value |
@@ -219,18 +217,6 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 | "Message, content editable" | Message textarea | Type your auto-reply |
 | "Save, button" | Ready to save | Press Enter to save |
 | "Settings saved" | Success | Auto-reply now active or updated |
-
-### Visual Content Descriptions
-
-**vacation.webp:** This 3.5-second animated GIF shows configuring vacation auto-reply in SOGo 5.
-
-- **Frame 1 (0-1.7s):** Vacation settings page with "Enable auto-reply" toggle in OFF state
-- **Frame 2 (1.7-3.5s):** Toggle switched to ON (appears blue), date range fields filled (Start date and End date), auto-reply message text area shows example message, reply options configured
-
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above.
-
-**Duration:** 3.5 seconds, 2 frames  
-**File size:** 11.1 KB
 
 ### High Contrast Mode
 

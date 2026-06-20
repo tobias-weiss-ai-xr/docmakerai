@@ -1,298 +1,286 @@
 ---
 title: "Roadmap"
-description: "Nächste Schritte für das SOGo 5 User Guide Projekt"
+description: "Optimization & Automation Roadmap — SOGo User Guide (5 & 6)"
 sidebar_label: "Roadmap"
 ---
 
-# Roadmap — SOGo 5 User Guide
+# Roadmap — SOGo User Guide (5 & 6)
 
-**Status:** ✅ Complete — 27 docs, 22 WebP animations, 14 PNG screenshots, English sidebar categories, GitHub Pages deployed
+**Status:** ✅ Published — 27 SOGo 5 docs (14 with valid captures, 8 with blank captures replaced, 5 conceptual), 22 WebP animations (14 valid, 8 blank), 14 PNG screenshots (11 valid, 3 blank), Docusaurus versioning configured for SOGo 5 + SOGo 6
 
 **Demo Sites:**
 - SOGo 5: https://demo.sogo.nu/
-- SOGo 6: https://demov6.sogo.nu/ *(Coming soon)*
+- SOGo 6: https://demov6.sogo.nu/
 
 ---
 
-## Phase 1: Annotation-Engine + Capture-Pipeline
+## Overview
 
-**Problem:** Aktuell 3 Workflows mit GIFs, aber nur 2 Frames (Vorher/Nachher).
-Keine Zwischenschritte sichtbar, keine Markierungen.
+The project has delivered a full SOGo 5 User Guide with 27 documentation pages, 36 visual assets (WebP + PNG), and Docusaurus multi-version support for SOGo 5 + SOGo 6.
 
-**Lösung:** Action-Driven Captures mit Mikro-Capture-Punkten + Post-Processing
-Annotation-Engine, die Schritt-Indikatoren und UI-Highlights auf die Frames zeichnet.
-
-### Komponenten
-
-#### A) Step Tracker — Metadaten während des Captures sammeln
-
-Jede Capture-Funktion dokumentiert pro Frame:
-- **step_label**: z.B. `"Doppelklick auf Zeitslot 10:00"`
-- **highlights**: Liste von Element-Positionen für Pfeile/Kreise
-  - via `bounding_box()` auf Playwright-Locators
-  - Farbe (z.B. `"red"` für Klick-Ziele, `"blue"` für Ergebnisse)
-
-```python
-# Beispiel-Struktur
-capture_context = {
-    'frames': [
-        {
-            'file': '01-calendar-view.png',
-            'step': 'Kalender in Wochenansicht',
-            'highlights': []
-        },
-        {
-            'file': '02-dblclick.png',
-            'step': 'Doppelklick auf Montag 10:00',
-            'highlights': [
-                {'bbox': {'x': 200, 'y': 300, 'w': 100, 'h': 30}, 'color': 'red', 'type': 'circle'},
-            ]
-        },
-        {
-            'file': '03-event-dialog.png',
-            'step': 'Event-Dialog: Titel eingeben',
-            'highlights': [
-                {'bbox': {'x': 400, 'y': 150, 'w': 300, 'h': 40}, 'color': 'green', 'type': 'arrow'},
-            ]
-        },
-    ]
-}
-```
-
-#### B) Post-Processor — Overlays auf Frames zeichnen (Pillow/PIL)
-
-Nach dem Capture-Durchlauf werden alle Frames annotiert:
-
-- **Step-Header**: Halbtransparenter Balken oben im Bild
-  - Schrift: Schrittnummer + Label (z.B. `"① Doppelklick auf Zeitslot"`)
-  - Hintergrund: dunkel mit weisser Schrift
-- **UI-Highlights**: Rote Kreise oder Pfeile auf UI-Elemente
-  - Position aus den im Step Tracker gespeicherten `bounding_box`-Koordinaten
-  - `type='circle'` → roter Kreis um das Element
-  - `type='arrow'` → Pfeil vom oberen Bildrand auf das Element
-- **Fade-Hintergrund**: Optionale Abdunklung des nicht-relevanten Bereichs
-
-Beispiel-Visualisierung eines annotierten Frames:
-
-```
-┌─────────────────────────────────────────────────────┐
-│ ████████████████████████████████████████████████████ │  ← Step-Header
-│ ██ ① Doppelklick auf Montag 10:00            ██ │  ← Schritt-Titel
-│ ████████████████████████████████████████████████████ │
-│                                                     │
-│   ┌─────────────────────────────────────────┐       │
-│   │   Wochenansicht                          │       │
-│   │    Mo  Di  Mi  Do  Fr                   │       │
-│   │    ┌──┐                                  │       │
-│   │    │🔴│ ← roter Kreis auf Element        │       │
-│   │    └──┘                                  │       │
-│   │    10:00                                 │       │
-│   └─────────────────────────────────────────┘       │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
-
-Technisch: `PIL.ImageDraw` + `PIL.ImageFont` für Text, `ellipse()` für Kreise,
-und `polygon()` für Pfeile.
-
-### Workflow-GIF-Plan
-
-Jeder Workflow bekommt 1-3 kurze GIF-Sequenzen (je 5-10s, ca. 8-15 Frames):
-
-| Workflow | GIFs | Inhalt |
-|---|---|---|
-| Calendar Create Event | 3 | (1) Doppelklick → Dialog (2) Formular ausfüllen (3) Speichern → OK |
-| Calendar Recurring | 2 | (1) Repeat → Weekly (2) Serie gespeichert |
-| Mail Compose | 2 | (1) Inbox → Compose (2) Felder + Anhang |
-| Contacts Add | 1 | Kontakt anlegen + speichern |
-| Vacation | 1 | Auto-Reply aktivieren |
-| Mail Signatures | 1 | Signatur erstellen |
-| Mail Folders & Filters | 2 | (1) Ordner anlegen (2) Filter-Regel |
-| Calendar Subscribe | 1 | iCal-Feed abonnieren |
-| Calendar Share | 1 | Kalender teilen |
-| Free/Busy | 2 | (1) Event mit Attendees (2) Verfügbarkeitsgrid |
-
-### Timing-Strategie (pro GIF 5-10s)
-
-| Frame-Typ | Verweildauer | Einsatz |
-|---|---|---|
-| Nach Seitenwechsel | 1200ms | Ladevorgang sichtbar |
-| Nach Klick | 800ms | Dialog öffnet sich |
-| Nach Formular-Eingabe | 600ms | Text erscheint |
-| Ruhezustand / Lesepause | 1500ms | Wichtiger Zustand, Nutzer soll lesen |
-| Abschluss / Bestätigung | 2000ms | Letzter Frame, länger sichtbar |
-
-### Datei-Struktur
-
-```
-capture/
-  run_captures.py        ← Step Tracker + Capture-Logik
-  annotate.py            ← Post-Processor (Pillow Overlays)
-  segments/              ← Roh-Screenshots + Metadaten (temporär)
-    calendar-create-event/
-      step01.json
-      step01.png
-      ...
-  screenshots/           ← Annotierte Frames (Output)
-  gifs/                  ← Fertige GIFs (Output)
-```
+This roadmap focuses on **optimization & automation** — reducing asset sizes, hardening the capture pipeline, adding CI/CD, and introducing spec-driven development.
 
 ---
 
-## Phase 2: GIFs in Tutorial-Seiten einbetten
+## Sprint 1: Spec Foundation (OpenSpec)
 
-**Status:** ✅ Basic GIFs embedded (10/10 core tutorials, 1 GIF per page).
-⚠️ Annotierte Multi-Step GIFs (1-3 pro Seite) noch aus Phase 1 ausstehend.
+**Goal:** Establish a spec-driven development workflow for the capture pipeline using OpenSpec.
 
-**Ziel:** Jede Tutorial-Seite zeigt 1-3 annotierte GIFs inline an den passenden
-Stellen. Die GIFs enthalten bereits Schritt-Indikatoren und UI-Markierungen
-(aus Phase 1), sodass sie ohne zusätzlichen Text verständlich sind.
+### Tasks
 
-### Platzierungsstrategie
+- Initialize `openspec/specs/` directory structure
+- Write specs for core capture pipeline domains:
+  - `auth-login` — authentication flow, session handling, credential management
+  - `calendar` — event creation, recurring events, sharing, subscriptions, free/busy
+  - `mail` — compose, read, reply/forward/delete, folder management, signatures, filters
+  - `contacts` — add, edit/delete, import/export
+  - `preferences` — settings, password change, vacation, global search
+- Each spec includes: Purpose, Requirements (RFC 2119: SHALL/MUST/SHOULD), Scenarios (Given/When/Then)
+- Configure `openspec/config.yaml` with project settings
+- Run `openspec validate --all` to verify spec correctness
 
-GIFs werden dort eingefügt, wo sie den beschriebenen Schritt visualisieren,
-direkt unter der Schritt-Überschrift:
+### Outcome
 
-```
-### Schritt 2: Doppelklick auf Zeitslot
-
-![Schritt 2: Doppelklick öffnet Event-Dialog](./assets/calendar-create-event-dblclick.webp)
-
-Doppelklicken Sie auf den gewünschten Zeitpunkt im Kalender.
-Der Event-Dialog öffnet sich automatisch.
-
-### Schritt 3: Formular ausfüllen
-
-![Schritt 3: Titel und Ort eingeben](./assets/calendar-create-event-form.webp)
-
-Geben Sie den Titel und optional den Ort des Events ein.
-```
-
-### Annotierte GIFs vs. statische Screenshots
-
-- **GIFs** zeigen die **Aktion** (Klick, Eingabe, Übergang)
-- **Screenshots** zeigen den **Zustand** (das fertige Formular, die Ansicht)
-- Beide existieren parallel — GIFs ergänzen, ersetzen nicht
-
-### i18n-Hinweis
-
-Annotierte GIFs enthalten deutschen Text (Schritt-Indikatoren), da die
-Tutorials auf Deutsch primär sind. Englische Variante: Die Overlay-Texte
-werden via Konfiguration umgeschaltet (`locale='de' | 'en'` im Annotator).
-Alternativ: Zwei WebP-Sets generieren (`*-de.webp`, `*-en.webp`).
+- Living specification of what the capture pipeline does
+- Foundation for using delta specs in subsequent sprints
+- Allowed tools: `openspec` CLI, editor
 
 ---
 
-## Phase 4: SOGo 6 Migration & Updates
+## Sprint 2: CI/CD Pipeline
 
-**Status:** 🟡 Planned — SOGo 6 demo available at https://demov6.sogo.nu/
+**Goal:** Set up GitHub Actions for automated build, lint, test, and deploy.
 
-### What's New in SOGo 6
+### Tasks
 
-**Demo Site:** [SOGo 6 Demo](https://demov6.sogo.nu/)
+- Create `.github/workflows/ci.yml` — run on push/PR to `main`
+- **Lint:** ruff on `capture/` Python code
+- **Type check:** mypy (if types exist) or pyright on Python files
+- **Test:** pytest with coverage on `capture/tests/`
+- **Build:** Docusaurus build for both `en` + `de` locales
+- **Deploy:** GitHub Pages deployment on `main` push
+- Add status badges to README
 
-### Migration Tasks
+### Outcome
 
-| Task | Priority | Status |
-|---|---|---|
-| 🔍 Review SOGo 6 UI changes | High | Pending |
-| 📋 Identify new/deprecated features | High | Pending |
-| 🎬 Capture new UI screens | Medium | Pending |
-| 📝 Update documentation for changed workflows | High | Pending |
-| 🚀 Create new workflows for SOGo 6 features | Medium | Pending |
-
-### Key Areas to Review
-
-1. **Calendar Module**
-   - Event creation dialog changes
-   - New visualization options
-   - Attendee management improvements
-
-2. **Mail Module**
-   - Compose interface updates
-   - Folder management changes
-   - Filtering and search enhancements
-
-3. **Contacts Module**
-   - Contact form modifications
-   - Import/export improvements
-
-4. **Overall UX**
-   - Navigation changes
-   - Settings and preferences layout updates
-   - Mobile responsiveness improvements
-
-### Timeline
-
-- **TBD:** SOGo 6 official release announcement
-- **TBD:** Full review of demo site
-- **TBD:** Documentation update plan
-- **TBD:** Captures for new features
+- Every push triggers automated checks
+- Preview builds on PRs
+- Deployed docs on merge
 
 ---
 
-## Phase 5: Optimierung & Automatisierung
+## Sprint 3: Asset Optimization
 
-- **GIF-Größe optimieren**: Max 300KB pro GIF durch
-  - Farbpalette auf 128 Farben reduzieren
-  - Bei ähnlichen aufeinanderfolgenden Frames: nur jeden 2. Frame ins GIF
-  - Viewport ggf. auf relevanten Bereich croppen
-- **Automatische Re-Captures**: CI/CD-Workflow, der bei SOGo-Updates
-  neu captured (benötigt `workflow` Scope für GitHub Token)
-- **MP4-Alternative**: Falls GIFs zu groß werden, auf `<video>`-Tag mit
-  MP4 umstellen (deutlich kleinere Dateien, Play/Pause-Steuerung)
+**Goal:** Reduce WebP and PNG asset sizes to under 150KB average.
+
+### Tasks
+
+- Create `capture/optimize.py` — batch image optimizer
+- WebP optimization strategies:
+  - Reduce color palette to 128 colors (from 256)
+  - Reduce frame rate: every 2nd frame for similar consecutive frames
+  - Crop to relevant viewport region
+  - Strip metadata (EXIF, ICC profiles)
+- PNG optimization strategies:
+  - pngquant for 256-color indexed PNGs
+  - Strip metadata
+- Run optimizer on all 36 assets in `site/docs/assets/`
+- Report size reduction per asset
+- Verify visual quality is acceptable
+
+### Outcome
+
+- ≤150KB average asset size
+- ≤300KB max per asset
+- Lossy optimization measured vs acceptable quality threshold
 
 ---
 
-## Zeitplan (Schätzung)
+## Sprint 4: Capture Reliability
 
-| Phase | Aufwand | Schritte | Status |
-|---|---|---|---|
-| **Phase 1: Annotation-Engine + Capture** | ✅ Done | annotate.py → Step Tracker → run_captures.py → captcha pipeline | ✅ Complete |
-| **Phase 2: GIFs einbetten** | ✅ Done | 27/27 Tutorials with WebP animations | ✅ Complete |
-| **Phase 3: Sidebar Reorg & Translations** | ✅ Done | English/German categories → GitHub Pages deployment | ✅ Complete |
-| **Phase 4: SOGo 6 Migration** | 🟡 TBD | Review demo → UI changes → New features → Documentation updates | 🟡 Planned |
-| **Phase 5: Optimierung** | 🟡 TBD | GIF-Größen prüfen, Farben optimieren, ggf. croppen | 🟡 Planned |
+**Goal:** Eliminate blank captures and add automatic retry logic.
+
+### Tasks
+
+- Investigate root cause of 8 blank WebP captures (password-change, mail-read, mail-reply-forward-delete, mail-folder-management, mail-signatures, preferences, vacation, mail-filters)
+- Add `capture_retry(max_attempts=3)` decorator to `capture/run_captures.py`
+- Add validation step: check image is not >90% white after capture → auto-retry
+- Add structured logging to capture failures
+- Create `capture/capture_report.py` — generates artifact quality report (file sizes, blank detection, frame counts)
+- Re-capture all 8 blank WebPs with retry logic
+- Write spec delta under `openspec/changes/capture-reliability/`
+
+### Outcome
+
+- Zero blank captures in pipeline
+- Automatic retry on failure
+- Quality report for every capture run
+
+---
+
+## Sprint 5: Parallel Execution
+
+**Goal:** Run independent capture workflows in parallel to reduce total capture time.
+
+### Tasks
+
+- Analyze workflow dependency graph in `capture/run_captures.py` — identify independent workflows (calendar, mail, contacts are independent; login is a prerequisite)
+- Implement `concurrent.futures.ThreadPoolExecutor` or `asyncio` for parallel workflow execution
+- Add configurable `--workers=N` flag to `run_captures.py`
+- Ensure sequential ordering where dependencies exist (login → all workflows)
+- Measure and report speedup factor
+- Write spec update under `openspec/changes/parallel-capture/`
+
+### Outcome
+
+- Capture time reduced by 3-5x (workflows → parallel groups)
+- Deterministic ordering maintained for dependent steps
+
+---
+
+## Sprint 6: Accessibility Gates
+
+**Goal:** Move `accessibility/validate.py` into CI as a blocking gate, auto-fix common issues.
+
+### Tasks
+
+- Integrate `accessibility/validate.py` as a CI step in `.github/workflows/ci.yml`
+- Add auto-fix mode for fixable issues (heading hierarchy, table headers)
+- Add WCAG 2.1 Level A checklist generation to each doc's frontmatter
+- Add accessibility section template to docs that are missing it (keyboard navigation, screen reader workflow, high contrast)
+- Fix all 98 currently detected violations across SOGo tutorial pages
+- Write OpenSpec task delta under `openspec/changes/accessibility-gates/`
+
+### Outcome
+
+- Zero accessibility violations in docs
+- CI blocks PRs with new violations
+- Every doc has keyboard + screen reader section
+
+---
+
+## Sprint 7: Video/MP4 Pipeline
+
+**Goal:** Add MP4 fallback for large animations with `<video>` tag support.
+
+### Tasks
+
+- Create `capture/webp_to_mp4.py` — convert WebP sequences to MP4 with ffmpeg
+- Determine threshold: assets >300KB after optimization → generate MP4 fallback
+- Create Docusaurus component: `<VideoFallback webp={...} mp4={...} />` that uses `<picture>` or `<video>` with WebP source + MP4 fallback
+- Implement composable layout: `<video>` with play/pause controls for large animations, inline `<img>` for small ones
+- Update doc templates to use the new component
+- Measure size comparison (WebP vs MP4 per asset)
+- Write spec delta under `openspec/changes/video-pipeline/`
+
+### Outcome
+
+- Large animations use efficient MP4 with play controls
+- Small animations remain inline WebP
+- ~50% size reduction for large assets
+
+---
+
+## Sprint 8: SOGo Change Detection
+
+**Goal:** Automatically detect SOGo demo changes and trigger re-capture.
+
+### Tasks
+
+- Create `capture/detect_changes.py` — diff SOGo demo pages against cached baseline
+- Baseline strategies:
+  - Screenshot hash comparison (perceptual hashing with `ImageHash`)
+  - DOM structure comparison (count elements, classes, text content)
+  - Timestamp / version header check from SOGo response
+- On detected change → trigger re-capture for affected workflow(s)
+- Add `openspec/changes/sogo-change-detection/` with updated auth-login spec
+- Generate report of what changed and what was re-captured
+
+### Outcome
+
+- Automated notification when SOGo UI changes
+- Targeted re-capture of affected workflows only
+- No stale documentation
+
+---
+
+## Sprint 9: Performance Benchmarks
+
+**Goal:** Establish performance baselines and monitoring.
+
+### Tasks
+
+- Add Lighthouse CI to `.github/workflows/ci.yml` — measure:
+  - Performance score
+  - Accessibility score
+  - Best practices score
+  - SEO score
+  - Largest Contentful Paint (LCP)
+  - Cumulative Layout Shift (CLS)
+- Add bundle size tracking (Docusaurus JS/CSS output)
+- Add capture timing metrics to `capture_report.py` — per-workflow timing, retry counts
+- Set up performance budgets (LCP <2.5s, total bundle <500KB gzip)
+- Create performance dashboard page at `site/docs/performance.md`
+- Write spec delta under `openspec/changes/performance-monitoring/`
+
+### Outcome
+
+- Performance regression detected on PR
+- Historical performance data tracked
+- Capture pipeline timing visible
+
+---
+
+## Sprint 10: Spec-to-Docs Pipeline
+
+**Goal:** Auto-generate documentation pages from OpenSpec specs and capture metadata.
+
+### Tasks
+
+- Create `capture/spec_to_docs.py` — reads OpenSpec specs and generates:
+  - Tutorial structure from spec scenarios (Given/When/Then → doc sections)
+  - Asset embedding from capture metadata
+  - Code blocks from spec requirements
+- Integrate with Docusaurus `sidebars.js` generation
+- Add `--from-spec` flag to `run_captures.py` that auto-generates docs alongside captures
+- Document the pipeline in CONTRIBUTING.md
+- Write spec delta under `openspec/changes/spec-to-docs/`
+
+### Outcome
+
+- New features get documentation automatically when specs + captures exist
+- Reduced manual doc writing effort
+- Living docs that stay in sync with spec changes
+
+---
+
+## Legend
+
+| Icon | Meaning |
+|------|---------|
+| ✅ | Completed |
+| 🔵 | In Progress |
+| 🟡 | Planned |
+| ❌ | Blocked |
 
 ---
 
 ## Completed Work ✅
 
-- ✅ 27 documentation pages created (up from 11)
-- ✅ 22 WebP animations generated for core workflows
-- ✅ 14 PNG screenshots integrated, all broken references fixed
-- ✅ 20 orphan assets deleted (10 GIFs + 7 PNGs + 3 images)
+- ✅ 27 documentation pages created
+- ✅ 22 WebP animations generated (14 valid captures, 8 blank — replaced with PNGs or removed)
+- ✅ 14 PNG screenshots integrated (11 valid, 3 blank)
+- ✅ 20 orphan assets deleted (GIFs, PNGs, images)
+- ✅ 8 orphan blank WebP assets deleted
 - ✅ Sidebars reorganized into 7 English categories: Getting Started, Basics, Calendar, Mail, Contacts, Tools, Advanced
 - ✅ Frame validation added to detect blank screenshots
-- ✅ Project deployed to GitHub Pages (https://tobias-weiss-ai-xr.github.io/docmakerai/sogo5/)
+- ✅ Docusaurus versioning configured for SOGo 5 + SOGo 6 with version dropdown
+- ✅ Project deployed to GitHub Pages (`/docmakerai/`) with `/5/` and `/6/` routes
 - ✅ Build verified for both English and German locales
+- ✅ 15 gap closure rounds completed (all known SOGo 5 gaps addressed)
+- ✅ 8 blank captures identified and replaced with PNG screenshots or text descriptions
 
 ---
 
-## Next Steps
-
-### Immediate (SOGo 5 Maintenance)
-
-- 🔄 Monitor GitHub Pages deployment and image loading
-- 📋 Review and fix any broken image references
-- 🌐 Ensure all 27 docs display correctly in both en/de locales
-
-### Coming Soon (SOGo 6)
-
-1. 🔍 **Review SOGo 6 Demo** — Visit https://demov6.sogo.nu/ and catalog UI changes
-2. 📋 **Feature Comparison** — Document what's new, changed, or deprecated in SOGo 6
-3. 🎬 **Plan Captures** — Identify workflows needing new screenshots/animations
-4. 📝 **Documentation Updates** — Update existing docs for SOGo 6 UI changes
-5. 🚀 **New Features** — Document SOGo 6-specific features not in SOGo 5
-
-### Future (Optimization)
-
-- Phase 5: WebP size optimization
-- Phase 5: Automatic re-captures on SOGo updates
-- Phase 5: MP4 alternative evaluation if WebPs grow too large
-
----
-
-**Last Updated:** 2025-06-17
-**Current Version:** SOGo 5 User Guide
-**Next Version:** SOGo 6 guide (coming soon!)
+**Last Updated:** 2025-06-20
+**Next Sprint:** Sprint 1 — Spec Foundation (OpenSpec)

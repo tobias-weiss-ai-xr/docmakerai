@@ -23,7 +23,7 @@ In the sidebar navigation on the left, click **Mail** to open the inbox.
 
 The inbox shows messages as a list. Click on any email to view it.
 
-![Reading an email in SOGo 5](./assets/mail-read.webp)
+![Mail inbox view in SOGo 5](./assets/01-mail-inbox.png)
 
 The email opens in the preview pane with the following sections:
 
