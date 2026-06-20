@@ -20,6 +20,16 @@ capture/gifs/
 /{SCREENSHOT_DIR}/
 capture/{SCREENSHOT_DIR}/
 
+# Coverage artifacts
+.coverage
+coverage.xml
+
+# Test output artifacts
+frame*.png
+
+# Deployment artifacts
+git-gh-pages/
+
 # Root-level generated docs (no longer used, kept for safety)
 /docs/
 /data/
