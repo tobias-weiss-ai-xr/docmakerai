@@ -14,9 +14,11 @@ Usage:
 
 from __future__ import annotations
 
+import argparse
 import asyncio
 import os
 import shutil
+import time
 from pathlib import Path
 
 from playwright.async_api import BrowserContext, Page, async_playwright
@@ -993,7 +995,7 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
 
 # ── Runner ──
 
-async def main() -> None:
+async def main(workers: int = 1) -> None:
     clean_dirs()
 
     async with async_playwright() as p:
@@ -1036,47 +1038,64 @@ async def main() -> None:
         storage = await login_context.storage_state()
         await login_context.close()
 
-        results = []
-        for name, workflow_fn in workflows:
-            print(f"\n── {name} ──")
-            # Each workflow gets its own context for video recording
-            ctx = await browser.new_context(
-                record_video_dir=str(VIDEO_DIR),
-                viewport={"width": 1280, "height": 800},
-                locale="en-US",
-                ignore_https_errors=True,
-                storage_state=storage,
-            )
+        start_time = time.time()
+
+        if workers > 1:
             try:
-                webp_path = await workflow_fn(ctx)
-                if webp_path:
-                    # Copy to assets
-                    shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
-                    meta_path = VIDEO_DIR / f"{name}_metadata.json"
-                    if meta_path.exists():
-                        import json
-                        meta = json.loads(meta_path.read_text())
-                        print(f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB")
-                        results.append((name, True, meta["annotated_frames"]))
+                from capture.parallel_runner import run_parallel
+                from capture.capture_report import generate_capture_report, print_capture_report
+            except ImportError:
+                from parallel_runner import run_parallel
+                from capture_report import generate_capture_report, print_capture_report
+
+            results = await run_parallel(workflows, browser, storage, workers=workers)
+            report = generate_capture_report(results, ASSETS_DIR)
+            print_capture_report(report)
+        else:
+            results = []
+            for name, workflow_fn in workflows:
+                print(f"\n── {name} ──")
+                # Each workflow gets its own context for video recording
+                ctx = await browser.new_context(
+                    record_video_dir=str(VIDEO_DIR),
+                    viewport={"width": 1280, "height": 800},
+                    locale="en-US",
+                    ignore_https_errors=True,
+                    storage_state=storage,
+                )
+                try:
+                    webp_path = await workflow_fn(ctx)
+                    if webp_path:
+                        # Copy to assets
+                        shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
+                        meta_path = VIDEO_DIR / f"{name}_metadata.json"
+                        if meta_path.exists():
+                            import json
+                            meta = json.loads(meta_path.read_text())
+                            print(f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB")
+                            results.append((name, True, meta["annotated_frames"]))
+                        else:
+                            print(f"  ✓  {webp_path.name}")
+                            results.append((name, True, 0))
                     else:
-                        print(f"  ✓  {webp_path.name}")
-                        results.append((name, True, 0))
-                else:
-                    print("  ✗  Failed")
+                        print("  ✗  Failed")
+                        results.append((name, False, 0))
+                except Exception as e:
+                    print(f"  ✗  Error: {e}")
                     results.append((name, False, 0))
-            except Exception as e:
-                print(f"  ✗  Error: {e}")
-                results.append((name, False, 0))
-            finally:
-                await ctx.close()
+                finally:
+                    await ctx.close()
 
-        print("\n── Results ──")
-        for name, ok, frames in results:
-            mark = "✓" if ok else "✗"
-            print(f"  {mark}  {name}: {frames} annotated frames")
+            print("\n── Results ──")
+            for name, ok, frames in results:
+                mark = "✓" if ok else "✗"
+                print(f"  {mark}  {name}: {frames} annotated frames")
 
-        total_ok = sum(1 for _, ok, _ in results if ok)
-        print(f"\n  {total_ok}/{len(results)} succeeded")
+            total_ok = sum(1 for _, ok, _ in results if ok)
+            print(f"\n  {total_ok}/{len(results)} succeeded")
+
+        elapsed = time.time() - start_time
+        print(f"\n  Total time: {elapsed:.1f}s ({workers} worker{'s' if workers != 1 else ''})")
 
         # Copy legacy GIFs too if any
         for gif in sorted(GIF_DIR.glob("*.gif")):
@@ -1088,4 +1107,8 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser(description="SOGo capture pipeline")
+    parser.add_argument("--workers", type=int, default=1,
+                        help="Number of parallel workers (default: 1 = sequential)")
+    args = parser.parse_args()
+    asyncio.run(main(workers=args.workers))
