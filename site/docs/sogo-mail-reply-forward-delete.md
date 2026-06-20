@@ -24,8 +24,6 @@ Click on the email you want to reply to.
 
 Click the **Reply** button in the email viewer toolbar.
 
-![Replying to an email in SOGo 5](./assets/mail-reply-forward-delete.webp)
-
 The reply composer opens with the recipient and subject pre-filled.
 
 ### Step 3: Write and Send
