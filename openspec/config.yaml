@@ -1,0 +1,41 @@
+# OpenSpec Configuration — DocMaker AI
+# Project: SOGo User Guide capture pipeline + Docusaurus documentation site
+
+project:
+  name: docmakerai
+  description: >
+    Automated capture pipeline for SOGo webmail documentation. Playwright-driven
+    workflow recorder produces annotated WebP animations and PNG screenshots for
+    a multi-version Docusaurus user guide (SOGo 5 + SOGo 6).
+
+# Spec-driven schema: proposal → specs → design → tasks
+schemas:
+  - id: spec-driven
+    artifacts:
+      - id: proposal
+        generates: proposal.md
+        requires: []
+      - id: specs
+        generates: specs/
+        requires: [proposal]
+      - id: design
+        generates: design.md
+        requires: [proposal]
+      - id: tasks
+        generates: tasks.md
+        requires: [specs, design]
+
+# Domains covered by this project's specs
+domains:
+  - auth-session      # Login, logout, session management
+  - calendar          # Event CRUD, recurring, sharing, subscriptions, free/busy, iCal
+  - mail              # Compose, read, reply/forward/delete, folders, filters, signatures
+  - contacts          # Add, edit/delete, import/export
+  - preferences       # Settings, password change, vacation, global search
+  - capture-pipeline  # WorkflowRecorder, StepTracker, annotation engine, asset output
+
+# Validation settings
+validation:
+  require_rfc2119_keywords: true
+  require_given_when_then: true
+  allowed_keywords: [MUST, SHALL, "MUST NOT", "SHALL NOT", SHOULD, "SHOULD NOT", MAY]
