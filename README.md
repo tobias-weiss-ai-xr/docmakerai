@@ -5,6 +5,9 @@
 This project provides end-user documentation for SOGo — the open-source groupware
 solution for email, calendars, contacts, and tasks.
 
+[![CI](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml)
+[![Deploy](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml)
+
 ---
 
 ## Contents
