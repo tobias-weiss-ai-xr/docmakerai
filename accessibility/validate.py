@@ -146,6 +146,55 @@ class AccessibilityValidator:
 
         return False
 
+    def fix_file(self, file_path: Path) -> int:
+        fixes = 0
+        content = file_path.read_text(encoding='utf-8')
+        lines = content.split('\n')
+
+        headings = []
+        for i, line in enumerate(lines):
+            match = re.match(r'^(#{1,6})\s+(.+)$', line)
+            if match:
+                level = len(match.group(1))
+                headings.append((level, i, match.group(2).strip()))
+
+        prev_level = 0
+        for level, line_idx, text in headings:
+            if level > prev_level + 1 and prev_level != 0:
+                if level not in [1, 2]:
+                    corrected_level = prev_level + 1
+                    prefix = '#' * corrected_level
+                    lines[line_idx] = f"{prefix} {text}"
+                    fixes += 1
+            prev_level = level
+
+        for table in self._extract_tables('\n'.join(lines)):
+            if not self._has_descriptive_table_headers(table['header']):
+                cells = [cell.strip() for cell in table['header'].split('|') if cell.strip()]
+                if cells:
+                    first = cells[0]
+                    rest = cells[1:]
+                    fixed_first = f"{first}: Description"
+                    new_header = '| ' + ' | '.join([fixed_first] + rest) + ' |'
+                    lines[table['line_start']] = new_header
+                    fixes += 1
+
+        if fixes > 0:
+            file_path.write_text('\n'.join(lines), encoding='utf-8')
+
+        return fixes
+
+    def fix_directory(self, directory: Path) -> int:
+        total_fixes = 0
+        for md_file in directory.glob('**/*.md'):
+            if 'accessibility-section-template' in md_file.name:
+                continue
+            fixes = self.fix_file(md_file)
+            if fixes:
+                print(f"  🔧 Fixed {fixes} issue(s) in {md_file.name}")
+                total_fixes += fixes
+        return total_fixes
+
     def validate_directory(self, directory: Path) -> List[Dict]:
         """Validate all markdown files in a directory."""
         all_issues = []
@@ -211,23 +260,28 @@ class AccessibilityValidator:
 
 
 def main():
-    """Main entry point."""
-    if len(sys.argv) > 1:
-        directory = Path(sys.argv[1])
-    else:
-        directory = Path('site/docs')
+    import argparse
+    parser = argparse.ArgumentParser(description="Validate markdown accessibility")
+    parser.add_argument("directory", nargs="?", default="site/docs")
+    parser.add_argument("--fix", action="store_true", help="Auto-fix heading hierarchy and table headers")
+    parser.add_argument("--check-only", action="store_true", help="Only check, no auto-fix (default)")
+    args = parser.parse_args()
 
+    directory = Path(args.directory)
     if not directory.exists():
         print(f"Error: Directory '{directory}' not found.")
         sys.exit(1)
 
     validator = AccessibilityValidator()
 
+    if args.fix:
+        print(f"🔧 Auto-fixing accessibility issues in {directory}...\n")
+        total_fixes = validator.fix_directory(directory)
+        print(f"\n✅ Applied {total_fixes} fixes")
+
     print(f"Checking all markdown files in {directory}...\n")
     issues = validator.validate_directory(directory)
-
     validator.print_report(issues)
-
     sys.exit(0 if not issues else 1)
 
 
