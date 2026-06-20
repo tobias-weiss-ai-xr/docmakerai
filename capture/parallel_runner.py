@@ -1,0 +1,70 @@
+import argparse
+import asyncio
+import json
+import shutil
+import time
+from pathlib import Path
+from typing import Any
+
+try:
+    from capture.video_pipeline import WorkflowRecorder
+except ImportError:
+    from video_pipeline import WorkflowRecorder
+
+ROOT = Path(__file__).resolve().parent
+VIDEO_DIR = ROOT / "videos"
+GIF_DIR = ROOT / "gifs"
+ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
+
+
+async def run_workflow(
+    name: str,
+    workflow_fn,
+    browser,
+    storage: dict,
+    semaphore: asyncio.Semaphore,
+) -> tuple[str, bool, int, str | None]:
+    async with semaphore:
+        print(f"\n── {name} ──")
+        start = time.time()
+        ctx = await browser.new_context(
+            record_video_dir=str(VIDEO_DIR),
+            viewport={"width": 1280, "height": 800},
+            locale="en-US",
+            ignore_https_errors=True,
+            storage_state=storage,
+        )
+        try:
+            webp_path = await workflow_fn(ctx)
+            if webp_path:
+                shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
+                meta_path = VIDEO_DIR / f"{name}_metadata.json"
+                if meta_path.exists():
+                    meta = json.loads(meta_path.read_text())
+                    elapsed = time.time() - start
+                    print(f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB ({elapsed:.1f}s)")
+                    return (name, True, meta["annotated_frames"], None)
+                elapsed = time.time() - start
+                print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
+                return (name, True, 0, None)
+            return (name, False, 0, "blank capture")
+        except Exception as e:
+            elapsed = time.time() - start
+            print(f"  ✗  Error ({elapsed:.1f}s): {e}")
+            return (name, False, 0, str(e))
+        finally:
+            await ctx.close()
+
+
+async def run_parallel(
+    workflows: list[tuple[str, Any]],
+    browser,
+    storage: dict,
+    workers: int = 4,
+) -> list[tuple[str, bool, int, str | None]]:
+    semaphore = asyncio.Semaphore(workers)
+    tasks = [
+        run_workflow(name, fn, browser, storage, semaphore)
+        for name, fn in workflows
+    ]
+    return await asyncio.gather(*tasks)
