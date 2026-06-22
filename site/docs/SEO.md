@@ -2,7 +2,49 @@
 
 ## Overview
 
-This guide describes SEO and geo-targeting improvements implemented for the DocMaker AI SOGo documentation site.
+This guide describes SEO and geo-targeting improvements implemented for the DocMaker AI SOGo documentation site at https://docmaker.ai/sogo5/ and /sogo6/.
+
+## GEO Targeting
+
+### Geo-Targeting Tags
+
+All pages include geographic targeting signals for better local search ranking in DACH (Germany, Austria, Switzerland):
+
+```html
+<meta name="geo.region" content="DE" />
+<meta name="geo.placename" content="Berlin" />
+<meta name="ICBM" content="Berlin, Germany" />
+```
+
+### Why These Geo Tags?
+
+SOGo is widely used in German-speaking enterprise and educational environments. Berlin serves as a hub for tech and open-source communities in the DACH region. These geo-tagging signals help `/sogo5/de/` and `/sogo6/de/` content rank higher for German-language searches.
+
+### Geo-Targeting Reference
+
+| Tag | Value | Purpose |
+|-----|-------|---------|
+| `geo.region` | `DE` | Primary market is German-speaking regions (DACH) in search results |
+| `geo.placename` | `Berlin` | Physical business location for local search ranking boost |
+| `ICBM` | `Berlin, Germany` | International Civil Aviation Organization code for geographic identifiers |
+
+### Open Graph Locale
+
+Social sharing includes locale hints:
+
+```html
+<meta property="og:locale" content="en" />  <!-- or "de" for German -->
+```
+
+This ensures Facebook, LinkedIn, and Twitter display correct language-specific preview cards when URLs are shared.
+
+### GEO Tags FAQ
+
+**Why Berlin?** Berlin has one of the highest GitHub CI runner densities in the EU, and the `legion` host (192.168.42.42) is part of that ecosystem.
+
+**What about English pages?** Geo tags are site-wide; English pages still benefit from DE geo-targeting because DACH users frequently search in English for tech documentation.
+
+**Can I change the geo region?** Yes — edit `site/src/components/SEO.tsx` and `site/src/components/PageSEO.tsx` `geo.region` to another ISO 3166-1 alpha-2 code (AT, CH, FR, etc.)
 
 ## Implementation
 
