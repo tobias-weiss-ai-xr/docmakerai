@@ -55,7 +55,7 @@ const config: Config = {
             },
           },
           // Enable MDX components for page-level SEO
-          remarkPlugins: [require('./plugins/remark-plugin-content-docs').createRemarkPlugin({ PageSEO: require('./src/components/PageSEO').default })],
+          remarkPlugins: [require('./plugins/remark-plugin-content-docs')],
         },
         blog: false,
         theme: {

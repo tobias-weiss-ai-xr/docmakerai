@@ -50,14 +50,16 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip3 install ruff pytest pytest-cov --break-system-packages || true
-          pip3 install -r capture/requirements.txt --break-system-packages || true
+          pip3 install ruff pytest pytest-cov --break-system-packages --quiet
+          pip3 install -r capture/requirements.txt --break-system-packages --quiet || true
+          python3 -m ruff --version
+          python3 -m pytest --version
 
       - name: Lint with ruff
-        run: ruff check capture/
+        run: python3 -m ruff check capture/
 
       - name: Format check with ruff
-        run: ruff format --check capture/
+        run: python3 -m ruff format --check capture/
 
       - name: Test with pytest + coverage
         run: |
@@ -80,7 +82,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Python deps for accessibility
-        run: pip3 install -r capture/requirements.txt --break-system-packages || true
+        run: pip3 install -r capture/requirements.txt --break-system-packages --quiet || true
 
       - name: Auto-fix heading hierarchy and table headers
         run: python3 accessibility/validate.py site/ --fix || true
