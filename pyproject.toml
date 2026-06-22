@@ -20,9 +20,9 @@ testpaths = ["capture/tests"]
 pythonpath = [".."]
 
 [tool.coverage.run]
-source = ["capture"]
-omit = ["capture/tests/*", "capture/__init__.py"]
+source = ["capture", "accessibility"]
+omit = ["capture/tests/*", "capture/__init__.py", "capture/run_captures.py"]
 
 [tool.coverage.report]
-fail_under = 55
+fail_under = 95
 show_missing = true

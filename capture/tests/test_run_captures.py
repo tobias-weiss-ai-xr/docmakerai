@@ -864,9 +864,9 @@ class TestRecordCalendarCreateEvent:
         rec.finish.return_value = Path("/tmp/gifs/calendar-create-event.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200, "width": 40, "height": 30})
         hour10 = AsyncMock()
-        hour10.bounding_box = AsyncMock(return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        hour10.bounding_box = AsyncMock(return_value={"x": 120, "y": 210, "width": 20, "height": 20})
         hour10_loc = MagicMock()
         hour10_loc.first = hour10
         monday.locator.return_value = hour10_loc
