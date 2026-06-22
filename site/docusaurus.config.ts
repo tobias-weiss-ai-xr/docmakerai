@@ -54,8 +54,7 @@ const config: Config = {
               path: 'sogo6',
             },
           },
-          // Enable MDX components for page-level SEO
-          remarkPlugins: [require('./plugins/remark-plugin-content-docs')],
+          remarkPlugins: [],
         },
         blog: false,
         theme: {
