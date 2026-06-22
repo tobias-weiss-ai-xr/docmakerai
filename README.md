@@ -157,6 +157,19 @@ The site is automatically deployed to [GitHub Pages](https://tobias-weiss-ai-xr.
 2. **Deploy** — Uploads `site/build/` to `gh-pages` branch
 3. **Live** — Updates at https://tobias-weiss-ai-xr.github.io/docmakerai/
 
+## Search Engine Optimization (SEO)
+
+The documentation site is optimized for search engines with:
+- Open Graph tags for social sharing (Facebook, LinkedIn, Twitter)
+- Twitter Card (summary_large_image) for rich previews
+- Canonical URLs to prevent duplicate content across versions
+- Schema.org structured data: SoftwareApplication, HowTo, TechArticle schemas
+- Geo-targeting: DACH (German) and Global (English) audiences
+
+See [SEO.md](site/docs/SEO.md) for complete implementation details.
+
+---
+
 ## Development Roadmap
 
 The project follows a 10-sprint optimization & automation plan (see [ROADMAP.md](site/docs/ROADMAP.md)):
