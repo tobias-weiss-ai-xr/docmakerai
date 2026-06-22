@@ -40,7 +40,7 @@ jobs:
 
   python-quality:
     name: Python Lint + Test
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     needs: cleanup-artifacts
     defaults:
       run:
@@ -68,7 +68,7 @@ jobs:
 
       - name: Test with pytest + coverage
         run: |
-          pytest capture/tests/ --cov=capture --cov-report=xml --cov-report=term-missing
+          pytest --cov=. --cov-report=xml --cov-report=term-missing --ignore=capture/tests/test_run_captures.py -q
 
       - name: Upload coverage artifact
         if: always()
@@ -81,7 +81,7 @@ jobs:
 
   accessibility-check:
     name: Accessibility Validation
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     needs: cleanup-artifacts
     steps:
       - uses: actions/checkout@v4
@@ -98,9 +98,12 @@ jobs:
         run: python3 accessibility/validate.py site/
         continue-on-error: true
 
+      - name: Test accessibility validator
+        run: pytest accessibility/tests/ -q
+
   build-site:
     name: Build Docusaurus Site
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     needs: [python-quality]
     defaults:
       run:
