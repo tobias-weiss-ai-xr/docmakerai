@@ -4,6 +4,14 @@ description: "Step-by-step guide to creating events in the SOGo 5 calendar"
 sidebar_label: "Create a Calendar Event"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Create Calendar Events"
+  description="Learn to create, modify, and manage calendar events in SOGo 5"
+  keywords={["calendar", "events", "meetings", "appointments", "scheduling"]}
+/>
+
 # Create a Calendar Event
 
 This tutorial walks you through creating a new event in SOGo 5's calendar,

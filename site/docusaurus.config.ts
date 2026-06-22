@@ -54,6 +54,8 @@ const config: Config = {
               path: 'sogo6',
             },
           },
+          // Enable MDX components for page-level SEO
+          remarkPlugins: [require('@docusaurus/remark-plugin-content-docs').createRemarkPlugin({ PageSEO: require('../src/components/PageSEO').default })],
         },
         blog: false,
         theme: {
