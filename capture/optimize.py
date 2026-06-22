@@ -28,9 +28,8 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TARGETS = [
-    ROOT / "site" / "docs" / "assets",
-    ROOT / "site" / "versioned_docs" / "version-5" / "assets",
-    ROOT / "site" / "versioned_docs" / "version-6" / "assets",
+    ROOT / "site" / "versioned_docs" / "sogo5" / "assets",
+    ROOT / "site" / "versioned_docs" / "sogo6" / "assets",
 ]
 
 # Quality settings
