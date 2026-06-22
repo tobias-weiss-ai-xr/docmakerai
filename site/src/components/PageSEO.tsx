@@ -51,6 +51,9 @@ export default function PageSEO({
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={[...keywords, "SOGo", "webmail", "groupware", "email tutorial"].join(', ')} />
       <meta name="author" content="DocMaker AI" />
+      <meta name="geo.region" content="DE" />
+      <meta name="geo.placename" content="Berlin" />
+      <meta name="ICBM" content="Berlin, Germany" />
 
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 
