@@ -2,14 +2,28 @@
 """
 DocMaker AI — Local GitHub Runner Setup
 
-Registers this machine as a self-hosted GitHub runner with labels: linux, legions
+Registers this machine as a self-hosted GitHub runner.
 
 Usage:
-    python3 setup_github_runner.py
-"""
+    GITHUB_TOKEN=ghp_xxx python3 setup_github_runner.py
 
-import zipfile
-import requests
+Environment:
+    GITHUB_TOKEN: GitHub Personal Access Token with 'repo' scope (required)
+    GITHUB_REPOSITORY: Target repository (default: tobias-weiss-ai-xr/docmakerai)
+
+Runner Labels:
+    linux: Platform identifier (required by workflows: runs-on: [self-hosted, linux])
+    legions: Custom label for local/legions server identification
+
+Notes:
+    - On Legion (192.168.42.42), runner registered as: legions-docmaker-runner
+    - Runner auto-starts via systemd user service (after manual svc.sh install)
+    - Workdir: ~/actions-runner
+    - Requires: gh CLI with authenticated gh auth login
+
+See: https://github.com/actions/runner/releases
+"""
+import os
 import subprocess
 import sys
 import platform
