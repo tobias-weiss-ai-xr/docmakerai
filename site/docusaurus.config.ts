@@ -47,11 +47,11 @@ const config: Config = {
           versions: {
             '5': {
               label: 'SOGo 5',
-              path: '5',
+              path: 'sogo5',
             },
             '6': {
               label: 'SOGo 6',
-              path: '6',
+              path: 'sogo6',
             },
           },
         },
@@ -73,7 +73,7 @@ const config: Config = {
         logo: {
           alt: 'SOGo Logo',
           src: 'img/logo.svg',
-          href: '/5/',  // Point to SOGo 5 as default homepage
+          href: '/sogo5/',  // Point to SOGo 5 as default homepage
         },
         items: [
           {

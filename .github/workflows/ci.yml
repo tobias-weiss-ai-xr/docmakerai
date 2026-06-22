@@ -40,7 +40,7 @@ jobs:
 
   python-quality:
     name: Python Lint + Test
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: cleanup-artifacts
     defaults:
       run:
@@ -81,7 +81,7 @@ jobs:
 
   accessibility-check:
     name: Accessibility Validation
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: cleanup-artifacts
     steps:
       - uses: actions/checkout@v4
@@ -103,7 +103,7 @@ jobs:
 
   build-site:
     name: Build Docusaurus Site
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     needs: [python-quality]
     defaults:
       run:
