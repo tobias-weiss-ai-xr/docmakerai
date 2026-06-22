@@ -52,8 +52,8 @@ jobs:
         run: |
           pip3 install ruff pytest pytest-cov --break-system-packages --quiet
           pip3 install -r capture/requirements.txt --break-system-packages --quiet || true
-          python3 -m ruff --version
-          python3 -m pytest --version
+          python3 -m ruff --version || true
+          python3 -m pytest --version || true
 
       - name: Lint with ruff
         run: python3 -m ruff check capture/
