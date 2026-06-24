@@ -1,8 +1,12 @@
 ---
-title: "Mail — Reply, Forward & Delete"
-description: "Manage emails by replying, forwarding, or deleting them"
-sidebar_label: "Reply, Forward & Delete"
+title: "Reply, Forward, and Delete Emails"
+description: "Learn how to manage your inbox with reply, forward, and delete actions"
+sidebar_label: "Reply, Forward, Delete"
 ---
+
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Reply, Forward, and Delete Emails" description="Learn how to manage your inbox in SOGo 5. Step-by-step tutorial covers replying, forwarding, and deleting emails with keyboard shortcuts." keywords="SOGo 5, email, reply, forward, delete, inbox management, keyboard shortcuts" />
 
 # Mail — Reply, Forward & Delete
 

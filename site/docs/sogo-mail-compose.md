@@ -4,6 +4,10 @@ description: "Learn how to write, format, and send emails in SOGo 5"
 sidebar_label: "Compose and Send an Email"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Compose and Send an Email" description="Learn how to write, format, and send emails in SOGo 5 webmail. Step-by-step tutorial covers email composition, attachments, and sending." keywords="SOGo 5, email, compose, send, webmail, attachments" />
+
 # Compose and Send an Email
 
 This tutorial covers the basics of composing and sending emails

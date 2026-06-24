@@ -104,7 +104,7 @@ sidebar_label: "Roadmap"
 - [ ] Recapture critical workflows with task-first approach (calendar, mail, contacts)
 - [ ] Convert task-first WebP captures to MP4
 - [ ] Add VideoFallback component and WebVTT captions
-- [ ] Add PageSEO to key tutorial pages (currently only calendar-create-event)
+- [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
 - [ ] Full German translation of `/sogo5/de/`
 
 ### Sprint 11: SOGo Change Detection
