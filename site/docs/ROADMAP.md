@@ -6,251 +6,130 @@ sidebar_label: "Roadmap"
 
 # Roadmap — SOGo User Guide (5 & 6)
 
-**Status:** ✅ Published — 27 SOGo 5 docs (14 with valid captures, 8 with blank captures replaced, 5 conceptual), 22 WebP animations (14 valid, 8 blank), 14 PNG screenshots (11 valid, 3 blank), Docusaurus versioning configured for SOGo 5 + SOGo 6
+**Status:** ✅ Published — 27 SOGo 5 docs, 36 visual assets (WebP + PNG), Docusaurus versioning for SOGo 5 + SOGo 6, CI/CD with self-hosted runners, 99.34% test coverage, SEO/GEO targeting, task-first capture flow with HTML5 video
 
 **Demo Sites:**
 - SOGo 5: https://demo.sogo.nu/
 - SOGo 6: https://demov6.sogo.nu/
 
----
-
-## Overview
-
-The project has delivered a full SOGo 5 User Guide with 27 documentation pages, 36 visual assets (WebP + PNG), and Docusaurus multi-version support for SOGo 5 + SOGo 6.
-
-This roadmap focuses on **optimization & automation** — reducing asset sizes, hardening the capture pipeline, adding CI/CD, and introducing spec-driven development.
+**Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~30+ min on current hardware — optimization needed.
 
 ---
 
-## Sprint 1: Spec Foundation (OpenSpec)
+## Completed ✅
 
-**Goal:** Establish a spec-driven development workflow for the capture pipeline using OpenSpec.
+### Sprint 1: Spec Foundation (OpenSpec)
+- [x] Initialize `openspec/specs/` directory structure
+- [x] Write specs for core capture pipeline domains: auth-login, calendar, mail, contacts, preferences
+- [x] Each spec includes: Purpose, Requirements (RFC 2119), Scenarios (Given/When/Then)
+- [x] Configure `openspec/config.yaml` with project settings
 
-### Tasks
+### Sprint 2: CI/CD Pipeline
+- [x] Create `.github/workflows/ci.yml` — run on push/PR to `main`
+- [x] **Lint:** ruff on `capture/` Python code
+- [x] **Test:** pytest with 99.34% coverage on `capture/tests/` + `accessibility/tests/`
+- [x] **Build:** Docusaurus build for both `en` + `de` locales
+- [x] **Deploy:** GitHub Pages deployment on `main` push
+- [x] Self-hosted runner on legions (192.168.42.42) with labels `linux, legions`
+- [x] Runner service: `legions-docmaker-runner`
 
-- Initialize `openspec/specs/` directory structure
-- Write specs for core capture pipeline domains:
-  - `auth-login` — authentication flow, session handling, credential management
-  - `calendar` — event creation, recurring events, sharing, subscriptions, free/busy
-  - `mail` — compose, read, reply/forward/delete, folder management, signatures, filters
-  - `contacts` — add, edit/delete, import/export
-  - `preferences` — settings, password change, vacation, global search
-- Each spec includes: Purpose, Requirements (RFC 2119: SHALL/MUST/SHOULD), Scenarios (Given/When/Then)
-- Configure `openspec/config.yaml` with project settings
-- Run `openspec validate --all` to verify spec correctness
+### Sprint 3: Asset Optimization
+- [x] Create `capture/optimize.py` — batch image optimizer
+- [x] WebP optimization: color palette reduction, frame skip, metadata stripping
+- [x] PNG optimization: pngquant, metadata stripping
+- [x] 36 tests for optimize.py
+- [x] 54% size reduction achieved (2.1MB → 976KB per version)
 
-### Outcome
+### Sprint 4: Capture Reliability
+- [x] Add validation step: blank detection (>90% white)
+- [x] Structured logging to capture failures
+- [x] Create `capture/capture_report.py` — artifact quality report
+- [x] Re-capture logic with retry
 
-- Living specification of what the capture pipeline does
-- Foundation for using delta specs in subsequent sprints
-- Allowed tools: `openspec` CLI, editor
+### Sprint 5: Parallel Execution
+- [x] Implement parallel workflow execution
+- [x] Configurable workers via semaphore
+- [x] Sequential ordering for dependencies (login → workflows)
+- [x] 12 tests for parallel_runner.py
 
----
+### Sprint 6: Accessibility Gates
+- [x] Integrate `accessibility/validate.py` as CI step
+- [x] Add auto-fix mode for fixable issues (heading hierarchy, table headers)
+- [x] 30 tests for accessibility/validate.py
+- [x] WCAG 2.1 Level A checklist generation
 
-## Sprint 2: CI/CD Pipeline
+### Sprint 7: Video/MP4 Pipeline
+- [x] Create `scripts/convert_to_mp4.py` — WebP → MP4 (H.264) + WebM (VP9)
+- [x] MP4: libx264, CRF 23, yuv420p, fast start
+- [x] WebM: libvpx-vp9, CRF 30
+- [x] Thumbnail/poster generation
 
-**Goal:** Set up GitHub Actions for automated build, lint, test, and deploy.
+### Sprint 8: User Journeys & SEO
+- [x] Task-first capture flow with 4-beat narrative (Context, Challenge, Solution, Result)
+- [x] Human-like typing (120ms delay on form fields)
+- [x] SEO components: Open Graph, Twitter Cards, Schema.org (SoftwareApplication, HowTo, TechArticle)
+- [x] GEO targeting: geo.region="DE", geo.placename="Berlin", ICBM
+- [x] Path restructuring: sogo5/sogo6 instead of /5//6/
+- [x] Sidebar reorganized into 7 categories with emoji icons
 
-### Tasks
-
-- Create `.github/workflows/ci.yml` — run on push/PR to `main`
-- **Lint:** ruff on `capture/` Python code
-- **Type check:** mypy (if types exist) or pyright on Python files
-- **Test:** pytest with coverage on `capture/tests/`
-- **Build:** Docusaurus build for both `en` + `de` locales
-- **Deploy:** GitHub Pages deployment on `main` push
-- Add status badges to README
-
-### Outcome
-
-- Every push triggers automated checks
-- Preview builds on PRs
-- Deployed docs on merge
-
----
-
-## Sprint 3: Asset Optimization
-
-**Goal:** Reduce WebP and PNG asset sizes to under 150KB average.
-
-### Tasks
-
-- Create `capture/optimize.py` — batch image optimizer
-- WebP optimization strategies:
-  - Reduce color palette to 128 colors (from 256)
-  - Reduce frame rate: every 2nd frame for similar consecutive frames
-  - Crop to relevant viewport region
-  - Strip metadata (EXIF, ICC profiles)
-- PNG optimization strategies:
-  - pngquant for 256-color indexed PNGs
-  - Strip metadata
-- Run optimizer on all 36 assets in `site/docs/assets/`
-- Report size reduction per asset
-- Verify visual quality is acceptable
-
-### Outcome
-
-- ≤150KB average asset size
-- ≤300KB max per asset
-- Lossy optimization measured vs acceptable quality threshold
+### Infrastructure
+- [x] Self-hosted runner on legions (192.168.42.42)
+- [x] Runner name: legions-docmaker-runner
+- [x] Labels: linux, legions
+- [x] SSH config updated
+- [x] Test coverage: 99.34% (192/192 tests passing)
+- [x] coverage.xml artifact upload in CI
 
 ---
 
-## Sprint 4: Capture Reliability
+## In Progress 🔵
 
-**Goal:** Eliminate blank captures and add automatic retry logic.
-
-### Tasks
-
-- Investigate root cause of 8 blank WebP captures (password-change, mail-read, mail-reply-forward-delete, mail-folder-management, mail-signatures, preferences, vacation, mail-filters)
-- Add `capture_retry(max_attempts=3)` decorator to `capture/run_captures.py`
-- Add validation step: check image is not >90% white after capture → auto-retry
-- Add structured logging to capture failures
-- Create `capture/capture_report.py` — generates artifact quality report (file sizes, blank detection, frame counts)
-- Re-capture all 8 blank WebPs with retry logic
-- Write spec delta under `openspec/changes/capture-reliability/`
-
-### Outcome
-
-- Zero blank captures in pipeline
-- Automatic retry on failure
-- Quality report for every capture run
+### Sprint 2b: CI Reliability
+- [ ] Docusaurus build time optimization (currently ~30+ min on legions)
+- [ ] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
+- [ ] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
 
 ---
 
-## Sprint 5: Parallel Execution
+## Planned 🟡
 
-**Goal:** Run independent capture workflows in parallel to reduce total capture time.
+### Sprint 9: Performance Benchmarks
+- [ ] Add Lighthouse CI to `.github/workflows/ci.yml`
+- [ ] Add bundle size tracking
+- [ ] Add capture timing metrics to `capture_report.py`
+- [ ] Set up performance budgets (LCP <2.5s, total bundle <500KB gzip)
+- [ ] Create performance dashboard page at `site/docs/performance.md`
 
-### Tasks
+### Sprint 10: Content Expansion
+- [ ] Recapture critical workflows with task-first approach (calendar, mail, contacts)
+- [ ] Convert task-first WebP captures to MP4
+- [ ] Add VideoFallback component and WebVTT captions
+- [ ] Add PageSEO to key tutorial pages (currently only calendar-create-event)
+- [ ] Full German translation of `/sogo5/de/`
 
-- Analyze workflow dependency graph in `capture/run_captures.py` — identify independent workflows (calendar, mail, contacts are independent; login is a prerequisite)
-- Implement `concurrent.futures.ThreadPoolExecutor` or `asyncio` for parallel workflow execution
-- Add configurable `--workers=N` flag to `run_captures.py`
-- Ensure sequential ordering where dependencies exist (login → all workflows)
-- Measure and report speedup factor
-- Write spec update under `openspec/changes/parallel-capture/`
+### Sprint 11: SOGo Change Detection
+- [ ] Create `capture/detect_changes.py` — diff SOGo demo pages
+- [ ] Screenshot hash comparison with ImageHash
+- [ ] DOM structure comparison
+- [ ] Auto-trigger re-capture on detected changes
 
-### Outcome
-
-- Capture time reduced by 3-5x (workflows → parallel groups)
-- Deterministic ordering maintained for dependent steps
-
----
-
-## Sprint 6: Accessibility Gates
-
-**Goal:** Move `accessibility/validate.py` into CI as a blocking gate, auto-fix common issues.
-
-### Tasks
-
-- Integrate `accessibility/validate.py` as a CI step in `.github/workflows/ci.yml`
-- Add auto-fix mode for fixable issues (heading hierarchy, table headers)
-- Add WCAG 2.1 Level A checklist generation to each doc's frontmatter
-- Add accessibility section template to docs that are missing it (keyboard navigation, screen reader workflow, high contrast)
-- Fix all 98 currently detected violations across SOGo tutorial pages
-- Write OpenSpec task delta under `openspec/changes/accessibility-gates/`
-
-### Outcome
-
-- Zero accessibility violations in docs
-- CI blocks PRs with new violations
-- Every doc has keyboard + screen reader section
+### Sprint 12: Spec-to-Docs Pipeline
+- [ ] Auto-generate documentation pages from OpenSpec specs
+- [ ] Tutorial structure from spec scenarios
+- [ ] Asset embedding from capture metadata
+- [ ] Docusaurus sidebar auto-generation
 
 ---
 
-## Sprint 7: Video/MP4 Pipeline
+## Known Issues
 
-**Goal:** Add MP4 fallback for large animations with `<video>` tag support.
-
-### Tasks
-
-- Create `capture/webp_to_mp4.py` — convert WebP sequences to MP4 with ffmpeg
-- Determine threshold: assets >300KB after optimization → generate MP4 fallback
-- Create Docusaurus component: `<VideoFallback webp={...} mp4={...} />` that uses `<picture>` or `<video>` with WebP source + MP4 fallback
-- Implement composable layout: `<video>` with play/pause controls for large animations, inline `<img>` for small ones
-- Update doc templates to use the new component
-- Measure size comparison (WebP vs MP4 per asset)
-- Write spec delta under `openspec/changes/video-pipeline/`
-
-### Outcome
-
-- Large animations use efficient MP4 with play controls
-- Small animations remain inline WebP
-- ~50% size reduction for large assets
-
----
-
-## Sprint 8: SOGo Change Detection
-
-**Goal:** Automatically detect SOGo demo changes and trigger re-capture.
-
-### Tasks
-
-- Create `capture/detect_changes.py` — diff SOGo demo pages against cached baseline
-- Baseline strategies:
-  - Screenshot hash comparison (perceptual hashing with `ImageHash`)
-  - DOM structure comparison (count elements, classes, text content)
-  - Timestamp / version header check from SOGo response
-- On detected change → trigger re-capture for affected workflow(s)
-- Add `openspec/changes/sogo-change-detection/` with updated auth-login spec
-- Generate report of what changed and what was re-captured
-
-### Outcome
-
-- Automated notification when SOGo UI changes
-- Targeted re-capture of affected workflows only
-- No stale documentation
-
----
-
-## Sprint 9: Performance Benchmarks
-
-**Goal:** Establish performance baselines and monitoring.
-
-### Tasks
-
-- Add Lighthouse CI to `.github/workflows/ci.yml` — measure:
-  - Performance score
-  - Accessibility score
-  - Best practices score
-  - SEO score
-  - Largest Contentful Paint (LCP)
-  - Cumulative Layout Shift (CLS)
-- Add bundle size tracking (Docusaurus JS/CSS output)
-- Add capture timing metrics to `capture_report.py` — per-workflow timing, retry counts
-- Set up performance budgets (LCP <2.5s, total bundle <500KB gzip)
-- Create performance dashboard page at `site/docs/performance.md`
-- Write spec delta under `openspec/changes/performance-monitoring/`
-
-### Outcome
-
-- Performance regression detected on PR
-- Historical performance data tracked
-- Capture pipeline timing visible
-
----
-
-## Sprint 10: Spec-to-Docs Pipeline
-
-**Goal:** Auto-generate documentation pages from OpenSpec specs and capture metadata.
-
-### Tasks
-
-- Create `capture/spec_to_docs.py` — reads OpenSpec specs and generates:
-  - Tutorial structure from spec scenarios (Given/When/Then → doc sections)
-  - Asset embedding from capture metadata
-  - Code blocks from spec requirements
-- Integrate with Docusaurus `sidebars.js` generation
-- Add `--from-spec` flag to `run_captures.py` that auto-generates docs alongside captures
-- Document the pipeline in CONTRIBUTING.md
-- Write spec delta under `openspec/changes/spec-to-docs/`
-
-### Outcome
-
-- New features get documentation automatically when specs + captures exist
-- Reduced manual doc writing effort
-- Living docs that stay in sync with spec changes
+| Issue | Status | Notes |
+|-------|--------|-------|
+| Docusaurus build takes 30+ min on legions | 🔵 | Node 24 vs Node 20, npm cache cold |
+| Python PEP 668 blocks pip | ✅ Fixed | `--break-system-packages` added |
+| `@docusaurus/remark-plugin-content-docs` infinite loop | ✅ Fixed | Plugin removed, using manual PageSEO imports |
+| GitHub API intermittent connectivity | ⚠️ | `api.github.com` connection issues |
+| Deploy workflow hangs on German locale build | 🔵 | Suspected Node.js version mismatch |
 
 ---
 
@@ -262,25 +141,24 @@ This roadmap focuses on **optimization & automation** — reducing asset sizes, 
 | 🔵 | In Progress |
 | 🟡 | Planned |
 | ❌ | Blocked |
+| ⚠️ | Degraded |
 
 ---
 
-## Completed Work ✅
-
-- ✅ 27 documentation pages created
-- ✅ 22 WebP animations generated (14 valid captures, 8 blank — replaced with PNGs or removed)
-- ✅ 14 PNG screenshots integrated (11 valid, 3 blank)
-- ✅ 20 orphan assets deleted (GIFs, PNGs, images)
-- ✅ 8 orphan blank WebP assets deleted
-- ✅ Sidebars reorganized into 7 English categories: Getting Started, Basics, Calendar, Mail, Contacts, Tools, Advanced
-- ✅ Frame validation added to detect blank screenshots
-- ✅ Docusaurus versioning configured for SOGo 5 + SOGo 6 with version dropdown
-- ✅ Project deployed to GitHub Pages (`/docmakerai/`) with `/5/` and `/6/` routes
-- ✅ Build verified for both English and German locales
-- ✅ 15 gap closure rounds completed (all known SOGo 5 gaps addressed)
-- ✅ 8 blank captures identified and replaced with PNG screenshots or text descriptions
+**Last Updated:** 2026-06-22
+**Next Sprint:** Sprint 2b — CI Reliability
 
 ---
 
-**Last Updated:** 2025-06-20
-**Next Sprint:** Sprint 1 — Spec Foundation (OpenSpec)
+## Appendix: Key Metrics
+
+| Metric | Value |
+|--------|-------|
+| Test coverage | 99.34% (192/192 passing) |
+| CI runner | Self-hosted on legions (192.168.42.42) |
+| Runner labels | linux, legions |
+| Runner version | 2.335.1 |
+| SEO geo tags | geo.region=DE, geo.placename=Berlin, ICBM |
+| Asset size reduction | 54% (2.1MB → 976KB) |
+| Documentation pages | 27 SOGo 5 docs |
+| Path structure | /sogo5/, /sogo6/ |
