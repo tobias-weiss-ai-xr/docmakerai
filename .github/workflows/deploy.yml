@@ -24,10 +24,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        id: node-cache
+        with:
+          path: site/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('site/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci || npm install
 
-      - name: Build Docusaurus
+      - name: Build Docusaurus (all locales)
         run: npm run build
 
       - name: Upload Pages artifact
