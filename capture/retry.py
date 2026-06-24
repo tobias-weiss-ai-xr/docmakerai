@@ -1,6 +1,6 @@
 import functools
-import time
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 
 def capture_retry(max_attempts: int = 3, delay_s: float = 2.0):

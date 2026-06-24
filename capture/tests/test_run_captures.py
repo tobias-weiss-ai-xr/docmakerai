@@ -864,9 +864,11 @@ class TestRecordCalendarCreateEvent:
         rec.finish.return_value = Path("/tmp/gifs/calendar-create-event.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200, "width": 40, "height": 30})
+        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
+        "width": 40, "height": 30})
         hour10 = AsyncMock()
-        hour10.bounding_box = AsyncMock(return_value={"x": 120, "y": 210, "width": 20, "height": 20})
+        hour10.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
+        "width": 20, "height": 20})
         hour10_loc = MagicMock()
         hour10_loc.first = hour10
         monday.locator.return_value = hour10_loc
@@ -944,15 +946,17 @@ class TestRecordCalendarRecurring:
         rec.finish.return_value = Path("/tmp/gifs/calendar-recurring.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
+        "width": 40, "height": 30})
         hour11 = AsyncMock()
-        hour11.bounding_box = AsyncMock(return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        hour11.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
+        "width": 20, "height": 20})
         hour11_loc = MagicMock()
         hour11_loc.first = hour11
         monday.locator.return_value = hour11_loc
         rs = AsyncMock()
         rs.is_visible = AsyncMock(return_value=True)
-        rs.bounding_box = AsyncMock(return_value={"x": 50, "y": 100, "width": 60, "height": 25}
+        rs.bounding_box = AsyncMock(return_value={"x": 50, "y": 100, "width": 60, "height": 25})
         wk = AsyncMock()
         wk.is_visible = AsyncMock(return_value=True)
         btn = AsyncMock()
@@ -1207,9 +1211,11 @@ class TestRecordFreebusy:
         rec.finish.return_value = Path("/tmp/gifs/freebusy.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
+        "width": 40, "height": 30})
         hour14 = AsyncMock()
-        hour14.bounding_box = AsyncMock(return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        hour14.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
+        "width": 20, "height": 20})
         hour14_loc = MagicMock()
         hour14_loc.first = hour14
         monday.locator.return_value = hour14_loc
@@ -1420,12 +1426,14 @@ class TestRecordMailReplyForwardDelete:
         msg.is_visible = AsyncMock(return_value=True)
         reply_btn = AsyncMock()
         reply_btn.is_visible = AsyncMock(return_value=True)
-        reply_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 150, "width": 60, "height": 25}
+        reply_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 150,
+        "width": 60, "height": 25})
         close_btn = AsyncMock()
         close_btn.is_visible = AsyncMock(return_value=True)
         delete_btn = AsyncMock()
         delete_btn.is_visible = AsyncMock(return_value=True)
-        delete_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 300, "width": 60, "height": 25}
+        delete_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 300,
+        "width": 60, "height": 25})
 
         def locator_side_effect(selector):
             loc = MagicMock()
