@@ -1,0 +1,75 @@
+name: Preview Deploy
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: Build & Preview
+    runs-on: [self-hosted, linux]
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        id: node-cache
+        with:
+          path: site/node_modules
+          key: ${{ runner.os }}-node-preview-${{ hashFiles('site/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-preview-
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline || npm install
+
+      - name: Build (English only for preview speed)
+        run: npm run build -- --locale en
+
+      - name: Deploy preview to Netlify
+        uses: jsmrcaga/action-netlify-cli@v2
+        with:
+          args: deploy --dir=site/build --prod=false --message="PR #${{ github.event.number }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const deploymentUrl = process.env.NETLIFY_URL;
+            const comment = `### 🔍 Preview Deployment Ready
+
+            This PR has been deployed! You can preview the changes at:
+            - **Preview URL:** ${deploymentUrl}
+            - **Branch:** \`${{ github.head_ref }}\`
+            - **Commit:** \`${{ github.sha.slice(0, 7) }}\`
+
+            The preview will be automatically updated when you push new commits to this PR.
+
+            *Deployment finished at: ${new Date().toISOString()}*
+            `;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+        env:
+          NETLIFY_URL: ${{ steps.netlify.outputs.url }}
