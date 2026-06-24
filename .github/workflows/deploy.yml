@@ -103,7 +103,22 @@ jobs:
               target_url: 'https://docs.docmakerai.com',
               description: 'Deployed to GitHub Pages',
               context: 'deployment/production'
-            })
+            });
+
+      - name: Health check production site
+        if: success()
+        continue-on-error: true
+        run: |
+          echo "Checking production site availability..."
+          for i in {1..12}; do
+            if curl -sf https://docs.docmakerai.com > /dev/null 2>&1; then
+              echo "✓ Production site is accessible"
+              break
+            else
+              echo "Attempt $i/12: Site not yet accessible, waiting..."
+              sleep 5
+            fi
+          done
 
       - name: Notify deployment failure
         if: failure()
