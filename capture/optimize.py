@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import argparse
 import shutil
-import sys
 import tempfile
 from pathlib import Path
 from typing import NamedTuple
@@ -171,7 +170,10 @@ def optimize_directory(directory: Path, dry_run: bool = False,
                 new_kb = get_size_kb(tmp_path)
                 reduction = ((original_kb - new_kb) / original_kb) * 100
                 shutil.copy2(tmp_path, webp)
-                print(f"   ✅ {webp.name}: {original_kb:.0f}KB → {new_kb:.0f}KB ({reduction:.0f}% smaller)")
+                print(
+                    f"   ✅ {webp.name}: {original_kb:.0f}KB → {new_kb:.0f}KB"
+                    f" ({reduction:.0f}% smaller)"
+                )
                 results.append(OptimizationResult(webp, original_kb, new_kb, reduction, "webp"))
             else:
                 print(f"   ⏭️  {webp.name}: {original_kb:.0f}KB (no improvement)")
@@ -195,7 +197,10 @@ def optimize_directory(directory: Path, dry_run: bool = False,
                 new_kb = get_size_kb(tmp_path)
                 reduction = ((original_kb - new_kb) / original_kb) * 100
                 shutil.copy2(tmp_path, png)
-                print(f"   ✅ {png.name}: {original_kb:.0f}KB → {new_kb:.0f}KB ({reduction:.0f}% smaller)")
+                print(
+                    f"   ✅ {png.name}: {original_kb:.0f}KB → {new_kb:.0f}KB"
+                    f" ({reduction:.0f}% smaller)"
+                )
                 results.append(OptimizationResult(png, original_kb, new_kb, reduction, "png"))
             else:
                 print(f"   ⏭️  {png.name}: {original_kb:.0f}KB (no improvement)")

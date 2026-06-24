@@ -51,7 +51,11 @@ def generate_capture_report(
 
 def print_capture_report(report: dict[str, Any]) -> None:
     print(f"\n{'=' * 60}")
-    print(f"CAPTURE REPORT: {report['succeeded']}/{report['total_workflows']} succeeded ({report['success_rate']}%)")
+    rate = report["success_rate"]
+    print(
+        f"CAPTURE REPORT: {report['succeeded']}/{report['total_workflows']}"
+        f" succeeded ({rate}%)"
+    )
 
     for w in report["workflows"]:
         mark = "✓" if w["status"] == "ok" else "✗"
@@ -61,7 +65,7 @@ def print_capture_report(report: dict[str, Any]) -> None:
         print(f"  {mark} {w['name']}{frames_info}{size_info}{error_info}")
 
     if "warnings" in report and report["warnings"].get("large_files"):
-        print(f"\n⚠️  Large files (>200KB):")
+        print("\n⚠️  Large files (>200KB):")
         for f in report["warnings"]["large_files"]:
             print(f"   {f['name']}: {f['size_kb']}KB")
 
