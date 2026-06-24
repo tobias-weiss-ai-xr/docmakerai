@@ -38,7 +38,13 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
-![Creating a new event in the SOGo 5 calendar](./assets/calendar-create-event.webp)
+<VideoFallback
+  srcMp4="./assets/page@285e5b1bfc532a4e5c67a2ec8f95cc41.mp4"
+  poster="./assets/01-calendar-create-view.png"
+  alt="Creating a new event in the SOGo 5 calendar"
+  width="800"
+  height="600"
+/>
 
 ### Step 3: Enter Event Details
 
