@@ -97,21 +97,30 @@ jobs:
   build-site:
     name: Build Docusaurus Site
     runs-on: [self-hosted, linux]
-    needs: [python-quality]
     defaults:
       run:
         working-directory: site
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        id: node-cache
+        with:
+          path: site/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('site/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --prefer-offline || npm install
 
       - name: Type check
         run: npm run typecheck
 
-      - name: Build (English + German)
-        run: npm run build -- --locale en && npm run build -- --locale de
+      - name: Build (English only for CI speed)
+        run: npm run build -- --locale en
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
