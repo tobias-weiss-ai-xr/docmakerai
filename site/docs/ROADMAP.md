@@ -97,7 +97,7 @@ sidebar_label: "Roadmap"
 - [ ] Add Lighthouse CI to `.github/workflows/ci.yml`
 - [ ] Add bundle size tracking
 - [ ] Add capture timing metrics to `capture_report.py`
-- [ ] Set up performance budgets (LCP <2.5s, total bundle <500KB gzip)
+- [ ] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
 - [ ] Create performance dashboard page at `site/docs/performance.md`
 
 ### Sprint 10: Content Expansion
