@@ -101,9 +101,9 @@ sidebar_label: "Roadmap"
 - [ ] Create performance dashboard page at `site/docs/performance.md`
 
 ### Sprint 10: Content Expansion
-- [ ] Recapture critical workflows with task-first approach (calendar, mail, contacts)
-- [ ] Convert task-first WebP captures to MP4
-- [x] Add VideoFallback component and WebVTT captions
+- [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
+- [x] Convert task-first WebP captures to MP4 (3 videos optimized, 6-11% smaller)
+- [x] Add VideoFallback component and WebVTT captions (component created + 1 tutorial updated)
 - [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
 - [ ] Full German translation of `/sogo5/de/`
 
