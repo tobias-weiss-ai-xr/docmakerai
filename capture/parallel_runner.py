@@ -1,15 +1,9 @@
-import argparse
 import asyncio
 import json
 import shutil
 import time
 from pathlib import Path
 from typing import Any
-
-try:
-    from capture.video_pipeline import WorkflowRecorder
-except ImportError:
-    from video_pipeline import WorkflowRecorder
 
 ROOT = Path(__file__).resolve().parent
 VIDEO_DIR = ROOT / "videos"
@@ -42,8 +36,10 @@ async def run_workflow(
                 if meta_path.exists():
                     meta = json.loads(meta_path.read_text())
                     elapsed = time.time() - start
-                    print(f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB ({elapsed:.1f}s)")
-                    return (name, True, meta["annotated_frames"], None)
+                    frames = meta['annotated_frames']
+                    size_kb = meta['webp_size_kb']
+                    print(f"  ✓  {webp_path.name} — {frames} frames, {size_kb}KB ({elapsed:.1f}s)")
+                    return (name, True, frames, None)
                 elapsed = time.time() - start
                 print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
                 return (name, True, 0, None)

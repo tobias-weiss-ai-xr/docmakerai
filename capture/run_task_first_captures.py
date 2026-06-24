@@ -32,13 +32,12 @@ Capture Phases:
 
 from __future__ import annotations
 
-import argparse
 import asyncio
 import os
 import shutil
-import time
+from collections.abc import Awaitable
 from pathlib import Path
-from typing import Awaitable
+
 from playwright.async_api import BrowserContext, Page, async_playwright
 
 ROOT = Path(__file__).resolve().parent
@@ -67,7 +66,8 @@ async def login(page: Page) -> None:
 
 
 async def goto(page: Page, url_suffix: str, wait_ms: int = 3000) -> None:
-    await page.goto(f"{SOGO_URL}so/{USERNAME}/{url_suffix}", wait_until="networkidle", timeout=15000)
+    url = f"{SOGO_URL}so/{USERNAME}/{url_suffix}"
+    await page.goto(url, wait_until="networkidle", timeout=15000)
     await page.wait_for_timeout(wait_ms)
 
 
@@ -141,19 +141,12 @@ class TaskFirstRecorder:
         await page.wait_for_timeout(1500)
         locator = page.locator(selector)
         if await locator.count() > 0:
-            box = await locator.bounding_box()
+            await locator.bounding_box()
             self.steps.append({"highlight": selector, "label": text})
 
     async def finish(self, page: Page) -> Path | None:
         """Finish recording and return asset path."""
         await self.context.close()
-        metadata = {
-            "workflow": self.name,
-            "fps": self.fps,
-            "steps": self.steps,
-            "ducration_s": sum(s.get("duration", 0) for s in self.steps),
-            "locale": self.locale,
-        }
         return Path(self.video_dir / f"{self.name}.webp")
 
 
@@ -202,7 +195,8 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
         await page.wait_for_timeout(800)
 
         # RECURRENCE SETTINGS (THE KEY LESSON FOR THIS TASK)
-        await rec.highlight(page, "[ng-model='editor.component.repeat.frequency']", "Recurrence dropdown")
+        selector = "[ng-model='editor.component.repeat.frequency']"
+        await rec.highlight(page, selector, "Recurrence dropdown")
         rs = page.locator("[ng-model='editor.component.repeat.frequency']").first
         if await rs.is_visible():
             await rs.click()
@@ -228,7 +222,12 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     return await rec.finish(page)
 
 
-async def run_parallel(workflows: list[tuple[str, Awaitable]], browser, storage: dict, workers: int = 4):
+async def run_parallel(
+    workflows: list[tuple[str, Awaitable]],
+    browser,
+    storage: dict,
+    workers: int = 4,
+):
     semaphore = asyncio.Semaphore(workers)
 
     async def run_task(name, fn):
