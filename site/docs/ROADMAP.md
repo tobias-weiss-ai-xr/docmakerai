@@ -103,7 +103,7 @@ sidebar_label: "Roadmap"
 ### Sprint 10: Content Expansion
 - [ ] Recapture critical workflows with task-first approach (calendar, mail, contacts)
 - [ ] Convert task-first WebP captures to MP4
-- [ ] Add VideoFallback component and WebVTT captions
+- [x] Add VideoFallback component and WebVTT captions
 - [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
 - [ ] Full German translation of `/sogo5/de/`
 
