@@ -1042,11 +1042,11 @@ async def main(workers: int = 1) -> None:
 
         if workers > 1:
             try:
-                from capture.parallel_runner import run_parallel
                 from capture.capture_report import generate_capture_report, print_capture_report
+                from capture.parallel_runner import run_parallel
             except ImportError:
-                from parallel_runner import run_parallel
                 from capture_report import generate_capture_report, print_capture_report
+                from parallel_runner import run_parallel
 
             results = await run_parallel(workflows, browser, storage, workers=workers)
             report = generate_capture_report(results, ASSETS_DIR)

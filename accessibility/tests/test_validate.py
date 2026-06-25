@@ -7,7 +7,6 @@ import pytest
 
 from accessibility.validate import AccessibilityValidator, main
 
-
 # ---------------------------------------------------------------------------
 # _extract_tables
 # ---------------------------------------------------------------------------

@@ -24,9 +24,9 @@ Notes:
 See: https://github.com/actions/runner/releases
 """
 import os
+import platform
 import subprocess
 import sys
-import platform
 from pathlib import Path
 
 # Configuration
