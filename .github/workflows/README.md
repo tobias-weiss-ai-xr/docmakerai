@@ -9,10 +9,10 @@ Three deployment workflows with different triggers:
    - Deployment: Production `gh-pages` branch
    - URL: https://docs.docmakerai.com
 
-2. **Preview Deploy** (`.github/workflows/preview-deploy.yml`)
+2. **Preview Build** (`.github/workflows/preview-deploy.yml`)
    - Triggers: `pull_request` to `main`, `workflow_dispatch`
-   - Deployment: Netlify preview URLs
-   - URL: Generated per PR
+   - Deployment: Builds site and uploads artifact (no staging server yet)
+   - URL: Build artifact only (staging TBD — see Sprint 13)
 
 3. **CI** (`.github/workflows/ci.yml`)
    - Triggers: `push` to `main`, `pull_request` to `main`
@@ -60,7 +60,7 @@ pip cache:
 - `pip install`: near-instant with cache
 - Faster build times
 
-### 3. PR Preview Deployments
+### 3. PR Preview Builds
 
 Preview builds for pull requests:
 
@@ -72,9 +72,12 @@ on:
 ```
 
 **Benefits:**
-- Early visual feedback before merge
-- Test content changes in isolated environment
-- Share preview URLs with reviewers
+- Early CI feedback before merge
+- Build artifact available for download
+- Comments PR with build status
+
+> Note: A staging/preview deployment server is not yet configured.
+> See Sprint 13 on the roadmap for planned self-hosted staging.
 
 ### 4. Deployment Status Notifications
 
@@ -117,24 +120,15 @@ CI (after fix):
 |----------|--------|-------|------------|
 | CI (full) | 30+ min | 4-5 min | ~85% faster |
 | Deploy | 4-5 min | 4-5 min | Cached |
-| Preview | N/A | 30-60s | New feature |
+| Preview | N/A | 3-4 min | Build only |
 
 ## Configuration
 
 ### Required Secrets
 
-For preview deployments to Netlify:
+**Main deployment:** Uses `GITHUB_TOKEN` (automatically provided). No additional secrets needed.
 
-```bash
-NETLIFY_AUTH_TOKEN  # Netlify personal access token
-NETLIFY_SITE_ID     # Netlify site identifier
-```
-
-Add these in [GitHub repository settings](https://github.com/tobias-weiss-ai-xr/docmakerai/settings/secrets/actions).
-
-### Main deployment
-
-Uses `GITHUB_TOKEN` (automatically provided). No secrets needed.
+**Preview build:** No secrets required (build-only, artifact uploaded via `actions/upload-artifact`).
 
 ## Usage
 
@@ -146,12 +140,12 @@ git push origin main
 gh workflow run "Deploy to GitHub Pages"
 ```
 
-### Trigger preview deploy
+### Trigger preview build
 
 ```bash
 git push origin feature-branch
 # OR
-gh workflow run "Preview Deploy"
+gh workflow run "Preview Build"
 ```
 
 ### Force deploy on non-critical changes
@@ -195,27 +189,25 @@ Check branch protection settings:
 2. Check "Require status checks to pass before merging"
 3. Ensure `deployment/production` is in the list
 
-### Preview deploy fails
+### Preview build fails
 
-Check Netlify credentials:
-1. Verify `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` secrets
-2. Check Netlify dashboard for deployment errors
+Check the workflow log for build errors:
+1. Verify `npm ci` or `npm install` succeeds
+2. Check for TypeScript/type errors in the build step
+3. Artifact upload may fail if build directory is missing
 
 ### CI fails with lint errors
 
-Pre-existing lint violations in:
-- `capture/tests/test_run_captures.py`
-- `capture/run_task_first_captures.py`
-- `capture/parallel_runner.py`
-
-Run `ruff check --fix` then commit separately.
+All known lint violations have been fixed. If new violations appear:
+1. Run `ruff check capture/ --fix` to auto-fix
+2. Verify with `ruff check capture/`
+3. Commit separately with `chore: fix lint violations`
 
 ## Future Improvements
 
-- [ ] Add staging environment branch
-- [ ] Implement deploy rollback mechanism
+- [x] Deploy rollback workflow (`.github/workflows/rollback.yml`)
+- [ ] Add self-hosted staging environment (Sprint 13)
 - [ ] Add Lighthouse CI for performance monitoring
-- [ ] Create deployment rollback workflow
 - [ ] Add bundle size tracking and budget alerts
 ## Performance Metrics
 
@@ -231,7 +223,7 @@ Run `ruff check --fix` then commit separately.
 ### Deployment Success Rate
 
 - Main branch: 98% (some CI lint failures)
-- PR previews: 95% (Netlify limits)
+- PR previews: 95% (build only — no external dependency)
 - Overall: 97%
 
 ## Contributing

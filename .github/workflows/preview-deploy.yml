@@ -1,4 +1,4 @@
-name: Preview Deploy
+name: Preview Build
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 concurrency:
   group: preview-${{ github.event.number || 'manual' }}
@@ -15,7 +16,7 @@ concurrency:
 
 jobs:
   preview:
-    name: Build & Preview
+    name: Build & Upload Preview
     runs-on: [self-hosted, linux]
     defaults:
       run:
@@ -40,30 +41,30 @@ jobs:
       - name: Build (English only for preview speed)
         run: npm run build -- --locale en
 
-      - name: Deploy preview to Netlify
-        uses: jsmrcaga/action-netlify-cli@v2
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
         with:
-          args: deploy --dir=site/build --prod=false --message="PR #${{ github.event.number }}"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          name: preview-build-pr-${{ github.event.number || 'manual' }}
+          path: site/build/
+          retention-days: 7
+          compression-level: 9
 
-      - name: Comment preview URL on PR
+      - name: Comment artifact available on PR
         uses: actions/github-script@v7
         if: github.event_name == 'pull_request'
         with:
           script: |
-            const deploymentUrl = process.env.NETLIFY_URL;
-            const comment = `### 🔍 Preview Deployment Ready
+            const comment = `### 🔍 Preview Build Complete
 
-            This PR has been deployed! You can preview the changes at:
-            - **Preview URL:** ${deploymentUrl}
+            The preview build for this PR has finished successfully.
+
             - **Branch:** \`${{ github.head_ref }}\`
             - **Commit:** \`${{ github.sha.slice(0, 7) }}\`
+            - **Artifact:** \`preview-build-pr-${{ github.event.number || 'manual' }}\`
 
-            The preview will be automatically updated when you push new commits to this PR.
+            > A staging server is not yet configured. Download the artifact from the workflow run to inspect the build locally.
 
-            *Deployment finished at: ${new Date().toISOString()}*
+            *Build finished at: ${new Date().toISOString()}*
             `;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -71,5 +72,3 @@ jobs:
               repo: context.repo.repo,
               body: comment
             });
-        env:
-          NETLIFY_URL: ${{ steps.netlify.outputs.url }}
