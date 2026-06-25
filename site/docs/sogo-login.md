@@ -4,6 +4,10 @@ description: "Step-by-step guide to logging into SOGo 5"
 sidebar_label: "Login to SOGo 5"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Login to SOGo 5" description="Step-by-step guide to logging into SOGo 5 webmail. Tutorial covers navigating to the login page and accessing your account." keywords="SOGo 5, login, webmail, sign in, authentication" />
+
 # Login to SOGo 5
 
 This tutorial will guide you through logging into your SOGo 5 webmail account.

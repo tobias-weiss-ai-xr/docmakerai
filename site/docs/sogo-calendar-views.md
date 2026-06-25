@@ -4,6 +4,10 @@ description: "Switch between Day, Week, and Month views in the SOGo 5 calendar"
 sidebar_label: "Calendar Views"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Calendar Views" description="Switch between Day, Week, and Month views in the SOGo 5 calendar. Tutorial covers navigating different calendar views to manage your schedule." keywords="SOGo 5, calendar, views, day, week, month" />
+
 # Calendar Views
 
 Switch between different calendar views to see your schedule at the right level of detail — from a focused day overview to a full month at a glance.

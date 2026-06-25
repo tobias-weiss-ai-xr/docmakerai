@@ -4,6 +4,10 @@ description: "Organize your emails with folders in SOGo 5"
 sidebar_label: "Folder Management"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Mail — Folder Management" description="Organize your emails with folders in SOGo 5. Step-by-step tutorial covers creating and managing mail folders for archiving and easy access." keywords="SOGo 5, mail, folders, organize, email, archive" />
+
 # Mail — Folder Management
 
 Organize your emails using folders for archiving and easy access.

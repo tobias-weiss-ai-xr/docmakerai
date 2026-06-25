@@ -4,6 +4,10 @@ description: "Share your SOGo 5 calendar with colleagues and set permissions"
 sidebar_label: "Share a Calendar"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Share a Calendar" description="Share your SOGo 5 calendar with colleagues and set permissions. Step-by-step tutorial covers calendar sharing and access control." keywords="SOGo 5, calendar, share, permissions, collaborate" />
+
 # Share a Calendar
 
 This tutorial explains how to share your SOGo 5 calendar with other users

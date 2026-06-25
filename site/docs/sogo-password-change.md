@@ -4,6 +4,10 @@ description: "How to change your SOGo 5 password"
 sidebar_label: "Password Change"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Password Change" description="How to change your SOGo 5 account password. Step-by-step tutorial covers updating your password to keep your account secure." keywords="SOGo 5, password, change, security, account" />
+
 # Password Change
 
 Update your SOGo 5 account password to keep your account secure.

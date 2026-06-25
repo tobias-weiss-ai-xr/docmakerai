@@ -4,6 +4,10 @@ description: "Set up automatic email replies and calendar blocks for your absenc
 sidebar_label: "Vacation & Out-of-Office"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Vacation & Out-of-Office" description="Set up automatic email replies and calendar blocks for your absence in SOGo 5. Step-by-step tutorial covers vacation auto-reply and out-of-office settings." keywords="SOGo 5, vacation, out-of-office, auto-reply, email, absence" />
+
 # Vacation & Out-of-Office
 
 Configure automatic email replies and mark yourself as away

@@ -12,7 +12,9 @@ sidebar_label: "Roadmap"
 - SOGo 5: https://demo.sogo.nu/
 - SOGo 6: https://demov6.sogo.nu/
 
-**Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~30+ min on current hardware — optimization needed.
+**Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~4-5 min (cached) / ~10 min (cold).
+
+**Staging:** Deferred — own preview deployment system replacing Netlify (see Sprint 13).
 
 ---
 
@@ -85,9 +87,11 @@ sidebar_label: "Roadmap"
 ## In Progress 🔵
 
 ### Sprint 2b: CI Reliability
-- [ ] Docusaurus build time optimization (currently ~30+ min on legions)
+- [x] Docusaurus build time optimization (4-5 min cached, ~10 min cold — down from 30+)
 - [ ] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
 - [ ] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
+- [ ] Branch protection rules: separate CI status checks from deploy gate
+- [ ] Runner resource contention: load balance between CI/Deploy/Preview workflows
 
 ---
 
@@ -114,6 +118,15 @@ sidebar_label: "Roadmap"
 - [ ] Auto-trigger re-capture on detected changes
 
 ### Sprint 12: Spec-to-Docs Pipeline
+
+### Sprint 13: Self-Hosted Staging (Deferred)
+- [ ] Replace Netlify preview-deploy.yml with own staging on GitHub Pages
+- [ ] PR preview via `rossjrw/pr-preview-action` or custom gh-pages subdirectory
+- [ ] Preview URL comment on PRs (replace Netlify URL generation)
+- [ ] Teardown preview deployments on PR close
+- [ ] Remove Netlify secrets docs/NETLIFY_SETUP.md
+- [ ] Update workflow README — remove Netlify references
+- [ ] Decide: separate `staging` branch vs gh-pages `/preview/` subdirectory
 - [ ] Auto-generate documentation pages from OpenSpec specs
 - [ ] Tutorial structure from spec scenarios
 - [ ] Asset embedding from capture metadata
@@ -145,8 +158,8 @@ sidebar_label: "Roadmap"
 
 ---
 
-**Last Updated:** 2026-06-22
-**Next Sprint:** Sprint 2b — CI Reliability
+**Last Updated:** 2026-06-25
+**Next Sprint:** Sprint 2b — CI Reliability (branch protection + runner contention)
 
 ---
 

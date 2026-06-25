@@ -4,6 +4,10 @@ description: "Search across all modules in SOGo 5"
 sidebar_label: "Global Search"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Global Search" description="Search across all modules in SOGo 5. Tutorial covers finding emails, contacts, calendar events, and more using the global search feature." keywords="SOGo 5, search, global, email, contacts, calendar" />
+
 # Global Search
 
 Quickly find emails, contacts, calendar events, and more using SOGo 5's global search feature.
