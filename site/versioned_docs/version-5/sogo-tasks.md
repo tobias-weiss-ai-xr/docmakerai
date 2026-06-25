@@ -4,6 +4,10 @@ description: "Create and manage task lists in SOGo 5"
 sidebar_label: "Tasks / To-Do"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Tasks / To-Do Module" description="Step-by-step tutorial to create and manage task lists in the SOGo 5 task management module" keywords={["tasks", "todo", "task management", "priorities", "productivity"]} />
+
 # Tasks / To-Do Module
 
 Organize tasks, set priorities, and manage to-do items within SOGo 5's task management module.

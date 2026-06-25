@@ -4,6 +4,10 @@ description: "Set up email signatures and multiple sender identities"
 sidebar_label: "Mail Signatures & Identities"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Mail Signatures & Identities" description="Step-by-step tutorial to set up email signatures and multiple sender identities in SOGo 5" keywords={["email signatures", "identities", "sender", "professional", "configuration"]} />
+
 # Mail Signatures & Identities
 
 Configure professional email signatures and manage multiple

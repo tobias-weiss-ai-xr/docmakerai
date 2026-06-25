@@ -4,6 +4,10 @@ description: "Import and export calendars using iCal (.ics) format in SOGo 5"
 sidebar_label: "Import & Export (iCal)"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Calendar — Import & Export (iCal)" description="Step-by-step tutorial to import and export calendars using iCal (.ics) format in SOGo 5" keywords={["ical", "import", "export", "ics", "calendar sharing"]} />
+
 # Calendar — Import & Export (iCal)
 
 Share your calendar with others by exporting it as an iCal file, or import calendars from other applications into SOGo.

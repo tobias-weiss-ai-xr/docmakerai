@@ -6,6 +6,9 @@ sidebar_label: "Recurring Events & Alarms"
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Recurring Events & Alarms" description="Step-by-step tutorial to set up repeating events with email and display reminders in SOGo 5" keywords={["recurring events", "alarms", "reminders", "repeating", "notifications"]} />
 
 # Recurring Events & Alarms
 

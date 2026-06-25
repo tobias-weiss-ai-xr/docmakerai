@@ -4,6 +4,10 @@ description: "Check colleagues' availability before scheduling meetings"
 sidebar_label: "Free/Busy Lookup"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Free/Busy Lookup" description="Step-by-step tutorial to check colleague availability before scheduling meetings in SOGo 5" keywords={["free busy", "availability", "scheduling", "meetings", "colleagues"]} />
+
 # Free/Busy Lookup
 
 Check when your colleagues are available before scheduling a
