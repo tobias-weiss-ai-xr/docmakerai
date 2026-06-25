@@ -4,6 +4,10 @@ description: "Customize your SOGo 5 experience through personal preferences"
 sidebar_label: "Preferences & Settings"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Preferences & Settings" description="Step-by-step tutorial to customize your SOGo 5 experience through personal preferences" keywords={["preferences", "settings", "customization", "configuration", "personalization"]} />
+
 # Preferences & Settings
 
 Customize your SOGo 5 experience by adjusting personal preferences such as language, time zone, notification settings, and default views.

@@ -4,6 +4,10 @@ description: "How to securely log out of SOGo 5"
 sidebar_label: "Logout"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Logout" description="Step-by-step tutorial to securely log out of your SOGo 5 session" keywords={["logout", "sign out", "session", "security", "end session"]} />
+
 # Logout
 
 Safely end your SOGo 5 session by logging out when you're done working.

@@ -4,6 +4,10 @@ description: "Manage emails by replying, forwarding, or deleting them"
 sidebar_label: "Reply, Forward & Delete"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Mail — Reply, Forward & Delete" description="Step-by-step tutorial to manage emails by replying, forwarding, or deleting them in SOGo 5" keywords={["reply", "forward", "delete", "email management", "inbox"]} />
+
 # Mail — Reply, Forward & Delete
 
 After reading an email, you can reply to the sender, forward to others, or delete it.

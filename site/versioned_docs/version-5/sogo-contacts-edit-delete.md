@@ -4,6 +4,10 @@ description: "Modify or remove contacts in the SOGo 5 address book"
 sidebar_label: "Edit & Delete Contacts"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Edit & Delete Contacts" description="Step-by-step tutorial to modify or remove contacts in the SOGo 5 address book" keywords={["contacts", "editing", "deleting", "address book", "management"]} />
+
 # Edit & Delete Contacts
 
 Learn how to update contact information or remove contacts from your SOGo 5 address book.

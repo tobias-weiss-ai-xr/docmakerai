@@ -4,6 +4,10 @@ description: "Organize your inbox with folders and automatic mail filters"
 sidebar_label: "Mail Folders & Filters"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Mail Folders & Filters" description="Step-by-step tutorial to organize your inbox with folders and automatic mail filters in SOGo 5" keywords={["mail folders", "filters", "sieve", "organize", "inbox management"]} />
+
 # Mail Folders & Filters
 
 Learn how to keep your inbox organized using folders and

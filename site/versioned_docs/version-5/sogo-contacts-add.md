@@ -4,6 +4,10 @@ description: "Learn how to add and organize contacts in the SOGo 5 address book"
 sidebar_label: "Add a Contact"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Add a Contact" description="Step-by-step tutorial to add and organize contacts in the SOGo 5 address book" keywords={["contacts", "address book", "add contact", "organize", "groups"]} />
+
 # Add a Contact
 
 This tutorial explains how to add contacts to your SOGo 5 address book
