@@ -16,7 +16,7 @@ permissions:
 jobs:
   rollback:
     name: Rollback to previous deployment
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, deploy]
     steps:
       - uses: actions/checkout@v4
         with:

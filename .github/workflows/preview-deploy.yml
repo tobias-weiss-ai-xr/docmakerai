@@ -17,7 +17,7 @@ concurrency:
 jobs:
   preview:
     name: Build & Upload Preview
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, deploy]
     defaults:
       run:
         working-directory: site

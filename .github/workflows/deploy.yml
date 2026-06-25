@@ -36,7 +36,7 @@ jobs:
 
   build:
     name: Build site
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, deploy]
     needs: detect-changes
     if: needs.detect-changes.outputs.should_deploy == 'true'
     defaults:
@@ -71,7 +71,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: [detect-changes, build]
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, deploy]
     if: needs.detect-changes.outputs.should_deploy == 'true' && success()
     steps:
       - uses: actions/checkout@v4
