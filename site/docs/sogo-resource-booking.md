@@ -4,6 +4,10 @@ description: "Book shared resources like meeting rooms and equipment"
 sidebar_label: "Resource Booking"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Resource Booking (Rooms, Equipment)" description="Book shared resources like meeting rooms and equipment in SOGo 5. Step-by-step tutorial covers scheduling resources through the integrated calendar." keywords="SOGo 5, resource booking, rooms, equipment, calendar, scheduling" />
+
 # Resource Booking
 
 Reserve and schedule shared resources — meeting rooms, projectors, labs, or equipment — through SOGo's integrated calendar resource booking.

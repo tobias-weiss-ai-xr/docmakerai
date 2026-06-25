@@ -4,6 +4,10 @@ description: "Transfer contacts using vCard format in SOGo 5"
 sidebar_label: "Import & Export"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Contacts — Import & Export" description="Transfer contacts using vCard format in SOGo 5. Step-by-step tutorial covers importing and exporting contacts between applications." keywords="SOGo 5, contacts, import, export, vCard, address book" />
+
 # Contacts — Import & Export
 
 Migrate contacts between applications using vCard import/export.

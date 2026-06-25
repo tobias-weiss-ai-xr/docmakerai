@@ -4,6 +4,10 @@ description: "Share calendars and mail folders with specific permissions"
 sidebar_label: "Delegation & Permissions"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Delegation & Permissions" description="Share calendars and mail folders with specific permissions in SOGo 5. Step-by-step tutorial covers ACL-based delegation and access control." keywords="SOGo 5, delegation, permissions, ACL, calendars, mail folders" />
+
 # Delegation & Permissions
 
 Delegate access to your calendars, mail folders and other resources by assigning specific permissions to other users.

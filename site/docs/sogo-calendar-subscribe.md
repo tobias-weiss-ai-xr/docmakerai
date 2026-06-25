@@ -4,6 +4,10 @@ description: "Import external calendars (holidays, team calendars) into SOGo 5"
 sidebar_label: "Subscribe to an iCal Feed"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Subscribe to an iCal Feed" description="Import external calendars (holidays, team calendars) into SOGo 5. Step-by-step tutorial covers subscribing to iCal feeds and CalDAV endpoints." keywords="SOGo 5, iCal, subscribe, calendar feed, CalDAV, external calendar" />
+
 # Subscribe to an iCal Feed
 
 Import external calendars into your SOGo 5 calendar — public holidays,

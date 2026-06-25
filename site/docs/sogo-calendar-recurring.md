@@ -4,6 +4,10 @@ description: "Set up repeating events with email and display reminders"
 sidebar_label: "Recurring Events & Alarms"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Recurring Events & Alarms" description="Set up repeating events with email and display reminders in SOGo 5. Step-by-step tutorial covers recurring event schedules and alarm notifications." keywords="SOGo 5, recurring events, alarms, reminders, calendar, repeat" />
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

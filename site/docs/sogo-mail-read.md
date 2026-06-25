@@ -4,6 +4,10 @@ description: "Navigate your inbox and read emails in SOGo 5"
 sidebar_label: "Mail — Read"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Mail — Read & View Messages" description="Navigate your inbox and read emails in SOGo 5. Step-by-step tutorial covers viewing and managing messages in the webmail interface." keywords="SOGo 5, mail, read, inbox, messages, webmail" />
+
 # Mail — Read & View Messages
 
 View and read emails in your SOGo 5 inbox.

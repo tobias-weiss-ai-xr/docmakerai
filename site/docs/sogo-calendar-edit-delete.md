@@ -4,6 +4,10 @@ description: "Modify or remove existing events in the SOGo 5 calendar"
 sidebar_label: "Edit & Delete Events"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Edit & Delete Calendar Events" description="Modify or remove existing events in the SOGo 5 calendar. Step-by-step tutorial covers editing event details and deleting events." keywords="SOGo 5, calendar, edit, delete, events" />
+
 # Edit & Delete Calendar Events
 
 Learn how to modify event details or remove events from your SOGo 5 calendar.
