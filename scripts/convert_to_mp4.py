@@ -21,11 +21,11 @@ Features:
 
 import argparse
 import asyncio
-import subprocess
 import json
+import subprocess
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import NamedTuple
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 FFMPEG = "ffmpeg"
 FFPROBE = "ffprobe"

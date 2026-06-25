@@ -8,7 +8,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from capture.parallel_runner import ASSETS_DIR, run_workflow, run_parallel
+from capture.parallel_runner import ASSETS_DIR, run_parallel, run_workflow
 
 
 def _make_browser_mock() -> AsyncMock:

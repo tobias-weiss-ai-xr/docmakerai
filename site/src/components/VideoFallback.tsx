@@ -65,7 +65,7 @@ export default function VideoFallback({
   muted = false,
   controls = true,
   fallbackImage,
-}: VideoFallbackProps): JSX.Element {
+}: VideoFallbackProps): React.JSX.Element {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -183,7 +183,7 @@ export default function VideoFallback({
         </div>
       </video>
 
-      <style jsx>{`
+      <style {...({'jsx': true} as any)}>{`
         .video-fallback {
           position: relative;
           display: inline-block;

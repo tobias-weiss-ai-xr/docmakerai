@@ -1,5 +1,3 @@
-import type {Config} from '@docusaurus/types';
-
 export default {
   docs: {
     path: 'docs',
@@ -12,4 +10,4 @@ export default {
       maxHeadingLevel: 3,
     },
   },
-} satisfies Config;
+};
