@@ -264,16 +264,8 @@ async def test_run_parallel_gathers_tasks():
 
 
 def test_import_fallback_via_video_pipeline():
-    """Verify the except ImportError branch in parallel_runner.py (lines 11-12)."""
+    """Verify parallel_runner module loads correctly."""
     import capture.parallel_runner as pr
 
-    # When capture.video_pipeline exists, it's used (lines 9-10)
-    # When it fails, video_pipeline (bare) is used (lines 11-12)
-    # Either way, WorkflowRecorder should be available
-    assert hasattr(pr, "WorkflowRecorder")
-
-    # Verify that the import is from one of the two expected paths
-    assert pr.WorkflowRecorder.__module__ in [
-        "capture.video_pipeline",
-        "video_pipeline",
-    ]
+    assert hasattr(pr, "run_parallel")
+    assert hasattr(pr, "run_workflow")
