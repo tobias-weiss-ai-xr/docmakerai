@@ -1,12 +1,12 @@
 ---
 title: "Mail — Spec-Based Guide"
-description: "Capture SOGo mail module workflows as annotated WebP animations for the user guide. Covers composing, reading, replying, forwarding, deleting messages,..."
+description: "Spec-based guide covering SOGo mail module workflows including compose, read, reply, forward, delete, folders, filters, and signatures."
 sidebar_label: "Mail Specification Guide"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail — Spec-Based Guide" description="Capture SOGo mail module workflows as annotated WebP animations for the user guide. Covers composing, reading, replying, forwarding, deleting messages,..." keywords="SOGo 5, mail, email, compose, reply, forward, folders, filters, signatures, spec" />
+<PageSEO title="Mail — Spec-Based Guide" description="Spec-based guide covering SOGo mail module workflows including compose, read, reply, forward, delete, folders, filters, and signatures." keywords="SOGo 5, mail, email, compose, reply, forward, folders, filters, signatures, spec" />
 
 # SOGo Mail
 
@@ -55,10 +55,6 @@ The user clicks a message
 - the message will open in the preview pane
 - the message headers and body will be visible
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 #### Step 2: The capture produces a >90% white frame
 
 The capture produces a >90% white frame
@@ -85,10 +81,6 @@ The user clicks the reply button
 - a compose window will open with the original quoted
 - a reply will be typed and sent
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 #### Step 2: Click the forward button
 
 The user clicks the forward button
@@ -98,10 +90,6 @@ The user clicks the forward button
 - a compose window will open with the original attached
 - a new recipient will be entered and sent
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 #### Step 3: Click the delete button
 
 The user clicks the delete button
@@ -110,10 +98,6 @@ The user clicks the delete button
 
 - the message will move to the trash
 - the inbox will update
-
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
 
 ### Folder Management
 
@@ -128,10 +112,6 @@ The user creates a new folder
 - the folder will appear in the sidebar
 - messages will be movable into the new folder
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 ### Mail Filters
 
 The capture pipeline will record creating a mail filter rule.
@@ -144,10 +124,6 @@ The user defines a new filter rule with criteria and action
 
 - the filter will be saved
 - future matching messages will trigger the rule
-
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
 
 ### Mail Signatures
 
@@ -162,10 +138,6 @@ The user enters signature text and saves
 - the signature will be stored
 - new compose windows will include the signature
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 ## Troubleshooting
 
 mail-read, mail-reply-forward-delete, mail-folder-management, mail-signatures, mail-filters produce blank captures — currently replaced with PNGs or removed from docs
@@ -173,11 +145,10 @@ mail-read, mail-reply-forward-delete, mail-folder-management, mail-signatures, m
 ## Related Sections
 
 - [Auth Session](./sogo-spec-auth-session)
-- [Capture (Workflowrecorder)](./sogo-spec-capture-pipeline-workflowrecorder)
 
 ## Implementation Reference
 
-Source: ``capture/run_captures.py` — `record_mail_compose()`, `record_mail_read()`, `record_mail_reply_forward_delete()`, `record_mail_folder_management()`, `record_mail_filters()`, `record_mail_signatures()``
+Source: `capture/run_captures.py` — `record_mail_compose()`, `record_mail_read()`, `record_mail_reply_forward_delete()`, `record_mail_folder_management()`, `record_mail_filters()`, `record_mail_signatures()`
 
 ## Appendix: Scenario Reference
 

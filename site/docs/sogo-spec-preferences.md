@@ -1,12 +1,12 @@
 ---
 title: "Preferences — Spec-Based Guide"
-description: "Capture SOGo preferences and utility workflows as annotated WebP animations for the user guide. Covers general settings, password change, vacation auto-..."
+description: "Spec-based guide covering SOGo preferences and utility workflows including general settings, password change, and vacation auto-reply."
 sidebar_label: "Preferences Specification Guide"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Preferences — Spec-Based Guide" description="Capture SOGo preferences and utility workflows as annotated WebP animations for the user guide. Covers general settings, password change, vacation auto-..." keywords="SOGo 5, preferences, settings, password, vacation, global search, spec" />
+<PageSEO title="Preferences — Spec-Based Guide" description="Spec-based guide covering SOGo preferences and utility workflows including general settings, password change, and vacation auto-reply." keywords="SOGo 5, preferences, settings, password, vacation, global search, spec" />
 
 # SOGo Preferences
 
@@ -36,10 +36,6 @@ The user opens the preferences/settings panel
 - the general settings categories will be visible
 - the WebP will annotate the navigation through settings
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 #### Step 2: The capture produces a >90% white frame
 
 The capture produces a >90% white frame
@@ -66,10 +62,6 @@ The user enters the current and new passwords
 - the password will be updated
 - the WebP will annotate the form interaction
 
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
-
 #### Step 2: The capture produces a blank WebP
 
 The capture produces a blank WebP
@@ -95,10 +87,6 @@ The user enables auto-reply and enters a message
 
 - the vacation reply will be activated
 - the WebP will annotate the toggle and message input
-
-:::note
-This workflow is known to produce blank captures in the current pipeline. The documentation describes the expected behavior textually.
-:::
 
 #### Step 2: The capture produces a blank WebP
 
@@ -132,11 +120,10 @@ preferences, password-change, vacation workflows produce blank captures — addr
 ## Related Sections
 
 - [Auth Session](./sogo-spec-auth-session)
-- [Capture (Workflowrecorder)](./sogo-spec-capture-pipeline-workflowrecorder)
 
 ## Implementation Reference
 
-Source: ``capture/run_captures.py` — `record_preferences()`, `record_password_change()`, `record_vacation()`, `record_global_search()``
+Source: `capture/run_captures.py` — `record_preferences()`, `record_password_change()`, `record_vacation()`, `record_global_search()`
 
 ## Appendix: Scenario Reference
 
