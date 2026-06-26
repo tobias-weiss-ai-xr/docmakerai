@@ -92,22 +92,70 @@ def _step_title_from_when(when: str) -> str:
     if not action:
         return when.strip().rstrip(".")
 
-    # Convert 3rd-person singular verbs to imperative
-    action = re.sub(r"^([A-Za-z]+)ies\s", lambda m: m.group(1)[:-1] + "y" + " ", action)
-    action = re.sub(r"^([A-Za-z]+)s\s", lambda m: m.group(1) + " ", action)
-    action = re.sub(r"^([A-Za-z]+)es\s", lambda m: m.group(1) + " ", action)
+    # Convert 3rd-person singular verbs to imperative by stripping
+    # trailing "s" (or "ies" -> "y" for words like "carries").
+    # Regex allows hyphens (e.g. "double-clicks" -> "double-click")
+    # and handles end-of-string with no trailing space.
 
-    return action[0].upper() + action[1:]
+    # Step 1: "ies" -> "y" (e.g. "carries" -> "carry")
+    action = re.sub(
+        r"^([A-Za-z-]+)ies(?:\s|$)",
+        lambda m: m.group(1)[:-1] + "y ",
+        action,
+    )
+
+    # Step 2: Strip trailing "s" for most verbs
+    # This turns "clicks" -> "click", "navigates" -> "navigate",
+    # "starts" -> "start", but also "focuses" -> "focuse"
+    action = re.sub(
+        r"^([A-Za-z-]+)s(?:\s|$)",
+        lambda m: m.group(1) + " ",
+        action,
+    )
+
+    # Step 3: Correct known over-stripping from the "s" rule.
+    # "focuses" -> Step 2 produces "focuse" -> correct to "focus"
+    action = re.sub(
+        r"^focuse(?:\s|$)",
+        lambda m: "focus ",
+        action,
+    )
+
+    return (action[0].upper() + action[1:]).strip()
 
 
 def _step_description_from_when(when: str) -> str:
     """Generate a natural prose description of the step action."""
     desc = when.strip().rstrip(".")
     if re.match(r"^the\s+", desc, re.IGNORECASE):
+        # If it starts with "the", it's already phrased as a statement
         desc = desc[0].upper() + desc[1:]
     else:
         desc = "The user " + desc[0].lower() + desc[1:]
     desc = _normalize_shall(desc)
+    # Tweak pipeline-internal phrasing to be more user-facing
+    desc = re.sub(
+        r"(?i)\bthe capture pipeline\b",
+        "you",
+        desc,
+    )
+    desc = re.sub(
+        r"(?i)\bthe login function\b",
+        "the system",
+        desc,
+    )
+    desc = re.sub(
+        r"(?i)\bthe (pipeline|recorder)\b",
+        "the system",
+        desc,
+    )
+    desc = re.sub(r"(?i)^The user the (pipeline|recorder|system)\s+", "The system ", desc)
+    # Ensure first character is uppercase
+    desc = desc[0:1].upper() + desc[1:]
+    # Clean up doubling from the replacements
+    desc = desc.replace("The user you will", "You will")
+    desc = desc.replace("The user you ", "You ")
+    desc = re.sub(r"\s+", " ", desc).strip()
     return desc
 
 
@@ -115,6 +163,10 @@ _INTERNAL_GIVEN_PHRASES = (
     "known to produce blank",
     "workflow is being recorded",
     "workflow is known",
+    "has been extracted",
+    "has occurred in a dedicated",
+    "with video recording",
+    "no environment variables are set",
 )
 
 
@@ -301,16 +353,29 @@ _DOMAIN_DEPENDENCY_LINKS = {
 }
 
 
-def _dep_link(dep_name: str) -> str:
-    """Map a dependency name to a doc link path."""
+# Deps that map to no generated doc — skip instead of linking to /dev/null.
+_SKIP_DEP_KEYS = frozenset(
+    {
+        "playwright",
+        "capture-pipeline",
+        "capture-pipeline-domain",
+        "capture-pipeline-domain-workflowrecorder",
+    }
+)
+
+
+def _dep_link(dep_name: str) -> str | None:
+    """Map a dependency name to a doc link path, or None if no doc exists."""
     key = dep_name.lower().strip().replace(" ", "-").replace("(", "").replace(")", "")
+    if key in _SKIP_DEP_KEYS:
+        return None
     known = _DOMAIN_DEPENDENCY_LINKS.get(key)
     if known:
         return known
     for domain, slug in SPEC_TARGETS.items():
         if domain in key:
             return slug.replace(".md", "")
-    return f"sogo-spec-{key}"
+    return None
 
 
 def generate_doc(spec: dict[str, Any]) -> str:
@@ -405,17 +470,11 @@ def generate_doc(spec: dict[str, Any]) -> str:
                     lines.append(f"- {_normalize_shall(r)}")
                 lines.append("")
 
-            # Check if this workflow is known to produce blank captures
-            known_blank_keywords = ("blank capture", "blank captures", "blank webp", "blank frame")
-            known = tn.get("Known issues", "")
-            sc_name_lower = sc["name"].lower()
-            req_name_lower = req_name.lower()
-
-            is_known_blank = any(kw in known.lower() for kw in known_blank_keywords) and (
-                sc_name_lower.replace(" ", "-") in known.lower()
-                or req_name_lower.replace(" ", "-") in known.lower()
-                or any(word in known.lower() for word in sc_name_lower.split() if len(word) > 3)
-            )
+            # Check if this scenario is explicitly about blank capture handling.
+            # Only flag scenarios whose name contains "blank" (e.g. "Blank capture
+            # handling", "Blank capture fallback") — NOT generic scenarios that
+            # happen to share a word with a workflow name in Known issues.
+            is_known_blank = "blank" in sc["name"].lower()
 
             if is_known_blank:
                 lines.append(":::note")
@@ -427,7 +486,7 @@ def generate_doc(spec: dict[str, Any]) -> str:
                 lines.append(":::")
                 lines.append("")
 
-            if "annotation" in sc_name_lower or "highlight" in sc_name_lower:
+            if "annotation" in sc["name"].lower() or "highlight" in sc["name"].lower():
                 lines.append(":::tip")
                 lines.append(
                     "During recording the system automatically overlays step "
@@ -443,21 +502,32 @@ def generate_doc(spec: dict[str, Any]) -> str:
         lines.append("")
 
     if tn.get("Dependencies"):
-        lines.append("## Related Sections")
-        lines.append("")
         dep_items = [
             d.strip() for d in tn["Dependencies"].replace(", ", ",").split(",") if d.strip()
         ]
+        dep_links = []
         for dep in dep_items:
             slug = _dep_link(dep)
+            if slug is None:
+                continue
             title = dep.replace("-pipeline", "").replace("-", " ").title().strip()
-            lines.append(f"- [{title}](./{slug})")
-        lines.append("")
+            dep_links.append(f"- [{title}](./{slug})")
+        if dep_links:
+            lines.append("## Related Sections")
+            lines.append("")
+            lines.extend(dep_links)
+            lines.append("")
 
     if tn.get("Implementation"):
         lines.append("## Implementation Reference")
         lines.append("")
-        lines.append(f"Source: `{tn['Implementation']}`")
+        impl = tn["Implementation"]
+        # If the value already contains backtick-wrapped items, preserve them
+        # as-is instead of double-wrapping in a single backtick pair.
+        if "`" in impl:
+            lines.append(f"Source: {impl}")
+        else:
+            lines.append(f"Source: `{impl}`")
         lines.append("")
 
     lines.append("## Appendix: Scenario Reference")
