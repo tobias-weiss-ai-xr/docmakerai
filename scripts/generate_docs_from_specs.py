@@ -437,7 +437,7 @@ def generate_doc(spec: dict[str, Any]) -> str:
     lines.append("## Step-by-Step Instructions")
     lines.append("")
 
-    for req_idx, req in enumerate(requirements):
+    for _req_idx, req in enumerate(requirements):
         req_name = req["name"]
         req_prose = req["prose"]
         scenarios = req["scenarios"]
