@@ -60,9 +60,11 @@ ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
 
 # ── Helpers ────────────────────────────────────────────────────────────
 
+
 def env_substitute(value: str) -> str:
     """Substitute ${VAR} placeholders with environment variables."""
     pattern = re.compile(r"\$\{(\w+)\}")
+
     def replacer(match):
         key = match.group(1)
         val = os.environ.get(key)
@@ -70,6 +72,7 @@ def env_substitute(value: str) -> str:
             print(f"  ⚠  Warning: environment variable ${key} is not set")
             return match.group(0)
         return val
+
     return pattern.sub(replacer, value)
 
 
@@ -85,8 +88,10 @@ def clean_dir(path: Path) -> None:
 
 # ── GIF Generation ────────────────────────────────────────────────────
 
-def create_gif(image_paths: list[Path], output_path: Path,
-               duration: int = 800, loop: int = 0) -> None:
+
+def create_gif(
+    image_paths: list[Path], output_path: Path, duration: int = 800, loop: int = 0
+) -> None:
     """Create an animated GIF from a list of PNG images."""
     if not image_paths:
         print("  ⚠  No screenshots to create GIF")
@@ -116,6 +121,7 @@ def create_gif(image_paths: list[Path], output_path: Path,
 
 # ── Playwright Runner ─────────────────────────────────────────────────
 
+
 def generate_playwright_script(workflow: dict) -> str:
     """Generate a Playwright Python script from a workflow definition."""
     name = workflow.get("name", "Unnamed Workflow")
@@ -129,11 +135,11 @@ def generate_playwright_script(workflow: dict) -> str:
         "from playwright.async_api import async_playwright",
         "import os",
         "",
-        f'WORKFLOW_NAME = {json.dumps(name)}',
-        f'RUN_ID = {json.dumps(run_id)}',
-        f'SCREENSHOT_DIR = {json.dumps(str(SCREENSHOT_DIR))}',
-        f'GIF_DIR = {json.dumps(str(GIF_DIR))}',
-        f'ASSETS_DIR = {json.dumps(str(ASSETS_DIR))}',
+        f"WORKFLOW_NAME = {json.dumps(name)}",
+        f"RUN_ID = {json.dumps(run_id)}",
+        f"SCREENSHOT_DIR = {json.dumps(str(SCREENSHOT_DIR))}",
+        f"GIF_DIR = {json.dumps(str(GIF_DIR))}",
+        f"ASSETS_DIR = {json.dumps(str(ASSETS_DIR))}",
         "",
         "",
         "async def run():",
@@ -142,10 +148,10 @@ def generate_playwright_script(workflow: dict) -> str:
         "    gif_active = False",
         "    gif_name = None",
         "",
-        '    async with async_playwright() as p:',
-        '        browser = await p.chromium.launch(headless=True)',
+        "    async with async_playwright() as p:",
+        "        browser = await p.chromium.launch(headless=True)",
         (  # noqa: E501
-            '        context = await browser.new_context('
+            "        context = await browser.new_context("
             'viewport={"width": 1280, "height": 800}, ignore_https_errors=True)'
         ),
         "        page = await context.new_page()",
@@ -167,7 +173,7 @@ def generate_playwright_script(workflow: dict) -> str:
         wait_before = step.get("wait_before", 0)
 
         # Comment
-        lines.append(f"        # ── Step {i+1}: {step_id} ({action}) ──")
+        lines.append(f"        # ── Step {i + 1}: {step_id} ({action}) ──")
 
         # Optional wait before
         if wait_before:
@@ -292,9 +298,9 @@ def generate_playwright_script(workflow: dict) -> str:
 
 def run_workflow(workflow_path: Path) -> bool:
     """Load a workflow YAML and execute it via Playwright."""
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"  Workflow: {workflow_path.name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     with open(workflow_path) as f:
         workflow = yaml.safe_load(f)
@@ -338,6 +344,7 @@ def run_workflow(workflow_path: Path) -> bool:
 
 # ── CLI ────────────────────────────────────────────────────────────────
 
+
 def list_workflows() -> None:
     """List available workflow YAML files."""
     workflows = sorted(WORKFLOW_DIR.glob("*.yaml"))
@@ -370,12 +377,12 @@ def run_all() -> None:
         if run_workflow(wf):
             success += 1
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"  Completed: {success}/{len(workflows)} workflows")
     print(f"  Screenshots: {SCREENSHOT_DIR}")
     print(f"  GIFs: {GIF_DIR}")
     print(f"  Assets (for site): {ASSETS_DIR}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
 
 def main() -> None:

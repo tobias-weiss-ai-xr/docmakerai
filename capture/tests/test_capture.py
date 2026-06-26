@@ -108,8 +108,7 @@ class TestGeneratePlaywrightScript:
             "base_url": "https://example.com",
             "steps": [
                 {"id": "click-btn", "action": "click", "selector": "#btn"},
-                {"id": "type-name", "action": "type",
-                 "selector": "#name", "value": "John"},
+                {"id": "type-name", "action": "type", "selector": "#name", "value": "John"},
             ],
         }
         script = generate_playwright_script(workflow)
@@ -122,8 +121,7 @@ class TestGeneratePlaywrightScript:
             "name": "Shot",
             "base_url": "https://example.com",
             "steps": [
-                {"id": "capture", "action": "wait", "value": "2",
-                 "screenshot": "shot.png"},
+                {"id": "capture", "action": "wait", "value": "2", "screenshot": "shot.png"},
             ],
         }
         script = generate_playwright_script(workflow)
@@ -135,10 +133,14 @@ class TestGeneratePlaywrightScript:
             "name": "Animation",
             "base_url": "https://example.com",
             "steps": [
-                {"id": "start", "action": "wait", "value": "1",
-                 "gif_start": True, "gif_name": "test.gif"},
-                {"id": "end", "action": "wait", "value": "1",
-                 "gif_end": True},
+                {
+                    "id": "start",
+                    "action": "wait",
+                    "value": "1",
+                    "gif_start": True,
+                    "gif_name": "test.gif",
+                },
+                {"id": "end", "action": "wait", "value": "1", "gif_end": True},
             ],
         }
         script = generate_playwright_script(workflow)

@@ -73,10 +73,14 @@ class TestBuildSegmentAnimationExtended:
         frame2.write_bytes(blank_png.read_bytes())
 
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.webp"
         result = build_segment_animation(frames_dir, meta, out, locale="en", fmt="WEBP")
@@ -104,10 +108,14 @@ class TestBuildSegmentAnimationExtended:
         frame1.write_bytes(test_png.read_bytes())
 
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.webp"
         result = build_segment_animation(frames_dir, meta, out)
@@ -122,10 +130,14 @@ class TestBuildSegmentAnimationExtended:
         frame2.write_bytes(b"not a real png file at all")
 
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.webp"
         result = build_segment_animation(frames_dir, meta, out)
@@ -140,10 +152,14 @@ class TestBuildSegmentAnimationExtended:
         frame2.write_bytes(blank_png.read_bytes())
 
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.gif"
         result = build_segment_animation(frames_dir, meta, out, fmt="GIF")
@@ -161,10 +177,14 @@ class TestBuildSegmentAnimationExtended:
 
         annotated_dir = tmp_path / "annotated"
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.webp"
         result = build_segment_animation(frames_dir, meta, out, annotated_dir=str(annotated_dir))
@@ -181,10 +201,14 @@ class TestBuildSegmentAnimationExtended:
         frame2.write_bytes(blank_png.read_bytes())
 
         meta = tmp_path / "frames.json"
-        meta.write_text(json.dumps([
-            {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
-            {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
-        ]))
+        meta.write_text(
+            json.dumps(
+                [
+                    {"file": "frame1.png", "step": "First", "duration": 500, "highlights": []},
+                    {"file": "frame2.png", "step": "Second", "duration": 500, "highlights": []},
+                ]
+            )
+        )
 
         out = tmp_path / "out.webp"
 

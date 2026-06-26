@@ -72,16 +72,12 @@ class TestAnnotateFrame:
 
     def test_saves_to_output_path(self, test_png: Path, tmp_path: Path):
         out = tmp_path / "out.png"
-        result = annotate_frame(
-            test_png, "Test", 1, [], "en", output_path=str(out)
-        )
+        result = annotate_frame(test_png, "Test", 1, [], "en", output_path=str(out))
         assert result is not None
         assert out.exists()
 
     def test_missing_file_returns_none(self):
-        result = annotate_frame(
-            "/nonexistent/image.png", "Test", 1, [], "en"
-        )
+        result = annotate_frame("/nonexistent/image.png", "Test", 1, [], "en")
         assert result is None
 
 
@@ -90,6 +86,7 @@ class TestBuildSegmentAnimation:
         out = tmp_path / "out.webp"
         meta = tmp_path / "frames.json"
         import json
+
         meta.write_text(json.dumps([]))
         result = build_segment_animation(tmp_path, meta, out)
         assert result is False

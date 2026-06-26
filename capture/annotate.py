@@ -20,15 +20,23 @@ HIGHLIGHT_CIRCLE = (220, 40, 40)
 HIGHLIGHT_FILL = (220, 40, 40, 40)
 ARROW_COLOR = (220, 40, 40)
 
-CIRCLED_NUMBERS = ['\u2460', '\u2461', '\u2462', '\u2463', '\u2464',
-                   '\u2465', '\u2466', '\u2467', '\u2468', '\u2469']
+CIRCLED_NUMBERS = [
+    "\u2460",
+    "\u2461",
+    "\u2462",
+    "\u2463",
+    "\u2464",
+    "\u2465",
+    "\u2466",
+    "\u2467",
+    "\u2468",
+    "\u2469",
+]
 
 
 def _load_font(size: int = 22) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     try:
-        return ImageFont.truetype(
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size
-        )
+        return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size)
     except OSError:
         return ImageFont.load_default()
 
@@ -222,8 +230,9 @@ def build_segment_animation(
             continue
 
         annotated_path = annotated_dir / filename
-        img = annotate_frame(str(src), step_label, step_number,
-                             highlights, locale, str(annotated_path))
+        img = annotate_frame(
+            str(src), step_label, step_number, highlights, locale, str(annotated_path)
+        )
         if img is None:
             continue
 

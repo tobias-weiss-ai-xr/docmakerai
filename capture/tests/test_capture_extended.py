@@ -259,10 +259,14 @@ class TestGeneratePlaywrightScriptExtended:
             "name": "Animation",
             "base_url": "https://example.com",
             "steps": [
-                {"id": "start", "action": "wait", "value": "1",
-                 "gif_start": True},
-                {"id": "end", "action": "wait", "value": "1",
-                 "gif_end": True, "gif_name": "output.gif"},
+                {"id": "start", "action": "wait", "value": "1", "gif_start": True},
+                {
+                    "id": "end",
+                    "action": "wait",
+                    "value": "1",
+                    "gif_end": True,
+                    "gif_name": "output.gif",
+                },
             ],
         }
         script = generate_playwright_script(workflow)
@@ -378,9 +382,7 @@ class TestRunWorkflow:
 
         with patch(
             "subprocess.run",
-            return_value=MagicMock(
-                returncode=0, stdout="Done\n", stderr="Some warning\n"
-            ),
+            return_value=MagicMock(returncode=0, stdout="Done\n", stderr="Some warning\n"),
         ):
             result = run_workflow(wf)
 
@@ -394,13 +396,9 @@ class TestListWorkflows:
         monkeypatch.setattr("capture.capture.WORKFLOW_DIR", workflows_dir)
 
         (workflows_dir / "wf1.yaml").write_text(
-            yaml.dump(
-                {"name": "Workflow One", "steps": [{"action": "navigate", "url": "/"}]}
-            )
+            yaml.dump({"name": "Workflow One", "steps": [{"action": "navigate", "url": "/"}]})
         )
-        (workflows_dir / "wf2.yaml").write_text(
-            yaml.dump({"name": "Workflow Two", "steps": []})
-        )
+        (workflows_dir / "wf2.yaml").write_text(yaml.dump({"name": "Workflow Two", "steps": []}))
 
         list_workflows()
         captured = capsys.readouterr()
@@ -444,12 +442,8 @@ class TestRunAll:
         monkeypatch.setattr("capture.capture.GIF_DIR", tmp_path / "gifs")
         monkeypatch.setattr("capture.capture.ASSETS_DIR", tmp_path / "assets")
 
-        (workflows_dir / "wf1.yaml").write_text(
-            yaml.dump({"name": "WF1", "steps": []})
-        )
-        (workflows_dir / "wf2.yaml").write_text(
-            yaml.dump({"name": "WF2", "steps": []})
-        )
+        (workflows_dir / "wf1.yaml").write_text(yaml.dump({"name": "WF1", "steps": []}))
+        (workflows_dir / "wf2.yaml").write_text(yaml.dump({"name": "WF2", "steps": []}))
 
         with patch(
             "subprocess.run",
@@ -474,12 +468,8 @@ class TestRunAll:
         monkeypatch.setattr("capture.capture.GIF_DIR", tmp_path / "gifs")
         monkeypatch.setattr("capture.capture.ASSETS_DIR", tmp_path / "assets")
 
-        (workflows_dir / "ok.yaml").write_text(
-            yaml.dump({"name": "OK", "steps": []})
-        )
-        (workflows_dir / "fail.yaml").write_text(
-            yaml.dump({"name": "Fail", "steps": []})
-        )
+        (workflows_dir / "ok.yaml").write_text(yaml.dump({"name": "OK", "steps": []}))
+        (workflows_dir / "fail.yaml").write_text(yaml.dump({"name": "Fail", "steps": []}))
 
         call_count = [0]
 
@@ -528,12 +518,8 @@ class TestMain:
 
         monkeypatch.setattr("sys.argv", ["capture.py", str(wf_path)])
         monkeypatch.setattr("capture.capture.load_env", MagicMock())
-        monkeypatch.setattr(
-            "capture.capture.WORKFLOW_DIR", tmp_path / "workflows"
-        )
-        monkeypatch.setattr(
-            "capture.capture.SCREENSHOT_DIR", tmp_path / "screenshots"
-        )
+        monkeypatch.setattr("capture.capture.WORKFLOW_DIR", tmp_path / "workflows")
+        monkeypatch.setattr("capture.capture.SCREENSHOT_DIR", tmp_path / "screenshots")
         monkeypatch.setattr("capture.capture.GIF_DIR", tmp_path / "gifs")
         monkeypatch.setattr("capture.capture.ASSETS_DIR", tmp_path / "assets")
         mock_run_wf = MagicMock(return_value=True)
@@ -550,9 +536,7 @@ class TestMain:
         monkeypatch.setattr("sys.argv", ["capture.py", "myworkflow.yaml"])
         monkeypatch.setattr("capture.capture.load_env", MagicMock())
         monkeypatch.setattr("capture.capture.WORKFLOW_DIR", workflows_dir)
-        monkeypatch.setattr(
-            "capture.capture.SCREENSHOT_DIR", tmp_path / "screenshots"
-        )
+        monkeypatch.setattr("capture.capture.SCREENSHOT_DIR", tmp_path / "screenshots")
         monkeypatch.setattr("capture.capture.GIF_DIR", tmp_path / "gifs")
         monkeypatch.setattr("capture.capture.ASSETS_DIR", tmp_path / "assets")
         mock_run_wf = MagicMock(return_value=True)
@@ -563,9 +547,7 @@ class TestMain:
     def test_workflow_not_found(self, monkeypatch, tmp_path):
         monkeypatch.setattr("sys.argv", ["capture.py", "nonexistent.yaml"])
         monkeypatch.setattr("capture.capture.load_env", MagicMock())
-        monkeypatch.setattr(
-            "capture.capture.WORKFLOW_DIR", tmp_path / "workflows"
-        )
+        monkeypatch.setattr("capture.capture.WORKFLOW_DIR", tmp_path / "workflows")
         with pytest.raises(SystemExit):
             main()
 
@@ -573,9 +555,7 @@ class TestMain:
         monkeypatch.setattr("sys.argv", ["capture.py"])
         monkeypatch.setattr("capture.capture.load_env", MagicMock())
         mock_print_help = MagicMock()
-        monkeypatch.setattr(
-            "argparse.ArgumentParser.print_help", mock_print_help
-        )
+        monkeypatch.setattr("argparse.ArgumentParser.print_help", mock_print_help)
         main()
         mock_print_help.assert_called_once()
 

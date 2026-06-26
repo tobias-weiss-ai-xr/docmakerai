@@ -72,6 +72,7 @@ async def goto(page: Page, url_suffix: str, wait_ms: int = 3000) -> None:
 
 # ── Workflow Runners ──
 
+
 async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     """Create a calendar event via double-click, typing title and location."""
     rec = WorkflowRecorder("calendar-create-event", VIDEO_DIR, GIF_DIR, FPS, LOCALE)
@@ -87,12 +88,23 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     if mb and hb:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
         await rec.step(
-            page, "Doppelklick auf Montag 10:00",
+            page,
+            "Doppelklick auf Montag 10:00",
             highlights=[
-                {"type": "circle", "x": mb["x"], "y": mb["y"],
-                 "width": mb["width"], "height": mb["height"]},
-                {"type": "circle", "x": hb["x"], "y": hb["y"],
-                 "width": hb["width"], "height": hb["height"]},
+                {
+                    "type": "circle",
+                    "x": mb["x"],
+                    "y": mb["y"],
+                    "width": mb["width"],
+                    "height": mb["height"],
+                },
+                {
+                    "type": "circle",
+                    "x": hb["x"],
+                    "y": hb["y"],
+                    "width": hb["width"],
+                    "height": hb["height"],
+                },
             ],
         )
         await page.wait_for_timeout(2000)
@@ -100,16 +112,14 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
         # Type title with natural delay
         await page.click("[ng-model='editor.component.summary']")
         await page.fill("[ng-model='editor.component.summary']", "")
-        await page.type("[ng-model='editor.component.summary']",
-                        "Team Standup", delay=60)
+        await page.type("[ng-model='editor.component.summary']", "Team Standup", delay=60)
         await rec.step(page, "Titel eingegeben: Team Standup", highlights=[])
         await page.wait_for_timeout(800)
 
         # Location
         await page.click("[ng-model='editor.component.location']")
         await page.fill("[ng-model='editor.component.location']", "")
-        await page.type("[ng-model='editor.component.location']",
-                        "Conference Room B", delay=50)
+        await page.type("[ng-model='editor.component.location']", "Conference Room B", delay=50)
         await rec.step(page, "Ort eingegeben", highlights=[])
         await page.wait_for_timeout(800)
 
@@ -144,8 +154,7 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
         # Type title
         await page.click("[ng-model='editor.component.summary']")
         await page.fill("[ng-model='editor.component.summary']", "")
-        await page.type("[ng-model='editor.component.summary']",
-                        "Weekly Team Standup", delay=60)
+        await page.type("[ng-model='editor.component.summary']", "Weekly Team Standup", delay=60)
         await rec.step(page, "Titel: Weekly Team Standup", highlights=[])
         await page.wait_for_timeout(800)
 
@@ -165,10 +174,19 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
                 await page.wait_for_timeout(500)
         rr = await rs.bounding_box()
         await rec.step(
-            page, "Wiederholung auf Wöchentlich gesetzt",
-            highlights=[{"type": "circle", "x": rr["x"], "y": rr["y"],
-                         "width": rr["width"], "height": rr["height"]}]
-            if rr else [],
+            page,
+            "Wiederholung auf Wöchentlich gesetzt",
+            highlights=[
+                {
+                    "type": "circle",
+                    "x": rr["x"],
+                    "y": rr["y"],
+                    "width": rr["width"],
+                    "height": rr["height"],
+                }
+            ]
+            if rr
+            else [],
         )
         await page.wait_for_timeout(800)
 
@@ -196,9 +214,19 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     if await acct.is_visible(timeout=2000):
         box = await acct.bounding_box()
         if box:
-            await rec.step(page, "E-Mail-Konto (nur Konfiguration)",
-                           highlights=[{"type": "circle", "x": box["x"], "y": box["y"],
-                                        "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "E-Mail-Konto (nur Konfiguration)",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
             await page.wait_for_timeout(1000)
 
     return await rec.finish(page)
@@ -399,9 +427,7 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(500)
 
     try:
-        add_btn = page.locator(
-            "button[ng-click*='add'], button:has-text('Add')"
-        ).first
+        add_btn = page.locator("button[ng-click*='add'], button:has-text('Add')").first
         if await add_btn.is_visible(timeout=2000):
             await add_btn.click()
             await page.wait_for_timeout(2000)
@@ -450,9 +476,7 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     try:
-        btn = page.locator(
-            "button[ng-click*='subscribe'], button[title*='Subscribe']"
-        ).first
+        btn = page.locator("button[ng-click*='subscribe'], button[title*='Subscribe']").first
         if await btn.is_visible(timeout=2000):
             await btn.click()
             await page.wait_for_timeout(2000)
@@ -462,9 +486,7 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
         return await rec.finish(page)
 
     # URL
-    url_inp = page.locator(
-        "input[ng-model='subscription.url'], input[type='url']"
-    ).first
+    url_inp = page.locator("input[ng-model='subscription.url'], input[type='url']").first
     if await url_inp.is_visible():
         await url_inp.click()
         await url_inp.fill("")
@@ -496,9 +518,7 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     try:
-        gear_btn = page.locator(
-            "button[ng-click*='calendar'], button[ng-click*='settings']"
-        ).first
+        gear_btn = page.locator("button[ng-click*='calendar'], button[ng-click*='settings']").first
         if await gear_btn.is_visible(timeout=2000):
             await gear_btn.click()
             await page.wait_for_timeout(1500)
@@ -519,9 +539,7 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(500)
 
     # Email
-    em = page.locator(
-        "input[ng-model='share.email'], input[type='email']"
-    ).first
+    em = page.locator("input[ng-model='share.email'], input[type='email']").first
     if await em.is_visible():
         await em.click()
         await em.fill("")
@@ -562,36 +580,42 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
         await page.wait_for_timeout(2000)
         await rec.step(
-            page, "Doppelklick auf 14:00",
+            page,
+            "Doppelklick auf 14:00",
             highlights=[
-                {"type": "circle", "x": mb["x"], "y": mb["y"],
-                 "width": mb["width"], "height": mb["height"]},
-                {"type": "circle", "x": hb["x"], "y": hb["y"],
-                 "width": hb["width"], "height": hb["height"]},
+                {
+                    "type": "circle",
+                    "x": mb["x"],
+                    "y": mb["y"],
+                    "width": mb["width"],
+                    "height": mb["height"],
+                },
+                {
+                    "type": "circle",
+                    "x": hb["x"],
+                    "y": hb["y"],
+                    "width": hb["width"],
+                    "height": hb["height"],
+                },
             ],
         )
 
         # Title
         await page.click("[ng-model='editor.component.summary']")
         await page.fill("[ng-model='editor.component.summary']", "")
-        await page.type("[ng-model='editor.component.summary']",
-                        "Team Meeting", delay=60)
+        await page.type("[ng-model='editor.component.summary']", "Team Meeting", delay=60)
         await rec.step(page, "Titel: Team Meeting", highlights=[])
         await page.wait_for_timeout(500)
 
         # Attendees
         try:
-            at = page.locator(
-                "button:has-text('Attendees'), [ng-click*='attendee']"
-            ).first
+            at = page.locator("button:has-text('Attendees'), [ng-click*='attendee']").first
             if await at.is_visible(timeout=2000):
                 await at.click()
                 await page.wait_for_timeout(2000)
                 await rec.step(page, "Teilnehmer-Dialog", highlights=[])
 
-                em = page.locator(
-                    "input[ng-model='attendee.email'], input[type='email']"
-                ).first
+                em = page.locator("input[ng-model='attendee.email'], input[type='email']").first
                 if await em.is_visible():
                     await em.click()
                     await em.fill("")
@@ -616,9 +640,19 @@ async def record_logout(context: BrowserContext) -> Path | None:
     if await logout_link.is_visible(timeout=2000):
         box = await logout_link.bounding_box()
         if box:
-            await rec.step(page, "Logout-Button",
-                           highlights=[{"type": "circle", "x": box["x"], "y": box["y"],
-                                        "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Logout-Button",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await logout_link.click()
         await page.wait_for_timeout(3000)
     else:
@@ -643,9 +677,19 @@ async def record_preferences(context: BrowserContext) -> Path | None:
     if await settings_link.is_visible(timeout=3000):
         box = await settings_link.bounding_box()
         if box:
-            await rec.step(page, "Einstellungen öffnen",
-                           highlights=[{"type": "circle", "x": box["x"], "y": box["y"],
-                                        "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Einstellungen öffnen",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await settings_link.click()
         await page.wait_for_timeout(3000)
     else:
@@ -661,7 +705,9 @@ async def record_preferences(context: BrowserContext) -> Path | None:
             tab_texts.append(tt.strip())
     if tab_texts:
         for target_tab_text in ["General", "Allgemein", "Notification", "Benachrichtigungen"]:
-            tab = page.locator(f"md-tab-item:has-text('{target_tab_text}'), .tab-item:has-text('{target_tab_text}')").first
+            tab = page.locator(
+                f"md-tab-item:has-text('{target_tab_text}'), .tab-item:has-text('{target_tab_text}')"
+            ).first
             if await tab.is_visible(timeout=1000):
                 await tab.click()
                 await page.wait_for_timeout(1500)
@@ -683,10 +729,21 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
         db = await day_btn.bounding_box()
         await day_btn.click()
         await page.wait_for_timeout(2000)
-        await rec.step(page, "Tagesansicht",
-                       highlights=[{"type": "circle", "x": db["x"], "y": db["y"],
-                                    "width": db["width"], "height": db["height"]}]
-                        if db else [])
+        await rec.step(
+            page,
+            "Tagesansicht",
+            highlights=[
+                {
+                    "type": "circle",
+                    "x": db["x"],
+                    "y": db["y"],
+                    "width": db["width"],
+                    "height": db["height"],
+                }
+            ]
+            if db
+            else [],
+        )
     else:
         view_btns = page.locator("button[ng-click*='view'], button[ng-click*='setView']").all()
         for btn in await view_btns:
@@ -704,10 +761,21 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
         mb = await month_btn.bounding_box()
         await month_btn.click()
         await page.wait_for_timeout(2000)
-        await rec.step(page, "Monatsansicht",
-                       highlights=[{"type": "circle", "x": mb["x"], "y": mb["y"],
-                                    "width": mb["width"], "height": mb["height"]}]
-                       if mb else [])
+        await rec.step(
+            page,
+            "Monatsansicht",
+            highlights=[
+                {
+                    "type": "circle",
+                    "x": mb["x"],
+                    "y": mb["y"],
+                    "width": mb["width"],
+                    "height": mb["height"],
+                }
+            ]
+            if mb
+            else [],
+        )
     else:
         await rec.step(page, "Monatsansicht", highlights=[])
 
@@ -731,9 +799,19 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     if await user.is_visible(timeout=3000):
         box = await user.bounding_box()
         if box:
-            await rec.step(page, "Kontakt: John Doe",
-                           highlights=[{"type": "circle", "x": box["x"], "y": box["y"],
-                                        "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Kontakt: John Doe",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await user.click()
         await page.wait_for_timeout(2000)
         await rec.step(page, "Kontakt-Details geöffnet", highlights=[])
@@ -747,7 +825,9 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
             await page.wait_for_timeout(300)
             await rec.step(page, "Telefonnummer bearbeitet", highlights=[])
 
-            sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
+            sv = page.locator(
+                "button[ng-click*='save'], button[type='submit']:has-text('Save')"
+            ).first
             if await sv.is_visible(timeout=2000):
                 await sv.click()
                 await page.wait_for_timeout(2000)
@@ -756,7 +836,9 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
             await rec.step(page, "Bearbeiten nicht verfügbar", highlights=[])
 
         try:
-            del_btn = page.locator("button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')").first
+            del_btn = page.locator(
+                "button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')"
+            ).first
             if await del_btn.is_visible(timeout=2000):
                 await del_btn.click()
                 await page.wait_for_timeout(2000)
@@ -776,13 +858,25 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     await rec.step(page, "Kalenderansicht", highlights=[])
     await page.wait_for_timeout(1000)
 
-    existing = page.locator("sg-calendar-event, .calendar-event, .event, [class*='event'], .fc-event").first
+    existing = page.locator(
+        "sg-calendar-event, .calendar-event, .event, [class*='event'], .fc-event"
+    ).first
     if await existing.is_visible(timeout=3000):
         box = await existing.bounding_box()
         if box:
-            await rec.step(page, "Vorhandenes Event",
-                           highlights=[{"type": "circle", "x": box["x"], "y": box["y"],
-                                        "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Vorhandenes Event",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await existing.click()
         await page.wait_for_timeout(3000)
         await rec.step(page, "Event-Details geöffnet", highlights=[])
@@ -806,7 +900,9 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
 
         # Delete
         try:
-            del_btn = page.locator("button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')").first
+            del_btn = page.locator(
+                "button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')"
+            ).first
             if await del_btn.is_visible(timeout=2000):
                 await del_btn.click()
                 await page.wait_for_timeout(3000)
@@ -828,17 +924,32 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(500)
 
     # Find and use the search button/field
-    search_btn = page.locator("button:has-text('Suchen'), button[ng-click*='search'], button[title*='Search']").first
+    search_btn = page.locator(
+        "button:has-text('Suchen'), button[ng-click*='search'], button[title*='Search']"
+    ).first
     if await search_btn.is_visible(timeout=2000):
         sb = await search_btn.bounding_box()
         await search_btn.click()
         await page.wait_for_timeout(1000)
-        await rec.step(page, "Suche geöffnet",
-                       highlights=[{"type": "circle", "x": sb["x"], "y": sb["y"],
-                                    "width": sb["width"], "height": sb["height"]}]
-                       if sb else [])
+        await rec.step(
+            page,
+            "Suche geöffnet",
+            highlights=[
+                {
+                    "type": "circle",
+                    "x": sb["x"],
+                    "y": sb["y"],
+                    "width": sb["width"],
+                    "height": sb["height"],
+                }
+            ]
+            if sb
+            else [],
+        )
         # Type in search field
-        inp = page.locator("input[type='search'], input[placeholder*='Search'], input:visible").first
+        inp = page.locator(
+            "input[type='search'], input[placeholder*='Search'], input:visible"
+        ).first
         if await inp.is_visible(timeout=2000):
             await inp.fill("")
             await inp.type("Meeting", delay=80)
@@ -870,7 +981,19 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     if await msg.is_visible(timeout=3000):
         box = await msg.bounding_box()
         if box:
-            await rec.step(page, "E-Mail auswahlen", highlights=[{"type": "circle", "x": box["x"], "y": box["y"], "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "E-Mail auswahlen",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await msg.click()
         await page.wait_for_timeout(2000)
         await rec.step(page, "E-Mail Details angezeigt", highlights=[])
@@ -889,7 +1012,19 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
         if await first_folder.is_visible(timeout=2000):
             box = await first_folder.bounding_box()
             if box:
-                await rec.step(page, "Anderen Ordner auswahlen", highlights=[{"type": "circle", "x": box["x"], "y": box["y"], "width": box["width"], "height": box["height"]}])
+                await rec.step(
+                    page,
+                    "Anderen Ordner auswahlen",
+                    highlights=[
+                        {
+                            "type": "circle",
+                            "x": box["x"],
+                            "y": box["y"],
+                            "width": box["width"],
+                            "height": box["height"],
+                        }
+                    ],
+                )
             await first_folder.click()
             await page.wait_for_timeout(2000)
             await rec.step(page, "Ordner-inhalt angezeigt", highlights=[])
@@ -911,7 +1046,19 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
         if await reply_btn.is_visible(timeout=2000):
             box = await reply_btn.bounding_box()
             if box:
-                await rec.step(page, "Antwort-Button", highlights=[{"type": "circle", "x": box["x"], "y": box["y"], "width": box["width"], "height": box["height"]}])
+                await rec.step(
+                    page,
+                    "Antwort-Button",
+                    highlights=[
+                        {
+                            "type": "circle",
+                            "x": box["x"],
+                            "y": box["y"],
+                            "width": box["width"],
+                            "height": box["height"],
+                        }
+                    ],
+                )
             await reply_btn.click()
             await page.wait_for_timeout(2000)
             await rec.step(page, "Antwort-Fenster geoffnet", highlights=[])
@@ -922,7 +1069,21 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
         delete_btn = page.locator("button[title*='Delete'], button:has-text('Delete')").first
         if await delete_btn.is_visible(timeout=2000):
             db = await delete_btn.bounding_box()
-            await rec.step(page, "Loschen-Button", highlights=[{"type": "circle", "x": db["x"], "y": db["y"], "width": db["width"], "height": db["height"]}] if db else [])
+            await rec.step(
+                page,
+                "Loschen-Button",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": db["x"],
+                        "y": db["y"],
+                        "width": db["width"],
+                        "height": db["height"],
+                    }
+                ]
+                if db
+                else [],
+            )
             await delete_btn.click()
             await page.wait_for_timeout(2000)
             await rec.step(page, "E-Mail geloscht", highlights=[])
@@ -940,7 +1101,9 @@ async def record_password_change(context: BrowserContext) -> Path | None:
         await page.wait_for_timeout(3000)
         await rec.step(page, "Einstellungen geoffnet", highlights=[])
         await page.wait_for_timeout(1000)
-        await rec.step(page, "Passwortanderung in den Einstellungen (falls aktiviert)", highlights=[])
+        await rec.step(
+            page, "Passwortanderung in den Einstellungen (falls aktiviert)", highlights=[]
+        )
         await page.wait_for_timeout(500)
     return await rec.finish(page)
 
@@ -951,19 +1114,49 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     await goto(page, "Calendar/view", 2000)
     await rec.step(page, "Kalenderansicht", highlights=[])
     await page.wait_for_timeout(1000)
-    settings_btn = page.locator("button:has-text('Settings'), md-button:has-text('Einstellungen')").first
+    settings_btn = page.locator(
+        "button:has-text('Settings'), md-button:has-text('Einstellungen')"
+    ).first
     if await settings_btn.is_visible(timeout=2000):
         box = await settings_btn.bounding_box()
         if box:
-            await rec.step(page, "Einstellungen-Button", highlights=[{"type": "circle", "x": box["x"], "y": box["y"], "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Einstellungen-Button",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await settings_btn.click()
         await page.wait_for_timeout(2000)
         await rec.step(page, "Einstellungen-Panel geoffnet", highlights=[])
         await page.wait_for_timeout(500)
-        export_link = page.locator("a:has-text('Export'), a[href*='ical'], button:has-text('iCal')").first
+        export_link = page.locator(
+            "a:has-text('Export'), a[href*='ical'], button:has-text('iCal')"
+        ).first
         if await export_link.is_visible(timeout=2000):
             el = await export_link.bounding_box()
-            await rec.step(page, "iCal/Export-Link fehlt (SOGo-Konfiguration)", highlights=[{"type": "circle", "x": el["x"], "y": el["y"], "width": el["width"], "height": el["height"]}] if el else [])
+            await rec.step(
+                page,
+                "iCal/Export-Link fehlt (SOGo-Konfiguration)",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": el["x"],
+                        "y": el["y"],
+                        "width": el["width"],
+                        "height": el["height"],
+                    }
+                ]
+                if el
+                else [],
+            )
     return await rec.finish(page)
 
 
@@ -977,7 +1170,19 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     if await menu_btn.is_visible(timeout=2000):
         box = await menu_btn.bounding_box()
         if box:
-            await rec.step(page, "Actions-Menubutton", highlights=[{"type": "circle", "x": box["x"], "y": box["y"], "width": box["width"], "height": box["height"]}])
+            await rec.step(
+                page,
+                "Actions-Menubutton",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ],
+            )
         await menu_btn.click()
         await page.wait_for_timeout(1000)
         await rec.step(page, "Menugeoffnet", highlights=[])
@@ -985,15 +1190,44 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
         import_option = page.locator("md-menu-item:has-text('Import')").first
         if await import_option.is_visible(timeout=2000):
             io = await import_option.bounding_box()
-            await rec.step(page, "Import-Option fehlt (SOGo-Konfiguration)", highlights=[{"type": "circle", "x": io["x"], "y": io["y"], "width": io["width"], "height": io["height"]}] if io else [])
+            await rec.step(
+                page,
+                "Import-Option fehlt (SOGo-Konfiguration)",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": io["x"],
+                        "y": io["y"],
+                        "width": io["width"],
+                        "height": io["height"],
+                    }
+                ]
+                if io
+                else [],
+            )
         export_option = page.locator("md-menu-item:has-text('Export')").first
         if await export_option.is_visible(timeout=2000):
             eo = await export_option.bounding_box()
-            await rec.step(page, "Export-Option fehlt (SOGo-Konfiguration)", highlights=[{"type": "circle", "x": eo["x"], "y": eo["y"], "width": eo["width"], "height": eo["height"]}] if eo else [])
+            await rec.step(
+                page,
+                "Export-Option fehlt (SOGo-Konfiguration)",
+                highlights=[
+                    {
+                        "type": "circle",
+                        "x": eo["x"],
+                        "y": eo["y"],
+                        "width": eo["width"],
+                        "height": eo["height"],
+                    }
+                ]
+                if eo
+                else [],
+            )
     return await rec.finish(page)
 
 
 # ── Runner ──
+
 
 async def main(workers: int = 1) -> None:
     clean_dirs()
@@ -1071,8 +1305,11 @@ async def main(workers: int = 1) -> None:
                         meta_path = VIDEO_DIR / f"{name}_metadata.json"
                         if meta_path.exists():
                             import json
+
                             meta = json.loads(meta_path.read_text())
-                            print(f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB")
+                            print(
+                                f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB"
+                            )
                             results.append((name, True, meta["annotated_frames"]))
                         else:
                             print(f"  ✓  {webp_path.name}")
@@ -1108,7 +1345,11 @@ async def main(workers: int = 1) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SOGo capture pipeline")
-    parser.add_argument("--workers", type=int, default=1,
-                        help="Number of parallel workers (default: 1 = sequential)")
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Number of parallel workers (default: 1 = sequential)",
+    )
     args = parser.parse_args()
     asyncio.run(main(workers=args.workers))

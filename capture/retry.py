@@ -8,6 +8,7 @@ def capture_retry(max_attempts: int = 3, delay_s: float = 2.0):
 
     Logs each attempt and marks blank captures in the result.
     """
+
     def decorator(fn: Callable) -> Callable:
         @functools.wraps(fn)
         async def wrapper(*args, **kwargs) -> Any:
@@ -31,9 +32,11 @@ def capture_retry(max_attempts: int = 3, delay_s: float = 2.0):
             return None
 
         return wrapper
+
     return decorator
 
 
 async def _async_sleep(seconds: float):
     import asyncio
+
     await asyncio.sleep(seconds)
