@@ -10,15 +10,19 @@ from capture.annotate import _load_font, _save_animation, build_segment_animatio
 class TestLoadFont:
     def test_default_fallback_on_ioerror(self):
         default_font = ImageFont.ImageFont()
-        with patch("capture.annotate.ImageFont.truetype", side_effect=IOError), \
-             patch("capture.annotate.ImageFont.load_default", return_value=default_font):
+        with (
+            patch("capture.annotate.ImageFont.truetype", side_effect=IOError),
+            patch("capture.annotate.ImageFont.load_default", return_value=default_font),
+        ):
             font = _load_font(22)
             assert isinstance(font, ImageFont.ImageFont)
 
     def test_default_fallback_on_oserror(self):
         default_font = ImageFont.ImageFont()
-        with patch("capture.annotate.ImageFont.truetype", side_effect=OSError), \
-             patch("capture.annotate.ImageFont.load_default", return_value=default_font):
+        with (
+            patch("capture.annotate.ImageFont.truetype", side_effect=OSError),
+            patch("capture.annotate.ImageFont.load_default", return_value=default_font),
+        ):
             font = _load_font(22)
             assert isinstance(font, ImageFont.ImageFont)
 
