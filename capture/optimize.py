@@ -234,7 +234,10 @@ def print_summary(all_results: list[OptimizationResult]) -> None:
     print(f"  Reduction:       {total_reduction:.1f}%")
     print("=" * 70)
 
-    over_target = [r for r in all_results if r.optimized_kb > WEBP_MAX_SIZE_KB and r.file.suffix == ".webp"]
+    over_target = [
+        r for r in all_results
+        if r.optimized_kb > WEBP_MAX_SIZE_KB and r.file.suffix == ".webp"
+    ]
     if over_target:
         print(f"\n⚠️  WebP files still over {WEBP_MAX_SIZE_KB}KB target:")
         for r in sorted(over_target, key=lambda x: x.optimized_kb, reverse=True):
@@ -245,7 +248,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Optimize documentation assets")
     parser.add_argument("--dry-run", action="store_true", help="Preview without changes")
     parser.add_argument("--target", type=Path, help="Specific directory to optimize")
-    parser.add_argument("--max-size", type=int, default=None, help="Skip files already under this size (KB)")
+    parser.add_argument(
+        "--max-size", type=int, default=None,
+        help="Skip files already under this size (KB)",
+    )
     args = parser.parse_args()
 
     directories = [args.target] if args.target else DEFAULT_TARGETS

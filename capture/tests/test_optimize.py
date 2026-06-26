@@ -282,7 +282,7 @@ class TestOptimizePng:
                 pixels[x, y] = (x % 256, y % 256, (x + y) % 256, 0)
         cmyk.save(src, format="TIFF")
         dst = tmp_path / "out.png"
-        result = optimize_png(src, dst)
+        optimize_png(src, dst)
         assert dst.exists()
 
     def test_no_improvement_tiny_image(self, tmp_path):
