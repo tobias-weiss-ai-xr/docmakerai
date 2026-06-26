@@ -1,12 +1,12 @@
 ---
 title: "Auth Session — Spec-Based Guide"
-description: "Manage SOGo demo authentication and session lifecycle for the capture pipeline. The auth-session domain establishes an authenticated browser context tha..."
+description: "Spec-based guide covering SOGo authentication, session reuse, and logout workflows for the capture pipeline."
 sidebar_label: "Auth Session Specification Guide"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Auth Session — Spec-Based Guide" description="Manage SOGo demo authentication and session lifecycle for the capture pipeline. The auth-session domain establishes an authenticated browser context tha..." keywords="SOGo 5, login, logout, session, authentication, spec" />
+<PageSEO title="Auth Session — Spec-Based Guide" description="Spec-based guide covering SOGo authentication, session reuse, and logout workflows for the capture pipeline." keywords="SOGo 5, login, logout, session, authentication, spec" />
 
 # SOGo Authentication and Sessions
 
@@ -18,10 +18,7 @@ subsequent workflow captures reuse via Playwright storage state.
 
 - The environment variables `SOGO_URL`, `SOGO_USERNAME`, and `SOGO_PASSWORD` are set
 - The SOGo login page has loaded
-- No environment variables are set
-- successful login has occurred in a dedicated login context
-- The storage state has been extracted from the login context
-- authenticated browser context with video recording enabled
+- You are logged into SOGo 5
 
 ## Step-by-Step Instructions
 
@@ -32,7 +29,7 @@ credentials from environment variables before any workflow capture begins.
 
 #### Step 1: Navigate to `SOGO_URL` and submits the credential form
 
-The login function navigates to `SOGO_URL` and submits the credential form
+The system navigates to `SOGO_URL` and submits the credential form
 
 **Expected result:**
 
@@ -41,16 +38,16 @@ The login function navigates to `SOGO_URL` and submits the credential form
 
 #### Step 2: Fill the username field, password field, and toggles the "remember me" switch
 
-The login function fills the username field, password field, and toggles the "remember me" switch
+The system fills the username field, password field, and toggles the "remember me" switch
 
 **Expected result:**
 
 - the submit button will be clicked
 - a 5000ms wait will follow to allow session establishment
 
-#### Step 3: Starts
+#### Step 3: Start
 
-The pipeline starts
+The system starts
 
 **Expected result:**
 
@@ -64,7 +61,7 @@ its storage state across all workflow capture contexts.
 
 #### Step 1: Create a new browser context for a workflow capture
 
-The pipeline creates a new browser context for a workflow capture
+The system creates a new browser context for a workflow capture
 
 **Expected result:**
 
@@ -94,14 +91,9 @@ The logout workflow runs
 - the workflow will navigate to the logout trigger
 - the transition to the login screen will be captured as annotated frames
 
-## Related Sections
-
-- [Playwright](./sogo-spec-playwright)
-- [Capture Domain (Workflowrecorder)](./sogo-spec-capture-pipeline-domain-workflowrecorder)
-
 ## Implementation Reference
 
-Source: ``capture/run_captures.py` — `login()`, `record_logout()``
+Source: `capture/run_captures.py` — `login()`, `record_logout()`
 
 ## Appendix: Scenario Reference
 

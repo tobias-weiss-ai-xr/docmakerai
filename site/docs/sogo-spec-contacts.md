@@ -1,12 +1,12 @@
 ---
 title: "Contacts — Spec-Based Guide"
-description: "Capture SOGo contacts module workflows as annotated WebP animations for the user guide. Covers adding contacts, editing/deleting contacts, and importing..."
+description: "Spec-based guide covering SOGo contacts module workflows including add, edit/delete, and import/export operations."
 sidebar_label: "Contacts Specification Guide"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Contacts — Spec-Based Guide" description="Capture SOGo contacts module workflows as annotated WebP animations for the user guide. Covers adding contacts, editing/deleting contacts, and importing..." keywords="SOGo 5, contacts, address book, vCard, import, export, spec" />
+<PageSEO title="Contacts — Spec-Based Guide" description="Spec-based guide covering SOGo contacts module workflows including add, edit/delete, and import/export operations." keywords="SOGo 5, contacts, address book, vCard, import, export, spec" />
 
 # SOGo Contacts
 
@@ -39,7 +39,7 @@ The user clicks the add contact button
 - the contact will be saved
 - the WebP will annotate the form interaction with step indicators
 
-#### Step 2: Focuse each field
+#### Step 2: Focus each field
 
 The user focuses each field
 
@@ -99,11 +99,10 @@ The user selects the import option and uploads a file
 ## Related Sections
 
 - [Auth Session](./sogo-spec-auth-session)
-- [Capture (Workflowrecorder)](./sogo-spec-capture-pipeline-workflowrecorder)
 
 ## Implementation Reference
 
-Source: ``capture/run_captures.py` — `record_contacts_add()`, `record_contacts_edit_delete()`, `record_contacts_import_export()``
+Source: `capture/run_captures.py` — `record_contacts_add()`, `record_contacts_edit_delete()`, `record_contacts_import_export()`
 
 ## Appendix: Scenario Reference
 

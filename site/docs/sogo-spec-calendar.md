@@ -1,12 +1,12 @@
 ---
 title: "Calendar — Spec-Based Guide"
-description: "Capture SOGo calendar module workflows as annotated WebP animations for the user guide. Covers event creation, recurring events, editing, deletion, view..."
+description: "Spec-based guide covering SOGo calendar module workflows including event creation, recurring events, sharing, subscriptions, and free/busy lookup."
 sidebar_label: "Calendar Specification Guide"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Calendar — Spec-Based Guide" description="Capture SOGo calendar module workflows as annotated WebP animations for the user guide. Covers event creation, recurring events, editing, deletion, view..." keywords="SOGo 5, calendar, events, recurring, sharing, iCal, free/busy, spec" />
+<PageSEO title="Calendar — Spec-Based Guide" description="Spec-based guide covering SOGo calendar module workflows including event creation, recurring events, sharing, subscriptions, and free/busy lookup." keywords="SOGo 5, calendar, events, recurring, sharing, iCal, free/busy, spec" />
 
 # SOGo Calendar
 
@@ -31,7 +31,7 @@ switching, sharing, subscriptions, free/busy scheduling, and iCal import/export.
 The capture pipeline will record the workflow for creating a new calendar
 event via double-click on a time slot, filling the event dialog, and saving.
 
-#### Step 1: Double-clicks the time slot at Monday 10:00
+#### Step 1: Double-click the time slot at Monday 10:00
 
 The user double-clicks the time slot at Monday 10:00
 
@@ -159,11 +159,10 @@ The user selects the export option
 ## Related Sections
 
 - [Auth Session](./sogo-spec-auth-session)
-- [Capture (Workflowrecorder)](./sogo-spec-capture-pipeline-workflowrecorder)
 
 ## Implementation Reference
 
-Source: ``capture/run_captures.py` — `record_calendar_create_event()`, `record_calendar_recurring()`, `record_calendar_views()`, `record_calendar_edit_delete()`, `record_calendar_share()`, `record_calendar_subscribe()`, `record_freebusy()`, `record_calendar_ical()``
+Source: `capture/run_captures.py` — `record_calendar_create_event()`, `record_calendar_recurring()`, `record_calendar_views()`, `record_calendar_edit_delete()`, `record_calendar_share()`, `record_calendar_subscribe()`, `record_freebusy()`, `record_calendar_ical()`
 
 ## Appendix: Scenario Reference
 
