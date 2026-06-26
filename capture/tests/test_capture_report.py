@@ -93,6 +93,7 @@ def test_report_output_path(tmp_path):
 
     assert output.exists()
     import json
+
     loaded = json.loads(output.read_text())
     assert loaded["total_workflows"] == 1
     assert loaded == report

@@ -32,11 +32,11 @@ DEFAULT_TARGETS = [
 ]
 
 # Quality settings
-WEBP_QUALITY = 60          # 0-100, lower = smaller (was: default ~80)
-WEBP_FRAME_SKIP = 2        # keep every Nth frame (2 = halve frame count)
-WEBP_MAX_SIZE_KB = 200     # target max size per WebP
-PNG_COLORS = 256           # quantize to N colors
-PNG_MAX_SIZE_KB = 80       # target max size per PNG
+WEBP_QUALITY = 60  # 0-100, lower = smaller (was: default ~80)
+WEBP_FRAME_SKIP = 2  # keep every Nth frame (2 = halve frame count)
+WEBP_MAX_SIZE_KB = 200  # target max size per WebP
+PNG_COLORS = 256  # quantize to N colors
+PNG_MAX_SIZE_KB = 80  # target max size per PNG
 
 
 class OptimizationResult(NamedTuple):
@@ -51,8 +51,9 @@ def get_size_kb(path: Path) -> float:
     return path.stat().st_size / 1024
 
 
-def optimize_webp(source: Path, target: Path, quality: int = WEBP_QUALITY,
-                  frame_skip: int = WEBP_FRAME_SKIP) -> bool:
+def optimize_webp(
+    source: Path, target: Path, quality: int = WEBP_QUALITY, frame_skip: int = WEBP_FRAME_SKIP
+) -> bool:
     """Optimize an animated WebP using Pillow frame extraction and re-encoding.
 
     Reduces frame count and quality while preserving animation.
@@ -135,8 +136,9 @@ def optimize_png(source: Path, target: Path, colors: int = PNG_COLORS) -> bool:
         return False
 
 
-def optimize_directory(directory: Path, dry_run: bool = False,
-                       max_size_kb: int | None = None) -> list[OptimizationResult]:
+def optimize_directory(
+    directory: Path, dry_run: bool = False, max_size_kb: int | None = None
+) -> list[OptimizationResult]:
     """Optimize all WebP and PNG assets in a directory."""
     results: list[OptimizationResult] = []
 
@@ -235,8 +237,7 @@ def print_summary(all_results: list[OptimizationResult]) -> None:
     print("=" * 70)
 
     over_target = [
-        r for r in all_results
-        if r.optimized_kb > WEBP_MAX_SIZE_KB and r.file.suffix == ".webp"
+        r for r in all_results if r.optimized_kb > WEBP_MAX_SIZE_KB and r.file.suffix == ".webp"
     ]
     if over_target:
         print(f"\n⚠️  WebP files still over {WEBP_MAX_SIZE_KB}KB target:")
@@ -249,7 +250,9 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="Preview without changes")
     parser.add_argument("--target", type=Path, help="Specific directory to optimize")
     parser.add_argument(
-        "--max-size", type=int, default=None,
+        "--max-size",
+        type=int,
+        default=None,
         help="Skip files already under this size (KB)",
     )
     args = parser.parse_args()

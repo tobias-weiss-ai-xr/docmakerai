@@ -59,9 +59,7 @@ class TestExtractFrames:
         with patch("capture.video_pipeline.subprocess.run") as mock_run:
             from subprocess import CalledProcessError
 
-            mock_run.side_effect = CalledProcessError(
-                1, ["ffmpeg"], stderr="error"
-            )
+            mock_run.side_effect = CalledProcessError(1, ["ffmpeg"], stderr="error")
             with pytest.raises(CalledProcessError):
                 extract_frames(video, out_dir)
 
@@ -360,9 +358,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_start_creates_page_and_records_time(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         mock_context = MagicMock()
         mock_page = MagicMock()
@@ -378,9 +374,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_step_records_timestamp_and_label(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
         recorder._page_created_time = 1000.0
 
         mock_page = MagicMock()
@@ -397,9 +391,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_step_default_highlights_empty_list(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
         recorder._page_created_time = 1000.0
 
         mock_page = MagicMock()
@@ -411,9 +403,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_finish_no_video_returns_none(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         mock_page = AsyncMock()
         mock_page.video = None
@@ -424,9 +414,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_finish_small_video_returns_none(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -441,9 +429,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_finish_too_few_frames_returns_none(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -453,21 +439,15 @@ class TestWorkflowRecorder:
         mock_page.video = MagicMock()
         mock_page.video.path = AsyncMock(return_value=str(video_path))
 
-        with patch(
-            "capture.video_pipeline.get_video_duration", return_value=5.0
-        ):
-            with patch(
-                "capture.video_pipeline.extract_frames", return_value=[]
-            ):
+        with patch("capture.video_pipeline.get_video_duration", return_value=5.0):
+            with patch("capture.video_pipeline.extract_frames", return_value=[]):
                 result = await recorder.finish(mock_page)
 
         assert result is None
 
     @pytest.mark.asyncio
     async def test_finish_success_path(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -503,16 +483,13 @@ class TestWorkflowRecorder:
             ) as mock_val,
             patch(
                 "capture.video_pipeline.map_frames_to_steps",
-                return_value=[{"step_label": "S", "step_number": 1, "highlights": []}]
-                * 6,
+                return_value=[{"step_label": "S", "step_number": 1, "highlights": []}] * 6,
             ) as mock_map,
             patch(
                 "capture.video_pipeline.annotate_frames",
                 return_value=annotated_frames,
             ) as mock_annotate,
-            patch(
-                "capture.video_pipeline.assemble_webp"
-            ) as mock_assemble,
+            patch("capture.video_pipeline.assemble_webp") as mock_assemble,
         ):
             result = await recorder.finish(mock_page)
 
@@ -526,9 +503,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_finish_validation_failure_cleans_up(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -563,9 +538,7 @@ class TestWorkflowRecorder:
 
     @pytest.mark.asyncio
     async def test_finish_duration_below_threshold_returns_none(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -575,18 +548,14 @@ class TestWorkflowRecorder:
         mock_page.video = MagicMock()
         mock_page.video.path = AsyncMock(return_value=str(video_path))
 
-        with patch(
-            "capture.video_pipeline.get_video_duration", return_value=0.3
-        ):
+        with patch("capture.video_pipeline.get_video_duration", return_value=0.3):
             result = await recorder.finish(mock_page)
 
         assert result is None
 
     @pytest.mark.asyncio
     async def test_finish_too_few_annotated_frames_cleans_up(self, tmp_path: Path):
-        recorder = WorkflowRecorder(
-            "test", tmp_path / "videos", tmp_path / "gifs"
-        )
+        recorder = WorkflowRecorder("test", tmp_path / "videos", tmp_path / "gifs")
 
         video_path = tmp_path / "videos" / "test.webm"
         video_path.parent.mkdir(parents=True)
@@ -615,8 +584,7 @@ class TestWorkflowRecorder:
             ),
             patch(
                 "capture.video_pipeline.map_frames_to_steps",
-                return_value=[{"step_label": "S", "step_number": 1, "highlights": []}]
-                * 6,
+                return_value=[{"step_label": "S", "step_number": 1, "highlights": []}] * 6,
             ),
             patch(
                 "capture.video_pipeline.annotate_frames",
@@ -719,10 +687,7 @@ class TestValidateFrames:
         frames = [tmp_path / f"f_{i:04d}.png" for i in range(10)]
         for f in frames:
             f.write_text("fake")
-        with patch(
-            "capture.video_pipeline.is_frame_valid", return_value=True
-        ):
+        with patch("capture.video_pipeline.is_frame_valid", return_value=True):
             valid, msg = validate_frames(frames, "test")
         assert valid is True
         assert msg == ""
-

@@ -183,15 +183,13 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
         # Type title WITH REASONABLE DELAY (simulates real user)
         await page.click("[ng-model='editor.component.summary']")
         await page.fill("[ng-model='editor.component.summary']", "")
-        await page.type("[ng-model='editor.component.summary']",
-                        "Weekly Team Standup", delay=120)
+        await page.type("[ng-model='editor.component.summary']", "Weekly Team Standup", delay=120)
         await page.wait_for_timeout(800)
 
         # Location also typed deliberately
         await page.click("[ng-model='editor.component.location']")
         await page.fill("[ng-model='editor.component.location']", "")
-        await page.type("[ng-model='editor.component.location']",
-                        "Conference Room B", delay=80)
+        await page.type("[ng-model='editor.component.location']", "Conference Room B", delay=80)
         await page.wait_for_timeout(800)
 
         # RECURRENCE SETTINGS (THE KEY LESSON FOR THIS TASK)

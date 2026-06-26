@@ -36,8 +36,8 @@ async def run_workflow(
                 if meta_path.exists():
                     meta = json.loads(meta_path.read_text())
                     elapsed = time.time() - start
-                    frames = meta['annotated_frames']
-                    size_kb = meta['webp_size_kb']
+                    frames = meta["annotated_frames"]
+                    size_kb = meta["webp_size_kb"]
                     print(f"  ✓  {webp_path.name} — {frames} frames, {size_kb}KB ({elapsed:.1f}s)")
                     return (name, True, frames, None)
                 elapsed = time.time() - start
@@ -59,8 +59,5 @@ async def run_parallel(
     workers: int = 4,
 ) -> list[tuple[str, bool, int, str | None]]:
     semaphore = asyncio.Semaphore(workers)
-    tasks = [
-        run_workflow(name, fn, browser, storage, semaphore)
-        for name, fn in workflows
-    ]
+    tasks = [run_workflow(name, fn, browser, storage, semaphore) for name, fn in workflows]
     return await asyncio.gather(*tasks)

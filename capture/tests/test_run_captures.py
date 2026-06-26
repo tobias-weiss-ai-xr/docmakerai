@@ -162,9 +162,12 @@ class TestRecordLogout:
         rec.finish.assert_awaited_once_with(page)
         assert result == Path("/tmp/gifs/logout.webp")
         assert any(
-            call(page, "Logout-Button", highlights=[
-                {"type": "circle", "x": 10, "y": 20, "width": 100, "height": 50}
-            ]) == c
+            call(
+                page,
+                "Logout-Button",
+                highlights=[{"type": "circle", "x": 10, "y": 20, "width": 100, "height": 50}],
+            )
+            == c
             for c in rec.step.await_args_list
         )
         assert any(
@@ -196,9 +199,7 @@ class TestRecordLogout:
         logout_link.click.assert_awaited_once()
         rec.finish.assert_awaited_once_with(page)
         assert result == Path("/tmp/gifs/logout.webp")
-        assert not any(
-            c.args[1] == "Logout-Button" for c in rec.step.await_args_list
-        )
+        assert not any(c.args[1] == "Logout-Button" for c in rec.step.await_args_list)
 
     @patch("capture.run_captures.WorkflowRecorder")
     @patch("capture.run_captures.SOGO_URL", "https://example.com/SOGo/")
@@ -310,6 +311,7 @@ def _make_all_hidden_locator():
         el.is_visible.return_value = False
         loc.first = el
         return loc
+
     return locator_side_effect
 
 
@@ -336,6 +338,7 @@ class TestRecordVacation:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -389,6 +392,7 @@ class TestRecordVacation:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -442,6 +446,7 @@ class TestRecordContactsAdd:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -480,6 +485,7 @@ class TestRecordGlobalSearch:
             else:
                 loc.first = inp
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -514,6 +520,7 @@ class TestRecordGlobalSearch:
             else:
                 loc.first = inp
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
         page.keyboard = MagicMock()
         page.keyboard.press = AsyncMock()
@@ -556,6 +563,7 @@ class TestRecordPreferences:
             else:
                 loc.all = tab_all_coro
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -592,6 +600,7 @@ class TestRecordPreferences:
             else:
                 loc.all = tab_all_coro
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -619,6 +628,7 @@ class TestRecordMailCompose:
             loc = MagicMock()
             loc.first = acct
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -646,6 +656,7 @@ class TestRecordMailCompose:
             loc = MagicMock()
             loc.first = acct
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -679,6 +690,7 @@ class TestRecordPasswordChange:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -711,6 +723,7 @@ class TestRecordPasswordChange:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -740,6 +753,7 @@ class TestRecordPasswordChange:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -773,6 +787,7 @@ class TestRecordCalendarIcal:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -811,6 +826,7 @@ class TestRecordCalendarIcal:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -844,6 +860,7 @@ class TestRecordCalendarIcal:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -864,11 +881,13 @@ class TestRecordCalendarCreateEvent:
         rec.finish.return_value = Path("/tmp/gifs/calendar-create-event.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
-        "width": 40, "height": 30})
+        monday.bounding_box = AsyncMock(
+            return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        )
         hour10 = AsyncMock()
-        hour10.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
-        "width": 20, "height": 20})
+        hour10.bounding_box = AsyncMock(
+            return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        )
         hour10_loc = MagicMock()
         hour10_loc.first = hour10
         monday.locator.return_value = hour10_loc
@@ -888,6 +907,7 @@ class TestRecordCalendarCreateEvent:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
         page.mouse = MagicMock()
         page.mouse.dblclick = AsyncMock()
@@ -926,6 +946,7 @@ class TestRecordCalendarCreateEvent:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -946,11 +967,13 @@ class TestRecordCalendarRecurring:
         rec.finish.return_value = Path("/tmp/gifs/calendar-recurring.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
-        "width": 40, "height": 30})
+        monday.bounding_box = AsyncMock(
+            return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        )
         hour11 = AsyncMock()
-        hour11.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
-        "width": 20, "height": 20})
+        hour11.bounding_box = AsyncMock(
+            return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        )
         hour11_loc = MagicMock()
         hour11_loc.first = hour11
         monday.locator.return_value = hour11_loc
@@ -977,6 +1000,7 @@ class TestRecordCalendarRecurring:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
         page.mouse = MagicMock()
         page.mouse.dblclick = AsyncMock()
@@ -1023,6 +1047,7 @@ class TestRecordCalendarSubscribe:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1049,6 +1074,7 @@ class TestRecordCalendarSubscribe:
             loc = MagicMock()
             loc.first = subscribe_btn
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1098,6 +1124,7 @@ class TestRecordCalendarShare:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1141,6 +1168,7 @@ class TestRecordCalendarViews:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1188,6 +1216,7 @@ class TestRecordCalendarEditDelete:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1211,11 +1240,13 @@ class TestRecordFreebusy:
         rec.finish.return_value = Path("/tmp/gifs/freebusy.webp")
 
         monday = MagicMock()
-        monday.bounding_box = AsyncMock(return_value={"x": 100, "y": 200,
-        "width": 40, "height": 30})
+        monday.bounding_box = AsyncMock(
+            return_value={"x": 100, "y": 200, "width": 40, "height": 30}
+        )
         hour14 = AsyncMock()
-        hour14.bounding_box = AsyncMock(return_value={"x": 120, "y": 210,
-        "width": 20, "height": 20})
+        hour14.bounding_box = AsyncMock(
+            return_value={"x": 120, "y": 210, "width": 20, "height": 20}
+        )
         hour14_loc = MagicMock()
         hour14_loc.first = hour14
         monday.locator.return_value = hour14_loc
@@ -1237,6 +1268,7 @@ class TestRecordFreebusy:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
         page.mouse = MagicMock()
         page.mouse.dblclick = AsyncMock()
@@ -1285,6 +1317,7 @@ class TestRecordMailSignatures:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1331,6 +1364,7 @@ class TestRecordMailFilters:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1365,6 +1399,7 @@ class TestRecordMailRead:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1402,6 +1437,7 @@ class TestRecordMailFolderManagement:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1426,14 +1462,16 @@ class TestRecordMailReplyForwardDelete:
         msg.is_visible = AsyncMock(return_value=True)
         reply_btn = AsyncMock()
         reply_btn.is_visible = AsyncMock(return_value=True)
-        reply_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 150,
-        "width": 60, "height": 25})
+        reply_btn.bounding_box = AsyncMock(
+            return_value={"x": 100, "y": 150, "width": 60, "height": 25}
+        )
         close_btn = AsyncMock()
         close_btn.is_visible = AsyncMock(return_value=True)
         delete_btn = AsyncMock()
         delete_btn.is_visible = AsyncMock(return_value=True)
-        delete_btn.bounding_box = AsyncMock(return_value={"x": 100, "y": 300,
-        "width": 60, "height": 25})
+        delete_btn.bounding_box = AsyncMock(
+            return_value={"x": 100, "y": 300, "width": 60, "height": 25}
+        )
 
         def locator_side_effect(selector):
             loc = MagicMock()
@@ -1450,6 +1488,7 @@ class TestRecordMailReplyForwardDelete:
                 el.is_visible = AsyncMock(return_value=False)
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1498,6 +1537,7 @@ class TestRecordContactsEditDelete:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1543,6 +1583,7 @@ class TestRecordContactsImportExport:
                 el.is_visible.return_value = False
                 loc.first = el
             return loc
+
         page.locator = MagicMock(side_effect=locator_side_effect)
 
         context = AsyncMock()
@@ -1556,6 +1597,7 @@ class TestImports:
     def test_workflow_recorder_imported_via_fallback(self):
         from capture.run_captures import WorkflowRecorder
         from capture.video_pipeline import WorkflowRecorder as RealRecorder
+
         assert WorkflowRecorder is RealRecorder
 
 
@@ -1636,6 +1678,6 @@ class TestMainWorkflowDispatch:
         import inspect
 
         for name, func in workflows:
-            assert inspect.iscoroutinefunction(
-                func
-            ), f"{name} function {func.__name__} is not async"
+            assert inspect.iscoroutinefunction(func), (
+                f"{name} function {func.__name__} is not async"
+            )

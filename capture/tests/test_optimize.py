@@ -20,8 +20,9 @@ from capture.optimize import (
 # ── Helpers ──────────────────────────────────────────────────────────
 
 
-def _make_webp(path: Path, size=(100, 100), frames: int = 1, color=(200, 100, 50),
-               noisy: bool = False) -> Path:
+def _make_webp(
+    path: Path, size=(100, 100), frames: int = 1, color=(200, 100, 50), noisy: bool = False
+) -> Path:
     """Create a test WebP file. Supports multi-frame animation."""
     if frames <= 1:
         if noisy:
@@ -64,13 +65,18 @@ def _random_rgba_image(size):
     pixels = img.load()
     for x in range(size[0]):
         for y in range(size[1]):
-            pixels[x, y] = (random.randint(0, 255), random.randint(0, 255),
-                            random.randint(0, 255), 255)
+            pixels[x, y] = (
+                random.randint(0, 255),
+                random.randint(0, 255),
+                random.randint(0, 255),
+                255,
+            )
     return img
 
 
-def _make_png(path: Path, size=(100, 100), mode: str = "RGB", color=(200, 100, 50),
-              noisy: bool = False) -> Path:
+def _make_png(
+    path: Path, size=(100, 100), mode: str = "RGB", color=(200, 100, 50), noisy: bool = False
+) -> Path:
     """Create a test PNG file in various modes."""
     if noisy:
         if mode == "P":
@@ -210,10 +216,13 @@ class TestOptimizeWebp:
 
         class MockImage:
             n_frames = 5
+
             def seek(self, i):
                 pass
+
             def convert(self, mode):
                 return Image.new("RGBA", (1, 1))
+
             @property
             def info(self):
                 return {"duration": 100}
@@ -409,15 +418,14 @@ class TestMain:
 
     def test_dry_run_flag(self, tmp_path, monkeypatch):
         _make_webp(tmp_path / "a.webp", size=(300, 300), noisy=True)
-        monkeypatch.setattr(
-            sys, "argv", ["optimize.py", "--dry-run", "--target", str(tmp_path)]
-        )
+        monkeypatch.setattr(sys, "argv", ["optimize.py", "--dry-run", "--target", str(tmp_path)])
         main()
 
     def test_max_size_flag(self, tmp_path, monkeypatch):
         _make_webp(tmp_path / "a.webp", size=(300, 300), noisy=True)
         monkeypatch.setattr(
-            sys, "argv",
+            sys,
+            "argv",
             ["optimize.py", "--target", str(tmp_path), "--max-size", "999"],
         )
         main()

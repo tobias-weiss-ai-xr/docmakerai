@@ -41,12 +41,18 @@ def extract_frames(
     pattern = str(output_dir / "f_%04d.png")
     subprocess.run(
         [
-            "ffmpeg", "-y",
-            "-i", str(video_path),
-            "-vf", f"fps={fps}",
-            "-vsync", "cfr",
-            "-start_number", "1",
-            "-qscale:v", "2",
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(video_path),
+            "-vf",
+            f"fps={fps}",
+            "-vsync",
+            "cfr",
+            "-start_number",
+            "1",
+            "-qscale:v",
+            "2",
             pattern,
         ],
         check=True,
@@ -147,12 +153,15 @@ def assemble_webp(
             wm_path = watermarked_dir / fp.name
             subprocess.run(
                 [
-                    "ffmpeg", "-y",
-                    "-i", str(fp),
+                    "ffmpeg",
+                    "-y",
+                    "-i",
+                    str(fp),
                     "-vf",
                     f"drawtext=text='':fontsize=1:fontcolor=black@0.01:x=0:y=0:box=0,"
                     f"drawtext=text='{i:04d}':fontsize=1:fontcolor=white@0.02:x=W-15:y=H-3:box=0",
-                    "-qscale:v", "1",
+                    "-qscale:v",
+                    "1",
                     str(wm_path),
                 ],
                 check=True,
@@ -161,14 +170,22 @@ def assemble_webp(
 
         subprocess.run(
             [
-                "ffmpeg", "-y",
-                "-framerate", str(fps),
-                "-pattern_type", "glob",
-                "-i", str(watermarked_dir / "*.png"),
-                "-loop", "0",
-                "-compression_level", "6",
-                "-quality", str(quality),
-                "-vsync", "0",
+                "ffmpeg",
+                "-y",
+                "-framerate",
+                str(fps),
+                "-pattern_type",
+                "glob",
+                "-i",
+                str(watermarked_dir / "*.png"),
+                "-loop",
+                "0",
+                "-compression_level",
+                "6",
+                "-quality",
+                str(quality),
+                "-vsync",
+                "0",
                 str(output_path),
             ],
             check=True,
@@ -190,9 +207,12 @@ def get_video_duration(video_path: Path) -> float:
     result = subprocess.run(
         [
             "ffprobe",
-            "-v", "error",
-            "-show_entries", "format=duration",
-            "-of", "default=noprint_wrappers=1:nokey=1",
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
             str(video_path),
         ],
         capture_output=True,
@@ -248,6 +268,7 @@ def validate_frames(raw_frames: list[Path], workflow_name: str) -> tuple[bool, s
         msg = f"{workflow_name}: {sample_size - valid_count}/{sample_size} frames blank"
         return False, msg
     return True, ""
+
 
 class WorkflowRecorder:
     """Records a browser workflow via Playwright video and produces
@@ -346,9 +367,7 @@ class WorkflowRecorder:
 
         # Annotate
         annotated_dir = video_path.parent / f"{self.workflow_name}_annotated"
-        annotated_frames = annotate_frames(
-            raw_frames, mapping, annotated_dir, locale=self.locale
-        )
+        annotated_frames = annotate_frames(raw_frames, mapping, annotated_dir, locale=self.locale)
 
         if len(annotated_frames) < 4:
             if not keep_raw_video:

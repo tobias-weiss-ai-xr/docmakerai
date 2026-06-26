@@ -35,7 +35,11 @@ async def test_run_workflow_success_with_metadata(tmp_path: Path):
     with patch("capture.parallel_runner.shutil.copy2") as mock_copy:
         with patch("capture.parallel_runner.VIDEO_DIR", video_dir):
             result = await run_workflow(
-                name, workflow_fn, browser, {"storage": "data"}, semaphore,
+                name,
+                workflow_fn,
+                browser,
+                {"storage": "data"},
+                semaphore,
             )
 
     assert result == (name, True, 17, None)
@@ -48,7 +52,8 @@ async def test_run_workflow_success_with_metadata(tmp_path: Path):
     )
     ctx.close.assert_awaited_once()
     mock_copy.assert_called_once_with(
-        str(output_webp), str(ASSETS_DIR / "result.webp"),
+        str(output_webp),
+        str(ASSETS_DIR / "result.webp"),
     )
 
 
@@ -68,7 +73,11 @@ async def test_run_workflow_success_without_metadata(tmp_path: Path):
     with patch("capture.parallel_runner.shutil.copy2"):
         with patch("capture.parallel_runner.VIDEO_DIR", video_dir):
             result = await run_workflow(
-                name, workflow_fn, browser, {}, semaphore,
+                name,
+                workflow_fn,
+                browser,
+                {},
+                semaphore,
             )
 
     assert result == (name, True, 0, None)
@@ -268,4 +277,3 @@ def test_import_fallback_via_video_pipeline():
         "capture.video_pipeline",
         "video_pipeline",
     ]
-
