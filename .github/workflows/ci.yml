@@ -118,6 +118,47 @@ jobs:
       - name: Test accessibility validator
         run: pytest accessibility/tests/ -q
 
+  coverage-guard:
+    name: Coverage Trend Guard
+    runs-on: [self-hosted, linux, ci]
+    needs: python-quality
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download PR coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-report-${{ github.sha }}
+          path: coverage-pr/
+
+      - name: Fetch baseline coverage from main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p coverage-base
+          # Get the SHA of the latest commit on main
+          MAIN_SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main --jq .object.sha)
+          echo "Latest main SHA: $MAIN_SHA"
+          # Find the most recent successful CI run for that SHA
+          RUN_ID=$(gh api "repos/${{ github.repository }}/actions/runs?head_sha=$MAIN_SHA&status=success&per_page=10" \
+            --jq '.workflow_runs[] | select(.name == "CI") | .id' | head -1)
+          if [ -n "$RUN_ID" ]; then
+            echo "Found baseline run: $RUN_ID"
+            gh run download "$RUN_ID" --name "coverage-report-$MAIN_SHA" --dir coverage-base/ \
+              || echo "::warning::Could not download coverage for $MAIN_SHA, skipping guard"
+          else
+            echo "::notice::No successful CI run found for $MAIN_SHA, skipping guard (first PR on repo?)"
+          fi
+
+      - name: Run coverage guard
+        if: hashFiles('coverage-base/coverage.xml') != ''
+        run: |
+          python3 scripts/check_coverage_trend.py \
+            --baseline coverage-base/coverage.xml \
+            --pr coverage-pr/coverage.xml \
+            --max-drop 0.5
+
   build-site:
     name: Build Docusaurus Site
     runs-on: [self-hosted, linux, ci]
