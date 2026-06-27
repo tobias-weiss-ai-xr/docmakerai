@@ -97,7 +97,7 @@ sidebar_label: "Roadmap"
 - [x] Untrack `.github-pages-trace` debug artifact
 - [x] Remove empty `docs/` directory
 - [x] Sync ROADMAP with actual state
-- [ ] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
+- [x] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
 
 ### Sprint 12: Spec-to-Docs Pipeline
 - [x] Auto-generate documentation pages from OpenSpec specs
