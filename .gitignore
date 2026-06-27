@@ -51,3 +51,6 @@ logs/
 npm-debug.log*
 capture/segments/
 capture/__pycache__/
+
+# GitHub Pages debug artifacts
+/.github-pages-trace
