@@ -30,10 +30,6 @@ frame*.png
 # Deployment artifacts
 git-gh-pages/
 
-# Root-level generated docs (no longer used, kept for safety)
-/docs/
-/data/
-
 # IDE
 .vscode/
 .idea/
