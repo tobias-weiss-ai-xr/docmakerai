@@ -88,10 +88,23 @@ sidebar_label: "Roadmap"
 
 ### Sprint 2b: CI Reliability
 - [x] Docusaurus build time optimization (4-5 min cached, ~10 min cold — down from 30+)
-- [ ] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
-- [ ] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
-- [ ] Branch protection rules: separate CI status checks from deploy gate
-- [ ] Runner resource contention: load balance between CI/Deploy/Preview workflows
+- [x] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
+- [x] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
+- [x] Branch protection rules: separate CI status checks from deploy gate
+- [x] Runner resource contention: load balance between CI/Deploy/Preview workflows
+
+### Sprint 14: Repo Hygiene
+- [x] Untrack `.github-pages-trace` debug artifact
+- [x] Remove empty `docs/` directory
+- [x] Sync ROADMAP with actual state
+- [ ] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
+
+### Sprint 12: Spec-to-Docs Pipeline
+- [x] Auto-generate documentation pages from OpenSpec specs
+- [x] Tutorial structure from spec scenarios
+- [x] Asset embedding from capture metadata
+- [x] Docusaurus sidebar auto-generation
+- [x] `scripts/generate_docs_from_specs.py` (593 lines) shipped in commit `25bed47`
 
 ---
 
@@ -116,8 +129,6 @@ sidebar_label: "Roadmap"
 - [ ] Screenshot hash comparison with ImageHash
 - [ ] DOM structure comparison
 - [ ] Auto-trigger re-capture on detected changes
-
-### Sprint 12: Spec-to-Docs Pipeline
 
 ### Sprint 13: Self-Hosted Staging (Deferred)
 - [ ] Replace Netlify preview-deploy.yml with own staging on GitHub Pages
@@ -158,8 +169,8 @@ sidebar_label: "Roadmap"
 
 ---
 
-**Last Updated:** 2026-06-25
-**Next Sprint:** Sprint 2b — CI Reliability (branch protection + runner contention)
+**Last Updated:** 2026-06-28
+**Next Sprint:** Sprint 15 — Performance Benchmarks
 
 ---
 
