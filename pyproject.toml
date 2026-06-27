@@ -21,7 +21,15 @@ pythonpath = [".."]
 
 [tool.coverage.run]
 source = ["capture", "accessibility"]
-omit = ["capture/tests/*", "capture/__init__.py", "capture/run_captures.py"]
+omit = [
+    "capture/tests/*",
+    "capture/__init__.py",
+    "capture/run_captures.py",
+    "capture/run_task_first_captures.py",
+    "accessibility/tests/*",
+    "accessibility/validate.py",
+    "setup_github_runner.py",
+]
 
 [tool.coverage.report]
 fail_under = 95

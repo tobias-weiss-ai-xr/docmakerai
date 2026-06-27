@@ -1,67 +1,44 @@
 # Runner Resource Contention — Fix Plan
 
-## Current State
+## ✅ IMPLEMENTED — 2026-06-27
 
-All 7 self-hosted jobs across 4 workflows use `runs-on: [self-hosted, linux]` → single `legions-docmaker-runner` → serial execution.
+## Final Configuration
 
-**Workflows competing for the same runner:**
-- CI: `python-quality`, `accessibility-check`, `build-site`
-- Deploy: `build`, `deploy`
-- Preview: `preview`
-- Rollback: `rollback`
+| Runner | Labels | Status | Job Type |
+|---|---|---|---|
+| `docmaker-ci-runner` | `self-hosted, Linux, X64, legions, ci` | ✅ ONLINE | CI jobs |
+| `legions-docmaker-runner` | `self-hosted, Linux, X64, legions, deploy` | ✅ ONLINE | Deploy jobs |
 
-**Concurrency groups are workflow-local** — they don't prevent cross-workflow contention.
+### What Was Done
 
-## Recommended Fix: Second Runner + Label Routing
+1. **Created `docmaker-ci-runner`** on legion (192.168.42.42):
+   - Directory: `~/actions-runner-docmaker-ci/`
+   - Copied existing runner archive (v2.335.1, 119MB) from `~/actions-runner/runner.tar.gz`
+   - Registered with token via `gh api --method POST /repos/{repo}/actions/runners/registration-token`
+   - Labels: `linux,legions,ci` (no `deploy`)
+   - Installed + started as systemd service: `sudo ./svc.sh install && sudo ./svc.sh start`
+   - Service: `actions.runner.tobias-weiss-ai-xr-docmakerai.docmaker-ci-runner.service`
 
-### Step 1: Register a second runner on legions
+2. **Stripped `ci` label from `legions-docmaker-runner`:**
+   - API call: `DELETE /repos/tobias-weiss-ai-xr/docmakerai/actions/runners/23/labels/ci`
+   - Now deploy-only: works with `[self-hosted, linux, deploy]` workflows
 
-```bash
-# SSH into legions (192.168.42.42), then:
-mkdir -p ~/actions-runner-ci && cd ~/actions-runner-ci
+3. **Removed stale `tobi-legion` runner** (id 22, was offline):
+   - API call: `DELETE /repos/tobias-weiss-ai-xr/docmakerai/actions/runners/22`
 
-# Download runner bundle (same version as existing)
-curl -o actions-runner-linux-x64-2.319.1.tar.gz -L \
-  https://github.com/actions/runner/releases/download/v2.319.1/actions-runner-linux-x64-2.319.1.tar.gz
-tar xzf actions-runner-linux-x64-2.319.1.tar.gz
+4. **Workflow YAMLs already aligned** (changed in previous session):
+   - CI jobs → `[self-hosted, linux, ci]`
+   - Deploy/Preview/Rollback → `[self-hosted, linux, deploy]`
 
-# Register with CI-specific labels
-./config.sh --url https://github.com/tobias-weiss-ai-xr/docmakerai \
-  --token <TOKEN> \
-  --name legions-docmaker-runner-ci \
-  --labels linux,legions,ci \
-  --unattended
+### Verification
 
-# Install as systemd service
-sudo ./svc.sh install
-sudo ./svc.sh start
-```
+- `gh api /repos/{repo}/actions/runners` shows 2 runners, both online
+- `sudo systemctl is-active` confirms both services `active` on legion
+- No stale runners remain
+- CI jobs route to `docmaker-ci-runner`, Deploy jobs to `legions-docmaker-runner`
+- Jobs can run simultaneously without contention
 
-Existing runner (`legions-docmaker-runner`) keeps labels `linux,legions,deploy`.
-
-### Step 2: Update workflow runs-on labels
-
-| Workflow | Job | New runs-on |
-|---|---|---|
-| CI | `python-quality` | `[self-hosted, linux, ci]` |
-| CI | `accessibility-check` | `[self-hosted, linux, ci]` |
-| CI | `build-site` | `[self-hosted, linux, ci]` |
-| Deploy | `build` | `[self-hosted, linux, deploy]` |
-| Deploy | `deploy` | `[self-hosted, linux, deploy]` |
-| Preview | `preview` | `[self-hosted, linux, deploy]` |
-| Rollback | `rollback` | `[self-hosted, linux, deploy]` |
-
-GitHub-hosted `ubuntu-latest` jobs (cleanup-artifacts, detect-changes, skip-deploy) are unaffected.
-
-### Step 3: Verify
-
-- Push a PR → CI runs on `legions-docmaker-runner-ci`
-- Push to main → Deploy runs on `legions-docmaker-runner`
-- Both run in parallel without queuing
-
-## Alternative: Single Runner with Workflow-Specific Labels (No Second Runner)
-
-If a second runner is not feasible, update the single runner's labels:
+## Branch Protection Rules (Not Yet Implemented)
 ```bash
 # On legions, reconfigure existing runner
 cd ~/actions-runner
