@@ -4,6 +4,10 @@ description: "Comprehensive audit of missing assets, undocumented features, and 
 sidebar_label: "Gap Analysis"
 ---
 
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Gap Analysis" description="Comprehensive audit of missing assets, undocumented features, and orphaned files in the SOGo 5 documentation" keywords="SOGo 5, gap analysis, documentation audit, assets, features" />
+
 # Gap Analysis — SOGo 5 Documentation
 
 > **Generated:** 2026-06-16  
