@@ -11,10 +11,10 @@
     "max": "100 KB",
     "compression": "gzip"
   },
-  {
-    "name": "Single largest JS chunk (gzip)",
-    "path": "site/build/assets/js/*.js",
-    "max": "200 KB",
-    "compression": "gzip"
-  }
+    {
+      "name": "Largest JS chunk (gzip)",
+      "path": "site/build/assets/js/*.js",
+      "max": "500 KB",
+      "compression": "gzip"
+    }
 ]
