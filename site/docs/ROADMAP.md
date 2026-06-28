@@ -74,6 +74,42 @@ sidebar_label: "Roadmap"
 - [x] Path restructuring: sogo5/sogo6 instead of /5//6/
 - [x] Sidebar reorganized into 7 categories with emoji icons
 
+### Sprint 2b: CI Reliability
+- [x] Docusaurus build time optimization (4-5 min cached, ~10 min cold — down from 30+)
+- [x] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
+- [x] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
+- [x] Branch protection rules: separate CI status checks from deploy gate
+- [x] Runner resource contention: load balance between CI/Deploy/Preview workflows
+
+### Sprint 9: Performance Benchmarks
+- [x] Add Lighthouse CI to `.github/workflows/ci.yml`
+- [x] Add bundle size tracking
+- [x] Add capture timing metrics to `capture_report.py`
+- [x] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
+- [x] Create performance dashboard page at `site/docs/performance.md`
+
+### Sprint 12: Spec-to-Docs Pipeline
+- [x] Auto-generate documentation pages from OpenSpec specs
+- [x] Tutorial structure from spec scenarios
+- [x] Asset embedding from capture metadata
+- [x] Docusaurus sidebar auto-generation
+- [x] `scripts/generate_docs_from_specs.py` (593 lines) shipped in commit `25bed47`
+
+### Sprint 14: Repo Hygiene
+- [x] Untrack `.github-pages-trace` debug artifact
+- [x] Remove empty `docs/` directory
+- [x] Sync ROADMAP with actual state
+- [x] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
+
+### Sprint 11: SOGo Change Detection
+- [x] Create `capture/detect_changes.py` — perceptual-hash UI diff
+- [x] ImageHash-based screenshot comparison (pHash, 64-bit)
+- [x] Hamming distance threshold (default: 10 bits)
+- [x] Auto-baseline-update on drift detection
+- [x] Nightly CI workflow (`.github/workflows/change-detection.yml`) posts GitHub Issue on drift
+- [x] `capture/run_captures.py` integrates drift check per workflow
+- [ ] DOM structure comparison (deferred — pHash covers most cases)
+
 ### Infrastructure
 - [x] Self-hosted runner on legions (192.168.42.42)
 - [x] Runner name: legions-docmaker-runner
@@ -86,36 +122,11 @@ sidebar_label: "Roadmap"
 
 ## In Progress 🔵
 
-### Sprint 2b: CI Reliability
-- [x] Docusaurus build time optimization (4-5 min cached, ~10 min cold — down from 30+)
-- [x] Python lint/test stability (PEP 668 compatibility with --break-system-packages)
-- [x] Node.js version compatibility (Node 20 vs Node 24 on Arch rolling)
-- [x] Branch protection rules: separate CI status checks from deploy gate
-- [x] Runner resource contention: load balance between CI/Deploy/Preview workflows
-
-### Sprint 14: Repo Hygiene
-- [x] Untrack `.github-pages-trace` debug artifact
-- [x] Remove empty `docs/` directory
-- [x] Sync ROADMAP with actual state
-- [x] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
-
-### Sprint 12: Spec-to-Docs Pipeline
-- [x] Auto-generate documentation pages from OpenSpec specs
-- [x] Tutorial structure from spec scenarios
-- [x] Asset embedding from capture metadata
-- [x] Docusaurus sidebar auto-generation
-- [x] `scripts/generate_docs_from_specs.py` (593 lines) shipped in commit `25bed47`
+_None — all tracked sprints are either completed or planned._
 
 ---
 
 ## Planned 🟡
-
-### Sprint 9: Performance Benchmarks
-- [x] Add Lighthouse CI to `.github/workflows/ci.yml`
-- [x] Add bundle size tracking
-- [x] Add capture timing metrics to `capture_report.py`
-- [x] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
-- [x] Create performance dashboard page at `site/docs/performance.md`
 
 ### Sprint 10: Content Expansion
 - [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
@@ -123,12 +134,6 @@ sidebar_label: "Roadmap"
 - [x] Add VideoFallback component and WebVTT captions (component created + 1 tutorial updated)
 - [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
 - [ ] Full German translation of `/sogo5/de/`
-
-### Sprint 11: SOGo Change Detection
-- [ ] Create `capture/detect_changes.py` — diff SOGo demo pages
-- [ ] Screenshot hash comparison with ImageHash
-- [ ] DOM structure comparison
-- [ ] Auto-trigger re-capture on detected changes
 
 ### Sprint 13: Self-Hosted Staging (Deferred)
 - [ ] Replace Netlify preview-deploy.yml with own staging on GitHub Pages
@@ -170,7 +175,7 @@ sidebar_label: "Roadmap"
 ---
 
 **Last Updated:** 2026-06-28
-**Next Sprint:** Sprint 16 — SOGo Change Detection
+**Next Sprint:** Sprint 13 — Self-Hosted Staging
 
 ---
 
