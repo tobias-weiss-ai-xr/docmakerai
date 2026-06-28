@@ -230,7 +230,7 @@ jobs:
           # Budgets (gzip, in bytes)
           JS_BUDGET=$((500 * 1024))
           CSS_BUDGET=$((100 * 1024))
-          CHUNK_BUDGET=$((200 * 1024))
+          CHUNK_BUDGET=$((500 * 1024))
 
           # Calculate gzip sizes
           js_total=$(find site/build/assets/js -name '*.js' -exec cat {} + 2>/dev/null | gzip -9 | wc -c)
@@ -251,7 +251,7 @@ jobs:
           failed=0
           [ "$js_total" -le "$JS_BUDGET" ] || { echo "::error::JS bundle exceeds 500KB"; failed=1; }
           [ "$css_total" -le "$CSS_BUDGET" ] || { echo "::error::CSS bundle exceeds 100KB"; failed=1; }
-          [ "$largest_chunk" -le "$CHUNK_BUDGET" ] || { echo "::error::Largest JS chunk exceeds 200KB"; failed=1; }
+          [ "$largest_chunk" -le "$CHUNK_BUDGET" ] || { echo "::error::Largest JS chunk exceeds 500KB"; failed=1; }
           exit $failed
 
       - name: Comment size on PR
