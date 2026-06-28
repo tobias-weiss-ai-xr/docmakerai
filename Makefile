@@ -1,8 +1,11 @@
-.PHONY: help dev build clean capture capture-all list install
+.PHONY: help dev build clean capture capture-all list install install-hooks
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+install-hooks: ## Install git hooks from .githooks/ (one-time per clone)
+	git config core.hooksPath .githooks
 
 dev: ## Start Docusaurus dev server
 	cd site && npm run start
