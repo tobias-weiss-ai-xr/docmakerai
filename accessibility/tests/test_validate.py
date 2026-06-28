@@ -1,7 +1,6 @@
 """Tests for accessibility/validate.py — AccessibilityValidator class."""
 
 import sys
-from pathlib import Path
 
 import pytest
 
@@ -314,8 +313,13 @@ class TestPrintReport:
         issues = [
             {"line": 3, "type": "heading_hierarchy", "message": "Bad heading", "file": "test.md",
              "fixable": True},
-            {"line": None, "type": "missing_keyboard_section", "message": "No KB", "file": "test.md",
-             "fixable": False},
+            {
+                "line": None,
+                "type": "missing_keyboard_section",
+                "message": "No KB",
+                "file": "test.md",
+                "fixable": False,
+            },
         ]
         validator.print_report(issues)
         captured = capsys.readouterr()
