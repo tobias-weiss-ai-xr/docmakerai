@@ -7,15 +7,17 @@ from PIL import Image
 
 from capture.detect_changes import (
     compute_phash,
-    save_baseline,
-    load_baseline,
-    hamming_distance,
     detect_drift,
-    DEFAULT_THRESHOLD,
+    hamming_distance,
+    load_baseline,
+    save_baseline,
 )
 
 
-def _make_test_image(color: tuple[int, int, int] = (255, 255, 255), size: tuple[int, int] = (256, 128)) -> Path:
+def _make_test_image(
+    color: tuple[int, int, int] = (255, 255, 255),
+    size: tuple[int, int] = (256, 128),
+) -> Path:
 
     with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
         path = Path(f.name)
