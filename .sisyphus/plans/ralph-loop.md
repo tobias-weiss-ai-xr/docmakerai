@@ -19,8 +19,9 @@
 ### F1 — Automated Checks
 - Lint: ruff passes clean
 - Build: Docusaurus builds successfully
-- Tests: 239 pytest tests pass
+- Tests: 239 pytest tests pass, coverage 99.08%
 - LSP diagnostics: clean
+- **CI Run #28300892229: SUCCESS** — runner v2.335.1 self-hosted on `docmaker-ci-runner`, all jobs green
 
 ### F2 — Manual Code Review
 - PageSEO: Read both current and versioned files, pattern confirmed correct
