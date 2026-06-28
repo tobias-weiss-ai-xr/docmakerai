@@ -209,3 +209,70 @@ jobs:
         with:
           configPath: .lighthouserc.json
           uploadArtifacts: true
+
+  bundle-size:
+    name: Bundle Size Budget
+    runs-on: [self-hosted, linux, ci]
+    needs: build-site
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docusaurus-build-${{ github.sha }}
+          path: site/build/
+
+      - name: Check bundle size budgets
+        run: |
+          set -euo pipefail
+          # Budgets (gzip, in bytes)
+          JS_BUDGET=$((500 * 1024))
+          CSS_BUDGET=$((100 * 1024))
+          CHUNK_BUDGET=$((200 * 1024))
+
+          # Calculate gzip sizes
+          js_total=$(find site/build/assets/js -name '*.js' -exec cat {} + 2>/dev/null | gzip -9 | wc -c)
+          css_total=$(find site/build/assets/css -name '*.css' -exec cat {} + 2>/dev/null | gzip -9 | wc -c)
+          largest_chunk=$(find site/build/assets/js -name '*.js' -exec stat -c '%s' {} + 2>/dev/null | sort -n | tail -1)
+
+          echo "JS total (gzip): $js_total bytes (budget: $JS_BUDGET)"
+          echo "CSS total (gzip): $css_total bytes (budget: $CSS_BUDGET)"
+          echo "Largest JS chunk: $largest_chunk bytes (budget: $CHUNK_BUDGET)"
+
+          # Write summary for the PR comment step
+          cat > bundle-summary.txt <<EOF
+          js_total_bytes=$js_total
+          css_total_bytes=$css_total
+          largest_chunk_bytes=$largest_chunk
+          EOF
+
+          failed=0
+          [ "$js_total" -le "$JS_BUDGET" ] || { echo "::error::JS bundle exceeds 500KB"; failed=1; }
+          [ "$css_total" -le "$CSS_BUDGET" ] || { echo "::error::CSS bundle exceeds 100KB"; failed=1; }
+          [ "$largest_chunk" -le "$CHUNK_BUDGET" ] || { echo "::error::Largest JS chunk exceeds 200KB"; failed=1; }
+          exit $failed
+
+      - name: Comment size on PR
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const raw = fs.readFileSync('bundle-summary.txt', 'utf8');
+            const data = Object.fromEntries(
+              raw.trim().split('\n').map(l => l.split('='))
+            );
+            const fmt = (bytes) => (bytes / 1024).toFixed(1) + ' KB';
+            const body = `### Bundle Size\n\n` +
+              `- **JS total (gzip):** ${fmt(data.js_total_bytes)} (budget: 500 KB)\n` +
+              `- **CSS total (gzip):** ${fmt(data.css_total_bytes)} (budget: 100 KB)\n` +
+              `- **Largest JS chunk:** ${fmt(data.largest_chunk_bytes)} (budget: 200 KB)\n\n` +
+              `_Updated: ${new Date().toISOString()}_`;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
