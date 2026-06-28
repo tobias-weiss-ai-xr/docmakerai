@@ -42,6 +42,7 @@ jobs:
     name: Python Lint + Test
     runs-on: [self-hosted, linux, ci]
     needs: cleanup-artifacts
+    if: always()
     defaults:
       run:
         working-directory: .
@@ -102,6 +103,7 @@ jobs:
     name: Accessibility Validation
     runs-on: [self-hosted, linux, ci]
     needs: cleanup-artifacts
+    if: always()
     steps:
       - uses: actions/checkout@v4
 
