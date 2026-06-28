@@ -4,16 +4,15 @@
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List
 
 
 class AccessibilityValidator:
     """Validates markdown files for accessibility compliance."""
 
     def __init__(self):
-        self.issues: List[Dict] = []
+        self.issues: list[dict] = []
 
-    def validate_file(self, file_path: Path) -> List[Dict]:
+    def validate_file(self, file_path: Path) -> list[dict]:
         """Validate a single markdown file for accessibility issues."""
         content = file_path.read_text(encoding='utf-8')
         lines = content.split('\n')
@@ -27,16 +26,18 @@ class AccessibilityValidator:
                 headings.append((level, i + 1, match.group(2).strip()))
 
         prev_level = 0
-        for level, line_num, text in headings:
-            if level > prev_level + 1 and prev_level != 0:
-                if level not in [1, 2]:
-                    file_issues.append({
-                        'line': line_num,
-                        'type': 'heading_hierarchy',
-                        'message': f'Heading level {level} after {prev_level} (should progress gradually, or reset to h1/h2)',
-                        'file': file_path.name,
-                        'fixable': True
-                    })
+        for level, line_num, _text in headings:
+            if level > prev_level + 1 and prev_level != 0 and level not in [1, 2]:
+                file_issues.append({
+                    'line': line_num,
+                    'type': 'heading_hierarchy',
+                    'message': (
+                        f'Heading level {level} after {prev_level} '
+                        f'(should progress gradually, or reset to h1/h2)'
+                    ),
+                    'file': file_path.name,
+                    'fixable': True
+                })
             prev_level = level
 
         tables = self._extract_tables(content)
@@ -45,30 +46,42 @@ class AccessibilityValidator:
                 file_issues.append({
                     'line': table['line_start'] + 1,
                     'type': 'table_header',
-                    'message': 'Table row missing proper header markers (use | Header: description | for accessibility)',
+                    'message': (
+                        'Table row missing proper header markers '
+                        '(use | Header: description | for accessibility)'
+                    ),
                     'file': file_path.name,
                     'fixable': True
                 })
 
         prev_level = 0
-        for level, line_num, text in headings:
-            if level > prev_level + 1 and prev_level != 0:
-                if level not in [1, 2]:
-                    file_issues.append({
-                        'line': line_num,
-                        'type': 'heading_hierarchy',
-                        'message': f'Heading level {level} after {prev_level} (should progress gradually, or reset to h1/h2)',
-                        'file': file_path.name,
-                        'fixable': True
-                    })
+        for level, line_num, _text in headings:
+            if level > prev_level + 1 and prev_level != 0 and level not in [1, 2]:
+                file_issues.append({
+                    'line': line_num,
+                    'type': 'heading_hierarchy',
+                    'message': (
+                        f'Heading level {level} after {prev_level} '
+                        f'(should progress gradually, or reset to h1/h2)'
+                    ),
+                    'file': file_path.name,
+                    'fixable': True
+                })
             prev_level = level
 
-        keyboard_section = re.search(r'#+.*(keyboard|shortcut|Keyboard|Shortcut).*navigation', content, re.IGNORECASE)
+        keyboard_section = re.search(
+            r'#+.*(keyboard|shortcut|Keyboard|Shortcut).*navigation',
+            content,
+            re.IGNORECASE,
+        )
         if not keyboard_section:
             file_issues.append({
                 'line': None,
                 'type': 'missing_keyboard_section',
-                'message': 'Missing "Accessibility: Keyboard Navigation" section for screen reader/keyboard users',
+                'message': (
+                    'Missing "Accessibility: Keyboard Navigation" section '
+                    'for screen reader/keyboard users'
+                ),
                 'file': file_path.name,
                 'fixable': False
             })
@@ -89,12 +102,19 @@ class AccessibilityValidator:
             file_issues.append({
                 'line': None,
                 'type': 'missing_accessibility_section',
-                'message': 'Missing "Accessibility" section with keyboard shortcuts and screen reader info',
+                'message': (
+                    'Missing "Accessibility" section with keyboard shortcuts '
+                    'and screen reader info'
+                ),
                 'file': file_path.name,
                 'fixable': False
             })
 
-        high_contrast = re.search(r'(high.?contrast|High.?Contrast|dark.?mode|Dark.?Mode)', content, re.IGNORECASE)
+        high_contrast = re.search(
+            r'(high.?contrast|High.?Contrast|dark.?mode|Dark.?Mode)',
+            content,
+            re.IGNORECASE,
+        )
         if accessibility_section and not high_contrast:
             file_issues.append({
                 'line': None,
@@ -106,7 +126,7 @@ class AccessibilityValidator:
 
         return file_issues
 
-    def _extract_tables(self, content: str) -> List[Dict]:
+    def _extract_tables(self, content: str) -> list[dict]:
         """Extract all markdown tables from content."""
         tables = []
         lines = content.split('\n')
@@ -116,10 +136,19 @@ class AccessibilityValidator:
             if '|' in lines[i]:
                 table_start = i
                 header_row = lines[i]
-                if i + 1 < len(lines) and '|' in lines[i + 1] and re.match(r'^[\s\-\|:]+$', lines[i + 1]):
+                next_is_sep = (
+                    i + 1 < len(lines)
+                    and '|' in lines[i + 1]
+                    and re.match(r'^[\s\-\|:]+$', lines[i + 1])
+                )
+                if next_is_sep:
                     separator_row = lines[i + 1]
                     j = i + 2
-                    while j < len(lines) and '|' in lines[j] and not lines[j].strip().startswith('#'):
+                    while (
+                        j < len(lines)
+                        and '|' in lines[j]
+                        and not lines[j].strip().startswith('#')
+                    ):
                         j += 1
 
                     tables.append({
@@ -139,12 +168,7 @@ class AccessibilityValidator:
     def _has_descriptive_table_headers(self, header_row: str) -> bool:
         """Check if table header has descriptive format with colons."""
         cells = [cell.strip() for cell in header_row.split('|') if cell.strip()]
-
-        for cell in cells:
-            if ':' in cell:
-                return True
-
-        return False
+        return any(':' in cell for cell in cells)
 
     def fix_file(self, file_path: Path) -> int:
         fixes = 0
@@ -160,12 +184,11 @@ class AccessibilityValidator:
 
         prev_level = 0
         for level, line_idx, text in headings:
-            if level > prev_level + 1 and prev_level != 0:
-                if level not in [1, 2]:
-                    corrected_level = prev_level + 1
-                    prefix = '#' * corrected_level
-                    lines[line_idx] = f"{prefix} {text}"
-                    fixes += 1
+            if level > prev_level + 1 and prev_level != 0 and level not in [1, 2]:
+                corrected_level = prev_level + 1
+                prefix = '#' * corrected_level
+                lines[line_idx] = f"{prefix} {text}"
+                fixes += 1
             prev_level = level
 
         for table in self._extract_tables('\n'.join(lines)):
@@ -195,7 +218,7 @@ class AccessibilityValidator:
                 total_fixes += fixes
         return total_fixes
 
-    def validate_directory(self, directory: Path) -> List[Dict]:
+    def validate_directory(self, directory: Path) -> list[dict]:
         """Validate all markdown files in a directory."""
         all_issues = []
         md_files = directory.glob('**/*.md')
@@ -210,7 +233,7 @@ class AccessibilityValidator:
 
         return all_issues
 
-    def print_report(self, issues: List[Dict]):
+    def print_report(self, issues: list[dict]):
         """Print the validation report."""
         print("\n" + "=" * 70)
         print("ACCESSIBILITY VALIDATION REPORT")
@@ -263,8 +286,14 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Validate markdown accessibility")
     parser.add_argument("directory", nargs="?", default="site/docs")
-    parser.add_argument("--fix", action="store_true", help="Auto-fix heading hierarchy and table headers")
-    parser.add_argument("--check-only", action="store_true", help="Only check, no auto-fix (default)")
+    parser.add_argument(
+        "--fix",
+        action="store_true",
+        help="Auto-fix heading hierarchy and table headers",
+    )
+    parser.add_argument(
+        "--check-only", action="store_true", help="Only check, no auto-fix (default)"
+    )
     args = parser.parse_args()
 
     directory = Path(args.directory)
