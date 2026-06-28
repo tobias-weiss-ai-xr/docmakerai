@@ -18,6 +18,7 @@ import argparse
 import asyncio
 import os
 import shutil
+import sys
 import time
 from pathlib import Path
 
@@ -29,9 +30,9 @@ except ImportError:
     from video_pipeline import WorkflowRecorder
 
 try:
-    from capture.detect_changes import detect_drift, save_baseline, compute_phash
+    from capture.detect_changes import compute_phash, detect_drift, save_baseline
 except ImportError:
-    from detect_changes import detect_drift, save_baseline, compute_phash
+    from detect_changes import compute_phash, detect_drift, save_baseline
 
 ROOT = Path(__file__).resolve().parent
 VIDEO_DIR = ROOT / "videos"

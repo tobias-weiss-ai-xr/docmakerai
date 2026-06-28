@@ -2,13 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
 import imagehash
 from PIL import Image
-
 
 DEFAULT_THRESHOLD = 10
 DEFAULT_BASELINES_DIR = Path(__file__).resolve().parent / "baselines"
