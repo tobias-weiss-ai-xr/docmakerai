@@ -7,11 +7,11 @@ from capture.capture_report import generate_capture_report, print_capture_report
 
 def _make_results():
     return [
-        ("calendar-create-event", True, 20, None),
-        ("mail-read", False, 0, "blank capture"),
-        ("contacts-add", True, 15, None),
-        ("vacation", False, 0, "blank capture"),
-        ("logout", True, 8, None),
+        ("calendar-create-event", True, 20, None, 12.5),
+        ("mail-read", False, 0, "blank capture", 8.3),
+        ("contacts-add", True, 15, None, 6.7),
+        ("vacation", False, 0, "blank capture", 4.2),
+        ("logout", True, 8, None, 3.1),
     ]
 
 
@@ -52,11 +52,10 @@ def test_report_print(capsys):
 
 
 def test_report_large_files_warning(tmp_path):
-    """Large files over 200KB trigger a warning section."""
     large = tmp_path / "calendar-create-event.webp"
-    large.write_bytes(b"x" * 300 * 1024)  # 300KB
+    large.write_bytes(b"x" * 300 * 1024)
 
-    results = [("calendar-create-event", True, 20, None)]
+    results = [("calendar-create-event", True, 20, None, 5.0)]
     report = generate_capture_report(results, tmp_path)
 
     assert "warnings" in report
@@ -65,19 +64,17 @@ def test_report_large_files_warning(tmp_path):
 
 
 def test_report_no_large_files_warning(tmp_path):
-    """Small files under 200KB produce no warnings."""
-    results = [("test-ok", True, 0, None)]
+    results = [("test-ok", True, 0, None, 1.0)]
     assets = tmp_path
     report = generate_capture_report(results, assets)
     assert "warnings" not in report or not report["warnings"].get("large_files")
 
 
 def test_report_print_with_warnings(capsys, tmp_path):
-    """Print report with large file warnings."""
     large = tmp_path / "calendar-create-event.webp"
-    large.write_bytes(b"x" * 300 * 1024)  # 300KB
+    large.write_bytes(b"x" * 300 * 1024)
 
-    results = [("calendar-create-event", True, 20, None)]
+    results = [("calendar-create-event", True, 20, None, 5.0)]
     report = generate_capture_report(results, tmp_path)
     print_capture_report(report)
 
@@ -86,14 +83,58 @@ def test_report_print_with_warnings(capsys, tmp_path):
 
 
 def test_report_output_path(tmp_path):
-    """Report written to output_path matches returned dict."""
-    results = [("logout", True, 8, None)]
+    results = [("logout", True, 8, None, 2.0)]
     output = tmp_path / "reports" / "capture_report.json"
     report = generate_capture_report(results, Path("/fake/assets"), output)
 
     assert output.exists()
-    import json
-
     loaded = json.loads(output.read_text())
     assert loaded["total_workflows"] == 1
     assert loaded == report
+
+
+def test_report_includes_total_duration():
+    results = _make_results()
+    report = generate_capture_report(results, Path("/fake/assets"))
+
+    assert "total_duration_seconds" in report
+    expected = round(12.5 + 8.3 + 6.7 + 4.2 + 3.1, 2)
+    assert report["total_duration_seconds"] == expected
+
+
+def test_report_workflow_entry_has_duration():
+    results = _make_results()
+    report = generate_capture_report(results, Path("/fake/assets"))
+
+    for entry in report["workflows"]:
+        assert "duration_seconds" in entry
+    first = report["workflows"][0]
+    assert first["duration_seconds"] == 12.5
+
+
+def test_report_slowest_workflow():
+    results = _make_results()
+    report = generate_capture_report(results, Path("/fake/assets"))
+
+    assert report["slowest_workflow"] == "calendar-create-event"
+    assert report["slowest_duration_seconds"] == 12.5
+
+
+def test_report_generated_at_timestamp():
+    results = _make_results()
+    report = generate_capture_report(results, Path("/fake/assets"))
+
+    assert "generated_at" in report
+    import re
+    assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", report["generated_at"])
+
+
+def test_report_zero_duration_when_all_instant():
+    results = [
+        ("a", True, 5, None, 0.0),
+        ("b", True, 3, None, 0.0),
+    ]
+    report = generate_capture_report(results, Path("/fake/assets"))
+    assert report["total_duration_seconds"] == 0.0
+    assert report["slowest_workflow"] == "a"
+    assert report["slowest_duration_seconds"] == 0.0
