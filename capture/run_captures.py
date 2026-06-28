@@ -28,6 +28,11 @@ try:
 except ImportError:
     from video_pipeline import WorkflowRecorder
 
+try:
+    from capture.detect_changes import detect_drift, save_baseline, compute_phash
+except ImportError:
+    from detect_changes import detect_drift, save_baseline, compute_phash
+
 ROOT = Path(__file__).resolve().parent
 VIDEO_DIR = ROOT / "videos"
 GIF_DIR = ROOT / "gifs"
@@ -1321,6 +1326,29 @@ async def main(workers: int = 1) -> None:
                         elapsed = time.time() - wf_start
                         print(f"  ✗  Failed ({elapsed:.1f}s)")
                         results.append((name, False, 0, None, elapsed))
+
+                    # ── Drift check against baseline ──
+                    try:
+                        drift_page = await ctx.new_page()
+                        await drift_page.goto(SOGO_URL, wait_until="networkidle", timeout=15000)
+                        await drift_page.wait_for_timeout(2000)
+                        driftscr = SCREENSHOT_DIR / name / "drift_check.png"
+                        driftscr.parent.mkdir(parents=True, exist_ok=True)
+                        await drift_page.screenshot(path=str(driftscr))
+                        await drift_page.close()
+                        if driftscr.exists():
+                            new_hash = compute_phash(driftscr)
+                            drifted, distance = detect_drift(f"sogo-{name}", new_hash)
+                            if drifted:
+                                if distance is None:
+                                    print(f"  [drift] No baseline for {name}; saving new baseline.")
+                                else:
+                                    print(f"  [drift] UI changed (Hamming distance {distance}).")
+                                save_baseline(f"sogo-{name}", new_hash)
+                            driftscr.unlink()
+                    except Exception as de:
+                        print(f"  [drift] Check failed: {de}", file=sys.stderr)
+
                 except Exception as e:
                     elapsed = time.time() - wf_start
                     print(f"  ✗  Error ({elapsed:.1f}s): {e}")
