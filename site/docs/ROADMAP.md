@@ -111,11 +111,11 @@ sidebar_label: "Roadmap"
 ## Planned 🟡
 
 ### Sprint 9: Performance Benchmarks
-- [ ] Add Lighthouse CI to `.github/workflows/ci.yml`
-- [ ] Add bundle size tracking
-- [ ] Add capture timing metrics to `capture_report.py`
-- [ ] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
-- [ ] Create performance dashboard page at `site/docs/performance.md`
+- [x] Add Lighthouse CI to `.github/workflows/ci.yml`
+- [x] Add bundle size tracking
+- [x] Add capture timing metrics to `capture_report.py`
+- [x] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
+- [x] Create performance dashboard page at `site/docs/performance.md`
 
 ### Sprint 10: Content Expansion
 - [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
@@ -170,7 +170,7 @@ sidebar_label: "Roadmap"
 ---
 
 **Last Updated:** 2026-06-28
-**Next Sprint:** Sprint 15 — Performance Benchmarks
+**Next Sprint:** Sprint 16 — SOGo Change Detection
 
 ---
 
