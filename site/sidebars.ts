@@ -73,6 +73,14 @@ const sidebars: SidebarsConfig = {
         'sogo-global-search',
       ],
     },
+    {
+      type: 'category',
+      label: '📊 Meta',
+      items: [
+        'performance',
+        'roadmap',
+      ],
+    },
   ],
 };
 
