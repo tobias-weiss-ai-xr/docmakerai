@@ -20,7 +20,6 @@ Features:
 """
 
 import argparse
-import asyncio
 import json
 import subprocess
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -53,7 +52,10 @@ def get_duration(webp_path: Path) -> float:
 
         # Fallback: use ffprobe on WebP (doesn't always work
         result = subprocess.run(
-            [FFPROBE, "-v", "error", "-show_entries", "format=duration", "-of", "json", str(webp_path)],
+            [
+                FFPROBE, "-v", "error", "-show_entries", "format=duration",
+                "-of", "json", str(webp_path),
+            ],
             capture_output=True,
             text=True,
         )
@@ -87,13 +89,16 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
         # Use ffmpeg directly for WebP → MP4 conversion
         # First check if it's animated
         result = subprocess.run(
-            [FFPROBE, "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height,duration,nb_read_frames,r_frame_rate",
-             "-of", "json", str(webp_path)],
+            [
+                FFPROBE, "-v", "error", "-select_streams", "v:0",
+                "-show_entries", "stream=width,height,duration,nb_read_frames,r_frame_rate",
+                "-of", "json", str(webp_path),
+            ],
             capture_output=True,
             text=True,
         )
 
-        stream_data = json.loads(result.stdout)
+        json.loads(result.stdout)
 
         # For simplicity, use ffmpeg's native WebP decoding
         # Extract frames to temporary directory, then re-encode
@@ -141,8 +146,9 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
 
         # Capture metadata
         result = subprocess.run([
-            FFPROBE, "-v", "error", "-show_entries", "format=duration,size:stream=codec_name,width,height",
-                 "-of", "json", str(output_mp4)
+            FFPROBE, "-v", "error",
+            "-show_entries", "format=duration,size:stream=codec_name,width,height",
+            "-of", "json", str(output_mp4),
         ], capture_output=True, text=True, check=True)
 
         metadata = {
@@ -265,10 +271,12 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
 def convert_directory(
     input_dir: Path,
     output_dir: Path,
-    formats: list[str] = ["mp4"],  # "mp4", "webm", or both
+    formats: list[str] | None = None,  # "mp4", "webm", or both
     workers: int = 4
 ) -> list[ConversionResult]:
     """Convert all WebP files in directory."""
+    if formats is None:
+        formats = ["mp4"]
     webp_files = sorted(input_dir.glob("*.webp"))
 
     if not webp_files:
@@ -289,10 +297,7 @@ def convert_directory(
             result = webp_to_mp4(webp, output_dir)
         if "webm" in formats and (result is None or not result.success):
             fallback = webp_to_webm(webp, output_dir)
-            if result is None:
-                result = fallback
-            else:
-                result = fallback._replace(audio_path=result.audio_path)
+            result = fallback if result is None else fallback._replace(audio_path=result.audio_path)
         if result is None:
             result = webp_to_mp4(webp, output_dir)  # Default to MP4
 

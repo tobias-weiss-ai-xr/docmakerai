@@ -1,0 +1,41 @@
+#!/bin/bash
+# Pre-commit accessibility check
+# This hook checks changed markdown files for accessibility compliance before commit
+
+set -e
+
+echo "🔍 Running accessibility checks on changed markdown files..."
+
+# Get changed markdown files
+changed_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | grep 'site/docs/' || true)
+
+if [ -z "$changed_files" ]; then
+    echo "✅ No markdown files changed in this commit"
+    exit 0
+fi
+
+    echo "📝 Checking files:"
+    echo "$changed_files" | xargs -n1 basename | sed 's/^/   - /'
+    echo
+
+# Run accessibility checker on each changed file
+overall_status=0
+for f in $changed_files; do
+    if ! python3 accessibility/validate.py "$f"; then
+        overall_status=1
+    fi
+done
+
+if [ $overall_status -eq 0 ]; then
+    echo "✅ All accessibility checks passed!"
+    exit 0
+else
+    echo ""
+    echo "❌ Accessibility checks failed for one or more files."
+    echo ""
+    echo "Some issues were auto-fixed. Please review the changes and try again."
+    echo "Run: git diff site/docs/*.md to see auto-fixes"
+    echo ""
+    echo "For non-fixable issues, please address them manually before committing."
+    exit 1
+fi

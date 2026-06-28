@@ -276,11 +276,17 @@ def main():
 
     if args.fix:
         print(f"🔧 Auto-fixing accessibility issues in {directory}...\n")
-        total_fixes = validator.fix_directory(directory)
+        if directory.is_file():
+            total_fixes = validator.fix_file(directory)
+        else:
+            total_fixes = validator.fix_directory(directory)
         print(f"\n✅ Applied {total_fixes} fixes")
 
-    print(f"Checking all markdown files in {directory}...\n")
-    issues = validator.validate_directory(directory)
+    print(f"Checking markdown in {directory}...\n")
+    if directory.is_file():
+        issues = validator.validate_file(directory)
+    else:
+        issues = validator.validate_directory(directory)
     validator.print_report(issues)
     sys.exit(0 if not issues else 1)
 
