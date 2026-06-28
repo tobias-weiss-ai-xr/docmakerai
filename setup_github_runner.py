@@ -29,6 +29,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import requests
+
 # Configuration
 TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO = os.environ.get("GITHUB_REPOSITORY", "tobias-weiss-ai-xr/docmakerai")
@@ -39,7 +41,7 @@ RUNNER_DIR = Path.home() / "actions-runner"
 print("🔧 DocMaker AI — GitHub Runner Setup")
 print(f"   Runner name: {RUNNER_NAME}")
 print(f"   Repo: {REPO}")
-print(f"   Labels: linux, legions")
+print("   Labels: linux, legions")
 print()
 
 # Create runner directory
@@ -62,12 +64,8 @@ with open(tarball, "wb") as f:
     for chunk in response.iter_content(chunk_size=8192):
         f.write(chunk)
 
-print(f"📦 Extracting...")
-if SYS == "linux":
-    import tarfile
-    with tarfile.open(tarball) as tar:
-        tar.extractall(RUNNER_DIR)
-elif SYS == "darwin":
+print("📦 Extracting...")
+if SYS in ("linux", "darwin"):
     import tarfile
     with tarfile.open(tarball) as tar:
         tar.extractall(RUNNER_DIR)
@@ -105,9 +103,9 @@ print(f"   cd {RUNNER_DIR}")
 print("   ./run.sh")
 print()
 print("💡 To run as a service (Linux):")
-print(f"   sudo ./svc.sh install")
+print("   sudo ./svc.sh install")
 print("   sudo ./svc.sh start")
 print()
 print("💡 To run as a service (macOS):")
-print(f"   ./svc.sh install")
-print(f"   ./svc.sh start")
+print("   ./svc.sh install")
+print("   ./svc.sh start")
