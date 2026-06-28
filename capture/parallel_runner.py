@@ -17,7 +17,7 @@ async def run_workflow(
     browser,
     storage: dict,
     semaphore: asyncio.Semaphore,
-) -> tuple[str, bool, int, str | None]:
+) -> tuple[str, bool, int, str | None, float]:
     async with semaphore:
         print(f"\n── {name} ──")
         start = time.time()
@@ -39,15 +39,16 @@ async def run_workflow(
                     frames = meta["annotated_frames"]
                     size_kb = meta["webp_size_kb"]
                     print(f"  ✓  {webp_path.name} — {frames} frames, {size_kb}KB ({elapsed:.1f}s)")
-                    return (name, True, frames, None)
+                    return (name, True, frames, None, elapsed)
                 elapsed = time.time() - start
                 print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
-                return (name, True, 0, None)
-            return (name, False, 0, "blank capture")
+                return (name, True, 0, None, elapsed)
+            elapsed = time.time() - start
+            return (name, False, 0, "blank capture", elapsed)
         except Exception as e:
             elapsed = time.time() - start
             print(f"  ✗  Error ({elapsed:.1f}s): {e}")
-            return (name, False, 0, str(e))
+            return (name, False, 0, str(e), elapsed)
         finally:
             await ctx.close()
 
@@ -57,7 +58,7 @@ async def run_parallel(
     browser,
     storage: dict,
     workers: int = 4,
-) -> list[tuple[str, bool, int, str | None]]:
+) -> list[tuple[str, bool, int, str | None, float]]:
     semaphore = asyncio.Semaphore(workers)
     tasks = [run_workflow(name, fn, browser, storage, semaphore) for name, fn in workflows]
     return await asyncio.gather(*tasks)

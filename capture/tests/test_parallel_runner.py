@@ -42,7 +42,8 @@ async def test_run_workflow_success_with_metadata(tmp_path: Path):
                 semaphore,
             )
 
-    assert result == (name, True, 17, None)
+    assert result[:4] == (name, True, 17, None)
+    assert isinstance(result[4], float)
     browser.new_context.assert_awaited_once_with(
         record_video_dir=str(video_dir),
         viewport={"width": 1280, "height": 800},
@@ -80,7 +81,8 @@ async def test_run_workflow_success_without_metadata(tmp_path: Path):
                 semaphore,
             )
 
-    assert result == (name, True, 0, None)
+    assert result[:4] == (name, True, 0, None)
+    assert isinstance(result[4], float)
     ctx.close.assert_awaited_once()
 
 
@@ -95,7 +97,8 @@ async def test_run_workflow_blank_capture(tmp_path: Path):
     with patch("capture.parallel_runner.VIDEO_DIR", tmp_path):
         result = await run_workflow(name, workflow_fn, browser, {}, semaphore)
 
-    assert result == (name, False, 0, "blank capture")
+    assert result[:4] == (name, False, 0, "blank capture")
+    assert isinstance(result[4], float)
     ctx.close.assert_awaited_once()
 
 
@@ -110,7 +113,8 @@ async def test_run_workflow_exception(tmp_path: Path):
     with patch("capture.parallel_runner.VIDEO_DIR", tmp_path):
         result = await run_workflow(name, workflow_fn, browser, {}, semaphore)
 
-    assert result == (name, False, 0, "bad param")
+    assert result[:4] == (name, False, 0, "bad param")
+    assert isinstance(result[4], float)
     ctx.close.assert_awaited_once()
 
 
@@ -125,7 +129,8 @@ async def test_run_workflow_context_closed_on_exception(tmp_path: Path):
     with patch("capture.parallel_runner.VIDEO_DIR", tmp_path):
         result = await run_workflow(name, workflow_fn, browser, {}, semaphore)
 
-    assert result == (name, False, 0, "boom")
+    assert result[:4] == (name, False, 0, "boom")
+    assert isinstance(result[4], float)
     ctx.close.assert_awaited_once()
 
 
@@ -140,7 +145,8 @@ async def test_run_workflow_context_closed_on_blank(tmp_path: Path):
     with patch("capture.parallel_runner.VIDEO_DIR", tmp_path):
         result = await run_workflow(name, workflow_fn, browser, {}, semaphore)
 
-    assert result == (name, False, 0, "blank capture")
+    assert result[:4] == (name, False, 0, "blank capture")
+    assert isinstance(result[4], float)
     ctx.close.assert_awaited_once()
 
 
@@ -190,7 +196,8 @@ async def test_run_workflow_new_context_params():
     with patch("capture.parallel_runner.VIDEO_DIR", Path("/tmp")):
         result = await run_workflow(name, workflow_fn, browser, {"key": "val"}, semaphore)
 
-    assert result == (name, False, 0, "blank capture")
+    assert result[:4] == (name, False, 0, "blank capture")
+    assert isinstance(result[4], float)
     browser.new_context.assert_awaited_once_with(
         record_video_dir=str(Path("/tmp")),
         viewport={"width": 1280, "height": 800},
@@ -220,8 +227,10 @@ async def test_run_parallel_all_results(tmp_path: Path):
             results = await run_parallel(workflows, browser, {}, workers=4)
 
     assert len(results) == 2
-    assert results[0] == ("wf_a", True, 0, None)
-    assert results[1] == ("wf_b", True, 0, None)
+    assert results[0][:4] == ("wf_a", True, 0, None)
+    assert isinstance(results[0][4], float)
+    assert results[1][:4] == ("wf_b", True, 0, None)
+    assert isinstance(results[1][4], float)
     assert ctx.close.await_count == 2
 
 

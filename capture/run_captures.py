@@ -1289,6 +1289,7 @@ async def main(workers: int = 1) -> None:
             results = []
             for name, workflow_fn in workflows:
                 print(f"\n── {name} ──")
+                wf_start = time.time()
                 # Each workflow gets its own context for video recording
                 ctx = await browser.new_context(
                     record_video_dir=str(VIDEO_DIR),
@@ -1307,28 +1308,32 @@ async def main(workers: int = 1) -> None:
                             import json
 
                             meta = json.loads(meta_path.read_text())
+                            elapsed = time.time() - wf_start
                             print(
-                                f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB"
+                                f"  ✓  {webp_path.name} — {meta['annotated_frames']} frames, {meta['webp_size_kb']}KB ({elapsed:.1f}s)"
                             )
-                            results.append((name, True, meta["annotated_frames"]))
+                            results.append((name, True, meta["annotated_frames"], None, elapsed))
                         else:
-                            print(f"  ✓  {webp_path.name}")
-                            results.append((name, True, 0))
+                            elapsed = time.time() - wf_start
+                            print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
+                            results.append((name, True, 0, None, elapsed))
                     else:
-                        print("  ✗  Failed")
-                        results.append((name, False, 0))
+                        elapsed = time.time() - wf_start
+                        print(f"  ✗  Failed ({elapsed:.1f}s)")
+                        results.append((name, False, 0, None, elapsed))
                 except Exception as e:
-                    print(f"  ✗  Error: {e}")
-                    results.append((name, False, 0))
+                    elapsed = time.time() - wf_start
+                    print(f"  ✗  Error ({elapsed:.1f}s): {e}")
+                    results.append((name, False, 0, str(e), elapsed))
                 finally:
                     await ctx.close()
 
             print("\n── Results ──")
-            for name, ok, frames in results:
+            for name, ok, frames, _error, duration in results:
                 mark = "✓" if ok else "✗"
-                print(f"  {mark}  {name}: {frames} annotated frames")
+                print(f"  {mark}  {name}: {frames} annotated frames ({duration:.1f}s)")
 
-            total_ok = sum(1 for _, ok, _ in results if ok)
+            total_ok = sum(1 for _, ok, _, _, _ in results if ok)
             print(f"\n  {total_ok}/{len(results)} succeeded")
 
         elapsed = time.time() - start_time
