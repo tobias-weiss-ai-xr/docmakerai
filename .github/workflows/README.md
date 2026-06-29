@@ -9,10 +9,11 @@ Three deployment workflows with different triggers:
    - Deployment: Production `gh-pages` branch
     - URL: https://tobias-weiss-ai-xr.github.io/docmakerai/
 
-2. **Preview Build** (`.github/workflows/preview-deploy.yml`)
-   - Triggers: `pull_request` to `main`, `workflow_dispatch`
-   - Deployment: Builds site and uploads artifact (no staging server yet)
-   - URL: Build artifact only (staging TBD — see Sprint 13)
+ 2. **Preview Deploy** (`.github/workflows/preview-deploy.yml`)
+    - Triggers: `pull_request` to `main`, `workflow_dispatch`
+    - Deployment: Builds site with dynamic baseUrl and deploys to `gh-pages/preview/pr-<number>/`
+    - URL: `https://tobias-weiss-ai-xr.github.io/docmakerai/preview/pr-<number>/`
+    - Cleanup: Automatic deletion on PR close (`.github/workflows/preview-cleanup.yml`)
 
 3. **CI** (`.github/workflows/ci.yml`)
    - Triggers: `push` to `main`, `pull_request` to `main`
