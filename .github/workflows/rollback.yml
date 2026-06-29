@@ -72,7 +72,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site/build
-          cname: docs.docmakerai.com
           force_orphan: true
 
       - name: Notify rollback success
@@ -87,7 +86,7 @@ jobs:
               repo: context.repo.repo,
               sha: context.sha,
               state: 'success',
-              target_url: 'https://docs.docmakerai.com',
+              target_url: 'https://tobias-weiss-ai-xr.github.io/docmakerai/',
               description: `Rollback completed: ${reason.substring(0, 30)}...`,
               context: 'rollback/production'
             });
@@ -116,7 +115,7 @@ jobs:
 
             ## Next Steps
 
-            1. Review the rollback site at https://docs.docmakerai.com
+            1. Review the rollback site at https://tobias-weiss-ai-xr.github.io/docmakerai/
             2. Identify root cause of the deployment failure
             3. Fix the issue and create a new PR
             4. Test thoroughly before deploying

@@ -7,7 +7,7 @@ Three deployment workflows with different triggers:
 1. **Deploy to GitHub Pages** (`.github/workflows/deploy.yml`)
    - Triggers: `push` to `main`, `workflow_dispatch`
    - Deployment: Production `gh-pages` branch
-   - URL: https://docs.docmakerai.com
+    - URL: https://tobias-weiss-ai-xr.github.io/docmakerai/
 
 2. **Preview Build** (`.github/workflows/preview-deploy.yml`)
    - Triggers: `pull_request` to `main`, `workflow_dispatch`
@@ -167,7 +167,7 @@ gh run list --workflow="Deploy to GitHub Pages" --limit 1
 gh run view <run-id>
 
 # View production site
-open https://docs.docmakerai.com
+open https://tobias-weiss-ai-xr.github.io/docmakerai/
 ```
 
 ### Check CI status
