@@ -126,16 +126,18 @@ _None — all tracked sprints are either completed or planned._
 
 ---
 
-## Planned 🟡
+## Completed ✅
+
+_All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash covers most cases)._
 
 ### Sprint 10: Content Expansion
 - [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
 - [x] Convert task-first WebP captures to MP4 (3 videos optimized, 6-11% smaller)
 - [x] Add VideoFallback component and WebVTT captions (component created + 1 tutorial updated)
 - [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
-- [ ] Full German translation of `/sogo5/de/`
+- [x] Full German translation of `/sogo5/de/`
 
-### Sprint 13: PR Preview Deployments (Completed)
+### Sprint 13: PR Preview Deployments
 - [x] Rewrite `preview-deploy.yml` — build with dynamic baseUrl, deploy to `gh-pages/preview/pr-<N>/`
 - [x] Preview URL commented on PRs (upserts existing comment instead of spamming)
 - [x] Teardown workflow (`preview-cleanup.yml`) — deletes preview directory on PR close
@@ -188,7 +190,7 @@ This documentation site supports keyboard navigation, screen readers, and high-c
 ---
 
 **Last Updated:** 2026-06-29
-**Next Sprint:** Sprint 10 — Content Expansion (German translation)
+**Next Sprint:** None — roadmap complete. Future work tracked via GitHub Issues.
 
 ---
 
