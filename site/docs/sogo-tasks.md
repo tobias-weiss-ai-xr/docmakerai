@@ -24,7 +24,7 @@ In many SOGo deployments, the Tasks module appears only when `SOGoDocumentsEnabl
 
 ## Features Overview
 
-| Feature | Description |
+| Feature: Description | Description |
 |---------|-------------|
 | **Task Lists** | Create multiple task categories (e.g., personal, work, projects) |
 | **Priority Levels** | Urgent, High, Medium, Low tags |
@@ -62,7 +62,7 @@ If Tasks does not appear in the sidebar, contact your administrator to enable it
 
 After creation, click on the task to open the detail view and modify:
 
-| Field | Description |
+| Field: Description | Description |
 |-------|-------------|
 | **Title** | Short task name |
 | **Description** | Detailed notes about the task |
@@ -101,7 +101,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 ## Views and Sorting
 
-| View | Use Case |
+| View: Description | Use Case |
 |------|---------|
 | **All Tasks** | Overview of everything pending |
 | **Due Soon** | Focus on upcoming deadlines |
@@ -111,7 +111,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 ## Keyboard Shortcuts
 
-| Action | Shortcut |
+| Action: Description | Shortcut |
 |--------|----------|
 | New task | `Ctrl + N` / `⌘ + N` |
 | Complete task | Checkmark next to item or `Ctrl + Enter` |
@@ -122,7 +122,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 SOGo Tasks can be linked with:
 
-| Integration | How To |
+| Integration: Description | How To |
 |------------|--------|
 | **Calendar** | Convert an event invitation to a task; set task due date to event date |
 | **Contacts** | Assign owner or delegate from address book |
@@ -142,10 +142,36 @@ Use tasks to follow up on meeting actions. After a meeting, create tasks for del
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Tasks module not visible | `SOGoDocumentsEnabled` set to NO | Ask admin to enable in SOGo config |
 | Cannot create task | Write permissions missing on task list | Check ACLs on the task list |
 | Task reminders not arriving | Mail not configured or tasks disabled | Verify mail server settings are correct |
 | Task list not syncing | Network issue or server problem | Refresh the page or re-login |
 | Cannot change priority or due date | Task locked by external system (e.g., mobile app) | Complete current change and retry after a sync cycle |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

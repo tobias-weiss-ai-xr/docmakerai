@@ -30,7 +30,7 @@ den Ansichten Tag, Woche, Monat und Jahr mit den Schaltflächen in der oberen Sy
 
 Es gibt drei Möglichkeiten, ein Ereignis zu erstellen:
 
-| Methode | Aktion |
+| Methode: Description | Aktion |
 |---------|--------|
 | **Auf +-Schaltfläche klicken** | Klicken Sie auf die **+** (Plus)-Schaltfläche in der oberen Symbolleiste |
 | **Doppelklicken** | Doppelklicken Sie auf einen beliebigen Zeitbereich im Kalendergitter |
@@ -42,7 +42,7 @@ Wählen Sie die gewünschte Methode. Ein Dialog für ein neues Ereignis wird ang
 
 Füllen Sie die Ereignisdetails aus:
 
-| Feld | Beschreibung | Beispiel |
+| Feld: Description | Beschreibung | Beispiel |
 |------|-------------|----------|
 | **Titel** | Ein kurzer Name für Ihr Ereignis | "Team-Besprechung" |
 | **Ort** | Wo das Ereignis stattfindet | "Konferenzraum B" |
@@ -94,7 +94,7 @@ für das Ereignis hinzuzufügen. Dieses Feld unterstützt Klartext.
 
 Für sich wiederholende Ereignisse klicken Sie auf den Bereich **Wiederholen** und wählen ein Muster:
 
-| Muster | Beispiel |
+| Muster: Description | Beispiel |
 |--------|----------|
 | **Täglich** | Tägliches Standup-Meeting |
 | **Wöchentlich** | Team-Meeting jeden Dienstag |
@@ -119,3 +119,29 @@ Sie haben erfolgreich ein Kalenderereignis erstellt. Sie können nun:
 - Das Ereignis durch Klicken bearbeiten
 - Es per Drag & Drop verschieben
 - Die Dauer durch Ziehen an den Rändern ändern
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

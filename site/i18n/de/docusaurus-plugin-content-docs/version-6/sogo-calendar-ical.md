@@ -44,7 +44,7 @@ iCal (`.ics`) ist ein Standard-Kalenderdateiformat, das von den meisten Kalender
 
 ## Importoptionen
 
-| Option | Beschreibung | Verwenden wenn |
+| Option: Description | Beschreibung | Verwenden wenn |
 |--------|-------------|---------------|
 | **Alle Ereignisse hinzufügen** | Importiert alle Ereignisse aus der Datei | Erster Import |
 | **Duplikate zusammenführen** | Überspringt Ereignisse mit gleichem Datum und Titel | Vorhandenen Kalender aktualisieren |
@@ -64,7 +64,7 @@ Sie können Ihren Kalender teilen, indem Sie die iCal-URL bereitstellen:
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Import-Button nicht sichtbar | Kalenderfreigabe nicht aktiviert | Kontaktieren Sie Ihren Administrator, um die Freigabe zu aktivieren |
 | Import schlägt fehl | Ungültiges `.ics`-Dateiformat | Überprüfen Sie, ob die Datei in einer Kalenderanwendung geöffnet werden kann |
@@ -73,3 +73,29 @@ Sie können Ihren Kalender teilen, indem Sie die iCal-URL bereitstellen:
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Kalender im iCal-Format in SOGo 5 importieren und exportieren.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
