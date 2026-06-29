@@ -54,7 +54,7 @@ Ordneränderungen werden sofort mit dem Server synchronisiert. Ihre Ordnerstrukt
 
 ## Ordneraktionen
 
-| Aktion | Vorgehen |
+| Aktion: Description | Vorgehen |
 |--------|---------|
 | **Umbenennen** | Rechtsklick auf Ordner → Umbenennen |
 | **Löschen** | Rechtsklick auf Ordner → Löschen (Standardordner wie Posteingang können nicht gelöscht werden) |
@@ -62,7 +62,7 @@ Ordneränderungen werden sofort mit dem Server synchronisiert. Ihre Ordnerstrukt
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Standardordner kann nicht gelöscht werden | Systemordner können nicht gelöscht werden | Nur benutzerdefinierte Ordner können gelöscht werden |
 | Ordner nicht sichtbar | Seitenleiste zugeklappt | Erweitern Sie den E-Mail-Bereich in der Navigation |
@@ -71,3 +71,29 @@ Ordneränderungen werden sofort mit dem Server synchronisiert. Ihre Ordnerstrukt
 ## Fazit
 
 Sie können nun Ihre E-Mails mit Ordnern in SOGo 5 organisieren und verwalten.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

@@ -25,7 +25,7 @@ Resource booking in SOGo is typically implemented as special calendar accounts m
 
 ## Resource Booking Overview
 
-| Resource Type | Example Use Case |
+| Resource Type: Description | Example Use Case |
 |---------------|------------------|
 | **Meeting Room** | Small team huddle room, board room, conference hall |
 | **Equipment** | Projector, video conference system, specialized lab equipment |
@@ -62,7 +62,7 @@ Resources often appear with a location icon (📍) or are labeled as [Room] or e
 
 Choose the date/time for the booking. SOGo shows resource availability:
 
-| Visual Indicator | Meaning |
+| Visual Indicator: Description | Meaning |
 |------------------|---------|
 | **Green/H highlighted** | Resource available (can book) |
 | **Grayed out** | Already booked (conflict) |
@@ -96,7 +96,7 @@ Some configurations allow you to overlay multiple resources to find common avail
 
 Resource accounts are typically created with these attributes:
 
-| Setting | Value |
+| Setting: Description | Value |
 |---------|-------|
 | **User Role** | Resource (not person) |
 | **Location** | Physical address or room number |
@@ -117,7 +117,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Managing Bookings
 
-| Action | How To |
+| Action: Description | How To |
 |--------|--------|
 | **Modify booking** | Find event in calendar, edit start/end time or update attendees, save |
 | **Cancel booking** | Delete event (if you are the event owner) |
@@ -132,7 +132,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot find resource in attendees | Resource not configured outside calendars | Ask admin to make resource bookable; ensure it's listed as a shareable calendar |
 | Booking fails with conflict | Time slot already booked | Choose another time slot with available resource |
@@ -141,7 +141,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Integration with Other Features
 
-| Integration | Notes |
+| Integration: Description | Notes |
 |------------|-------|
 | **Free/busy** | Resource busy times shown in free/busy free-for-all queries |
 | **Calendar sharing** | Share your calendar with resource team to coordinate scheduling |
@@ -150,3 +150,29 @@ Setting up resources requires administrative access to SOGo automated scripts or
 :::info
 In larger organizations, resource booking may require additional scheduling tools or connector integrations. This covers the core SOGo scenario where resources are modeled as special calendars.
 :::
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

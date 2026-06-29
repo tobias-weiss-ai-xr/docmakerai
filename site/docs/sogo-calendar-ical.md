@@ -50,7 +50,7 @@ iCal (`.ics`) is a standard calendar file format supported by most calendar appl
 
 ## Import Options
 
-| Option | Description | Use When |
+| Option: Description | Description | Use When |
 |--------|--------------|---------|
 | **Add all events** | Imports all events from the file | First-time import |
 | **Merge duplicates** | Skips events with same date and title | Update existing calendar |
@@ -70,8 +70,34 @@ You can share your calendar by providing the iCal URL:
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Import button not visible | Calendar sharing not enabled | Contact your administrator to enable sharing |
  | Import fails | Invalid `.ics` file format | Verify the file opens in a calendar application first |
 | Export file is empty | Calendar has no events | Add events to the calendar before exporting |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

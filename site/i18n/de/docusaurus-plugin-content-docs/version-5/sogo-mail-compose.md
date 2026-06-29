@@ -36,7 +36,7 @@ Ein neues Nachrichtenfenster wird geöffnet.
 
 Füllen Sie die Empfängerfelder aus:
 
-| Feld | Beschreibung |
+| Feld: Description | Beschreibung |
 |------|-------------|
 | **An** | Primäre(r) Empfänger. Mehrere Adressen mit Kommas oder Semikolons trennen |
 | **Cc** | Kopie — Empfänger erhalten eine Kopie, sichtbar für andere |
@@ -66,7 +66,7 @@ Beispiele:
 Geben Sie Ihre Nachricht in das große Textfeld ein. Die Symbolleiste bietet
 Formatierungsoptionen:
 
-| Schaltfläche | Aktion |
+| Schaltfläche: Description | Aktion |
 |-------------|--------|
 | **B** | Fett |
 | *I* | Kursiv |
@@ -127,3 +127,29 @@ Wenn Sie noch nicht bereit zum Senden sind:
 Sie haben erfolgreich eine E-Mail in SOGo 5 verfasst und gesendet. Sie können nun
 Ihren Posteingang verwalten, Nachrichten in Ordnern organisieren und E-Mail-Filter
 für die automatische Sortierung einrichten.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

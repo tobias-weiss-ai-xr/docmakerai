@@ -46,9 +46,7 @@ logs/
 *.log
 npm-debug.log*
 capture/segments/
-capture/__pycache__/
-accessibility/__pycache__/
-scripts/__pycache__/
+__pycache__/
 
 # SOGo UI perceptual hash baselines
 capture/baselines/*.phash
@@ -56,3 +54,5 @@ capture/baselines/*.phash.json
 
 # GitHub Pages debug artifacts
 /.github-pages-trace
+.omo/
+.sisyphus/

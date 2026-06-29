@@ -52,7 +52,7 @@ vCard (`.vcf`) is the standard format for sharing contacts across applications l
 
 ## Import Options
 
-| Duplicate Handling | Description |
+| Duplicate Handling: Description | Description |
 |--------------------|-------------|
 | **Skip duplicates** | Ignores contacts with the same email address |
 | **Update existing** | Overwrites existing contact data with imported information |
@@ -60,7 +60,7 @@ vCard (`.vcf`) is the standard format for sharing contacts across applications l
 
 ## Export Options
 
-| Format | Description | Typical Size (100 contacts) |
+| Format: Description | Description | Typical Size (100 contacts) |
 |--------|--------------|-----------------------------|
 | **vCard 3.0** | Standard vCard format | ~25 KB |
 | **vCard 4.0** | Newer format with extended fields | ~30 KB |
@@ -72,9 +72,35 @@ To back up your entire address book, periodically export all contacts to a vCard
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Import/Export actions not visible | Feature not enabled | Contact your administrator |
 | Import fails | Corrupted vCard file | Open the file in a text editor and verify format |
 | Contacts appear twice | Duplicate handling not selected | Choose "Skip duplicates" during import |
 | Specific fields missing | Format incompatibility | Convert the vCard to vCard 3.0 format and retry |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

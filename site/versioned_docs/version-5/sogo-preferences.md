@@ -27,7 +27,7 @@ Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preference
 
 The **General** tab allows you to configure:
 
-| Setting | Description | Example |
+| Setting: Description | Description | Example |
 |---------|-------------|---------|
 | **Language** | Interface language | Deutsch, English |
 | **Time Zone** | Your local time zone | Europe/Berlin |
@@ -53,7 +53,7 @@ Switch to the **Notifications** tab to configure:
 
 ### Calendar Defaults
 
-| Preference | Description |
+| Preference: Description | Description |
 |------------|-------------|
 | **Default View** | Day, Week, Month, or Year |
 | **Working Hours** | Define your work day start and end times |
@@ -61,8 +61,34 @@ Switch to the **Notifications** tab to configure:
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Settings not saving | Session timeout | Log out and back in, then try again |
 | Language change not applied | Requires page reload | Refresh the page after changing the language setting |
 | Calendar defaults not applying | Module-specific override | Check if your calendar has its own settings override |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

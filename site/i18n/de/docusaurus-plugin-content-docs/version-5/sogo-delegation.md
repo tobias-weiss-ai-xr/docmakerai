@@ -19,7 +19,7 @@ Delegieren Sie Zugriff auf Ihre Kalender, E-Mail-Ordner und andere Ressourcen, i
 
 SOGo unterstützt granulare ACL-basierte Berechtigungen für:
 
-| Ressourcentyp | Was geteilt werden kann |
+| Ressourcentyp: Description | Was geteilt werden kann |
 |---------------|------------------------|
 | **Kalender** | Schreibgeschützt, Vollzugriff, vertrauliche Verfügbarkeit |
 | **Adressbuch** | Lese-, Schreib-, Änderungsberechtigungen |
@@ -28,7 +28,7 @@ SOGo unterstützt granulare ACL-basierte Berechtigungen für:
 
 ## Berechtigungsstufen
 
-| Berechtigung | Beschreibung |
+| Berechtigung: Description | Beschreibung |
 |-------------|-------------|
 | **Besitzer** | Vollzugriff, kann Berechtigungen ändern |
 | **Kann lesen** | Nur Elemente anzeigen |
@@ -84,7 +84,7 @@ Klicken Sie auf **Übernehmen** oder **Speichern**, um die Freigabe zu aktiviere
 
 ## Praktische Delegationsbeispiele
 
-| Szenario | Empfohlene Berechtigung | Warum |
+| Szenario: Description | Empfohlene Berechtigung | Warum |
 |----------|------------------------|-------|
 | **Assistent** | Administrator | Benötigt Vollzugriff, um den Kalender in Ihrem Namen zu verwalten |
 | **Teamleiter** | Teilnehmer | Kann Ereignisse erstellen/bearbeiten, um Team-Meetings zu planen |
@@ -107,7 +107,7 @@ Wenn eine Ressource für Sie freigegeben wurde:
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Teilen-Button nicht sichtbar | ACLs in der Konfiguration deaktiviert | Bitten Sie den Administrator, `SOGoACLsSendEMailNotifications` zu aktivieren |
 | Benutzer in der Suche nicht gefunden | Benutzer existiert nicht in SOGo | Überprüfen Sie, ob der Empfänger ein SOGo-Konto hat |
@@ -126,7 +126,7 @@ Wenn eine Ressource für Sie freigegeben wurde:
 
 Für Räume, Projektoren oder Ausrüstung:
 
-| Ressourcentyp | Einrichtung |
+| Ressourcentyp: Description | Einrichtung |
 |---------------|------------|
 | **Besprechungsraum** | Ressourcenkonto erstellen, als Ressourcentyp festlegen |
 | **Projektor** | Zum Kalender hinzufügen, als Ressource markieren, Buchungsberechtigungen erteilen |
@@ -139,3 +139,29 @@ Die Ressourcenkonfiguration erfordert in der Regel Administratorzugriff auf die 
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Delegation und Berechtigungen in SOGo 5 verwenden.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
