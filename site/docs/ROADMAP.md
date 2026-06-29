@@ -135,25 +135,38 @@ _None — all tracked sprints are either completed or planned._
 - [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
 - [ ] Full German translation of `/sogo5/de/`
 
-### Sprint 13: Self-Hosted Staging (Deferred)
-- [ ] Replace Netlify preview-deploy.yml with own staging on GitHub Pages
-- [ ] PR preview via `rossjrw/pr-preview-action` or custom gh-pages subdirectory
-- [ ] Preview URL comment on PRs (replace Netlify URL generation)
-- [ ] Teardown preview deployments on PR close
-- [ ] Remove Netlify secrets docs/NETLIFY_SETUP.md
-- [ ] Update workflow README — remove Netlify references
-- [ ] Decide: separate `staging` branch vs gh-pages `/preview/` subdirectory
-- [ ] Auto-generate documentation pages from OpenSpec specs
-- [ ] Tutorial structure from spec scenarios
-- [ ] Asset embedding from capture metadata
-- [ ] Docusaurus sidebar auto-generation
+### Sprint 13: PR Preview Deployments (Completed)
+- [x] Rewrite `preview-deploy.yml` — build with dynamic baseUrl, deploy to `gh-pages/preview/pr-<N>/`
+- [x] Preview URL commented on PRs (upserts existing comment instead of spamming)
+- [x] Teardown workflow (`preview-cleanup.yml`) — deletes preview directory on PR close
+- [x] Update workflow README with preview URL info
+- [x] Decide: gh-pages `/preview/` subdirectory (chosen over staging branch)
 
 ---
 
+## Accessibility
+
+This documentation site supports keyboard navigation, screen readers, and high-contrast mode.
+
+### Keyboard Navigation
+
+| Shortcut: | Action: |
+| --------- | ------ |
+| `Tab` | Navigate between links and interactive elements |
+| `Enter` / `Space` | Activate links and buttons |
+| `Ctrl + F` | Search within the current page |
+
+### Screen Reader & High Contrast
+
+- All tables use proper header markers (`| Header |` format) for screen reader column navigation
+- Status icons include text alternatives (e.g., "✅ Completed" not just an emoji)
+- High-contrast mode is supported via system `prefers-contrast: more` media queries
+- Color is never the sole means of conveying information
+
 ## Known Issues
 
-| Issue | Status | Notes |
-|-------|--------|-------|
+| Issue: | Status: | Notes: |
+| ----- | ------ | ----- |
 | Docusaurus build takes 30+ min on legions | 🔵 | Node 24 vs Node 20, npm cache cold |
 | Python PEP 668 blocks pip | ✅ Fixed | `--break-system-packages` added |
 | `@docusaurus/remark-plugin-content-docs` infinite loop | ✅ Fixed | Plugin removed, using manual PageSEO imports |
@@ -164,8 +177,8 @@ _None — all tracked sprints are either completed or planned._
 
 ## Legend
 
-| Icon | Meaning |
-|------|---------|
+| Icon: | Meaning: |
+| ---- | ------- |
 | ✅ | Completed |
 | 🔵 | In Progress |
 | 🟡 | Planned |
@@ -174,20 +187,20 @@ _None — all tracked sprints are either completed or planned._
 
 ---
 
-**Last Updated:** 2026-06-28
-**Next Sprint:** Sprint 13 — Self-Hosted Staging
+**Last Updated:** 2026-06-29
+**Next Sprint:** Sprint 10 — Content Expansion (German translation)
 
 ---
 
 ## Appendix: Key Metrics
 
-| Metric | Value |
-|--------|-------|
+| Metric: | Value: |
+| ------- | ----- |
 | Test coverage | 99.34% (192/192 passing) |
 | CI runner | Self-hosted on legions (192.168.42.42) |
 | Runner labels | linux, legions |
 | Runner version | 2.335.1 |
 | SEO geo tags | geo.region=DE, geo.placename=Berlin, ICBM |
 | Asset size reduction | 54% (2.1MB → 976KB) |
-| Documentation pages | 27 SOGo 5 docs |
+| Documentation pages | 27 SOGo 5 + 30 SOGo 6 docs |
 | Path structure | /sogo5/, /sogo6/ |

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="site/static/img/teaser.svg" alt="DocMaker AI - Automated Screenshot Capture Pipeline" width="100%">
+</p>
+
 # DocMaker AI
 
 > **Live documentation:** [tobias-weiss-ai-xr.github.io/docmakerai/](https://tobias-weiss-ai-xr.github.io/docmakerai/)

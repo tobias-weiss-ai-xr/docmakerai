@@ -1,4 +1,4 @@
-name: Preview Build
+name: Preview Deploy
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 concurrency:
@@ -15,8 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  preview:
-    name: Build & Upload Preview
+  deploy-preview:
+    name: Build & Deploy Preview
     runs-on: [self-hosted, linux, preview]
     defaults:
       run:
@@ -38,37 +38,67 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --prefer-offline || npm install
 
-      - name: Build (English only for preview speed)
-        run: npm run build -- --locale en
+      - name: Build with preview baseUrl
+        run: |
+          PR_NUMBER="${{ github.event.number || 'manual' }}"
+          PREVIEW_BASE="/docmakerai/preview/pr-${PR_NUMBER}/"
+          echo "Building with baseUrl: ${PREVIEW_BASE}"
+          npm run build -- --baseUrl "${PREVIEW_BASE}" --locale en
 
-      - name: Upload preview artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy preview to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: preview-build-pr-${{ github.event.number || 'manual' }}
-          path: site/build/
-          retention-days: 7
-          compression-level: 9
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site/build
+          destination_dir: preview/pr-${{ github.event.number || 'manual' }}
+          keep_files: true
 
-      - name: Comment artifact available on PR
+      - name: Comment preview URL on PR
         uses: actions/github-script@v7
         if: github.event_name == 'pull_request'
         with:
           script: |
-            const comment = `### 🔍 Preview Build Complete
+            const prNumber = context.issue.number;
+            const previewUrl = `https://tobias-weiss-ai-xr.github.io/docmakerai/preview/pr-${prNumber}/`;
+            const comment = `### 🔍 Preview Deployed
 
-            The preview build for this PR has finished successfully.
+            Your PR preview is ready at:
 
-            - **Branch:** \`${{ github.head_ref }}\`
-            - **Commit:** \`${{ github.sha.slice(0, 7) }}\`
-            - **Artifact:** \`preview-build-pr-${{ github.event.number || 'manual' }}\`
+            **${previewUrl}**
 
-            > A staging server is not yet configured. Download the artifact from the workflow run to inspect the build locally.
+            | Detail | Value |
+            |--------|-------|
+            | Branch | \`${{ github.head_ref }}\` |
+            | Commit | \`${context.sha.slice(0, 7)}\` |
+            | Base URL | \`/docmakerai/preview/pr-${prNumber}/\` |
 
-            *Build finished at: ${new Date().toISOString()}*
+            > This preview updates automatically on each push to this PR.
+            > It will be cleaned up when the PR is closed.
             `;
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+
+            // Find and update existing preview comment, or create new one
+            const comments = await github.rest.issues.listComments({
+              issue_number: prNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: comment
             });
+
+            const previewComment = comments.data.find(c =>
+              c.body && c.body.includes('### 🔍 Preview Deployed')
+            );
+
+            if (previewComment) {
+              await github.rest.issues.updateComment({
+                comment_id: previewComment.id,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment,
+              });
+            }
