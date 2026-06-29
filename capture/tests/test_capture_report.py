@@ -126,6 +126,7 @@ def test_report_generated_at_timestamp():
 
     assert "generated_at" in report
     import re
+
     assert re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", report["generated_at"])
 
 
