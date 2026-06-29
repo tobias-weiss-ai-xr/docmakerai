@@ -29,7 +29,7 @@ Tracked on every PR. Fails the build if budgets are exceeded. PR comments show t
 |---|---|---|
 | Total JS | ≤ 500 KB | summed gzip of `site/build/assets/js/*.js` |
 | Total CSS | ≤ 100 KB | summed gzip of `site/build/assets/css/*.css` |
-| Largest single JS chunk | ≤ 200 KB | max single file in `site/build/assets/js/` |
+| Largest single JS chunk | ≤ 500 KB | max single file in `site/build/assets/js/` |
 
 The budget configuration lives in `.github/bundle-budget.json`.
 
