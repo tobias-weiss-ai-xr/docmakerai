@@ -21,7 +21,7 @@ Die Ressourcenbuchung in SOGo wird typischerweise als spezielle Kalenderkonten i
 
 ## Übersicht über die Ressourcenbuchung
 
-| Ressourcentyp | Beispiel-Anwendungsfall |
+| Ressourcentyp: Description | Beispiel-Anwendungsfall |
 |---------------|------------------------|
 | **Besprechungsraum** | Kleiner Team-Besprechungsraum, Konferenzraum, Veranstaltungssaal |
 | **Ausrüstung** | Projektor, Videokonferenzsystem, spezielle Laborausrüstung |
@@ -58,7 +58,7 @@ Ressourcen erscheinen oft mit einem Ortsymbol (📍) oder sind als [Raum] oder A
 
 Wählen Sie Datum/Uhrzeit für die Buchung. SOGo zeigt die Ressourcenverfügbarkeit an:
 
-| Visueller Hinweis | Bedeutung |
+| Visueller Hinweis: Description | Bedeutung |
 |-------------------|-----------|
 | **Grün/markiert** | Ressource verfügbar (buchbar) |
 | **Abgegraut** | Bereits gebucht (Konflikt) |
@@ -92,7 +92,7 @@ Einige Konfigurationen erlauben es, mehrere Ressourcen zu überlagern, um gemein
 
 Ressourcenkonten werden typischerweise mit diesen Attributen erstellt:
 
-| Einstellung | Wert |
+| Einstellung: Description | Wert |
 |-------------|------|
 | **Benutzerrolle** | Ressource (keine Person) |
 | **Standort** | Physische Adresse oder Raumnummer |
@@ -113,7 +113,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Buchungen verwalten
 
-| Aktion | Vorgehen |
+| Aktion: Description | Vorgehen |
 |--------|---------|
 | **Buchung ändern** | Ereignis im Kalender finden, Start-/Endzeit bearbeiten oder Teilnehmer aktualisieren, speichern |
 | **Buchung stornieren** | Ereignis löschen (wenn Sie der Ereignisbesitzer sind) |
@@ -128,7 +128,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Ressource in Teilnehmern nicht gefunden | Ressource außerhalb von Kalendern nicht konfiguriert | Bitten Sie den Admin, die Ressource buchbar zu machen; stellen Sie sicher, dass sie als freigebbarer Kalender aufgeführt ist |
 | Buchung schlägt mit Konflikt fehl | Zeitfenster bereits gebucht | Wählen Sie ein anderes Zeitfenster mit verfügbarer Ressource |
@@ -137,7 +137,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Integration mit anderen Funktionen
 
-| Integration | Hinweise |
+| Integration: Description | Hinweise |
 |-------------|---------|
 | **Belegt/Frei** | Belegte Zeiten der Ressource werden in Belegt/Frei-Abfragen angezeigt |
 | **Kalenderfreigabe** | Teilen Sie Ihren Kalender mit dem Ressourcenteam zur Koordination der Terminplanung |
@@ -150,3 +150,29 @@ In größeren Organisationen kann die Ressourcenbuchung zusätzliche Planungstoo
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Ressourcen in SOGo 5 buchen.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

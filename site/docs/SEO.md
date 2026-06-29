@@ -22,7 +22,7 @@ SOGo is widely used in German-speaking enterprise and educational environments. 
 
 ### Geo-Targeting Reference
 
-| Tag | Value | Purpose |
+| Tag: Description | Value | Purpose |
 |-----|-------|---------|
 | `geo.region` | `DE` | Primary market is German-speaking regions (DACH) in search results |
 | `geo.placename` | `Berlin` | Physical business location for local search ranking boost |
@@ -126,7 +126,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 ### Current Target Audience
 
-| Region | Language | Audience |
+| Region: Description | Language | Audience |
 |--------|----------|----------|
 | DACH | German (DE) | German-speaking SOGo users (Germany, Austria, Switzerland) |
 | Global | English (EN) | International community, developers, admins |
@@ -250,7 +250,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 ### Core Web Vitals Targets
 
-| Metric | Target | Current | Issues |
+| Metric: Description | Target | Current | Issues |
 |--------|--------|---------|--------|
 | LCP (Largest Contentful Paint) | < 2.5s | TBD | Large images making GIFs, unoptimized assets |
 | FID (First Input Delay) | < 100ms | TBD | Heavy JS, large DOM |
@@ -265,6 +265,22 @@ import PageSEO from '@site/src/components/PageSEO';
 ## Accessibility SEO
 
 ### WCAG 2.1 Level A
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
 
 **Implemented:**
 - ✅ Keyboard navigation (`accessibility/validate.py`)
@@ -318,3 +334,10 @@ Disallow: /sogo5/docs/
 3. **Generate WebVTT captions** from task-first metadata
 4. **Add breadcrumbs with structured data**
 5. **Monitor Lighthouse scores** and optimize accordingly
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

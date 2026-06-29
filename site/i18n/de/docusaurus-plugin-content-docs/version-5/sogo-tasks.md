@@ -20,7 +20,7 @@ In vielen SOGo-Installationen erscheint das Aufgabenmodul nur, wenn `SOGoDocumen
 
 ## Funktionsübersicht
 
-| Funktion | Beschreibung |
+| Funktion: Description | Beschreibung |
 |----------|-------------|
 | **Aufgabenlisten** | Mehrere Aufgabenkategorien erstellen (z. B. persönlich, Arbeit, Projekte) |
 | **Prioritätsstufen** | Markierungen für Dringend, Hoch, Mittel, Niedrig |
@@ -58,7 +58,7 @@ Wenn Aufgaben nicht in der Seitenleiste erscheinen, kontaktieren Sie Ihren Admin
 
 Klicken Sie nach der Erstellung auf die Aufgabe, um die Detailansicht zu öffnen und zu ändern:
 
-| Feld | Beschreibung |
+| Feld: Description | Beschreibung |
 |------|-------------|
 | **Titel** | Kurzer Aufgabenname |
 | **Beschreibung** | Detaillierte Notizen zur Aufgabe |
@@ -97,7 +97,7 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 ## Ansichten und Sortierung
 
-| Ansicht | Verwendungszweck |
+| Ansicht: Description | Verwendungszweck |
 |---------|-----------------|
 | **Alle Aufgaben** | Übersicht über alle ausstehenden Aufgaben |
 | **Fällig bald** | Fokus auf anstehende Fristen |
@@ -107,7 +107,7 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 ## Tastenkombinationen
 
-| Aktion | Tastenkombination |
+| Aktion: Description | Tastenkombination |
 |--------|------------------|
 | Neue Aufgabe | `Ctrl + N` / `⌘ + N` |
 | Aufgabe erledigen | Häkchen neben dem Element oder `Ctrl + Eingabetaste` |
@@ -118,7 +118,7 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 SOGo-Aufgaben können verknüpft werden mit:
 
-| Integration | Vorgehen |
+| Integration: Description | Vorgehen |
 |-------------|---------|
 | **Kalender** | Eine Ereigniseinladung in eine Aufgabe umwandeln; Aufgabendatum auf Ereignisdatum setzen |
 | **Kontakte** | Besitzer oder Delegierten aus dem Adressbuch zuweisen |
@@ -138,7 +138,7 @@ Verwenden Sie Aufgaben, um Besprechungsaktionen nachzuverfolgen. Erstellen Sie n
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Aufgabenmodul nicht sichtbar | `SOGoDocumentsEnabled` auf NO gesetzt | Bitten Sie den Admin, es in der SOGo-Konfiguration zu aktivieren |
 | Aufgabe kann nicht erstellt werden | Schreibberechtigung für Aufgabenliste fehlt | Überprüfen Sie die ACLs für die Aufgabenliste |
@@ -149,3 +149,29 @@ Verwenden Sie Aufgaben, um Besprechungsaktionen nachzuverfolgen. Erstellen Sie n
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Aufgaben im SOGo 5-Aufgabenmodul erstellen und verwalten.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

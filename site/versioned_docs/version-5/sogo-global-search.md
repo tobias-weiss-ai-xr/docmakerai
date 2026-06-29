@@ -33,7 +33,7 @@ Type your search term into the search field. Results appear as you type.
 
 Search results are grouped by module:
 
-| Module | What It Searches |
+| Module: Description | What It Searches |
 |--------|------------------|
 | **Mail** | Email subject lines and sender names (if IMAP available) |
 | **Calendar** | Event titles, locations, and descriptions |
@@ -44,7 +44,7 @@ Click on any result to navigate directly to that item.
 
 ## Search Tips
 
-| Technique | Example | Result |
+| Technique: Description | Example | Result |
 |-----------|---------|--------|
 | **Partial match** | `Meet` | Finds "Meeting", "Meetup", "Street Meet" |
 | **By contact name** | `John` | Finds contacts named John and events with John |
@@ -58,9 +58,35 @@ Use **global search** to find items across all modules at once instead of search
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | No results found | Typo in search term | Double-check spelling or try a partial word |
 | Search button not visible | Narrow browser window | Widen the window or use the menu button (☰) |
 | Mail results not showing | IMAP server unavailable | Mail search requires an active IMAP connection |
 | Results loading slowly | Large mailbox | Narrow your search with more specific terms |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

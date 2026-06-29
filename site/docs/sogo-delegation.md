@@ -23,7 +23,7 @@ Delegate access to your calendars, mail folders and other resources by assigning
 
 SOGo supports granular ACL-based permissions for:
 
-| Resource Type | What Can Be Shared |
+| Resource Type: Description | What Can Be Shared |
 |---------------|-------------------|
 | **Calendar** | Read-only, Full Control, Confidential availability |
 | **Address Book** | Read, Write, Modify permissions |
@@ -32,7 +32,7 @@ SOGo supports granular ACL-based permissions for:
 
 ## Permission Levels
 
-| Permission | Description |
+| Permission: Description | Description |
 |------------|-------------|
 | **Owner** | Full control, can change permissions |
 | **Can Read** | View items only |
@@ -88,7 +88,7 @@ Click **Apply** or **Save** to activate the sharing.
 
 ## Practical Delegation Examples
 
-| Scenario | Recommended Permission | Why |
+| Scenario: Description | Recommended Permission | Why |
 |----------|------------------------|-----|
 | **Assistant** | Administrator | Needs full control to manage calendar on your behalf |
 | **Team Lead** | Participant | Can create/edit events to schedule team meetings |
@@ -111,7 +111,7 @@ When a resource is shared to you:
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Share button not visible | ACLs disabled in configuration | Ask administrator to enable `SOGoACLsSendEMailNotifications` |
 | Cannot find user in search | User doesn't exist in SOGo | Verify recipient has SOGo account |
@@ -130,7 +130,7 @@ When a resource is shared to you:
 
 For rooms, projectors, or equipment:
 
-| Resource Type | How to Set Up |
+| Resource Type: Description | How to Set Up |
 |---------------|---------------|
 | **Meeting Room** | Create resource account, set as resource type |
 | **Projector** | Add to calendar, mark as resource, grant booking permissions |
@@ -139,3 +139,29 @@ For rooms, projectors, or equipment:
 :::info
 Resource configuration typically requires administrator-level access to SOGo automated setup. Individual users delegate calendar items as regular events.
 :::
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

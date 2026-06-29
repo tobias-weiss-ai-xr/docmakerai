@@ -66,7 +66,7 @@ To permanently delete an email, empty the Trash folder by right-clicking it and 
 
 ## Keyboard Shortcuts
 
-| Action | Windows/Linux | Mac |
+| Action: Description | Windows/Linux | Mac |
 |--------|--------------|-----|
 | Reply | `Ctrl + R` | `⌘ + R` |
 | Delete | `Delete` | `Delete` |
@@ -78,8 +78,34 @@ Delete actions move emails to the Trash folder. To recover, select the Trash fol
 
 ## Troubleshooting
 
-| Issue | Possible Cause | Solution |
+| Issue: Description | Possible Cause | Solution |
 |-------|---------------|----------|
 | Reply/Forward button not visible | Email body already open | Close the compose window and try again |
 | Email not in Trash after delete | Trash folder full | Empty the Trash folder first |
 | Reply bounces | Invalid recipient email | Verify the email address is correct |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

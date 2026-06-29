@@ -210,6 +210,8 @@ class AccessibilityValidator:
     def fix_directory(self, directory: Path) -> int:
         total_fixes = 0
         for md_file in directory.glob('**/*.md'):
+            if 'node_modules' in md_file.parts:
+                continue
             if 'accessibility-section-template' in md_file.name:
                 continue
             fixes = self.fix_file(md_file)
@@ -224,6 +226,8 @@ class AccessibilityValidator:
         md_files = directory.glob('**/*.md')
 
         for md_file in md_files:
+            if 'node_modules' in md_file.parts:
+                continue
             if 'accessibility-section-template' in md_file.name:
                 continue
 

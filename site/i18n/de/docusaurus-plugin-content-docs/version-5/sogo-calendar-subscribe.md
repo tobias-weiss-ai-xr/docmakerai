@@ -21,7 +21,7 @@ Teamkalender oder jeden online verfügbaren `.ics`-Feed.
 
 Sie benötigen die Webadresse (URL) eines iCal-Feeds. Häufige Beispiele:
 
-| Quelle | Beispiel-URL |
+| Quelle: Description | Beispiel-URL |
 |--------|-------------|
 | Öffentliche Feiertage | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team-Kalender | `https://teamup.com/.../events.ics` |
@@ -46,7 +46,7 @@ Im Abonnement-Dialog:
 
 ### Schritt 4: Sync-Optionen konfigurieren
 
-| Option | Beschreibung |
+| Option: Description | Beschreibung |
 |--------|-------------|
 | **Aktualisierungsintervall** | Wie oft auf Updates geprüft wird (stündlich, täglich usw.) |
 | **Erinnerungen entfernen** | Alarminformationen aus externen Ereignissen entfernen |
@@ -110,3 +110,29 @@ Der Kalender wird aus Ihrer Ansicht entfernt. Die Quelle bleibt unverändert.
 iCal-Abonnements ermöglichen es Ihnen, externe Kalender in Ihre
 SOGo 5-Ansicht einzublenden — perfekt für öffentliche Feiertage, Teamtermine und
 Kalenderfeeds von Drittanbietern.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
