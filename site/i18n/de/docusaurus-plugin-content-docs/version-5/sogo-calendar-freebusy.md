@@ -44,7 +44,7 @@ planen — direkt aus dem Dialog zur Ereigniserstellung.
 
 Das Raster zeigt Zeitbereiche für jede Person:
 
-| Farbe | Bedeutung |
+| Farbe: Description | Bedeutung |
 |-------|----------|
 | ✅ **Grün** | Verfügbar |
 | ❌ **Rot** | Beschäftigt (hat ein Ereignis) |
@@ -65,7 +65,7 @@ Die Start-/Endzeit des Ereignisses wird entsprechend aktualisiert.
 
 Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen können:
 
-| Berechtigung | Was sichtbar ist |
+| Berechtigung: Description | Was sichtbar ist |
 |-------------|-----------------|
 | **Frei/Gebucht** | Nur ob Sie verfügbar oder beschäftigt sind (keine Details) |
 | **Anzeigen (schreibgeschützt)** | Ereignistitel und -zeiten |
@@ -93,3 +93,29 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
 Die Frei/Gebucht-Abfrage hilft Ihnen, Besprechungstermine zu finden, ohne die
 lästige E-Mail-Frage "Sind Sie um ... frei?". Sie funktioniert für
 alle in Ihrer Organisation, die ihre Kalenderverfügbarkeit freigeben.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

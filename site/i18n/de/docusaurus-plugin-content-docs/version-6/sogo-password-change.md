@@ -17,7 +17,7 @@ Aktualisieren Sie Ihr SOGo 5-Kontopasswort, um Ihr Konto sicher zu halten.
 
 Die Passwortänderung in SOGo 5 hängt von der Konfiguration Ihrer Organisation ab:
 
-| Methode | Wo verwenden | Beschreibung |
+| Methode: Description | Wo verwenden | Beschreibung |
 |---------|-------------|-------------|
 | **Selbstbedienung in SOGo** | SOGo → Einstellungen | Passwort direkt in SOGo ändern (falls aktiviert) |
 | **Administratorportal** | Admin-Panel | Administrator ändert Passwort für Sie |
@@ -42,7 +42,7 @@ Die meisten Organisationen verwenden einen externen Identitätsanbieter für Pas
 
 Organisationen erzwingen in der Regel diese Passwortregeln:
 
-| Anforderung | Beispiel |
+| Anforderung: Description | Beispiel |
 |-------------|---------|
 | **Mindestlänge** | 8 oder mehr Zeichen |
 | **Komplexität** | Mischung aus Großbuchstaben, Kleinbuchstaben, Zahlen und Symbolen |
@@ -51,7 +51,7 @@ Organisationen erzwingen in der Regel diese Passwortregeln:
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Passwortänderungsoption nicht sichtbar | Selbstbedienung deaktiviert | Nutzen Sie das externe Passwortänderungsportal Ihrer Organisation |
 | Fehler „Aktuelles Passwort falsch" | Tippfehler im alten Passwort | Geben Sie Ihr altes Passwort sorgfältig erneut ein |
@@ -65,3 +65,29 @@ Wenn Sie Ihr Passwort aufgrund einer Kontosperrung nicht ändern können, kontak
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Ihr SOGo 5-Passwort ändern.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

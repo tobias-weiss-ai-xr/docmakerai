@@ -46,7 +46,7 @@ vCard (`.vcf`) ist das Standardformat zum Teilen von Kontakten zwischen Anwendun
 
 ## Importoptionen
 
-| Duplikatbehandlung | Beschreibung |
+| Duplikatbehandlung: Description | Beschreibung |
 |--------------------|-------------|
 | **Duplikate überspringen** | Ignoriert Kontakte mit derselben E-Mail-Adresse |
 | **Vorhandene aktualisieren** | Überschreibt vorhandene Kontaktdaten mit importierten Informationen |
@@ -54,7 +54,7 @@ vCard (`.vcf`) ist das Standardformat zum Teilen von Kontakten zwischen Anwendun
 
 ## Exportoptionen
 
-| Format | Beschreibung | Typische Größe (100 Kontakte) |
+| Format: Description | Beschreibung | Typische Größe (100 Kontakte) |
 |--------|-------------|-------------------------------|
 | **vCard 3.0** | Standard-vCard-Format | ~25 KB |
 | **vCard 4.0** | Neueres Format mit erweiterten Feldern | ~30 KB |
@@ -66,7 +66,7 @@ Um Ihr gesamtes Adressbuch zu sichern, exportieren Sie regelmäßig alle Kontakt
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Import/Export-Aktionen nicht sichtbar | Funktion nicht aktiviert | Kontaktieren Sie Ihren Administrator |
 | Import schlägt fehl | Beschädigte vCard-Datei | Öffnen Sie die Datei in einem Texteditor und überprüfen Sie das Format |
@@ -76,3 +76,29 @@ Um Ihr gesamtes Adressbuch zu sichern, exportieren Sie regelmäßig alle Kontakt
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Kontakte im vCard-Format in SOGo 5 importieren und exportieren.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

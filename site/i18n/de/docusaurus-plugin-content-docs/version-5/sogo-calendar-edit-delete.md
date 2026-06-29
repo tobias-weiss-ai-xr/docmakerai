@@ -24,7 +24,7 @@ Klicken Sie auf ein beliebiges Ereignis im Kalender, um dessen Details zu öffne
 
 Der Ereigniseditor ermöglicht Ihnen folgende Änderungen:
 
-| Feld | Beschreibung |
+| Feld: Description | Beschreibung |
 |------|-------------|
 | **Titel** | Ereignisnamen ändern |
 | **Ort** | Veranstaltungsort oder Raum aktualisieren |
@@ -43,7 +43,7 @@ So bearbeiten Sie ein Ereignis:
 
 Wenn das Ereignis Teil einer Terminserie ist, werden Sie gefragt:
 
-| Option | Auswirkung |
+| Option: Description | Auswirkung |
 |--------|-----------|
 | **Nur dieses Ereignis** | Ändert nur das ausgewählte Vorkommen |
 | **Alle Ereignisse der Serie** | Ändert jedes Vorkommen des Serientermins |
@@ -63,7 +63,7 @@ Klicken Sie auf das Ereignis, das Sie löschen möchten, um dessen Details anzuz
 
 Bei Serienterminen werden Sie gefragt:
 
-| Option | Auswirkung |
+| Option: Description | Auswirkung |
 |--------|-----------|
 | **Nur dieses Ereignis löschen** | Entfernt nur das ausgewählte Vorkommen |
 | **Alle Ereignisse der Serie löschen** | Entfernt jedes Vorkommen |
@@ -74,7 +74,7 @@ Löschungen können nicht rückgängig gemacht werden. Bedenken Sie dies, bevor 
 
 ## Fehlerbehebung
 
-| Problem | Mögliche Ursache | Lösung |
+| Problem: Description | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Ereignis kann nicht bearbeitet werden | Schreibgeschützter Kalender (von einem anderen Benutzer geteilt) | Überprüfen Sie die Farbe des Kalenders — Grau bedeutet normalerweise schreibgeschützt |
 | Löschen-Button nicht sichtbar | Unzureichende Berechtigungen im freigegebenen Kalender | Bitten Sie den Kalenderbesitzer, Löschberechtigungen zu erteilen |
@@ -83,3 +83,29 @@ Löschungen können nicht rückgängig gemacht werden. Bedenken Sie dies, bevor 
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Ereignisse in Ihrem SOGo 5-Kalender bearbeiten und löschen.
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+

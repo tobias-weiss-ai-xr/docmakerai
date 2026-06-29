@@ -166,7 +166,7 @@ Source: `capture/run_captures.py` — `record_calendar_create_event()`, `record_
 
 ## Appendix: Scenario Reference
 
-| Scenario | Precondition | Action | Expected Result |
+| Scenario: Description | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Create event via double-click | an authenticated session and the calendar in week view | the user double-clicks the time slot at Monday 10:00 | the event dialog will open |
 | Annotation markers | the calendar create event workflow is being recorded | the double-click action occurs | red circle highlights will mark the day cell and hour cell |
@@ -177,3 +177,29 @@ Source: `capture/run_captures.py` — `record_calendar_create_event()`, `record_
 | Subscribe to iCal feed | the calendar module is open | the user opens the subscription dialog | an iCal URL will be entered |
 | Schedule with attendees | an event dialog with attendees is open | the free/busy grid is displayed | attendee availability will be visible |
 | Export calendar | a calendar exists with events | the user selects the export option | an iCal file will be downloaded |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
