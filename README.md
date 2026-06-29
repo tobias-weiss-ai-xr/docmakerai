@@ -1,11 +1,15 @@
 # DocMaker AI
 
-**Automated screenshot capture pipeline + Docusaurus documentation site for web applications.**
+> **Live documentation:** [tobias-weiss-ai-xr.github.io/docmakerai/](https://tobias-weiss-ai-xr.github.io/docmakerai/)
 
-DocMaker AI is a tool that captures UI workflows as annotated WebP animations and generates multi-version Docsaurus documentation sites. It was built for the [SOGo Groupware](https://www.sogo.nu) user guide but works for any web application.
+![DocMaker AI landing page — SOGo multi-version documentation](assets/docmakerai-landing.png)
+
+**Automated screenshot capture pipeline + Docusaurus documentation site for web applications.**
 
 [![CI](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml)
 [![Deploy](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml)
+
+DocMaker AI captures UI workflows as annotated WebP animations and generates multi-version Docusaurus documentation sites. Built for the [SOGo Groupware](https://www.sogo.nu) user guide but works for any web application.
 
 ## What DocMaker AI Does
 
@@ -199,10 +203,6 @@ Run `make test` to verify all tests pass.
 ## License
 
 MIT
-
-## Live Site
-
-[SOGo User Guide](https://tobias-weiss-ai-xr.github.io/docmakerai/) — Multi-version documentation (SOGo 5 + SOGo 6)
 
 ---
 

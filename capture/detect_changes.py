@@ -58,19 +58,25 @@ def main() -> int:
     parser.add_argument("image", type=Path, help="Path to the captured login screenshot")
     parser.add_argument("--workflow", required=True, help="Workflow name (baseline key)")
     parser.add_argument(
-        "--baselines-dir", type=Path, default=DEFAULT_BASELINES_DIR,
+        "--baselines-dir",
+        type=Path,
+        default=DEFAULT_BASELINES_DIR,
         help="Where to store .phash.json files",
     )
     parser.add_argument(
-        "--threshold", type=int, default=DEFAULT_THRESHOLD,
+        "--threshold",
+        type=int,
+        default=DEFAULT_THRESHOLD,
         help=f"Hamming distance threshold (default: {DEFAULT_THRESHOLD})",
     )
     parser.add_argument(
-        "--update-baseline", action="store_true",
+        "--update-baseline",
+        action="store_true",
         help="Overwrite the baseline with the new hash",
     )
     parser.add_argument(
-        "--check-drift", action="store_true",
+        "--check-drift",
+        action="store_true",
         help="Exit 0 if no drift, exit 1 if drift detected",
     )
     args = parser.parse_args()
