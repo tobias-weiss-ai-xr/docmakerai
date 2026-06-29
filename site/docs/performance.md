@@ -12,8 +12,8 @@ This page tracks the performance characteristics of the SOGo User Guide document
 
 Scores are measured against the live production site on every push to `main`. See the [Lighthouse CI workflow run](../../../../actions/workflows/ci.yml) for raw data.
 
-| Metric | Budget | Source |
-|---|---|---|
+| Metric: | Budget: | Source: |
+| ------- | ------ | ------ |
 | Performance score | ≥ 85 | `categories:performance` |
 | Largest Contentful Paint (LCP) | ≤ 2.5 s | `largest-contentful-paint` |
 | Total Blocking Time (TBT) | ≤ 300 ms | `total-blocking-time` |
@@ -25,13 +25,31 @@ The full configuration lives in `.lighthouserc.json` at the repo root.
 
 Tracked on every PR. Fails the build if budgets are exceeded. PR comments show the current sizes inline.
 
-| Asset class | Budget | Source |
-|---|---|---|
+| Asset class: | Budget: | Source: |
+| ----------- | ------ | ------ |
 | Total JS | ≤ 500 KB | summed gzip of `site/build/assets/js/*.js` |
 | Total CSS | ≤ 100 KB | summed gzip of `site/build/assets/css/*.css` |
-| Largest single JS chunk | ≤ 200 KB | max single file in `site/build/assets/js/` |
+| Largest single JS chunk | ≤ 500 KB | max single file in `site/build/assets/js/` |
 
 The budget configuration lives in `.github/bundle-budget.json`.
+
+## Accessibility
+
+This page is designed to be accessible to all users, including those using screen readers or keyboard navigation.
+
+### Keyboard Navigation
+
+| Shortcut: | Action: |
+| --------- | ------ |
+| `Tab` | Navigate between interactive elements on the page |
+| `Enter` / `Space` | Activate links and buttons |
+
+### Screen Reader & High Contrast Support
+
+- All tables use proper header markers for screen reader navigation
+- Links use descriptive text that makes sense out of context
+- Color is not used as the sole means of conveying information
+- High-contrast mode and dark mode are supported via system `prefers-contrast: more` and `prefers-color-scheme: dark` media queries
 
 ## Capture Pipeline Timing
 
