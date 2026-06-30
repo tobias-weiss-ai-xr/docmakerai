@@ -3,99 +3,65 @@ sidebar_label: "Overview"
 sidebar_position: 1
 ---
 
-# SOGo 5 User Guide
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Step-by-step tutorials for mastering SOGo 5 — email, calendar, contacts, and collaboration workflows.
+# Welcome to the SOGo 5 User Guide
 
-## 🚀 Quick Start
+<div style={{ textAlign: 'center', marginBottom: '2rem' }}>
 
-Login and logout are the basics. Once you're in, SOGo 5 offers a unified interface for all your communication needs.
+<ThemedImage
+  alt="DocMaker AI — Automated Screenshot Capture Pipeline"
+  sources={{
+    light: useBaseUrl('/img/teaser.svg'),
+    dark: useBaseUrl('/img/teaser.svg'),
+  }}
+/>
 
-- [Login to SOGo 5](./sogo-login.md) — Access your SOGo 5 webmail account
-- [Logout of SOGo 5](./sogo-logout.md) — End your session securely
+</div>
 
----
+Welcome! This guide is here to help you get the most out of **SOGo Groupware** — your open-source collaboration platform for email, calendars, contacts, and more. Whether you are setting up your SOGo 5 account for the first time or looking to master advanced features like shared calendars, Sieve mail filters, or resource booking, you have come to the right place.
 
-## 📧 Daily Workflows for Busy Users
+Every tutorial in this guide is built from real, step-by-step screen captures — so you see exactly what to click, type, and expect at each step. No guesswork, no vague instructions.
 
-Most users will need these core workflows every day. They're designed to be learnable in minutes.
+## What's Inside
 
-### Schedule Meetings & Check Availability
-→ Start here if you run a team or organize meetings
+| Module: SOGo area | What you'll learn: Key topics covered | Tutorials: Number available |
+|--------|-------------------|-----------|
+| 📧 **Mail** | Compose, read, organize, filter, and sign emails like a pro | 6 |
+| 📅 **Calendar** | Create events, set recurring meetings, share calendars, and check availability | 7 |
+| 👥 **Contacts** | Add, edit, import, and export your address book | 3 |
+| ⚙️ **Preferences** | Customize your profile, change passwords, set vacation replies | 4 |
+| 🔍 **Advanced** | Delegation, tasks, resource booking, and global search | 4 |
 
-- [Create a Calendar Event](./sogo-calendar-create-event.md) — Schedule a meeting or appointment
-- [Set Up Recurring Events](./sogo-calendar-recurring.md) — Weekly standups, monthly reviews, automatic reminders
-- [Check Free/Busy Availability](./sogo-calendar-freebusy.md) — Find time that works for everyone
-- [Edit or Delete Events](./sogo-calendar-edit-delete.md) — Make changes to your schedule
+## Jump Right In
 
-### Manage Your Email Inbox
-→ For reading, responding, and organizing messages
+- **New to SOGo?** Start with [Login to SOGo 5](./sogo-login) to access your account.
+- **Using SOGo 6?** Switch to the SOGo 6 version using the version dropdown above.
+- **Looking for something specific?** Browse the sidebar for a full list of tutorials.
 
-- [Read & Navigate Your Inbox](./sogo-mail-read.md) — Open messages, navigate folders
-- [Reply, Forward, or Delete Email](./sogo-mail-reply-forward-delete.md) — Quick actions on incoming messages
-- [Create & Send an Email](./sogo-mail-compose.md) — Write, format, and send new messages
+## Getting Started
 
-### Work Efficiently (Power User)
-→ Work faster with these shortcuts and techniques
+- [Login to SOGo 5](./sogo-login) — Access your SOGo 5 webmail account
 
-- [Switch Calendar Views](./sogo-calendar-views.md) — Day, week, month — choose the right one
-- [Use Global Search](./sogo-global-search.md) — Find anything across email, calendar, contacts
+## Calendar
 
----
+- [Create a Calendar Event](./sogo-calendar-create-event) — Schedule meetings and appointments
+- [Recurring Events & Alarms](./sogo-calendar-recurring) — Set up repeating events with reminders
+- [Share a Calendar](./sogo-calendar-share) — Share with colleagues and control permissions
+- [Subscribe to an iCal Feed](./sogo-calendar-subscribe) — Import external calendars
+- [Free/Busy Lookup](./sogo-calendar-freebusy) — Check availability before scheduling
 
-## 📅 Calendar Management
+## Mail
 
-Advanced calendar features for team collaboration and productivity.
+- [Compose and Send an Email](./sogo-mail-compose) — Write, format, and send messages
+- [Mail Signatures & Identities](./sogo-mail-signatures) — Set up professional signatures
+- [Mail Folders & Filters](./sogo-mail-folders-filters) — Organize with folders and Sieve filters
 
-- [Share a Calendar](./sogo-calendar-share.md) — Share with colleagues and control permissions
-- [Subscribe to an iCal Feed](./sogo-calendar-subscribe.md) — Import external calendars (Google, Outlook, etc.)
-- [Export as iCal File](./sogo-calendar-ical.md) — Backup or share your calendar
+## Additional Features
 
----
-
-## 📨 Mail Organization
-
-Keep your inbox clean and your email professional.
-
-- [Manage Mail Folders](./sogo-mail-folder-management.md) — Create folders, organize, find messages
-- [Set Up Mail Filters](./sogo-mail-folders-filters.md) — Auto-organize with Sieve filters
-- [Create Professional Signatures](./sogo-mail-signatures.md) — Add your logo, contact info, disclaimer
-
----
-
-## 👥 Contacts Management
-
-Build and maintain your professional network.
-
-- [Add a New Contact](./sogo-contacts-add.md) — Create contacts with email, phone, company details
-- [Edit or Delete Contacts](./sogo-contacts-edit-delete.md) — Update information or remove outdated entries
-- [Import/Export Contacts](./sogo-contacts-import-export.md) — Migrate from Outlook, Google, or other systems
-
----
-
-## ⚙️ Account Settings
-
-Configure SOGo 5 to work your way.
-
-- [General Preferences](./sogo-preferences.md) — Language, timezone, notifications, UI settings
-- [Change Your Password](./sogo-password-change.md) — Secure your account, update credentials
-- [Set Up Vacation Auto-Reply](./sogo-vacation.md) — Out-of-office messages and calendar blocking
-
----
-
-## 🔧 Advanced Features
-
-For power users, admins, and anyone who wants to get more out of SOGo 5.
-
-- [Delegation](./sogo-delegation.md) — Allow others to manage your calendar or mail
-- [Tasks Management](./sogo-tasks.md) — Create, assign, track to-do items
-- [Resource Booking](./sogo-resource-booking.md) — Book meeting rooms, equipment, or shared resources
-
----
-
-## Need Help?
-
-If you're looking for workflow tutorials that include visual guidance (WebP animations or screen reader instructions), check out the [Accessibility Guide](./accessibility-section-template.md) for keyboard navigation tips and screen reader workflows.
+- [Add a Contact](./sogo-contacts-add) — Manage your address book
+- [Vacation & Out-of-Office](./sogo-vacation) — Set up automatic replies and calendar blocks
 ## Accessibility
 
 ### Keyboard Navigation
@@ -121,4 +87,3 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **Windows:** `Win+Ctrl+C` toggles high contrast
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
