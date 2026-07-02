@@ -38,13 +38,13 @@ Every tutorial in this guide is built from real, step-by-step screen captures �
 
 ## Jump Right In
 
-- **New to SOGo?** Start with [Login to SOGo 6](./sogo-login) to access your account.
+- **New to SOGo?** Start with [Getting Started](./sogo-login) to learn the interface.
 - **Using SOGo 5?** Switch to the SOGo 5 version using the version dropdown above.
 - **Looking for something specific?** Browse the sidebar for a full list of tutorials.
 
 ## Getting Started
 
-- [Login to SOGo 6](./sogo-login) — Access your SOGo 6 webmail account
+- [Getting Started](./sogo-login) — Log in, navigate the interface, and set your preferences
 
 ## Calendar
 
