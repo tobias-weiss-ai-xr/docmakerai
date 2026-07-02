@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   url: 'https://tobias-weiss-ai-xr.github.io',
-  baseUrl: '/docmakerai/',
+  baseUrl: process.env.FORCE_BASE_URL || '/docmakerai/',
 
   organizationName: 'tobias-weiss-ai-xr',
   projectName: 'docmakerai',

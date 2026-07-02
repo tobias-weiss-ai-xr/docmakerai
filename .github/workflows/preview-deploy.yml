@@ -43,7 +43,7 @@ jobs:
           PR_NUMBER="${{ github.event.number || 'manual' }}"
           PREVIEW_BASE="/docmakerai/preview/pr-${PR_NUMBER}/"
           echo "Building with baseUrl: ${PREVIEW_BASE}"
-          npm run build -- --baseUrl "${PREVIEW_BASE}" --locale en
+          FORCE_BASE_URL="${PREVIEW_BASE}" npm run build -- --locale en
 
       - name: Deploy preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
