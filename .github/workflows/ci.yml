@@ -40,7 +40,7 @@ jobs:
             }
 
   python-quality:
-    name: Python Lint + Test
+    name: python-tests
     runs-on: [self-hosted, linux, ci]
     needs: cleanup-artifacts
     if: always()
