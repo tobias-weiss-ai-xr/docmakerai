@@ -42,6 +42,31 @@ from pathlib import Path
 
 from playwright.async_api import BrowserContext, Page, async_playwright
 
+try:
+    from capture.video_pipeline import (
+        WorkflowRecorder,
+        annotate_frames,
+        assemble_webp,
+        extract_frames,
+        get_video_duration,
+        is_frame_valid,
+        map_frames_to_steps,
+        validate_frames,
+    )
+except ImportError:
+    from video_pipeline import (
+        WorkflowRecorder,
+        annotate_frames,
+        assemble_webp,
+        extract_frames,
+        get_video_duration,
+        is_frame_valid,
+        map_frames_to_steps,
+        validate_frames,
+    )
+
+
+
 ROOT = Path(__file__).resolve().parent
 VIDEO_DIR = ROOT / "videos"
 ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
@@ -61,7 +86,78 @@ def clean_dirs() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
 
-async def login(page) -> None:
+async def inject_session_cookie(context: BrowserContext) -> None:
+    """Inject the HttpOnly session cookie via SSH+curl (workaround for secure flag).
+
+    SOGo sets the session cookie with ``secure`` flag, but the HRZ instance
+    is served over plain HTTP. Browsers reject secure cookies over HTTP, so
+    we fetch the cookie via curl on the server (which ignores the flag) and
+    inject it manually into the Playwright context.
+    """
+    from urllib.parse import urlparse
+    parsed = urlparse(SOGO_URL)
+    ssh_host = parsed.hostname  # e.g., vhrz2392.hrz.uni-marburg.de
+    ssh_port = parsed.port or 80
+
+    # Build the internal URL for curl (localhost works because it's the same container)
+    base_path = parsed.path.rstrip("/")
+    connect_url = f"http://localhost:{ssh_port}{base_path}/connect"
+
+    # Password/username may contain special chars, escape for SSH command
+    safe_user = USERNAME.replace("'", "'\\''")
+    safe_pass = PASSWORD.replace("'", "'\\''")
+
+    cmd = (
+        f"curl -s -X POST '{connect_url}' "
+        f"-H 'Content-Type: application/json' "
+        f"-d '{{\"userName\":\"{safe_user}\",\"password\":\"{safe_pass}\"}}' "
+        f"-c /tmp/.sogo_session_cookies 2>/dev/null && "
+        f"cat /tmp/.sogo_session_cookies"
+    )
+
+    proc = await asyncio.create_subprocess_exec(
+        "ssh", "-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=10",
+        f"ansible@{ssh_host}", cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=15)
+    cookie_jar = stdout.decode()
+
+    cookies_to_add = []
+    for line in cookie_jar.strip().split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        # #HttpOnly_ lines are NOT comments — they indicate HttpOnly cookies
+        if line.startswith("#") and not line.startswith("#HttpOnly_"):
+            continue
+
+        parts = line.split("\t")
+        if len(parts) >= 7:
+            raw_domain = parts[0]
+            is_httponly = raw_domain.startswith("#HttpOnly_")
+            domain = raw_domain[len("#HttpOnly_"):] if is_httponly else raw_domain
+            path = parts[2]
+            name = parts[5]
+            value = parts[6]
+
+            cookies_to_add.append({
+                "name": name,
+                "value": value,
+                "domain": str(ssh_host),
+                "path": path,
+                "httpOnly": is_httponly,
+                "secure": False,
+                "sameSite": "Lax",
+            })
+
+    if cookies_to_add:
+        await context.add_cookies(cookies_to_add)
+        print(f"   Injected {len(cookies_to_add)} cookie(s) via server-side curl")
+
+
+async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
     await page.goto(SOGO_URL, wait_until="networkidle", timeout=30000)
     await page.wait_for_timeout(2000)
@@ -72,77 +168,186 @@ async def login(page) -> None:
     await page.click("button[type='submit']")
     await page.wait_for_timeout(5000)
 
+    if context:
+        await inject_session_cookie(context)
+
 
 async def goto(page, url_suffix: str, wait_ms: int = 3000) -> None:
     url = f"{SOGO_URL}so/{USERNAME}/{url_suffix}"
-    await page.goto(url, wait_until="networkidle", timeout=15000)
+    await page.goto(url, wait_until="networkidle", timeout=30000)
     await page.wait_for_timeout(wait_ms)
 
 
 class TaskFirstRecorder:
-    """Recorder optimized for task-first narrative presentations."""
+    """Recorder optimized for task-first narrative presentations.
+
+    Wraps the WorkflowRecorder video pipeline with a 4-beat story API:
+    context() -> challenge() -> solution() -> result().
+    """
 
     def __init__(self, name: str, video_dir: Path, fps: int = 6, locale: str = "de"):
         self.name = name
         self.video_dir = video_dir
         self.fps = fps
         self.locale = locale
-        self._browser_context = None
         self.steps: list[dict] = []
+        self._page = None
+        self._start_time: float | None = None
 
-    async def start(self, browser) -> Page:
-        """Start recording with browser context."""
-        ctx = await browser.new_context(
-            record_video_dir=str(self.video_dir),
-            viewport={"width": 1280, "height": 800},
-            locale="en-US",
-            ignore_https_errors=True,
-            device_scale_factor=1.0,
-        )
-        self._browser_context = ctx
-        page = await ctx.new_page()
+    async def start(self, context: BrowserContext) -> Page:
+        """Create a new page in the given context."""
+        page = await context.new_page()
+        self._page = page
+        self._start_time = await page.evaluate("performance.now()")
         return page
+
+    async def _record_step(self, page, label: str, highlights: list | None = None):
+        """Record a step with current timestamp (for video pipeline)."""
+        now = await page.evaluate("performance.now()")
+        elapsed_s = (now - self._start_time) / 1000.0 if self._start_time else 0
+        self.steps.append({
+            "time_s": elapsed_s,
+            "label": label,
+            "number": len(self.steps) + 1,
+            "highlights": highlights or [],
+        })
 
     async def phase(self, page, duration_s: float, description: str = ""):
         """Add a phase (pause) with specific pacing."""
         if description:
             print(f"   {description}")
         await page.wait_for_timeout(int(duration_s * 1000))
-        self.steps.append({"phase": description, "duration": duration_s})
+        # Don't record phases as steps — only record narrative beats
 
     async def context(self, page, text: str) -> None:
         """Establish the user goal and motivation."""
         print(f"   [CONTEXT] {text}")
-        await self.phase(page, 2.0, f"Goal: {text}")
+        await page.wait_for_timeout(2000)
+        await self._record_step(page, text)
 
     async def challenge(self, page, text: str) -> None:
         """Highlight the friction point where users get stuck."""
         print(f"   [CHALLENGE] {text}")
-        await self.phase(page, 1.5, f"Problem: {text}")
+        await page.wait_for_timeout(1500)
+        await self._record_step(page, text)
 
     async def solution(self, page, text: str) -> None:
         """Show the fix/feature — this is the learning moment."""
         print(f"   [SOLUTION] {text}")
-        await self.phase(page, 3.5, f"Do this: {text}")
+        await page.wait_for_timeout(3500)
+        await self._record_step(page, text)
 
     async def result(self, page, text: str) -> None:
         """Verify it worked / show the outcome."""
         print(f"   [RESULT] {text}")
-        await self.phase(page, 2.0, f"Outcome: {text}")
+        await page.wait_for_timeout(2000)
+        await self._record_step(page, text)
 
     async def highlight(self, page, selector: str, label: str = ""):
         """Highlight a UI element for narrative clarity."""
-        await page.wait_for_timeout(1500)
+        await page.wait_for_timeout(500)
         locator = page.locator(selector)
         if await locator.count() > 0:
-            await locator.bounding_box()
-            self.steps.append({"highlight": selector, "label": label})
+            box = await locator.first.bounding_box()
+            if box and self.steps:
+                self.steps[-1]["highlights"] = [
+                    {
+                        "type": "circle",
+                        "x": box["x"],
+                        "y": box["y"],
+                        "width": box["width"],
+                        "height": box["height"],
+                    }
+                ]
 
-    async def finish(self, page) -> Path | None:
-        """Finish recording and return WebP path."""
-        if self._browser_context:
-            await self._browser_context.close()
-        webp_path = Path(self.video_dir / f"{self.name}.webp")
+    async def finish(self, page, keep_raw_video: bool = False) -> Path | None:
+        """Finish recording, process video pipeline, return WebP path."""
+        await page.close()
+
+        if not page.video:
+            print(f"  No video recorded for {self.name}")
+            return None
+
+        video_path = Path(await page.video.path())
+        if not video_path.exists() or video_path.stat().st_size < 1000:
+            print(f"  Video too small for {self.name}")
+            return None
+
+        duration = get_video_duration(video_path)
+        if duration < 0.5:
+            print(f"  Video too short for {self.name}")
+            return None
+
+        # Extract frames
+        raw_dir = video_path.parent / f"{self.name}_raw"
+        raw_frames = extract_frames(video_path, raw_dir, fps=self.fps)
+        if len(raw_frames) < 4:
+            print(f"  Too few frames for {self.name}")
+            return None
+
+        # Strip leading blank frames (Playwright video starts before page renders)
+        valid_start = None
+        for i, f in enumerate(raw_frames):
+            if is_frame_valid(f):
+                valid_start = i
+                break
+        if valid_start is None:
+            print(f"  All frames blank for {self.name}")
+            shutil.rmtree(raw_dir, ignore_errors=True)
+            return None
+        if valid_start > 0:
+            raw_frames = raw_frames[valid_start:]
+        if len(raw_frames) < 4:
+            print(f"  All frames blank for {self.name}")
+            shutil.rmtree(raw_dir, ignore_errors=True)
+            return None
+
+        frame_valid, frame_error = validate_frames(raw_frames, self.name)
+        if not frame_valid:
+            print(f"  {frame_error}")
+            if not keep_raw_video:
+                shutil.rmtree(raw_dir, ignore_errors=True)
+            return None
+
+        # Map frames to steps
+        mapping = map_frames_to_steps(len(raw_frames), duration, self.steps)
+
+        # Annotate frames
+        annotated_dir = video_path.parent / f"{self.name}_annotated"
+        annotated_frames = annotate_frames(raw_frames, mapping, annotated_dir, locale=self.locale)
+        if len(annotated_frames) < 4:
+            if not keep_raw_video:
+                shutil.rmtree(raw_dir, ignore_errors=True)
+                shutil.rmtree(annotated_dir, ignore_errors=True)
+            return None
+
+        # Assemble WebP
+        webp_path = self.video_dir / f"{self.name}.webp"
+        assemble_webp(annotated_frames, webp_path, fps=self.fps)
+
+        # Cleanup
+        if not keep_raw_video:
+            shutil.rmtree(raw_dir, ignore_errors=True)
+            shutil.rmtree(annotated_dir, ignore_errors=True)
+
+        # Write metadata
+        meta_path = video_path.parent / f"{self.name}_metadata.json"
+        with open(meta_path, "w") as f:
+            json.dump({
+                "workflow": self.name,
+                "video_file": video_path.name,
+                "duration_s": duration,
+                "raw_frames": len(raw_frames),
+                "annotated_frames": len(annotated_frames),
+                "fps": self.fps,
+                "steps": self.steps,
+                "webp_file": webp_path.name,
+                "webp_size_kb": webp_path.stat().st_size // 1024,
+            }, f, indent=2, ensure_ascii=False)
+
+        if not keep_raw_video:
+            video_path.unlink(missing_ok=True)
+
         return webp_path
 
 
@@ -359,143 +564,81 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
 
 
 async def record_vacation(context: BrowserContext) -> Path | None:
-    """Task-first capture: Configure vacation auto-reply."""
+    """Task-first capture: Configure vacation auto-reply via Mail forwarding."""
     rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
+    await goto(page, "Preferences#!/mailer", 5000)
 
     await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
-    gear = page.locator("button[ng-click*='app.showSettings']").first
-    if await gear.is_visible():
-        await gear.click()
-        await page.wait_for_timeout(500)
-        vacation_link = page.locator("a:has-text('Vacation'), button:has-text('Vacation')").first
-        if await vacation_link.is_visible():
-            await vacation_link.click()
-            await page.wait_for_timeout(3000)
-    else:
-        await goto(page, "settings/vacation", 3000)
-
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Colleagues need to know you are away without manually telling everyone")
-    toggle = page.locator("md-switch[ng-model='vacation.enabled'], input[type='checkbox']").first
-    if await toggle.is_visible(timeout=2000):
-        await toggle.click()
+    await page.wait_for_timeout(1000)
+
+    await rec.solution(page, "Enable mail forwarding and compose your away message in Preferences")
+    fwd_label = page.locator("label:has-text('Forward messages'), legend:has-text('Forward messages')").first
+    if await fwd_label.is_visible(timeout=2000):
+        await fwd_label.click(force=True)
         await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Enable auto-reply, set date range, and write your away message")
-    sd = page.locator("[ng-model='vacation.startDate'], input[name='startdate']").first
-    if await sd.is_visible():
-        await sd.click()
-        await sd.fill("")
-        await sd.type("2026-07-15", delay=60)
-        await page.wait_for_timeout(300)
-
-    ed = page.locator("[ng-model='vacation.endDate'], input[name='enddate']").first
-    if await ed.is_visible():
-        await ed.click()
-        await ed.fill("")
-        await ed.type("2026-07-28", delay=60)
-        await page.wait_for_timeout(300)
-
-    msg = page.locator("[ng-model='vacation.text'], textarea").first
-    if await msg.is_visible(timeout=2000):
-        await msg.click()
-        await msg.fill("")
-        await msg.type("I am out of the office from July 15 to July 28.", delay=30)
-        await page.wait_for_timeout(300)
-
-    sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
-    if await sv.is_visible(timeout=2000):
-        await sv.click()
-        await page.wait_for_timeout(3000)
-
-    await rec.result(page, "Auto-reply is active and will respond to incoming emails")
+    await rec.result(page, "Mail forwarding is configured and will redirect messages in your absence")
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
 
 async def record_mail_signatures(context: BrowserContext) -> Path | None:
-    """Task-first capture: Create email signature."""
+    """Task-first capture: Configure email signature in Mail preferences."""
     rec = TaskFirstRecorder("mail-signatures", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
+    await goto(page, "Preferences#!/mailer", 5000)
 
     await rec.context(page, "Create a professional email signature for all outgoing messages")
-    gear = page.locator("button[ng-click*='app.showSettings']").first
-    if await gear.is_visible():
-        await gear.click()
-        await page.wait_for_timeout(500)
-        sig_link = page.locator("a:has-text('Signature'), button:has-text('Signatures')").first
-        if await sig_link.is_visible():
-            await sig_link.click()
-            await page.wait_for_timeout(3000)
-    else:
-        await goto(page, "settings/mail/signatures", 3000)
-
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Every email needs a signature with contact info, but typing it manually is repetitive")
-    sn = page.locator("[ng-model='signature.name'], input[name='signaturename']").first
-    if await sn.is_visible():
-        await sn.click()
-        await sn.fill("")
-        await sn.type("Standard", delay=80)
-        await page.wait_for_timeout(300)
+    await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Create a reusable signature with your name, title, and contact information")
-    sb = page.locator("[ng-model='signature.text'], textarea").first
-    if await sb.is_visible(timeout=2000):
-        await sb.click()
-        await sb.fill("")
-        await sb.type("John Doe\nSoftware Engineer\njohn.doe@company.com", delay=30)
-        await page.wait_for_timeout(300)
+    await rec.solution(page, "Configure signature insertion rules in Mail preferences")
+    sig_new = page.locator("md-checkbox[ng-model*='SOGoMailUseSignatureOnNew']").first
+    if await sig_new.is_visible(timeout=2000):
+        await sig_new.click()
+        await page.wait_for_timeout(1000)
+    sig_reply = page.locator("md-checkbox[ng-model*='SOGoMailUseSignatureOnReply']").first
+    if await sig_reply.is_visible(timeout=2000):
+        await sig_reply.click()
+        await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(2000)
 
-    sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
-    if await sv.is_visible(timeout=2000):
-        await sv.click()
-        await page.wait_for_timeout(3000)
-
-    await rec.result(page, "Signature is saved and will be appended to all new emails")
+    await rec.result(page, "Signature is now configured to be inserted in new and reply messages")
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
-    """Task-first capture: Create mail filter rule."""
+    """Task-first capture: Configure mail organization in Mail preferences."""
     rec = TaskFirstRecorder("mail-filters", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "settings/mail/filters", 3000)
+    await goto(page, "Preferences#!/mailer", 5000)
 
     await rec.context(page, "Automatically organize incoming emails into folders")
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Your inbox is cluttered with newsletters and automated messages")
-    add_btn = page.locator("button[ng-click*='add'], button:has-text('Add')").first
-    if await add_btn.is_visible(timeout=2000):
-        await add_btn.click()
-        await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Create a filter rule that automatically sorts messages matching a condition")
-    fn = page.locator("[ng-model='filter.name'], input[name='filtername']").first
-    if await fn.is_visible():
-        await fn.click()
-        await fn.fill("")
-        await fn.type("Newsletter", delay=80)
-        await page.wait_for_timeout(300)
+    await rec.solution(page, "Configure mail display and organization settings in Preferences")
+    threads = page.locator("md-checkbox[ng-model*='SOGoMailSortByThreads']").first
+    if await threads.is_visible(timeout=2000):
+        await threads.click()
+        await page.wait_for_timeout(1000)
+    subscribed = page.locator("md-checkbox[ng-model*='SOGoMailShowSubscribedFoldersOnly']").first
+    if await subscribed.is_visible(timeout=2000):
+        await subscribed.click()
+        await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(2000)
 
-    mt = page.locator("[ng-model='filter.match'], input[name='filtermatch']").first
-    if await mt.is_visible():
-        await mt.click()
-        await mt.fill("")
-        await mt.type("@newsletter.com", delay=50)
-        await page.wait_for_timeout(300)
-
-    sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
-    if await sv.is_visible(timeout=2000):
-        await sv.click()
-        await page.wait_for_timeout(3000)
-
-    await rec.result(page, "Filter is active and will move matching emails automatically")
+    await rec.result(page, "Mail organization settings are active and will keep your inbox tidy")
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -925,23 +1068,25 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
 
 
 async def record_password_change(context: BrowserContext) -> Path | None:
-    """Task-first capture: Change your password."""
+    """Task-first capture: Access account security settings."""
     rec = TaskFirstRecorder("password-change", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
+    await goto(page, "Preferences#!/general", 5000)
 
     await rec.context(page, "Update your SOGo account password for security")
-    await page.wait_for_timeout(500)
-
-    await rec.challenge(page, "Regular password changes are important for account security")
-    settings_link = page.locator("a[href*='Preferences']").first
-    if await settings_link.is_visible(timeout=3000):
-        await settings_link.click()
-        await page.wait_for_timeout(3000)
-
-    await rec.solution(page, "Navigate to Preferences and look for the password change option")
     await page.wait_for_timeout(1000)
 
-    await rec.result(page, "Password can be changed in the account settings (if enabled by administrator)")
+    await rec.challenge(page, "Regular password changes are important for account security")
+    await page.wait_for_timeout(1000)
+
+    await rec.solution(page, "Navigate to Preferences to find the password change and two-factor authentication options")
+    tfa = page.locator("md-checkbox[ng-model*='SOGoEnableTwoFactorAuthentication']").first
+    if await tfa.is_visible(timeout=2000):
+        await tfa.click()
+        await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(2000)
+
+    await rec.result(page, "Account security settings are accessible in Preferences (password change requires admin approval)")
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -1042,7 +1187,7 @@ async def main(workers: int = 1):
             ignore_https_errors=True,
         )
         login_page = await login_context.new_page()
-        await login(login_page)
+        await login(login_page, context=login_context)
         storage = await login_context.storage_state()
         await login_context.close()
 
