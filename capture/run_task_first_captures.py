@@ -44,7 +44,6 @@ from playwright.async_api import BrowserContext, Page, async_playwright
 
 try:
     from capture.video_pipeline import (
-        WorkflowRecorder,
         annotate_frames,
         assemble_webp,
         extract_frames,
@@ -55,7 +54,6 @@ try:
     )
 except ImportError:
     from video_pipeline import (
-        WorkflowRecorder,
         annotate_frames,
         assemble_webp,
         extract_frames,
@@ -64,7 +62,6 @@ except ImportError:
         map_frames_to_steps,
         validate_frames,
     )
-
 
 
 ROOT = Path(__file__).resolve().parent
@@ -95,6 +92,7 @@ async def inject_session_cookie(context: BrowserContext) -> None:
     inject it manually into the Playwright context.
     """
     from urllib.parse import urlparse
+
     parsed = urlparse(SOGO_URL)
     ssh_host = parsed.hostname  # e.g., vhrz2392.hrz.uni-marburg.de
     ssh_port = parsed.port or 80
@@ -110,14 +108,19 @@ async def inject_session_cookie(context: BrowserContext) -> None:
     cmd = (
         f"curl -s -X POST '{connect_url}' "
         f"-H 'Content-Type: application/json' "
-        f"-d '{{\"userName\":\"{safe_user}\",\"password\":\"{safe_pass}\"}}' "
+        f'-d \'{{"userName":"{safe_user}","password":"{safe_pass}"}}\' '
         f"-c /tmp/.sogo_session_cookies 2>/dev/null && "
         f"cat /tmp/.sogo_session_cookies"
     )
 
     proc = await asyncio.create_subprocess_exec(
-        "ssh", "-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=10",
-        f"ansible@{ssh_host}", cmd,
+        "ssh",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "-o",
+        "ConnectTimeout=10",
+        f"ansible@{ssh_host}",
+        cmd,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
@@ -137,20 +140,22 @@ async def inject_session_cookie(context: BrowserContext) -> None:
         if len(parts) >= 7:
             raw_domain = parts[0]
             is_httponly = raw_domain.startswith("#HttpOnly_")
-            domain = raw_domain[len("#HttpOnly_"):] if is_httponly else raw_domain
+            _ = raw_domain[len("#HttpOnly_") :] if is_httponly else raw_domain
             path = parts[2]
             name = parts[5]
             value = parts[6]
 
-            cookies_to_add.append({
-                "name": name,
-                "value": value,
-                "domain": str(ssh_host),
-                "path": path,
-                "httpOnly": is_httponly,
-                "secure": False,
-                "sameSite": "Lax",
-            })
+            cookies_to_add.append(
+                {
+                    "name": name,
+                    "value": value,
+                    "domain": str(ssh_host),
+                    "path": path,
+                    "httpOnly": is_httponly,
+                    "secure": False,
+                    "sameSite": "Lax",
+                }
+            )
 
     if cookies_to_add:
         await context.add_cookies(cookies_to_add)
@@ -205,12 +210,14 @@ class TaskFirstRecorder:
         """Record a step with current timestamp (for video pipeline)."""
         now = await page.evaluate("performance.now()")
         elapsed_s = (now - self._start_time) / 1000.0 if self._start_time else 0
-        self.steps.append({
-            "time_s": elapsed_s,
-            "label": label,
-            "number": len(self.steps) + 1,
-            "highlights": highlights or [],
-        })
+        self.steps.append(
+            {
+                "time_s": elapsed_s,
+                "label": label,
+                "number": len(self.steps) + 1,
+                "highlights": highlights or [],
+            }
+        )
 
     async def phase(self, page, duration_s: float, description: str = ""):
         """Add a phase (pause) with specific pacing."""
@@ -333,17 +340,22 @@ class TaskFirstRecorder:
         # Write metadata
         meta_path = video_path.parent / f"{self.name}_metadata.json"
         with open(meta_path, "w") as f:
-            json.dump({
-                "workflow": self.name,
-                "video_file": video_path.name,
-                "duration_s": duration,
-                "raw_frames": len(raw_frames),
-                "annotated_frames": len(annotated_frames),
-                "fps": self.fps,
-                "steps": self.steps,
-                "webp_file": webp_path.name,
-                "webp_size_kb": webp_path.stat().st_size // 1024,
-            }, f, indent=2, ensure_ascii=False)
+            json.dump(
+                {
+                    "workflow": self.name,
+                    "video_file": video_path.name,
+                    "duration_s": duration,
+                    "raw_frames": len(raw_frames),
+                    "annotated_frames": len(annotated_frames),
+                    "fps": self.fps,
+                    "steps": self.steps,
+                    "webp_file": webp_path.name,
+                    "webp_size_kb": webp_path.stat().st_size // 1024,
+                },
+                f,
+                indent=2,
+                ensure_ascii=False,
+            )
 
         if not keep_raw_video:
             video_path.unlink(missing_ok=True)
@@ -427,7 +439,9 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     await rec.context(page, "Set up a recurring weekly meeting that repeats automatically")
     await page.wait_for_timeout(1500)
 
-    await rec.challenge(page, "Manually creating the same event every week is tedious and error-prone")
+    await rec.challenge(
+        page, "Manually creating the same event every week is tedious and error-prone"
+    )
     monday = page.locator("sg-calendar-day.day").nth(8)
     hour11 = monday.locator(".clickableHourCell11").first
     mb = await monday.bounding_box()
@@ -454,7 +468,9 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
                 await page.wait_for_timeout(300)
                 await page.keyboard.press("Escape")
                 await page.wait_for_timeout(500)
-        await rec.highlight(page, "[ng-model='editor.component.repeat.frequency']", "Weekly recurrence")
+        await rec.highlight(
+            page, "[ng-model='editor.component.repeat.frequency']", "Weekly recurrence"
+        )
 
         btn = page.locator("button[ng-click*='editor.save']").first
         if not await btn.is_visible():
@@ -477,7 +493,9 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1500)
 
     await rec.challenge(page, "Finding the compose button and addressing the email correctly")
-    compose_btn = page.locator("button:has-text('Compose'), button:has-text('Verfassen'), a:has-text('Compose')").first
+    compose_btn = page.locator(
+        "button:has-text('Compose'), button:has-text('Verfassen'), a:has-text('Compose')"
+    ).first
     if await compose_btn.is_visible(timeout=3000):
         await compose_btn.click()
         await page.wait_for_timeout(2000)
@@ -526,7 +544,9 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1500)
 
     await rec.challenge(page, "Finding where to create a new contact entry")
-    add_btn = page.locator("button[ng-click*='add'], button[ng-click*='new'], a[ng-click*='add']").first
+    add_btn = page.locator(
+        "button[ng-click*='add'], button[ng-click*='new'], a[ng-click*='add']"
+    ).first
     if await add_btn.is_visible(timeout=2000):
         await add_btn.click()
         await page.wait_for_timeout(2000)
@@ -572,17 +592,23 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Colleagues need to know you are away without manually telling everyone")
+    await rec.challenge(
+        page, "Colleagues need to know you are away without manually telling everyone"
+    )
     await page.wait_for_timeout(1000)
 
     await rec.solution(page, "Enable mail forwarding and compose your away message in Preferences")
-    fwd_label = page.locator("label:has-text('Forward messages'), legend:has-text('Forward messages')").first
+    fwd_label = page.locator(
+        "label:has-text('Forward messages'), legend:has-text('Forward messages')"
+    ).first
     if await fwd_label.is_visible(timeout=2000):
         await fwd_label.click(force=True)
         await page.wait_for_timeout(1000)
     await page.wait_for_timeout(2000)
 
-    await rec.result(page, "Mail forwarding is configured and will redirect messages in your absence")
+    await rec.result(
+        page, "Mail forwarding is configured and will redirect messages in your absence"
+    )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -596,7 +622,10 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     await rec.context(page, "Create a professional email signature for all outgoing messages")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Every email needs a signature with contact info, but typing it manually is repetitive")
+    await rec.challenge(
+        page,
+        "Every email needs a signature with contact info, but typing it manually is repetitive",
+    )
     await page.wait_for_timeout(1000)
 
     await rec.solution(page, "Configure signature insertion rules in Mail preferences")
@@ -658,7 +687,9 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
         await btn.click()
         await page.wait_for_timeout(2000)
     else:
-        await rec.challenge(page, "Subscribe button may be in a different location in this SOGo version")
+        await rec.challenge(
+            page, "Subscribe button may be in a different location in this SOGo version"
+        )
         return await rec.finish(page)
 
     await rec.solution(page, "Enter the calendar URL and subscribe to get live updates")
@@ -669,7 +700,9 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
         await url_inp.type("https://calendar.example.com/feed.ics", delay=40)
         await page.wait_for_timeout(300)
 
-        sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Subscribe')").first
+        sv = page.locator(
+            "button[ng-click*='save'], button[type='submit']:has-text('Subscribe')"
+        ).first
         if await sv.is_visible(timeout=2000):
             await sv.click()
             await page.wait_for_timeout(3000)
@@ -685,16 +718,22 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
     page = await rec.start(context)
     await goto(page, "Calendar/view")
 
-    await rec.context(page, "Share your calendar with a colleague so they can see your availability")
+    await rec.context(
+        page, "Share your calendar with a colleague so they can see your availability"
+    )
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Coordinating schedules requires visibility into each other's calendars")
+    await rec.challenge(
+        page, "Coordinating schedules requires visibility into each other's calendars"
+    )
     gear_btn = page.locator("button[ng-click*='calendar'], button[ng-click*='settings']").first
     if await gear_btn.is_visible(timeout=2000):
         await gear_btn.click()
         await page.wait_for_timeout(1500)
 
-    share_tab = page.locator("a:has-text('Share'), button:has-text('Teilen'), md-tab-item:has-text('Share')").first
+    share_tab = page.locator(
+        "a:has-text('Share'), button:has-text('Teilen'), md-tab-item:has-text('Share')"
+    ).first
     if await share_tab.is_visible(timeout=2000):
         await share_tab.click()
         await page.wait_for_timeout(2000)
@@ -730,7 +769,9 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
     await rec.context(page, "Schedule a team meeting and check attendee availability")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Scheduling across time zones and busy schedules leads to back-and-forth emails")
+    await rec.challenge(
+        page, "Scheduling across time zones and busy schedules leads to back-and-forth emails"
+    )
     monday = page.locator("sg-calendar-day.day").nth(8)
     hour14 = monday.locator(".clickableHourCell14").first
     mb = await monday.bounding_box()
@@ -739,7 +780,9 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
         await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Add attendees and use the free/busy view to find a mutually free time slot")
+    await rec.solution(
+        page, "Add attendees and use the free/busy view to find a mutually free time slot"
+    )
     await page.click("[ng-model='editor.component.summary']")
     await page.fill("[ng-model='editor.component.summary']", "")
     await page.type("[ng-model='editor.component.summary']", "Team Meeting", delay=100)
@@ -810,7 +853,9 @@ async def record_preferences(context: BrowserContext) -> Path | None:
 
     await page.wait_for_timeout(500)
 
-    await rec.challenge(page, "Default settings may not match your workflow or notification preferences")
+    await rec.challenge(
+        page, "Default settings may not match your workflow or notification preferences"
+    )
     tabs = page.locator("md-tab-item, .tab-item, [role='tab']").all()
     tab_texts = []
     for tab in await tabs:
@@ -819,13 +864,20 @@ async def record_preferences(context: BrowserContext) -> Path | None:
             tab_texts.append(tt.strip())
     if tab_texts:
         for target_tab_text in ["General", "Notification", "Benachrichtigungen"]:
-            tab = page.locator(f"md-tab-item:has-text('{target_tab_text}'), .tab-item:has-text('{target_tab_text}')").first
+            tab = page.locator(
+                f"md-tab-item:has-text('{target_tab_text}'),"
+                f" .tab-item:has-text('{target_tab_text}')"
+            ).first
             if await tab.is_visible(timeout=1000):
                 await tab.click()
                 await page.wait_for_timeout(1500)
                 break
 
-    await rec.solution(page, "Browse through the settings tabs to configure language, notifications, and display options")
+    await rec.solution(
+        page,
+        "Browse through the settings tabs to configure"
+        " language, notifications, and display options",
+    )
     await page.wait_for_timeout(1000)
 
     await rec.result(page, "SOGo is now configured to your personal preferences")
@@ -839,7 +891,9 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     page = await rec.start(context)
     await goto(page, "Calendar/view", 2000)
 
-    await rec.context(page, "View your calendar in different layouts depending on your planning needs")
+    await rec.context(
+        page, "View your calendar in different layouts depending on your planning needs"
+    )
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "The default week view does not give enough detail for a busy day")
@@ -848,7 +902,9 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
         await day_btn.click()
         await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Switch between Day, Week, and Month views to get the right level of detail")
+    await rec.solution(
+        page, "Switch between Day, Week, and Month views to get the right level of detail"
+    )
     await page.wait_for_timeout(500)
 
     month_btn = page.locator("button:has-text('Month'), md-button:has-text('Monat')").first
@@ -875,7 +931,9 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     await rec.context(page, "Update contact information or remove outdated entries")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Contact details change over time and old contacts clutter the address book")
+    await rec.challenge(
+        page, "Contact details change over time and old contacts clutter the address book"
+    )
     user = page.locator("text=John").first
     if await user.is_visible(timeout=3000):
         await user.click()
@@ -889,14 +947,18 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
             await phone.type("+49 123 456 789", delay=50)
             await page.wait_for_timeout(300)
 
-            sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
+            sv = page.locator(
+                "button[ng-click*='save'], button[type='submit']:has-text('Save')"
+            ).first
             if await sv.is_visible(timeout=2000):
                 await sv.click()
                 await page.wait_for_timeout(2000)
 
         await page.wait_for_timeout(500)
 
-        del_btn = page.locator("button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')").first
+        del_btn = page.locator(
+            "button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')"
+        ).first
         if await del_btn.is_visible(timeout=2000):
             await del_btn.click()
             await page.wait_for_timeout(2000)
@@ -925,7 +987,9 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
         await existing.click()
         await page.wait_for_timeout(3000)
 
-        await rec.solution(page, "Click on the event to edit the title and details, then save or delete")
+        await rec.solution(
+            page, "Click on the event to edit the title and details, then save or delete"
+        )
         title = page.locator("[ng-model='editor.component.summary']").first
         if await title.is_visible(timeout=2000):
             await title.click()
@@ -938,7 +1002,9 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
                 await sv.click()
                 await page.wait_for_timeout(3000)
 
-        del_btn = page.locator("button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')").first
+        del_btn = page.locator(
+            "button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')"
+        ).first
         if await del_btn.is_visible(timeout=2000):
             await del_btn.click()
             await page.wait_for_timeout(3000)
@@ -962,7 +1028,9 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Scrolling through long lists to find information wastes time")
-    search_btn = page.locator("button:has-text('Suchen'), button[ng-click*='search'], button[title*='Search']").first
+    search_btn = page.locator(
+        "button:has-text('Suchen'), button[ng-click*='search'], button[title*='Search']"
+    ).first
     if await search_btn.is_visible(timeout=2000):
         await search_btn.click()
         await page.wait_for_timeout(1000)
@@ -970,7 +1038,9 @@ async def record_global_search(context: BrowserContext) -> Path | None:
         await page.keyboard.press("Control+F")
         await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Type your search term and let SOGo find matching items across all modules")
+    await rec.solution(
+        page, "Type your search term and let SOGo find matching items across all modules"
+    )
     inp = page.locator("input[type='search'], input[placeholder*='Search'], input:visible").first
     if await inp.is_visible(timeout=2000):
         await inp.fill("")
@@ -991,10 +1061,14 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     await rec.context(page, "Open and read an email from your inbox")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Knowing which emails need attention is hard from the subject line alone")
+    await rec.challenge(
+        page, "Knowing which emails need attention is hard from the subject line alone"
+    )
     msg = page.locator("._mailSubject[ng-show], .mail-subject, [class*='mailSubject']").first
     if await msg.is_visible(timeout=3000):
-        await rec.highlight(page, "._mailSubject[ng-show], .mail-subject, [class*='mailSubject']", "Email subject")
+        await rec.highlight(
+            page, "._mailSubject[ng-show], .mail-subject, [class*='mailSubject']", "Email subject"
+        )
 
     await rec.solution(page, "Click on an email to open and read its full contents")
     if await msg.is_visible(timeout=3000):
@@ -1038,16 +1112,22 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     page = await rec.start(context)
     await goto(page, "Mail/view", 2000)
 
-    await rec.context(page, "Respond to an email by replying, forwarding, or cleaning up by deleting")
+    await rec.context(
+        page, "Respond to an email by replying, forwarding, or cleaning up by deleting"
+    )
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Managing email correspondence requires quick actions to stay productive")
+    await rec.challenge(
+        page, "Managing email correspondence requires quick actions to stay productive"
+    )
     msg = page.locator("._mailRow[ng-click], .mail-row").first
     if await msg.is_visible(timeout=3000):
         await msg.click()
         await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Use Reply to answer, Forward to share, or Delete to remove unwanted messages")
+    await rec.solution(
+        page, "Use Reply to answer, Forward to share, or Delete to remove unwanted messages"
+    )
     reply_btn = page.locator("button:has-text('Reply'), button[title*='Reply']").first
     if await reply_btn.is_visible(timeout=2000):
         await reply_btn.click()
@@ -1062,7 +1142,9 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
         await delete_btn.click()
         await page.wait_for_timeout(2000)
 
-    await rec.result(page, "Email actions are completed: replied, forwarded, or removed from the inbox")
+    await rec.result(
+        page, "Email actions are completed: replied, forwarded, or removed from the inbox"
+    )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -1079,14 +1161,21 @@ async def record_password_change(context: BrowserContext) -> Path | None:
     await rec.challenge(page, "Regular password changes are important for account security")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Navigate to Preferences to find the password change and two-factor authentication options")
+    await rec.solution(
+        page,
+        "Navigate to Preferences to find the password change and two-factor authentication options",
+    )
     tfa = page.locator("md-checkbox[ng-model*='SOGoEnableTwoFactorAuthentication']").first
     if await tfa.is_visible(timeout=2000):
         await tfa.click()
         await page.wait_for_timeout(1000)
     await page.wait_for_timeout(2000)
 
-    await rec.result(page, "Account security settings are accessible in Preferences (password change requires admin approval)")
+    await rec.result(
+        page,
+        "Account security settings are accessible in Preferences"
+        " (password change requires admin approval)",
+    )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -1100,19 +1189,29 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     await rec.context(page, "Export your calendar to share or back up your events")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "You need to share your calendar with someone who uses a different calendar app")
-    settings_btn = page.locator("button:has-text('Settings'), md-button:has-text('Einstellungen')").first
+    await rec.challenge(
+        page, "You need to share your calendar with someone who uses a different calendar app"
+    )
+    settings_btn = page.locator(
+        "button:has-text('Settings'), md-button:has-text('Einstellungen')"
+    ).first
     if await settings_btn.is_visible(timeout=2000):
         await settings_btn.click()
         await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Find the iCal export option in calendar settings to download your events")
-    export_link = page.locator("a:has-text('Export'), a[href*='ical'], button:has-text('iCal')").first
+    await rec.solution(
+        page, "Find the iCal export option in calendar settings to download your events"
+    )
+    export_link = page.locator(
+        "a:has-text('Export'), a[href*='ical'], button:has-text('iCal')"
+    ).first
     if await export_link.is_visible(timeout=2000):
         await export_link.click()
         await page.wait_for_timeout(2000)
 
-    await rec.result(page, "Calendar events are exported in iCal format for use in other applications")
+    await rec.result(
+        page, "Calendar events are exported in iCal format for use in other applications"
+    )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -1123,10 +1222,14 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     page = await rec.start(context)
     await goto(page, "Contacts", 2000)
 
-    await rec.context(page, "Import contacts from another system or export your address book as backup")
+    await rec.context(
+        page, "Import contacts from another system or export your address book as backup"
+    )
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Switching email providers or backing up contacts requires a standardized format")
+    await rec.challenge(
+        page, "Switching email providers or backing up contacts requires a standardized format"
+    )
     menu_btn = page.locator("button:has-text('Actions'), md-button[ng-click*='menu']").first
     if await menu_btn.is_visible(timeout=2000):
         await menu_btn.click()
@@ -1142,7 +1245,9 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
         await rec.context(page, "Import/export options may depend on SOGo server configuration")
         await page.wait_for_timeout(500)
 
-    await rec.result(page, "Contacts can be transferred between systems using standard formats like vCard")
+    await rec.result(
+        page, "Contacts can be transferred between systems using standard formats like vCard"
+    )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
 
@@ -1221,7 +1326,7 @@ async def main(workers: int = 1):
 
         if workers > 1:
             workflow_results = await run_parallel(workflows, browser, storage, workers=workers)
-            for (name, _), webp_path in zip(workflows, workflow_results):
+            for (name, _), webp_path in zip(workflows, workflow_results, strict=True):
                 if webp_path:
                     shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
                     elapsed = time.time() - start_time
@@ -1249,8 +1354,14 @@ async def main(workers: int = 1):
                         if meta_path.exists():
                             meta = json.loads(meta_path.read_text())
                             elapsed = time.time() - wf_start
-                            print(f"  ✓  {webp_path.name} — {meta.get('annotated_frames', '?')} frames ({elapsed:.1f}s)")
-                            results.append((name, True, meta.get("annotated_frames", 0), None, elapsed))
+                            print(
+                                f"  ✓  {webp_path.name} — "
+                                f"{meta.get('annotated_frames', '?')} frames "
+                                f"({elapsed:.1f}s)"
+                            )
+                            results.append(
+                                (name, True, meta.get("annotated_frames", 0), None, elapsed)
+                            )
                         else:
                             elapsed = time.time() - wf_start
                             print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
