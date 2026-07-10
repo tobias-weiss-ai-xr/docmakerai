@@ -25,7 +25,18 @@ jobs:
             -r capture/requirements.txt
 
       - name: Install Playwright browser
-        run: python3 -m playwright install --with-deps chromium
+        run: |
+          if command -v apt-get &> /dev/null; then
+            # Ubuntu/Debian: let Playwright install browser deps via apt-get
+            python3 -m playwright install --with-deps chromium
+          elif command -v pacman &> /dev/null; then
+            # Arch Linux: install Chromium via pacman, then just browser binaries
+            sudo pacman -S --noconfirm chromium
+            python3 -m playwright install chromium
+          else
+            echo "WARNING: Unknown package manager; installing browser without OS deps"
+            python3 -m playwright install chromium
+          fi
 
       - name: Run capture pipeline (login screenshots only)
         env:
