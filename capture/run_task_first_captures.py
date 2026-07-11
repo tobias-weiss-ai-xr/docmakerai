@@ -72,7 +72,7 @@ SOGO_URL = os.environ.get("SOGO_URL", "http://vhrz2392.hrz.uni-marburg.de:8080/S
 USERNAME = os.environ.get("SOGO_USERNAME", "testuser")
 PASSWORD = os.environ.get("SOGO_PASSWORD", "eval2026")
 
-FPS = 6
+FPS = 12
 LOCALE = "de"
 
 
@@ -584,7 +584,7 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
 
 
 async def record_vacation(context: BrowserContext) -> Path | None:
-    """Task-first capture: Configure vacation auto-reply via Mail forwarding."""
+    """Task-first capture: Configure vacation auto-reply in Mail preferences."""
     rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await goto(page, "Preferences#!/mailer", 5000)
@@ -597,17 +597,26 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     )
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Enable mail forwarding and compose your away message in Preferences")
-    fwd_label = page.locator(
-        "label:has-text('Forward messages'), legend:has-text('Forward messages')"
+    await rec.solution(
+        page, "Navigate to the Vacation tab in Mail preferences and enable the auto-reply feature"
+    )
+    vacation_tab = page.locator(
+        "md-tab-item:has-text('Vacation'), button:has-text('Vacation'), .tab-item:has-text('Vacation')"
     ).first
-    if await fwd_label.is_visible(timeout=2000):
-        await fwd_label.click(force=True)
+    if await vacation_tab.is_visible(timeout=2000):
+        await vacation_tab.click()
+        await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(1000)
+
+    # Enable vacation auto-reply checkbox
+    vacation_enable = page.locator("md-checkbox:has-text('Enable vacation auto reply'), checkbox:has-text('Enable vacation auto')").first
+    if await vacation_enable.is_visible(timeout=2000):
+        await vacation_enable.click()
         await page.wait_for_timeout(1000)
     await page.wait_for_timeout(2000)
 
     await rec.result(
-        page, "Mail forwarding is configured and will redirect messages in your absence"
+        page, "Vacation auto-reply is enabled - you will automatically respond while away"
     )
     await page.wait_for_timeout(2000)
     return await rec.finish(page)
