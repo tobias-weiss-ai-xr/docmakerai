@@ -36,13 +36,13 @@ Jedes Tutorial in diesem Handbuch basiert auf echten, Schritt-für-Schritt-Bilds
 
 ## Direkt loslegen
 
-- **Neu bei SOGo?** Beginnen Sie mit [Anmelden bei SOGo 5](./sogo-login), um auf Ihr Konto zuzugreifen.
+- **Neu bei SOGo?** Beginnen Sie mit [Erste Schritte](./sogo-login), um die Oberfläche kennenzulernen.
 - **Sie verwenden SOGo 6?** Wechseln Sie mit dem Versions-Dropdown oben zur SOGo 6-Version.
 - **Suchen Sie etwas Bestimmtes?** Durchsuchen Sie die Seitenleiste für eine vollständige Liste aller Tutorials.
 
 ## Erste Schritte
 
-- [Anmelden bei SOGo 5](./sogo-login) — Zugriff auf Ihr SOGo 5-Webmail-Konto
+- [Erste Schritte](./sogo-login) — Anmelden, Oberfläche erkunden, Einstellungen konfigurieren
 
 ## Kalender
 

@@ -1,119 +1,41 @@
 ---
-title: "Login to SOGo 5"
-description: "Step-by-step guide to logging into SOGo 5"
-sidebar_label: "Login to SOGo 5"
+title: "Getting Started with SOGo 5"
+description: "Get started with SOGo 5 — log in, navigate the interface, find preferences, and use the green Save button"
+sidebar_label: "Getting Started"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Login to SOGo 5" description="Step-by-step guide to logging into SOGo 5 webmail. Tutorial covers navigating to the login page and accessing your account." keywords="SOGo 5, login, webmail, sign in, authentication" />
+<PageSEO title="Getting Started with SOGo 5" description="Get started with SOGo 5 — log in, navigate the interface, find preferences, and use the green Save button" keywords={["getting started", "login", "interface", "preferences", "save button", "SOGo 5"]} />
 
-# Login to SOGo 5
+# Getting Started with SOGo 5
 
-This tutorial will guide you through logging into your SOGo 5 webmail account.
+Welcome! This page helps you get familiar with the SOGo 5 interface so you can start working right away.
 
-## Prerequisites
+## Logging In
 
-- A SOGo 5 account with valid credentials
-- Access to the SOGo 5 web interface
+Open your browser, enter your SOGo 5 instance URL (e.g. `https://demo.sogo.nu/SOGo/`), type your username and password, and click **Login**. After successful authentication you'll see the main dashboard.
 
-## Step-by-Step Instructions
+## Understanding the Interface
 
-### Step 1: Navigate to the Login Page
+Once logged in, the SOGo interface is divided into three main areas:
 
-Open your web browser and navigate to your SOGo 5 instance URL (e.g.,
-`https://demo.sogo.nu/SOGo/`). You will see the SOGo 5 login page with
-username and password fields.
+- **Left sidebar** — Module navigation: click to switch between **Mail**, **Calendar**, **Contacts**, and **Tasks**.
+- **Top toolbar** — Module tabs, the preferences gear icon ⚙, and the logout power icon ⏻.
+- **Main content area** — Where the active module's content is displayed.
 
 ![SOGo 5 login page](./assets/00-login-page.png)
 
-### Step 2: Enter Your Username
+## Preferences (Gear Icon)
 
-Type your SOGo 5 username into the **Username** field. This is typically
-the email address or username provided by your system administrator.
+Click the **gear icon** ⚙ in the top toolbar to open your **Preferences**. Here you can configure language, time zone, notifications, default calendar view, email signatures, and more.
 
-### Step 3: Enter Your Password
+:::warning[Use the Green Save Button]
 
-Type your password into the **Password** field.
+Always click the **green Save** button to confirm your changes. Preferences are **not** saved automatically — if you navigate away without clicking Save, your changes will be lost.
 
-### Step 4: Click Login
+:::
 
-Click the **Login** button to submit your credentials. SOGo 5 will
-authenticate you against the configured backend (LDAP, SQL, etc.).
+## Logging Out
 
-### Step 5: Verify Dashboard
-
-After successful login, you will see the SOGo 5 main dashboard with the
-application navigation sidebar. This confirms you are authenticated and
-ready to use SOGo 5's features.
-
-## Conclusion
-
-You have successfully logged into SOGo 5. You can now access your email,
-calendar, contacts, and other modules from the sidebar navigation.
-
-## Accessibility
-
-### Keyboard Navigation
-
-SOGo 5 supports full keyboard navigation. No mouse required for login.
-
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|----------------------------------|---------------------------|
-| | Focus username field | `Tab` | First form field |
-| | Focus password field | `Tab` | Second form field |
-| | Submit login | `Enter` | Activates Login button |
-| | Focus remember toggle | `Tab` | Remember login checkbox |
-| | Navigate after login | `Tab` | Explores UI alternatives |
-
-**Screen Reader Workflow:**
-
-**Step 1: Navigate to SOGo URL**
-- Enter `https://demo.sogo.nu/SOGo/` in browser address bar
-- Screen reader announces login page with username and password fields
-
-**Step 2: Enter Username**
-- `Tab` to username field
-- Type your SOGo username
-- Screen reader announces: "Username, edit"
-
-**Step 3: Enter Password**
-- `Tab` to password field
-- Type your password
-- Screen reader announces: "Password, edit, type asterisks"
-- Note: Password not announced for security (asterisks displayed)
-
-**Step 4: Optional: Remember Login**
-- `Tab` to remember login checkbox
-- Press `Space` to toggle check
-- Screen reader announces: "Remember login, checkbox, not checked" or "checked"
-
-**Step 5: Submit Login**
-- `Tab` to Login button
-- Press `Enter` or `Space`
-- Screen reader announces: "Login, button"
-
-**Step 6: Verify Success**
-- Screen reader announces: "Dashboard" or main navigation items
-- Confirmation: You are now logged in with access to Mail, Calendar, Contacts
-
-**Common Screen Reader Announcements:**
-
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
-|-------------------------------|----------------------|-----------------|
-| "Username, edit" | Field ready for input | Type your username |
-| "Password, edit" | Field ready for input | Type your password |
-| "Invalid username" | Authentication failed | Check credentials and retry |
-| "Login, button" | Submit login action | Press Enter to submit |
-| "Dashboard" | Login successful | Proceed to use SOGo features |
-
-### Visual Content Descriptions
-
-**Login page:** Standard login form with username and password fields, "Remember login" checkbox, and Login button. Clean, centered layout on white background.
-
-**Duration:** Static image  
-**Size:** 33 KB
-
-### High Contrast Mode
-
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+Click the **power icon** ⏻ in the top-right corner of the toolbar to end your session. See [Logout](./sogo-logout) for details.

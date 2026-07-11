@@ -56,3 +56,6 @@ capture/baselines/*.phash.json
 /.github-pages-trace
 .omo/
 .sisyphus/
+
+# Playwright MCP
+.playwright-mcp/
