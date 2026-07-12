@@ -72,7 +72,7 @@ SOGO_URL = os.environ.get("SOGO_URL", "http://vhrz2392.hrz.uni-marburg.de:8080/S
 USERNAME = os.environ.get("SOGO_USERNAME", "testuser")
 PASSWORD = os.environ.get("SOGO_PASSWORD", "eval2026")
 
-FPS = 6
+FPS = 12
 LOCALE = "de"
 
 
@@ -164,22 +164,28 @@ async def inject_session_cookie(context: BrowserContext) -> None:
 
 async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
-    await page.goto(SOGO_URL, wait_until="networkidle", timeout=30000)
-    await page.wait_for_timeout(2000)
+    await page.goto(SOGO_URL, wait_until="domcontentloaded", timeout=30000)
+    await page.wait_for_timeout(800)
     await page.fill("[ng-model='app.creds.username']", USERNAME)
     await page.fill("#passwordField", PASSWORD)
     await page.click("md-switch[ng-model='app.creds.rememberLogin']")
     await page.wait_for_timeout(300)
     await page.click("button[type='submit']")
-    await page.wait_for_timeout(5000)
+    await page.wait_for_timeout(1000)
 
     if context:
         await inject_session_cookie(context)
 
+    if context:
+        await inject_session_cookie(context)
 
-async def goto(page, url_suffix: str, wait_ms: int = 3000) -> None:
+async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}so/{USERNAME}/{url_suffix}"
-    await page.goto(url, wait_until="networkidle", timeout=30000)
+    await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+    try:
+        await page.wait_for_selector("#SOGoMainContent, #app-container, .app-container, main", timeout=8000)
+    except Exception:
+        pass
     await page.wait_for_timeout(wait_ms)
 
 
@@ -229,30 +235,30 @@ class TaskFirstRecorder:
     async def context(self, page, text: str) -> None:
         """Establish the user goal and motivation."""
         print(f"   [CONTEXT] {text}")
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def challenge(self, page, text: str) -> None:
         """Highlight the friction point where users get stuck."""
         print(f"   [CHALLENGE] {text}")
-        await page.wait_for_timeout(1500)
+        await page.wait_for_timeout(300)
         await self._record_step(page, text)
 
     async def solution(self, page, text: str) -> None:
         """Show the fix/feature — this is the learning moment."""
         print(f"   [SOLUTION] {text}")
-        await page.wait_for_timeout(3500)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def result(self, page, text: str) -> None:
         """Verify it worked / show the outcome."""
         print(f"   [RESULT] {text}")
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def highlight(self, page, selector: str, label: str = ""):
         """Highlight a UI element for narrative clarity."""
-        await page.wait_for_timeout(500)
+        await page.wait_for_timeout(300)
         locator = page.locator(selector)
         if await locator.count() > 0:
             box = await locator.first.bounding_box()
@@ -374,7 +380,7 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
 
     # 1. CONTEXT: User needs to schedule a team standup
     await rec.context(page, "Schedule a weekly team standup every Monday at 10 AM")
-    await page.wait_for_timeout(2500)
+    await page.wait_for_timeout(800)
 
     # 2. CHALLENGE: Finding the right time slot
     await rec.challenge(page, "Find the Monday 10 AM slot that is free from other meetings")
@@ -391,7 +397,7 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     hb = await hour10.bounding_box()
     if mb and hb:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
         await page.click("[ng-model='editor.component.summary']")
         await page.fill("[ng-model='editor.component.summary']", "")
@@ -422,11 +428,11 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
         if not await btn.is_visible():
             btn = page.locator("button[type='submit']:has-text('Save')").first
         await btn.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
 
     # 4. RESULT: Event appears with recurring indicator
     await rec.result(page, "Weekly event appears on calendar with recurring indicator")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -437,7 +443,7 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     await goto(page, "Calendar/view#!/calendar/week/20260615")
 
     await rec.context(page, "Set up a recurring weekly meeting that repeats automatically")
-    await page.wait_for_timeout(1500)
+    await page.wait_for_timeout(600)
 
     await rec.challenge(
         page, "Manually creating the same event every week is tedious and error-prone"
@@ -448,7 +454,7 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     hb = await hour11.bounding_box()
     if mb and hb:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
         await rec.solution(page, "Use the recurrence dropdown to set event to 'Weekly' repeat")
         await page.click("[ng-model='editor.component.summary']")
@@ -476,10 +482,10 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
         if not await btn.is_visible():
             btn = page.locator("button[type='submit']:has-text('Save')").first
         await btn.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "Event is now set to repeat weekly with no manual effort")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -487,10 +493,10 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     """Task-first capture: Compose and send a new email."""
     rec = TaskFirstRecorder("mail-compose", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view#!/Mail", 5000)
+    await goto(page, "Mail/view#!/Mail", 1500)
 
     await rec.context(page, "Write and send an email to a colleague")
-    await page.wait_for_timeout(1500)
+    await page.wait_for_timeout(600)
 
     await rec.challenge(page, "Finding the compose button and addressing the email correctly")
     compose_btn = page.locator(
@@ -498,7 +504,7 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     ).first
     if await compose_btn.is_visible(timeout=3000):
         await compose_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(page, "Fill in recipient, subject, and message body, then send")
     await page.wait_for_timeout(1000)
@@ -527,10 +533,10 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     send_btn = page.locator("button:has-text('Send'), button[ng-click*='send']").first
     if await send_btn.is_visible(timeout=2000):
         await send_btn.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "Email has been sent and appears in the Sent folder")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -541,7 +547,7 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     await goto(page, "Contacts")
 
     await rec.context(page, "Add a new colleague to your address book")
-    await page.wait_for_timeout(1500)
+    await page.wait_for_timeout(600)
 
     await rec.challenge(page, "Finding where to create a new contact entry")
     add_btn = page.locator(
@@ -549,7 +555,7 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     ).first
     if await add_btn.is_visible(timeout=2000):
         await add_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(page, "Fill in the contact details: name, email, and company")
     fn = page.locator("[ng-model='contact.c_firstname'], input[name='firstname']").first
@@ -576,18 +582,18 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     sv = page.locator("button[ng-click*='save'], button[type='submit']:has-text('Save')").first
     if await sv.is_visible(timeout=2000):
         await sv.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "John Doe is now saved in your contacts list")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
 async def record_vacation(context: BrowserContext) -> Path | None:
-    """Task-first capture: Configure vacation auto-reply via Mail forwarding."""
+    """Task-first capture: Configure vacation auto-reply in Mail preferences."""
     rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
     await page.wait_for_timeout(1000)
@@ -597,19 +603,28 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     )
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Enable mail forwarding and compose your away message in Preferences")
-    fwd_label = page.locator(
-        "label:has-text('Forward messages'), legend:has-text('Forward messages')"
+    await rec.solution(
+        page, "Navigate to the Vacation tab in Mail preferences and enable the auto-reply feature"
+    )
+    vacation_tab = page.locator(
+        "md-tab-item:has-text('Vacation'), button:has-text('Vacation'), .tab-item:has-text('Vacation')"
     ).first
-    if await fwd_label.is_visible(timeout=2000):
-        await fwd_label.click(force=True)
+    if await vacation_tab.is_visible(timeout=2000):
+        await vacation_tab.click()
         await page.wait_for_timeout(1000)
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(1000)
+
+    # Enable vacation auto-reply checkbox
+    vacation_enable = page.locator("md-checkbox:has-text('Enable vacation auto reply'), checkbox:has-text('Enable vacation auto')").first
+    if await vacation_enable.is_visible(timeout=2000):
+        await vacation_enable.click()
+        await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(800)
 
     await rec.result(
-        page, "Mail forwarding is configured and will redirect messages in your absence"
+        page, "Vacation auto-reply is enabled - you will automatically respond while away"
     )
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -617,7 +632,7 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure email signature in Mail preferences."""
     rec = TaskFirstRecorder("mail-signatures", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Create a professional email signature for all outgoing messages")
     await page.wait_for_timeout(1000)
@@ -637,10 +652,10 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     if await sig_reply.is_visible(timeout=2000):
         await sig_reply.click()
         await page.wait_for_timeout(1000)
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
 
     await rec.result(page, "Signature is now configured to be inserted in new and reply messages")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -648,7 +663,7 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure mail organization in Mail preferences."""
     rec = TaskFirstRecorder("mail-filters", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Automatically organize incoming emails into folders")
     await page.wait_for_timeout(1000)
@@ -665,10 +680,10 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
     if await subscribed.is_visible(timeout=2000):
         await subscribed.click()
         await page.wait_for_timeout(1000)
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
 
     await rec.result(page, "Mail organization settings are active and will keep your inbox tidy")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -685,7 +700,7 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
     btn = page.locator("button[ng-click*='subscribe'], button[title*='Subscribe']").first
     if await btn.is_visible(timeout=2000):
         await btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
     else:
         await rec.challenge(
             page, "Subscribe button may be in a different location in this SOGo version"
@@ -705,10 +720,10 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
         ).first
         if await sv.is_visible(timeout=2000):
             await sv.click()
-            await page.wait_for_timeout(3000)
+            await page.wait_for_timeout(800)
 
     await rec.result(page, "External calendar is now visible alongside your personal calendar")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -729,14 +744,14 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
     gear_btn = page.locator("button[ng-click*='calendar'], button[ng-click*='settings']").first
     if await gear_btn.is_visible(timeout=2000):
         await gear_btn.click()
-        await page.wait_for_timeout(1500)
+        await page.wait_for_timeout(600)
 
     share_tab = page.locator(
         "a:has-text('Share'), button:has-text('Teilen'), md-tab-item:has-text('Share')"
     ).first
     if await share_tab.is_visible(timeout=2000):
         await share_tab.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(page, "Add the colleague's email and set the appropriate permission level")
     em = page.locator("input[ng-model='share.email'], input[type='email']").first
@@ -756,7 +771,7 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
             await page.wait_for_timeout(500)
 
     await rec.result(page, "Calendar is now shared and the colleague can view your schedule")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -778,30 +793,32 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
     hb = await hour14.bounding_box()
     if mb and hb:
         await page.mouse.dblclick(mb["x"] + mb["width"] / 2, hb["y"] + hb["height"] / 2)
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(
         page, "Add attendees and use the free/busy view to find a mutually free time slot"
     )
-    await page.click("[ng-model='editor.component.summary']")
-    await page.fill("[ng-model='editor.component.summary']", "")
-    await page.type("[ng-model='editor.component.summary']", "Team Meeting", delay=100)
-    await page.wait_for_timeout(500)
+    summary = page.locator("[ng-model='editor.component.summary']").first
+    if await summary.is_visible(timeout=5000):
+        await summary.click()
+        await summary.fill("")
+        await summary.type("Team Meeting", delay=100)
+        await page.wait_for_timeout(500)
 
     at = page.locator("button:has-text('Attendees'), [ng-click*='attendee']").first
     if await at.is_visible(timeout=2000):
         await at.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
         em = page.locator("input[ng-model='attendee.email'], input[type='email']").first
         if await em.is_visible():
             await em.click()
             await em.fill("")
             await em.type("colleague@company.com", delay=50)
-            await page.wait_for_timeout(2000)
+            await page.wait_for_timeout(800)
 
     await rec.result(page, "Free/busy information shows optimal meeting time for all attendees")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -809,7 +826,7 @@ async def record_logout(context: BrowserContext) -> Path | None:
     """Task-first capture: Log out of SOGo."""
     rec = TaskFirstRecorder("logout", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Sign out of SOGo when you are done working")
     await page.wait_for_timeout(1000)
@@ -821,7 +838,7 @@ async def record_logout(context: BrowserContext) -> Path | None:
         if box:
             await rec.highlight(page, 'a[href*="logoff"]', "Logout button")
         await logout_link.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
     else:
         user_menu = page.locator("button[ng-click*='userMenu'], .user-menu").first
         if await user_menu.is_visible():
@@ -830,11 +847,11 @@ async def record_logout(context: BrowserContext) -> Path | None:
             lo = page.locator("button:has-text('Logout'), a:has-text('Abmelden')").first
             if await lo.is_visible():
                 await lo.click()
-                await page.wait_for_timeout(3000)
+                await page.wait_for_timeout(800)
 
     await rec.solution(page, "Click the logout button to securely end your session")
     await rec.result(page, "Session is closed and the login screen is displayed")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -847,9 +864,9 @@ async def record_preferences(context: BrowserContext) -> Path | None:
     settings_link = page.locator('a[href*="Preferences"]').first
     if await settings_link.is_visible(timeout=3000):
         await settings_link.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
     else:
-        await goto(page, "Preferences", 3000)
+        await goto(page, "Preferences", 1000)
 
     await page.wait_for_timeout(500)
 
@@ -870,7 +887,7 @@ async def record_preferences(context: BrowserContext) -> Path | None:
             ).first
             if await tab.is_visible(timeout=1000):
                 await tab.click()
-                await page.wait_for_timeout(1500)
+                await page.wait_for_timeout(600)
                 break
 
     await rec.solution(
@@ -881,7 +898,7 @@ async def record_preferences(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.result(page, "SOGo is now configured to your personal preferences")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -889,7 +906,7 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     """Task-first capture: Switch between calendar views."""
     rec = TaskFirstRecorder("calendar-views", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(
         page, "View your calendar in different layouts depending on your planning needs"
@@ -900,7 +917,7 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     day_btn = page.locator("button:has-text('Day'), md-button:has-text('Tag')").first
     if await day_btn.is_visible(timeout=2000):
         await day_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(
         page, "Switch between Day, Week, and Month views to get the right level of detail"
@@ -910,15 +927,15 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     month_btn = page.locator("button:has-text('Month'), md-button:has-text('Monat')").first
     if await month_btn.is_visible(timeout=2000):
         await month_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     week_btn = page.locator("button:has-text('Week'), md-button:has-text('Woche')").first
     if await week_btn.is_visible(timeout=2000):
         await week_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "Calendar view changes instantly to show the selected layout")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -926,7 +943,7 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Edit and delete a contact."""
     rec = TaskFirstRecorder("contacts-edit-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Contacts", 2000)
+    await goto(page, "Contacts", 1000)
 
     await rec.context(page, "Update contact information or remove outdated entries")
     await page.wait_for_timeout(1000)
@@ -937,7 +954,7 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     user = page.locator("text=John").first
     if await user.is_visible(timeout=3000):
         await user.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
         await rec.solution(page, "Select a contact, edit their phone number, and save the changes")
         phone = page.locator("[ng-model='contact.c_telephone'], input[type='tel']").first
@@ -952,7 +969,7 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
             ).first
             if await sv.is_visible(timeout=2000):
                 await sv.click()
-                await page.wait_for_timeout(2000)
+                await page.wait_for_timeout(800)
 
         await page.wait_for_timeout(500)
 
@@ -961,14 +978,14 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
         ).first
         if await del_btn.is_visible(timeout=2000):
             await del_btn.click()
-            await page.wait_for_timeout(2000)
+            await page.wait_for_timeout(800)
 
         await rec.result(page, "Contact has been updated and then removed from the address book")
     else:
         await rec.context(page, "No contacts found to edit")
         await page.wait_for_timeout(1000)
 
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -976,7 +993,7 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Edit and delete a calendar event."""
     rec = TaskFirstRecorder("calendar-edit-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Modify event details or remove events that are no longer relevant")
     await page.wait_for_timeout(1000)
@@ -985,7 +1002,7 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     existing = page.locator("sg-calendar-event, .calendar-event, .fc-event, [class*='event']").first
     if await existing.is_visible(timeout=3000):
         await existing.click()
-        await page.wait_for_timeout(3000)
+        await page.wait_for_timeout(800)
 
         await rec.solution(
             page, "Click on the event to edit the title and details, then save or delete"
@@ -1000,21 +1017,21 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
             sv = page.locator("button[ng-click*='editor.save'], button[type='submit']").first
             if await sv.is_visible():
                 await sv.click()
-                await page.wait_for_timeout(3000)
+                await page.wait_for_timeout(800)
 
         del_btn = page.locator(
             "button[ng-click*='delete'], button:has-text('Delete'), button:has-text('Löschen')"
         ).first
         if await del_btn.is_visible(timeout=2000):
             await del_btn.click()
-            await page.wait_for_timeout(3000)
+            await page.wait_for_timeout(800)
 
         await rec.result(page, "Event has been updated and then removed from the calendar")
     else:
         await rec.context(page, "No existing events to edit")
         await page.wait_for_timeout(1000)
 
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1022,7 +1039,7 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     """Task-first capture: Use global search."""
     rec = TaskFirstRecorder("global-search", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Quickly find emails, contacts, or events using search")
     await page.wait_for_timeout(1000)
@@ -1045,10 +1062,10 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     if await inp.is_visible(timeout=2000):
         await inp.fill("")
         await inp.type("Meeting", delay=80)
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "Search results display matching items instantly")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1056,7 +1073,7 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     """Task-first capture: Read an email."""
     rec = TaskFirstRecorder("mail-read", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(page, "Open and read an email from your inbox")
     await page.wait_for_timeout(1000)
@@ -1073,10 +1090,10 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     await rec.solution(page, "Click on an email to open and read its full contents")
     if await msg.is_visible(timeout=3000):
         await msg.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.result(page, "The email body is displayed with full details")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1084,7 +1101,7 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse mail folders."""
     rec = TaskFirstRecorder("mail-folder-management", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(page, "Organize emails by navigating between different folders")
     await page.wait_for_timeout(1000)
@@ -1099,10 +1116,10 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
         first_folder = folder_list[1] if len(folder_list) > 1 else folder_list[0]
         if await first_folder.is_visible(timeout=2000):
             await first_folder.click()
-            await page.wait_for_timeout(2000)
+            await page.wait_for_timeout(800)
 
     await rec.result(page, "The selected folder's emails are displayed")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1110,7 +1127,7 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     """Task-first capture: Reply, forward, or delete an email."""
     rec = TaskFirstRecorder("mail-reply-forward-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(
         page, "Respond to an email by replying, forwarding, or cleaning up by deleting"
@@ -1123,7 +1140,7 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     msg = page.locator("._mailRow[ng-click], .mail-row").first
     if await msg.is_visible(timeout=3000):
         await msg.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(
         page, "Use Reply to answer, Forward to share, or Delete to remove unwanted messages"
@@ -1131,7 +1148,7 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     reply_btn = page.locator("button:has-text('Reply'), button[title*='Reply']").first
     if await reply_btn.is_visible(timeout=2000):
         await reply_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
         close_btn = page.locator("button:has-text('Close'), button[ng-click*='close']").first
         if await close_btn.is_visible(timeout=2000):
             await close_btn.click()
@@ -1140,12 +1157,12 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     delete_btn = page.locator("button[title*='Delete'], button:has-text('Delete')").first
     if await delete_btn.is_visible(timeout=2000):
         await delete_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.result(
         page, "Email actions are completed: replied, forwarded, or removed from the inbox"
     )
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1153,7 +1170,7 @@ async def record_password_change(context: BrowserContext) -> Path | None:
     """Task-first capture: Access account security settings."""
     rec = TaskFirstRecorder("password-change", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/general", 5000)
+    await goto(page, "Preferences#!/general", 1500)
 
     await rec.context(page, "Update your SOGo account password for security")
     await page.wait_for_timeout(1000)
@@ -1169,14 +1186,14 @@ async def record_password_change(context: BrowserContext) -> Path | None:
     if await tfa.is_visible(timeout=2000):
         await tfa.click()
         await page.wait_for_timeout(1000)
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
 
     await rec.result(
         page,
         "Account security settings are accessible in Preferences"
         " (password change requires admin approval)",
     )
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1184,7 +1201,7 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     """Task-first capture: Export calendar as iCal."""
     rec = TaskFirstRecorder("calendar-ical", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Export your calendar to share or back up your events")
     await page.wait_for_timeout(1000)
@@ -1197,7 +1214,7 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     ).first
     if await settings_btn.is_visible(timeout=2000):
         await settings_btn.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.solution(
         page, "Find the iCal export option in calendar settings to download your events"
@@ -1207,12 +1224,12 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     ).first
     if await export_link.is_visible(timeout=2000):
         await export_link.click()
-        await page.wait_for_timeout(2000)
+        await page.wait_for_timeout(800)
 
     await rec.result(
         page, "Calendar events are exported in iCal format for use in other applications"
     )
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1220,7 +1237,7 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     """Task-first capture: Import or export contacts."""
     rec = TaskFirstRecorder("contacts-import-export", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Contacts", 2000)
+    await goto(page, "Contacts", 1000)
 
     await rec.context(
         page, "Import contacts from another system or export your address book as backup"
@@ -1239,7 +1256,7 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     import_option = page.locator("md-menu-item:has-text('Import')").first
     if await import_option.is_visible(timeout=2000):
         await import_option.click()
-        await page.wait_for_timeout(1500)
+        await page.wait_for_timeout(600)
 
     if not await import_option.is_visible(timeout=1000):
         await rec.context(page, "Import/export options may depend on SOGo server configuration")
@@ -1248,7 +1265,7 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     await rec.result(
         page, "Contacts can be transferred between systems using standard formats like vCard"
     )
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
@@ -1269,8 +1286,13 @@ async def run_parallel(workflows: list[tuple], browser, storage: object, workers
             )
             try:
                 return await fn(ctx)
+            except Exception:
+                return None
             finally:
-                await ctx.close()
+                try:
+                    await ctx.close()
+                except Exception:
+                    pass
 
     tasks = [run_task(name, fn) for name, fn in workflows]
     return await asyncio.gather(*tasks)
