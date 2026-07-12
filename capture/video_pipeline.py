@@ -135,7 +135,7 @@ def assemble_webp(
     frame_paths: list[Path],
     output_path: Path,
     fps: int = 6,
-    quality: int = 85,
+    quality: int = 70,
     keep_frames: bool = False,
 ):
     output_path.parent.mkdir(parents=True, exist_ok=True)

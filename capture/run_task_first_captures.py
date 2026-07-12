@@ -164,7 +164,7 @@ async def inject_session_cookie(context: BrowserContext) -> None:
 
 async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
-    await page.goto(SOGO_URL, wait_until="networkidle", timeout=30000)
+    await page.goto(SOGO_URL, wait_until="domcontentloaded", timeout=30000)
     await page.wait_for_timeout(800)
     await page.fill("[ng-model='app.creds.username']", USERNAME)
     await page.fill("#passwordField", PASSWORD)
@@ -177,9 +177,13 @@ async def login(page, context: BrowserContext | None = None) -> None:
         await inject_session_cookie(context)
 
 
-async def goto(page, url_suffix: str, wait_ms: int = 3000) -> None:
+async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}so/{USERNAME}/{url_suffix}"
-    await page.goto(url, wait_until="networkidle", timeout=30000)
+    await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+    try:
+        await page.wait_for_selector("#SOGoMainContent, #app-container, .app-container, main", timeout=8000)
+    except Exception:
+        pass
     await page.wait_for_timeout(wait_ms)
 
 
@@ -229,30 +233,30 @@ class TaskFirstRecorder:
     async def context(self, page, text: str) -> None:
         """Establish the user goal and motivation."""
         print(f"   [CONTEXT] {text}")
-        await page.wait_for_timeout(800)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def challenge(self, page, text: str) -> None:
         """Highlight the friction point where users get stuck."""
         print(f"   [CHALLENGE] {text}")
-        await page.wait_for_timeout(600)
+        await page.wait_for_timeout(300)
         await self._record_step(page, text)
 
     async def solution(self, page, text: str) -> None:
         """Show the fix/feature — this is the learning moment."""
         print(f"   [SOLUTION] {text}")
-        await page.wait_for_timeout(800)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def result(self, page, text: str) -> None:
         """Verify it worked / show the outcome."""
         print(f"   [RESULT] {text}")
-        await page.wait_for_timeout(800)
+        await page.wait_for_timeout(400)
         await self._record_step(page, text)
 
     async def highlight(self, page, selector: str, label: str = ""):
         """Highlight a UI element for narrative clarity."""
-        await page.wait_for_timeout(500)
+        await page.wait_for_timeout(300)
         locator = page.locator(selector)
         if await locator.count() > 0:
             box = await locator.first.bounding_box()
@@ -487,7 +491,7 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     """Task-first capture: Compose and send a new email."""
     rec = TaskFirstRecorder("mail-compose", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view#!/Mail", 5000)
+    await goto(page, "Mail/view#!/Mail", 1500)
 
     await rec.context(page, "Write and send an email to a colleague")
     await page.wait_for_timeout(600)
@@ -587,7 +591,7 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure vacation auto-reply in Mail preferences."""
     rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
     await page.wait_for_timeout(1000)
@@ -626,7 +630,7 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure email signature in Mail preferences."""
     rec = TaskFirstRecorder("mail-signatures", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Create a professional email signature for all outgoing messages")
     await page.wait_for_timeout(1000)
@@ -657,7 +661,7 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure mail organization in Mail preferences."""
     rec = TaskFirstRecorder("mail-filters", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/mailer", 5000)
+    await goto(page, "Preferences#!/mailer", 1500)
 
     await rec.context(page, "Automatically organize incoming emails into folders")
     await page.wait_for_timeout(1000)
@@ -820,7 +824,7 @@ async def record_logout(context: BrowserContext) -> Path | None:
     """Task-first capture: Log out of SOGo."""
     rec = TaskFirstRecorder("logout", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Sign out of SOGo when you are done working")
     await page.wait_for_timeout(1000)
@@ -860,7 +864,7 @@ async def record_preferences(context: BrowserContext) -> Path | None:
         await settings_link.click()
         await page.wait_for_timeout(800)
     else:
-        await goto(page, "Preferences", 3000)
+        await goto(page, "Preferences", 1000)
 
     await page.wait_for_timeout(500)
 
@@ -900,7 +904,7 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     """Task-first capture: Switch between calendar views."""
     rec = TaskFirstRecorder("calendar-views", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(
         page, "View your calendar in different layouts depending on your planning needs"
@@ -937,7 +941,7 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Edit and delete a contact."""
     rec = TaskFirstRecorder("contacts-edit-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Contacts", 2000)
+    await goto(page, "Contacts", 1000)
 
     await rec.context(page, "Update contact information or remove outdated entries")
     await page.wait_for_timeout(1000)
@@ -987,7 +991,7 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Edit and delete a calendar event."""
     rec = TaskFirstRecorder("calendar-edit-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Modify event details or remove events that are no longer relevant")
     await page.wait_for_timeout(1000)
@@ -1033,7 +1037,7 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     """Task-first capture: Use global search."""
     rec = TaskFirstRecorder("global-search", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Quickly find emails, contacts, or events using search")
     await page.wait_for_timeout(1000)
@@ -1067,7 +1071,7 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     """Task-first capture: Read an email."""
     rec = TaskFirstRecorder("mail-read", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(page, "Open and read an email from your inbox")
     await page.wait_for_timeout(1000)
@@ -1095,7 +1099,7 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse mail folders."""
     rec = TaskFirstRecorder("mail-folder-management", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(page, "Organize emails by navigating between different folders")
     await page.wait_for_timeout(1000)
@@ -1121,7 +1125,7 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
     """Task-first capture: Reply, forward, or delete an email."""
     rec = TaskFirstRecorder("mail-reply-forward-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Mail/view", 2000)
+    await goto(page, "Mail/view", 1000)
 
     await rec.context(
         page, "Respond to an email by replying, forwarding, or cleaning up by deleting"
@@ -1164,7 +1168,7 @@ async def record_password_change(context: BrowserContext) -> Path | None:
     """Task-first capture: Access account security settings."""
     rec = TaskFirstRecorder("password-change", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Preferences#!/general", 5000)
+    await goto(page, "Preferences#!/general", 1500)
 
     await rec.context(page, "Update your SOGo account password for security")
     await page.wait_for_timeout(1000)
@@ -1195,7 +1199,7 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
     """Task-first capture: Export calendar as iCal."""
     rec = TaskFirstRecorder("calendar-ical", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Calendar/view", 2000)
+    await goto(page, "Calendar/view", 1000)
 
     await rec.context(page, "Export your calendar to share or back up your events")
     await page.wait_for_timeout(1000)
@@ -1231,7 +1235,7 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     """Task-first capture: Import or export contacts."""
     rec = TaskFirstRecorder("contacts-import-export", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
-    await goto(page, "Contacts", 2000)
+    await goto(page, "Contacts", 1000)
 
     await rec.context(
         page, "Import contacts from another system or export your address book as backup"
