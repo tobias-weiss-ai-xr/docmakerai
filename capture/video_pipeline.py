@@ -103,21 +103,31 @@ def annotate_frames(
     annotated_dir: Path,
     locale: str = "en",
 ) -> list[Path]:
-    """Annotate raw frames with step headers and return annotated paths."""
+    """Annotate raw frames with step headers and return annotated paths.
+
+    Skips Pillow I/O when frames have no highlights (header drawing disabled).
+    """
     annotated_dir.mkdir(parents=True, exist_ok=True)
     annotated_paths = []
     for raw_path, meta in zip(raw_frames, mapping, strict=False):
         out_path = annotated_dir / raw_path.name
-        img = annotate_frame(
-            raw_path,
-            meta["step_label"],
-            meta["step_number"],
-            meta["highlights"],
-            locale=locale,
-            output_path=str(out_path),
-        )
-        if img:
+        highlights = meta.get("highlights", [])
+        if not highlights:
+            if out_path.exists():
+                out_path.unlink()
+            out_path.hardlink_to(raw_path)
             annotated_paths.append(out_path)
+        else:
+            img = annotate_frame(
+                raw_path,
+                meta["step_label"],
+                meta["step_number"],
+                highlights,
+                locale=locale,
+                output_path=str(out_path),
+            )
+            if img:
+                annotated_paths.append(out_path)
     return annotated_paths
 
 
@@ -128,20 +138,6 @@ def assemble_webp(
     quality: int = 85,
     keep_frames: bool = False,
 ):
-    """Assemble annotated frames into an animated WebP using ffmpeg.
-
-    Uses ffmpeg instead of Pillow to avoid Pillow's frame deduplication
-    issues with animated WebP.  Injects a tiny per-frame watermark
-    (opaque frame number) to guarantee each frame is unique, preventing
-    the libwebp_anim encoder from dropping seemingly identical frames.
-
-    Args:
-        frame_paths: Sorted list of annotated PNGs.
-        output_path: Where to save the .webp file.
-        fps: Output framerate.
-        quality: WebP quality (0-100).
-        keep_frames: Keep the intermediate annotated frames (for debugging).
-    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory() as tmp:
@@ -151,22 +147,12 @@ def assemble_webp(
 
         for i, fp in enumerate(frame_paths):
             wm_path = watermarked_dir / fp.name
-            subprocess.run(
-                [
-                    "ffmpeg",
-                    "-y",
-                    "-i",
-                    str(fp),
-                    "-vf",
-                    f"drawtext=text='':fontsize=1:fontcolor=black@0.01:x=0:y=0:box=0,"
-                    f"drawtext=text='{i:04d}':fontsize=1:fontcolor=white@0.02:x=W-15:y=H-3:box=0",
-                    "-qscale:v",
-                    "1",
-                    str(wm_path),
-                ],
-                check=True,
-                capture_output=True,
-            )
+            shutil.copy2(fp, wm_path)
+            with open(wm_path, "r+b") as f:
+                f.seek(-4, 2)
+                crc = f.read(4)
+                f.seek(-4, 2)
+                f.write(bytes([crc[0] ^ (i & 0xFF), crc[1], crc[2], crc[3]]))
 
         subprocess.run(
             [
@@ -192,12 +178,10 @@ def assemble_webp(
             capture_output=True,
         )
 
-    # Optionally keep annotated frames
     if not keep_frames:
         for fp in frame_paths:
             fp.unlink(missing_ok=True)
 
-    # Verify output
     if not output_path.exists() or output_path.stat().st_size < 100:
         raise RuntimeError(f"WebP assembly failed: {output_path}")
 
