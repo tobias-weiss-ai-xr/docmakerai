@@ -792,10 +792,12 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
     await rec.solution(
         page, "Add attendees and use the free/busy view to find a mutually free time slot"
     )
-    await page.click("[ng-model='editor.component.summary']")
-    await page.fill("[ng-model='editor.component.summary']", "")
-    await page.type("[ng-model='editor.component.summary']", "Team Meeting", delay=100)
-    await page.wait_for_timeout(500)
+    summary = page.locator("[ng-model='editor.component.summary']").first
+    if await summary.is_visible(timeout=5000):
+        await summary.click()
+        await summary.fill("")
+        await summary.type("Team Meeting", delay=100)
+        await page.wait_for_timeout(500)
 
     at = page.locator("button:has-text('Attendees'), [ng-click*='attendee']").first
     if await at.is_visible(timeout=2000):
@@ -1278,8 +1280,13 @@ async def run_parallel(workflows: list[tuple], browser, storage: object, workers
             )
             try:
                 return await fn(ctx)
+            except Exception:
+                return None
             finally:
-                await ctx.close()
+                try:
+                    await ctx.close()
+                except Exception:
+                    pass
 
     tasks = [run_task(name, fn) for name, fn in workflows]
     return await asyncio.gather(*tasks)
