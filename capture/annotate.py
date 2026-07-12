@@ -42,19 +42,11 @@ def _load_font(size: int = 22) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
 
 
 def _build_header_text(step_label: str, step_number: int, locale: str) -> str:
-    prefix = "Step" if locale == "en" else "Schritt"
-    max_n = len(CIRCLED_NUMBERS)
-    circled = CIRCLED_NUMBERS[step_number - 1] if 1 <= step_number <= max_n else str(step_number)
-    return f"{circled} {prefix} {step_number}: {step_label}"
+    return ""  # No header text drawn
 
 
 def _draw_header(img: Image.Image, text: str) -> Image.Image:
-    result = Image.alpha_composite(img, Image.new("RGBA", img.size, (0, 0, 0, 0)))
-    draw = ImageDraw.Draw(result)
-    draw.rectangle([(0, 0), (img.width, HEADER_HEIGHT)], fill=HEADER_BG)
-    font = _load_font(22)
-    draw.text((12, (HEADER_HEIGHT - 22) // 2), text, fill=HEADER_TEXT, font=font)
-    return result
+    return img  # No header drawn
 
 
 def _draw_circle_highlight(img: Image.Image, highlight: dict) -> Image.Image:
@@ -104,12 +96,12 @@ def annotate_frame(
     locale: str = "de",
     output_path: str | Path | None = None,
 ) -> Image.Image | None:
-    """Draw step header and UI highlights on a screenshot.
+    """Draw UI highlights on a screenshot.
 
     Args:
         frame_path: Path to the raw PNG screenshot.
-        step_label: Text label for the step (e.g. "Doppelklick auf Zeitslot").
-        step_number: 1-based step number.
+        step_label: Text label for the step (not drawn, used for metadata).
+        step_number: 1-based step number (not drawn, used for metadata).
         highlights: List of highlight dicts (keys: type, x, y, width, height).
         locale: Language code ("en" or "de").
         output_path: If provided, save annotated PNG to this path.
@@ -122,8 +114,7 @@ def annotate_frame(
     except Exception:
         return None
 
-    text = _build_header_text(step_label, step_number, locale)
-    img = _draw_header(img, text)
+    # No header drawn (per user request)
 
     for hl in highlights or []:
         hl_type = hl.get("type", "")
