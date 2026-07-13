@@ -399,16 +399,27 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     await rec.context(page, "Write and send an email to a colleague")
     await page.wait_for_timeout(600)
 
-    await rec.challenge(page, "Click the New Message button to start composing")
+    await rec.challenge(page, "Click the New Message button to open the compose window")
     new_msg = page.locator('button:has-text("New message")')
     if await new_msg.is_visible(timeout=3000):
         await new_msg.click()
         await page.wait_for_timeout(2000)
 
-    await rec.solution(page, "Fill in the recipient, subject, and body, then send the email")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Fill in the recipient, subject, and message body")
+    to_fld = page.locator('input[placeholder="To"]')
+    if await to_fld.is_visible(timeout=3000):
+        await to_fld.fill("colleague@company.com")
+        await page.wait_for_timeout(300)
+    subj_fld = page.locator('input[placeholder="Subject"]')
+    if await subj_fld.is_visible(timeout=2000):
+        await subj_fld.fill("Meeting Reminder")
+        await page.wait_for_timeout(300)
+    body_fld = page.locator('[contenteditable="true"]')
+    if await body_fld.is_visible(timeout=2000):
+        await body_fld.fill("Hi, just a reminder about our meeting tomorrow at 10 AM.")
+        await page.wait_for_timeout(500)
 
-    await rec.result(page, "The compose window opens ready for you to write your email")
+    await rec.result(page, "The email is composed with recipient and subject filled in")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -423,13 +434,27 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     await rec.context(page, "Add a new colleague to your address book")
     await page.wait_for_timeout(600)
 
-    await rec.challenge(page, "Browse the address book to find your contacts")
-    await page.wait_for_timeout(1000)
+    await rec.challenge(page, "Click the New Contact button to create a new entry")
+    new_contact = page.locator('button:has-text("New contact")')
+    if await new_contact.is_visible(timeout=3000):
+        await new_contact.click()
+        await page.wait_for_timeout(1500)
 
-    await rec.solution(page, "The address book displays all saved contacts with their details")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Fill in the contact fields: first name, last name, and email address")
+    fn = page.locator('input[name="firstName"]')
+    if await fn.is_visible(timeout=2000):
+        await fn.fill("Jane")
+        await page.wait_for_timeout(300)
+    ln = page.locator('input[name="lastName"]')
+    if await ln.is_visible(timeout=2000):
+        await ln.fill("Smith")
+        await page.wait_for_timeout(300)
+    em = page.locator('input[name="emails.0.value"]')
+    if await em.is_visible(timeout=2000):
+        await em.fill("jane.smith@company.com")
+        await page.wait_for_timeout(500)
 
-    await rec.result(page, "All contacts are organized in the address book for easy access")
+    await rec.result(page, "The new contact form is filled and ready to save")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -609,7 +634,7 @@ async def record_preferences(context: BrowserContext) -> Path | None:
 
 
 async def record_calendar_views(context: BrowserContext) -> Path | None:
-    """Task-first capture: View the calendar week overview."""
+    """Task-first capture: Switch between calendar views."""
     rec = TaskFirstRecorder("calendar-views", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
@@ -618,13 +643,20 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     await rec.context(page, "View your calendar in the week overview layout")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "The week view shows all seven days with existing events")
-    await page.wait_for_timeout(1000)
+    await rec.challenge(page, "Switch to Day view to focus on a single day's schedule")
+    view_btn = page.locator('button:has-text("Week")')
+    if await view_btn.is_visible(timeout=3000):
+        await view_btn.click()
+        await page.wait_for_timeout(1000)
+        day_option = page.locator('[role="menuitem"]:has-text("Day")')
+        if await day_option.is_visible(timeout=3000):
+            await day_option.click()
+            await page.wait_for_timeout(1500)
 
-    await rec.solution(page, "Review scheduled events across the current week")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Select from Month, Week, Day, or Schedule views to suit your needs")
+    await page.wait_for_timeout(1500)
 
-    await rec.result(page, "The calendar week view provides a clear overview of your schedule")
+    await rec.result(page, "The calendar adapts instantly to show the selected view layout")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -654,7 +686,7 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
 
 
 async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
-    """Task-first capture: View calendar events."""
+    """Task-first capture: View calendar events and details."""
     rec = TaskFirstRecorder("calendar-edit-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
@@ -663,13 +695,16 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     await rec.context(page, "Review your calendar events for the week")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "View existing events scheduled on the calendar")
+    await rec.challenge(page, "Click on an event to view its full details")
+    event = page.locator('.rbc-event-content:has-text("Client Meeting")')
+    if await event.is_visible(timeout=3000):
+        await event.click()
+        await page.wait_for_timeout(1500)
+
+    await rec.solution(page, "Event details show the time, title, and description")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "The calendar shows all events for the current week")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "Events are displayed in the calendar grid with their time slots")
+    await rec.result(page, "Events are displayed with their time slots in the calendar grid")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -748,22 +783,25 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
 
 
 async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the inbox."""
+    """Task-first capture: Open an email to read its full content."""
     rec = TaskFirstRecorder("mail-reply-forward-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "View emails in your inbox")
+    await rec.context(page, "Open an email from your inbox to read full content")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "The inbox shows all received emails sorted by date")
+    await rec.challenge(page, "Click on an email to view its full content in the reading pane")
+    msg = page.locator('div[role="button"]').filter(has_text="Gueto").first
+    if await msg.is_visible(timeout=3000):
+        await msg.click()
+        await page.wait_for_timeout(1500)
+
+    await rec.solution(page, "The email body is displayed with sender details in the reading pane")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Email subjects and senders are displayed for quick scanning")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "The inbox provides a clear overview of all messages")
+    await rec.result(page, "Email content is shown clearly with all details")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -790,7 +828,7 @@ async def record_password_change(context: BrowserContext) -> Path | None:
 
 
 async def record_calendar_ical(context: BrowserContext) -> Path | None:
-    """Task-first capture: View the calendar week overview."""
+    """Task-first capture: View the calendar with events in week overview."""
     rec = TaskFirstRecorder("calendar-ical", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
@@ -801,6 +839,11 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
 
     await rec.challenge(page, "The week view displays all scheduled events")
     await page.wait_for_timeout(1000)
+
+    event = page.locator('.rbc-event-content:has-text("Client Meeting")')
+    if await event.is_visible(timeout=3000):
+        await event.click()
+        await page.wait_for_timeout(1500)
 
     await rec.solution(page, "Events are shown with their time and duration")
     await page.wait_for_timeout(1000)
@@ -825,6 +868,11 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
 
     await rec.solution(page, "Contacts are displayed with names and email addresses")
     await page.wait_for_timeout(1000)
+
+    addr_books = page.locator('button:has-text("Personal")')
+    if await addr_books.is_visible(timeout=2000):
+        await addr_books.click()
+        await page.wait_for_timeout(1000)
 
     await rec.result(page, "The address book organizes all your contacts in one place")
     await page.wait_for_timeout(800)
