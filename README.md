@@ -193,6 +193,22 @@ The project follows a 10-sprint optimization & automation plan (see [ROADMAP.md]
 📋 **Sprint 9:** Performance benchmarks (Lighthouse CI, bundle tracking)
 📋 **Sprint 10:** Spec-to-docs pipeline (auto-generate docs from specs)
 
+## Doc Quality Voting
+
+Every documentation page has a **voting widget** that lets readers mark pages as "Hot" (helpful) or "Slop" (needs improvement). Votes are stored as GitHub Discussion reactions, making them permanent, transparent, and spam-resistant.
+
+**How it works:**
+1. Each doc page maps to a GitHub Discussion (created by `scripts/seed-doc-votes.sh`)
+2. The widget fetches reaction counts from the public GitHub API
+3. Clicking "Hot" or "Slop" opens the discussion where you react with 👍 or 👎
+4. Vote counts update on every page load (5-minute cache)
+
+**To set up voting for new pages:**
+```bash
+./scripts/seed-doc-votes.sh
+# This creates GitHub Discussions and updates site/src/data/vote-topics.json
+```
+
 ## Contributing
 
 Contributions are welcome! The project uses:

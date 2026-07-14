@@ -239,7 +239,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**calendar-create-event.webp:** This 6-second animated GIF shows creating a calendar event in SOGo 5's week view.
+**calendar-create-event.png:** Screenshot of creating a calendar event in SOGo 5's week view.
 
 - **Frame 1 (0-1.2s):** Calendar grid in week view with Monday 10:00 highlighted (focus ring)
 - **Frame 2 (1.2-2.4s):** Event dialog opens from double-click, cursor in Title field

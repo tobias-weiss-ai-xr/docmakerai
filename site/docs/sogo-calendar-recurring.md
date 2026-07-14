@@ -58,7 +58,7 @@ For **weekly** recurrence, you can select multiple days
 (e.g., Monday, Wednesday, Friday) by checking the boxes.
 :::
 
-![Configuring weekly recurrence in SOGo 5](./assets/calendar-recurring.webp)
+![Configuring weekly recurrence in SOGo 5](./assets/calendar-recurring.png)
 
 ### Step 4: Set an End Date (Recommended)
 
@@ -221,7 +221,7 @@ SOGo 5 supports full keyboard navigation for recurring events.
 
 ### Visual Content Descriptions
 
-**calendar-recurring.webp:** This 3.2-second animated GIF shows creating a recurring event.
+**calendar-recurring.png:** Screenshot showing the recurring event configuration dialog.
 
 - **Frame 1 (0-0.8s):** Create event dialog open with title, date, time fields filled
 - **Frame 2 (0.8-2.2s):** Recurrence section expanded, frequency dropdown showing "Weekly" selected, interval set to "Every 1 week", specific weekdays checked (Monday, Wednesday, Friday)

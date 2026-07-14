@@ -1,4 +1,4 @@
-"""Run a single capture workflow in isolation (separate process)."""
+"""Run a single screenshot workflow in isolation (separate process)."""
 import sys
 import json
 import os
@@ -7,8 +7,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from capture.run_task_first_captures import (
-    VIDEO_DIR,
+from capture.run_screenshot_captures import (
+    SCREENSHOT_DIR,
     setup_authenticated_context,
 )
 
@@ -30,11 +30,9 @@ async def run_one(module_path: str, fn_name: str):
         args=[
             "--disable-dev-shm-usage",
             "--no-first-run",
-            "--disable-features=TranslateUI",
-            "--disable-background-networking",
         ],
     )
-    ctx = await setup_authenticated_context(browser, VIDEO_DIR)
+    ctx = await setup_authenticated_context(browser, SCREENSHOT_DIR)
     try:
         result = await fn(ctx)
         if result:

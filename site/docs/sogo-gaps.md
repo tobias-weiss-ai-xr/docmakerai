@@ -46,8 +46,8 @@ import PageSEO from '@site/src/components/PageSEO';
 
 | WebP File: Description | Referenced By | Status |
 |---|---|---|
-| `calendar-create-event-dblclick.webp` | `ROADMAP.md:156` | Planned Phase 2 — double-click step animation |
-| `calendar-create-event-form.webp` | `ROADMAP.md:163` | Planned Phase 2 — form-filling step animation |
+| `calendar-create-event-dblclick.png` | `ROADMAP.md:156` | Planned Phase 2 — double-click step animation |
+| `calendar-create-event-form.png` | `ROADMAP.md:163` | Planned Phase 2 — form-filling step animation |
 
 Both are described as "Phase 2: Multi-Step Annotated GIFs" in ROADMAP.md. They are **not yet implemented** but are referenced in the roadmap.
 
@@ -62,9 +62,9 @@ Both are described as "Phase 2: Multi-Step Annotated GIFs" in ROADMAP.md. They a
 ### Legacy GIFs (3 files — left over from initial GIF pipeline)
 | File: Description | Size | Notes |
 |---|---|---|
-| `calendar-create-event.gif` | 99 KB | Superseded by `.webp` version |
-| `calendar-recurring.gif` | 102 KB | Superseded by `.webp` version |
-| `mail-compose.gif` | 15 KB | Superseded by `.webp` version |
+| `calendar-create-event.gif` | 99 KB | Superseded by `.png` version |
+| `calendar-recurring.gif` | 102 KB | Superseded by `.png` version |
+| `mail-compose.gif` | 15 KB | Superseded by `.png` version |
 
 ### Unreferenced PNGs (7 files — never wired into any doc)
 | File: Description | Size | Possible Intent |
@@ -89,12 +89,12 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 | Doc: Description | Feature | Captures | Notes |
 |---|---|---|---|
-| `sogo-logout.md` | Logout | `logout.webp` (41 frames, 93KB) | ✅ Good capture |
-| `sogo-preferences.md` | Preferences & Settings | `preferences.webp` (6 frames, 4KB) | ❌ Blank capture — replaced with textual note |
-| `sogo-calendar-views.md` | Calendar View Switching | `calendar-views.webp` (19 frames, 38KB) | ✅ Good capture |
-| `sogo-calendar-edit-delete.md` | Calendar Edit & Delete Events | `calendar-edit-delete.webp` (22 frames, 40KB) | ✅ Good capture |
-| `sogo-contacts-edit-delete.md` | Contacts Edit & Delete | `contacts-edit-delete.webp` (19 frames, 40KB) | ✅ Good capture |
-| `sogo-global-search.md` | Global Search | `global-search.webp` (19 frames, 39KB) | ✅ Good capture |
+| `sogo-logout.md` | Logout | `logout.png` (41 frames, 93KB) | ✅ Good capture |
+| `sogo-preferences.md` | Preferences & Settings | `preferences.png` (6 frames, 4KB) | ❌ Blank capture — replaced with textual note |
+| `sogo-calendar-views.md` | Calendar View Switching | `calendar-views.png` (19 frames, 38KB) | ✅ Good capture |
+| `sogo-calendar-edit-delete.md` | Calendar Edit & Delete Events | `calendar-edit-delete.png` (22 frames, 40KB) | ✅ Good capture |
+| `sogo-contacts-edit-delete.md` | Contacts Edit & Delete | `contacts-edit-delete.png` (19 frames, 40KB) | ✅ Good capture |
+| `sogo-global-search.md` | Global Search | `global-search.png` (19 frames, 39KB) | ✅ Good capture |
 
 ### ✅ Round 2 — Advanced Features (6 features — markdown docs created)
 
@@ -103,8 +103,8 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 | `sogo-mail-read.md` | Mail — Read & View Messages | `01-mail-inbox.png` | ✅ Replaced blank WebP with PNG screenshot |
 | `sogo-mail-reply-forward-delete.md` | Mail — Reply / Forward / Delete | — | ❌ Blank capture — image reference removed |
 | `sogo-mail-folder-management.md` | Mail — Folder Management | — | ❌ Blank capture — image reference removed |
-| `sogo-calendar-ical.md` | Calendar Import/Export (iCal) | `calendar-ical.webp` (26 frames, 27KB) | ✅ Good capture |
-| `sogo-contacts-import-export.md` | Contacts — Import / Export | `contacts-import-export.webp` (22 frames, 12KB) | ✅ Good capture |
+| `sogo-calendar-ical.md` | Calendar Import/Export (iCal) | `calendar-ical.png` (26 frames, 27KB) | ✅ Good capture |
+| `sogo-contacts-import-export.md` | Contacts — Import / Export | `contacts-import-export.png` (22 frames, 12KB) | ✅ Good capture |
 | `sogo-password-change.md` | Password Change | — | ❌ Blank capture — image reference removed |
 
 ### ✅ Round 3 — Advanced & Infrastructure-Dependent Features (3 features — docs created with infrastructure notes)

@@ -48,7 +48,7 @@ In the subscription dialog:
 2. **Name:** Enter a display name (e.g., "German Holidays")
 3. **Color:** Choose a calendar color for visibility
 
-![Subscribe to iCal feed dialog](./assets/calendar-subscribe.webp)
+![Subscribe to iCal feed dialog](./assets/calendar-subscribe.png)
 
 ### Step 4: Configure Sync Options
 
@@ -178,7 +178,7 @@ SOGo 5 supports full keyboard navigation for subscribing to calendars.
 
 ### Visual Content Descriptions
 
-**calendar-subscribe.webp:** This 3-second animated GIF shows subscribing to an external calendar.
+**calendar-subscribe.png:** Screenshot of subscribing to an external calendar feed.
 
 - **Frame 1 (0-0.8s):** Calendar view with Calendars list on left
 - **Frame 2 (0.8-2s):** Subscription dialog open, calendar type dropdown showing "iCal/ICS" selected, URL field populated with calendar address, display name "Team Calendar" typed
