@@ -148,6 +148,30 @@ async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
         await goto(page, module, wait_ms)
 
 
+async def navigate_to_settings(page, menu_item: str, sub_tab: str | None = None, wait_ms: int = 3000) -> None:
+    """Open user settings via avatar dropdown in the header.
+
+    Opens the avatar dropdown and clicks the given menu item
+    (e.g. 'Email', 'Security', 'General', 'Logout').
+    Optionally clicks a sub-tab in the settings sidebar (e.g. 'Vacation', 'Filters').
+    """
+    dd = page.locator('[data-testid="header-dropdown-trigger"]')
+    if await dd.is_visible(timeout=5000):
+        await dd.click()
+        await page.wait_for_timeout(1000)
+    item = page.locator(f'[role="menuitem"]:has-text("{menu_item}")')
+    if await item.is_visible(timeout=3000):
+        await item.click()
+        await page.wait_for_timeout(2000)
+    if sub_tab:
+        tab = page.locator(f'button:has-text("{sub_tab}")')
+        if await tab.is_visible(timeout=3000):
+            await tab.click()
+            await page.wait_for_timeout(wait_ms)
+        else:
+            await page.wait_for_timeout(wait_ms)
+
+
 class TaskFirstRecorder:
     """Recorder optimized for task-first narrative presentations.
 
@@ -460,64 +484,79 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
 
 
 async def record_vacation(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Configure vacation auto-reply."""
     rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
+    await page.wait_for_timeout(1500)
+
+    await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The SOGo interface displays the inbox with received emails")
+    await rec.challenge(page, "Colleagues need to know you're away without manually telling everyone")
+    await navigate_to_settings(page, "Email", "Vacation")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "SOGo provides Mail, Calendar, Contacts, and Tasks modules")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Enable the vacation auto-reply with your away message")
+    enable = page.locator('button:has-text("Enable vacation auto reply")')
+    if await enable.is_visible(timeout=3000):
+        await enable.click()
+        await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Each module is accessible from the sidebar tabs at the top")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "The inbox organizes all your emails for quick access")
+    await rec.result(page, "Vacation auto-reply is enabled and will respond to incoming emails")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
 async def record_mail_signatures(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Configure email signature placement."""
     rec = TaskFirstRecorder("mail-signatures", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The SOGo interface provides access to your mailbox and tools")
+    await rec.context(page, "Configure where your email signature appears in messages")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "SOGo offers Mail, Calendar, Contacts, and Tasks modules")
+    await rec.challenge(page, "Set the signature position for new messages and replies")
+    await navigate_to_settings(page, "Email")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Navigate between modules using the sidebar tabs")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Choose signature placement: below the quote, above, or inline")
+    for_input = await page.locator('label:has-text("and place the signature")').get_attribute("for")
+    if for_input:
+        combo = page.locator(f'[id="{for_input}"]')
+        if await combo.is_visible(timeout=3000):
+            await combo.click()
+            await page.wait_for_timeout(500)
+            mail_option = page.locator(f'[role="option"]:has-text("below the mail")')
+            if await mail_option.is_visible(timeout=2000):
+                await mail_option.click()
+                await page.wait_for_timeout(1000)
 
-    await rec.result(page, "The dashboard provides quick access to all application features")
+    await rec.result(page, "Signature placement is configured for all outgoing messages")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Browse mail filter settings."""
     rec = TaskFirstRecorder("mail-filters", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The SOGo interface shows your main workspace")
+    await rec.context(page, "Manage email filters to automatically organize incoming messages")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Navigate between different modules using the sidebar tabs")
+    await rec.challenge(page, "Filters help sort emails into folders based on rules")
+    await navigate_to_settings(page, "Email", "Filters")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Each tab opens a dedicated workspace for that module")
+    await rec.solution(page, "Create and manage filter rules from the Filters settings tab")
     await page.wait_for_timeout(1000)
 
-    await rec.result(page, "The workspace adapts to show the selected module's content")
+    await rec.result(page, "Mail filters are available for automatic email organization")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -592,43 +631,48 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
 
 
 async def record_logout(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Sign out of SOGo."""
     rec = TaskFirstRecorder("logout", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The main SOGo interface with your inbox is displayed")
+    await rec.context(page, "Sign out of your SOGo session when you are done working")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "The SOGo interface provides access to all your collaboration tools")
-    await page.wait_for_timeout(1000)
+    await rec.challenge(page, "Leaving your session open on a shared computer is a security risk")
+    await page.wait_for_timeout(500)
 
-    await rec.solution(page, "The inbox view shows all your emails with sender and subject")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Click your avatar and select Logout to end your session")
+    await navigate_to_settings(page, "Logout")
+    await page.wait_for_timeout(2000)
 
-    await rec.result(page, "SOGo brings together mail, calendar, contacts, and tasks")
+    await rec.result(page, "You are securely signed out and returned to the login screen")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
 
 async def record_preferences(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Configure general preferences."""
     rec = TaskFirstRecorder("preferences", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
+    await page.wait_for_timeout(1500)
+
+    await rec.context(page, "Customize language, timezone, and date format preferences")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The SOGo main interface provides access to all modules")
+    await rec.challenge(page, "Default settings may not match your regional preferences")
+    await navigate_to_settings(page, "General")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Navigate between Mail, Calendar, Contacts, and Tasks using the sidebar tabs")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Select your preferred language and timezone from the settings")
+    lang = page.locator('button:has-text("English")').first
+    if await lang.is_visible(timeout=3000):
+        await lang.click()
+        await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Click on each tab to switch between different modules")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "Each module displays its own interface and content")
+    await rec.result(page, "General preferences are configured to match your needs")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -807,22 +851,34 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
 
 
 async def record_password_change(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse the main SOGo interface."""
+    """Task-first capture: Update account password."""
     rec = TaskFirstRecorder("password-change", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
+    await page.wait_for_timeout(1500)
+
+    await rec.context(page, "Update your SOGo account password to keep your account secure")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "The SOGo main interface with the inbox is displayed")
+    await rec.challenge(page, "Regular password changes are important for account security")
+    await navigate_to_settings(page, "Security")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "SOGo provides email, calendar, contacts, and tasks modules")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Enter your current password, then choose a new strong password")
+    current = page.locator('input[name="password"]')
+    if await current.is_visible(timeout=3000):
+        await current.fill("current-password")
+        await page.wait_for_timeout(300)
+    new_pw = page.locator('input[name="newPassword"]')
+    if await new_pw.is_visible(timeout=2000):
+        await new_pw.fill("new-secure-password")
+        await page.wait_for_timeout(300)
+    confirm = page.locator('input[name="confirmPassword"]')
+    if await confirm.is_visible(timeout=2000):
+        await confirm.fill("new-secure-password")
+        await page.wait_for_timeout(500)
 
-    await rec.solution(page, "Switch between modules using the sidebar tabs at the top")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "Each module opens its own dedicated interface")
+    await rec.result(page, "Password change form is ready with current and new password fields")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -854,27 +910,31 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
 
 
 async def record_contacts_import_export(context: BrowserContext) -> Path | None:
-    """Task-first capture: Browse contacts in the address book."""
+    """Task-first capture: Browse address books and subscription options."""
     rec = TaskFirstRecorder("contacts-import-export", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "contacts")
-    await page.wait_for_timeout(1000)
+    await page.wait_for_timeout(1500)
 
     await rec.context(page, "Browse your contacts in the address book")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "View the list of contacts available in your address book")
+    await rec.challenge(page, "View available address books and subscription options")
+    for addr_book in ["Personal", "Work"]:
+        book = page.locator(f'button:has-text("{addr_book}")')
+        if await book.is_visible(timeout=2000):
+            await book.click()
+            await page.wait_for_timeout(800)
+
+    add_book = page.locator('button:has-text("Add address book")')
+    if await add_book.is_visible(timeout=2000):
+        await add_book.click()
+        await page.wait_for_timeout(800)
+
+    await rec.solution(page, "Address books can be added and subscribed to for contact management")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Contacts are displayed with names and email addresses")
-    await page.wait_for_timeout(1000)
-
-    addr_books = page.locator('button:has-text("Personal")')
-    if await addr_books.is_visible(timeout=2000):
-        await addr_books.click()
-        await page.wait_for_timeout(1000)
-
-    await rec.result(page, "The address book organizes all your contacts in one place")
+    await rec.result(page, "Contacts can be organized across multiple address books")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
