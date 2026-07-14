@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import sys
 import os
 import shutil
 import time
@@ -83,11 +84,6 @@ def clean_dirs() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
 
-async def inject_session_cookie(context: BrowserContext) -> None:
-    """No-op for SOGo 6 (HTTPS sets cookies normally)."""
-    pass
-
-
 async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
     await page.goto(SOGO_URL + "/en/auth/login", wait_until="domcontentloaded", timeout=30000)
@@ -100,12 +96,6 @@ async def login(page, context: BrowserContext | None = None) -> None:
     await page.fill("input#password", PASSWORD)
     await page.click("button[type='submit']")
     await page.wait_for_timeout(2000)
-
-    if context:
-        await inject_session_cookie(context)
-
-    if context:
-        await inject_session_cookie(context)
 
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}/en/{url_suffix}" if url_suffix else SOGO_URL
@@ -827,25 +817,28 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
 
 
 async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | None:
-    """Task-first capture: Open an email to read its full content."""
+    """Task-first capture: Reply to an email."""
     rec = TaskFirstRecorder("mail-reply-forward-delete", VIDEO_DIR, FPS, LOCALE)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
 
-    await rec.context(page, "Open an email from your inbox to read full content")
+    await rec.context(page, "Respond to an email by replying to the sender")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Click on an email to view its full content in the reading pane")
+    await rec.challenge(page, "Click on an email to open it, then use the action toolbar")
     msg = page.locator('div[role="button"]').filter(has_text="Gueto").first
     if await msg.is_visible(timeout=3000):
         await msg.click()
         await page.wait_for_timeout(1500)
 
-    await rec.solution(page, "The email body is displayed with sender details in the reading pane")
-    await page.wait_for_timeout(1000)
+    await rec.solution(page, "Click the Reply button to open the reply compose window")
+    reply = page.locator('[data-testid="mail-action-btn-reply"]')
+    if await reply.is_visible(timeout=3000):
+        await reply.click()
+        await page.wait_for_timeout(2000)
 
-    await rec.result(page, "Email content is shown clearly with all details")
+    await rec.result(page, "The reply compose window opens ready for your response")
     await page.wait_for_timeout(800)
     return await rec.finish(page)
 
@@ -973,138 +966,107 @@ async def setup_authenticated_context(browser, video_dir) -> BrowserContext:
     return ctx
 
 
-async def run_parallel(workflows: list[tuple], browser, workers: int = 4):
-    semaphore = asyncio.Semaphore(workers)
-
-    async def run_task(name, fn):
-        async with semaphore:
-            ctx = await setup_authenticated_context(browser, VIDEO_DIR)
-            try:
-                return await fn(ctx)
-            except Exception:
-                return None
-            finally:
-                try:
-                    await ctx.close()
-                except Exception:
-                    pass
-
-    tasks = [run_task(name, fn) for name, fn in workflows]
-    return await asyncio.gather(*tasks)
-
-
 # ── Main ──
 
 
 async def main(workers: int = 1):
     clean_dirs()
 
+    # Verify login works before starting captures
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-
-        # Verify login works before starting captures
-        verify_ctx = await browser.new_context(
-            viewport={"width": 1280, "height": 800},
-            locale="en-US",
-            ignore_https_errors=True,
+        verify_browser = await p.chromium.launch(
+            headless=True,
+            args=["--disable-dev-shm-usage", "--no-first-run"],
         )
-        verify_page = await verify_ctx.new_page()
-        await login(verify_page, context=verify_ctx)
-        await verify_ctx.close()
+        try:
+            verify_ctx = await verify_browser.new_context(
+                viewport={"width": 1280, "height": 800},
+                locale="en-US",
+                ignore_https_errors=True,
+            )
+            verify_page = await verify_ctx.new_page()
+            await login(verify_page, context=verify_ctx)
+            await verify_ctx.close()
+        finally:
+            await verify_browser.close()
         print("  Login verified.\n")
 
-        workflows = [
-            ("calendar-create-event", record_calendar_create_event),
-            ("calendar-recurring", record_calendar_recurring),
-            ("mail-compose", record_mail_compose),
-            ("contacts-add", record_contacts_add),
-            ("vacation", record_vacation),
-            ("mail-signatures", record_mail_signatures),
-            ("mail-filters", record_mail_filters),
-            ("calendar-subscribe", record_calendar_subscribe),
-            ("calendar-share", record_calendar_share),
-            ("freebusy", record_freebusy),
-            ("logout", record_logout),
-            ("preferences", record_preferences),
-            ("calendar-views", record_calendar_views),
-            ("contacts-edit-delete", record_contacts_edit_delete),
-            ("calendar-edit-delete", record_calendar_edit_delete),
-            ("global-search", record_global_search),
-            ("mail-read", record_mail_read),
-            ("mail-folder-management", record_mail_folder_management),
-            ("mail-reply-forward-delete", record_mail_reply_forward_delete),
-            ("password-change", record_password_change),
-            ("calendar-ical", record_calendar_ical),
-            ("contacts-import-export", record_contacts_import_export),
-        ]
+    workflows = [
+        ("calendar-create-event", "record_calendar_create_event"),
+        ("calendar-recurring", "record_calendar_recurring"),
+        ("mail-compose", "record_mail_compose"),
+        ("contacts-add", "record_contacts_add"),
+        ("vacation", "record_vacation"),
+        ("mail-signatures", "record_mail_signatures"),
+        ("mail-filters", "record_mail_filters"),
+        ("calendar-subscribe", "record_calendar_subscribe"),
+        ("calendar-share", "record_calendar_share"),
+        ("freebusy", "record_freebusy"),
+        ("logout", "record_logout"),
+        ("preferences", "record_preferences"),
+        ("calendar-views", "record_calendar_views"),
+        ("contacts-edit-delete", "record_contacts_edit_delete"),
+        ("calendar-edit-delete", "record_calendar_edit_delete"),
+        ("global-search", "record_global_search"),
+        ("mail-read", "record_mail_read"),
+        ("mail-folder-management", "record_mail_folder_management"),
+        ("mail-reply-forward-delete", "record_mail_reply_forward_delete"),
+        ("password-change", "record_password_change"),
+        ("calendar-ical", "record_calendar_ical"),
+        ("contacts-import-export", "record_contacts_import_export"),
+    ]
 
-        start_time = time.time()
-        results = []
+    start_time = time.time()
+    results = []
+    worker_script = Path(__file__).parent / "run_single_workflow.py"
 
-        if workers > 1:
-            workflow_results = await run_parallel(workflows, browser, workers=workers)
-            for (name, _), webp_path in zip(workflows, workflow_results, strict=True):
-                if webp_path:
-                    shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
-                    elapsed = time.time() - start_time
-                    results.append((name, True, 0, None, elapsed))
-                    print(f"  ✓  {webp_path.name}")
-                else:
-                    results.append((name, False, 0, None, 0))
-                    print(f"  ✗  {name}")
+    for name, fn_name in workflows:
+        print(f"\n── {name} ──")
+        wf_start = time.time()
+        proc = await asyncio.create_subprocess_exec(
+            sys.executable,
+            "-u",
+            str(worker_script),
+            str(Path(__file__)),
+            fn_name,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT,
+        )
+        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=300)
+        elapsed = time.time() - wf_start
+        output = stdout.decode("utf-8", errors="replace")
+        print(output, end="")
+
+        webp_path = VIDEO_DIR / f"{name}.webp"
+        if webp_path.exists():
+            shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
+            meta_path = VIDEO_DIR / f"{name}_metadata.json"
+            if meta_path.exists():
+                meta = json.loads(meta_path.read_text())
+                print(
+                    f"  ✓  {webp_path.name} — "
+                    f"{meta.get('annotated_frames', '?')} frames "
+                    f"({elapsed:.1f}s)"
+                )
+                results.append(
+                    (name, True, meta.get("annotated_frames", 0), None, elapsed)
+                )
+            else:
+                print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
+                results.append((name, True, 0, None, elapsed))
         else:
-            for name, workflow_fn in workflows:
-                print(f"\n── {name} ──")
-                wf_start = time.time()
-                ctx = await setup_authenticated_context(browser, VIDEO_DIR)
-                try:
-                    webp_path = await workflow_fn(ctx)
-                    if webp_path:
-                        shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
-                        meta_path = VIDEO_DIR / f"{name}_metadata.json"
-                        if meta_path.exists():
-                            meta = json.loads(meta_path.read_text())
-                            elapsed = time.time() - wf_start
-                            print(
-                                f"  ✓  {webp_path.name} — "
-                                f"{meta.get('annotated_frames', '?')} frames "
-                                f"({elapsed:.1f}s)"
-                            )
-                            results.append(
-                                (name, True, meta.get("annotated_frames", 0), None, elapsed)
-                            )
-                        else:
-                            elapsed = time.time() - wf_start
-                            print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
-                            results.append((name, True, 0, None, elapsed))
-                    else:
-                        elapsed = time.time() - wf_start
-                        print(f"  ✗  Failed ({elapsed:.1f}s)")
-                        results.append((name, False, 0, None, elapsed))
-                except Exception as e:
-                    elapsed = time.time() - wf_start
-                    print(f"  ✗  Error ({elapsed:.1f}s): {e}")
-                    results.append((name, False, 0, str(e), elapsed))
-                finally:
-                    await ctx.close()
+            print(f"  ✗  Failed ({elapsed:.1f}s)")
+            results.append((name, False, 0, None, elapsed))
 
-            print("\n── Results ──")
-            for name, ok, frames, _error, duration in results:
-                mark = "✓" if ok else "✗"
-                print(f"  {mark}  {name}: {frames} frames ({duration:.1f}s)")
-            total_ok = sum(1 for _, ok, _, _, _ in results if ok)
-            print(f"\n  {total_ok}/{len(results)} succeeded")
+    print("\n── Results ──")
+    for name, ok, frames, _error, duration in results:
+        mark = "✓" if ok else "✗"
+        print(f"  {mark}  {name}: {frames} frames ({duration:.1f}s)")
+    total_ok = sum(1 for _, ok, _, _, _ in results if ok)
+    print(f"\n  {total_ok}/{len(results)} succeeded")
 
-        elapsed = time.time() - start_time
-        print(f"\n  Total time: {elapsed:.1f}s ({workers} worker{'s' if workers != 1 else ''})")
-        await browser.close()
-
-    print("\n── All captures complete! ──")
-    print("📝 Next steps:")
-    print("   1. Review captures in VIDEO_DIR")
-    print("   2. Convert WebP → MP4/WebM (see scripts/convert_to_mp4.py)")
-    print("   3. Move final assets to site/docs/assets/")
-    print("   4. Update docs with <VideoFallback>\n")
+    elapsed = time.time() - start_time
+    print(f"\n  Total time: {elapsed:.1f}s ({workers} worker{'s' if workers != 1 else ''})")
 
 
 if __name__ == "__main__":
