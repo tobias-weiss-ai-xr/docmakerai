@@ -1,38 +1,17 @@
 #!/usr/bin/env python3
-"""
-DocMaker AI — Task-First Parallel Capture Runner
+"""DocMaker AI — Screenshot-Only Capture Pipeline
 
-Optimized for user goal-focused tutorials that tell a story.
-
-Key Improvements:
-- Task-first narrative: Context → Challenge → Solution → Result
-- Longer, more complete workflows (7-10s, not 2-3s)
-- Optional audio narration support
-- HTML5 MP4 output with WebM fallback
-- Logical pauses between story beats
-- Skip obvious UI navigation (configurable)
+Fast, reliable screenshot captures for SOGo 6 documentation.
+Each workflow navigates to a feature, interacts, and takes a single
+annotated screenshot at the result moment.
 
 Usage:
-    export SOGO_URL=http://vhrz2392.hrz.uni-marburg.de:8080/SOGo/
-    python run_task_first_captures.py
-
-Story Beat Markers:
-    Each workflow is broken into 4 beats:
-    1. CONTEXT - Establish user goal (what & why)
-    2. CHALLENGE - The friction point (where users get stuck)
-    3. SOLUTION - The fix/feature (the lesson)
-    4. RESULT - Proof it worked
-
-Capture Phases:
-    - slow (2-3s) - Let user absorb context
-    - fast (0.5s) - Mechanical navigation
-    - slow (3-4s) - THE LEARNING MOMENT
-    - medium (1-2s) - Show outcome
+    export SOGO_URL=https://demov6.sogo.nu
+    python capture/run_screenshot_captures.py
 """
 
 from __future__ import annotations
 
-import argparse
 import asyncio
 import json
 import sys
@@ -44,41 +23,23 @@ from pathlib import Path
 from playwright.async_api import BrowserContext, Page, async_playwright
 
 try:
-    from capture.video_pipeline import (
-        annotate_frames,
-        assemble_webp,
-        extract_frames,
-        get_video_duration,
-        is_frame_valid,
-        map_frames_to_steps,
-        validate_frames,
-    )
+    from capture.annotate import annotate_frame
 except ImportError:
-    from video_pipeline import (
-        annotate_frames,
-        assemble_webp,
-        extract_frames,
-        get_video_duration,
-        is_frame_valid,
-        map_frames_to_steps,
-        validate_frames,
-    )
+    from annotate import annotate_frame
 
 
 ROOT = Path(__file__).resolve().parent
-VIDEO_DIR = ROOT / "videos"
+SCREENSHOT_DIR = ROOT / "screenshots"
 ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
 
 SOGO_URL = os.environ.get("SOGO_URL", "https://demov6.sogo.nu")
 USERNAME = os.environ.get("SOGO_USERNAME", "sogo-tests1@example.org")
 PASSWORD = os.environ.get("SOGO_PASSWORD", "sogo")
 
-FPS = 12
-LOCALE = "de"
 
 
 def clean_dirs() -> None:
-    for d in [VIDEO_DIR, ASSETS_DIR]:
+    for d in [SCREENSHOT_DIR, ASSETS_DIR]:
         if d.exists():
             shutil.rmtree(d)
         d.mkdir(parents=True, exist_ok=True)
@@ -162,192 +123,70 @@ async def navigate_to_settings(page, menu_item: str, sub_tab: str | None = None,
             await page.wait_for_timeout(wait_ms)
 
 
-class TaskFirstRecorder:
-    """Recorder optimized for task-first narrative presentations.
+class ScreenshotRecorder:
+    """Takes a single annotated screenshot at the result moment."""
 
-    Wraps the WorkflowRecorder video pipeline with a 4-beat story API:
-    context() -> challenge() -> solution() -> result().
-    """
-
-    def __init__(self, name: str, video_dir: Path, fps: int = 6, locale: str = "de"):
+    def __init__(self, name: str, screenshot_dir: Path):
         self.name = name
-        self.video_dir = video_dir
-        self.fps = fps
-        self.locale = locale
-        self.steps: list[dict] = []
-        self._page = None
-        self._start_time: float | None = None
+        self.screenshot_dir = screenshot_dir
 
     async def start(self, context: BrowserContext) -> Page:
-        """Create a new page in the given context."""
         page = await context.new_page()
-        self._page = page
-        self._start_time = await page.evaluate("performance.now()")
         return page
 
-    async def _record_step(self, page, label: str, highlights: list | None = None):
-        """Record a step with current timestamp (for video pipeline)."""
-        now = await page.evaluate("performance.now()")
-        elapsed_s = (now - self._start_time) / 1000.0 if self._start_time else 0
-        self.steps.append(
-            {
-                "time_s": elapsed_s,
-                "label": label,
-                "number": len(self.steps) + 1,
-                "highlights": highlights or [],
-            }
-        )
-
-    async def phase(self, page, duration_s: float, description: str = ""):
-        """Add a phase (pause) with specific pacing."""
-        if description:
-            print(f"   {description}")
-        await page.wait_for_timeout(int(duration_s * 1000))
-        # Don't record phases as steps — only record narrative beats
-
     async def context(self, page, text: str) -> None:
-        """Establish the user goal and motivation."""
         print(f"   [CONTEXT] {text}")
-        await page.wait_for_timeout(400)
-        await self._record_step(page, text)
 
     async def challenge(self, page, text: str) -> None:
-        """Highlight the friction point where users get stuck."""
         print(f"   [CHALLENGE] {text}")
-        await page.wait_for_timeout(300)
-        await self._record_step(page, text)
 
     async def solution(self, page, text: str) -> None:
-        """Show the fix/feature — this is the learning moment."""
         print(f"   [SOLUTION] {text}")
-        await page.wait_for_timeout(400)
-        await self._record_step(page, text)
 
     async def result(self, page, text: str) -> None:
-        """Verify it worked / show the outcome."""
         print(f"   [RESULT] {text}")
-        await page.wait_for_timeout(400)
-        await self._record_step(page, text)
 
-    async def highlight(self, page, selector: str, label: str = ""):
-        """Highlight a UI element for narrative clarity."""
-        await page.wait_for_timeout(300)
-        locator = page.locator(selector)
-        if await locator.count() > 0:
-            box = await locator.first.bounding_box()
-            if box and self.steps:
-                self.steps[-1]["highlights"] = [
-                    {
-                        "type": "circle",
-                        "x": box["x"],
-                        "y": box["y"],
-                        "width": box["width"],
-                        "height": box["height"],
-                    }
-                ]
-
-    async def finish(self, page, keep_raw_video: bool = False) -> Path | None:
-        """Finish recording, process video pipeline, return WebP path."""
-        await page.close()
-
-        if not page.video:
-            print(f"  No video recorded for {self.name}")
+    async def capture(self, page, label: str) -> Path | None:
+        """Take a full-page screenshot and annotate it with the given label."""
+        raw_path = self.screenshot_dir / f"{self.name}_raw.png"
+        annotated_path = self.screenshot_dir / f"{self.name}.png"
+        try:
+            await page.screenshot(path=str(raw_path), full_page=False)
+        except Exception as e:
+            print(f"  Screenshot failed: {e}")
             return None
-
-        video_path = Path(await page.video.path())
-        if not video_path.exists() or video_path.stat().st_size < 1000:
-            print(f"  Video too small for {self.name}")
+        if not raw_path.exists() or raw_path.stat().st_size < 1000:
             return None
-
-        duration = get_video_duration(video_path)
-        if duration < 0.5:
-            print(f"  Video too short for {self.name}")
+        annotate_frame(
+            str(raw_path),
+            label,
+            4,
+            [],
+            locale="en",
+            output_path=str(annotated_path),
+        )
+        raw_path.unlink(missing_ok=True)
+        if not annotated_path.exists():
             return None
-
-        # Extract frames
-        raw_dir = video_path.parent / f"{self.name}_raw"
-        raw_frames = extract_frames(video_path, raw_dir, fps=self.fps)
-        if len(raw_frames) < 4:
-            print(f"  Too few frames for {self.name}")
-            return None
-
-        # Strip leading blank frames (Playwright video starts before page renders)
-        valid_start = None
-        for i, f in enumerate(raw_frames):
-            if is_frame_valid(f):
-                valid_start = i
-                break
-        if valid_start is None:
-            print(f"  All frames blank for {self.name}")
-            shutil.rmtree(raw_dir, ignore_errors=True)
-            return None
-        if valid_start > 0:
-            raw_frames = raw_frames[valid_start:]
-        if len(raw_frames) < 4:
-            print(f"  All frames blank for {self.name}")
-            shutil.rmtree(raw_dir, ignore_errors=True)
-            return None
-
-        frame_valid, frame_error = validate_frames(raw_frames, self.name)
-        if not frame_valid:
-            print(f"  {frame_error}")
-            if not keep_raw_video:
-                shutil.rmtree(raw_dir, ignore_errors=True)
-            return None
-
-        # Map frames to steps
-        mapping = map_frames_to_steps(len(raw_frames), duration, self.steps)
-
-        # Annotate frames
-        annotated_dir = video_path.parent / f"{self.name}_annotated"
-        annotated_frames = annotate_frames(raw_frames, mapping, annotated_dir, locale=self.locale)
-        if len(annotated_frames) < 4:
-            if not keep_raw_video:
-                shutil.rmtree(raw_dir, ignore_errors=True)
-                shutil.rmtree(annotated_dir, ignore_errors=True)
-            return None
-
-        # Assemble WebP
-        webp_path = self.video_dir / f"{self.name}.webp"
-        assemble_webp(annotated_frames, webp_path, fps=self.fps)
-
-        # Cleanup
-        if not keep_raw_video:
-            shutil.rmtree(raw_dir, ignore_errors=True)
-            shutil.rmtree(annotated_dir, ignore_errors=True)
-
-        # Write metadata
-        meta_path = video_path.parent / f"{self.name}_metadata.json"
+        meta_path = self.screenshot_dir / f"{self.name}_metadata.json"
         with open(meta_path, "w") as f:
             json.dump(
                 {
                     "workflow": self.name,
-                    "video_file": video_path.name,
-                    "duration_s": duration,
-                    "raw_frames": len(raw_frames),
-                    "annotated_frames": len(annotated_frames),
-                    "fps": self.fps,
-                    "steps": self.steps,
-                    "webp_file": webp_path.name,
-                    "webp_size_kb": webp_path.stat().st_size // 1024,
+                    "label": label,
+                    "png_file": annotated_path.name,
+                    "png_size_kb": annotated_path.stat().st_size // 1024,
                 },
                 f,
                 indent=2,
-                ensure_ascii=False,
             )
-
-        if not keep_raw_video:
-            video_path.unlink(missing_ok=True)
-
-        return webp_path
-
-
+        return annotated_path
 # ── Workflow Runners (Task-First Narrative) ──
 
 
 async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     """Task-first capture: Create a new calendar event."""
-    rec = TaskFirstRecorder("calendar-create-event", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-create-event", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -360,7 +199,6 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     await rec.challenge(page, "Click the 'Create Event' button to open the event editor")
     create_btn = page.locator('button:has-text("Create Event")').first
     if await create_btn.is_visible(timeout=3000):
-        await rec.highlight(page, 'button:has-text("Create Event")', "Create Event button")
         await create_btn.click()
         await page.wait_for_timeout(1500)
 
@@ -371,12 +209,12 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     # 4. RESULT: Event is created and visible on the calendar
     await rec.result(page, "The new event appears on the calendar at the scheduled time")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The new event appears on the calendar at the scheduled time")
 
 
 async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     """Task-first capture: Create a recurring weekly event."""
-    rec = TaskFirstRecorder("calendar-recurring", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-recurring", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -400,12 +238,12 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Event is created and appears on the calendar")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Event is created and appears on the calendar")
 
 
 async def record_mail_compose(context: BrowserContext) -> Path | None:
     """Task-first capture: Compose and send a new email."""
-    rec = TaskFirstRecorder("mail-compose", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-compose", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -435,12 +273,12 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The email is composed with recipient and subject filled in")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The email is composed with recipient and subject filled in")
 
 
 async def record_contacts_add(context: BrowserContext) -> Path | None:
     """Task-first capture: Add a new contact."""
-    rec = TaskFirstRecorder("contacts-add", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("contacts-add", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "contacts")
     await page.wait_for_timeout(1000)
@@ -470,12 +308,12 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The new contact form is filled and ready to save")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The new contact form is filled and ready to save")
 
 
 async def record_vacation(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure vacation auto-reply."""
-    rec = TaskFirstRecorder("vacation", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("vacation", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1500)
@@ -495,12 +333,12 @@ async def record_vacation(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Vacation auto-reply is enabled and will respond to incoming emails")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Vacation auto-reply is enabled and will respond to incoming emails")
 
 
 async def record_mail_signatures(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure email signature placement."""
-    rec = TaskFirstRecorder("mail-signatures", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-signatures", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -526,12 +364,12 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Signature placement is configured for all outgoing messages")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Signature placement is configured for all outgoing messages")
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse mail filter settings."""
-    rec = TaskFirstRecorder("mail-filters", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-filters", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -548,12 +386,12 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Mail filters are available for automatic email organization")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Mail filters are available for automatic email organization")
 
 
 async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse calendar events."""
-    rec = TaskFirstRecorder("calendar-subscribe", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-subscribe", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -569,12 +407,12 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "All this week's events are visible in the calendar grid")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "All this week's events are visible in the calendar grid")
 
 
 async def record_calendar_share(context: BrowserContext) -> Path | None:
     """Task-first capture: View existing calendar events."""
-    rec = TaskFirstRecorder("calendar-share", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-share", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -593,12 +431,12 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Event details panel shows the full event information")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Event details panel shows the full event information")
 
 
 async def record_freebusy(context: BrowserContext) -> Path | None:
     """Task-first capture: Create a new calendar event."""
-    rec = TaskFirstRecorder("freebusy", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("freebusy", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -617,12 +455,12 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Event can be created with a title and basic details")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Event can be created with a title and basic details")
 
 
 async def record_logout(context: BrowserContext) -> Path | None:
     """Task-first capture: Sign out of SOGo."""
-    rec = TaskFirstRecorder("logout", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("logout", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -639,12 +477,12 @@ async def record_logout(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "You are securely signed out and returned to the login screen")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "You are securely signed out and returned to the login screen")
 
 
 async def record_preferences(context: BrowserContext) -> Path | None:
     """Task-first capture: Configure general preferences."""
-    rec = TaskFirstRecorder("preferences", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("preferences", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1500)
@@ -664,12 +502,12 @@ async def record_preferences(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "General preferences are configured to match your needs")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "General preferences are configured to match your needs")
 
 
 async def record_calendar_views(context: BrowserContext) -> Path | None:
     """Task-first capture: Switch between calendar views."""
-    rec = TaskFirstRecorder("calendar-views", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-views", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -692,12 +530,12 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The calendar adapts instantly to show the selected view layout")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The calendar adapts instantly to show the selected view layout")
 
 
 async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse contacts in the address book."""
-    rec = TaskFirstRecorder("contacts-edit-delete", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("contacts-edit-delete", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "contacts")
     await page.wait_for_timeout(1000)
@@ -716,12 +554,12 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Address book provides quick access to all your contacts")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Address book provides quick access to all your contacts")
 
 
 async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: View calendar events and details."""
-    rec = TaskFirstRecorder("calendar-edit-delete", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-edit-delete", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -740,12 +578,12 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Events are displayed with their time slots in the calendar grid")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Events are displayed with their time slots in the calendar grid")
 
 
 async def record_global_search(context: BrowserContext) -> Path | None:
     """Task-first capture: Use the search feature in the inbox."""
-    rec = TaskFirstRecorder("global-search", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("global-search", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -765,12 +603,12 @@ async def record_global_search(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Search filters the inbox to show only matching emails")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Search filters the inbox to show only matching emails")
 
 
 async def record_mail_read(context: BrowserContext) -> Path | None:
     """Task-first capture: Read an email from the inbox."""
-    rec = TaskFirstRecorder("mail-read", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-read", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -789,12 +627,12 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The email body is displayed with full details")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The email body is displayed with full details")
 
 
 async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     """Task-first capture: Navigate between mail folders."""
-    rec = TaskFirstRecorder("mail-folder-management", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-folder-management", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -813,12 +651,12 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The selected folder's emails are displayed")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The selected folder's emails are displayed")
 
 
 async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | None:
     """Task-first capture: Reply to an email."""
-    rec = TaskFirstRecorder("mail-reply-forward-delete", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("mail-reply-forward-delete", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1000)
@@ -840,12 +678,12 @@ async def record_mail_reply_forward_delete(context: BrowserContext) -> Path | No
 
     await rec.result(page, "The reply compose window opens ready for your response")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The reply compose window opens ready for your response")
 
 
 async def record_password_change(context: BrowserContext) -> Path | None:
     """Task-first capture: Update account password."""
-    rec = TaskFirstRecorder("password-change", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("password-change", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await page.wait_for_timeout(1500)
@@ -873,12 +711,12 @@ async def record_password_change(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Password change form is ready with current and new password fields")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Password change form is ready with current and new password fields")
 
 
 async def record_calendar_ical(context: BrowserContext) -> Path | None:
     """Task-first capture: View the calendar with events in week overview."""
-    rec = TaskFirstRecorder("calendar-ical", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("calendar-ical", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
     await page.wait_for_timeout(1000)
@@ -899,12 +737,12 @@ async def record_calendar_ical(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "The calendar provides a clear view of your weekly schedule")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "The calendar provides a clear view of your weekly schedule")
 
 
 async def record_contacts_import_export(context: BrowserContext) -> Path | None:
     """Task-first capture: Browse address books and subscription options."""
-    rec = TaskFirstRecorder("contacts-import-export", VIDEO_DIR, FPS, LOCALE)
+    rec = ScreenshotRecorder("contacts-import-export", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "contacts")
     await page.wait_for_timeout(1500)
@@ -929,20 +767,14 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Contacts can be organized across multiple address books")
     await page.wait_for_timeout(800)
-    return await rec.finish(page)
+    return await rec.capture(page, "Contacts can be organized across multiple address books")
 
 
 # ── Parallel Runner ──
 
 
-async def setup_authenticated_context(browser, video_dir) -> BrowserContext:
-    """Create a new browser context, log in, and return the authenticated context.
-
-    Uses the same browser context throughout, but sessionStorage is per-tab,
-    so we inject the auth token via add_init_script on new pages.
-    """
+async def setup_authenticated_context(browser, _video_dir=None) -> BrowserContext:
     ctx = await browser.new_context(
-        record_video_dir=str(video_dir),
         viewport={"width": 1280, "height": 800},
         locale="en-US",
         ignore_https_errors=True,
@@ -968,11 +800,9 @@ async def setup_authenticated_context(browser, video_dir) -> BrowserContext:
 
 # ── Main ──
 
-
-async def main(workers: int = 1):
+async def main():
     clean_dirs()
 
-    # Verify login works before starting captures
     async with async_playwright() as p:
         verify_browser = await p.chromium.launch(
             headless=True,
@@ -1018,7 +848,7 @@ async def main(workers: int = 1):
 
     start_time = time.time()
     results = []
-    worker_script = Path(__file__).parent / "run_single_workflow.py"
+    worker_script = Path(__file__).parent / "run_single_screenshot.py"
 
     for name, fn_name in workflows:
         print(f"\n── {name} ──")
@@ -1032,50 +862,35 @@ async def main(workers: int = 1):
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.STDOUT,
         )
-        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=300)
+        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=120)
         elapsed = time.time() - wf_start
         output = stdout.decode("utf-8", errors="replace")
         print(output, end="")
 
-        webp_path = VIDEO_DIR / f"{name}.webp"
-        if webp_path.exists():
-            shutil.copy2(str(webp_path), str(ASSETS_DIR / webp_path.name))
-            meta_path = VIDEO_DIR / f"{name}_metadata.json"
+        png_path = SCREENSHOT_DIR / f"{name}.png"
+        if png_path.exists():
+            shutil.copy2(str(png_path), str(ASSETS_DIR / png_path.name))
+            meta_path = SCREENSHOT_DIR / f"{name}_metadata.json"
             if meta_path.exists():
                 meta = json.loads(meta_path.read_text())
-                print(
-                    f"  ✓  {webp_path.name} — "
-                    f"{meta.get('annotated_frames', '?')} frames "
-                    f"({elapsed:.1f}s)"
-                )
-                results.append(
-                    (name, True, meta.get("annotated_frames", 0), None, elapsed)
-                )
+                size_kb = meta.get("png_size_kb", png_path.stat().st_size // 1024)
+                print(f"  ✓  {png_path.name} — {size_kb}KB ({elapsed:.1f}s)")
+                results.append((name, True, elapsed))
             else:
-                print(f"  ✓  {webp_path.name} ({elapsed:.1f}s)")
-                results.append((name, True, 0, None, elapsed))
+                print(f"  ✓  {png_path.name} ({elapsed:.1f}s)")
+                results.append((name, True, elapsed))
         else:
             print(f"  ✗  Failed ({elapsed:.1f}s)")
-            results.append((name, False, 0, None, elapsed))
+            results.append((name, False, elapsed))
 
     print("\n── Results ──")
-    for name, ok, frames, _error, duration in results:
+    for name, ok, duration in results:
         mark = "✓" if ok else "✗"
-        print(f"  {mark}  {name}: {frames} frames ({duration:.1f}s)")
-    total_ok = sum(1 for _, ok, _, _, _ in results if ok)
+        print(f"  {mark}  {name} ({duration:.1f}s)")
+    total_ok = sum(1 for _, ok, _ in results if ok)
     print(f"\n  {total_ok}/{len(results)} succeeded")
-
-    elapsed = time.time() - start_time
-    print(f"\n  Total time: {elapsed:.1f}s ({workers} worker{'s' if workers != 1 else ''})")
+    print(f"\n  Total time: {time.time() - start_time:.1f}s")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Task-first SOGo capture pipeline")
-    parser.add_argument(
-        "--workers",
-        type=int,
-        default=1,
-        help="Number of parallel workers (default: 1 = sequential)",
-    )
-    args = parser.parse_args()
-    asyncio.run(main(workers=args.workers))
+    asyncio.run(main())

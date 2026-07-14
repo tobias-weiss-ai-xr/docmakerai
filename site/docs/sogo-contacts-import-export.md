@@ -27,7 +27,7 @@ In the sidebar, click **Contacts** to open the address book.
 
 Click the **Actions** menu button (often a downward arrow or three dots) near the top of the contact list.
 
-![Contacts import/export menu in SOGo 5](./assets/contacts-import-export.webp)
+![Contacts import/export menu in SOGo 5](./assets/contacts-import-export.png)
 
 ### Step 3: Export Contacts
 

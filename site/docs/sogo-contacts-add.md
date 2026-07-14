@@ -36,7 +36,7 @@ Click the **+** (plus) button to add a new contact.
 
 A blank contact form will appear.
 
-![Step 2: Add New Contact](./assets/contacts-add.webp)
+![Step 2: Add New Contact](./assets/contacts-add.png)
 
 ### Step 3: Enter Contact Information
 
@@ -216,7 +216,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**contacts-add.webp:** This 3.5-second animated GIF shows adding a contact in SOGo 5's address book interface.
+**contacts-add.png:** Screenshot of adding a contact in SOGo 5's address book interface.
 
 - **Frame 1 (0-1.7s):** Contacts module view showing existing contacts (address book list on left, contact items in main view)
 - **Frame 2 (1.7-3.5s):** "+" button clicked (highlighted), blank contact form appears with fields for First Name, Last Name, Email, Phone, Company, Job Title

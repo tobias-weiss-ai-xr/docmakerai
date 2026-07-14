@@ -24,7 +24,7 @@ Learn how to modify event details or remove events from your SOGo 5 calendar.
 
 Click on any event in the calendar to open its details.
 
-![Editing and deleting a calendar event](./assets/calendar-edit-delete.webp)
+![Editing and deleting a calendar event](./assets/calendar-edit-delete.png)
 
 ### Step 2: Modify Event Details
 

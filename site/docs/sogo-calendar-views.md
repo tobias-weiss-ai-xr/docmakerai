@@ -27,7 +27,7 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 
 The calendar opens in **Week view** by default. Use the view switcher buttons in the top toolbar to change between available views.
 
-![Switching between Day, Week, and Month views in SOGo 5 calendar](./assets/calendar-views.webp)
+![Switching between Day, Week, and Month views in SOGo 5 calendar](./assets/calendar-views.png)
 
 Available views:
 

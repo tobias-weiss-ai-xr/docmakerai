@@ -27,7 +27,7 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 
 Click the **Settings** gear icon in the calendar toolbar.
 
-![Calendar settings and iCal export in SOGo 5](./assets/calendar-ical.webp)
+![Calendar settings and iCal export in SOGo 5](./assets/calendar-ical.png)
 
 ### Step 3: Export Your Calendar
 

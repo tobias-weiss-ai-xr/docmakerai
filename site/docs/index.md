@@ -34,6 +34,10 @@ Every tutorial in this guide is built from real, step-by-step screen captures �
 | ⚙️ **Preferences** | Customize your profile, change passwords, set vacation replies | 4 |
 | 🔍 **Advanced** | Delegation, tasks, resource booking, and global search | 4 |
 
+## Help Us Improve
+
+Every page has a **voting widget** at the bottom — click **🔥 Hot** if the page helped you, or **💩 Slop** if it needs work. Votes are public on GitHub Discussions, so we can see exactly which pages need attention. Your votes directly shape our documentation priorities.
+
 ## Jump Right In
 
 - **New to SOGo?** Start with [Getting Started](./sogo-login) to learn the interface.
