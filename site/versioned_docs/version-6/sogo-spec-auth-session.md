@@ -1,0 +1,133 @@
+---
+title: "Auth Session — Spec-Based Guide"
+description: "Spec-based guide covering SOGo authentication, session reuse, and logout workflows for the capture pipeline."
+sidebar_label: "Auth Session Specification Guide"
+---
+
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO title="Auth Session — Spec-Based Guide" description="Spec-based guide covering SOGo authentication, session reuse, and logout workflows for the capture pipeline." keywords="SOGo 6, login, logout, session, authentication, spec" />
+
+# SOGo Authentication and Sessions
+
+Manage SOGo demo authentication and session lifecycle for the capture pipeline.
+The auth-session domain establishes an authenticated browser context that all
+subsequent workflow captures reuse via Playwright storage state.
+
+## Prerequisites
+
+- The environment variables `SOGO_URL`, `SOGO_USERNAME`, and `SOGO_PASSWORD` are set
+- The SOGo login page has loaded
+- You are logged into SOGo 6
+
+## Step-by-Step Instructions
+
+### Login Flow
+
+The capture pipeline will authenticate against the SOGo demo instance using
+credentials from environment variables before any workflow capture begins.
+
+#### Step 1: Navigate to `SOGO_URL` and submits the credential form
+
+The system navigates to `SOGO_URL` and submits the credential form
+
+**Expected result:**
+
+- the browser context will contain a valid authenticated session
+- the session storage state will be extractable for reuse by workflow contexts
+
+#### Step 2: Fill the username field, password field, and toggles the "remember me" switch
+
+The system fills the username field, password field, and toggles the "remember me" switch
+
+**Expected result:**
+
+- the submit button will be clicked
+- a 5000ms wait will follow to allow session establishment
+
+#### Step 3: Start
+
+The system starts
+
+**Expected result:**
+
+- the default URL will be `https://demov6.sogo.nu/SOGo/`
+- the default username and password will be `demo`
+
+### Session Reuse
+
+The capture pipeline will establish a single authenticated session and reuse
+its storage state across all workflow capture contexts.
+
+#### Step 1: Create a new browser context for a workflow capture
+
+The system creates a new browser context for a workflow capture
+
+**Expected result:**
+
+- the new context will be initialized with the login context's storage state
+- the workflow will NOT need to re-authenticate
+
+#### Step 2: The login context is no longer needed
+
+The login context is no longer needed
+
+**Expected result:**
+
+- the login context will be closed
+- no video recording will occur during login
+
+### Logout Capture
+
+The capture pipeline will provide a logout workflow that records the user
+signing out of the SOGo session.
+
+#### Step 1: The logout workflow runs
+
+The logout workflow runs
+
+**Expected result:**
+
+- the workflow will navigate to the logout trigger
+- the transition to the login screen will be captured as annotated frames
+
+## Implementation Reference
+
+Source: `capture/run_captures.py` — `login()`, `record_logout()`
+
+## Appendix: Scenario Reference
+
+| Scenario: Description | Precondition | Action | Expected Result |
+|---|---|---|---|
+| Successful login with valid credentials | the environment variables `SOGO_URL`, `SOGO_USERNAME`, and `SOGO_PASSWORD` are set | the login function navigates to `SOGO_URL` and submits the credential form | the browser context will contain a valid authenticated session |
+| Login form interaction | the SOGo login page has loaded | the login function fills the username field, password field, and toggles the "remember me" switch | the submit button will be clicked |
+| Default credentials | no environment variables are set | the pipeline starts | the default URL will be `https://demov6.sogo.nu/SOGo/` |
+| Shared storage state | a successful login has occurred in a dedicated login context | the pipeline creates a new browser context for a workflow capture | the new context will be initialized with the login context's storage state |
+| Login context cleanup | the storage state has been extracted from the login context | the login context is no longer needed | the login context will be closed |
+| Logout workflow recording | an authenticated browser context with video recording enabled | the logout workflow runs | the workflow will navigate to the logout trigger |
+## Accessibility
+
+### Keyboard Navigation
+
+This application supports keyboard navigation. No mouse required for completing this task.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|--------------------------------------|------------------------------|
+| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| | Select/activate | `Enter` or `Space` | Activate button or link |
+| | Cancel/close | `Escape` | Cancel current action |
+| | Navigate lists | `Arrow keys` | Move through items |
+
+**Screen Reader Navigation Order:**
+1. Sidebar navigation → `Tab` to enter
+2. Module content → `Arrow keys` to navigate
+3. Action buttons → `Space` or `Enter` to activate
+4. Forms → `Tab` between fields, arrows for dropdowns
+
+### High Contrast Mode
+
+SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
