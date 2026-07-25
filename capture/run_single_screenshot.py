@@ -1,8 +1,8 @@
 """Run a single screenshot workflow in isolation (separate process)."""
-import sys
+import asyncio
 import json
 import os
-import asyncio
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
