@@ -165,14 +165,14 @@ class TestAnnotateFrames:
                 "time_s": 0.0,
                 "step_label": "Start",
                 "step_number": 1,
-                "highlights": [],
+                "highlights": [{"type": "circle", "x": 10, "y": 10, "width": 30, "height": 30}],
             },
             {
                 "frame_idx": 1,
                 "time_s": 1.0,
                 "step_label": "End",
                 "step_number": 2,
-                "highlights": [],
+                "highlights": [{"type": "circle", "x": 20, "y": 20, "width": 30, "height": 30}],
             },
         ]
         annotated_dir = tmp_path / "annotated"
@@ -204,7 +204,7 @@ class TestAnnotateFrames:
                 "time_s": float(i),
                 "step_label": "S",
                 "step_number": 1,
-                "highlights": [],
+                "highlights": [{"type": "circle", "x": 10, "y": 10, "width": 30, "height": 30}],
             }
             for i in range(3)
         ]
@@ -220,7 +220,7 @@ class TestAnnotateFrames:
         raw_frames = [tmp_path / "f_0001.png"]
         raw_frames[0].write_text("fake-png")
         mapping = [
-            {"frame_idx": 0, "time_s": 0.0, "step_label": "S", "step_number": 1, "highlights": []},
+            {"frame_idx": 0, "time_s": 0.0, "step_label": "S", "step_number": 1, "highlights": [{"type": "circle", "x": 10, "y": 10, "width": 30, "height": 30}]},
             {"frame_idx": 1, "time_s": 1.0, "step_label": "T", "step_number": 2, "highlights": []},
         ]
         annotated_dir = tmp_path / "annotated"
@@ -245,15 +245,12 @@ class TestAssembleWebP:
             output_path.write_text("x" * 200)
             assemble_webp(frame_paths, output_path, fps=12, quality=90)
 
-        assert mock_run.call_count == 3
+        assert mock_run.call_count == 1
 
         first_args = mock_run.call_args_list[0][0][0]
         assert "ffmpeg" in first_args[0]
-        assert "drawtext" in str(first_args)
-
-        last_args = mock_run.call_args_list[-1][0][0]
-        assert "-framerate" in last_args
-        assert "12" in last_args
+        assert "-framerate" in first_args
+        assert "12" in first_args
 
     def test_keep_frames_preserves_frames(self, tmp_path: Path):
         frame_paths = [tmp_path / f"keep_{i}.png" for i in range(2)]
