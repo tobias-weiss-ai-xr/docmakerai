@@ -13,10 +13,11 @@ Usage:
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import json
-import sys
 import os
 import shutil
+import sys
 import time
 from pathlib import Path
 
@@ -61,10 +62,8 @@ async def login(page, context: BrowserContext | None = None) -> None:
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}/en/{url_suffix}" if url_suffix else SOGO_URL
     await page.goto(url, wait_until="domcontentloaded", timeout=30000)
-    try:
+    with contextlib.suppress(Exception):
         await page.wait_for_selector("#app-container, .app-container, main", timeout=8000)
-    except Exception:
-        pass
     await page.wait_for_timeout(wait_ms)
 
 
@@ -80,7 +79,7 @@ async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
     else:
         await page.goto(SOGO_URL + "/en/u/0/INBOX", wait_until="domcontentloaded", timeout=30000)
         await page.wait_for_timeout(3000)
-    
+
     tab_labels = {
         "calendar": "Calendars",
         "mail": "Mail",
@@ -99,7 +98,9 @@ async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
         await goto(page, module, wait_ms)
 
 
-async def navigate_to_settings(page, menu_item: str, sub_tab: str | None = None, wait_ms: int = 3000) -> None:
+async def navigate_to_settings(
+    page, menu_item: str, sub_tab: str | None = None, wait_ms: int = 3000
+) -> None:
     """Open user settings via avatar dropdown in the header.
 
     Opens the avatar dropdown and clicks the given menu item
@@ -321,7 +322,9 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     await rec.context(page, "Set up an automatic out-of-office reply for your vacation")
     await page.wait_for_timeout(1000)
 
-    await rec.challenge(page, "Colleagues need to know you're away without manually telling everyone")
+    await rec.challenge(
+        page, "Colleagues need to know you're away without manually telling everyone"
+    )
     await navigate_to_settings(page, "Email", "Vacation")
     await page.wait_for_timeout(1000)
 
@@ -333,7 +336,9 @@ async def record_vacation(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Vacation auto-reply is enabled and will respond to incoming emails")
     await page.wait_for_timeout(800)
-    return await rec.capture(page, "Vacation auto-reply is enabled and will respond to incoming emails")
+    return await rec.capture(
+        page, "Vacation auto-reply is enabled and will respond to incoming emails"
+    )
 
 
 async def record_mail_signatures(context: BrowserContext) -> Path | None:
@@ -357,7 +362,7 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
         if await combo.is_visible(timeout=3000):
             await combo.click()
             await page.wait_for_timeout(500)
-            mail_option = page.locator(f'[role="option"]:has-text("below the mail")')
+            mail_option = page.locator('[role="option"]:has-text("below the mail")')
             if await mail_option.is_visible(timeout=2000):
                 await mail_option.click()
                 await page.wait_for_timeout(1000)
@@ -578,7 +583,9 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Events are displayed with their time slots in the calendar grid")
     await page.wait_for_timeout(800)
-    return await rec.capture(page, "Events are displayed with their time slots in the calendar grid")
+    return await rec.capture(
+        page, "Events are displayed with their time slots in the calendar grid"
+    )
 
 
 async def record_global_search(context: BrowserContext) -> Path | None:
@@ -711,7 +718,9 @@ async def record_password_change(context: BrowserContext) -> Path | None:
 
     await rec.result(page, "Password change form is ready with current and new password fields")
     await page.wait_for_timeout(800)
-    return await rec.capture(page, "Password change form is ready with current and new password fields")
+    return await rec.capture(
+        page, "Password change form is ready with current and new password fields"
+    )
 
 
 async def record_calendar_ical(context: BrowserContext) -> Path | None:

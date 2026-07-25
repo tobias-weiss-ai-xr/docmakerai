@@ -39,3 +39,36 @@ Always click the **green Save** button to confirm your changes. Preferences are 
 ## Logging Out
 
 Click the **power icon** ⏻ in the top-right corner of the toolbar to end your session. See [Logout](./sogo-logout) for details.
+
+## Accessibility
+
+### Keyboard Navigation
+
+SOGo 6 supports full keyboard navigation for login.
+
+| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+|--------|----------------------------------|---------------------------|
+| | Navigate to username field | `Tab` from address bar |
+| | Move to password field | `Tab` after username |
+| | Toggle "Remember me" | `Tab` to switch, `Space` to toggle |
+| | Submit login form | `Enter` on any field |
+| | Cancel login | `Escape` clears form |
+
+### Screen Reader Workflow
+
+1. After page loads, screen reader announces: "Login, heading level 1"
+2. `Tab` to username field — "Username, edit, blank"
+3. Enter your username
+4. `Tab` to password field — "Password, edit, blank"
+5. Enter your password
+6. `Tab` to "Remember me" switch — "Remember me, switch, off"
+7. `Space` to toggle if desired
+8. `Tab` to Login button — "Login, button"
+9. `Enter` to submit
+
+### High Contrast Mode
+
+SOGo 6 currently does not have built-in high contrast mode. Browser/OS-level alternatives:
+- **Windows:** `Win+Ctrl+C` toggles high contrast
+- **macOS:** System Preferences → Accessibility → Display → Increase contrast
+- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
