@@ -3,7 +3,6 @@ from pathlib import Path
 from PIL import Image
 
 from capture.annotate import (
-    CIRCLED_NUMBERS,
     _build_header_text,
     _draw_circle_highlight,
     _draw_header,
