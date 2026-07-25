@@ -6,10 +6,10 @@ sidebar_label: "Roadmap"
 
 # Roadmap — SOGo User Guide (5 & 6)
 
-**Status:** ✅ Published — 27 SOGo 5 docs, 36 visual assets (WebP + PNG), Docusaurus versioning for SOGo 5 + SOGo 6, CI/CD with self-hosted runners, 99.34% test coverage, SEO/GEO targeting, task-first capture flow with HTML5 video
+**Status:** ✅ Published — 27 SOGo 6 docs, 36 visual assets (WebP + PNG), Docusaurus versioning for SOGo 6 + SOGo 6, CI/CD with self-hosted runners, 99.34% test coverage, SEO/GEO targeting, task-first capture flow with HTML5 video
 
 **Demo Sites:**
-- SOGo 5: https://demo.sogo.nu/
+- SOGo 6: https://demov6.sogo.nu/
 - SOGo 6: https://demov6.sogo.nu/
 
 **Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~4-5 min (cached) / ~10 min (cold).
@@ -204,5 +204,5 @@ This documentation site supports keyboard navigation, screen readers, and high-c
 | Runner version | 2.335.1 |
 | SEO geo tags | geo.region=DE, geo.placename=Berlin, ICBM |
 | Asset size reduction | 54% (2.1MB → 976KB) |
-| Documentation pages | 27 SOGo 5 + 30 SOGo 6 docs |
+| Documentation pages | 27 SOGo 6 + 30 SOGo 6 docs |
 | Path structure | /sogo5/, /sogo6/ |
