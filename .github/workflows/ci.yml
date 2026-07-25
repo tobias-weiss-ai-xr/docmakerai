@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   statuses: write
+  actions: write
 
 concurrency:
   group: ci-${{ github.ref }}
