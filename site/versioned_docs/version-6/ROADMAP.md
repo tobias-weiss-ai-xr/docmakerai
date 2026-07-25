@@ -6,7 +6,7 @@ sidebar_label: "Roadmap"
 
 # Roadmap — SOGo User Guide (5 & 6)
 
-**Status:** ✅ Published — 27 SOGo 5 docs, 30 SOGo 6 docs, 36 visual assets (WebP + PNG), Docusaurus versioning for SOGo 5 + SOGo 6, CI/CD with self-hosted runners, 99.34% test coverage, SEO/GEO targeting, task-first capture flow with HTML5 video
+**Status:** ✅ Published — 27 SOGo 5 docs, 36 visual assets (WebP + PNG), Docusaurus versioning for SOGo 5 + SOGo 6, CI/CD with self-hosted runners, 99.34% test coverage, SEO/GEO targeting, task-first capture flow with HTML5 video
 
 **Demo Sites:**
 - SOGo 5: https://demo.sogo.nu/
@@ -14,11 +14,11 @@ sidebar_label: "Roadmap"
 
 **Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~4-5 min (cached) / ~10 min (cold).
 
+**Staging:** Deferred — own preview deployment system replacing Netlify (see Sprint 13).
+
 ---
 
 ## Completed ✅
-
-_All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash covers most cases)._
 
 ### Sprint 1: Spec Foundation (OpenSpec)
 - [x] Initialize `openspec/specs/` directory structure
@@ -88,12 +88,18 @@ _All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash co
 - [x] Set up performance budgets (LCP `&lt;2.5s`, total bundle `&lt;500KB` gzip)
 - [x] Create performance dashboard page at `site/docs/performance.md`
 
-### Sprint 10: Content Expansion
-- [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
-- [x] Convert task-first WebP captures to MP4 (3 videos optimized, 6-11% smaller)
-- [x] Add VideoFallback component and WebVTT captions (component created + 1 tutorial updated)
-- [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
-- [x] Full German translation of `/sogo5/de/`
+### Sprint 12: Spec-to-Docs Pipeline
+- [x] Auto-generate documentation pages from OpenSpec specs
+- [x] Tutorial structure from spec scenarios
+- [x] Asset embedding from capture metadata
+- [x] Docusaurus sidebar auto-generation
+- [x] `scripts/generate_docs_from_specs.py` (593 lines) shipped in commit `25bed47`
+
+### Sprint 14: Repo Hygiene
+- [x] Untrack `.github-pages-trace` debug artifact
+- [x] Remove empty `docs/` directory
+- [x] Sync ROADMAP with actual state
+- [x] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
 
 ### Sprint 11: SOGo Change Detection
 - [x] Create `capture/detect_changes.py` — perceptual-hash UI diff
@@ -103,26 +109,6 @@ _All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash co
 - [x] Nightly CI workflow (`.github/workflows/change-detection.yml`) posts GitHub Issue on drift
 - [x] `capture/run_captures.py` integrates drift check per workflow
 - [ ] DOM structure comparison (deferred — pHash covers most cases)
-
-### Sprint 12: Spec-to-Docs Pipeline
-- [x] Auto-generate documentation pages from OpenSpec specs
-- [x] Tutorial structure from spec scenarios
-- [x] Asset embedding from capture metadata
-- [x] Docusaurus sidebar auto-generation
-- [x] `scripts/generate_docs_from_specs.py` (593 lines) shipped in commit `25bed47`
-
-### Sprint 13: PR Preview Deployments
-- [x] Rewrite `preview-deploy.yml` — build with dynamic baseUrl, deploy to `gh-pages/preview/pr-<N>/`
-- [x] Preview URL commented on PRs (upserts existing comment instead of spamming)
-- [x] Teardown workflow (`preview-cleanup.yml`) — deletes preview directory on PR close
-- [x] Update workflow README with preview URL info
-- [x] Decide: gh-pages `/preview/` subdirectory (chosen over staging branch)
-
-### Sprint 14: Repo Hygiene
-- [x] Untrack `.github-pages-trace` debug artifact
-- [x] Remove empty `docs/` directory
-- [x] Sync ROADMAP with actual state
-- [x] Add CI guard for coverage threshold regression (>0.5% drop fails PR)
 
 ### Infrastructure
 - [x] Self-hosted runner on legions (192.168.42.42)
@@ -134,27 +120,29 @@ _All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash co
 
 ---
 
-## Known Issues
+## In Progress 🔵
 
-| Issue: | Status: | Notes: |
-| ----- | ------ | ----- |
-| Docusaurus build takes 30+ min on legions | ✅ Fixed | Node cache + self-hosted runner resolved |
-| Python PEP 668 blocks pip | ✅ Fixed | `--break-system-packages` added |
-| `@docusaurus/remark-plugin-content-docs` infinite loop | ✅ Fixed | Plugin removed, using manual PageSEO imports |
-| GitHub API intermittent connectivity | ⚠️ | `api.github.com` connection issues |
-| Deploy workflow hangs on German locale build | ✅ Fixed | Node.js version compatibility resolved |
+_None — all tracked sprints are either completed or planned._
 
 ---
 
-## Legend
+## Completed ✅
 
-| Icon: | Meaning: |
-| ---- | ------- |
-| ✅ | Completed |
-| 🔵 | In Progress |
-| 🟡 | Planned |
-| ❌ | Blocked |
-| ⚠️ | Degraded |
+_All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash covers most cases)._
+
+### Sprint 10: Content Expansion
+- [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)
+- [x] Convert task-first WebP captures to MP4 (3 videos optimized, 6-11% smaller)
+- [x] Add VideoFallback component and WebVTT captions (component created + 1 tutorial updated)
+- [x] Add PageSEO to key tutorial pages (compose, add contact, reply/forward, edit/delete)
+- [x] Full German translation of `/sogo5/de/`
+
+### Sprint 13: PR Preview Deployments
+- [x] Rewrite `preview-deploy.yml` — build with dynamic baseUrl, deploy to `gh-pages/preview/pr-<N>/`
+- [x] Preview URL commented on PRs (upserts existing comment instead of spamming)
+- [x] Teardown workflow (`preview-cleanup.yml`) — deletes preview directory on PR close
+- [x] Update workflow README with preview URL info
+- [x] Decide: gh-pages `/preview/` subdirectory (chosen over staging branch)
 
 ---
 
@@ -176,6 +164,28 @@ This documentation site supports keyboard navigation, screen readers, and high-c
 - Status icons include text alternatives (e.g., "✅ Completed" not just an emoji)
 - High-contrast mode is supported via system `prefers-contrast: more` media queries
 - Color is never the sole means of conveying information
+
+## Known Issues
+
+| Issue: | Status: | Notes: |
+| ----- | ------ | ----- |
+| Docusaurus build takes 30+ min on legions | 🔵 | Node 24 vs Node 20, npm cache cold |
+| Python PEP 668 blocks pip | ✅ Fixed | `--break-system-packages` added |
+| `@docusaurus/remark-plugin-content-docs` infinite loop | ✅ Fixed | Plugin removed, using manual PageSEO imports |
+| GitHub API intermittent connectivity | ⚠️ | `api.github.com` connection issues |
+| Deploy workflow hangs on German locale build | 🔵 | Suspected Node.js version mismatch |
+
+---
+
+## Legend
+
+| Icon: | Meaning: |
+| ---- | ------- |
+| ✅ | Completed |
+| 🔵 | In Progress |
+| 🟡 | Planned |
+| ❌ | Blocked |
+| ⚠️ | Degraded |
 
 ---
 
