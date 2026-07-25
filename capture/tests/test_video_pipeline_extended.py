@@ -220,7 +220,13 @@ class TestAnnotateFrames:
         raw_frames = [tmp_path / "f_0001.png"]
         raw_frames[0].write_text("fake-png")
         mapping = [
-            {"frame_idx": 0, "time_s": 0.0, "step_label": "S", "step_number": 1, "highlights": [{"type": "circle", "x": 10, "y": 10, "width": 30, "height": 30}]},
+            {
+                "frame_idx": 0,
+                "time_s": 0.0,
+                "step_label": "S",
+                "step_number": 1,
+                "highlights": [{"type": "circle", "x": 10, "y": 10, "width": 30, "height": 30}],
+            },
             {"frame_idx": 1, "time_s": 1.0, "step_label": "T", "step_number": 2, "highlights": []},
         ]
         annotated_dir = tmp_path / "annotated"
