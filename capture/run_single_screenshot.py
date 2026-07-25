@@ -1,4 +1,5 @@
 """Run a single screenshot workflow in isolation (separate process)."""
+
 import asyncio
 import json
 import os

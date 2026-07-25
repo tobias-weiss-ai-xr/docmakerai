@@ -14,7 +14,33 @@ Wenn Sie einen gemeinsam genutzten oder öffentlichen Computer verwenden, melden
 
 ## Fehlerbehebung
 
-| Problem | Ursache | Lösung |
+| Problem: Description | Ursache | Lösung |
 |---------|---------|--------|
 | Abmelde-Button nicht sichtbar | Schmaler Bildschirm | Fenster verbreitern oder Menü (☰) öffnen |
 | Sitzung nach Abmeldung noch aktiv | Zwischengespeicherte Seite | Browser-Cache leeren und alle SOGo-Tabs schließen |
+
+## Barrierefreiheit
+
+### Tastaturnavigation
+
+SOGo 5 unterstützt die vollständige Tastaturnavigation für die Abmeldung.
+
+| Aktion | Tastenkombination: Welche Taste drücken | Hinweise: Zusätzliche Informationen |
+|--------|----------------------------------|---------------------------|
+| | Zum Ein/Aus-Symbol navigieren | `Tab` zur oberen Symbolleiste |
+| | Abmeldung auslösen | `Eingabetaste` auf dem Ein/Aus-Symbol |
+| | Abmeldung bestätigen | `Eingabetaste` im Dialog (falls angezeigt) |
+
+### Screenreader-Workflow
+
+1. `Tab` durch die Symbolleiste, bis "Ein/Aus-Symbol, Schaltfläche" angesagt wird
+2. `Eingabetaste` zum Abmelden
+3. Screenreader kündigt an: "Abmeldung erfolgreich" oder Weiterleitung zur Anmeldeseite
+4. Sie werden zur Anmeldeseite zurückgeleitet, Sitzung beendet
+
+### Hochkontrastmodus
+
+SOGo 5 verfügt derzeit über keinen integrierten Hochkontrastmodus. Browser-/Betriebssystem-Alternativen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
