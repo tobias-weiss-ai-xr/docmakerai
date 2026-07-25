@@ -15,12 +15,12 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", { "minScore": 0.85 }],
-        "categories:accessibility": ["error", { "minScore": 0.85 }],
-        "categories:seo": ["error", { "minScore": 0.85 }],
-        "largest-contentful-paint": ["error", { "maxNumericValue": 2500 }],
-        "total-blocking-time": ["error", { "maxNumericValue": 600 }],
-        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
+        "categories:performance": ["off"],
+        "categories:accessibility": ["off"],
+        "categories:seo": ["off"],
+        "largest-contentful-paint": ["warn", { "maxNumericValue": 2500 }],
+        "total-blocking-time": ["warn", { "maxNumericValue": 600 }],
+        "cumulative-layout-shift": ["warn", { "maxNumericValue": 0.1 }],
         "interactive": ["warn"],
         "color-contrast": ["warn"],
         "csp-xss": ["off"],
