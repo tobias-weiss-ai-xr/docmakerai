@@ -59,3 +59,9 @@ capture/baselines/*.phash.json
 
 # Playwright MCP
 .playwright-mcp/
+
+# Build summary
+bundle-summary.txt
+
+# Code graph
+.codegraph/
