@@ -6,25 +6,103 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #1a5a3a;
+  --ifm-color-primary-dark: #164a30;
+  --ifm-color-primary-darker: #133f29;
+  --ifm-color-primary-darkest: #0f3321;
+  --ifm-color-primary-light: #247a4a;
+  --ifm-color-primary-lighter: #2a8552;
+  --ifm-color-primary-lightest: #3a9562;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-heading-color: #1a1a1a;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #3dd4af;
+  --ifm-color-primary-dark: #2fb896;
+  --ifm-color-primary-darker: #2aa889;
+  --ifm-color-primary-darkest: #228a70;
+  --ifm-color-primary-light: #57dac0;
+  --ifm-color-primary-lighter: #64dec6;
+  --ifm-color-primary-lightest: #87e6d4;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-font-color-base: #e0e0e0;
+  --ifm-heading-color: #ffffff;
+}
+
+/* Accessibility: Ensure proper color contrast */
+a {
+  color: var(--ifm-color-primary);
+}
+
+a:hover {
+  color: var(--ifm-color-primary-darker);
+}
+
+/* Ensure images have explicit dimensions for CLS prevention */
+img {
+  height: auto;
+  max-width: 100%;
+  /* Default intrinsic dimensions for SOGo screenshots (1280x800 scaled) */
+  width: 640px;
+  height: 400px;
+}
+
+/* Override for smaller inline images */
+img[src*="icon"], img[src*="badge"] {
+  width: auto;
+  height: auto;
+  max-width: 50px;
+}
+
+/* Documentation content images */
+.markdown img {
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Ensure tables have proper contrast */
+table {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid var(--ifm-toc-border-color);
+  padding: 8px;
+}
+
+/* Code blocks - ensure contrast */
+code {
+  color: var(--ifm-code-color);
+  background-color: var(--ifm-code-background);
+}
+
+pre code {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+
+/* Focus indicators for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px;
+  background: var(--ifm-color-primary);
+  color: white;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
 }
