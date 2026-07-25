@@ -70,7 +70,7 @@ class AccessibilityValidator:
             prev_level = level
 
         keyboard_section = re.search(
-            r'#+.*(keyboard|shortcut|Keyboard|Shortcut).*navigation',
+            r'#+.*(keyboard|shortcut|Tastatur).*navigation',
             content,
             re.IGNORECASE,
         )
@@ -97,7 +97,7 @@ class AccessibilityValidator:
                 'fixable': False
             })
 
-        accessibility_section = re.search(r'#+.*(accessibility|Accessibility)', content)
+        accessibility_section = re.search(r'#+.*(accessibility|Barrierefreiheit)', content, re.IGNORECASE)
         if not accessibility_section:
             file_issues.append({
                 'line': None,
@@ -111,7 +111,7 @@ class AccessibilityValidator:
             })
 
         high_contrast = re.search(
-            r'(high.?contrast|High.?Contrast|dark.?mode|Dark.?Mode)',
+            r'(high.?contrast|High.?Contrast|dark.?mode|Dark.?Mode|Hochkontrast|Dunkelmodus)',
             content,
             re.IGNORECASE,
         )

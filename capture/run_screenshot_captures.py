@@ -38,7 +38,6 @@ USERNAME = os.environ.get("SOGO_USERNAME", "sogo-tests1@example.org")
 PASSWORD = os.environ.get("SOGO_PASSWORD", "sogo")
 
 
-
 def clean_dirs() -> None:
     for d in [SCREENSHOT_DIR, ASSETS_DIR]:
         if d.exists():
@@ -58,6 +57,7 @@ async def login(page, context: BrowserContext | None = None) -> None:
     await page.fill("input#password", PASSWORD)
     await page.click("button[type='submit']")
     await page.wait_for_timeout(2000)
+
 
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}/en/{url_suffix}" if url_suffix else SOGO_URL
@@ -182,6 +182,8 @@ class ScreenshotRecorder:
                 indent=2,
             )
         return annotated_path
+
+
 # ── Workflow Runners (Task-First Narrative) ──
 
 
@@ -792,9 +794,7 @@ async def setup_authenticated_context(browser, _video_dir=None) -> BrowserContex
     login_page = await ctx.new_page()
     await login(login_page, ctx)
     # Capture the sessionStorage auth token
-    sogo_auth = await login_page.evaluate(
-        '() => sessionStorage.getItem("sogo_auth")'
-    )
+    sogo_auth = await login_page.evaluate('() => sessionStorage.getItem("sogo_auth")')
     # Set up init script to inject auth token into every new page
     if sogo_auth:
         escaped = json.dumps(sogo_auth)
@@ -808,6 +808,7 @@ async def setup_authenticated_context(browser, _video_dir=None) -> BrowserContex
 
 
 # ── Main ──
+
 
 async def main():
     clean_dirs()

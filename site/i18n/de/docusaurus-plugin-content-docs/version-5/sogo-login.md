@@ -35,3 +35,36 @@ Klicken Sie immer auf den **grünen Speichern-Button**, um Ihre Änderungen zu b
 ## Abmelden
 
 Klicken Sie auf das **Ein/Aus-Symbol** ⏻ in der oberen rechten Ecke der Symbolleiste, um Ihre Sitzung zu beenden. Details finden Sie unter [Abmelden](./sogo-logout).
+
+## Barrierefreiheit
+
+### Tastaturnavigation
+
+SOGo 5 unterstützt die vollständige Tastaturnavigation für die Anmeldung.
+
+| Aktion | Tastenkombination: Welche Taste drücken | Hinweise: Zusätzliche Informationen |
+|--------|----------------------------------|---------------------------|
+| | Zum Benutzernamen-Feld navigieren | `Tab` aus der Adressleiste |
+| | Zum Passwort-Feld wechseln | `Tab` nach dem Benutzernamen |
+| | "Angemeldet bleiben" umschalten | `Tab` zum Schalter, `Leertaste` zum Umschalten |
+| | Anmeldeformular absenden | `Eingabetaste` in einem beliebigen Feld |
+| | Anmeldung abbrechen | `Escape` leert das Formular |
+
+### Screenreader-Workflow
+
+1. Nach dem Laden der Seite kündigt der Screenreader an: "Anmeldung, Überschriftsebene 1"
+2. `Tab` zum Benutzernamen-Feld — "Benutzername, Bearbeiten, leer"
+3. Geben Sie Ihren Benutzernamen ein
+4. `Tab` zum Passwort-Feld — "Passwort, Bearbeiten, leer"
+5. Geben Sie Ihr Passwort ein
+6. `Tab` zum Schalter "Angemeldet bleiben" — "Angemeldet bleiben, Schalter, aus"
+7. `Leertaste` zum Umschalten (falls gewünscht)
+8. `Tab` zur Anmelde-Schaltfläche — "Anmelden, Schaltfläche"
+9. `Eingabetaste` zum Absenden
+
+### Hochkontrastmodus
+
+SOGo 5 verfügt derzeit über keinen integrierten Hochkontrastmodus. Browser-/Betriebssystem-Alternativen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
