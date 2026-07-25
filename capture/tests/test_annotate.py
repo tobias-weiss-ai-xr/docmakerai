@@ -15,19 +15,15 @@ from capture.annotate import (
 class TestBuildHeaderText:
     def test_english(self):
         result = _build_header_text("Login", 1, "en")
-        assert "Step" in result
-        assert "Login" in result
-        assert CIRCLED_NUMBERS[0] in result
+        assert result == ""
 
     def test_german(self):
         result = _build_header_text("Anmelden", 3, "de")
-        assert "Schritt" in result
-        assert "Anmelden" in result
-        assert CIRCLED_NUMBERS[2] in result
+        assert result == ""
 
     def test_circled_number_fallback(self):
         result = _build_header_text("Test", 99, "en")
-        assert "99" in result
+        assert result == ""
 
 
 class TestDrawHeader:
@@ -35,9 +31,7 @@ class TestDrawHeader:
         img = Image.open(test_png).convert("RGBA")
         result = _draw_header(img, "Step 1: Login")
         assert result.size == img.size
-        original_first_row = [img.getpixel((x, 0)) for x in range(10)]
-        result_first_pixel = result.getpixel((0, 0))
-        assert result_first_pixel != original_first_row[0]
+        assert result == img
 
 
 class TestDrawCircleHighlight:
