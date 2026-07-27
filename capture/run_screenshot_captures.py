@@ -45,18 +45,48 @@ def clean_dirs() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
 
+async def _env_intercept(route):
+    """Intercept /env to fix the API base URL for local dev.
+
+    The SOGo 6 UI tries to reach the API at ``http://sogo6-server:5000``
+    (Docker internal hostname), which is unreachable from the host browser.
+    We override it to ``http://localhost:5001``.
+
+    We **fulfill directly** instead of calling ``route.fetch()`` because
+    the Next.js dev server's ``/env`` endpoint sometimes returns an empty
+    response (socket hang up), which causes the whole navigation to fail.
+    """
+    import json
+    body = {
+        "REACT_APP_API_BASE_URL": "http://localhost:5001/api/user/v1",
+        "LOGIN_PREFILL_EMAIL": USERNAME,
+        "LOGIN_PREFILL_PASSWORD": PASSWORD,
+        "SOGO_URL": SOGO_URL,
+        "API_PORT": "5001",
+        "NEXT_PUBLIC_SOGO_URL": SOGO_URL,
+    }
+    await route.fulfill(
+        status=200,
+        content_type="application/json",
+        body=json.dumps(body),
+    )
+
+
 async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
+    # Intercept /env to fix the API base URL for local dev
+    await page.route("**/env", _env_intercept)
     await page.goto(SOGO_URL + "/en/auth/login", wait_until="domcontentloaded", timeout=30000)
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(3000)
     await page.fill("input#email", USERNAME)
     await page.wait_for_timeout(500)
     await page.click("button[type='submit']")
-    await page.wait_for_timeout(2000)
-    await page.wait_for_selector("input[type='password']", timeout=10000)
+    await page.wait_for_timeout(3000)
+    await page.wait_for_selector("input[type='password']", timeout=15000)
     await page.fill("input#password", PASSWORD)
+    await page.wait_for_timeout(500)
     await page.click("button[type='submit']")
-    await page.wait_for_timeout(2000)
+    await page.wait_for_timeout(5000)
 
 
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
