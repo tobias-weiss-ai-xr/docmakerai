@@ -23,7 +23,7 @@ Quickly find emails, contacts, calendar events, and more using SOGo 5's global s
 
 Click the **Search** button in the top toolbar or use the keyboard shortcut.
 
-![Opening and using global search in SOGo 5](./assets/global-search.webp)
+![Opening and using global search in SOGo 5](./assets/global-search.png)
 
 ### Step 2: Enter Your Query
 

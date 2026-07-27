@@ -26,7 +26,7 @@ In the sidebar navigation on the left, click **Contacts** to open the address bo
 
 Find the contact you want to edit and click on their name or entry.
 
-![Editing a contact's phone number and saving changes](./assets/contacts-edit-delete.webp)
+![Editing a contact's phone number and saving changes](./assets/contacts-edit-delete.png)
 
 ### Step 2: Modify Contact Details
 

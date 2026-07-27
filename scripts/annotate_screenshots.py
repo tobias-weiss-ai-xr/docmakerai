@@ -59,8 +59,14 @@ def draw_arrow(draw, x1, y1, x2, y2, color=RED, width=3):
 
 
 def draw_red_box(draw, x, y, w, h, color=RED, width=3):
-    """Draw a red bounding box."""
-    draw.rectangle([x, y, x + w, y + h], outline=color, width=width)
+    """Draw a red bounding box. Coordinates are clamped to image boundaries."""
+    x1 = max(0, min(x, x + w))
+    y1 = max(0, min(y, y + h))
+    x2 = max(0, x + w)
+    y2 = max(0, y + h)
+    if x2 - x1 < 10 or y2 - y1 < 10:
+        return  # too small, skip
+    draw.rectangle([x1, y1, x2, y2], outline=color, width=width)
 
 
 def annotate_logout(img, draw, sw, iw, ih):
