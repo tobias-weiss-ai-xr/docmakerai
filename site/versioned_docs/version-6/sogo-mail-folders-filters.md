@@ -224,7 +224,7 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 
 ### Visual Content Descriptions
 
-**folders-filters.webp:** This 4.5-second animated GIF shows creating mail folders and filters.
+**folders-filters.png:** This 4.5-second animated GIF shows creating mail folders and filters.
 
 - **Frame 1 (0-1.2s):** Mail view showing folder list on left
 - **Frame 2 (1.2-2.5s):** Folder creation dialog open, typing new folder name "Archive"
