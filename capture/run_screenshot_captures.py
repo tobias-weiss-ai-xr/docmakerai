@@ -72,43 +72,86 @@ async def _env_intercept(route):
     )
 
 
+async def resilient_goto(page, url: str, max_retries: int = 5,
+                         wait_selector: str | None = None) -> bool:
+    """Navigate with retry + exponential backoff for Next.js dev server flakiness.
+
+    ``next dev`` (Turbopack) sometimes returns empty responses when
+    mid-compilation. Retrying with backoff resolves this reliably.
+    """
+    for attempt in range(max_retries):
+        try:
+            await page.goto(url, wait_until="commit", timeout=20000)
+            await page.wait_for_timeout(1500)
+            if wait_selector:
+                try:
+                    await page.wait_for_selector(wait_selector, timeout=8000)
+                except Exception:
+                    wait_until = (attempt < max_retries - 1)
+                    if wait_until:
+                        print(f"    ⚠️  selector '{wait_selector}' not found, retrying...")
+                        await page.wait_for_timeout(2000 * (attempt + 1))
+                        continue
+                    return False
+            return True
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"    ⚠️  goto failed (attempt {attempt+1}): {e}")
+                await page.wait_for_timeout(2000 * (attempt + 1))
+            else:
+                print(f"    ❌ goto failed after {max_retries} attempts: {e}")
+                return False
+    return False
+
+
 async def login(page, context: BrowserContext | None = None) -> None:
     print("\n  Login...")
-    # Intercept /env to fix the API base URL for local dev
     await page.route("**/env", _env_intercept)
-    await page.goto(SOGO_URL + "/en/auth/login", wait_until="domcontentloaded", timeout=30000)
-    await page.wait_for_timeout(3000)
+
+    if not await resilient_goto(page, SOGO_URL + "/en/auth/login",
+                                wait_selector="input[type='email']"):
+        print("  ❌ Failed to load login page — is the UI running?")
+        return
+
     await page.fill("input#email", USERNAME)
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(300)
     await page.click("button[type='submit']")
-    await page.wait_for_timeout(3000)
-    await page.wait_for_selector("input[type='password']", timeout=15000)
+
+    if not await resilient_goto(page, SOGO_URL + "/en/auth/login/pwd?email=" + USERNAME,
+                                wait_selector="input[type='password']"):
+        print("  ❌ Failed to load password page")
+        return
+
     await page.fill("input#password", PASSWORD)
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(300)
     await page.click("button[type='submit']")
-    await page.wait_for_timeout(5000)
+
+    # Wait for SPA redirect after successful login.
+    # The API call returns 200, then React Router navigates to /u/{id}/INBOX.
+    print("    Waiting for redirect to inbox...")
+    for _ in range(20):
+        await page.wait_for_timeout(1000)
+        if "/u/" in page.url:
+            print(f"    ✅ Redirected: {page.url}")
+            return
+    # Fallback: navigate directly (page might already be mid-transition)
+    print(f"    ⚠️  No redirect after 20s (URL: {page.url}), navigating directly...")
+    await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
+                         wait_selector="main, [data-testid], .mail-list")
+    print(f"    Inbox: {page.url}")
 
 
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}/en/{url_suffix}" if url_suffix else SOGO_URL
-    await page.goto(url, wait_until="domcontentloaded", timeout=30000)
-    with contextlib.suppress(Exception):
-        await page.wait_for_selector("#app-container, .app-container, main", timeout=8000)
+    await resilient_goto(page, url, wait_selector="#app-container, .app-container, main")
     await page.wait_for_timeout(wait_ms)
 
 
 async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
     """Navigate to an SOGo 6 module via sidebar tab click (SPA navigation)."""
-    current_url = page.url
-    if current_url == "about:blank":
-        # Navigate to the server-rendered inbox route first; other module
-        # routes (e.g. /en/calendar) are client-side only and return 404
-        # when accessed directly.
-        await page.goto(SOGO_URL + "/en/u/0/INBOX", wait_until="domcontentloaded", timeout=30000)
-        await page.wait_for_timeout(5000)
-    else:
-        await page.goto(SOGO_URL + "/en/u/0/INBOX", wait_until="domcontentloaded", timeout=30000)
-        await page.wait_for_timeout(3000)
+    await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
+                         wait_selector="button[role='tab'], main, [data-testid]")
+    await page.wait_for_timeout(2000)
 
     tab_labels = {
         "calendar": "Calendars",

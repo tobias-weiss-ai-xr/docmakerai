@@ -27,12 +27,13 @@ capture-sogo6: ## Capture all SOGo 6 screenshots (requires local stack at localh
 	@echo "Running SOGo 6 screenshot capture pipeline..."
 	@echo "  Target: http://localhost:3000 (sogo6-stalwart-openldap-dockerized)"
 	@echo "  User:   lisa.mayer@example.org"
+	@echo "  Note:   Pre-warming Next.js routes to avoid empty responses..."
+	@for route in /en/auth/login /en/auth/login/pwd /en/u/0/INBOX /en/calendar; do \
+		curl -sf -o /dev/null "http://localhost:3000$$route" 2>/dev/null & \
+	done; \
+	wait
+	@echo "  Routes warmed."
 	@echo ""
-	@if [ -z "$$(docker compose -f /home/weissto_local/git/sogo/sogo-live/sogo6-stalwart-openldap-dockerized/docker-compose.yaml ps -q sogo6-ui 2>/dev/null)" ]; then \
-		echo "⚠️  Local SOGo 6 stack not running. Start it with:"; \
-		echo "   cd /home/weissto_local/git/sogo/sogo-live/sogo6-stalwart-openldap-dockerized && make start"; \
-		exit 1; \
-	fi
 	cd capture && SOGO_URL=http://localhost:3000 \
 		SOGO_USERNAME=lisa.mayer@example.org \
 		SOGO_PASSWORD='UniMarburg2026!' \
@@ -40,6 +41,12 @@ capture-sogo6: ## Capture all SOGo 6 screenshots (requires local stack at localh
 
 capture-sogo6-doc: ## Capture a single SOGo 6 doc (make capture-sogo6-doc DOC=calendar-create-event)
 	@echo "Running SOGo 6 capture for $(DOC)..."
+	@echo "  Pre-warming Next.js routes..."
+	@for route in /en/auth/login /en/auth/login/pwd /en/u/0/INBOX; do \
+		curl -sf -o /dev/null "http://localhost:3000$$route" 2>/dev/null & \
+	done; \
+	wait
+	@echo "  Routes warmed."
 	cd capture && SOGO_URL=http://localhost:3000 \
 		SOGO_USERNAME=lisa.mayer@example.org \
 		SOGO_PASSWORD='UniMarburg2026!' \
