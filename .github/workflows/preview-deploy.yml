@@ -17,7 +17,7 @@ concurrency:
 jobs:
   deploy-preview:
     name: Build & Deploy Preview
-    runs-on: [self-hosted, linux, preview]
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: site
