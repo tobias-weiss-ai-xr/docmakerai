@@ -1,4 +1,6 @@
 <p align="center">
+> **⚠️ Migrated from Codeberg → GitHub**: This repository has moved permanently to [GitHub](https://github.com/tobias-weiss-ai-xr/docmakerai). The Codeberg mirror is deprecated.
+
   <img src="site/static/img/teaser.svg" alt="DocMaker AI - Automated Screenshot Capture Pipeline" width="100%">
 </p>
 
