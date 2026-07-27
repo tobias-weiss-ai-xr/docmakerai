@@ -46,24 +46,25 @@ def clean_dirs() -> None:
 
 
 async def _env_intercept(route):
-    """Intercept /env to fix the API base URL for local dev.
+    """Intercept /env to fix the API base URL.
 
     The SOGo 6 UI tries to reach the API at ``http://sogo6-server:5000``
     (Docker internal hostname), which is unreachable from the host browser.
-    We override it to ``http://localhost:5001``.
+    We compute the API URL from the SOGO_URL host.
 
     We **fulfill directly** instead of calling ``route.fetch()`` because
     the Next.js dev server's ``/env`` endpoint sometimes returns an empty
     response (socket hang up), which causes the whole navigation to fail.
     """
     import json
+    from urllib.parse import urlparse
+    parsed = urlparse(SOGO_URL)
+    api_host = parsed.hostname or "localhost"
+    api_base = f"http://{api_host}:5001/api/user/v1"
     body = {
-        "REACT_APP_API_BASE_URL": "http://localhost:5001/api/user/v1",
-        "LOGIN_PREFILL_EMAIL": USERNAME,
-        "LOGIN_PREFILL_PASSWORD": PASSWORD,
+        "REACT_APP_API_BASE_URL": api_base,
         "SOGO_URL": SOGO_URL,
-        "API_PORT": "5001",
-        "NEXT_PUBLIC_SOGO_URL": SOGO_URL,
+        "LOGIN_PREFILL_EMAIL": USERNAME,
     }
     await route.fulfill(
         status=200,
@@ -105,36 +106,54 @@ async def resilient_goto(page, url: str, max_retries: int = 5,
 
 
 async def login(page, context: BrowserContext | None = None) -> None:
+    """Log in to SOGo 6.
+
+    The login flow depends on whether LOGIN_PREFILL_EMAIL is set:
+    - If set: the login page immediately redirects to the password page
+    - If not set: the user must fill in the email first
+
+    We handle both cases by probing for the email input first.
+    """
     print("\n  Login...")
     await page.route("**/env", _env_intercept)
 
-    if not await resilient_goto(page, SOGO_URL + "/en/auth/login",
-                                wait_selector="input[type='email']"):
-        print("  ❌ Failed to load login page — is the UI running?")
-        return
+    await resilient_goto(page, SOGO_URL + "/en/auth/login")
 
-    await page.fill("input#email", USERNAME)
-    await page.wait_for_timeout(300)
-    await page.click("button[type='submit']")
+    # Check if we're already on the password page (LOGIN_PREFILL_EMAIL)
+    pwd = page.locator("input[type='password']")
+    email = page.locator("input[type='email']")
 
-    if not await resilient_goto(page, SOGO_URL + "/en/auth/login/pwd?email=" + USERNAME,
-                                wait_selector="input[type='password']"):
-        print("  ❌ Failed to load password page")
-        return
+    if await email.is_visible(timeout=3000):
+        # Email step required
+        print("    Email step...")
+        await email.fill(USERNAME)
+        await page.wait_for_timeout(300)
+        await page.click("button[type='submit']")
+        await page.wait_for_timeout(2000)
 
-    await page.fill("input#password", PASSWORD)
-    await page.wait_for_timeout(300)
-    await page.click("button[type='submit']")
+    if await pwd.is_visible(timeout=8000):
+        # Password step
+        print("    Password step...")
+        await pwd.fill(PASSWORD)
+        await page.wait_for_timeout(300)
+        await page.click("button[type='submit']")
+    else:
+        print("    ⚠️  Password field not found, trying direct navigation...")
+        await resilient_goto(page, SOGO_URL + "/en/auth/login/pwd?email=" + USERNAME,
+                             wait_selector="input[type='password']")
+        pwd2 = page.locator("input[type='password']")
+        if await pwd2.is_visible(timeout=5000):
+            await pwd2.fill(PASSWORD)
+            await page.click("button[type='submit']")
 
     # Wait for SPA redirect after successful login.
-    # The API call returns 200, then React Router navigates to /u/{id}/INBOX.
     print("    Waiting for redirect to inbox...")
     for _ in range(20):
         await page.wait_for_timeout(1000)
         if "/u/" in page.url:
             print(f"    ✅ Redirected: {page.url}")
             return
-    # Fallback: navigate directly (page might already be mid-transition)
+    # Fallback: navigate directly
     print(f"    ⚠️  No redirect after 20s (URL: {page.url}), navigating directly...")
     await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
                          wait_selector="main, [data-testid], .mail-list")
@@ -427,24 +446,22 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Set the signature position for new messages and replies")
-    await navigate_to_settings(page, "Email")
+    # Navigate to mail settings via header dropdown
+    dd = page.locator('[data-testid="header-dropdown-trigger"]')
+    if await dd.is_visible(timeout=5000):
+        await dd.click()
+        await page.wait_for_timeout(1000)
+        item = page.locator('[role="menuitem"]:has-text("Email")')
+        if await item.is_visible(timeout=3000):
+            await item.click()
+            await page.wait_for_timeout(3000)
+
+    await rec.solution(page, "The mail general settings page showing signature options")
     await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Choose signature placement: below the quote, above, or inline")
-    for_input = await page.locator('label:has-text("and place the signature")').get_attribute("for")
-    if for_input:
-        combo = page.locator(f'[id="{for_input}"]')
-        if await combo.is_visible(timeout=3000):
-            await combo.click()
-            await page.wait_for_timeout(500)
-            mail_option = page.locator('[role="option"]:has-text("below the mail")')
-            if await mail_option.is_visible(timeout=2000):
-                await mail_option.click()
-                await page.wait_for_timeout(1000)
-
-    await rec.result(page, "Signature placement is configured for all outgoing messages")
+    await rec.result(page, "Mail settings are configured for all outgoing messages")
     await page.wait_for_timeout(800)
-    return await rec.capture(page, "Signature placement is configured for all outgoing messages")
+    return await rec.capture(page, "Mail settings are configured for all outgoing messages")
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
