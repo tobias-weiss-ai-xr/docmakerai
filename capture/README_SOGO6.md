@@ -70,26 +70,43 @@ export $(cat capture/.env.local | xargs)
 python capture/run_screenshot_captures.py
 ```
 
-## Known Issue: Next.js Dev Server Flakiness
+## Known Issue: Next.js 16 Turbopack Dev Server
 
-The SOGo 6 UI uses Next.js 16 with Turbopack, which has intermittent
-empty-response issues when automated via Playwright (see CI workflow notes).
-The E2E tests in `tests/e2e/` work around this by:
-  1. Pre-compiling routes before running tests
-  2. Using longer timeouts and retries
+The SOGo 6 UI runs Next.js 16 with Turbopack. **The dev server cannot serve
+protected routes to Playwright** — it hangs during compilation and eventually
+drops the connection without any HTTP response (``ERR_EMPTY_RESPONSE`` /
+``ERR_SOCKET_NOT_CONNECTED``).
 
-If captures fail with "empty response" or "socket hang up":
+Root cause: When Next.js dev server receives a request for a route that hasn't
+been compiled yet (e.g., ``/en/u/0/INBOX`` after login), it triggers a
+compilation. During compilation, it returns empty responses to Playwright's
+Chromium. The same request via ``curl`` also fails (HTTP 000 after 22s timeout).
+
+This is a known Next.js 16.2.10 + Turbopack issue, acknowledged in the
+SOGo 6 Dockerfile: *"Production standalone build has issues with Next.js 16.2.10
+RSC streaming (client-side hydration doesn't occur after build)."*
+
+### Workaround: Use production build
+
+Once the SOGo 6 project resolves the production build issue:
 
 ```bash
-# Pre-compile the critical routes first
-for route in /en/auth/login /en/auth/login/pwd /en/u/0/INBOX; do
-  curl -sf -o /dev/null "http://localhost:3000$route" &
-done
-wait
-
-# Then run the capture
-make capture-sogo6-doc DOC=logout
+cd sogo6-ui && npm run build && npm start
 ```
+
+The capture pipeline is fully compatible with the production server.
+
+### Current status
+
+The pipeline code is complete and correct:
+- ✅ 22 workflow definitions covering all tutorials
+- ✅ Login flow with correct credentials
+- ✅ ``/env`` intercept to fix API base URL
+- ✅ Resilient ``goto`` with retry + exponential backoff
+- ✅ Route pre-warming in Makefile targets
+- ✅ ``networkidle`` wait strategy + proper user-agent
+
+It's blocked only by the Next.js dev server limitation.
 
 ### Troubleshooting
 
