@@ -1,6 +1,6 @@
 ---
 title: "Create a Calendar Event"
-description: "Step-by-step guide to creating events in the SOGo 5 calendar"
+description: "Step-by-step guide to creating events in the SOGo 6 calendar"
 sidebar_label: "Create a Calendar Event"
 ---
 
@@ -8,19 +8,19 @@ import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO
   title="Create Calendar Events"
-  description="Learn to create, modify, and manage calendar events in SOGo 5"
+  description="Learn to create, modify, and manage calendar events in SOGo 6"
   keywords={["calendar", "events", "meetings", "appointments", "scheduling"]}
 />
 
 # Create a Calendar Event
 
-This tutorial walks you through creating a new event in SOGo 5's calendar,
+This tutorial walks you through creating a new event in SOGo 6's calendar,
 including setting time, adding attendees, and configuring reminders.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -38,7 +38,7 @@ Day, Week, Month, and Year views using the buttons in the top toolbar.
 
 There are three ways to create an event:
 
-| Method | Action: Create event using different methods |
+| Method | Description |
 |--------|--------------------------------------------------------------|
 | **Click the + button** | Click the **+** (plus) button in the top toolbar |
 | **Double-click** | Double-click on any time slot in the calendar grid |
@@ -46,7 +46,7 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
-![Creating a new event in the SOGo 5 calendar](./assets/calendar-create-event.webp)
+![Creating a new event in the SOGo 6 calendar](./assets/calendar-create-event.webp)
 
 ### Step 3: Enter Event Details
 
@@ -78,7 +78,7 @@ If you want to invite other people:
    - **Optional** — Welcome but not required
 5. Repeat for each additional attendee
 
-SOGo 5 will send an email invitation to each attendee when you save the event.
+SOGo 6 will send an email invitation to each attendee when you save the event.
 
 ### Step 5: Set a Reminder (Optional)
 
@@ -92,7 +92,7 @@ To receive a reminder before the event:
    - **1 day before**
    - **Custom** — enter your own time
 3. Choose the reminder method:
-   - **Display** — A popup notification in SOGo 5
+   - **Display** — A popup notification in SOGo 6
    - **Email** — An email sent to your address
 
 ### Step 6: Add a Description (Optional)
@@ -104,7 +104,7 @@ instructions for the event. This field supports plain text.
 
 For events that repeat, click the **Repeat** section and choose a pattern:
 
-| Pattern | Example: Recurrence pattern description |
+| Pattern | Example |
 |---------|------------------------------------------|
 | **Daily** | Standup meeting every day |
 | **Weekly** | Team meeting every Tuesday |
@@ -117,7 +117,7 @@ the end of the semester).
 
 ### Step 8: Save the Event
 
-Click **Save** or **OK** (depending on your SOGo 5 version) to create the event.
+Click **Save** or **OK** (depending on your SOGo 6 version) to create the event.
 
 The event will appear on your calendar. If you added attendees, they will
 receive an email invitation that they can accept or decline.
@@ -134,9 +134,9 @@ You have successfully created a calendar event. You can now:
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for calendar events.
+SOGo 6 supports full keyboard navigation for calendar events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
 | | New event | `e` | Opens event dialog |
@@ -219,7 +219,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Event dialog, Title field" | Dialog opened, focus on title | Enter event details |
 | "Title is invalid" | Empty or too short title | Enter a proper title |
@@ -237,7 +237,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**calendar-create-event.webp:** This 6-second animated GIF shows creating a calendar event in SOGo 5's week view.
+**calendar-create-event.webp:** This 6-second animated GIF shows creating a calendar event in SOGo 6's week view.
 
 - **Frame 1 (0-1.2s):** Calendar grid in week view with Monday 10:00 highlighted (focus ring)
 - **Frame 2 (1.2-2.4s):** Event dialog opens from double-click, cursor in Title field
@@ -252,7 +252,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### High Contrast Mode
 
-SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-vision users:
+SOGo 6 supports theme customization (light/dark mode) via user preferences. Workarounds for low-vision users:
 
 **Browser/OS-Level High Contrast:**
 1. **Windows:** `Win+Ctrl+C` toggles high contrast → Settings → Ease of Access → High Contrast

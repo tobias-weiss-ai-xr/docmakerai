@@ -29,7 +29,7 @@ On shared or public computers, always log out when you're done. Don't just close
 
 SOGo 6 supports full keyboard navigation for logout.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Navigate to power icon | `Tab` to top toolbar |
 | | Activate logout | `Enter` on power icon |

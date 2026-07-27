@@ -70,6 +70,13 @@
         "sogo-resource-booking",
         "sogo-global-search"
       ]
+    },
+    {
+      "type": "category",
+      "label": "📊 Meta",
+      "items": [
+        "ROADMAP"
+      ]
     }
   ]
 }

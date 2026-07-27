@@ -1,12 +1,12 @@
 ---
 title: "Mail — Folder Management"
-description: "Organize your emails with folders in SOGo 5"
+description: "Organize your emails with folders in SOGo 6"
 sidebar_label: "Folder Management"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail — Folder Management" description="Step-by-step tutorial to organize your emails with folders in SOGo 5" keywords={["folder management", "organize", "inbox", "mail folders", "email organization"]} />
+<PageSEO title="Mail — Folder Management" description="Step-by-step tutorial to organize your emails with folders in SOGo 6" keywords={["folder management", "organize", "inbox", "mail folders", "email organization"]} />
 
 # Mail — Folder Management
 
@@ -14,8 +14,8 @@ Organize your emails using folders for archiving and easy access.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -75,9 +75,9 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for managing mail folders.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

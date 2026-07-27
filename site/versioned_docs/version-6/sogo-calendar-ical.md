@@ -1,12 +1,12 @@
 ---
 title: "Calendar — Import & Export (iCal)"
-description: "Import and export calendars using iCal (.ics) format in SOGo 5"
+description: "Import and export calendars using iCal (.ics) format in SOGo 6"
 sidebar_label: "Import & Export (iCal)"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Calendar — Import & Export (iCal)" description="Step-by-step tutorial to import and export calendars using iCal (.ics) format in SOGo 5" keywords={["ical", "import", "export", "ics", "calendar sharing"]} />
+<PageSEO title="Calendar — Import & Export (iCal)" description="Step-by-step tutorial to import and export calendars using iCal (.ics) format in SOGo 6" keywords={["ical", "import", "export", "ics", "calendar sharing"]} />
 
 # Calendar — Import & Export (iCal)
 
@@ -14,8 +14,8 @@ Share your calendar with others by exporting it as an iCal file, or import calen
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -27,7 +27,7 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 
 Click the **Settings** gear icon in the calendar toolbar.
 
-![Calendar settings and iCal export in SOGo 5](./assets/calendar-ical.webp)
+![Calendar settings and iCal export in SOGo 6](./assets/calendar-ical.webp)
 
 ### Step 3: Export Your Calendar
 
@@ -79,9 +79,9 @@ You can share your calendar by providing the iCal URL:
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for importing and exporting calendars.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

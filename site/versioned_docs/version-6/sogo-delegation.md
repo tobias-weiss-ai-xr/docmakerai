@@ -6,7 +6,7 @@ sidebar_label: "Delegation & Permissions"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Delegation & Permissions" description="Step-by-step tutorial to share calendars and mail folders with specific permissions in SOGo 5" keywords={["delegation", "permissions", "access control", "sharing", "acl"]} />
+<PageSEO title="Delegation & Permissions" description="Step-by-step tutorial to share calendars and mail folders with specific permissions in SOGo 6" keywords={["delegation", "permissions", "access control", "sharing", "acl"]} />
 
 # Delegation & Permissions
 
@@ -14,8 +14,8 @@ Delegate access to your calendars, mail folders and other resources by assigning
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - At least two users with SOGo accounts (for delegation demonstration)
 - Permissions managed per-folder or per-calendar
 
@@ -143,9 +143,9 @@ Resource configuration typically requires administrator-level access to SOGo aut
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for delegation and permissions settings.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

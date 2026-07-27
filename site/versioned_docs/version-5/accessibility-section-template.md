@@ -1,11 +1,15 @@
+---
+unlisted: true
+---
+
 ## Accessibility
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation. No mouse required for completing this task.
+SOGo supports full keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
+| Action | Keyboard Shortcut | Notes |
+|--------|------------------|-------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through Mail, Calendar, Contacts |
 | | Open compose | `c` | Compose new email |
 | | New event | `e` | Create calendar event |
@@ -41,7 +45,7 @@ This section describes the workflow for screen reader users (JAWS, NVDA, VoiceOv
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | [Message 1] | [explanation] | [action to take] |
 | [Message 2] | [explanation] | [action to take] |

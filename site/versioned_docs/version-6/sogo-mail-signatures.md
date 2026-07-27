@@ -6,7 +6,7 @@ sidebar_label: "Mail Signatures & Identities"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail Signatures & Identities" description="Step-by-step tutorial to set up email signatures and multiple sender identities in SOGo 5" keywords={["email signatures", "identities", "sender", "professional", "configuration"]} />
+<PageSEO title="Mail Signatures & Identities" description="Step-by-step tutorial to set up email signatures and multiple sender identities in SOGo 6" keywords={["email signatures", "identities", "sender", "professional", "configuration"]} />
 
 # Mail Signatures & Identities
 
@@ -30,7 +30,7 @@ Click **Add Signature** or the **+** button.
 
 ### Step 3: Write Your Signature
 
-Enter your signature text. SOGo 5 supports **plain text** signatures.
+Enter your signature text. SOGo 6 supports **plain text** signatures.
 
 **Recommended signature format:**
 ```
@@ -45,7 +45,7 @@ Email: john.doe@company.com
 
 Select when the signature is inserted:
 
-| Option | Behavior: How signature is inserted |
+| Option | Behavior |
 |:-------|:----------|
 | **Append to new messages only** | Signature added to new emails, not replies |
 | **Append to all messages** | Added to both new and replied/forwarded messages |
@@ -69,12 +69,12 @@ When composing a message, you can insert a signature:
 
 ## Part 3: HTML Signatures (Advanced)
 
-SOGo 5 primarily supports plain text signatures. For rich signatures
+SOGo 6 primarily supports plain text signatures. For rich signatures
 with images or formatting:
 
 1. Create your HTML signature in an external editor
 2. Copy the formatted content (e.g., from Gmail or Outlook)
-3. Paste it into the signature field — SOGo 5 preserves basic formatting
+3. Paste it into the signature field — SOGo 6 preserves basic formatting
 
 :::tip
 **Best practice:** Keep signatures plain text for maximum
@@ -84,7 +84,7 @@ compatibility across email clients.
 ## Part 4: Managing Identities
 
 Identities let you send email as different addresses from the same
-SOGo 5 account.
+SOGo 6 account.
 
 ### Step 1: Open Settings
 
@@ -93,7 +93,7 @@ Go to **Settings** → **Mail** → **Identities**
 ### Step 2: View Your Identities
 
 You'll see your primary identity (the email address associated with
-your SOGo 5 account). Additional identities may appear if configured
+your SOGo 6 account). Additional identities may appear if configured
 by your administrator.
 
 ### Step 3: Add an Auxiliary Identity
@@ -142,9 +142,9 @@ manage multiple email addresses.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for managing signatures and identities.
+SOGo 6 supports full keyboard navigation for managing signatures and identities.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | Open Settings | `Alt+S` or `Tab` to gear icon, `Enter` | Top toolbar |
 | Navigate to Mail section | `Tab` through settings sidebar | Arrow keys to Mail option |
@@ -217,7 +217,7 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Mail Signatures, heading" | Signature settings page loaded | Proceed to add or edit signatures |
 | "Add Signature, button" | Create new signature | Press Enter to start |
@@ -230,7 +230,7 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 ### Visual Content Descriptions
 
-**mail-signatures.webp:** This 3-second animated GIF shows creating a new email signature in SOGo 5.
+**mail-signatures.webp:** This 3-second animated GIF shows creating a new email signature in SOGo 6.
 
 - **Frame 1 (0-1s):** Settings screen with Mail → Signatures selected, cursor hovering over "Add Signature" button
 - **Frame 2 (1-2s):** Signature editor open with name field filled ("Professional") and user typing signature text (name, title, contact info)
@@ -243,7 +243,7 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 ### High Contrast Mode
 
-SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-vision users:
+SOGo 6 supports theme customization (light/dark mode) via user preferences. Workarounds for low-vision users:
 
 **Browser/OS-Level High Contrast:**
 1. **Windows:** `Win+Ctrl+C` toggles high contrast → Settings → Ease of Access → High Contrast

@@ -1,22 +1,22 @@
 ---
 title: "Compose and Send an Email"
-description: "Learn how to write, format, and send emails in SOGo 5"
+description: "Learn how to write, format, and send emails in SOGo 6"
 sidebar_label: "Compose and Send an Email"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Compose and Send an Email" description="Step-by-step tutorial to write, format, and send emails in the SOGo 5 webmail interface" keywords={["compose email", "send email", "formatting", "attachments", "webmail"]} />
+<PageSEO title="Compose and Send an Email" description="Step-by-step tutorial to write, format, and send emails in the SOGo 6 webmail interface" keywords={["compose email", "send email", "formatting", "attachments", "webmail"]} />
 
 # Compose and Send an Email
 
 This tutorial covers the basics of composing and sending emails
-using SOGo 5's webmail interface.
+using SOGo 6's webmail interface.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -42,14 +42,14 @@ A new message composition window will open.
 
 Fill in the recipient fields:
 
-| Field | Description: What this field is for |
+| Field | Description |
 |-------|-------------|
 | **To** | Primary recipient(s). Separate multiple addresses with commas or semicolons |
 | **Cc** | Carbon copy — recipients receive a copy, visible to others |
 | **Bcc** | Blind carbon copy — recipients receive a copy, hidden from other recipients |
 
 **Tips:**
-- Start typing a name — SOGo 5 will suggest matching contacts from your address book
+- Start typing a name — SOGo 6 will suggest matching contacts from your address book
 - You can also enter full email addresses directly
 - Use **Cc** for people who need to be informed but are not directly responsible
 - Use **Bcc** for mailing lists or when recipients should not see each other
@@ -72,7 +72,7 @@ Examples:
 Type your message in the large text area. The toolbar above provides
 formatting options:
 
-| Button | Action: What this button does |
+| Button | Action |
 |--------|--------|
 | **B** | Bold |
 | *I* | Italic |
@@ -104,7 +104,7 @@ Once your message is complete:
 1. Review the recipient, subject, and content
 2. Click **Send**
 
-SOGo 5 will deliver the message. A copy is saved in your **Sent** folder.
+SOGo 6 will deliver the message. A copy is saved in your **Sent** folder.
 
 ### Step 8: Save as Draft (Optional)
 
@@ -130,7 +130,7 @@ If you are not ready to send:
 
 ## Conclusion
 
-You have successfully composed and sent an email in SOGo 5. You can now
+You have successfully composed and sent an email in SOGo 6. You can now
 manage your inbox, organize messages into folders, and set up email
 filters for automatic sorting.
 
@@ -138,9 +138,9 @@ filters for automatic sorting.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for composing and sending emails.
+SOGo 6 supports full keyboard navigation for composing and sending emails.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
 | | New message / Compose | `c` | Opens compose window |
@@ -209,7 +209,7 @@ Form fields in focus order:
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "To, editable combobox" | Recipient field ready | Type email or contact name |
 | "Subject, edit" | Subject line ready | Type subject |
@@ -228,7 +228,7 @@ Form fields in focus order:
 
 ### Visual Content Descriptions
 
-**mail-compose.webp:** This 4-second animated GIF shows composing and sending an email in SOGo 5.
+**mail-compose.webp:** This 4-second animated GIF shows composing and sending an email in SOGo 6.
 
 - **Frame 1 (0-1s):** Inbox view with Compose button highlighted in the toolbar
 - **Frame 2 (1-2s):** Compose window opens with cursor in To field, user types recipient email
@@ -242,7 +242,7 @@ Form fields in focus order:
 
 ### High Contrast Mode
 
-SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-vision users:
+SOGo 6 supports theme customization (light/dark mode) via user preferences. Workarounds for low-vision users:
 
 **Browser/OS-Level High Contrast:**
 1. **Windows:** `Win+Ctrl+C` toggles high contrast → Settings → Ease of Access → High Contrast

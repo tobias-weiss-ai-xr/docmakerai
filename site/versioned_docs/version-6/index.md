@@ -24,11 +24,9 @@ Welcome! This guide is here to help you get the most out of **SOGo Groupware** â
 
 Every tutorial in this guide is built from real, step-by-step screen captures â€” so you see exactly what to click, type, and expect at each step. Screenshots reflect the SOGo 6 interface.
 
-> **Note:** This documentation is adapted from SOGo 5 tutorials. Workflows are the same; UI differences will be documented as they're identified.
-
 ## What's Inside
 
-| Module: SOGo area | What you'll learn: Key topics covered | Tutorials: Number available |
+| Module | What you'll learn | Tutorials |
 |--------|-------------------|-----------|
 | ðŸ“§ **Mail** | Compose, read, organize, filter, and sign emails like a pro | 6 |
 | ðŸ“… **Calendar** | Create events, set recurring meetings, share calendars, and check availability | 7 |
@@ -40,6 +38,7 @@ Every tutorial in this guide is built from real, step-by-step screen captures â€
 
 - **New to SOGo?** Start with [Getting Started](./sogo-login) to learn the interface.
 - **Using SOGo 5?** Switch to the SOGo 5 version using the version dropdown above.
+- **New in SOGo 6?** SOGo 6 features a completely rebuilt modern interface (Next.js + Python/Flask) with improved performance, accessibility, theme customization, MFA/TOTP, and advanced calendar/contact sharing.
 - **Looking for something specific?** Browse the sidebar for a full list of tutorials.
 
 ## Getting Started
@@ -70,7 +69,7 @@ Every tutorial in this guide is built from real, step-by-step screen captures â€
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

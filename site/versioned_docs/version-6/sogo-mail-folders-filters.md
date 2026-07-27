@@ -6,7 +6,7 @@ sidebar_label: "Mail Folders & Filters"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail Folders & Filters" description="Step-by-step tutorial to organize your inbox with folders and automatic mail filters in SOGo 5" keywords={["mail folders", "filters", "sieve", "organize", "inbox management"]} />
+<PageSEO title="Mail Folders & Filters" description="Step-by-step tutorial to organize your inbox with folders and automatic mail filters in SOGo 6" keywords={["mail folders", "filters", "sieve", "organize", "inbox management"]} />
 
 # Mail Folders & Filters
 
@@ -70,7 +70,7 @@ Move important messages elsewhere first.
 
 ## Part 2: Automatic Filters (Sieve)
 
-SOGo 5 uses **Sieve** scripts for server-side mail filtering.
+SOGo 6 uses **Sieve** scripts for server-side mail filtering.
 Filters run when email arrives — before you see it in your inbox.
 
 ### Step 1: Open Filter Settings
@@ -151,7 +151,7 @@ Action:    Move to folder "Newsletters"
 ### Filters not working
 
 - Check that Sieve is enabled (`SOGoSieveScriptsEnabled = YES`)
-- Verify your Sieve server address in the SOGo 5 configuration
+- Verify your Sieve server address in the SOGo 6 configuration
 - Test with a simple filter first (e.g., move all mail from yourself)
 - Check server logs for Sieve compilation errors
 
@@ -170,9 +170,9 @@ Start with 2–3 filters for your most common email patterns.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for mail folders and filters.
+SOGo 6 supports full keyboard navigation for mail folders and filters.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate to Mail | `Alt+M`, `Tab` to Mail |
 | | Open folder management | Right-click folder, gear icon |
@@ -213,7 +213,7 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Mail, tree view" | Mail folder list | Navigate folders |
 | "New folder, button" | Create folder action | Press Enter, type name |
@@ -232,4 +232,4 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 
 ### High Contrast Mode
 
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

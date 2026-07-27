@@ -6,7 +6,7 @@ sidebar_label: "Vacation & Out-of-Office"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Vacation & Out-of-Office" description="Step-by-step tutorial to set up automatic email replies and calendar blocks for your absence in SOGo 5" keywords={["vacation", "out of office", "auto-reply", "absence", "automatic reply"]} />
+<PageSEO title="Vacation & Out-of-Office" description="Step-by-step tutorial to set up automatic email replies and calendar blocks for your absence in SOGo 6" keywords={["vacation", "out of office", "auto-reply", "absence", "automatic reply"]} />
 
 # Vacation & Out-of-Office
 
@@ -15,8 +15,8 @@ in the calendar when you're on vacation or out of office.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - Vacation/auto-reply must be enabled by your administrator
   (`SOGoVacationEnabled = YES`)
 
@@ -35,7 +35,7 @@ Toggle **Enable auto-reply** to **ON**.
 
 ### Step 3: Set the Date Range
 
-| Field | Description: What this field is for | Example: Example value |
+| Field | Description | Example |
 |:------|:------------|:--------|
 | **Start date** | When your absence begins | 2026-07-15 |
 | **End date** | When you return | 2026-07-28 |
@@ -104,7 +104,7 @@ checking free/busy.
 
 ### Send a Test Email
 
-1. Send an email to your SOGo 5 address from another account
+1. Send an email to your SOGo 6 address from another account
 2. You should receive the auto-reply within a few minutes
 3. The auto-reply only fires once per sender (per configured rule)
 
@@ -152,9 +152,9 @@ colleagues can see your availability at a glance.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for vacation settings.
+SOGo 6 supports full keyboard navigation for vacation settings.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Open settings | `Alt+M`, `Tab` to gear icon |
 | | Navigate settings | `Arrow keys` in settings menu |
@@ -214,7 +214,7 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Enable auto-reply, checked/unchecked" | Toggle state | Press Space to change |
 | "Start date, edit" | Date field ready | Enter date (YYYY-MM-DD) |
@@ -224,7 +224,7 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 
 ### Visual Content Descriptions
 
-**vacation.webp:** This 3.5-second animated GIF shows configuring vacation auto-reply in SOGo 5.
+**vacation.webp:** This 3.5-second animated GIF shows configuring vacation auto-reply in SOGo 6.
 
 - **Frame 1 (0-1.7s):** Vacation settings page with "Enable auto-reply" toggle in OFF state
 - **Frame 2 (1.7-3.5s):** Toggle switched to ON (appears blue), date range fields filled (Start date and End date), auto-reply message text area shows example message, reply options configured
@@ -236,7 +236,7 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 
 ### High Contrast Mode
 
-SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-vision users:
+SOGo 6 supports theme customization (light/dark mode) via user preferences. Workarounds for low-vision users:
 
 **Browser/OS-Level High Contrast:**
 1. **Windows:** `Win+Ctrl+C` toggles high contrast → Settings → Ease of Access → High Contrast

@@ -1,21 +1,21 @@
 ---
 title: "Edit & Delete Contacts"
-description: "Modify or remove contacts in the SOGo 5 address book"
+description: "Modify or remove contacts in the SOGo 6 address book"
 sidebar_label: "Edit & Delete Contacts"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Edit & Delete Contacts" description="Step-by-step tutorial to modify or remove contacts in the SOGo 5 address book" keywords={["contacts", "editing", "deleting", "address book", "management"]} />
+<PageSEO title="Edit & Delete Contacts" description="Step-by-step tutorial to modify or remove contacts in the SOGo 6 address book" keywords={["contacts", "editing", "deleting", "address book", "management"]} />
 
 # Edit & Delete Contacts
 
-Learn how to update contact information or remove contacts from your SOGo 5 address book.
+Learn how to update contact information or remove contacts from your SOGo 6 address book.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - At least one existing contact in your address book
 
 ## Part 1: Edit a Contact
@@ -78,9 +78,9 @@ Deletion is permanent. Once deleted, the contact cannot be recovered.
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for editing and deleting contacts.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |
