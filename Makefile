@@ -26,7 +26,7 @@ capture-all: ## Run all capture workflows
 capture-sogo6: ## Capture all SOGo 6 screenshots (requires local stack at localhost:3000)
 	@echo "Running SOGo 6 screenshot capture pipeline..."
 	@echo "  Target: http://localhost:3000 (sogo6-stalwart-openldap-dockerized)"
-	@echo "  User:   testuser@example.org"
+	@echo "  User:   lisa.mayer@example.org"
 	@echo ""
 	@if [ -z "$$(docker compose -f /home/weissto_local/git/sogo/sogo-live/sogo6-stalwart-openldap-dockerized/docker-compose.yaml ps -q sogo6-ui 2>/dev/null)" ]; then \
 		echo "⚠️  Local SOGo 6 stack not running. Start it with:"; \
@@ -34,15 +34,15 @@ capture-sogo6: ## Capture all SOGo 6 screenshots (requires local stack at localh
 		exit 1; \
 	fi
 	cd capture && SOGO_URL=http://localhost:3000 \
-		SOGO_USERNAME=testuser@example.org \
-		SOGO_PASSWORD=password123 \
+		SOGO_USERNAME=lisa.mayer@example.org \
+		SOGO_PASSWORD='UniMarburg2026!' \
 		python run_screenshot_captures.py
 
 capture-sogo6-doc: ## Capture a single SOGo 6 doc (make capture-sogo6-doc DOC=calendar-create-event)
 	@echo "Running SOGo 6 capture for $(DOC)..."
 	cd capture && SOGO_URL=http://localhost:3000 \
-		SOGO_USERNAME=testuser@example.org \
-		SOGO_PASSWORD=password123 \
+		SOGO_USERNAME=lisa.mayer@example.org \
+		SOGO_PASSWORD='UniMarburg2026!' \
 		python run_single_screenshot.py \
 		$$(pwd)/run_screenshot_captures.py record_$(DOC)
 

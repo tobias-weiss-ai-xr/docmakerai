@@ -70,17 +70,38 @@ export $(cat capture/.env.local | xargs)
 python capture/run_screenshot_captures.py
 ```
 
-## Troubleshooting
+## Known Issue: Next.js Dev Server Flakiness
+
+The SOGo 6 UI uses Next.js 16 with Turbopack, which has intermittent
+empty-response issues when automated via Playwright (see CI workflow notes).
+The E2E tests in `tests/e2e/` work around this by:
+  1. Pre-compiling routes before running tests
+  2. Using longer timeouts and retries
+
+If captures fail with "empty response" or "socket hang up":
+
+```bash
+# Pre-compile the critical routes first
+for route in /en/auth/login /en/auth/login/pwd /en/u/0/INBOX; do
+  curl -sf -o /dev/null "http://localhost:3000$route" &
+done
+wait
+
+# Then run the capture
+make capture-sogo6-doc DOC=logout
+```
+
+### Troubleshooting
 
 ### Blank/white screenshots
 - The SOGo 6 UI uses client-side rendering; ensure `wait_for_timeout` is long enough
-- Check the browser console for JS errors
+- Check the browser console for JS errors `SOGO_DEBUG=1`
 - The local stack may need `make init` to seed test data
 
 ### Login failures
 - Verify the stack is running: `docker compose ps`
 - Check credentials in `.env.local`
-- The two-step login (email → password) matches the SOGo 6 auth flow
+- Test API directly: `curl -X POST http://localhost:5001/api/user/v1/auth/login -H 'Content-Type: application/json' -d '{"username":"lisa.mayer@example.org","password":"UniMarburg2026!"}'`
 
 ### Missing UI elements
 - SOGo 6 UI selectors may change between versions
