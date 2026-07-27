@@ -1,21 +1,21 @@
 ---
 title: "Edit & Delete Calendar Events"
-description: "Modify or remove existing events in the SOGo 5 calendar"
+description: "Modify or remove existing events in the SOGo 6 calendar"
 sidebar_label: "Edit & Delete Events"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Edit & Delete Calendar Events" description="Step-by-step tutorial to modify or remove existing events in the SOGo 5 calendar" keywords={["calendar", "editing", "deleting", "events", "modification"]} />
+<PageSEO title="Edit & Delete Calendar Events" description="Step-by-step tutorial to modify or remove existing events in the SOGo 6 calendar" keywords={["calendar", "editing", "deleting", "events", "modification"]} />
 
 # Edit & Delete Calendar Events
 
-Learn how to modify event details or remove events from your SOGo 5 calendar.
+Learn how to modify event details or remove events from your SOGo 6 calendar.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - At least one existing event in your calendar
 
 ## Part 1: Edit an Existing Event
@@ -89,9 +89,9 @@ Deletion cannot be undone. Consider this before permanently removing events.
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for editing and deleting calendar events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

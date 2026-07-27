@@ -46,7 +46,7 @@ Click the **power icon** ⏻ in the top-right corner of the toolbar to end your 
 
 SOGo 6 supports full keyboard navigation for login.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Navigate to username field | `Tab` from address bar |
 | | Move to password field | `Tab` after username |

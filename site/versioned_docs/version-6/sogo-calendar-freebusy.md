@@ -6,7 +6,7 @@ sidebar_label: "Free/Busy Lookup"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Free/Busy Lookup" description="Step-by-step tutorial to check colleague availability before scheduling meetings in SOGo 5" keywords={["free busy", "availability", "scheduling", "meetings", "colleagues"]} />
+<PageSEO title="Free/Busy Lookup" description="Step-by-step tutorial to check colleague availability before scheduling meetings in SOGo 6" keywords={["free busy", "availability", "scheduling", "meetings", "colleagues"]} />
 
 # Free/Busy Lookup
 
@@ -15,9 +15,9 @@ meeting — directly from the event creation dialog.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
-- The colleague has a SOGo 5 account and has shared their free/busy info
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
+- The colleague has a SOGo 6 account and has shared their free/busy info
 
 ## Step-by-Step Instructions
 
@@ -60,7 +60,7 @@ The grid shows time slots for each person:
 ### Step 5: Find a Common Slot
 
 Look for a time when all attendees are green.
-SOGo 5 may suggest the next available slot automatically.
+SOGo 6 may suggest the next available slot automatically.
 
 ### Step 6: Confirm the Time
 
@@ -69,7 +69,7 @@ The event's start/end time updates to match.
 
 ## What Others See
 
-By default, SOGo 5 is configured so that other users can see:
+By default, SOGo 6 is configured so that other users can see:
 
 | Permission | What's Visible: What others can see |
 |:-----------|:----------------|
@@ -84,7 +84,7 @@ Your administrator can change default permission levels via the
 
 ### Colleague not showing up
 
-- Check they have a SOGo 5 account
+- Check they have a SOGo 6 account
 - They may not have free/busy sharing enabled
 - They might be in a different address book — try typing their full email
 
@@ -104,9 +104,9 @@ anyone in your organization who shares calendar availability.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for free/busy lookup features.
+SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Open Calendar module | `Alt+C` | From any module
 | | Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog
@@ -169,7 +169,7 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "New event dialog" | Event creation form is open | Begin filling in event details |
 | "Free busy grid, your calendar shown" | Availability view is active | Proceed to add colleagues |
@@ -182,7 +182,7 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 ### Visual Content Descriptions
 
-**[freebusy.webp]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 5.
+**[freebusy.webp]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 6.
 
 - **Frame 1 (0–1.0s):** User opens the Calendar module and clicks **+** to create a new event. The event creation dialog appears
 - **Frame 2 (1.0–2.5s):** User clicks the Attendees section and then clicks **Free/Busy** button. The free/busy time grid opens showing the user's own calendar with colored time slots
@@ -192,4 +192,4 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 ### High Contrast Mode
 
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

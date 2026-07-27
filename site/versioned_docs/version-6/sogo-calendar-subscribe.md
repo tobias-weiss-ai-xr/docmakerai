@@ -1,22 +1,22 @@
 ---
 title: "Subscribe to an iCal Feed"
-description: "Import external calendars (holidays, team calendars) into SOGo 5"
+description: "Import external calendars (holidays, team calendars) into SOGo 6"
 sidebar_label: "Subscribe to an iCal Feed"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Subscribe to an iCal Feed" description="Step-by-step tutorial to import external calendars into SOGo 5" keywords={["ical feed", "subscribe", "external calendar", "sync", "calendar subscription"]} />
+<PageSEO title="Subscribe to an iCal Feed" description="Step-by-step tutorial to import external calendars into SOGo 6" keywords={["ical feed", "subscribe", "external calendar", "sync", "calendar subscription"]} />
 
 # Subscribe to an iCal Feed
 
-Import external calendars into your SOGo 5 calendar — public holidays,
+Import external calendars into your SOGo 6 calendar — public holidays,
 team calendars, or any `.ics` feed available online.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - A URL to an iCal feed (`.ics` file or CalDAV endpoint)
 
 ## Step-by-Step Instructions
@@ -29,7 +29,7 @@ You need the web address (URL) of an iCal feed. Common examples:
 |:-------|:------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
-| Shared SOGo 5 calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
+| Shared SOGo 6 calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
 
 ### Step 2: Open Calendar Settings
 
@@ -107,23 +107,23 @@ The calendar is removed from your view. The source is unaffected.
 
 ### Events have wrong times
 
-- SOGo 5 converts all dates to your configured timezone
+- SOGo 6 converts all dates to your configured timezone
 - Check your timezone in **Settings** → **General** → **Timezone**
 - Some iCal feeds don't include timezone info — these default to UTC
 
 ## Conclusion
 
 iCal subscriptions let you overlay external calendars onto your
-SOGo 5 view — perfect for public holidays, team schedules, and
+SOGo 6 view — perfect for public holidays, team schedules, and
 third-party calendar feeds.
 
 ## Accessibility
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for subscribing to calendars.
+SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
 | | Open subscription dialog | `Ctrl+Shift+S` or gear icon |
@@ -167,7 +167,7 @@ SOGo 5 supports full keyboard navigation for subscribing to calendars.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Subscribe to calendar, dialog" | Subscription dialog open | Select calendar type |
 | "Calendar type, combo box" | Calendar format selector | Arrow to select type |
@@ -186,4 +186,4 @@ SOGo 5 supports full keyboard navigation for subscribing to calendars.
 
 ### High Contrast Mode
 
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

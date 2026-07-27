@@ -1,22 +1,22 @@
 ---
 title: "Share a Calendar"
-description: "Share your SOGo 5 calendar with colleagues and set permissions"
+description: "Share your SOGo 6 calendar with colleagues and set permissions"
 sidebar_label: "Share a Calendar"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Share a Calendar" description="Step-by-step tutorial to share your SOGo 5 calendar with colleagues and set permissions" keywords={["calendar sharing", "permissions", "collaboration", "delegation", "access control"]} />
+<PageSEO title="Share a Calendar" description="Step-by-step tutorial to share your SOGo 6 calendar with colleagues and set permissions" keywords={["calendar sharing", "permissions", "collaboration", "delegation", "access control"]} />
 
 # Share a Calendar
 
-This tutorial explains how to share your SOGo 5 calendar with other users
+This tutorial explains how to share your SOGo 6 calendar with other users
 and control what they can see or do.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - You have at least one calendar (e.g., the default "Personal" calendar)
 
 ## Step-by-Step Instructions
@@ -88,7 +88,7 @@ If you use a CalDAV client (Thunderbird, macOS Calendar, iOS):
    ```
    https://your-sogo-instance/SOGo/dav/your-username/calendar/personal/
    ```
-3. Enter your SOGo 5 credentials
+3. Enter your SOGo 6 credentials
 4. The calendar will sync automatically
 
 Shared calendars will appear under the same CalDAV endpoint for users
@@ -113,9 +113,9 @@ on the same page.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for calendar sharing features.
+SOGo 6 supports full keyboard navigation for calendar sharing features.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
 | | Open Calendar module | `Alt+C` | From any module
 | | Open calendar settings (gear) | `Tab` then `Enter` | Navigate to gear icon in toolbar
@@ -175,7 +175,7 @@ SOGo 5 supports full keyboard navigation for calendar sharing features.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Calendar, module heading" | Calendar list is loaded | Begin navigation to settings |
 | "Permissions tab, selected" | Sharing options are open | Proceed to add a user |
@@ -187,7 +187,7 @@ SOGo 5 supports full keyboard navigation for calendar sharing features.
 
 ### Visual Content Descriptions
 
-**[calendar-share.webp]:** Animated demonstration of sharing a calendar with a colleague in SOGo 5.
+**[calendar-share.webp]:** Animated demonstration of sharing a calendar with a colleague in SOGo 6.
 
 - **Frame 1 (0–1.5s):** User right-clicks the "Personal" calendar in the left sidebar and selects **Properties** from the context menu
 - **Frame 2 (1.5–3.5s):** Properties dialog opens to the Permissions tab. User clicks **Add User** and begins typing a colleague's name
@@ -197,4 +197,4 @@ SOGo 5 supports full keyboard navigation for calendar sharing features.
 
 ### High Contrast Mode
 
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

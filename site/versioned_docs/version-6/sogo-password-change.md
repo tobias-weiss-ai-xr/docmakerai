@@ -1,25 +1,25 @@
 ---
 title: "Password Change"
-description: "How to change your SOGo 5 password"
+description: "How to change your SOGo 6 password"
 sidebar_label: "Password Change"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Password Change" description="Step-by-step tutorial to change your SOGo 5 account password" keywords={["password change", "security", "account", "authentication", "credentials"]} />
+<PageSEO title="Password Change" description="Step-by-step tutorial to change your SOGo 6 account password" keywords={["password change", "security", "account", "authentication", "credentials"]} />
 
 # Password Change
 
-Update your SOGo 5 account password to keep your account secure.
+Update your SOGo 6 account password to keep your account secure.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Password Change Methods
 
-SOGo 5 password change depends on your organization's configuration:
+SOGo 6 password change depends on your organization's configuration:
 
 | Method: Description | Where to Use | Description |
 |--------|--------------|-------------|
@@ -69,9 +69,9 @@ If you cannot change your password due to an account lock, contact your administ
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for changing your password.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

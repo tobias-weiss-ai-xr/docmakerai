@@ -68,6 +68,13 @@
         "sogo-tasks",
         "sogo-resource-booking"
       ]
+    },
+    {
+      "type": "category",
+      "label": "📊 Meta",
+      "items": [
+        "ROADMAP"
+      ]
     }
   ]
 }

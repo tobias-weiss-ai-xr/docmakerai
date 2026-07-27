@@ -1,21 +1,21 @@
 ---
 title: "Global Search"
-description: "Search across all modules in SOGo 5"
+description: "Search across all modules in SOGo 6"
 sidebar_label: "Global Search"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Global Search" description="Step-by-step tutorial to search across all modules in SOGo 5" keywords={["global search", "search", "find", "modules", "quick access"]} />
+<PageSEO title="Global Search" description="Step-by-step tutorial to search across all modules in SOGo 6" keywords={["global search", "search", "find", "modules", "quick access"]} />
 
 # Global Search
 
-Quickly find emails, contacts, calendar events, and more using SOGo 5's global search feature.
+Quickly find emails, contacts, calendar events, and more using SOGo 6's global search feature.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -23,7 +23,7 @@ Quickly find emails, contacts, calendar events, and more using SOGo 5's global s
 
 Click the **Search** button in the top toolbar or use the keyboard shortcut.
 
-![Opening and using global search in SOGo 5](./assets/global-search.webp)
+![Opening and using global search in SOGo 6](./assets/global-search.webp)
 
 ### Step 2: Enter Your Query
 
@@ -68,9 +68,9 @@ Use **global search** to find items across all modules at once instead of search
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for using global search.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

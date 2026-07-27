@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Recurring Events & Alarms" description="Step-by-step tutorial to set up repeating events with email and display reminders in SOGo 5" keywords={["recurring events", "alarms", "reminders", "repeating", "notifications"]} />
+<PageSEO title="Recurring Events & Alarms" description="Step-by-step tutorial to set up repeating events with email and display reminders in SOGo 6" keywords={["recurring events", "alarms", "reminders", "repeating", "notifications"]} />
 
 # Recurring Events & Alarms
 
@@ -17,8 +17,8 @@ configuring reminders so you never miss them.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Part 1: Creating a Recurring Event
 
@@ -57,7 +57,7 @@ For **weekly** recurrence, you can select multiple days
 (e.g., Monday, Wednesday, Friday) by checking the boxes.
 :::
 
-![Configuring weekly recurrence in SOGo 5](./assets/calendar-recurring.webp)
+![Configuring weekly recurrence in SOGo 6](./assets/calendar-recurring.webp)
 
 ### Step 4: Set an End Date (Recommended)
 
@@ -96,7 +96,7 @@ A popup notification appears in your browser when the reminder fires.
   </TabItem>
   <TabItem value="email" label="Email">
 
-An email is sent to your SOGo 5 email address.
+An email is sent to your SOGo 6 email address.
 
 1. Select **Email** as the alarm type
 2. Choose the timing
@@ -138,7 +138,7 @@ Click **Add Alarm** to add additional reminders.
 
 1. Open the event dialog
 2. Set **Repeat** to **None**
-3. Save — SOGo 5 asks if you want to keep existing future events
+3. Save — SOGo 6 asks if you want to keep existing future events
 4. Choose **Delete all future events** or **Keep them as individual events**
 
 ## Troubleshooting
@@ -147,7 +147,7 @@ Click **Add Alarm** to add additional reminders.
 
 - Make sure you're editing a new or existing event in the **Calendar**
   module, not an invitation received via email
-- Some SOGo 5 themes hide the Repeat section behind a "More options" button
+- Some SOGo 6 themes hide the Repeat section behind a "More options" button
 
 ### Alarm not firing
 
@@ -157,7 +157,7 @@ Click **Add Alarm** to add additional reminders.
 
 ## Conclusion
 
-You have learned to create recurring events and set up alarms in SOGo 5.
+You have learned to create recurring events and set up alarms in SOGo 6.
 These features are essential for regular meetings, deadlines, and
 important dates.
 
@@ -165,9 +165,9 @@ important dates.
 
 ### Keyboard Navigation
 
-SOGo 5 supports full keyboard navigation for recurring events.
+SOGo 6 supports full keyboard navigation for recurring events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
 | | Create new event | `N` or `+` |
@@ -209,7 +209,7 @@ SOGo 5 supports full keyboard navigation for recurring events.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Recurrence, check box" | Recurrence available | Press Space to enable |
 | "Frequency, radio button" | How often to repeat | Arrow to select type |
@@ -228,4 +228,4 @@ SOGo 5 supports full keyboard navigation for recurring events.
 
 ### High Contrast Mode
 
-SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.

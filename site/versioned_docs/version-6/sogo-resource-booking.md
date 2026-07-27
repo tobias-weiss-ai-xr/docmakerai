@@ -6,7 +6,7 @@ sidebar_label: "Resource Booking"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Resource Booking (Rooms, Equipment)" description="Step-by-step tutorial to book shared resources like meeting rooms and equipment in SOGo 5" keywords={["resource booking", "meeting rooms", "equipment", "scheduling", "facilities"]} />
+<PageSEO title="Resource Booking (Rooms, Equipment)" description="Step-by-step tutorial to book shared resources like meeting rooms and equipment in SOGo 6" keywords={["resource booking", "meeting rooms", "equipment", "scheduling", "facilities"]} />
 
 # Resource Booking
 
@@ -18,8 +18,8 @@ Resource booking in SOGo is typically implemented as special calendar accounts m
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- Logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- Logged into SOGo 6
 - Resource accounts configured by administrator
 - Calendar module access
 
@@ -154,9 +154,9 @@ In larger organizations, resource booking may require additional scheduling tool
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for booking resources.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

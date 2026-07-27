@@ -1,12 +1,12 @@
 ---
 title: "Calendar Views"
-description: "Switch between Day, Week, and Month views in the SOGo 5 calendar"
+description: "Switch between Day, Week, and Month views in the SOGo 6 calendar"
 sidebar_label: "Calendar Views"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Calendar Views" description="Step-by-step tutorial to switch between Day, Week, and Month views in the SOGo 5 calendar" keywords={["calendar views", "day view", "week view", "month view", "navigation"]} />
+<PageSEO title="Calendar Views" description="Step-by-step tutorial to switch between Day, Week, and Month views in the SOGo 6 calendar" keywords={["calendar views", "day view", "week view", "month view", "navigation"]} />
 
 # Calendar Views
 
@@ -14,8 +14,8 @@ Switch between different calendar views to see your schedule at the right level 
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -27,7 +27,7 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 
 The calendar opens in **Week view** by default. Use the view switcher buttons in the top toolbar to change between available views.
 
-![Switching between Day, Week, and Month views in SOGo 5 calendar](./assets/calendar-views.webp)
+![Switching between Day, Week, and Month views in SOGo 6 calendar](./assets/calendar-views.webp)
 
 Available views:
 
@@ -66,9 +66,9 @@ Click the date header (e.g., "June 15–19, 2026") to open a date picker for jum
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for switching between calendar views.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

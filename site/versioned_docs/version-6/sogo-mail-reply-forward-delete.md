@@ -6,7 +6,7 @@ sidebar_label: "Reply, Forward & Delete"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail — Reply, Forward & Delete" description="Step-by-step tutorial to manage emails by replying, forwarding, or deleting them in SOGo 5" keywords={["reply", "forward", "delete", "email management", "inbox"]} />
+<PageSEO title="Mail — Reply, Forward & Delete" description="Step-by-step tutorial to manage emails by replying, forwarding, or deleting them in SOGo 6" keywords={["reply", "forward", "delete", "email management", "inbox"]} />
 
 # Mail — Reply, Forward & Delete
 
@@ -14,8 +14,8 @@ After reading an email, you can reply to the sender, forward to others, or delet
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 - At least one email in your inbox
 
 ## Part 1: Reply to an Email
@@ -87,9 +87,9 @@ Delete actions move emails to the Trash folder. To recover, select the Trash fol
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for replying, forwarding, and deleting emails.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

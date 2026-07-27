@@ -1,21 +1,21 @@
 ---
 title: "Mail — Read & View Messages"
-description: "Navigate your inbox and read emails in SOGo 5"
+description: "Navigate your inbox and read emails in SOGo 6"
 sidebar_label: "Mail — Read"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Mail — Read & View Messages" description="Step-by-step tutorial to navigate your inbox and read emails in SOGo 5" keywords={["read email", "inbox", "view messages", "navigation", "mail"]} />
+<PageSEO title="Mail — Read & View Messages" description="Step-by-step tutorial to navigate your inbox and read emails in SOGo 6" keywords={["read email", "inbox", "view messages", "navigation", "mail"]} />
 
 # Mail — Read & View Messages
 
-View and read emails in your SOGo 5 inbox.
+View and read emails in your SOGo 6 inbox.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -27,7 +27,7 @@ In the sidebar navigation on the left, click **Mail** to open the inbox.
 
 The inbox shows messages as a list. Click on any email to view it.
 
-![Mail inbox view in SOGo 5](./assets/01-mail-inbox.png)
+![Mail inbox view in SOGo 6](./assets/01-mail-inbox.png)
 
 The email opens in the preview pane with the following sections:
 
@@ -62,9 +62,9 @@ Double-click on a message subject to open it in a new tab for easier reading.
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for reading emails.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

@@ -1,16 +1,16 @@
 ---
 title: "Tasks / To-Do Module"
-description: "Create and manage task lists in SOGo 5"
+description: "Create and manage task lists in SOGo 6"
 sidebar_label: "Tasks / To-Do"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Tasks / To-Do Module" description="Step-by-step tutorial to create and manage task lists in the SOGo 5 task management module" keywords={["tasks", "todo", "task management", "priorities", "productivity"]} />
+<PageSEO title="Tasks / To-Do Module" description="Step-by-step tutorial to create and manage task lists in the SOGo 6 task management module" keywords={["tasks", "todo", "task management", "priorities", "productivity"]} />
 
 # Tasks / To-Do Module
 
-Organize tasks, set priorities, and manage to-do items within SOGo 5's task management module.
+Organize tasks, set priorities, and manage to-do items within SOGo 6's task management module.
 
 :::info
 In many SOGo deployments, the Tasks module appears only when `SOGoDocumentsEnabled` is set to `YES` in the server configuration. Your administrator may also need to enable the Tasks module explicitly via additional server settings.
@@ -18,13 +18,13 @@ In many SOGo deployments, the Tasks module appears only when `SOGoDocumentsEnabl
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
+- A SOGo 6 account with valid credentials
 - Tasks module enabled in SOGo configuration
-- You are logged into SOGo 5
+- You are logged into SOGo 6
 
 ## Features Overview
 
-| Feature: Description | Description |
+| Feature | Description |
 |---------|-------------|
 | **Task Lists** | Create multiple task categories (e.g., personal, work, projects) |
 | **Priority Levels** | Urgent, High, Medium, Low tags |
@@ -153,9 +153,9 @@ Use tasks to follow up on meeting actions. After a meeting, create tasks for del
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for managing tasks.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

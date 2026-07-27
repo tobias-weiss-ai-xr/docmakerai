@@ -1,12 +1,12 @@
 ---
 title: "Contacts — Import & Export"
-description: "Transfer contacts using vCard format in SOGo 5"
+description: "Transfer contacts using vCard format in SOGo 6"
 sidebar_label: "Import & Export"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Contacts — Import & Export" description="Step-by-step tutorial to transfer contacts using vCard format in SOGo 5" keywords={["contacts", "import", "export", "vcard", "vcf"]} />
+<PageSEO title="Contacts — Import & Export" description="Step-by-step tutorial to transfer contacts using vCard format in SOGo 6" keywords={["contacts", "import", "export", "vcard", "vcf"]} />
 
 # Contacts — Import & Export
 
@@ -14,8 +14,8 @@ Migrate contacts between applications using vCard import/export.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -27,7 +27,7 @@ In the sidebar, click **Contacts** to open the address book.
 
 Click the **Actions** menu button (often a downward arrow or three dots) near the top of the contact list.
 
-![Contacts import/export menu in SOGo 5](./assets/contacts-import-export.webp)
+![Contacts import/export menu in SOGo 6](./assets/contacts-import-export.webp)
 
 ### Step 3: Export Contacts
 
@@ -82,9 +82,9 @@ To back up your entire address book, periodically export all contacts to a vCard
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for importing and exporting contacts.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |

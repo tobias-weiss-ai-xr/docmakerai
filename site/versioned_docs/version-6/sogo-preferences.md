@@ -1,21 +1,21 @@
 ---
 title: "Preferences & Settings"
-description: "Customize your SOGo 5 experience through personal preferences"
+description: "Customize your SOGo 6 experience through personal preferences"
 sidebar_label: "Preferences & Settings"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Preferences & Settings" description="Step-by-step tutorial to customize your SOGo 5 experience through personal preferences" keywords={["preferences", "settings", "customization", "configuration", "personalization"]} />
+<PageSEO title="Preferences & Settings" description="Step-by-step tutorial to customize your SOGo 6 experience through personal preferences" keywords={["preferences", "settings", "customization", "configuration", "personalization"]} />
 
 # Preferences & Settings
 
-Customize your SOGo 5 experience by adjusting personal preferences such as language, time zone, notification settings, and default views.
+Customize your SOGo 6 experience by adjusting personal preferences such as language, time zone, notification settings, and default views.
 
 ## Prerequisites
 
-- A SOGo 5 account with valid credentials
-- You are logged into SOGo 5
+- A SOGo 6 account with valid credentials
+- You are logged into SOGo 6
 
 ## Step-by-Step Instructions
 
@@ -27,7 +27,7 @@ Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preference
 
 The **General** tab allows you to configure:
 
-| Setting: Description | Description | Example |
+| Setting | Description | Example |
 |---------|-------------|---------|
 | **Language** | Interface language | Deutsch, English |
 | **Time Zone** | Your local time zone | Europe/Berlin |
@@ -53,7 +53,7 @@ Switch to the **Notifications** tab to configure:
 
 ### Calendar Defaults
 
-| Preference: Description | Description |
+| Preference | Description |
 |------------|-------------|
 | **Default View** | Day, Week, Month, or Year |
 | **Working Hours** | Define your work day start and end times |
@@ -70,9 +70,9 @@ Switch to the **Notifications** tab to configure:
 
 ### Keyboard Navigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+SOGo 6 supports full keyboard navigation for managing preferences.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | | Select/activate | `Enter` or `Space` | Activate button or link |
