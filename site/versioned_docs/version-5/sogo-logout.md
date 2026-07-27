@@ -12,6 +12,8 @@ import PageSEO from '@site/src/components/PageSEO';
 
 Click the **power icon** ⏻ in the top-right toolbar to end your SOGo 5 session. You'll be redirected to the login page.
 
+![Logout button in the top-right toolbar](./assets/logout.png)
+
 :::tip
 On shared or public computers, always log out when you're done. Don't just close the browser tab.
 :::

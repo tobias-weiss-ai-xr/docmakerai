@@ -24,6 +24,8 @@ After reading an email, you can reply to the sender, forward to others, or delet
 
 Click on the email you want to reply to.
 
+![Reply, forward, and delete actions in the toolbar](./assets/mail-reply-forward-delete.png)
+
 ### Step 2: Click Reply
 
 Click the **Reply** button in the email viewer toolbar.
