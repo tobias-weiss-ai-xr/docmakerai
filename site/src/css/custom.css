@@ -42,13 +42,13 @@ a:hover {
   color: var(--ifm-color-primary-darker);
 }
 
-/* Ensure images have explicit dimensions for CLS prevention */
+/* Ensure images stay within their container (prevents overflow / CLS).
+   NOTE: do NOT force fixed width/height here — that rule previously applied
+   to EVERY img, including the navbar logo, blowing the logo up to 640px and
+   breaking the layout. Screenshot dimensions are scoped to .markdown below. */
 img {
-  height: auto;
   max-width: 100%;
-  /* Default intrinsic dimensions for SOGo screenshots (1280x800 scaled) */
-  width: 640px;
-  height: 400px;
+  height: auto;
 }
 
 /* Override for smaller inline images */
@@ -58,8 +58,11 @@ img[src*="icon"], img[src*="badge"] {
   max-width: 50px;
 }
 
-/* Documentation content images */
+/* Documentation content images (SOGo screenshots, 1280x800 scaled) */
 .markdown img {
+  width: 640px;
+  height: 400px;
+  max-width: 100%;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
