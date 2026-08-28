@@ -51,6 +51,12 @@ img {
   height: auto;
 }
 
+/* Keep the navbar logo at its natural size regardless of any other rule. */
+.navbar__logo img {
+  width: auto;
+  max-height: 2rem;
+}
+
 /* Override for smaller inline images */
 img[src*="icon"], img[src*="badge"] {
   width: auto;
