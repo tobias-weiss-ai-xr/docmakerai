@@ -5,6 +5,7 @@ import OriginalDocItemLayout from '@theme-original/DocItem/Layout';
 export default function DocItemLayout(props: any): React.JSX.Element {
   return (
     <OriginalDocItemLayout {...props}>
+      {props.children}
       <DocVoteWidget />
     </OriginalDocItemLayout>
   );
