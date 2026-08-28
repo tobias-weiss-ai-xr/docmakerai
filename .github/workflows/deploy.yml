@@ -17,22 +17,29 @@ jobs:
     name: Detect critical changes
     runs-on: ubuntu-latest
     outputs:
-      should_deploy: ${{ steps.filter.outputs.deploy }}
+      should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v2
         id: filter
+        if: github.event_name == 'push'
         with:
           filters: |
             deploy:
-              - 'site/docs/**'
-              - 'site/src/**'
-              - 'site/static/**'
-              - 'site/docusaurus.config.ts'
-              - 'site/sidebars.ts'
-              - 'site/package.json'
-              - 'site/package-lock.json'
+              # Any change under site/ (docs, versioned_docs, i18n, src,
+              # static, config, sidebars, package) must trigger a deploy.
+              # The previous filter omitted site/versioned_docs/** and
+              # site/i18n/**, so SOGo 5/6 screenshots and German translations
+              # never redeployed (gh-pages froze at 2026-06-19).
+              - 'site/**'
               - '.github/workflows/deploy.yml'
+      - id: decide
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_deploy=${{ steps.filter.outputs.deploy }}" >> "$GITHUB_OUTPUT"
+          fi
 
   build:
     name: Build site
