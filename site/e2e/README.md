@@ -41,6 +41,20 @@ npm run test:e2e:ui
 | `navbar.spec.ts` | Logo sizing (regression for global img rule), nav links |
 | `sidebars.spec.ts` | Sidebar categories, navigation, TOC |
 | `custom.spec.ts` | Custom components (SEO, DocVoteWidget) |
+| `assets.spec.ts` | CSS/JS bundle, favicon, logo, social card load |
+| `404.spec.ts` | 404 status, 404 page content, way back home |
+| `theme.spec.ts` | Color-mode toggle, skip link, footer |
+| `versions.ts` | Shared version list — version-agnostic specs loop over it |
+
+## Version matrix
+
+Chrome/structure tests (navbar, theme, sidebar, 404, assets, docs, custom)
+run against **both** `/sogo5/` and `/sogo6/` — the specs loop over
+`VERSIONS` and substitute the version into paths and expected text.
+Version-specific data (e.g. the different sidebar category trees) lives as
+per-version maps inside the spec. Site-level behavior (root redirect shell,
+`de` locale) runs once. When adding a version, extend `versions.ts` and the
+per-version data maps.
 
 ## CI
 
