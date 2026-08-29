@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tobias-weiss-ai-xr.github.io/docmakerai/sitemap.xml

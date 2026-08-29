@@ -114,7 +114,7 @@ const config: Config = {
             items: [
               {
                 label: 'SOGo 5 Basics',
-                to: '/5/',
+                to: '/sogo5/',
               },
             ],
           },
