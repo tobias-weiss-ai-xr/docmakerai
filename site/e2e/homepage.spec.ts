@@ -1,9 +1,11 @@
 /**
  * End-to-end tests for the docmakerai homepage and root routing.
- * Tests the landing page behavior and basic site structure.
+ * Site-level behavior (redirect shell, locales) stays single;
+ * per-version landing pages are checked for both versions.
  */
 
 import { test, expect } from '@playwright/test';
+import { VERSIONS } from './versions';
 
 test.describe('Homepage', () => {
   test('root path redirects to /sogo5/', async ({ page }) => {
@@ -24,19 +26,6 @@ test.describe('Homepage', () => {
     expect(html).toContain('background: #1b1b2f');
   });
 
-  test('SOGo 5 page loads successfully', async ({ page }) => {
-    await page.goto('sogo5/');
-    await expect(page).toHaveTitle(/SOGo/);
-    // Should have main content
-    await expect(page.locator('.theme-doc-markdown')).toBeVisible();
-  });
-
-  test('SOGo 6 page loads successfully', async ({ page }) => {
-    await page.goto('sogo6/');
-    await expect(page).toHaveTitle(/SOGo/);
-    await expect(page.locator('.theme-doc-markdown')).toBeVisible();
-  });
-
   test('German (de) locale pages load', async ({ page }) => {
     await page.goto('de/sogo5/');
     await expect(page).toHaveTitle(/SOGo/);
@@ -44,3 +33,13 @@ test.describe('Homepage', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'de');
   });
 });
+
+for (const v of VERSIONS) {
+  test.describe(`Homepage (sogo${v})`, () => {
+    test('version landing page loads with content', async ({ page }) => {
+      await page.goto(`sogo${v}/`);
+      await expect(page).toHaveTitle(/SOGo/);
+      await expect(page.locator('.theme-doc-markdown')).toBeVisible();
+    });
+  });
+}
