@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies with Bun
         working-directory: site
-        run: bun install --production
+        run: bun install
 
       - name: Install Playwright browsers
         working-directory: site
