@@ -174,6 +174,7 @@ async def login(page, context: BrowserContext | None = None) -> None:
 async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
     url = f"{SOGO_URL}/en/{url_suffix}" if url_suffix else SOGO_URL
     await resilient_goto(page, url, wait_selector="#app-container, .app-container, main")
+    await _clear_overlays(page)
     await page.wait_for_timeout(wait_ms)
 
 
@@ -181,6 +182,7 @@ async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
     """Navigate to an SOGo 6 module via sidebar tab click (SPA navigation)."""
     await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
                          wait_selector="button[role='tab'], main, [data-testid]")
+    await _clear_overlays(page)
     await page.wait_for_timeout(2000)
 
     tab_labels = {
@@ -201,6 +203,39 @@ async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
         await goto(page, module, wait_ms)
 
 
+async def _clear_overlays(page) -> None:
+    """Neutralize floating widgets that intercept pointer events.
+
+    SOGo 6 mounts a fixed bottom-right bubble container (minimized compose /
+    CKEditor balloons) whose children still receive pointer events and block
+    clicks anywhere near it. Remove the nodes AND inject persistent CSS so
+    re-renders stay inert.
+    """
+    with contextlib.suppress(Exception):
+        await page.keyboard.press("Escape")
+    with contextlib.suppress(Exception):
+        await page.evaluate(
+            "document.querySelectorAll('.ck-balloon-panel, .ck-toolbar, "
+            "div.pointer-events-none.fixed.bottom-0').forEach(el => el.remove())"
+        )
+    with contextlib.suppress(Exception):
+        await page.add_style_tag(
+            content="div.pointer-events-none.fixed.bottom-0, "
+            "div.pointer-events-none.fixed.bottom-0 * "
+            "{ pointer-events: none !important; }"
+        )
+    await page.wait_for_timeout(200)
+
+
+async def safe_click(locator, timeout_ms: int = 5000) -> None:
+    """Click with a DOM-click fallback when overlays still intercept."""
+    try:
+        await locator.click(timeout=timeout_ms)
+    except Exception:
+        with contextlib.suppress(Exception):
+            await locator.evaluate("el => el.click()")
+
+
 async def navigate_to_settings(
     page, menu_item: str, sub_tab: str | None = None, wait_ms: int = 3000
 ) -> None:
@@ -210,18 +245,26 @@ async def navigate_to_settings(
     (e.g. 'Email', 'Security', 'General', 'Logout').
     Optionally clicks a sub-tab in the settings sidebar (e.g. 'Vacation', 'Filters').
     """
-    dd = page.locator('[data-testid="header-dropdown-trigger"]')
+    await _clear_overlays(page)
+    dd = page.locator('[data-testid="header-dropdown-trigger"]').first
     if await dd.is_visible(timeout=5000):
         await dd.click()
         await page.wait_for_timeout(1000)
-    item = page.locator(f'[role="menuitem"]:has-text("{menu_item}")')
-    if await item.is_visible(timeout=3000):
-        await item.click()
+    item = page.locator(f'[role="menuitem"]:has-text("{menu_item}")').first
+    if await item.is_visible(timeout=4000):
+        try:
+            await item.click(timeout=5000)
+        except Exception:
+            # Floating overlays can still intercept pointer events — DOM-click.
+            await item.evaluate("el => el.click()")
         await page.wait_for_timeout(2000)
     if sub_tab:
-        tab = page.locator(f'button:has-text("{sub_tab}")')
-        if await tab.is_visible(timeout=3000):
-            await tab.click()
+        tab = page.locator(f'button:has-text("{sub_tab}")').first
+        if await tab.is_visible(timeout=4000):
+            try:
+                await tab.click(timeout=5000)
+            except Exception:
+                await tab.evaluate("el => el.click()")
             await page.wait_for_timeout(wait_ms)
         else:
             await page.wait_for_timeout(wait_ms)
@@ -337,7 +380,7 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
         await page.wait_for_timeout(1000)
 
     await rec.solution(page, "Enter event details and save to confirm the event creation")
-    title = page.locator('input[placeholder="Enter event title"]')
+    title = page.locator('input[placeholder="Enter event title"]').first
     if await title.is_visible(timeout=3000):
         await title.fill("Weekly Team Standup")
     await page.wait_for_timeout(600)
@@ -358,21 +401,21 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(600)
 
     await rec.challenge(page, "Click the New Message button to open the compose window")
-    new_msg = page.locator('button:has-text("New message")')
+    new_msg = page.locator('button:has-text("New message")').first
     if await new_msg.is_visible(timeout=3000):
         await new_msg.click()
         await page.wait_for_timeout(2000)
 
     await rec.solution(page, "Fill in the recipient, subject, and message body")
-    to_fld = page.locator('input[placeholder="To"]')
+    to_fld = page.locator('input[placeholder="To"]').first
     if await to_fld.is_visible(timeout=3000):
         await to_fld.fill("colleague@company.com")
         await page.wait_for_timeout(300)
-    subj_fld = page.locator('input[placeholder="Subject"]')
+    subj_fld = page.locator('input[placeholder="Subject"]').first
     if await subj_fld.is_visible(timeout=2000):
         await subj_fld.fill("Meeting Reminder")
         await page.wait_for_timeout(300)
-    body_fld = page.locator('[contenteditable="true"]')
+    body_fld = page.locator('[contenteditable="true"]').first
     if await body_fld.is_visible(timeout=2000):
         await body_fld.fill("Hi, just a reminder about our meeting tomorrow at 10 AM.")
         await page.wait_for_timeout(500)
@@ -393,7 +436,7 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(600)
 
     await rec.challenge(page, "Click the New Contact button to create a new entry")
-    new_contact = page.locator('button:has-text("New contact")')
+    new_contact = page.locator('button:has-text("New contact")').first
     if await new_contact.is_visible(timeout=3000):
         await new_contact.click()
         await page.wait_for_timeout(1500)
@@ -434,7 +477,7 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.solution(page, "Enable the vacation auto-reply with your away message")
-    enable = page.locator('button:has-text("Enable vacation auto reply")')
+    enable = page.locator('button:has-text("Enable vacation auto reply")').first
     if await enable.is_visible(timeout=3000):
         await enable.click()
         await page.wait_for_timeout(1000)
@@ -624,11 +667,11 @@ async def record_calendar_views(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Switch to Day view to focus on a single day's schedule")
-    view_btn = page.locator('button:has-text("Week")')
+    view_btn = page.locator('button:has-text("Week")').first
     if await view_btn.is_visible(timeout=3000):
         await view_btn.click()
         await page.wait_for_timeout(1000)
-        day_option = page.locator('[role="menuitem"]:has-text("Day")')
+        day_option = page.locator('[role="menuitem"]:has-text("Day")').first
         if await day_option.is_visible(timeout=3000):
             await day_option.click()
             await page.wait_for_timeout(1500)
@@ -702,7 +745,7 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1000)
 
     await rec.challenge(page, "Finding specific emails in a crowded inbox")
-    search_input = page.locator('input[placeholder="Search emails"]')
+    search_input = page.locator('input[placeholder="Search emails"]').first
     if await search_input.is_visible(timeout=3000):
         await search_input.click()
         await search_input.fill("Meeting")
@@ -728,8 +771,14 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
 
     await rec.challenge(page, "Click on an email to view its full contents")
     msg = page.locator('div[role="button"]:has-text("Gueto")').first
-    if await msg.is_visible(timeout=3000):
-        await msg.click()
+    if not await msg.is_visible(timeout=3000):
+        # Live inboxes differ — fall back to the first message row.
+        msg = page.locator('main div[role="button"], main [role="row"]').first
+    if await msg.is_visible(timeout=4000):
+        try:
+            await msg.click(timeout=5000)
+        except Exception:
+            await msg.evaluate("el => el.click()")
         await page.wait_for_timeout(1500)
 
     await rec.solution(page, "Select an email to read its content in the reading pane")
@@ -753,7 +802,7 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     await rec.challenge(page, "Browse through your mail folders to find specific emails")
     sent_btn = page.locator('button:has-text("Sent")').first
     if await sent_btn.is_visible(timeout=3000):
-        await sent_btn.click()
+        await safe_click(sent_btn)
         await page.wait_for_timeout(1500)
 
     await rec.solution(page, "Click on a folder to switch to its contents")
@@ -864,14 +913,14 @@ async def record_contacts_import_export(context: BrowserContext) -> Path | None:
 
     await rec.challenge(page, "View available address books and subscription options")
     for addr_book in ["Personal", "Work"]:
-        book = page.locator(f'button:has-text("{addr_book}")')
+        book = page.locator(f'button:has-text("{addr_book}")').first
         if await book.is_visible(timeout=2000):
-            await book.click()
+            await safe_click(book)
             await page.wait_for_timeout(800)
 
-    add_book = page.locator('button:has-text("Add address book")')
+    add_book = page.locator('button:has-text("Add address book")').first
     if await add_book.is_visible(timeout=2000):
-        await add_book.click()
+        await safe_click(add_book)
         await page.wait_for_timeout(800)
 
     await rec.solution(page, "Address books can be added and subscribed to for contact management")
@@ -973,10 +1022,22 @@ async def main():
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.STDOUT,
         )
-        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=120)
+        stdout_b = b""
+        try:
+            stdout_b, _ = await asyncio.wait_for(proc.communicate(), timeout=120)
+        except (asyncio.TimeoutError, TimeoutError):
+            # Isolate the hung workflow; never let it kill the whole run.
+            with contextlib.suppress(Exception):
+                proc.kill()
+            with contextlib.suppress(Exception):
+                await proc.wait()
         elapsed = time.time() - wf_start
-        output = stdout.decode("utf-8", errors="replace")
+        output = stdout_b.decode("utf-8", errors="replace")
         print(output, end="")
+        if not stdout_b:
+            print(f"  ✗  {name}: worker timed out after 120s")
+            results.append((name, False, elapsed))
+            continue
 
         png_path = SCREENSHOT_DIR / f"{name}.png"
         if png_path.exists():
