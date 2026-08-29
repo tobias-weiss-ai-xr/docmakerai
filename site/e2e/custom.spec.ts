@@ -12,7 +12,7 @@ test.describe('Custom components', () => {
     const voteWidget = page.locator('.DocVoteWidget');
     
     // Try a page that might use DocVoteWidget
-    await page.goto('/sogo5/sogo-calendar-create-event/');
+    await page.goto('sogo5/sogo-calendar-create-event/');
     
     // If the widget is on the page, verify it renders
     const count = await voteWidget.count();
@@ -26,7 +26,7 @@ test.describe('Custom components', () => {
 
   test('pages with PageSEO component don\'t have rendering errors', async ({ page }) => {
     // Documents that use PageSEO (most of them) should render fine
-    await page.goto('/sogo5/sogo-login/');
+    await page.goto('sogo5/sogo-login/');
     
     // Check that meta tags are present (PageSEO adds them)
     const metaDescription = page.locator('meta[name="description"]');
@@ -38,19 +38,19 @@ test.describe('Custom components', () => {
 
   test('VideoFallback component (if present) renders without errors', async ({ page }) => {
     // If any page uses VideoFallback, it should not break
-    await page.goto('/sogo5/');
+    await page.goto('sogo5/');
     
     // The page should still be functional
     await expect(page.locator('body')).not.toHaveText('Error');
   });
 
   test('SEO meta tags are present on doc pages', async ({ page }) => {
-    await page.goto('/sogo5/');
-    
-    // Check for SEO meta tags
-    await expect(page.locator('meta[name="description"]')).toBeVisible();
-    await expect(page.locator('meta[property="og:title"]')).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toBeVisible();
-    await expect(page.locator('meta[name="twitter:card"]')).toBeVisible();
+    await page.goto('sogo5/');
+
+    // Head elements are never "visible" — assert attachment.
+    await expect(page.locator('meta[name="description"]')).toBeAttached();
+    await expect(page.locator('meta[property="og:title"]')).toBeAttached();
+    await expect(page.locator('meta[property="og:image"]')).toBeAttached();
+    await expect(page.locator('meta[name="twitter:card"]')).toBeAttached();
   });
 });
