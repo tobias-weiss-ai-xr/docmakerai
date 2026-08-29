@@ -31,18 +31,28 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent
 SCREENSHOT_DIR = ROOT / "screenshots"
-ASSETS_DIR = ROOT.parent / "site" / "docs" / "assets"
+ASSETS_DIR = Path(
+    os.environ.get("CAPTURE_ASSETS_DIR", str(ROOT.parent / "site" / "docs" / "assets"))
+)
 
 SOGO_URL = os.environ.get("SOGO_URL", "https://demov6.sogo.nu")
 USERNAME = os.environ.get("SOGO_USERNAME", "sogo-tests1@example.org")
 PASSWORD = os.environ.get("SOGO_PASSWORD", "sogo")
 
+# The /env intercept rewrites the API base URL for the LOCAL dev server (whose
+# /env points at the Docker-internal hostname). Production instances serve a
+# correct same-origin /env — set SOGO_ENV_INTERCEPT=0 to keep it untouched.
+ENV_INTERCEPT = os.environ.get("SOGO_ENV_INTERCEPT", "1") == "1"
+
 
 def clean_dirs() -> None:
-    for d in [SCREENSHOT_DIR, ASSETS_DIR]:
-        if d.exists():
-            shutil.rmtree(d)
-        d.mkdir(parents=True, exist_ok=True)
+    # Only wipe the screenshot scratch dir; never the assets target — it may
+    # hold manually curated/numbered shots the workflows don't regenerate,
+    # and shutil.copy2 below overwrites same-name files anyway.
+    if SCREENSHOT_DIR.exists():
+        shutil.rmtree(SCREENSHOT_DIR)
+    SCREENSHOT_DIR.mkdir(parents=True, exist_ok=True)
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 async def _env_intercept(route):
@@ -115,7 +125,8 @@ async def login(page, context: BrowserContext | None = None) -> None:
     We handle both cases by probing for the email input first.
     """
     print("\n  Login...")
-    await page.route("**/env", _env_intercept)
+    if ENV_INTERCEPT:
+        await page.route("**/env", _env_intercept)
 
     await resilient_goto(page, SOGO_URL + "/en/auth/login")
 

@@ -11,7 +11,7 @@ test.describe('Navbar', () => {
     await expect(page.locator('.navbar')).toBeVisible();
   });
 
-  test('logo is not oversized (regression for global img rule)') , async ({ page }) => {
+  test('logo is not oversized (regression for global img rule)', async ({ page }) => {
     await page.goto('/sogo5/');
     
     const logo = page.locator('.navbar__logo img');
