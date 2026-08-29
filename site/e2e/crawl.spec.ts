@@ -67,6 +67,7 @@ test.describe('Site crawl', () => {
         expect(urls.length).toBeGreaterThan(20);
 
         const titles = new Set<string>();
+        const imgSrcs = new Set<string>();
         for (const url of urls) {
           const res = await request.get(url);
           expect(res.status(), `${url} must return 200`).toBe(200);
@@ -102,6 +103,51 @@ test.describe('Site crawl', () => {
             desc,
             `${url} leaks markup into the meta description`
           ).not.toContain('<');
+
+          // Exactly one h1 per page (document outline integrity)
+          const h1Count = (html.match(/<h1[ >]/g) ?? []).length;
+          expect(h1Count, `${url} must have exactly one h1`).toBe(1);
+
+          // Every img must carry an alt attribute (may be empty for decor)
+          for (const img of html.match(/<img[^>]*>/g) ?? []) {
+            expect(
+              img,
+              `${url} has an img without alt: ${img.slice(0, 80)}`
+            ).toMatch(/\salt=/);
+          }
+
+          // No leaked framework tokens rendered as text (JSX bug class)
+          for (const tok of ['>undefined<', '>NaN<', 'lorem ipsum', '>TODO<']) {
+            expect(
+              html.toLowerCase().includes(tok.toLowerCase()),
+              `${url} leaks "${tok}" into rendered content`
+            ).toBe(false);
+          }
+
+          // Same-page anchors must point at existing heading ids
+          const ids = new Set(
+            [...html.matchAll(/\sid="?([^" >]+)/g)].map((m) => m[1])
+          );
+          for (const m of html.matchAll(/href="?#([^" >]+)/g)) {
+            const frag = m[1];
+            if (!frag || frag.startsWith('__')) continue; // docusaurus internals
+            expect(
+              ids.has(frag),
+              `${url} has a broken anchor #${frag}`
+            ).toBe(true);
+          }
+
+          // Collect image sources for the whole-version resolution check
+          for (const m of html.matchAll(/<img[^>]*?src="?([^" >]+)/g)) {
+            if (m[1].startsWith('/docmakerai/')) imgSrcs.add(m[1]);
+          }
+        }
+
+        // Every embedded image across the version resolves (hashed-asset class)
+        expect(imgSrcs.size, 'version should embed images').toBeGreaterThan(20);
+        for (const src of imgSrcs) {
+          const res = await request.get(src);
+          expect(res.status(), `broken image ${src}`).toBeLessThan(400);
         }
       });
 
@@ -146,4 +192,22 @@ test.describe('Site crawl', () => {
       });
     });
   }
+
+  test('German index page links all resolve (de pages are not in the sitemap)', async ({ request }) => {
+    test.setTimeout(120_000);
+    const res = await request.get('de/sogo5/');
+    expect(res.status()).toBe(200);
+    const html = await res.text();
+
+    const hrefs = [
+      ...new Set(
+        [...html.matchAll(/href="?(\/docmakerai\/[^" >#]+)/g)].map((m) => m[1])
+      ),
+    ];
+    expect(hrefs.length, 'de index should link to many pages').toBeGreaterThan(10);
+    for (const href of hrefs) {
+      const r = await request.get(href);
+      expect(r.status(), `broken internal link ${href}`).toBe(200);
+    }
+  });
 });
