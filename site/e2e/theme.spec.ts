@@ -57,6 +57,20 @@ for (const v of VERSIONS) {
       await page.goto(`sogo${v}/`);
       await expect(page.locator('.footer a[href*="github.com"]')).toBeVisible();
     });
+    test('footer internal link resolves (stale /5/ route regression)', async ({
+      page,
+      request,
+    }) => {
+      await page.goto(`sogo${v}/`);
+      // The footer's only internal link is 'SOGo 5 Basics' — a stale '/5/'
+      // target used to 404 from every page (footer routeBasePath bug).
+      const footerLink = page.locator('.footer a:not([href*="http"])').first();
+      await expect(footerLink).toBeVisible();
+      const href = await footerLink.getAttribute('href');
+      expect(href, 'footer internal link has a target').toBeTruthy();
+      const res = await request.get(href as string);
+      expect(res.status(), `footer link ${href} must resolve`).toBe(200);
+    });
 
     test('html carries the docs version class', async ({ page }) => {
       await page.goto(`sogo${v}/sogo-login/`);
