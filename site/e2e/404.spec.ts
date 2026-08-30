@@ -13,6 +13,18 @@ for (const v of VERSIONS) {
       expect(response?.status()).toBe(404);
     });
 
+    test('non-existent German page returns 404', async ({ page }) => {
+      const response = await page.goto(
+        `de/sogo${v}/this-page-does-not-exist/`
+      );
+      expect(response?.status()).toBe(404);
+    });
+
+    test('unknown doc version returns 404', async ({ page }) => {
+      const response = await page.goto('sogo9/');
+      expect(response?.status()).toBe(404);
+    });
+
     test('404 page has helpful content', async ({ page }) => {
       await page.goto(`sogo${v}/non-existent/`);
       // Docusaurus renders its own 404 content

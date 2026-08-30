@@ -28,6 +28,33 @@ async function sitemapUrls(request: ReturnType<typeof import('@playwright/test')
   );
 }
 
+/** Docusaurus canonical/og:url use the absolute siteConfig.url (so they are
+ *  production-hosted even in local previews), make no promise about the
+ *  trailing slash, and de pages differ from en only by the /de/ prefix.
+ *  Compare pathnames (host + slash agnostic) so local and prod share one
+ *  source of truth. */
+function pageSeo(url: string) {
+  const page = new URL(url).pathname.replace(/\/$/, ''); // /docmakerai/sogo5/x
+  const isDe = page.includes('/de/');
+  const en = isDe ? page.replace('/de/', '/') : page;
+  const de = isDe ? page : page.replace('/docmakerai/', '/docmakerai/de/');
+  return { en, de, page };
+}
+
+/** Compare an emitted URL to a page pathname ignoring host + trailing slash. */
+function samePage(emitted: string, page: string) {
+  return new URL(emitted).pathname.replace(/\/$/, '') === page;
+}
+
+/** Parse the three hreflang alternate <link>s from minified served HTML. */
+function headAlternates(html: string): Record<string, string> {
+  return Object.fromEntries(
+    [...html.matchAll(/rel=alternate href=([^ >]*) hreflang=([a-zA-Z-]+)/g)].map(
+      (m) => [m[2], m[1]] as const
+    )
+  );
+}
+
 test.describe('Site crawl', () => {
   test('sitemap lists both doc versions, German pages, and hreflang alternates', async ({ request }) => {
     const urls = await sitemapUrls(request);
@@ -122,6 +149,54 @@ test.describe('Site crawl', () => {
           // Exactly one h1 per page (document outline integrity)
           const h1Count = (html.match(/<h1[ >]/g) ?? []).length;
           expect(h1Count, `${url} must have exactly one h1`).toBe(1);
+
+          // Titles must carry the site-name suffix (config/branding
+          // regression). Both the English and the locally-translated German
+          // site name contain "SOGo" — do not encode the exact translation.
+          expect(
+            title,
+            `${url} title must carry the site name`
+          ).toMatch(/ \| SOGo/);
+
+          // Seo/SEO.tsx used to hardcode canonical + og:url to the SITE ROOT,
+          // collapsing every page's signal into the homepage — each page must
+          // now point canonically at itself.
+          const { en, de, page } = pageSeo(url);
+          const canonical =
+            html.match(/rel=canonical href=([^ >]*)/)?.[1] ?? '';
+          expect(canonical, `${url} needs a canonical`).toBeTruthy();
+          expect(
+            samePage(canonical, page),
+            `${url} canonical must match the page (not the site root)`
+          ).toBe(true);
+          const ogUrl = html.match(/property=og:url content=([^ >]*)/)?.[1] ?? '';
+          expect(
+            samePage(ogUrl, page),
+            `${url} og:url must match the page (not the site root)`
+          ).toBe(true);
+
+          // Every page must cite en + de + x-default hreflang alternates
+          const alts = headAlternates(html);
+          expect(
+            Object.keys(alts).sort(),
+            `${url} must cite en, de and x-default alternates`
+          ).toEqual(['de', 'en', 'x-default']);
+          expect(samePage(alts.en, en), `${url} en alternate`).toBe(true);
+          expect(samePage(alts.de, de), `${url} de alternate`).toBe(true);
+          expect(
+            samePage(alts['x-default'], en),
+            `${url} x-default alternate`
+          ).toBe(true);
+
+          // Doc pages render breadcrumbs (category trail). Exception: the
+          // custom meta/spec pages (sogo-gaps, sogo-spec-*) render outside
+          // the breadcrumb layout by design.
+          if (!/(sogo-gaps|sogo-spec-)/.test(url)) {
+            expect(
+              html.includes('theme-doc-breadcrumbs'),
+              `${url} has no breadcrumbs`
+            ).toBe(true);
+          }
 
           // Every img must carry an alt attribute (may be empty for decor)
           for (const img of html.match(/<img[^>]*>/g) ?? []) {
@@ -244,6 +319,37 @@ test.describe('Site crawl', () => {
             `${url} leaks markup into the meta description`
           ).not.toContain('<');
 
+          // Same canonical/og/alternate invariants as English pages — the
+          // localization must not regress SEO wiring either.
+          expect(
+            title,
+            `${url} title must carry the site name`
+          ).toMatch(/ \| SOGo/);
+          const { en, de, page } = pageSeo(url);
+          const canonical =
+            html.match(/rel=canonical href=([^ >]*)/)?.[1] ?? '';
+          expect(canonical, `${url} needs a canonical`).toBeTruthy();
+          expect(
+            samePage(canonical, page),
+            `${url} canonical must match the page (not the site root)`
+          ).toBe(true);
+          const ogUrl = html.match(/property=og:url content=([^ >]*)/)?.[1] ?? '';
+          expect(
+            samePage(ogUrl, page),
+            `${url} og:url must match the page (not the site root)`
+          ).toBe(true);
+          const alts = headAlternates(html);
+          expect(
+            Object.keys(alts).sort(),
+            `${url} must cite en, de and x-default alternates`
+          ).toEqual(['de', 'en', 'x-default']);
+          expect(samePage(alts.en, en), `${url} en alternate`).toBe(true);
+          expect(samePage(alts.de, de), `${url} de alternate`).toBe(true);
+          expect(
+            samePage(alts['x-default'], en),
+            `${url} x-default alternate`
+          ).toBe(true);
+
           // No leaked framework tokens or template boilerplate
           for (const tok of ['>undefined<', '>NaN<', 'lorem ipsum', '>TODO<']) {
             expect(
@@ -285,5 +391,22 @@ test.describe('Site crawl', () => {
       const r = await request.get(href);
       expect(r.status(), `broken internal link ${href}`).toBe(200);
     }
+  });
+
+  test('unlisted template page stays reachable but noindexed and out of the sitemap', async ({
+    request,
+  }) => {
+    // accessibility-section-template.md is unlisted: it must NOT be crawled
+    // into the sitemap (Docusaurus emits robots noindex — our sitemap
+    // generator re-implements that filter) yet stay accessible by direct URL.
+    const inSitemap = (await sitemapUrls(request)).some((u) =>
+      u.includes('accessibility-section-template')
+    );
+    expect(inSitemap, 'unlisted page must not appear in the sitemap').toBe(false);
+
+    const res = await request.get('sogo5/accessibility-section-template/');
+    expect(res.status(), 'unlisted page stays reachable').toBe(200);
+    const html = await res.text();
+    expect(html, 'unlisted page must carry robots noindex').toContain('noindex');
   });
 });
