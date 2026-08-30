@@ -38,13 +38,17 @@ npm run test:e2e:ui
 |------|---------|
 | `homepage.spec.ts` | Root redirect, landing page, locale switching |
 | `docs.spec.ts` | Doc content presence, regression for DocItem Layout bug |
-| `navbar.spec.ts` | Logo sizing (regression for global img rule), nav links |
+| `navbar.spec.ts` | Logo sizing (regression for global img rule), nav links, per-version brand |
 | `sidebars.spec.ts` | Sidebar categories, navigation, TOC |
 | `custom.spec.ts` | Custom components (SEO, DocVoteWidget) |
 | `assets.spec.ts` | CSS/JS bundle, favicon, logo, social card load |
 | `404.spec.ts` | 404 status, 404 page content, way back home |
-| `theme.spec.ts` | Color-mode toggle, skip link, footer |
-| `versions.ts` | Shared version list — version-agnostic specs loop over it |
+| `theme.spec.ts` | Color-mode toggle + persistence, skip link, a11y names, footer |
+| `crawl.spec.ts` | Sitemap-driven whole-site crawl: per-page invariants (h1, alt,
+  descriptions, anchors, images), German render quality, link rot |
+| `interactions.spec.ts` | Version/locale switches, theme persistence, history, URL edges |
+| `versions.ts` | Shared version list + `ON_PROD_DEPLOY` gate — version-agnostic
+  specs loop over it |
 
 ## Version matrix
 
