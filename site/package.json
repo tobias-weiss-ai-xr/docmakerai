@@ -15,7 +15,8 @@
     "typecheck": "tsc",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:headed": "playwright test --headed"
+    "test:e2e:headed": "playwright test --headed",
+    "postbuild": "python3 tools/generate_sitemap.py"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
@@ -36,8 +37,16 @@
     "typescript": "~6.0.2"
   },
   "browserslist": {
-    "production": [">0.5%", "not dead", "not op_mini all"],
-    "development": ["last 3 chrome version", "last 3 firefox version", "last 5 safara version"]
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safara version"
+    ]
   },
   "engines": {
     "node": ">=20.0"

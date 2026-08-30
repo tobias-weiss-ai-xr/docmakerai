@@ -1,6 +1,6 @@
 ---
 title: "Abmelden"
-description: "Sicheres Abmelden von SOGo 6"
+description: "Sicheres Abmelden aus SOGo 6: Sitzung beenden, Browser schließen und angemeldet bleiben, richtig konfigurieren."
 sidebar_label: "Abmelden"
 ---
 
