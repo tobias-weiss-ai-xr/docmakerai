@@ -29,7 +29,7 @@ async function sitemapUrls(request: ReturnType<typeof import('@playwright/test')
 }
 
 test.describe('Site crawl', () => {
-  test('sitemap lists both doc versions with sane URLs', async ({ request }) => {
+  test('sitemap lists both doc versions, German pages, and hreflang alternates', async ({ request }) => {
     const urls = await sitemapUrls(request);
     expect(urls.length).toBeGreaterThan(40);
 
@@ -41,10 +41,23 @@ test.describe('Site crawl', () => {
         byVersion[v].length,
         `sitemap should list sogo${v} pages`
       ).toBeGreaterThan(20);
+      // The German tree must be discoverable too (tools/generate_sitemap.py)
+      expect(
+        urls.filter((u) => u.includes(`/de/sogo${v}/`)).length,
+        `sitemap should list German sogo${v} pages`
+      ).toBeGreaterThan(20);
     }
     for (const url of urls) {
       expect(url.startsWith(BASE), `${url} must live under ${BASE}`).toBe(true);
     }
+
+    const xml = await (await request.get('sitemap.xml')).text();
+    expect(xml, 'German pages need hreflang alternates').toContain(
+      'hreflang="de"'
+    );
+    expect(xml, 'alternate cluster needs an x-default (en)').toContain(
+      'hreflang="x-default"'
+    );
   });
 
   test('robots.txt points to the sitemap', async ({ request }) => {
@@ -61,8 +74,10 @@ test.describe('Site crawl', () => {
     test.describe(`sogo${v} crawl`, () => {
       test('every page returns 200 with rendered, non-empty content', async ({ request }) => {
         test.setTimeout(120_000);
-        const urls = (await sitemapUrls(request)).filter((u) =>
-          u.includes(`/sogo${v}/`)
+        const urls = (await sitemapUrls(request)).filter(
+          (u) =>
+            u.includes(`/docmakerai/sogo${v}/`) &&
+            !u.includes('/de/')
         );
         expect(urls.length).toBeGreaterThan(20);
 
@@ -190,10 +205,71 @@ test.describe('Site crawl', () => {
           }
         }
       });
+      test('German pages render cleanly (sitemap-driven)', async ({ request }) => {
+        test.setTimeout(120_000);
+        const deUrls = (await sitemapUrls(request)).filter((u) =>
+          u.includes(`/de/sogo${v}/`)
+        );
+        expect(deUrls.length, `German sogo${v} pages in sitemap`).toBeGreaterThan(
+          20
+        );
+
+        const titles = new Set<string>();
+        for (const url of deUrls) {
+          const res = await request.get(url);
+          expect(res.status(), `${url} must return 200`).toBe(200);
+          const html = await res.text();
+
+          // Localized pages are real pages: one h1, unique title, doc body
+          const h1Count = (html.match(/<h1[ >]/g) ?? []).length;
+          expect(h1Count, `${url} must have exactly one h1`).toBe(1);
+          const title = html.match(/<title[^>]*>([^<]+)<\/title>/)?.[1] ?? '';
+          expect(title, `${url} has an empty title`).toBeTruthy();
+          expect(
+            titles.has(title),
+            `duplicate German title "${title}"`
+          ).toBe(false);
+          titles.add(title);
+          const start = html.indexOf('theme-doc-markdown');
+          expect(start, `${url} has no doc markdown region`).toBeGreaterThan(-1);
+
+          // Localized meta descriptions must be clean human text too
+          const desc = html.match(/name="?description"? content="?([^"]*)"?/)?.[1] ?? '';
+          expect(
+            desc.length,
+            `${url} has a too-short meta description`
+          ).toBeGreaterThan(30);
+          expect(
+            desc,
+            `${url} leaks markup into the meta description`
+          ).not.toContain('<');
+
+          // No leaked framework tokens or template boilerplate
+          for (const tok of ['>undefined<', '>NaN<', 'lorem ipsum', '>TODO<']) {
+            expect(
+              html.toLowerCase().includes(tok.toLowerCase()),
+              `${url} leaks "${tok}" into rendered content`
+            ).toBe(false);
+          }
+
+          // Same-page anchors must point at existing heading ids
+          const ids = new Set(
+            [...html.matchAll(/\sid="?([^" >]+)/g)].map((m) => m[1])
+          );
+          for (const m of html.matchAll(/href="?#([^" >]+)/g)) {
+            const frag = m[1];
+            if (!frag || frag.startsWith('__')) continue;
+            expect(
+              ids.has(frag),
+              `${url} has a broken anchor #${frag}`
+            ).toBe(true);
+          }
+        }
+      });
     });
   }
 
-  test('German index page links all resolve (de pages are not in the sitemap)', async ({ request }) => {
+  test('German index page links all resolve', async ({ request }) => {
     test.setTimeout(120_000);
     const res = await request.get('de/sogo5/');
     expect(res.status()).toBe(200);

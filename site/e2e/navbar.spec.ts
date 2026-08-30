@@ -39,12 +39,15 @@ for (const v of VERSIONS) {
       await expect(logo).toHaveAttribute('alt', /SOGo/);
     });
 
-    test('navbar brand links to the guide home', async ({ page }) => {
+    test('navbar brand follows the version being read', async ({ page }) => {
       await page.goto(`sogo${v}/`);
       const brandLink = page.locator('.navbar__brand');
-      // The brand intentionally points at the site's canonical entry (SOGo 5)
-      // from every version — same target as the root redirect shell.
-      await expect(brandLink).toHaveAttribute('href', /sogo5\/$/);
+      // src/theme/Navbar/Logo overrides the configured href so the brand
+      // always returns to the home of the version currently open.
+      await expect(brandLink).toHaveAttribute(
+        'href',
+        new RegExp(`sogo${v}\\/$`)
+      );
     });
 
     test('navbar has Docs/Tutorials links', async ({ page }) => {
