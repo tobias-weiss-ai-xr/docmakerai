@@ -50,6 +50,19 @@ for (const v of VERSIONS) {
       );
     });
 
+    test('navbar brand preserves the locale on German pages', async ({
+      page,
+    }) => {
+      await page.goto(`de/sogo${v}/`);
+      const brandLink = page.locator('.navbar__brand');
+      // useBaseUrl prefixes the active locale, so the brand on a German
+      // page returns to the German home of the same version.
+      await expect(brandLink).toHaveAttribute(
+        'href',
+        new RegExp(`de/sogo${v}\\/$`)
+      );
+    });
+
     test('navbar has Docs/Tutorials links', async ({ page }) => {
       await page.goto(`sogo${v}/`);
       const navbar = page.locator('.navbar');

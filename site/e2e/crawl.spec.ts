@@ -55,6 +55,24 @@ function headAlternates(html: string): Record<string, string> {
   );
 }
 
+/** The doc version a URL belongs to (sogo5 -> '5'). */
+function urlVersion(url: string): string {
+  return /sogo(\d)\//.exec(url)?.[1] ?? '';
+}
+
+/** Every @type cited in the page's JSON-LD blocks (strict JSON.parse — a
+ *  malformed block throws, protecting Google rich-result eligibility). */
+function jsonLdTypes(html: string): Set<string> {
+  const types = new Set<string>();
+  for (const m of html.matchAll(
+    /type=application\/ld\+json>([\s\S]*?)<\/script>/g
+  )) {
+    const parsed = JSON.parse(m[1]) as { '@type'?: string };
+    if (parsed['@type']) types.add(parsed['@type']);
+  }
+  return types;
+}
+
 test.describe('Site crawl', () => {
   test('sitemap lists both doc versions, German pages, and hreflang alternates', async ({ request }) => {
     const urls = await sitemapUrls(request);
@@ -110,10 +128,49 @@ test.describe('Site crawl', () => {
 
         const titles = new Set<string>();
         const imgSrcs = new Set<string>();
+        const ogImgs = new Set<string>();
         for (const url of urls) {
           const res = await request.get(url);
           expect(res.status(), `${url} must return 200`).toBe(200);
           const html = await res.text();
+
+          // Locale integrity: served <html lang> must match the URL
+          expect(
+            html,
+            `${url} <html lang> must match the URL locale`
+          ).toMatch(/<html lang=en[ >]/);
+
+          // Version badge must agree with the URL's version (guards against
+          // cross-version content mixups)
+          const badge =
+            html.match(
+              /theme-doc-version-badge[^>]*>Version: SOGo (\d+)</
+            )?.[1] ?? '';
+          expect(badge, `${url} version badge must match the URL`).toBe(
+            urlVersion(url)
+          );
+
+          // Structured data must parse and cite the rich-results @types
+          const ldTypes = jsonLdTypes(html);
+          for (const t of ['SoftwareApplication', 'HowTo', 'BreadcrumbList']) {
+            // The custom meta/spec pages (sogo-gaps, sogo-spec-*) — like
+            // their missing breadcrumb UI — ship no BreadcrumbList schema.
+            if (t === 'BreadcrumbList' && /(sogo-gaps|sogo-spec-)/.test(url))
+              continue;
+            expect(ldTypes.has(t), `${url} lacks JSON-LD @type ${t}`).toBe(
+              true
+            );
+          }
+
+          // Pagination links must stay inside the current version
+          for (const m of html.matchAll(
+            /pagination-nav__link--(?:prev|next)" href=([^ >]*)/g
+          )) {
+            expect(
+              m[1].startsWith(`/docmakerai/sogo${v}/`),
+              `${url} pagination must stay within sogo${v}: ${m[1]}`
+            ).toBe(true);
+          }
 
           // Doc body must render and not be empty (DocItem swizzle bug class)
           const start = html.indexOf('theme-doc-markdown');
@@ -231,6 +288,8 @@ test.describe('Site crawl', () => {
           for (const m of html.matchAll(/<img[^>]*?src="?([^" >]+)/g)) {
             if (m[1].startsWith('/docmakerai/')) imgSrcs.add(m[1]);
           }
+          const ogImage = html.match(/property=og:image content=([^ >]*)/)?.[1] ?? '';
+          if (ogImage) ogImgs.add(ogImage);
         }
 
         // Every embedded image across the version resolves (hashed-asset class)
@@ -238,6 +297,13 @@ test.describe('Site crawl', () => {
         for (const src of imgSrcs) {
           const res = await request.get(src);
           expect(res.status(), `broken image ${src}`).toBeLessThan(400);
+        }
+
+        // The social-card og:image (site-owned SEO component) must resolve
+        expect(ogImgs.size, 'pages must cite an og:image').toBeGreaterThan(0);
+        for (const src of ogImgs) {
+          const res = await request.get(src);
+          expect(res.status(), `broken og:image ${src}`).toBeLessThan(400);
         }
       });
 
@@ -290,10 +356,56 @@ test.describe('Site crawl', () => {
         );
 
         const titles = new Set<string>();
+        const ogImgs = new Set<string>();
         for (const url of deUrls) {
           const res = await request.get(url);
           expect(res.status(), `${url} must return 200`).toBe(200);
           const html = await res.text();
+
+          // Locale integrity: served <html lang> must match the URL
+          expect(
+            html,
+            `${url} <html lang> must match the URL locale`
+          ).toMatch(/<html lang=de[ >]/);
+
+          // Version badge must agree with the URL's version
+          const badge =
+            html.match(
+              /theme-doc-version-badge[^>]*>Version: SOGo (\d+)</
+            )?.[1] ?? '';
+          expect(badge, `${url} version badge must match the URL`).toBe(
+            urlVersion(url)
+          );
+
+          // Structured data must parse and cite the rich-results @types
+          const ldTypes = jsonLdTypes(html);
+          for (const t of ['SoftwareApplication', 'HowTo', 'BreadcrumbList']) {
+            // The custom meta/spec pages (sogo-gaps, sogo-spec-*) — like
+            // their missing breadcrumb UI — ship no BreadcrumbList schema.
+            if (t === 'BreadcrumbList' && /(sogo-gaps|sogo-spec-)/.test(url))
+              continue;
+            expect(ldTypes.has(t), `${url} lacks JSON-LD @type ${t}`).toBe(
+              true
+            );
+          }
+
+          // Pagination links must stay inside the current version + locale
+          for (const m of html.matchAll(
+            /pagination-nav__link--(?:prev|next)" href=([^ >]*)/g
+          )) {
+            expect(
+              m[1].startsWith(`/docmakerai/de/sogo${v}/`),
+              `${url} pagination must stay within de/sogo${v}: ${m[1]}`
+            ).toBe(true);
+          }
+
+          // German pages must cite a German social card
+          const ogImage = html.match(/property=og:image content=([^ >]*)/)?.[1] ?? '';
+          expect(
+            ogImage.includes('/de/'),
+            `${url} og:image must point at the German social card`
+          ).toBe(true);
+          if (ogImage) ogImgs.add(ogImage);
 
           // Localized pages are real pages: one h1, unique title, doc body
           const h1Count = (html.match(/<h1[ >]/g) ?? []).length;
@@ -370,6 +482,13 @@ test.describe('Site crawl', () => {
               `${url} has a broken anchor #${frag}`
             ).toBe(true);
           }
+        }
+
+        // The German social card must resolve
+        expect(ogImgs.size, 'German pages must cite an og:image').toBeGreaterThan(0);
+        for (const src of ogImgs) {
+          const res = await request.get(src);
+          expect(res.status(), `broken og:image ${src}`).toBeLessThan(400);
         }
       });
     });
