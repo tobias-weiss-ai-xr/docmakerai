@@ -213,7 +213,7 @@ Form fields appear in this order (screen reader focus sequence):
 - `Enter` to activate
 
 **Step 5: Verify Event Saved**
-- Screen reader announces: "Event saved"
+- You should hear: "Event saved"
 - Event appears on calendar at selected time
 - You can `Tab` to event title to open and read details
 

@@ -44,20 +44,21 @@ SOGo 6 unterstützt die vollständige Tastaturnavigation für die Anmeldung.
 
 | Aktion | Tastenkombination: Welche Taste drücken | Hinweise: Zusätzliche Informationen |
 |--------|----------------------------------|---------------------------|
-| | Zum Benutzernamen-Feld navigieren | `Tab` aus der Adressleiste |
+| | Zum Benutzernamen-Feld navigieren | `Tab` (ggf. mehrfach) drücken, bis Sie hören: „Benutzername, Bearbeiten, leer“ — es ist in der Regel das erste Feld der Formularfelder |
 | | Zum Passwort-Feld wechseln | `Tab` nach dem Benutzernamen |
-| | "Angemeldet bleiben" umschalten | `Tab` zum Schalter, `Leertaste` zum Umschalten |
+| | „Angemeldet bleiben“ umschalten | `Tab` zum Kontrollfeld (Checkbox), `Leertaste` zum Umschalten |
 | | Anmeldeformular absenden | `Eingabetaste` in einem beliebigen Feld |
-| | Anmeldung abbrechen | `Escape` leert das Formular |
+
+Je nach Instanz liegen in der Tab-Reihenfolge vor dem Benutzernamen-Feld noch der Sprachumschalter und das Passwort-Auge (Passwort anzeigen). `Escape` erreicht zunächst den Fokusmodus des Screenreaders und leert die Eingaben nicht — das Formular bleibt ausgefüllt.
 
 ### Screenreader-Workflow
 
-1. Nach dem Laden der Seite kündigt der Screenreader an: "Anmeldung, Überschriftsebene 1"
-2. `Tab` zum Benutzernamen-Feld — "Benutzername, Bearbeiten, leer"
+1. Ob der Screenreader die Seite nach dem Laden vorliest, hängt von dessen Einstellungen ab. Verlässlicher Einstieg: mit `Strg+Pos1` an den Seitenanfang springen und die Seite anschließend schrittweise durch Navigieren mit `Tab` erschließen
+2. `Tab` (ggf. mehrfach) zum Benutzernamen-Feld — "Benutzername, Bearbeiten, leer"
 3. Geben Sie Ihren Benutzernamen ein
 4. `Tab` zum Passwort-Feld — "Passwort, Bearbeiten, leer"
 5. Geben Sie Ihr Passwort ein
-6. `Tab` zum Schalter "Angemeldet bleiben" — "Angemeldet bleiben, Schalter, aus"
+6. `Tab` zum Kontrollfeld „Angemeldet bleiben“ — der Screenreader sagt z. B. „Benutzername merken, Kontrollfeld nicht aktiviert“ an (der zugängliche Name weicht vom sichtbaren Label „Angemeldet bleiben“ ab)
 7. `Leertaste` zum Umschalten (falls gewünscht)
 8. `Tab` zur Anmelde-Schaltfläche — "Anmelden, Schaltfläche"
 9. `Eingabetaste` zum Absenden
