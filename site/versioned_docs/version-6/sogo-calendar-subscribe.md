@@ -163,7 +163,7 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 **Step 5: Complete Subscription**
 1. Tab to "Subscribe" or "Save" button
 2. Press `Enter`
-3. Screen reader announces calendar added
+3. You should hear a confirmation that the calendar was added
 
 **Common Screen Reader Announcements:**
 

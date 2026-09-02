@@ -132,40 +132,40 @@ SOGo 6 supports full keyboard navigation for calendar sharing features.
 
 **Step 1: Open Calendar Module**
 - Press `Alt+C` to navigate to the Calendar module
-- Screen reader announces: "Calendar, module heading"
+- You should hear: "Calendar, module heading"
 
 **Step 2: Open Calendar Settings**
 - Press `Tab` to navigate to the gear icon (Settings) in the toolbar
 - Press `Enter` to open settings
-- Screen reader announces: "Settings dialog, Calendar tab"
+- You should hear: "Settings dialog, Calendar tab"
 
 **Step 3: Select Calendar to Share**
 - Press `Tab` to navigate the calendar list
 - Use `Up`/`Down` arrow keys to select the desired calendar
-- Screen reader announces: "Personal calendar, selected"
+- You should hear: "Personal calendar, selected"
 
 **Step 4: Open Permissions Tab**
 - Press `Tab` to reach the Permissions or Sharing tab
 - Press `Enter` to activate
-- Screen reader announces: "Permissions tab, selected"
+- You should hear: "Permissions tab, selected"
 
 **Step 5: Add a User**
 - Press `Tab` to reach the "Add User" button
 - Press `Enter` to activate the autocomplete field
 - Start typing the colleague's name or email
-- Screen reader announces: "Edit, autocomplete, suggestions available"
+- You should hear: "Edit, autocomplete, suggestions available"
 - Use `Down` arrow to navigate suggestions, `Enter` to select
 
 **Step 6: Set Permission Level**
 - Press `Tab` to reach the permission level dropdown
 - Use `Up`/`Down` arrow keys to cycle through permission options
-- Screen reader announces each option: "Modify, selected" or "View read-only, selected"
+- You should hear each option: "Modify, selected" or "View read-only, selected"
 - Select **Modify** for the recommended level
 
 **Step 7: Confirm and Save**
 - Press `Tab` to reach the OK or Save button
 - Press `Enter` to apply the share
-- Screen reader announces: "Saved successfully" or similar confirmation
+- You should hear: "Saved successfully" or similar confirmation
 
 **Step 8: Verify (Optional)**
 - Open a private/incognito browser window

@@ -35,7 +35,7 @@ SOGo 5 unterstützt die vollständige Tastaturnavigation für die Abmeldung.
 
 1. `Tab` durch die Symbolleiste, bis "Ein/Aus-Symbol, Schaltfläche" angesagt wird
 2. `Eingabetaste` zum Abmelden
-3. Screenreader kündigt an: "Abmeldung erfolgreich" oder Weiterleitung zur Anmeldeseite
+3. Je nach Screenreader-Einstellungen wird eine Bestätigung angesagt, oder Sie werden direkt zur Anmeldeseite weitergeleitet
 4. Sie werden zur Anmeldeseite zurückgeleitet, Sitzung beendet
 
 ### Hochkontrastmodus

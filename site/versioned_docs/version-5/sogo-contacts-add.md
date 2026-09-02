@@ -196,7 +196,7 @@ Form fields appear in this order (screen reader focus sequence):
 **Step 5: Save Contact**
 - `Tab` to Save button
 - `Enter` to activate
-- Screen reader announces: "Contact saved"
+- You should hear: "Contact saved"
 - Contact appears in contact list
 
 **Common Screen Reader Announcements:**

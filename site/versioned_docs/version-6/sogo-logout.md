@@ -39,7 +39,7 @@ SOGo 6 supports full keyboard navigation for logout.
 
 1. `Tab` through toolbar until "Power icon, button" is announced
 2. `Enter` to click logout
-3. Screen reader announces: "Logout successful" or redirect to login page
+3. Depending on the screen reader settings a confirmation is announced, or you are redirected straight to the login page
 4. You are returned to the login page, session ended
 
 ### High Contrast Mode

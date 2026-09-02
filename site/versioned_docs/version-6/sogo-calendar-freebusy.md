@@ -123,48 +123,48 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
 **Step 1: Open Calendar Module**
 - Press `Alt+C` to navigate to the Calendar module
-- Screen reader announces: "Calendar, module heading"
+- You should hear: "Calendar, module heading"
 
 **Step 2: Create a New Event**
 - Press `Ctrl+N` to create a new event, or tab to the + button and press `Enter`
-- Screen reader announces: "New event dialog"
+- You should hear: "New event dialog"
 - The event dialog opens with fields for title, date, time, and attendees
 
 **Step 3: Open Attendees Section**
 - Press `Tab` repeatedly to navigate through event fields (title, date, time)
 - Stop when you reach the Attendees section
-- Screen reader announces: "Attendees, section"
+- You should hear: "Attendees, section"
 
 **Step 4: Open Free/Busy View**
 - Press `Tab` to reach the Free/Busy or Availability button
 - Press `Enter` to open the availability grid
-- Screen reader announces: "Free busy grid, your calendar shown"
+- You should hear: "Free busy grid, your calendar shown"
 
 **Step 5: Add a Colleague**
 - Press `Tab` to reach the Add Person field
 - Type the colleague's name or email
-- Screen reader announces: "Edit, autocomplete, suggestions available"
+- You should hear: "Edit, autocomplete, suggestions available"
 - Use `Down` arrow to navigate through suggested names
 - Press `Enter` to select the correct colleague
-- Screen reader announces: "Person added to grid"
+- You should hear: "Person added to grid"
 
 **Step 6: Navigate and Read the Grid**
 - Use `Tab` to move between colleague rows in the grid
 - Use `Left`/`Right` arrow keys to move across time slots
-- Screen reader announces each slot: "10:00 AM, available" or "11:00 AM, busy"
+- You should hear each slot: "10:00 AM, available" or "11:00 AM, busy"
 - Color meanings are conveyed as text: "Available (green)", "Busy (red)", "Tentative (yellow)", "No data (white)"
 - Repeat for each colleague added
 
 **Step 7: Select a Common Available Slot**
 - Navigate to a time slot where all colleagues show as available
 - Press `Enter` to select the time
-- Screen reader announces: "Time selected: 2:00 PM to 3:00 PM"
+- You should hear: "Time selected: 2:00 PM to 3:00 PM"
 - The event's start and end time update automatically
 
 **Step 8: Save the Event**
 - Press `Tab` to reach the Save button
 - Press `Enter` to confirm and create the event
-- Screen reader announces: "Event saved" or similar confirmation
+- You should hear: "Event saved" or similar confirmation
 - The event appears in your calendar with the selected time
 
 **Common Screen Reader Announcements:**

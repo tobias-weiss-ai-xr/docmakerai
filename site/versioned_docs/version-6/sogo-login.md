@@ -48,22 +48,23 @@ SOGo 6 supports full keyboard navigation for login.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to username field | `Tab` from address bar |
-| | Move to password field | `Tab` after username |
-| | Toggle "Remember me" | `Tab` to switch, `Space` to toggle |
+| | Navigate to username field | Press `Tab` (repeat as needed) until you hear "Username, edit, blank" — it is usually the first field of the form |
+| | Move to password field | `Tab` after the username |
+| | Toggle "Remember me" | `Tab` to the checkbox, `Space` to toggle |
 | | Submit login form | `Enter` on any field |
-| | Cancel login | `Escape` clears form |
+
+Depending on the instance, the tab order starts with the language selector and the show-password toggle before the username field. `Escape` first reaches the screen reader's focus mode and does not clear the form — your input is kept.
 
 ### Screen Reader Workflow
 
-1. After page loads, screen reader announces: "Login, heading level 1"
-2. `Tab` to username field — "Username, edit, blank"
+1. Whether the screen reader reads the page after it loads depends on its settings. A reliable start: press `Ctrl+Home` to jump to the top of the page, then explore it step by step by navigating with `Tab`
+2. `Tab` (repeat as needed) to the username field — "Username, edit, blank"
 3. Enter your username
-4. `Tab` to password field — "Password, edit, blank"
+4. `Tab` to the password field — "Password, edit, blank"
 5. Enter your password
-6. `Tab` to "Remember me" switch — "Remember me, switch, off"
+6. `Tab` to the "Remember me" checkbox — announced as a checkbox, e.g. "…, checkbox, not checked"; depending on the instance its accessible name may differ from the visible label
 7. `Space` to toggle if desired
-8. `Tab` to Login button — "Login, button"
+8. `Tab` to the Login button — "Login, button"
 9. `Enter` to submit
 
 ### High Contrast Mode
