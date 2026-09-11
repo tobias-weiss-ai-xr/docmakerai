@@ -10,13 +10,10 @@ from accessibility.validate import AccessibilityValidator, main
 # _extract_tables
 # ---------------------------------------------------------------------------
 
+
 class TestExtractTables:
     def test_single_table(self):
-        content = (
-            "| Header A | Header B |\n"
-            "| -------- | -------- |\n"
-            "| Cell 1   | Cell 2   |\n"
-        )
+        content = "| Header A | Header B |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n"
         validator = AccessibilityValidator()
         tables = validator._extract_tables(content)
         assert len(tables) == 1
@@ -48,47 +45,45 @@ class TestExtractTables:
 
     def test_malformed_table_pipe_no_separator(self):
         """Line with pipe but no valid separator row → not a table."""
-        content = (
-            "| Just a pipe line\n"
-            "| Another pipe line\n"
-        )
+        content = "| Just a pipe line\n| Another pipe line\n"
         validator = AccessibilityValidator()
         tables = validator._extract_tables(content)
         assert tables == []
 
 
 # ---------------------------------------------------------------------------
-# _has_descriptive_table_headers
+# _has_empty_first_cell
 # ---------------------------------------------------------------------------
 
-class TestHasDescriptiveTableHeaders:
-    def test_header_with_colon_returns_true(self):
-        validator = AccessibilityValidator()
-        assert validator._has_descriptive_table_headers("| Feature: desc | Status |") is True
 
-    def test_header_without_colon_returns_false(self):
+class TestHasEmptyFirstCell:
+    def test_empty_first_cell_returns_true(self):
         validator = AccessibilityValidator()
-        assert validator._has_descriptive_table_headers("| Feature | Status |") is False
+        assert validator._has_empty_first_cell("| | Feature | Status |") is True
 
-    def test_empty_cells(self):
-        """Empty cells are filtered out; no colon → False."""
+    def test_normal_header_returns_false(self):
         validator = AccessibilityValidator()
-        assert validator._has_descriptive_table_headers("|  |  |") is False
+        assert validator._has_empty_first_cell("| Feature | Status |") is False
+
+    def test_no_pipe_prefix_returns_false(self):
+        validator = AccessibilityValidator()
+        assert validator._has_empty_first_cell("Feature | Status") is False
+
+    def test_empty_row(self):
+        """Fully empty row still counts as empty first cell."""
+        validator = AccessibilityValidator()
+        assert validator._has_empty_first_cell("| | |") is True
 
 
 # ---------------------------------------------------------------------------
 # validate_file
 # ---------------------------------------------------------------------------
 
+
 class TestValidateFile:
     def test_proper_heading_hierarchy(self, tmp_path):
         md = tmp_path / "proper.md"
-        md.write_text(
-            "# Title\n"
-            "## Section\n"
-            "### Subsection\n"
-            "Content here.\n"
-        )
+        md.write_text("# Title\n## Section\n### Subsection\nContent here.\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         heading_issues = [i for i in issues if i["type"] == "heading_hierarchy"]
@@ -96,49 +91,44 @@ class TestValidateFile:
 
     def test_skipped_heading_level(self, tmp_path):
         md = tmp_path / "skip.md"
-        md.write_text(
-            "# Title\n"
-            "### Skipped level\n"
-        )
+        md.write_text("# Title\n### Skipped level\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        # Duplicate hierarchy check adds TWO identical issues
         heading_issues = [i for i in issues if i["type"] == "heading_hierarchy"]
-        assert len(heading_issues) == 2
+        assert len(heading_issues) == 1
         for iss in heading_issues:
             assert iss["fixable"] is True
 
     def test_proper_table_headers(self, tmp_path):
         md = tmp_path / "table_ok.md"
-        md.write_text(
-            "| Feature: desc | Status |\n"
-            "| ------------- | ------ |\n"
-            "| Login         | Done   |\n"
-        )
+        md.write_text("| Feature | Status |\n| ------- | ------ |\n| Login   | Done   |\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        table_issues = [i for i in issues if i["type"] == "table_header"]
+        table_issues = [i for i in issues if i["type"] == "empty_first_cell"]
         assert table_issues == []
 
-    def test_table_missing_descriptive_headers(self, tmp_path):
+    def test_table_with_empty_first_cell(self, tmp_path):
         md = tmp_path / "table_bad.md"
-        md.write_text(
-            "| Feature | Status |\n"
-            "| ------- | ------ |\n"
-            "| Login   | Done   |\n"
-        )
+        md.write_text("| Feature | Status |\n| ------- | ------ |\n|        | Done   |\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        table_issues = [i for i in issues if i["type"] == "table_header"]
+        table_issues = [i for i in issues if i["type"] == "empty_first_cell"]
         assert len(table_issues) == 1
         assert table_issues[0]["fixable"] is True
 
+    def test_table_header_with_empty_first_cell(self, tmp_path):
+        """| | Header | in the HEADER row is reported (distinct from data rows)."""
+        md = tmp_path / "table_hdr_bad.md"
+        md.write_text("| | Feature | Status |\n| ------- | ------ | ------ |\n| 1 | a | b |\n")
+        validator = AccessibilityValidator()
+        issues = validator.validate_file(md)
+        table_issues = [i for i in issues if i["type"] == "empty_first_cell"]
+        assert len(table_issues) == 1
+        assert "header" in table_issues[0]["message"].lower()
+
     def test_keyboard_navigation_section_present(self, tmp_path):
         md = tmp_path / "has_kb.md"
-        md.write_text(
-            "# Keyboard Navigation\n"
-            "Use Tab to navigate.\n"
-        )
+        md.write_text("# Keyboard Navigation\nUse Tab to navigate.\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         kb_issues = [i for i in issues if i["type"] == "missing_keyboard_section"]
@@ -156,10 +146,7 @@ class TestValidateFile:
     def test_gif_with_screen_reader_section(self, tmp_path):
         md = tmp_path / "gif_ok.md"
         md.write_text(
-            "![animation](demo.gif)\n"
-            "\n"
-            "## Screen Reader: Workflow\n"
-            "Description for blind users.\n"
+            "![animation](demo.gif)\n\n## Screen Reader: Workflow\nDescription for blind users.\n"
         )
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
@@ -177,10 +164,7 @@ class TestValidateFile:
 
     def test_accessibility_with_high_contrast_mention(self, tmp_path):
         md = tmp_path / "hc_ok.md"
-        md.write_text(
-            "## Accessibility\n"
-            "Supports high contrast mode.\n"
-        )
+        md.write_text("## Accessibility\nSupports high contrast mode.\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         hc_issues = [i for i in issues if i["type"] == "missing_high_contrast"]
@@ -188,10 +172,7 @@ class TestValidateFile:
 
     def test_accessibility_without_high_contrast(self, tmp_path):
         md = tmp_path / "hc_bad.md"
-        md.write_text(
-            "## Accessibility\n"
-            "Some info here.\n"
-        )
+        md.write_text("## Accessibility\nSome info here.\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         hc_issues = [i for i in issues if i["type"] == "missing_high_contrast"]
@@ -212,31 +193,27 @@ class TestValidateFile:
 # fix_file
 # ---------------------------------------------------------------------------
 
+
 class TestFixFile:
     def test_fixes_heading_hierarchy(self, tmp_path):
         md = tmp_path / "fix_heading.md"
-        md.write_text(
-            "# Title\n"
-            "### Skipped\n"
-        )
+        md.write_text("# Title\n### Skipped\n")
         validator = AccessibilityValidator()
         fixes = validator.fix_file(md)
         assert fixes == 1
         content = md.read_text()
         assert "## Skipped" in content
 
-    def test_fixes_table_headers(self, tmp_path):
+    def test_no_table_auto_fix(self, tmp_path):
+        """fix_file no longer mangles table headers with ': Description'."""
         md = tmp_path / "fix_table.md"
-        md.write_text(
-            "| Feature | Status |\n"
-            "| ------- | ------ |\n"
-            "| Login   | Done   |\n"
-        )
+        md.write_text("| Feature | Status |\n| ------- | ------ |\n| Login   | Done   |\n")
         validator = AccessibilityValidator()
         fixes = validator.fix_file(md)
-        assert fixes == 1
+        assert fixes == 0
         content = md.read_text()
-        assert "Feature: Description" in content
+        assert "Feature: Description" not in content
+        assert "| Feature | Status |" in content
 
     def test_no_modifications_when_no_issues(self, tmp_path):
         md = tmp_path / "clean.md"
@@ -252,6 +229,7 @@ class TestFixFile:
 # fix_directory
 # ---------------------------------------------------------------------------
 
+
 class TestFixDirectory:
     def test_fixes_multiple_files(self, tmp_path):
         a = tmp_path / "a.md"
@@ -260,32 +238,40 @@ class TestFixDirectory:
         b.write_text("| X | Y |\n| - | - |\n| 1 | 2 |\n")
         validator = AccessibilityValidator()
         total = validator.fix_directory(tmp_path)
-        assert total == 2  # 1 heading fix + 1 table fix
+        assert total == 1  # only the heading fix; table headers are not auto-fixed
         assert "## Bad heading" in a.read_text()
-        assert "X: Description" in b.read_text()
+        assert "X: Description" not in b.read_text()
+
+    def test_skips_node_modules(self, tmp_path):
+        (tmp_path / "node_modules").mkdir()
+        (tmp_path / "node_modules" / "bad.md").write_text("# Title\n### Skipped\n")
+        validator = AccessibilityValidator()
+        assert validator.fix_directory(tmp_path) == 0
 
     def test_skips_template_files(self, tmp_path):
         (tmp_path / "accessibility-section-template.md").write_text("### Bad\n")
         (tmp_path / "real.md").write_text("| X | Y |\n| - | - |\n| 1 | 2 |\n")
         validator = AccessibilityValidator()
         total = validator.fix_directory(tmp_path)
-        # Only real.md gets fixed (1 table), template is skipped
-        assert total == 1
+        # Only real.md's heading would be fixed; template is skipped. Table is untouched.
+        assert total == 0
 
 
 # ---------------------------------------------------------------------------
 # validate_directory
 # ---------------------------------------------------------------------------
 
+
 class TestValidateDirectory:
     def test_validates_all_md_files(self, tmp_path):
         a = tmp_path / "a.md"
         a.write_text("# Ok\n")
         b = tmp_path / "b.md"
-        b.write_text("| X | Y |\n| - | - |\n| 1 | 2 |\n")
+        b.write_text("| X | Y |\n| - | - |\n| | 2 |\n")
         validator = AccessibilityValidator()
         issues = validator.validate_directory(tmp_path)
-        assert len(issues) >= 1  # b has missing keyboard + table + accessibility issues
+        empty_cell = [i for i in issues if i["type"] == "empty_first_cell"]
+        assert len(empty_cell) >= 1  # b has an empty-first-cell row
 
     def test_skips_template_files(self, tmp_path):
         (tmp_path / "accessibility-section-template.md").write_text("| X |\n| - |\n| 1 |\n")
@@ -296,10 +282,17 @@ class TestValidateDirectory:
         assert "real.md" in files
         assert "accessibility-section-template.md" not in files
 
+    def test_skips_node_modules(self, tmp_path):
+        (tmp_path / "node_modules").mkdir()
+        (tmp_path / "node_modules" / "x.md").write_text("| X |\n| - |\n| | 2 |\n")
+        validator = AccessibilityValidator()
+        assert validator.validate_directory(tmp_path) == []
+
 
 # ---------------------------------------------------------------------------
 # print_report
 # ---------------------------------------------------------------------------
+
 
 class TestPrintReport:
     def test_no_issues(self, capsys):
@@ -311,8 +304,13 @@ class TestPrintReport:
     def test_with_issues(self, capsys):
         validator = AccessibilityValidator()
         issues = [
-            {"line": 3, "type": "heading_hierarchy", "message": "Bad heading", "file": "test.md",
-             "fixable": True},
+            {
+                "line": 3,
+                "type": "heading_hierarchy",
+                "message": "Bad heading",
+                "file": "test.md",
+                "fixable": True,
+            },
             {
                 "line": None,
                 "type": "missing_keyboard_section",
@@ -334,6 +332,7 @@ class TestPrintReport:
 # ---------------------------------------------------------------------------
 # main — argparse behavior
 # ---------------------------------------------------------------------------
+
 
 class TestMain:
     def test_default_arguments(self, tmp_path, monkeypatch):
@@ -361,3 +360,43 @@ class TestMain:
         with pytest.raises(SystemExit) as exc:
             main()
         assert exc.value.code == 1
+
+    def test_validate_single_file(self, tmp_path, monkeypatch):
+        """CLI accepts a single markdown file, not just directories."""
+        md = tmp_path / "one.md"
+        md.write_text(
+            "# Keyboard Navigation\nUse Tab to navigate.\n\n## Accessibility\n\n"
+            "Use Tab and keyboard shortcuts. For GIFs, screen reader text is provided. "
+            "High contrast mode is supported.\n"
+        )
+        monkeypatch.setattr(sys, "argv", ["validate.py", str(md)])
+        with pytest.raises(SystemExit) as exc:
+            main()
+        assert exc.value.code == 0  # clean file
+
+    def test_fix_single_file(self, tmp_path, monkeypatch):
+        """--fix works on a single markdown file."""
+        md = tmp_path / "one.md"
+        md.write_text("# Title\n### Skipped\n")
+        monkeypatch.setattr(sys, "argv", ["validate.py", str(md), "--fix"])
+        with pytest.raises(SystemExit) as exc:
+            main()
+        assert exc.value.code == 1  # keyboard section still missing
+        assert "## Skipped" in md.read_text()
+
+    def test_main_module_exit_code(self, tmp_path):
+        """python -m accessibility.validate <clean file> exits 0 via __main__."""
+        import subprocess
+
+        md = tmp_path / "clean.md"
+        md.write_text(
+            "# Keyboard Navigation\nUse Tab to navigate.\n\n## Accessibility\n\n"
+            "Use Tab and keyboard shortcuts. For GIFs, screen reader text is provided. "
+            "High contrast mode is supported.\n"
+        )
+        result = subprocess.run(
+            [sys.executable, "-m", "accessibility.validate", str(md)],
+            capture_output=True,
+            cwd=".",
+        )
+        assert result.returncode == 0
