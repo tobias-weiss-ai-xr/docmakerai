@@ -25,7 +25,7 @@ team calendars, or any `.ics` feed available online.
 
 You need the web address (URL) of an iCal feed. Common examples:
 
-| Source | Example URL: Calendar address example |
+| Source | Example URL |
 |:-------|:------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
@@ -35,7 +35,7 @@ You need the web address (URL) of an iCal feed. Common examples:
 
 1. Click **Calendar** in the sidebar
 2. Locate the calendar list on the left side
-3. Click the **gear icon** ⚙ next to the calendar section header
+3. Click the **three-dot menu** (⋯) next to the calendar section header
 4. Select **Subscribe to URL**
 
 ![Calendar view with subscription options](./assets/01-calendar-view.png)
@@ -52,7 +52,7 @@ In the subscription dialog:
 
 ### Step 4: Configure Sync Options
 
-| Option | Description: What this option does |
+| Option | Description |
 |:-------|:------------|
 | **Refresh interval** | How often to check for updates (every hour, daily, etc.) |
 | **Remove reminders** | Strip alarm information from external events |
@@ -76,19 +76,19 @@ the calendar in the list.
 
 ### Refresh Manually
 
-Right-click the subscribed calendar → **Refresh** to fetch the
+Click the three-dot menu (⋯) next to the subscribed calendar → **Refresh** to fetch the
 latest data immediately.
 
 ### Edit Subscription Properties
 
-Right-click the calendar → **Properties**:
+Click the three-dot menu (⋯) next to the calendar → **Properties**:
 - Change the display name or color
 - Update the feed URL
 - Adjust refresh interval
 
 ### Unsubscribe
 
-Right-click the calendar → **Unsubscribe** or **Delete**.
+Click the three-dot menu (⋯) next to the calendar → **Unsubscribe** or **Delete**.
 The calendar is removed from your view. The source is unaffected.
 
 ## Troubleshooting
@@ -102,7 +102,7 @@ The calendar is removed from your view. The source is unaffected.
 ### Calendar not updating
 
 - Check the refresh interval setting
-- Manually refresh: right-click → **Refresh**
+- Manually refresh: three-dot menu (⋯) → **Refresh**
 - The feed provider may have changed the URL
 
 ### Events have wrong times
@@ -125,13 +125,13 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | Open subscription dialog | `Ctrl+Shift+S` or gear icon |
-| | Select calendar type | Arrow keys in dropdown |
-| | Enter calendar URL | Tab to URL field, type |
-| | Display name field | Tab, type name |
-| | Refresh frequency | Arrow key to select |
-| | Subscribe or save | `Ctrl+S` or `Enter` |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| Open subscription dialog | `Ctrl+Shift+S` or three-dot menu (⋯) |
+| Select calendar type | Arrow keys in dropdown |
+| Enter calendar URL | Tab to URL field, type |
+| Display name field | Tab, type name |
+| Refresh frequency | Arrow key to select |
+| Subscribe or save | `Ctrl+S` or `Enter` |
 
 ### Screen Reader Workflow
 
@@ -143,7 +143,7 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 3. `Enter` to open calendar view
 
 **Step 2: Open Subscription Dialog**
-1. Gear icon settings or press `Ctrl+Shift+S`
+1. Three-dot menu (⋯) settings or press `Ctrl+Shift+S`
 2. "Subscribe to Calendar" option
 3. Press `Enter`
 
@@ -186,4 +186,4 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
 ### High Contrast Mode
 
-SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: three-dot menu (⋯) → General → Theme → Dark/High Contrast.

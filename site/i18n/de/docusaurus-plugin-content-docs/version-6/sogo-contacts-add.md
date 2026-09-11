@@ -1,27 +1,27 @@
 ---
 title: "Kontakt hinzufügen"
-description: "Erfahren Sie, wie Sie Kontakte im SOGo 5-Adressbuch hinzufügen und organisieren"
+description: "Erfahren Sie, wie Sie Kontakte im SOGo 6-Adressbuch hinzufügen und organisieren"
 sidebar_label: "Kontakt hinzufügen"
 ---
 
 # Kontakt hinzufügen
 
-Dieses Tutorial erklärt, wie Sie Kontakte zu Ihrem SOGo 5-Adressbuch hinzufügen
+Dieses Tutorial erklärt, wie Sie Kontakte zu Ihrem SOGo 6-Adressbuch hinzufügen
 und in Gruppen organisieren.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 
 ## Schritt-für-Schritt-Anleitung
 
 ### Schritt 1: Kontaktmodul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **Kontakte**,
+Klicken Sie oben in der Navigationsleiste auf **Kontakte**,
 um Ihr Adressbuch zu öffnen.
 
-![Kontaktmodul in der Seitenleiste](./assets/01-contacts-module.png)
+![Kontaktmodul in der Navigationsleiste](./assets/01-contacts-module.png)
 
 Die Kontaktansicht zeigt Ihr Adressbuch mit allen vorhandenen Kontakten.
 Auf der linken Seite sehen Sie Ihre Adressbücher und Kontaktgruppen.
@@ -36,7 +36,7 @@ Ein leeres Kontaktformular wird angezeigt.
 
 Füllen Sie die Details des Kontakts aus. Die am häufigsten verwendeten Felder sind:
 
-| Feld: Description | Beschreibung | Empfohlen |
+| Eingabefeld | Beschreibung | Empfohlen |
 |------|-------------|-----------|
 | **Vorname** | Vorname | ✅ Immer |
 | **Nachname** | Familienname | ✅ Immer |
@@ -55,7 +55,7 @@ aber Sie können es anpassen (z. B. "Max M. (IT-Support)").
 
 Scrollen Sie nach unten, um auf weitere Felder zuzugreifen:
 
-| Bereich: Description | Felder |
+| Bereich | Felder |
 |---------|-------|
 | **Adresse** | Straße, Stadt, PLZ, Land |
 | **Weitere E-Mail** | Sekundäre E-Mail-Adressen |
@@ -79,26 +79,26 @@ Klicken Sie auf **Speichern**, um den Kontakt zu Ihrem Adressbuch hinzuzufügen.
 Der Kontakt wird nun in Ihrer Kontaktliste angezeigt. Sie können:
 
 - Darauf klicken, um Details anzuzeigen oder zu bearbeiten
-- Bei der E-Mail-Eingabe den Namen tippen, um die Auto-Vervollständigung zu nutzen
+- Bei der E-Mail-Eingabe den Namen tippen, um die automatische Vervollständigung zu nutzen
 
 ## Kontakte in Gruppen organisieren
 
 ### Gruppe erstellen
 
-1. Klicken Sie in der linken Seitenleiste auf **+** neben **Kontaktgruppen**
+1. Klicken Sie oben in der Navigationsleiste auf **+** neben **Kontaktgruppen**
 2. Geben Sie einen Namen für die Gruppe ein (z. B. "Team", "Kunden", "Familie")
 3. Klicken Sie auf **OK**
 
 ### Kontakte zu einer Gruppe hinzufügen
 
 1. Ziehen Sie einen Kontakt aus der Liste auf den Gruppennamen, oder
-2. Klicken Sie mit der rechten Maustaste auf die Gruppe, wählen Sie **Mitglieder hinzufügen** und wählen Sie Kontakte aus
+2. Klicken Sie auf das Dreipunkt-Menü (⋯) neben die Gruppe, wählen Sie **Mitglieder hinzufügen** und wählen Sie Kontakte aus
 
 ## Kontakte importieren (CSV/vCard)
 
 Um Kontakte aus einem anderen Dienst zu importieren:
 
-1. Klicken Sie auf das **Zahnradsymbol** ⚙ in der Kontakt-Symbolleiste
+1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) in der Kontakt-Symbolleiste
 2. Wählen Sie **Importieren**
 3. Wählen Sie eine Datei aus:
    - **vCard (.vcf)** — Standardformat, funktioniert mit den meisten Adressbüchern
@@ -117,32 +117,31 @@ Stellen Sie sicher, dass vor dem Import das richtige Adressbuch ausgewählt ist.
 
 ## Fazit
 
-Sie haben erfolgreich einen Kontakt zu Ihrem SOGo 5-Adressbuch hinzugefügt.
-Kontakte stehen in ganz SOGo 5 zur Verfügung — beim Verfassen von E-Mails, Einladen
+Sie haben erfolgreich einen Kontakt zu Ihrem SOGo 6-Adressbuch hinzugefügt.
+Kontakte stehen in ganz SOGo 6 zur Verfügung — beim Verfassen von E-Mails, Einladen
 von Teilnehmern zu Kalenderereignissen oder Suchen nach Kollegen.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

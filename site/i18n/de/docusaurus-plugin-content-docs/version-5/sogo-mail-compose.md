@@ -18,10 +18,10 @@ Dieses Tutorial behandelt die Grundlagen des Verfassens und Sendens von E-Mails
 
 ### Schritt 1: E-Mail-Modul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **E-Mail**,
+Klicken Sie oben in der Navigationsleiste auf **E-Mail**,
 um Ihren Posteingang zu öffnen.
 
-![E-Mail-Modul in der Seitenleiste](./assets/01-mail-inbox.png)
+![E-Mail-Modul in der Navigationsleiste](./assets/01-mail-inbox.png)
 
 Ihr Posteingang zeigt empfangene Nachrichten in der Hauptansicht, mit Ordnern
 (Inbox, Gesendet, Entwürfe, Papierkorb) im linken Bereich.
@@ -36,7 +36,7 @@ Ein neues Nachrichtenfenster wird geöffnet.
 
 Füllen Sie die Empfängerfelder aus:
 
-| Feld: Description | Beschreibung |
+| Eingabefeld | Beschreibung |
 |------|-------------|
 | **An** | Primäre(r) Empfänger. Mehrere Adressen mit Kommas oder Semikolons trennen |
 | **Cc** | Kopie — Empfänger erhalten eine Kopie, sichtbar für andere |
@@ -66,7 +66,7 @@ Beispiele:
 Geben Sie Ihre Nachricht in das große Textfeld ein. Die Symbolleiste bietet
 Formatierungsoptionen:
 
-| Schaltfläche: Description | Aktion |
+| Schaltfläche | Aktion |
 |-------------|--------|
 | **B** | Fett |
 | *I* | Kursiv |
@@ -119,7 +119,7 @@ Wenn Sie noch nicht bereit zum Senden sind:
 ### Empfänger nicht gefunden
 
 - Vergewissern Sie sich, dass die E-Mail-Adresse korrekt ist
-- Die Auto-Vervollständigung durchsucht Ihre Kontakte, nicht das globale Verzeichnis
+- Die automatische Vervollständigung durchsucht Ihre Kontakte, nicht das globale Verzeichnis
 - Geben Sie die vollständige E-Mail-Adresse manuell ein
 
 ## Fazit
@@ -127,29 +127,28 @@ Wenn Sie noch nicht bereit zum Senden sind:
 Sie haben erfolgreich eine E-Mail in SOGo 5 verfasst und gesendet. Sie können nun
 Ihren Posteingang verwalten, Nachrichten in Ordnern organisieren und E-Mail-Filter
 für die automatische Sortierung einrichten.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

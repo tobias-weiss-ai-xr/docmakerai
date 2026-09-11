@@ -33,7 +33,7 @@ Type your search term into the search field. Results appear as you type.
 
 Search results are grouped by module:
 
-| Module: Description | What It Searches |
+| Module | What It Searches |
 |--------|------------------|
 | **Mail** | Email subject lines and sender names (if IMAP available) |
 | **Calendar** | Event titles, locations, and descriptions |
@@ -44,7 +44,7 @@ Click on any result to navigate directly to that item.
 
 ## Search Tips
 
-| Technique: Description | Example | Result |
+| Technique | Example | Result |
 |-----------|---------|--------|
 | **Partial match** | `Meet` | Finds "Meeting", "Meetup", "Street Meet" |
 | **By contact name** | `John` | Finds contacts named John and events with John |
@@ -58,7 +58,7 @@ Use **global search** to find items across all modules at once instead of search
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | No results found | Typo in search term | Double-check spelling or try a partial word |
 | Search button not visible | Narrow browser window | Widen the window or use the menu button (☰) |
@@ -70,12 +70,12 @@ Use **global search** to find items across all modules at once instead of search
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

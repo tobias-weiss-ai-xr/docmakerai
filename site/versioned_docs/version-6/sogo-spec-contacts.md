@@ -106,7 +106,7 @@ Source: `capture/run_captures.py` — `record_contacts_add()`, `record_contacts_
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Add new contact | an authenticated session with the contacts module open | the user clicks the add contact button | the contact form will open |
 | Form field highlights | the contact form is being recorded | the user focuses each field | the WebP will show UI highlights on active input fields |
@@ -122,10 +122,10 @@ SOGo 6 supports full keyboard navigation for contacts features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

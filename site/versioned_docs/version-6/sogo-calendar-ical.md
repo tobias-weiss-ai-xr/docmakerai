@@ -25,7 +25,7 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 
 ### Step 2: Access Calendar Settings
 
-Click the **Settings** gear icon in the calendar toolbar.
+Click the **three-dot menu** (⋯) in the calendar toolbar.
 
 ![Calendar settings and iCal export in SOGo 6](./assets/calendar-ical.png)
 
@@ -50,7 +50,7 @@ iCal (`.ics`) is a standard calendar file format supported by most calendar appl
 
 ## Import Options
 
-| Option: Description | Description | Use When |
+| Option | Description | Use When |
 |--------|--------------|---------|
 | **Add all events** | Imports all events from the file | First-time import |
 | **Merge duplicates** | Skips events with same date and title | Update existing calendar |
@@ -70,7 +70,7 @@ You can share your calendar by providing the iCal URL:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Import button not visible | Calendar sharing not enabled | Contact your administrator to enable sharing |
  | Import fails | Invalid `.ics` file format | Verify the file opens in a calendar application first |
@@ -83,10 +83,10 @@ SOGo 6 supports full keyboard navigation for importing and exporting calendars.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

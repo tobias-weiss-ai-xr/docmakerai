@@ -1,12 +1,12 @@
 ---
 title: "Aufgaben / To-Do-Modul"
-description: "Aufgabenlisten in SOGo 5 erstellen und verwalten"
+description: "Aufgabenlisten in SOGo 6 erstellen und verwalten"
 sidebar_label: "Aufgaben / To-Do"
 ---
 
 # Aufgaben / To-Do-Modul
 
-Organisieren Sie Aufgaben, setzen Sie Prioritäten und verwalten Sie To-Do-Artikel im Aufgabenverwaltungsmodul von SOGo 5.
+Organisieren Sie Aufgaben, setzen Sie Prioritäten und verwalten Sie To-Do-Artikel im Aufgabenverwaltungsmodul von SOGo 6.
 
 :::info
 In vielen SOGo-Installationen erscheint das Aufgabenmodul nur, wenn `SOGoDocumentsEnabled` in der Serverkonfiguration auf `YES` gesetzt ist. Ihr Administrator muss möglicherweise auch das Aufgabenmodul über zusätzliche Servereinstellungen aktivieren.
@@ -14,13 +14,13 @@ In vielen SOGo-Installationen erscheint das Aufgabenmodul nur, wenn `SOGoDocumen
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
 - Aufgabenmodul in der SOGo-Konfiguration aktiviert
-- Sie sind bei SOGo 5 angemeldet
+- Sie sind bei SOGo 6 angemeldet
 
 ## Funktionsübersicht
 
-| Funktion: Description | Beschreibung |
+| Funktion | Beschreibung |
 |----------|-------------|
 | **Aufgabenlisten** | Mehrere Aufgabenkategorien erstellen (z. B. persönlich, Arbeit, Projekte) |
 | **Prioritätsstufen** | Markierungen für Dringend, Hoch, Mittel, Niedrig |
@@ -35,7 +35,7 @@ In vielen SOGo-Installationen erscheint das Aufgabenmodul nur, wenn `SOGoDocumen
 Klicken Sie in der Navigationsseitenleiste auf **Aufgaben** oder **To-Do**, um das Modul zu öffnen.
 
 :::tip
-Wenn Aufgaben nicht in der Seitenleiste erscheinen, kontaktieren Sie Ihren Administrator, um es über die `SOGoDocumentsEnabled`-Konfiguration zu aktivieren und SOGo neu zu starten.
+Wenn Aufgaben nicht in der Navigationsleiste erscheinen, kontaktieren Sie Ihren Administrator, um es über die `SOGoDocumentsEnabled`-Konfiguration zu aktivieren und SOGo neu zu starten.
 :::
 
 ### Schritt 2: Neue Aufgabe erstellen
@@ -58,7 +58,7 @@ Wenn Aufgaben nicht in der Seitenleiste erscheinen, kontaktieren Sie Ihren Admin
 
 Klicken Sie nach der Erstellung auf die Aufgabe, um die Detailansicht zu öffnen und zu ändern:
 
-| Feld: Description | Beschreibung |
+| Eingabefeld | Beschreibung |
 |------|-------------|
 | **Titel** | Kurzer Aufgabenname |
 | **Beschreibung** | Detaillierte Notizen zur Aufgabe |
@@ -97,7 +97,7 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 ## Ansichten und Sortierung
 
-| Ansicht: Description | Verwendungszweck |
+| Ansicht | Verwendungszweck |
 |---------|-----------------|
 | **Alle Aufgaben** | Übersicht über alle ausstehenden Aufgaben |
 | **Fällig bald** | Fokus auf anstehende Fristen |
@@ -107,18 +107,18 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 ## Tastenkombinationen
 
-| Aktion: Description | Tastenkombination |
+| Aktion | Tastenkombination |
 |--------|------------------|
-| Neue Aufgabe | `Ctrl + N` / `⌘ + N` |
-| Aufgabe erledigen | Häkchen neben dem Element oder `Ctrl + Eingabetaste` |
+| Neue Aufgabe | `Strg + N` / `⌘ + N` |
+| Aufgabe erledigen | Häkchen neben dem Element oder `Strg + Eingabetaste` |
 | Aufgabe löschen | `Entf`-Taste |
-| Erledigt rückgängig | `Ctrl + Z` / `⌘ + Z` |
+| Erledigt rückgängig | `Strg + Z` / `⌘ + Z` |
 
 ## Aufgabenintegration
 
 SOGo-Aufgaben können verknüpft werden mit:
 
-| Integration: Description | Vorgehen |
+| Integration | Vorgehen |
 |-------------|---------|
 | **Kalender** | Eine Ereigniseinladung in eine Aufgabe umwandeln; Aufgabendatum auf Ereignisdatum setzen |
 | **Kontakte** | Besitzer oder Delegierten aus dem Adressbuch zuweisen |
@@ -138,7 +138,7 @@ Verwenden Sie Aufgaben, um Besprechungsaktionen nachzuverfolgen. Erstellen Sie n
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Aufgabenmodul nicht sichtbar | `SOGoDocumentsEnabled` auf NO gesetzt | Bitten Sie den Admin, es in der SOGo-Konfiguration zu aktivieren |
 | Aufgabe kann nicht erstellt werden | Schreibberechtigung für Aufgabenliste fehlt | Überprüfen Sie die ACLs für die Aufgabenliste |
@@ -148,30 +148,29 @@ Verwenden Sie Aufgaben, um Besprechungsaktionen nachzuverfolgen. Erstellen Sie n
 
 ## Fazit
 
-Sie haben erfolgreich gelernt, wie Sie Aufgaben im SOGo 5-Aufgabenmodul erstellen und verwalten.
-## Accessibility
+Sie haben erfolgreich gelernt, wie Sie Aufgaben im SOGo 6-Aufgabenmodul erstellen und verwalten.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

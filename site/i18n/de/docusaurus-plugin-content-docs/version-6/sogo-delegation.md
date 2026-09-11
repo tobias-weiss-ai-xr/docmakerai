@@ -10,8 +10,8 @@ Delegieren Sie Zugriff auf Ihre Kalender, E-Mail-Ordner und andere Ressourcen, i
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 - Mindestens zwei Benutzer mit SOGo-Konten (für die Delegationsdemonstration)
 - Berechtigungen werden pro Ordner oder pro Kalender verwaltet
 
@@ -19,7 +19,7 @@ Delegieren Sie Zugriff auf Ihre Kalender, E-Mail-Ordner und andere Ressourcen, i
 
 SOGo unterstützt granulare ACL-basierte Berechtigungen für:
 
-| Ressourcentyp: Description | Was geteilt werden kann |
+| Ressourcentyp | Was geteilt werden kann |
 |---------------|------------------------|
 | **Kalender** | Schreibgeschützt, Vollzugriff, vertrauliche Verfügbarkeit |
 | **Adressbuch** | Lese-, Schreib-, Änderungsberechtigungen |
@@ -28,7 +28,7 @@ SOGo unterstützt granulare ACL-basierte Berechtigungen für:
 
 ## Berechtigungsstufen
 
-| Berechtigung: Description | Beschreibung |
+| Berechtigung | Beschreibung |
 |-------------|-------------|
 | **Besitzer** | Vollzugriff, kann Berechtigungen ändern |
 | **Kann lesen** | Nur Elemente anzeigen |
@@ -45,7 +45,7 @@ Verwenden Sie verschiedene Berechtigungsstufen basierend auf der Vertrauensebene
 
 ### Schritt 1: Ressourceneinstellungen öffnen
 
-Klicken Sie in dem Modul, das Sie teilen möchten (Kalender oder Kontakte), auf das **Einstellungen**-Zahnradsymbol oder die **Teilen**-Schaltfläche.
+Klicken Sie in dem Modul, das Sie teilen möchten (Kalender oder Kontakte), auf das **Dreipunkt-Menü** (⋯) oder die **Teilen**-Schaltfläche.
 
 :::info
 Nicht alle Module in dieser Testumgebung zeigen die Teilen-Schaltfläche. In einer Produktionsumgebung mit vollständig freigegebenen ACLs erscheinen Freigabeoptionen auf einzelnen Elementen und Sammlungen.
@@ -84,7 +84,7 @@ Klicken Sie auf **Übernehmen** oder **Speichern**, um die Freigabe zu aktiviere
 
 ## Praktische Delegationsbeispiele
 
-| Szenario: Description | Empfohlene Berechtigung | Warum |
+| Szenario | Empfohlene Berechtigung | Warum |
 |----------|------------------------|-------|
 | **Assistent** | Administrator | Benötigt Vollzugriff, um den Kalender in Ihrem Namen zu verwalten |
 | **Teamleiter** | Teilnehmer | Kann Ereignisse erstellen/bearbeiten, um Team-Meetings zu planen |
@@ -107,7 +107,7 @@ Wenn eine Ressource für Sie freigegeben wurde:
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Teilen-Button nicht sichtbar | ACLs in der Konfiguration deaktiviert | Bitten Sie den Administrator, `SOGoACLsSendEMailNotifications` zu aktivieren |
 | Benutzer in der Suche nicht gefunden | Benutzer existiert nicht in SOGo | Überprüfen Sie, ob der Empfänger ein SOGo-Konto hat |
@@ -126,7 +126,7 @@ Wenn eine Ressource für Sie freigegeben wurde:
 
 Für Räume, Projektoren oder Ausrüstung:
 
-| Ressourcentyp: Description | Einrichtung |
+| Ressourcentyp | Einrichtung |
 |---------------|------------|
 | **Besprechungsraum** | Ressourcenkonto erstellen, als Ressourcentyp festlegen |
 | **Projektor** | Zum Kalender hinzufügen, als Ressource markieren, Buchungsberechtigungen erteilen |
@@ -138,30 +138,29 @@ Die Ressourcenkonfiguration erfordert in der Regel Administratorzugriff auf die 
 
 ## Fazit
 
-Sie haben erfolgreich gelernt, wie Sie Delegation und Berechtigungen in SOGo 5 verwenden.
-## Accessibility
+Sie haben erfolgreich gelernt, wie Sie Delegation und Berechtigungen in SOGo 6 verwenden.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

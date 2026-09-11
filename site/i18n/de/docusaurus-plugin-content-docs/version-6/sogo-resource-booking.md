@@ -14,14 +14,14 @@ Die Ressourcenbuchung in SOGo wird typischerweise als spezielle Kalenderkonten i
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 - Ressourcenkonten vom Administrator konfiguriert
 - Zugriff auf das Kalendermodul
 
 ## Übersicht über die Ressourcenbuchung
 
-| Ressourcentyp: Description | Beispiel-Anwendungsfall |
+| Ressourcentyp | Beispiel-Anwendungsfall |
 |---------------|------------------------|
 | **Besprechungsraum** | Kleiner Team-Besprechungsraum, Konferenzraum, Veranstaltungssaal |
 | **Ausrüstung** | Projektor, Videokonferenzsystem, spezielle Laborausrüstung |
@@ -48,17 +48,17 @@ Im Ereignisdialog:
 3. Suchen und fügen Sie die **Ressource** hinzu — diese kann erscheinen als:
    - Ein spezieller Ressourcen-Tab oder ein Ressourcensymbol
    - Eine Liste von Räumen/Ausrüstung, die Sie auswählen können
-   - Ein Auto-Vervollständigungsvorschlag bei Eingabe des Ressourcennamens
+   - Ein automatische Vervollständigungsvorschlag bei Eingabe des Ressourcennamens
 
 :::tip
-Ressourcen erscheinen oft mit einem Ortsymbol (📍) oder sind als [Raum] oder Ausrüstungsname in der Auto-Vervollständigung gekennzeichnet.
+Ressourcen erscheinen oft mit einem Ortsymbol (📍) oder sind als [Raum] oder Ausrüstungsname in der automatische Vervollständigung gekennzeichnet.
 :::
 
 ### Schritt 4: Zeitfenster auswählen
 
 Wählen Sie Datum/Uhrzeit für die Buchung. SOGo zeigt die Ressourcenverfügbarkeit an:
 
-| Visueller Hinweis: Description | Bedeutung |
+| Visueller Hinweis | Bedeutung |
 |-------------------|-----------|
 | **Grün/markiert** | Ressource verfügbar (buchbar) |
 | **Abgegraut** | Bereits gebucht (Konflikt) |
@@ -92,7 +92,7 @@ Einige Konfigurationen erlauben es, mehrere Ressourcen zu überlagern, um gemein
 
 Ressourcenkonten werden typischerweise mit diesen Attributen erstellt:
 
-| Einstellung: Description | Wert |
+| Einstellung | Wert |
 |-------------|------|
 | **Benutzerrolle** | Ressource (keine Person) |
 | **Standort** | Physische Adresse oder Raumnummer |
@@ -113,7 +113,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Buchungen verwalten
 
-| Aktion: Description | Vorgehen |
+| Aktion | Vorgehen |
 |--------|---------|
 | **Buchung ändern** | Ereignis im Kalender finden, Start-/Endzeit bearbeiten oder Teilnehmer aktualisieren, speichern |
 | **Buchung stornieren** | Ereignis löschen (wenn Sie der Ereignisbesitzer sind) |
@@ -128,7 +128,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Ressource in Teilnehmern nicht gefunden | Ressource außerhalb von Kalendern nicht konfiguriert | Bitten Sie den Admin, die Ressource buchbar zu machen; stellen Sie sicher, dass sie als freigebbarer Kalender aufgeführt ist |
 | Buchung schlägt mit Konflikt fehl | Zeitfenster bereits gebucht | Wählen Sie ein anderes Zeitfenster mit verfügbarer Ressource |
@@ -137,7 +137,7 @@ Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatis
 
 ## Integration mit anderen Funktionen
 
-| Integration: Description | Hinweise |
+| Integration | Hinweise |
 |-------------|---------|
 | **Belegt/Frei** | Belegte Zeiten der Ressource werden in Belegt/Frei-Abfragen angezeigt |
 | **Kalenderfreigabe** | Teilen Sie Ihren Kalender mit dem Ressourcenteam zur Koordination der Terminplanung |
@@ -149,30 +149,29 @@ In größeren Organisationen kann die Ressourcenbuchung zusätzliche Planungstoo
 
 ## Fazit
 
-Sie haben erfolgreich gelernt, wie Sie Ressourcen in SOGo 5 buchen.
-## Accessibility
+Sie haben erfolgreich gelernt, wie Sie Ressourcen in SOGo 6 buchen.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

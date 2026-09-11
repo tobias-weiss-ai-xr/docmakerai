@@ -17,11 +17,11 @@ Teilen Sie Ihren Kalender mit anderen, indem Sie ihn als iCal-Datei exportieren,
 
 ### Schritt 1: Kalendermodul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **Kalender**, um die Kalenderansicht zu öffnen.
+Klicken Sie oben in der Navigationsleiste auf **Kalender**, um die Kalenderansicht zu öffnen.
 
 ### Schritt 2: Kalendereinstellungen aufrufen
 
-Klicken Sie auf das **Einstellungen**-Zahnradsymbol in der Kalender-Symbolleiste.
+Klicken Sie auf das **Dreipunkt-Menü** (⋯) in der Kalender-Symbolleiste.
 
 ### Schritt 3: Kalender exportieren
 
@@ -44,7 +44,7 @@ iCal (`.ics`) ist ein Standard-Kalenderdateiformat, das von den meisten Kalender
 
 ## Importoptionen
 
-| Option: Description | Beschreibung | Verwenden wenn |
+| Option | Beschreibung | Verwenden wenn |
 |--------|-------------|---------------|
 | **Alle Ereignisse hinzufügen** | Importiert alle Ereignisse aus der Datei | Erster Import |
 | **Duplikate zusammenführen** | Überspringt Ereignisse mit gleichem Datum und Titel | Vorhandenen Kalender aktualisieren |
@@ -64,7 +64,7 @@ Sie können Ihren Kalender teilen, indem Sie die iCal-URL bereitstellen:
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Import-Button nicht sichtbar | Kalenderfreigabe nicht aktiviert | Kontaktieren Sie Ihren Administrator, um die Freigabe zu aktivieren |
 | Import schlägt fehl | Ungültiges `.ics`-Dateiformat | Überprüfen Sie, ob die Datei in einer Kalenderanwendung geöffnet werden kann |
@@ -73,29 +73,28 @@ Sie können Ihren Kalender teilen, indem Sie die iCal-URL bereitstellen:
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Kalender im iCal-Format in SOGo 5 importieren und exportieren.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

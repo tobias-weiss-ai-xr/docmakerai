@@ -17,7 +17,7 @@ sender identities (e.g., work vs. personal email).
 
 ### Step 1: Open Settings
 
-1. Click the **gear icon** ⚙ (Settings) in the top toolbar
+1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Mail** → **Signatures**
 
 ![Mail signatures settings](./assets/01-mail-signatures.png)
@@ -146,7 +146,7 @@ SOGo 6 supports full keyboard navigation for managing signatures and identities.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Open Settings | `Alt+S` or `Tab` to gear icon, `Enter` | Top toolbar |
+| Open Settings | `Alt+S` or `Tab` to three-dot menu (⋯), `Enter` | Top toolbar |
 | Navigate to Mail section | `Tab` through settings sidebar | Arrow keys to Mail option |
 | Navigate to Signatures | `Tab` or arrow keys to Signatures link | Under Mail settings |
 | Navigate to Identities | `Tab` or arrow keys to Identities link | Under Mail settings |
@@ -164,7 +164,7 @@ SOGo 6 supports full keyboard navigation for managing signatures and identities.
 **Creating an Email Signature**
 
 **Step 1: Open Settings**
-1. `Tab` to the gear icon (Settings) in the top toolbar
+1. `Tab` to the three-dot menu (⋯) (Settings) in the top toolbar
 2. `Enter` to open settings
 3. Screen reader: "Settings menu"
 

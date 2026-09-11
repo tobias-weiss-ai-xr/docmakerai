@@ -1,6 +1,6 @@
 ---
 title: "Kontakte — Import & Export"
-description: "Kontakte mit dem vCard-Format in SOGo 5 übertragen"
+description: "Kontakte mit dem vCard-Format in SOGo 6 übertragen"
 sidebar_label: "Import & Export"
 ---
 
@@ -10,14 +10,14 @@ Migrieren Sie Kontakte zwischen Anwendungen mit vCard-Import/Export.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 
 ## Schritt-für-Schritt-Anleitung
 
 ### Schritt 1: Kontaktmodul öffnen
 
-Klicken Sie in der Seitenleiste auf **Kontakte**, um das Adressbuch zu öffnen.
+Klicken Sie oben in der Navigationsleiste auf **Kontakte**, um das Adressbuch zu öffnen.
 
 ### Schritt 2: Aktionsmenü aufrufen
 
@@ -46,7 +46,7 @@ vCard (`.vcf`) ist das Standardformat zum Teilen von Kontakten zwischen Anwendun
 
 ## Importoptionen
 
-| Duplikatbehandlung: Description | Beschreibung |
+| Duplikatbehandlung | Beschreibung |
 |--------------------|-------------|
 | **Duplikate überspringen** | Ignoriert Kontakte mit derselben E-Mail-Adresse |
 | **Vorhandene aktualisieren** | Überschreibt vorhandene Kontaktdaten mit importierten Informationen |
@@ -54,7 +54,7 @@ vCard (`.vcf`) ist das Standardformat zum Teilen von Kontakten zwischen Anwendun
 
 ## Exportoptionen
 
-| Format: Description | Beschreibung | Typische Größe (100 Kontakte) |
+| Format | Beschreibung | Typische Größe (100 Kontakte) |
 |--------|-------------|-------------------------------|
 | **vCard 3.0** | Standard-vCard-Format | ~25 KB |
 | **vCard 4.0** | Neueres Format mit erweiterten Feldern | ~30 KB |
@@ -66,7 +66,7 @@ Um Ihr gesamtes Adressbuch zu sichern, exportieren Sie regelmäßig alle Kontakt
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Import/Export-Aktionen nicht sichtbar | Funktion nicht aktiviert | Kontaktieren Sie Ihren Administrator |
 | Import schlägt fehl | Beschädigte vCard-Datei | Öffnen Sie die Datei in einem Texteditor und überprüfen Sie das Format |
@@ -75,30 +75,29 @@ Um Ihr gesamtes Adressbuch zu sichern, exportieren Sie regelmäßig alle Kontakt
 
 ## Fazit
 
-Sie haben erfolgreich gelernt, wie Sie Kontakte im vCard-Format in SOGo 5 importieren und exportieren.
-## Accessibility
+Sie haben erfolgreich gelernt, wie Sie Kontakte im vCard-Format in SOGo 6 importieren und exportieren.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

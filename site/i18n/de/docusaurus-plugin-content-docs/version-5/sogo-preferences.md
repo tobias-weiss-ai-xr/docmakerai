@@ -17,13 +17,13 @@ Passen Sie Ihre SOGo 5-Erfahrung an, indem Sie persönliche Einstellungen wie Sp
 
 ### Schritt 1: Einstellungen öffnen
 
-Klicken Sie auf das **Zahnradsymbol** ⚙ (Einstellungen) in der oberen Symbolleiste, um die Einstellungsseite zu öffnen.
+Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste, um die Einstellungsseite zu öffnen.
 
 ### Schritt 2: Allgemeine Einstellungen
 
 Der Tab **Allgemein** ermöglicht Ihnen die Konfiguration von:
 
-| Einstellung: Description | Beschreibung | Beispiel |
+| Einstellung | Beschreibung | Beispiel |
 |-------------|--------------|----------|
 | **Sprache** | Oberflächensprache | Deutsch, English |
 | **Zeitzone** | Ihre lokale Zeitzone | Europe/Berlin |
@@ -49,7 +49,7 @@ Wechseln Sie zum Tab **Benachrichtigungen**, um zu konfigurieren:
 
 ### Kalender-Standardwerte
 
-| Einstellung: Description | Beschreibung |
+| Einstellung | Beschreibung |
 |-------------|-------------|
 | **Standardansicht** | Tag, Woche, Monat oder Jahr |
 | **Arbeitszeiten** | Definieren Sie Beginn und Ende Ihres Arbeitstages |
@@ -57,7 +57,7 @@ Wechseln Sie zum Tab **Benachrichtigungen**, um zu konfigurieren:
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Einstellungen werden nicht gespeichert | Sitzung abgelaufen | Melden Sie sich ab und wieder an, dann versuchen Sie es erneut |
 | Sprachänderung nicht übernommen | Erfordert Seitenneuladung | Aktualisieren Sie die Seite nach der Sprachänderung |
@@ -66,29 +66,28 @@ Wechseln Sie zum Tab **Benachrichtigungen**, um zu konfigurieren:
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Ihre SOGo 5-Einstellungen anpassen.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

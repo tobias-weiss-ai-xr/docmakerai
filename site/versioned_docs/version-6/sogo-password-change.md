@@ -21,7 +21,7 @@ Update your SOGo 6 account password to keep your account secure.
 
 SOGo 6 password change depends on your organization's configuration:
 
-| Method: Description | Where to Use | Description |
+| Method | Where to Use | Description |
 |--------|--------------|-------------|
 | **Self-service in SOGo** | SOGo goes to Settings | Change password directly within SOGo (if enabled) |
 | **Administrator portal** | Admin panel | Administrator changes password for you |
@@ -31,7 +31,7 @@ SOGo 6 password change depends on your organization's configuration:
 
 ### If Self-Service Password Change Is Enabled
 
-1. Click the gear icon to open **Settings**
+1. Click the three-dot menu (⋯) to open **Settings**
 2. Navigate to the **General** or **Allgemein** tab
 3. Look for a password change section
 4. Enter your current password
@@ -46,7 +46,7 @@ Most organizations use an external identity provider for password changes. Check
 
 Organizations typically enforce these password rules:
 
-| Requirement: Description | Example |
+| Requirement | Example |
 |-------------|---------|
 | **Minimum length** | 8 or more characters |
 | **Complexity** | Mix of uppercase, lowercase, numbers, and symbols |
@@ -55,7 +55,7 @@ Organizations typically enforce these password rules:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Password change option not visible | Self-service disabled | Use your organization's external password change portal |
 | "Current password incorrect" error | Typo in old password | Re-enter your old password carefully |
@@ -73,10 +73,10 @@ SOGo 6 supports full keyboard navigation for changing your password.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

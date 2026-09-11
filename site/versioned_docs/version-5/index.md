@@ -26,7 +26,7 @@ Every tutorial in this guide is built from real, step-by-step screen captures â€
 
 ## What's Inside
 
-| Module: SOGo area | What you'll learn: Key topics covered | Tutorials: Number available |
+| SOGo area | What you'll learn | Tutorials |
 |--------|-------------------|-----------|
 | ðŸ“§ **Mail** | Compose, read, organize, filter, and sign emails like a pro | 6 |
 | ðŸ“… **Calendar** | Create events, set recurring meetings, share calendars, and check availability | 7 |
@@ -68,12 +68,12 @@ Every tutorial in this guide is built from real, step-by-step screen captures â€
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation â†’ `Tab` to enter

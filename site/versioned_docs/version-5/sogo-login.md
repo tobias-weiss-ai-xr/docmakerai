@@ -20,15 +20,15 @@ Open your browser, enter your SOGo 5 instance URL (e.g. `https://demo.sogo.nu/SO
 
 Once logged in, the SOGo interface is divided into three main areas:
 
-- **Left sidebar** — Module navigation: click to switch between **Mail**, **Calendar**, **Contacts**, and **Tasks**.
-- **Top toolbar** — Module tabs, the preferences gear icon ⚙, and the logout power icon ⏻.
+- **Top navigation** — Module navigation: click to switch between **Mail**, **Calendar**, **Contacts**, and **Tasks**.
+- **Top toolbar** — Module tabs, the three-dot menu (⋯), and the logout power icon ⏻.
 - **Main content area** — Where the active module's content is displayed.
 
 ![SOGo 5 login page](./assets/00-login-page.png)
 
-## Preferences (Gear Icon)
+## Preferences (⋯)
 
-Click the **gear icon** ⚙ in the top toolbar to open your **Preferences**. Here you can configure language, time zone, notifications, default calendar view, email signatures, and more.
+Click the **three-dot menu** (⋯) in the top toolbar to open your **Preferences**. Here you can configure language, time zone, notifications, default calendar view, email signatures, and more.
 
 :::warning[Use the Green Save Button]
 
@@ -46,13 +46,13 @@ Click the **power icon** ⏻ in the top-right corner of the toolbar to end your 
 
 SOGo 5 supports full keyboard navigation for login.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to username field | `Tab` from address bar |
-| | Move to password field | `Tab` after username |
-| | Toggle "Remember me" | `Tab` to switch, `Space` to toggle |
-| | Submit login form | `Enter` on any field |
-| | Cancel login | `Escape` clears form |
+| Navigate to username field | `Tab` from address bar |
+| Move to password field | `Tab` after username |
+| Toggle "Remember me" | `Tab` to switch, `Space` to toggle |
+| Submit login form | `Enter` on any field |
+| Cancel login | `Escape` clears form |
 
 ### Screen Reader Workflow
 

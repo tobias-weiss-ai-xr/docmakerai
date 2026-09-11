@@ -17,7 +17,7 @@ Wechseln Sie zwischen verschiedenen Kalenderansichten, um Ihren Terminplan im pa
 
 ### Schritt 1: Kalendermodul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **Kalender**, um die Kalenderansicht zu öffnen.
+Klicken Sie oben in der Navigationsleiste auf **Kalender**, um die Kalenderansicht zu öffnen.
 
 ### Schritt 2: Zwischen Ansichten wechseln
 
@@ -25,7 +25,7 @@ Der Kalender öffnet standardmäßig in der **Wochenansicht**. Verwenden Sie die
 
 Verfügbare Ansichten:
 
-| Ansicht: Description | Symbol | Beschreibung |
+| Ansicht | Symbol | Beschreibung |
 |---------|--------|-------------|
 | **Tag** | `1` | Detaillierte Ansicht eines einzelnen Tages mit stündlichen Zeitfenstern |
 | **Woche** | `7` | Fünf-Tage-Arbeitswochenansicht (Standard) |
@@ -50,7 +50,7 @@ Klicken Sie auf die Datumskopfzeile (z. B. „15.–19. Juni 2026"), um eine D
 
 ## Ansichtsvergleich
 
-| Funktion: Description | Tag | Woche | Monat |
+| Funktion | Tag | Woche | Monat |
 |----------|-----|-------|-------|
 | Stündliche Zeitleiste | Ja | Ja | Nein |
 | Ganztägige Ereignisse | Ja | Ja | Ja |
@@ -59,30 +59,29 @@ Klicken Sie auf die Datumskopfzeile (z. B. „15.–19. Juni 2026"), um eine D
 
 ## Fazit
 
-Sie können nun zwischen den verschiedenen Kalenderansichten in SOGo 5 wechseln und durch die Zeit navigieren.
-## Accessibility
+Sie können nun zwischen den verschiedenen Kalenderansichten in SOGo 5 wechseln und in der Zeit navigieren.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

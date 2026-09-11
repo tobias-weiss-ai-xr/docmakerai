@@ -13,7 +13,7 @@ automatischen Nachrichtenfiltern (Sieve-Skripte) organisiert halten.
 
 ### Schritt 1: E-Mail-Modul öffnen
 
-Klicken Sie in der Seitenleiste auf **E-Mail**. Ihre Ordner werden links aufgelistet:
+Klicken Sie oben in der Navigationsleiste auf **E-Mail**. Ihre Ordner werden links aufgelistet:
 
 - **Posteingang** — Empfangene Nachrichten
 - **Gesendet** — Von Ihnen gesendete Nachrichten
@@ -23,7 +23,7 @@ Klicken Sie in der Seitenleiste auf **E-Mail**. Ihre Ordner werden links aufgeli
 
 ### Schritt 2: Neuen Ordner erstellen
 
-1. Klicken Sie mit der rechten Maustaste auf einen beliebigen Ordner (z. B. Posteingang)
+1. Klicken Sie auf das Dreipunkt-Menü (⋯) neben einen beliebigen Ordner (z. B. Posteingang)
 2. Wählen Sie **Neuer Ordner** oder **Ordner hinzufügen**
 3. Geben Sie einen Namen ein (z. B. "Projekte", "Kunden", "Archiv")
 4. Klicken Sie auf **OK**
@@ -34,7 +34,7 @@ Alternativ klicken Sie auf das **+**-Symbol neben der Ordnerlisten-Überschrift.
 
 Für eine bessere Strukturierung erstellen Sie Unterordner:
 
-1. Klicken Sie mit der rechten Maustaste auf einen von Ihnen erstellten Ordner
+1. Klicken Sie auf das Dreipunkt-Menü (⋯) neben einen von Ihnen erstellten Ordner
 2. Wählen Sie **Neuer Unterordner**
 3. Benennen Sie ihn (z. B. "Projekte/Aktiv", "Projekte/Abgeschlossen")
 
@@ -51,13 +51,13 @@ Für eine bessere Strukturierung erstellen Sie Unterordner:
 ### Schritt 4: Nachrichten in Ordner verschieben
 
 **Drag & Drop:** Klicken Sie auf eine Nachricht und ziehen Sie sie auf einen Ordner
-**Rechtsklick:** Rechtsklick auf eine Nachricht → **In Ordner verschieben** → Ziel auswählen
+**Dreipunkt-Menü (⋯):** Dreipunkt-Menü (⋯) bei einer Nachricht → **In Ordner verschieben** → Ziel auswählen
 **Tastatur:** Nachrichten auswählen, `V` drücken, dann Ordner wählen
 
 ### Schritt 5: Ordner umbenennen oder löschen
 
-- **Umbenennen:** Rechtsklick auf Ordner → **Umbenennen**
-- **Löschen:** Rechtsklick auf Ordner → **Löschen** (leert den Ordner zuvor)
+- **Umbenennen:** Dreipunkt-Menü (⋯) neben Ordner → **Umbenennen**
+- **Löschen:** Dreipunkt-Menü (⋯) neben Ordner → **Löschen** (leert den Ordner zuvor)
 
 :::warning
 Das Löschen eines Ordners löscht auch alle darin enthaltenen Nachrichten.
@@ -66,12 +66,12 @@ Verschieben Sie wichtige Nachrichten vorher an einen anderen Ort.
 
 ## Teil 2: Automatische Filter (Sieve)
 
-SOGo 5 verwendet **Sieve**-Skripte für die serverseitige E-Mail-Filterung.
+SOGo 6 verwendet **Sieve**-Skripte für die serverseitige E-Mail-Filterung.
 Filter werden beim Eintreffen von E-Mails ausgeführt — bevor Sie sie in Ihrem Posteingang sehen.
 
 ### Schritt 1: Filtereinstellungen öffnen
 
-1. Klicken Sie auf das **Zahnradsymbol** ⚙ (Einstellungen) in der oberen Symbolleiste
+1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
 2. Wählen Sie **E-Mail** → **Filter**
 
 ![E-Mail-Filtereinstellungen](./assets/01-mail-filters.png)
@@ -84,7 +84,7 @@ Klicken Sie auf **Filter hinzufügen** oder die **+**-Schaltfläche.
 
 Legen Sie fest, wann der Filter angewendet werden soll:
 
-| Bedingung: Description | Beispiel |
+| Bedingung | Beispiel |
 |-----------|---------|
 | **Von enthält** | `@example.com` → alle E-Mails von dieser Domain |
 | **Betreff enthält** | `[Spam]` → potenziellen Spam markieren |
@@ -99,7 +99,7 @@ Sie können mehrere Bedingungen kombinieren:
 
 Wählen Sie, was passiert, wenn die Bedingungen erfüllt sind:
 
-| Aktion: Description | Anwendungsfall |
+| Aktion | Anwendungsfall |
 |--------|---------------|
 | **In Ordner verschieben** | In den richtigen Ordner sortieren |
 | **In Ordner kopieren** | Kopie im Posteingang behalten + in Ordner ablegen |
@@ -147,7 +147,7 @@ Aktion:    In Ordner "Newsletter" verschieben
 ### Filter funktionieren nicht
 
 - Überprüfen Sie, ob Sieve aktiviert ist (`SOGoSieveScriptsEnabled = YES`)
-- Verifizieren Sie Ihre Sieve-Server-Adresse in der SOGo 5-Konfiguration
+- Verifizieren Sie Ihre Sieve-Server-Adresse in der SOGo 6-Konfiguration
 - Testen Sie zuerst mit einem einfachen Filter (z. B. alle E-Mails von sich selbst verschieben)
 - Überprüfen Sie die Server-Protokolle auf Sieve-Kompilierungsfehler
 
@@ -161,29 +161,28 @@ Aktion:    In Ordner "Newsletter" verschieben
 
 Ordner und Filter helfen Ihnen, einen sauberen Posteingang ohne manuellen Aufwand zu erhalten.
 Beginnen Sie mit 2–3 Filtern für Ihre häufigsten E-Mail-Muster.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

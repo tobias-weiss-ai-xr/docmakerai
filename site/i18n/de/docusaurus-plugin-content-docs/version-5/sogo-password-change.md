@@ -17,17 +17,17 @@ Aktualisieren Sie Ihr SOGo 5-Kontopasswort, um Ihr Konto sicher zu halten.
 
 Die Passwortänderung in SOGo 5 hängt von der Konfiguration Ihrer Organisation ab:
 
-| Methode: Description | Wo verwenden | Beschreibung |
+| Methode | Wo verwenden | Beschreibung |
 |---------|-------------|-------------|
-| **Selbstbedienung in SOGo** | SOGo → Einstellungen | Passwort direkt in SOGo ändern (falls aktiviert) |
-| **Administratorportal** | Admin-Panel | Administrator ändert Passwort für Sie |
+| **Passwort selbst in SOGo ändern** | SOGo → Einstellungen | Passwort direkt in SOGo ändern (falls aktiviert) |
+| **Administratorportal** | Admin-Panel | Ihr Administrator ändert das Passwort für Sie |
 | **Externes Tool** | Universitäts-/Firmenportal | Passwort über die Kontoverwaltung Ihrer Organisation ändern |
 
 ## Schritt-für-Schritt-Anleitung
 
-### Falls Selbstbedienung zur Passwortänderung aktiviert ist
+### Falls die selbstständige Passwortänderung aktiviert ist
 
-1. Klicken Sie auf das Zahnradsymbol, um **Einstellungen** zu öffnen
+1. Klicken Sie auf das Dreipunkt-Menü (⋯), um **Einstellungen** zu öffnen
 2. Navigieren Sie zum Tab **Allgemein**
 3. Suchen Sie den Abschnitt zur Passwortänderung
 4. Geben Sie Ihr aktuelles Passwort ein
@@ -42,7 +42,7 @@ Die meisten Organisationen verwenden einen externen Identitätsanbieter für Pas
 
 Organisationen erzwingen in der Regel diese Passwortregeln:
 
-| Anforderung: Description | Beispiel |
+| Anforderung | Beispiel |
 |-------------|---------|
 | **Mindestlänge** | 8 oder mehr Zeichen |
 | **Komplexität** | Mischung aus Großbuchstaben, Kleinbuchstaben, Zahlen und Symbolen |
@@ -51,9 +51,9 @@ Organisationen erzwingen in der Regel diese Passwortregeln:
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
-| Passwortänderungsoption nicht sichtbar | Selbstbedienung deaktiviert | Nutzen Sie das externe Passwortänderungsportal Ihrer Organisation |
+| Passwortänderungsoption nicht sichtbar | Selbstständige Änderung deaktiviert | Nutzen Sie das externe Passwortänderungsportal Ihrer Organisation |
 | Fehler „Aktuelles Passwort falsch" | Tippfehler im alten Passwort | Geben Sie Ihr altes Passwort sorgfältig erneut ein |
 | Fehler „Neues Passwort zu schwach" | Erfüllt nicht die Anforderungen | Wählen Sie ein längeres Passwort mit gemischten Zeichen |
 | Passwortänderung schlägt fehl | Konto gesperrt oder Sitzung abgelaufen | Melden Sie sich ab und wieder an, dann versuchen Sie es erneut |
@@ -65,29 +65,28 @@ Wenn Sie Ihr Passwort aufgrund einer Kontosperrung nicht ändern können, kontak
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Ihr SOGo 5-Passwort ändern.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

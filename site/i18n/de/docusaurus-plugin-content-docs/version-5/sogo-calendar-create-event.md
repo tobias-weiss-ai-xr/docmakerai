@@ -18,10 +18,10 @@ einschließlich der Festlegung von Zeit, dem Hinzufügen von Teilnehmern und der
 
 ### Schritt 1: Kalendermodul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **Kalender**,
+Klicken Sie oben in der Navigationsleiste auf **Kalender**,
 um die Kalenderansicht zu öffnen.
 
-![Kalendermodul in der Seitenleiste](./assets/01-calendar-create-view.png)
+![Kalendermodul in der Navigationsleiste](./assets/01-calendar-create-view.png)
 
 Der Kalender öffnet standardmäßig in der **Wochenansicht**. Sie können zwischen
 den Ansichten Tag, Woche, Monat und Jahr mit den Schaltflächen in der oberen Symbolleiste wechseln.
@@ -30,9 +30,9 @@ den Ansichten Tag, Woche, Monat und Jahr mit den Schaltflächen in der oberen Sy
 
 Es gibt drei Möglichkeiten, ein Ereignis zu erstellen:
 
-| Methode: Description | Aktion |
+| Methode | Aktion |
 |---------|--------|
-| **Auf +-Schaltfläche klicken** | Klicken Sie auf die **+** (Plus)-Schaltfläche in der oberen Symbolleiste |
+| **Auf +-Schaltfläche klicken** | Klicken Sie auf die **+** (Plus)-Schaltfläche am unteren Rand der Kalenderansicht |
 | **Doppelklicken** | Doppelklicken Sie auf einen beliebigen Zeitbereich im Kalendergitter |
 | **Datumsauswahl verwenden** | Klicken Sie auf ein Datum im Minikalender links, dann auf **+** |
 
@@ -42,7 +42,7 @@ Wählen Sie die gewünschte Methode. Ein Dialog für ein neues Ereignis wird ang
 
 Füllen Sie die Ereignisdetails aus:
 
-| Feld: Description | Beschreibung | Beispiel |
+| Eingabefeld | Beschreibung | Beispiel |
 |------|-------------|----------|
 | **Titel** | Ein kurzer Name für Ihr Ereignis | "Team-Besprechung" |
 | **Ort** | Wo das Ereignis stattfindet | "Konferenzraum B" |
@@ -62,7 +62,7 @@ Wenn Sie andere Personen einladen möchten:
 
 1. Klicken Sie auf den Bereich **Teilnehmer**, um ihn zu erweitern
 2. Beginnen Sie mit der Eingabe des Namens oder der E-Mail-Adresse eines Kollegen
-3. Wählen Sie die Person aus den Auto-Vervollständigungsvorschlägen aus
+3. Wählen Sie die Person aus den automatischen Vervollständigungsvorschlägen aus
 4. Wählen Sie deren **Teilnahmerolle**:
    - **Erforderlich** — Muss teilnehmen
    - **Optional** — Willkommen, aber nicht erforderlich
@@ -94,7 +94,7 @@ für das Ereignis hinzuzufügen. Dieses Feld unterstützt Klartext.
 
 Für sich wiederholende Ereignisse klicken Sie auf den Bereich **Wiederholen** und wählen ein Muster:
 
-| Muster: Description | Beispiel |
+| Zeitlicher Abstand | Beispiel |
 |--------|----------|
 | **Täglich** | Tägliches Standup-Meeting |
 | **Wöchentlich** | Team-Meeting jeden Dienstag |
@@ -119,29 +119,28 @@ Sie haben erfolgreich ein Kalenderereignis erstellt. Sie können nun:
 - Das Ereignis durch Klicken bearbeiten
 - Es per Drag & Drop verschieben
 - Die Dauer durch Ziehen an den Rändern ändern
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

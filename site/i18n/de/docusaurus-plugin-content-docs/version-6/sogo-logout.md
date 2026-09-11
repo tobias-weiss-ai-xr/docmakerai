@@ -14,7 +14,7 @@ Wenn Sie einen gemeinsam genutzten oder öffentlichen Computer verwenden, melden
 
 ## Fehlerbehebung
 
-| Problem: Description | Ursache | Lösung |
+| Problem | Ursache | Lösung |
 |---------|---------|--------|
 | Abmelde-Button nicht sichtbar | Schmaler Bildschirm | Fenster verbreitern oder Menü (☰) öffnen |
 | Sitzung nach Abmeldung noch aktiv | Zwischengespeicherte Seite | Browser-Cache leeren und alle SOGo-Tabs schließen |
@@ -25,11 +25,11 @@ Wenn Sie einen gemeinsam genutzten oder öffentlichen Computer verwenden, melden
 
 SOGo 6 unterstützt die vollständige Tastaturnavigation für die Abmeldung.
 
-| Aktion | Tastenkombination: Welche Taste drücken | Hinweise: Zusätzliche Informationen |
+| Aktion | Tastenkombination | Hinweise |
 |--------|----------------------------------|---------------------------|
-| | Zum Ein/Aus-Symbol navigieren | `Tab` zur oberen Symbolleiste |
-| | Abmeldung auslösen | `Eingabetaste` auf dem Ein/Aus-Symbol |
-| | Abmeldung bestätigen | `Eingabetaste` im Dialog (falls angezeigt) |
+| Zum Ein/Aus-Symbol navigieren | `Tab` zur oberen Symbolleiste |
+| Abmeldung auslösen | `Eingabetaste` auf dem Ein/Aus-Symbol |
+| Abmeldung bestätigen | `Eingabetaste` im Dialog (falls angezeigt) |
 
 ### Screenreader-Workflow
 

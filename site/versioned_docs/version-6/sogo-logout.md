@@ -18,7 +18,7 @@ On shared or public computers, always log out when you're done. Don't just close
 
 ## Troubleshooting
 
-| Issue: Description | Cause: What went wrong | Solution: How to fix it |
+| Issue | Cause | Solution |
 |-------|-------|----------|
 | Logout button not visible | Narrow screen | Widen the window or click the menu (☰) first |
 | Session still active after logout | Cached page | Clear browser cache and close all SOGo tabs |
@@ -31,9 +31,9 @@ SOGo 6 supports full keyboard navigation for logout.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to power icon | `Tab` to top toolbar |
-| | Activate logout | `Enter` on power icon |
-| | Confirm logout | `Enter` on dialog (if shown) |
+| Navigate to power icon | `Tab` to top toolbar |
+| Activate logout | `Enter` on power icon |
+| Confirm logout | `Enter` on dialog (if shown) |
 
 ### Screen Reader Workflow
 

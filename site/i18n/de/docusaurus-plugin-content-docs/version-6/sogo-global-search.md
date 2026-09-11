@@ -1,17 +1,17 @@
 ---
 title: "Globale Suche"
-description: "Suche über alle Module in SOGo 5"
+description: "Suche über alle Module in SOGo 6"
 sidebar_label: "Globale Suche"
 ---
 
 # Globale Suche
 
-Finden Sie schnell E-Mails, Kontakte, Kalenderereignisse und mehr mit der globalen Suchfunktion von SOGo 5.
+Finden Sie schnell E-Mails, Kontakte, Kalenderereignisse und mehr mit der globalen Suchfunktion von SOGo 6.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 
 ## Schritt-für-Schritt-Anleitung
 
@@ -27,7 +27,7 @@ Geben Sie Ihren Suchbegriff in das Suchfeld ein. Ergebnisse erscheinen während 
 
 Suchergebnisse werden nach Modul gruppiert:
 
-| Modul: Description | Was durchsucht wird |
+| Modul | Was durchsucht wird |
 |-------|-------------------|
 | **E-Mail** | E-Mail-Betreffzeilen und Absendernamen (falls IMAP verfügbar) |
 | **Kalender** | Ereignistitel, Orte und Beschreibungen |
@@ -38,7 +38,7 @@ Klicken Sie auf ein beliebiges Ergebnis, um direkt zu diesem Element zu navigier
 
 ## Suchtipps
 
-| Technik: Description | Beispiel | Ergebnis |
+| Technik | Beispiel | Ergebnis |
 |---------|----------|----------|
 | **Teilübereinstimmung** | `Treff` | Findet „Treffen", „Treffpunkt", „Straßentreffen" |
 | **Nach Kontaktname** | `Max` | Findet Kontakte namens Max und Ereignisse mit Max |
@@ -52,7 +52,7 @@ Verwenden Sie die **globale Suche**, um Elemente in allen Modulen gleichzeitig z
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Keine Ergebnisse gefunden | Tippfehler im Suchbegriff | Überprüfen Sie die Rechtschreibung oder versuchen Sie ein Teilwort |
 | Such-Button nicht sichtbar | Schmales Browserfenster | Verbreitern Sie das Fenster oder verwenden Sie den Menü-Button (☰) |
@@ -61,30 +61,29 @@ Verwenden Sie die **globale Suche**, um Elemente in allen Modulen gleichzeitig z
 
 ## Fazit
 
-Sie können nun die globale Suche in SOGo 5 verwenden, um schnell in allen Modulen zu suchen.
-## Accessibility
+Sie können nun die globale Suche in SOGo 6 verwenden, um schnell in allen Modulen zu suchen.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
