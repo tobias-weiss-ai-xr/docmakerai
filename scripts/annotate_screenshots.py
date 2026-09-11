@@ -9,9 +9,9 @@ in each screenshot. No text is drawn on the image — descriptions go in
 markdown alt text.
 """
 
+import argparse
 import os
 import sys
-import argparse
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -47,13 +47,17 @@ def draw_arrow(draw, x1, y1, x2, y2, color=RED, width=3):
     arrow_len = 12
     dx = x2 - x1
     dy = y2 - y1
-    length = max(1, (dx*dx + dy*dy) ** 0.5)
+    length = max(1, (dx * dx + dy * dy) ** 0.5)
     ux, uy = dx / length, dy / length
     # Two barbs
-    barb1 = (x2 - int(ux * arrow_len - uy * arrow_len * 0.4),
-             y2 - int(uy * arrow_len + ux * arrow_len * 0.4))
-    barb2 = (x2 - int(ux * arrow_len + uy * arrow_len * 0.4),
-             y2 - int(uy * arrow_len - ux * arrow_len * 0.4))
+    barb1 = (
+        x2 - int(ux * arrow_len - uy * arrow_len * 0.4),
+        y2 - int(uy * arrow_len + ux * arrow_len * 0.4),
+    )
+    barb2 = (
+        x2 - int(ux * arrow_len + uy * arrow_len * 0.4),
+        y2 - int(uy * arrow_len - ux * arrow_len * 0.4),
+    )
     draw.line([(x2, y2), barb1], fill=color, width=width)
     draw.line([(x2, y2), barb2], fill=color, width=width)
 
@@ -362,16 +366,33 @@ def main():
 
     ASSETS_V5.mkdir(parents=True, exist_ok=True)
 
-    doc_to_png = {f"sogo-{name}": name for name in [
-        "logout", "preferences", "password-change",
-        "mail-folder-management", "mail-reply-forward-delete",
-        "calendar-create-event", "calendar-edit-delete",
-        "calendar-recurring", "calendar-views", "calendar-share",
-        "calendar-subscribe", "calendar-ical", "freebusy",
-        "contacts-add", "contacts-edit-delete", "contacts-import-export",
-        "global-search", "mail-compose", "mail-read", "mail-signatures",
-        "mail-filters", "vacation",
-    ]}
+    doc_to_png = {
+        f"sogo-{name}": name
+        for name in [
+            "logout",
+            "preferences",
+            "password-change",
+            "mail-folder-management",
+            "mail-reply-forward-delete",
+            "calendar-create-event",
+            "calendar-edit-delete",
+            "calendar-recurring",
+            "calendar-views",
+            "calendar-share",
+            "calendar-subscribe",
+            "calendar-ical",
+            "freebusy",
+            "contacts-add",
+            "contacts-edit-delete",
+            "contacts-import-export",
+            "global-search",
+            "mail-compose",
+            "mail-read",
+            "mail-signatures",
+            "mail-filters",
+            "vacation",
+        ]
+    }
 
     if args.doc:
         png_name = doc_to_png.get(args.doc)

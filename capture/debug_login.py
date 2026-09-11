@@ -1,6 +1,9 @@
 """Debug the SOGo 6 login flow to identify what's failing."""
+
 import asyncio
+
 from playwright.async_api import async_playwright
+
 
 async def main():
     async with async_playwright() as p:
@@ -8,12 +11,26 @@ async def main():
         page = await browser.new_page(viewport={"width": 1280, "height": 800})
 
         messages = []
-        page.on("console", lambda msg: messages.append(f"[CONSOLE] {msg.type}: {msg.text[:200]}"))
+        page.on("console", lambda msg: messages.append(f"[CONSOLE] {msg.type}: {msg.text[:200]}"))  # noqa: E501
         page.on("pageerror", lambda err: messages.append(f"[PAGE_ERR] {err}"))
-        page.on("requestfailed", lambda req: messages.append(f"[REQ_FAIL] {req.url[:100]} {req.failure}"))
-        page.on("response", lambda resp: messages.append(f"[RESP] {resp.status} {resp.url[:80]}") if resp.status >= 400 else None)
+        page.on(
+            "requestfailed",
+            lambda req: messages.append(f"[REQ_FAIL] {req.url[:100]} {req.failure}"),
+        )  # noqa: E501
+        page.on(
+            "response",
+            lambda resp: (
+                messages.append(f"[RESP] {resp.status} {resp.url[:80]}")
+                if resp.status >= 400
+                else None
+            ),
+        )  # noqa: E501
 
-        await page.goto("http://localhost:3000/en/auth/login", wait_until="domcontentloaded", timeout=30000)
+        await page.goto(
+            "http://localhost:3000/en/auth/login",
+            wait_until="domcontentloaded",
+            timeout=30000,
+        )
         await page.wait_for_timeout(3000)
         print(f"Login page: {page.url}")
 
@@ -60,7 +77,7 @@ async def main():
             print(f"After password: {page.url}")
 
             # Wait longer for redirect
-            for i in range(20):
+            for _ in range(20):
                 await page.wait_for_timeout(1000)
                 url = page.url
                 if "/u/" in url:
@@ -80,5 +97,6 @@ async def main():
             print(msg)
 
         await browser.close()
+
 
 asyncio.run(main())

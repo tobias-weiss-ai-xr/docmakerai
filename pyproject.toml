@@ -9,6 +9,7 @@ ignore = ["B904", "SIM117"]
 [tool.ruff.lint.per-file-ignores]
 "capture/tests/*" = ["B", "SIM", "UP006", "UP007"]
 "capture/run_captures.py" = ["F401", "E501"]
+"scripts/translate_accessibility.py" = ["E501"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -16,7 +17,7 @@ indent-style = "space"
 line-ending = "auto"
 
 [tool.pytest.ini_options]
-testpaths = ["capture/tests"]
+testpaths = ["capture/tests", "scripts/tests", "accessibility/tests"]
 pythonpath = [".."]
 
 [tool.coverage.run]
@@ -30,7 +31,6 @@ omit = [
     "capture/run_task_first_captures.py",
     "capture/video_pipeline.py",
     "accessibility/tests/*",
-    "accessibility/validate.py",
     "setup_github_runner.py",
 ]
 

@@ -30,12 +30,19 @@ def extract_line_rate(xml_path: Path) -> float:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--baseline", required=True, type=Path,
-                        help="Path to baseline coverage.xml (e.g. from main)")
-    parser.add_argument("--pr", required=True, type=Path,
-                        help="Path to PR coverage.xml")
-    parser.add_argument("--max-drop", required=True, type=float,
-                        help="Maximum allowed coverage drop in percent points")
+    parser.add_argument(
+        "--baseline",
+        required=True,
+        type=Path,
+        help="Path to baseline coverage.xml (e.g. from main)",
+    )
+    parser.add_argument("--pr", required=True, type=Path, help="Path to PR coverage.xml")
+    parser.add_argument(
+        "--max-drop",
+        required=True,
+        type=float,
+        help="Maximum allowed coverage drop in percent points",
+    )
     args = parser.parse_args()
 
     try:

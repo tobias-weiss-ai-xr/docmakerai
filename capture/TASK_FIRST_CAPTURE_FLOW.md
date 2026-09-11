@@ -43,8 +43,9 @@ Each capture tells a **4-beat story**:
 
 3. **Human-like Typing**
    ```python
-   await page.type("[ng-model='editor.component.summary']",
-                   "Weekly Team Standup", delay=120)  # 120ms per char
+   await page.type(
+       "[ng-model='editor.component.summary']", "Weekly Team Standup", delay=120
+   )  # 120ms per char
    ```
    Simulates real user speed, not machine gun typing
 
@@ -66,9 +67,9 @@ Each capture tells a **4-beat story**:
            {"phase": "Goal: Schedule weekly standup", "duration": 2.0},
            {"phase": "Problem: Find Monday 10 AM slot", "duration": 1.5},
            {"phase": "Do this: Double-click and create event", "duration": 3.5},
-           {"phase": "Outcome: Recurring event appears", "duration": 2.0}
+           {"phase": "Outcome: Recurring event appears", "duration": 2.0},
        ],
-       "duration_s": 9.0
+       "duration_s": 9.0,
    }
    ```
 
@@ -211,7 +212,7 @@ async def narration(self, page: Page, script: str):
 ### Auto-Captions from Story Metadata
 Use step metadata to generate VTT captions:
 ```python
-with open(f"{name}.vtt","w") as f:
+with open(f"{name}.vtt", "w") as f:
     f.write(generate_captions(steps))
 ```
 
