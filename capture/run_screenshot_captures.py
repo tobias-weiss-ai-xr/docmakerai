@@ -13,7 +13,6 @@ Usage:
 from __future__ import annotations
 
 import asyncio
-import contextlib
 import json
 import os
 import shutil
@@ -58,6 +57,7 @@ async def _env_intercept(route):
     """
     import json
     from urllib.parse import urlparse
+
     parsed = urlparse(SOGO_URL)
     api_host = parsed.hostname or "localhost"
     api_base = f"http://{api_host}:5001/api/user/v1"
@@ -73,8 +73,9 @@ async def _env_intercept(route):
     )
 
 
-async def resilient_goto(page, url: str, max_retries: int = 5,
-                         wait_selector: str | None = None) -> bool:
+async def resilient_goto(
+    page, url: str, max_retries: int = 5, wait_selector: str | None = None
+) -> bool:
     """Navigate with retry + exponential backoff for Next.js dev server flakiness.
 
     ``next dev`` (Turbopack) sometimes returns empty responses when
@@ -88,7 +89,7 @@ async def resilient_goto(page, url: str, max_retries: int = 5,
                 try:
                     await page.wait_for_selector(wait_selector, timeout=8000)
                 except Exception:
-                    wait_until = (attempt < max_retries - 1)
+                    wait_until = attempt < max_retries - 1
                     if wait_until:
                         print(f"    ⚠️  selector '{wait_selector}' not found, retrying...")
                         await page.wait_for_timeout(2000 * (attempt + 1))
@@ -97,7 +98,7 @@ async def resilient_goto(page, url: str, max_retries: int = 5,
             return True
         except Exception as e:
             if attempt < max_retries - 1:
-                print(f"    ⚠️  goto failed (attempt {attempt+1}): {e}")
+                print(f"    ⚠️  goto failed (attempt {attempt + 1}): {e}")
                 await page.wait_for_timeout(2000 * (attempt + 1))
             else:
                 print(f"    ❌ goto failed after {max_retries} attempts: {e}")
@@ -139,8 +140,11 @@ async def login(page, context: BrowserContext | None = None) -> None:
         await page.click("button[type='submit']")
     else:
         print("    ⚠️  Password field not found, trying direct navigation...")
-        await resilient_goto(page, SOGO_URL + "/en/auth/login/pwd?email=" + USERNAME,
-                             wait_selector="input[type='password']")
+        await resilient_goto(
+            page,
+            SOGO_URL + "/en/auth/login/pwd?email=" + USERNAME,
+            wait_selector="input[type='password']",
+        )
         pwd2 = page.locator("input[type='password']")
         if await pwd2.is_visible(timeout=5000):
             await pwd2.fill(PASSWORD)
@@ -155,8 +159,9 @@ async def login(page, context: BrowserContext | None = None) -> None:
             return
     # Fallback: navigate directly
     print(f"    ⚠️  No redirect after 20s (URL: {page.url}), navigating directly...")
-    await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
-                         wait_selector="main, [data-testid], .mail-list")
+    await resilient_goto(
+        page, SOGO_URL + "/en/u/0/INBOX", wait_selector="main, [data-testid], .mail-list"
+    )
     print(f"    Inbox: {page.url}")
 
 
@@ -168,8 +173,9 @@ async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
 
 async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
     """Navigate to an SOGo 6 module via sidebar tab click (SPA navigation)."""
-    await resilient_goto(page, SOGO_URL + "/en/u/0/INBOX",
-                         wait_selector="button[role='tab'], main, [data-testid]")
+    await resilient_goto(
+        page, SOGO_URL + "/en/u/0/INBOX", wait_selector="button[role='tab'], main, [data-testid]"
+    )
     await page.wait_for_timeout(2000)
 
     tab_labels = {

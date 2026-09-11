@@ -14,11 +14,18 @@ class TestCoverageTrend(unittest.TestCase):
             (tmp / "baseline.xml").write_text(_cov_xml(99.0))
             (tmp / "pr.xml").write_text(_cov_xml(99.0))
             result = subprocess.run(
-                [sys.executable, str(SCRIPT),
-                 "--baseline", str(tmp / "baseline.xml"),
-                 "--pr", str(tmp / "pr.xml"),
-                 "--max-drop", "0.5"],
-                capture_output=True, text=True,
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--baseline",
+                    str(tmp / "baseline.xml"),
+                    "--pr",
+                    str(tmp / "pr.xml"),
+                    "--max-drop",
+                    "0.5",
+                ],
+                capture_output=True,
+                text=True,
             )
             self.assertEqual(result.returncode, 0, msg=result.stderr)
 
@@ -28,11 +35,18 @@ class TestCoverageTrend(unittest.TestCase):
             (tmp / "baseline.xml").write_text(_cov_xml(99.0))
             (tmp / "pr.xml").write_text(_cov_xml(95.0))
             result = subprocess.run(
-                [sys.executable, str(SCRIPT),
-                 "--baseline", str(tmp / "baseline.xml"),
-                 "--pr", str(tmp / "pr.xml"),
-                 "--max-drop", "0.5"],
-                capture_output=True, text=True,
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--baseline",
+                    str(tmp / "baseline.xml"),
+                    "--pr",
+                    str(tmp / "pr.xml"),
+                    "--max-drop",
+                    "0.5",
+                ],
+                capture_output=True,
+                text=True,
             )
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("dropped", result.stderr.lower())
@@ -43,11 +57,18 @@ class TestCoverageTrend(unittest.TestCase):
             (tmp / "baseline.xml").write_text(_cov_xml(95.0))
             (tmp / "pr.xml").write_text(_cov_xml(99.5))
             result = subprocess.run(
-                [sys.executable, str(SCRIPT),
-                 "--baseline", str(tmp / "baseline.xml"),
-                 "--pr", str(tmp / "pr.xml"),
-                 "--max-drop", "0.5"],
-                capture_output=True, text=True,
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--baseline",
+                    str(tmp / "baseline.xml"),
+                    "--pr",
+                    str(tmp / "pr.xml"),
+                    "--max-drop",
+                    "0.5",
+                ],
+                capture_output=True,
+                text=True,
             )
             self.assertEqual(result.returncode, 0, msg=result.stderr)
 

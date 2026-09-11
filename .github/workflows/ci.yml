@@ -66,10 +66,10 @@ jobs:
           python3 -m pytest --version || true
 
       - name: Lint with ruff
-        run: python3 -m ruff check capture/
+        run: python3 -m ruff check capture/ scripts/ accessibility/
 
       - name: Format check with ruff
-        run: python3 -m ruff format --check capture/
+        run: python3 -m ruff format --check capture/ scripts/ accessibility/
 
       - name: Test with pytest + coverage
         run: |
@@ -187,8 +187,10 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
-      - name: Build (English only for CI speed)
-        run: npm run build -- --locale en
+      - name: Build (English + German locales)
+        run: |
+          npm run build -- --locale en
+          npm run build -- --locale de
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

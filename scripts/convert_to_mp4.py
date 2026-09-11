@@ -53,8 +53,14 @@ def get_duration(webp_path: Path) -> float:
         # Fallback: use ffprobe on WebP (doesn't always work
         result = subprocess.run(
             [
-                FFPROBE, "-v", "error", "-show_entries", "format=duration",
-                "-of", "json", str(webp_path),
+                FFPROBE,
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration",
+                "-of",
+                "json",
+                str(webp_path),
             ],
             capture_output=True,
             text=True,
@@ -79,7 +85,7 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error="Could not determine WebP duration"
+            error="Could not determine WebP duration",
         )
 
     try:
@@ -90,9 +96,16 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
         # First check if it's animated
         result = subprocess.run(
             [
-                FFPROBE, "-v", "error", "-select_streams", "v:0",
-                "-show_entries", "stream=width,height,duration,nb_read_frames,r_frame_rate",
-                "-of", "json", str(webp_path),
+                FFPROBE,
+                "-v",
+                "error",
+                "-select_streams",
+                "v:0",
+                "-show_entries",
+                "stream=width,height,duration,nb_read_frames,r_frame_rate",
+                "-of",
+                "json",
+                str(webp_path),
             ],
             capture_output=True,
             text=True,
@@ -108,15 +121,24 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
         # Save first frame (for thumbnail)
         thumbnail_path = output_dir / f"{webp_path.stem}-poster.jpg"
 
-        subprocess.run([
-            FFMPEG,
-            "-i", str(webp_path),
-            "-vf", "scale=1280:800,thumbnail",  # Generate poster image
-            "-frames:v", "1",
-            str(thumbnail_path),
-            "-y",
-            "-loglevel", "error"
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(
+            [
+                FFMPEG,
+                "-i",
+                str(webp_path),
+                "-vf",
+                "scale=1280:800,thumbnail",  # Generate poster image
+                "-frames:v",
+                "1",
+                str(thumbnail_path),
+                "-y",
+                "-loglevel",
+                "error",
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
         # Convert WebP → MP4
         # Using fps from WebP metadata, default to 6 if unknown
@@ -128,28 +150,52 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
             fps = meta.get("fps", 6)
 
         # Main conversion: WebP → MP4
-        subprocess.run([
-            FFMPEG,
-            "-i", str(webp_path),
-            "-c:v", "libx264",              # H.264 codec
-            "-preset", "medium",               # Balance speed/quality
-            "-crf", str(quality),              # Quality (18-28, lower=better)
-            "-pix_fmt", "yuv420p",             # Broad compatibility
-            "-vf", f"fps={fps}",               # Match original frame rate
-            "-t", f"{duration}",               # Match duration
-            "-an",                             # No audio (WebP has no audio)
-            "-movflags", "+faststart",         # Fast start for streaming
-            str(output_mp4),
-            "-y",
-            "-loglevel", "error"
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(
+            [
+                FFMPEG,
+                "-i",
+                str(webp_path),
+                "-c:v",
+                "libx264",  # H.264 codec
+                "-preset",
+                "medium",  # Balance speed/quality
+                "-crf",
+                str(quality),  # Quality (18-28, lower=better)
+                "-pix_fmt",
+                "yuv420p",  # Broad compatibility
+                "-vf",
+                f"fps={fps}",  # Match original frame rate
+                "-t",
+                f"{duration}",  # Match duration
+                "-an",  # No audio (WebP has no audio)
+                "-movflags",
+                "+faststart",  # Fast start for streaming
+                str(output_mp4),
+                "-y",
+                "-loglevel",
+                "error",
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
         # Capture metadata
-        result = subprocess.run([
-            FFPROBE, "-v", "error",
-            "-show_entries", "format=duration,size:stream=codec_name,width,height",
-            "-of", "json", str(output_mp4),
-        ], capture_output=True, text=True, check=True)
+        result = subprocess.run(
+            [
+                FFPROBE,
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration,size:stream=codec_name,width,height",
+                "-of",
+                "json",
+                str(output_mp4),
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
 
         metadata = {
             "input_webp": webp_path.name,
@@ -172,7 +218,7 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
             thumbnails_path=thumbnail_path,
             metadata_path=metadata_out,
             success=True,
-            error=None
+            error=None,
         )
 
     except subprocess.CalledProcessError as e:
@@ -183,7 +229,7 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error=str(e)
+            error=str(e),
         )
     except Exception as e:
         return ConversionResult(
@@ -193,7 +239,7 @@ def webp_to_mp4(webp_path: Path, output_dir: Path, quality: int = 23) -> Convers
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error=str(e)
+            error=str(e),
         )
 
 
@@ -210,7 +256,7 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error="Could not determine WebP duration"
+            error="Could not determine WebP duration",
         )
 
     try:
@@ -222,19 +268,31 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
             fps = meta.get("fps", 6)
 
         # WebP → WebM (VP9)
-        subprocess.run([
-            FFMPEG,
-            "-i", str(webp_path),
-            "-c:v", "libvpx-vp9",            # VP9 codec
-            "-crf", str(quality),              # Quality (0-63, lower=better)
-            "-b:v", "0",                      # Constant quality mode
-            "-vf", f"fps={fps}",
-            "-t", f"{duration}",
-            "-an",                             # No audio
-            str(output_webm),
-            "-y",
-            "-loglevel", "error"
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(
+            [
+                FFMPEG,
+                "-i",
+                str(webp_path),
+                "-c:v",
+                "libvpx-vp9",  # VP9 codec
+                "-crf",
+                str(quality),  # Quality (0-63, lower=better)
+                "-b:v",
+                "0",  # Constant quality mode
+                "-vf",
+                f"fps={fps}",
+                "-t",
+                f"{duration}",
+                "-an",  # No audio
+                str(output_webm),
+                "-y",
+                "-loglevel",
+                "error",
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
         return ConversionResult(
             webp_path=webp_path,
@@ -243,7 +301,7 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
             thumbnails_path=None,
             metadata_path=None,
             success=True,
-            error=None
+            error=None,
         )
 
     except subprocess.CalledProcessError as e:
@@ -254,7 +312,7 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error=str(e)
+            error=str(e),
         )
     except Exception as e:
         return ConversionResult(
@@ -264,7 +322,7 @@ def webp_to_webm(webp_path: Path, output_dir: Path, quality: int = 30) -> Conver
             thumbnails_path=None,
             metadata_path=None,
             success=False,
-            error=str(e)
+            error=str(e),
         )
 
 
@@ -272,7 +330,7 @@ def convert_directory(
     input_dir: Path,
     output_dir: Path,
     formats: list[str] | None = None,  # "mp4", "webm", or both
-    workers: int = 4
+    workers: int = 4,
 ) -> list[ConversionResult]:
     """Convert all WebP files in directory."""
     if formats is None:
