@@ -13,7 +13,7 @@ Absenderidentitäten (z. B. geschäftlich vs. privat).
 
 ### Schritt 1: Einstellungen öffnen
 
-1. Klicken Sie auf das **Zahnradsymbol** ⚙ (Einstellungen) in der oberen Symbolleiste
+1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
 2. Wählen Sie **E-Mail** → **Signaturen**
 
 ![Signatur-Einstellungen](./assets/01-mail-signatures.png)
@@ -24,7 +24,7 @@ Klicken Sie auf **Signatur hinzufügen** oder die **+**-Schaltfläche.
 
 ### Schritt 3: Signatur schreiben
 
-Geben Sie Ihren Signaturtext ein. SOGo 5 unterstützt **Klartext**-Signaturen.
+Geben Sie Ihren Signaturtext ein. SOGo 6 unterstützt **Klartext**-Signaturen.
 
 **Empfohlenes Signaturformat:**
 ```
@@ -39,7 +39,7 @@ E-Mail: max.mustermann@firma.com
 
 Wählen Sie, wann die Signatur eingefügt wird:
 
-| Option: Description | Verhalten |
+| Option | Verhalten |
 |--------|-----------|
 | **Nur an neue Nachrichten anhängen** | Signatur wird an neue E-Mails angehängt, nicht an Antworten |
 | **An alle Nachrichten anhängen** | Wird sowohl an neue als auch an beantwortete/weitergeleitete Nachrichten angehängt |
@@ -63,12 +63,12 @@ Beim Verfassen einer Nachricht können Sie eine Signatur einfügen:
 
 ## Teil 3: HTML-Signaturen (Erweitert)
 
-SOGo 5 unterstützt hauptsächlich Klartext-Signaturen. Für reichhaltige Signaturen
+SOGo 6 unterstützt hauptsächlich Klartext-Signaturen. Für reichhaltige Signaturen
 mit Bildern oder Formatierung:
 
 1. Erstellen Sie Ihre HTML-Signatur in einem externen Editor
 2. Kopieren Sie den formatierten Inhalt (z. B. aus Gmail oder Outlook)
-3. Fügen Sie ihn in das Signaturfeld ein — SOGo 5 behält die grundlegende Formatierung
+3. Fügen Sie ihn in das Signaturfeld ein — SOGo 6 behält die grundlegende Formatierung
 
 :::tip
 **Bewährte Praxis:** Halten Sie Signaturen als Klartext für maximale
@@ -78,7 +78,7 @@ Kompatibilität zwischen E-Mail-Programmen.
 ## Teil 4: Identitäten verwalten
 
 Identitäten ermöglichen es Ihnen, E-Mails von verschiedenen Adressen aus demselben
-SOGo 5-Konto zu senden.
+SOGo 6-Konto zu senden.
 
 ### Schritt 1: Einstellungen öffnen
 
@@ -86,7 +86,7 @@ Gehen Sie zu **Einstellungen** → **E-Mail** → **Identitäten**
 
 ### Schritt 2: Ihre Identitäten anzeigen
 
-Sie sehen Ihre primäre Identität (die mit Ihrem SOGo 5-Konto verknüpfte
+Sie sehen Ihre primäre Identität (die mit Ihrem SOGo 6-Konto verknüpfte
 E-Mail-Adresse). Zusätzliche Identitäten können angezeigt werden, wenn sie von
 Ihrem Administrator konfiguriert wurden.
 
@@ -131,29 +131,28 @@ Geschäftliche E-Mails verwenden standardmäßig Identität 1.
 Signaturen und Identitäten helfen Ihnen, professionell zu kommunizieren.
 Richten Sie eine saubere Signatur ein und fügen Sie bei Bedarf hilfsweise Identitäten hinzu,
 wenn Sie mehrere E-Mail-Adressen verwalten.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

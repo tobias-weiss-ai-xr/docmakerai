@@ -24,7 +24,7 @@ in the calendar when you're on vacation or out of office.
 
 ### Step 1: Open Vacation Settings
 
-1. Click the **gear icon** ⚙ (Settings) in the top toolbar
+1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Vacation** from the settings menu
 
 ![Vacation settings menu](./assets/01-vacation-settings.png)
@@ -70,7 +70,7 @@ John Doe
 
 ### Step 5: Choose Reply Options
 
-| Option | Description: What this option does |
+| Option | Description |
 |:-------|:------------|
 | **Send reply to** | Everyone, or only people in your contacts/address book |
 | **Repeated replies** | Send once per sender (default) or every time they write |
@@ -156,19 +156,19 @@ SOGo 6 supports full keyboard navigation for vacation settings.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Open settings | `Alt+M`, `Tab` to gear icon |
-| | Navigate settings | `Arrow keys` in settings menu |
-| | Open Vacation settings | `V` or search for "Vacation" |
-| | Enable toggle | `Space` to toggle ON/OFF |
-| | Navigate form fields | `Tab` between fields |
-| | Save settings | `Ctrl+S` or Enter on Save button |
-| | Cancel | `Escape` closes dialog |
+| Open settings | `Alt+M`, `Tab` to three-dot menu (⋯) |
+| Navigate settings | `Arrow keys` in settings menu |
+| Open Vacation settings | `V` or search for "Vacation" |
+| Enable toggle | `Space` to toggle ON/OFF |
+| Navigate form fields | `Tab` between fields |
+| Save settings | `Ctrl+S` or Enter on Save button |
+| Cancel | `Escape` closes dialog |
 
 ### Screen Reader Workflow
 
 **Step 1: Open Settings Menu**
 1. `Alt+M` to focus sidebar
-2. `Tab` to gear icon (settings)
+2. `Tab` to three-dot menu (⋯) (settings)
 3. `Enter` to open menu
 4. Screen reader: "Settings, popup menu..."
 

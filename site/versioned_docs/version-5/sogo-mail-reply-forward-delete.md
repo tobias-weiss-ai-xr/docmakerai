@@ -63,12 +63,12 @@ Click the **Delete** icon (trash can).
 The email is moved to the **Trash** folder.
 
 :::tip
-To permanently delete an email, empty the Trash folder by right-clicking it and selecting "Empty Trash".
+To permanently delete an email, empty the Trash folder by clicking the three-dot menu (⋯) next to it and selecting "Empty Trash".
 :::
 
 ## Keyboard Shortcuts
 
-| Action: Description | Windows/Linux | Mac |
+| Action | Windows/Linux | Mac |
 |--------|--------------|-----|
 | Reply | `Ctrl + R` | `⌘ + R` |
 | Delete | `Delete` | `Delete` |
@@ -80,7 +80,7 @@ Delete actions move emails to the Trash folder. To recover, select the Trash fol
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Reply/Forward button not visible | Email body already open | Close the compose window and try again |
 | Email not in Trash after delete | Trash folder full | Empty the Trash folder first |
@@ -91,12 +91,12 @@ Delete actions move emails to the Trash folder. To recover, select the Trash fol
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

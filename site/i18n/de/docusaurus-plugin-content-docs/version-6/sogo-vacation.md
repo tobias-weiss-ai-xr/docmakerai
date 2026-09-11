@@ -11,33 +11,33 @@ Kalender als abwesend, wenn Sie im Urlaub oder außer Haus sind.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 - Die Abwesenheitsnotiz muss von Ihrem Administrator aktiviert sein
-  (`SOGoVacationEnabled = YES`)
+  (`SOGoVacationEnabled = YES` — eine Servereinstellung, die Ihr Administrator konfiguriert)
 
 ## Schritt-für-Schritt-Anleitung
 
 ### Schritt 1: Abwesenheitseinstellungen öffnen
 
-1. Klicken Sie auf das **Zahnradsymbol** ⚙ (Einstellungen) in der oberen Symbolleiste
+1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
 2. Wählen Sie **Abwesenheitsnotiz** aus dem Einstellungsmenü
 
 ![Abwesenheitseinstellungen](./assets/01-vacation-settings.png)
 
-### Schritt 2: Auto-Antwort aktivieren
+### Schritt 2: Automatische Antwort aktivieren
 
-Schalten Sie **Auto-Antwort aktivieren** auf **EIN**.
+Schalten Sie **Automatische Antwort aktivieren** auf **EIN**.
 
 ### Schritt 3: Zeitraum festlegen
 
-| Feld: Description | Beschreibung | Beispiel |
+| Eingabefeld | Beschreibung | Beispiel |
 |------|-------------|----------|
 | **Startdatum** | Beginn Ihrer Abwesenheit | 2026-07-15 |
 | **Enddatum** | Rückkehrdatum | 2026-07-28 |
 | **Zeitzone** | Ihre lokale Zeitzone | Europe/Berlin |
 
-Die Auto-Antwort wird am Startdatum um 00:00 Uhr aktiviert und
+Die Automatische Antwort wird am Startdatum um 00:00 Uhr aktiviert und
 nach dem Enddatum um 23:59 Uhr deaktiviert.
 
 :::tip
@@ -45,7 +45,7 @@ Legen Sie den Zeitraum so fest, dass er Reisetage einschließt — aktivieren Si
 am Abend vor Ihrer Abreise und deaktivieren Sie ihn am Morgen nach Ihrer Rückkehr.
 :::
 
-### Schritt 4: Auto-Antwort-Nachricht verfassen
+### Schritt 4: Automatische Antwort-Nachricht verfassen
 
 Verfassen Sie die Nachricht, die an Personen gesendet wird, die Ihnen eine E-Mail schreiben:
 
@@ -66,9 +66,9 @@ Max Mustermann
 
 ### Schritt 5: Antwortoptionen wählen
 
-| Option: Description | Beschreibung |
+| Option | Beschreibung |
 |--------|-------------|
-| **Antwort senden an** | Jeder, oder nur Personen in Ihren Kontakten/Ihrem Adressbuch |
+| **Antwort senden an** | Jeder oder nur Personen in Ihren Kontakten/Ihrem Adressbuch |
 | **Wiederholte Antworten** | Einmal pro Absender (Standard) oder jedes Mal, wenn sie schreiben |
 | **Originalbetreff beibehalten** | `Re:` hinzufügen oder den ursprünglichen Betreff beibehalten |
 
@@ -100,9 +100,9 @@ Frei/Gebucht-Abfrage sehen, dass Sie nicht verfügbar sind.
 
 ### Test-E-Mail senden
 
-1. Senden Sie eine E-Mail an Ihre SOGo 5-Adresse von einem anderen Konto aus
-2. Sie sollten die Auto-Antwort innerhalb weniger Minuten erhalten
-3. Die Auto-Antwort wird nur einmal pro Absender ausgelöst (gemäß konfigurierter Regel)
+1. Senden Sie eine E-Mail an Ihre SOGo 6-Adresse von einem anderen Konto aus
+2. Sie sollten die Automatische Antwort innerhalb weniger Minuten erhalten
+3. Die Automatische Antwort wird nur einmal pro Absender ausgelöst (gemäß konfigurierter Regel)
 
 ### Abwesenheitsstatus überprüfen
 
@@ -111,24 +111,24 @@ Frei/Gebucht-Abfrage sehen, dass Sie nicht verfügbar sind.
 - Der Zeitraum ist korrekt
 - Die Nachricht ist gespeichert
 
-## Auto-Antwort deaktivieren
+## Automatische Antwort deaktivieren
 
 Wenn Sie zurück sind:
 
 1. Gehen Sie zu **Einstellungen** → **Abwesenheitsnotiz**
-2. Schalten Sie **Auto-Antwort aktivieren** auf **AUS**
+2. Schalten Sie **Automatische Antwort aktivieren** auf **AUS**
 3. Klicken Sie auf **Speichern**
 
-Die Auto-Antwort wird sofort gestoppt. Löschen Sie optional das
+Die Automatische Antwort wird sofort gestoppt. Löschen Sie optional das
 Kalenderblock-Ereignis.
 
 ## Fehlerbehebung
 
-### Auto-Antwort wird nicht gesendet
+### Automatische Antwort wird nicht gesendet
 
 - Überprüfen Sie, ob die Abwesenheitsnotiz von Ihrem Administrator aktiviert wurde
-- Vergewissern Sie sich, dass der Sieve-Server läuft (`SOGoSieveScriptsEnabled`)
-- Die Auto-Antwort wird nur einmal pro Absender gesendet — testen Sie mit einer
+- Vergewissern Sie sich, dass der Sieve-Server läuft (`SOGoSieveScriptsEnabled` — Servereinstellung, fragen Sie Ihren Administrator)
+- Die Automatische Antwort wird nur einmal pro Absender gesendet — testen Sie mit einer
   anderen E-Mail-Adresse
 - Überprüfen Sie, ob der Zeitraum das aktuelle Datum einschließt
 
@@ -140,32 +140,31 @@ Kalenderblock-Ereignis.
 
 ## Fazit
 
-Die Abwesenheits-Auto-Antwort stellt sicher, dass Personen über Ihre Abwesenheit
+Die automatische Abwesenheitsnotiz stellt sicher, dass Personen über Ihre Abwesenheit
 informiert sind. In Kombination mit einem Kalenderblock
 können Kollegen Ihre Verfügbarkeit auf einen Blick erkennen.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

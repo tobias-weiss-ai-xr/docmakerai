@@ -31,7 +31,7 @@ The calendar opens in **Week view** by default. Use the view switcher buttons in
 
 Available views:
 
-| View: Description | Icon | Description |
+| View | Icon | Description |
 |------|------|-------------|
 | **Day** | `1` | Detailed view of a single day's events in hourly slots |
 | **Week** | `7` | Five-day work week view (default) |
@@ -56,7 +56,7 @@ Click the date header (e.g., "June 15–19, 2026") to open a date picker for jum
 
 ## View Comparison
 
-| Feature: Description | Day | Week | Month |
+| Feature | Day | Week | Month |
 |---------|-----|------|-------|
 | Hour-by-hour timeline | Yes | Yes | No |
 | All-day events | Yes | Yes | Yes |
@@ -68,12 +68,12 @@ Click the date header (e.g., "June 15–19, 2026") to open a date picker for jum
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

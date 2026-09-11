@@ -21,7 +21,7 @@ Customize your SOGo 6 experience by adjusting personal preferences such as langu
 
 ### Step 1: Open Preferences
 
-Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preferences page.
+Click the **three-dot menu** (⋯) (Settings) in the top toolbar to open the Preferences page.
 
 ### Step 2: General Settings
 
@@ -61,7 +61,7 @@ Switch to the **Notifications** tab to configure:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Settings not saving | Session timeout | Log out and back in, then try again |
 | Language change not applied | Requires page reload | Refresh the page after changing the language setting |
@@ -74,10 +74,10 @@ SOGo 6 supports full keyboard navigation for managing preferences.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

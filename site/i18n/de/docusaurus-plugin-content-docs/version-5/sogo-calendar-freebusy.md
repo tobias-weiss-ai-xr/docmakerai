@@ -37,14 +37,14 @@ planen — direkt aus dem Dialog zur Ereigniserstellung.
 ![Frei/Gebucht-Verfügbarkeitsraster](./assets/02-freebusy-grid.png)
 
 2. Beginnen Sie mit der Eingabe des Namens eines Kollegen
-3. Wählen Sie ihn aus der Auto-Vervollständigungsliste aus
+3. Wählen Sie ihn aus der automatischen Vervollständigungsliste aus
 4. Wiederholen Sie den Vorgang für jede Person, die Sie prüfen möchten
 
 ### Schritt 4: Das Raster lesen
 
 Das Raster zeigt Zeitbereiche für jede Person:
 
-| Farbe: Description | Bedeutung |
+| Farbe | Bedeutung |
 |-------|----------|
 | ✅ **Grün** | Verfügbar |
 | ❌ **Rot** | Beschäftigt (hat ein Ereignis) |
@@ -65,7 +65,7 @@ Die Start-/Endzeit des Ereignisses wird entsprechend aktualisiert.
 
 Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen können:
 
-| Berechtigung: Description | Was sichtbar ist |
+| Berechtigung | Was sichtbar ist |
 |-------------|-----------------|
 | **Frei/Gebucht** | Nur ob Sie verfügbar oder beschäftigt sind (keine Details) |
 | **Anzeigen (schreibgeschützt)** | Ereignistitel und -zeiten |
@@ -93,29 +93,28 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
 Die Frei/Gebucht-Abfrage hilft Ihnen, Besprechungstermine zu finden, ohne die
 lästige E-Mail-Frage "Sind Sie um ... frei?". Sie funktioniert für
 alle in Ihrer Organisation, die ihre Kalenderverfügbarkeit freigeben.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

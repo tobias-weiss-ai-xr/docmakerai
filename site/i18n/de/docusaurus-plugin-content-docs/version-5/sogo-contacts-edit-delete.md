@@ -18,7 +18,7 @@ Erfahren Sie, wie Sie Kontaktinformationen aktualisieren oder Kontakte aus Ihrem
 
 ### Schritt 1: Kontakt auswählen
 
-Klicken Sie in der linken Seitenleiste auf **Kontakte**, um das Adressbuch zu öffnen.
+Klicken Sie oben in der Navigationsleiste auf **Kontakte**, um das Adressbuch zu öffnen.
 
 Suchen Sie den Kontakt, den Sie bearbeiten möchten, und klicken Sie auf seinen Namen oder Eintrag.
 
@@ -26,7 +26,7 @@ Suchen Sie den Kontakt, den Sie bearbeiten möchten, und klicken Sie auf seinen 
 
 Der Kontakteditor ermöglicht Ihnen folgende Änderungen:
 
-| Feld: Description | Beschreibung |
+| Eingabefeld | Beschreibung |
 |------|-------------|
 | **Vorname** | Vorname |
 | **Nachname** | Familienname |
@@ -63,7 +63,7 @@ Die Löschung ist endgültig. Einmal gelöscht, kann der Kontakt nicht wiederher
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Kontakt kann nicht bearbeitet werden | Schreibgeschütztes Adressbuch (von einem anderen Benutzer geteilt) | Sie können Kontakte in freigegebenen Adressbüchern nur anzeigen |
 | Änderungen werden nicht gespeichert | Sitzung abgelaufen | Aktualisieren Sie die Seite und versuchen Sie es erneut |
@@ -72,29 +72,28 @@ Die Löschung ist endgültig. Einmal gelöscht, kann der Kontakt nicht wiederher
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie Kontakte in Ihrem SOGo 5-Adressbuch bearbeiten und löschen.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

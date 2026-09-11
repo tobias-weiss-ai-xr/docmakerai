@@ -44,7 +44,7 @@ Click the **Repeat** or **Recurrence** section to expand it:
 
 ![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
-| Option | Description: What this option does | Example Use |
+| Option | Description | Example Use |
 |:-------|:------------|:-------------|
 | **Daily** | Repeats every N days | Morning check-in |
 | **Weekly** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |
@@ -169,13 +169,13 @@ SOGo 6 supports full keyboard navigation for recurring events.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | Create new event | `N` or `+` |
-| | Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
-| | Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
-| | Set recurrence end | Tab to end fields |
-| | Set interval | Arrow key + Tab |
-| | Save recurring event | `Ctrl+S` or `Enter` |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| Create new event | `N` or `+` |
+| Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
+| Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
+| Set recurrence end | Tab to end fields |
+| Set interval | Arrow key + Tab |
+| Save recurring event | `Ctrl+S` or `Enter` |
 
 ### Screen Reader Workflow
 
@@ -228,4 +228,4 @@ SOGo 6 supports full keyboard navigation for recurring events.
 
 ### High Contrast Mode
 
-SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: three-dot menu (⋯) → General → Theme → Dark/High Contrast.

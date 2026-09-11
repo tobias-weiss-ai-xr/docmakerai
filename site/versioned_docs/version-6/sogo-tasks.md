@@ -62,7 +62,7 @@ If Tasks does not appear in the sidebar, contact your administrator to enable it
 
 After creation, click on the task to open the detail view and modify:
 
-| Field: Description | Description |
+| Field | Description |
 |-------|-------------|
 | **Title** | Short task name |
 | **Description** | Detailed notes about the task |
@@ -101,7 +101,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 ## Views and Sorting
 
-| View: Description | Use Case |
+| View | Use Case |
 |------|---------|
 | **All Tasks** | Overview of everything pending |
 | **Due Soon** | Focus on upcoming deadlines |
@@ -111,7 +111,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 ## Keyboard Shortcuts
 
-| Action: Description | Shortcut |
+| Action | Shortcut |
 |--------|----------|
 | New task | `Ctrl + N` / `⌘ + N` |
 | Complete task | Checkmark next to item or `Ctrl + Enter` |
@@ -122,7 +122,7 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 SOGo Tasks can be linked with:
 
-| Integration: Description | How To |
+| Integration | How To |
 |------------|--------|
 | **Calendar** | Convert an event invitation to a task; set task due date to event date |
 | **Contacts** | Assign owner or delegate from address book |
@@ -142,7 +142,7 @@ Use tasks to follow up on meeting actions. After a meeting, create tasks for del
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Tasks module not visible | `SOGoDocumentsEnabled` set to NO | Ask admin to enable in SOGo config |
 | Cannot create task | Write permissions missing on task list | Check ACLs on the task list |
@@ -157,10 +157,10 @@ SOGo 6 supports full keyboard navigation for managing tasks.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

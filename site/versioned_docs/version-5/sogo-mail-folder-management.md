@@ -37,7 +37,7 @@ The folder list shows your default folders:
 
 ### Step 3: Create a New Folder
 
-1. Right-click in the folder list area
+1. Click the three-dot menu (⋯) in the folder list area
 2. Select **New Folder** from the context menu
 3. Enter a folder name
 4. Click **Create**
@@ -60,15 +60,15 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 ## Folder Actions
 
-| Action: Description | How To |
+| Action | How To |
 |--------|--------|
-| **Rename** | Right-click folder → Rename |
-| **Delete** | Right-click folder → Delete (cannot delete default folders like Inbox) |
-| **Empty Trash** | Right-click Trash → Empty Trash |
+| **Rename** | Three-dot menu (⋯) next to folder → Rename |
+| **Delete** | Three-dot menu (⋯) next to folder → Delete (cannot delete default folders like Inbox) |
+| **Empty Trash** | Three-dot menu (⋯) next to Trash → Empty Trash |
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot delete default folder | System folders cannot be deleted | Only custom folders can be deleted |
 | Folder not visible | Sidebar collapsed | Expand the Mail section in the navigation |
@@ -79,12 +79,12 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

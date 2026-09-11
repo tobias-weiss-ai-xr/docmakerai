@@ -31,7 +31,7 @@ The inbox shows messages as a list. Click on any email to view it.
 
 The email opens in the preview pane with the following sections:
 
-| Section: Description | Contains |
+| Section | Contains |
 |---------|-----------|
 | **Header** | From, To, Subject, Date |
 | **Body** | Email content |
@@ -41,7 +41,7 @@ The email opens in the preview pane with the following sections:
 
 Use the navigation controls at the top:
 
-| Control: Description | Function |
+| Control | Function |
 |---------|----------|
 | **Refresh** | Reload the inbox for new messages |
 | **Folder dropdown** | Switch between Inbox, Sent, Drafts, Trash |
@@ -49,7 +49,7 @@ Use the navigation controls at the top:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Inbox appears empty | IMAP server connection issue | Try refreshing the page |
 | Email content not displaying | Connection timeout | Reload the page or check your network |
@@ -66,10 +66,10 @@ SOGo 6 supports full keyboard navigation for reading emails.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

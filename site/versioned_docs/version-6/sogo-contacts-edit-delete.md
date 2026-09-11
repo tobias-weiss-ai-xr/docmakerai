@@ -32,7 +32,7 @@ Find the contact you want to edit and click on their name or entry.
 
 The contact editor allows you to change:
 
-| Field: Description | Description |
+| Field | Description |
 |-------|-------------|
 | **First Name** | Given name |
 | **Last Name** | Surname / family name |
@@ -69,7 +69,7 @@ Deletion is permanent. Once deleted, the contact cannot be recovered.
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot edit contact | Read-only address book (shared by another user) | You can only view contacts in shared address books |
 | Changes not saving | Session timeout | Refresh the page and try again |
@@ -82,10 +82,10 @@ SOGo 6 supports full keyboard navigation for editing and deleting contacts.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

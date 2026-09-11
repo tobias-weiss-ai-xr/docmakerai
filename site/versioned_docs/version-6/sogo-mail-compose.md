@@ -142,20 +142,20 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
-| | New message / Compose | `c` | Opens compose window |
-| | Focus To field | `Tab` | First field in compose |
-| | Focus Cc field | `Tab` or `Ctrl+Shift+C` | Carbon copy |
-| | Focus Bcc field | `Tab` or `Ctrl+Shift+B` | Blind carbon copy |
-| | Focus Subject field | `Tab` | After recipient fields |
-| | Focus message body | `Tab` | Large text area |
-| | Send message | `Ctrl+Enter` or `Tab` to Send button |
-| | Save as Draft | `Ctrl+S` | Saves to Drafts folder |
-| | Attach file | `Ctrl+Shift+A` | Opens file picker |
-| | Bold | `Ctrl+B` | Formatting toolbar |
-| | Italic | `Ctrl+I` | Formatting toolbar |
-| | Underline | `Ctrl+U` | Formatting toolbar |
-| | Cancel / Close | `Escape` | Discard message |
+| Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
+| New message / Compose | `c` | Opens compose window |
+| Focus To field | `Tab` | First field in compose |
+| Focus Cc field | `Tab` or `Ctrl+Shift+C` | Carbon copy |
+| Focus Bcc field | `Tab` or `Ctrl+Shift+B` | Blind carbon copy |
+| Focus Subject field | `Tab` | After recipient fields |
+| Focus message body | `Tab` | Large text area |
+| Send message | `Ctrl+Enter` or `Tab` to Send button |
+| Save as Draft | `Ctrl+S` | Saves to Drafts folder |
+| Attach file | `Ctrl+Shift+A` | Opens file picker |
+| Bold | `Ctrl+B` | Formatting toolbar |
+| Italic | `Ctrl+I` | Formatting toolbar |
+| Underline | `Ctrl+U` | Formatting toolbar |
+| Cancel / Close | `Escape` | Discard message |
 
 ### Screen Reader Workflow
 

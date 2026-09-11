@@ -16,15 +16,15 @@ Willkommen! Diese Seite hilft Ihnen, sich mit der SOGo 6-Oberfläche vertraut zu
 
 Nach der Anmeldung besteht die SOGo-Oberfläche aus drei Hauptbereichen:
 
-- **Linke Seitenleiste** — Modulnavigation: Wechseln Sie zwischen **E-Mail**, **Kalender**, **Kontakte** und **Aufgaben**.
-- **Obere Symbolleiste** — Modul-Tabs, das Einstellungs-Zahnrad ⚙ und das Abmelde-Symbol ⏻.
+- **Obere Navigationsleiste** — Modulnavigation: Wechseln Sie zwischen **E-Mail**, **Kalender**, **Kontakte** und **Aufgaben**.
+- **Obere Symbolleiste** — Modul-Tabs, das Dreipunkt-Menü (⋯) und das Abmelde-Symbol ⏻.
 - **Hauptbereich** — Hier wird der Inhalt des aktiven Moduls angezeigt.
 
 ![SOGo 6-Anmeldeseite](./assets/00-login-page.png)
 
-## Einstellungen (Zahnrad-Symbol)
+## Einstellungen (Dreipunkt-Menü)
 
-Klicken Sie auf das **Zahnrad-Symbol** ⚙ in der oberen Symbolleiste, um Ihre **Einstellungen** zu öffnen. Hier können Sie Sprache, Zeitzone, Benachrichtigungen, Standard-Kalenderansicht, E-Mail-Signaturen und mehr konfigurieren.
+Klicken Sie auf das **Dreipunkt-Menü** (⋯) in der oberen Symbolleiste, um Ihre **Einstellungen** zu öffnen. Hier können Sie Sprache, Zeitzone, Benachrichtigungen, Standard-Kalenderansicht, E-Mail-Signaturen und mehr konfigurieren.
 
 :::warning[Grünen Speichern-Button verwenden]
 
@@ -42,13 +42,13 @@ Klicken Sie auf das **Ein/Aus-Symbol** ⏻ in der oberen rechten Ecke der Symbol
 
 SOGo 6 unterstützt die vollständige Tastaturnavigation für die Anmeldung.
 
-| Aktion | Tastenkombination: Welche Taste drücken | Hinweise: Zusätzliche Informationen |
+| Aktion | Tastenkombination | Hinweise |
 |--------|----------------------------------|---------------------------|
-| | Zum Benutzernamen-Feld navigieren | `Tab` aus der Adressleiste |
-| | Zum Passwort-Feld wechseln | `Tab` nach dem Benutzernamen |
-| | "Angemeldet bleiben" umschalten | `Tab` zum Schalter, `Leertaste` zum Umschalten |
-| | Anmeldeformular absenden | `Eingabetaste` in einem beliebigen Feld |
-| | Anmeldung abbrechen | `Escape` leert das Formular |
+| Zum Benutzernamen-Feld navigieren | `Tab` aus der Adressleiste |
+| Zum Passwort-Feld wechseln | `Tab` nach dem Benutzernamen |
+| "Angemeldet bleiben" umschalten | `Tab` zum Schalter, `Leertaste` zum Umschalten |
+| Anmeldeformular absenden | `Eingabetaste` in einem beliebigen Feld |
+| Anmeldung abbrechen | `Escape` leert das Formular |
 
 ### Screenreader-Workflow
 

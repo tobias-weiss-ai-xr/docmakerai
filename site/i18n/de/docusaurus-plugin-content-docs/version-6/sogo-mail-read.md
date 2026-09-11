@@ -1,33 +1,33 @@
 ---
 title: "E-Mail — Nachrichten lesen und anzeigen"
-description: "Navigieren Sie durch Ihren Posteingang und lesen Sie E-Mails in SOGo 5"
+description: "Navigieren Sie durch Ihren Posteingang und lesen Sie E-Mails in SOGo 6"
 sidebar_label: "E-Mail — Lesen"
 ---
 
 # E-Mail — Nachrichten lesen und anzeigen
 
-Zeigen Sie E-Mails in Ihrem SOGo 5-Posteingang an und lesen Sie sie.
+Zeigen Sie E-Mails in Ihrem SOGo 6-Posteingang an und lesen Sie sie.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 
 ## Schritt-für-Schritt-Anleitung
 
 ### Schritt 1: E-Mail-Modul öffnen
 
-Klicken Sie in der linken Seitenleiste auf **E-Mail**, um den Posteingang zu öffnen.
+Klicken Sie oben in der Navigationsleiste auf **E-Mail**, um den Posteingang zu öffnen.
 
 ### Schritt 2: Eine E-Mail auswählen
 
 Der Posteingang zeigt Nachrichten als Liste an. Klicken Sie auf eine beliebige E-Mail, um sie anzuzeigen.
 
-![Mail-Posteingang in SOGo 5](./assets/01-mail-inbox.png)
+![Mail-Posteingang in SOGo 6](./assets/01-mail-inbox.png)
 
 Die E-Mail wird im Vorschaufenster mit folgenden Abschnitten geöffnet:
 
-| Abschnitt: Description | Enthält |
+| Abschnitt | Enthält |
 |-----------|---------|
 | **Kopfzeile** | Von, An, Betreff, Datum |
 | **Nachrichtentext** | E-Mail-Inhalt |
@@ -37,7 +37,7 @@ Die E-Mail wird im Vorschaufenster mit folgenden Abschnitten geöffnet:
 
 Verwenden Sie die Navigationssteuerung oben:
 
-| Steuerung: Description | Funktion |
+| Steuerung | Funktion |
 |-----------|----------|
 | **Aktualisieren** | Posteingang auf neue Nachrichten aktualisieren |
 | **Ordner-Dropdown** | Zwischen Posteingang, Gesendet, Entwürfen, Papierkorb wechseln |
@@ -45,7 +45,7 @@ Verwenden Sie die Navigationssteuerung oben:
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Posteingang erscheint leer | IMAP-Server-Verbindungsproblem | Versuchen Sie, die Seite zu aktualisieren |
 | E-Mail-Inhalt wird nicht angezeigt | Verbindungszeitüberschreitung | Laden Sie die Seite neu oder überprüfen Sie Ihre Netzwerkverbindung |
@@ -57,30 +57,29 @@ Doppelklicken Sie auf einen Nachrichtenbetreff, um ihn zum einfacheren Lesen in 
 
 ## Fazit
 
-Sie können nun Ihren Posteingang in SOGo 5 navigieren und E-Mails lesen.
-## Accessibility
+Sie können nun Ihren Posteingang in SOGo 6 navigieren und E-Mails lesen.
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

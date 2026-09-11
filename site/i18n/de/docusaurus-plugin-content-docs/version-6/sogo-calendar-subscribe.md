@@ -1,18 +1,18 @@
 ---
 title: "iCal-Feed abonnieren"
-description: "Externe Kalender (Feiertage, Teamkalender) in SOGo 5 importieren"
+description: "Externe Kalender (Feiertage, Teamkalender) in SOGo 6 importieren"
 sidebar_label: "iCal-Feed abonnieren"
 ---
 
 # iCal-Feed abonnieren
 
-Importieren Sie externe Kalender in Ihren SOGo 5-Kalender — öffentliche Feiertage,
+Importieren Sie externe Kalender in Ihren SOGo 6-Kalender — öffentliche Feiertage,
 Teamkalender oder jeden online verfügbaren `.ics`-Feed.
 
 ## Voraussetzungen
 
-- Ein SOGo 5-Konto mit gültigen Anmeldedaten
-- Sie sind bei SOGo 5 angemeldet
+- Ein SOGo 6-Konto mit gültigen Anmeldedaten
+- Sie sind bei SOGo 6 angemeldet
 - Eine URL zu einem iCal-Feed (`.ics`-Datei oder CalDAV-Endpunkt)
 
 ## Schritt-für-Schritt-Anleitung
@@ -21,17 +21,17 @@ Teamkalender oder jeden online verfügbaren `.ics`-Feed.
 
 Sie benötigen die Webadresse (URL) eines iCal-Feeds. Häufige Beispiele:
 
-| Quelle: Description | Beispiel-URL |
+| Quelle | Beispiel-URL |
 |--------|-------------|
 | Öffentliche Feiertage | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team-Kalender | `https://teamup.com/.../events.ics` |
-| Freigegebener SOGo 5-Kalender | `https://sogo.example.com/SOGo/dav/benutzername/calendar/shared/` |
+| Freigegebener SOGo 6-Kalender | `https://sogo.example.com/SOGo/dav/benutzername/calendar/shared/` |
 
 ### Schritt 2: Kalendereinstellungen öffnen
 
-1. Klicken Sie in der Seitenleiste auf **Kalender**
+1. Klicken Sie oben in der Navigationsleiste auf **Kalender**
 2. Suchen Sie die Kalenderliste auf der linken Seite
-3. Klicken Sie auf das **Zahnradsymbol** ⚙ neben der Kalenderbereichsüberschrift
+3. Klicken Sie auf das **Dreipunkt-Menü** (⋯) neben der Kalenderbereichsüberschrift
 4. Wählen Sie **URL abonnieren**
 
 ![Kalenderansicht mit Abonnementoptionen](./assets/01-calendar-view.png)
@@ -46,7 +46,7 @@ Im Abonnement-Dialog:
 
 ### Schritt 4: Sync-Optionen konfigurieren
 
-| Option: Description | Beschreibung |
+| Option | Beschreibung |
 |--------|-------------|
 | **Aktualisierungsintervall** | Wie oft auf Updates geprüft wird (stündlich, täglich usw.) |
 | **Erinnerungen entfernen** | Alarminformationen aus externen Ereignissen entfernen |
@@ -70,19 +70,19 @@ des Kalenders in der Liste umschalten.
 
 ### Manuell aktualisieren
 
-Klicken Sie mit der rechten Maustaste auf den abonnierten Kalender → **Aktualisieren**,
+Klicken Sie auf das Dreipunkt-Menü (⋯) neben den abonnierten Kalender → **Aktualisieren**,
 um die neuesten Daten sofort abzurufen.
 
 ### Abonnement-Eigenschaften bearbeiten
 
-Rechtsklick auf den Kalender → **Eigenschaften**:
+Dreipunkt-Menü (⋯) neben dem Kalender → **Eigenschaften**:
 - Anzeigenamen oder Farbe ändern
 - Feed-URL aktualisieren
 - Aktualisierungsintervall anpassen
 
 ### Abonnement kündigen
 
-Rechtsklick auf den Kalender → **Abonnement kündigen** oder **Löschen**.
+Dreipunkt-Menü (⋯) neben dem Kalender → **Abonnement kündigen** oder **Löschen**.
 Der Kalender wird aus Ihrer Ansicht entfernt. Die Quelle bleibt unverändert.
 
 ## Fehlerbehebung
@@ -96,43 +96,42 @@ Der Kalender wird aus Ihrer Ansicht entfernt. Die Quelle bleibt unverändert.
 ### Kalender wird nicht aktualisiert
 
 - Überprüfen Sie die Einstellung des Aktualisierungsintervalls
-- Manuell aktualisieren: Rechtsklick → **Aktualisieren**
+- Manuell aktualisieren: Dreipunkt-Menü (⋯) → **Aktualisieren**
 - Der Feed-Anbieter hat möglicherweise die URL geändert
 
 ### Ereignisse haben falsche Uhrzeiten
 
-- SOGo 5 konvertiert alle Daten in Ihre konfigurierte Zeitzone
+- SOGo 6 konvertiert alle Daten in Ihre konfigurierte Zeitzone
 - Überprüfen Sie Ihre Zeitzone unter **Einstellungen** → **Allgemein** → **Zeitzone**
 - Einige iCal-Feeds enthalten keine Zeitzoneninformationen — diese werden standardmäßig auf UTC gesetzt
 
 ## Fazit
 
 iCal-Abonnements ermöglichen es Ihnen, externe Kalender in Ihre
-SOGo 5-Ansicht einzublenden — perfekt für öffentliche Feiertage, Teamtermine und
+SOGo 6-Ansicht einzublenden — perfekt für öffentliche Feiertage, Teamtermine und
 Kalenderfeeds von Drittanbietern.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)

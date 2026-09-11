@@ -97,7 +97,7 @@ Source: `capture/run_captures.py` — `login()`, `record_logout()`
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Successful login with valid credentials | the environment variables `SOGO_URL`, `SOGO_USERNAME`, and `SOGO_PASSWORD` are set | the login function navigates to `SOGO_URL` and submits the credential form | the browser context will contain a valid authenticated session |
 | Login form interaction | the SOGo login page has loaded | the login function fills the username field, password field, and toggles the "remember me" switch | the submit button will be clicked |
@@ -113,10 +113,10 @@ SOGo 6 supports full keyboard navigation.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

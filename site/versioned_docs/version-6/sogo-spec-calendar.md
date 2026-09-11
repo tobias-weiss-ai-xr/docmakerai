@@ -166,7 +166,7 @@ Source: `capture/run_captures.py` — `record_calendar_create_event()`, `record_
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Create event via double-click | an authenticated session and the calendar in week view | the user double-clicks the time slot at Monday 10:00 | the event dialog will open |
 | Annotation markers | the calendar create event workflow is being recorded | the double-click action occurs | red circle highlights will mark the day cell and hour cell |
@@ -185,10 +185,10 @@ SOGo 6 supports full keyboard navigation for calendar features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

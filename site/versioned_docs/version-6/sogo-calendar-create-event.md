@@ -52,7 +52,7 @@ Choose whichever method you prefer. A new event dialog will appear.
 
 Fill in the event details:
 
-| Field | Description: What to enter in this field | Example |
+| Field | Description | Example |
 |-------|-------------------------------------------|---------|
 | **Title** | A short name for your event | "Team Standup" |
 | **Location** | Where the event takes place | "Conference Room B" |
@@ -138,14 +138,14 @@ SOGo 6 supports full keyboard navigation for calendar events.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | New event | `e` | Opens event dialog |
-| | Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
-| | Navigate calendar | `Arrow keys` | Move through days/times |
-| | Select time slot | `Enter` | Opens event dialog |
-| | Next/prev day | `J` / `K` | Navigate calendar |
-| | Open dialog | `Enter` | Edit event |
-| | Save event | `Ctrl+S` or `Enter` | Save and close |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| New event | `e` | Opens event dialog |
+| Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
+| Navigate calendar | `Arrow keys` | Move through days/times |
+| Select time slot | `Enter` | Opens event dialog |
+| Next/prev day | `J` / `K` | Navigate calendar |
+| Open dialog | `Enter` | Edit event |
+| Save event | `Ctrl+S` or `Enter` | Save and close |
 
 ### Screen Reader Workflow
 

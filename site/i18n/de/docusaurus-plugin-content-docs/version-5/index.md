@@ -20,15 +20,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 </div>
 
-Willkommen! Dieses Handbuch hilft Ihnen, das Beste aus **SOGo Groupware** herauszuholen — Ihrer Open-Source-Kollaborationsplattform für E-Mail, Kalender, Kontakte und mehr. Ob Sie Ihr Konto zum ersten Mal einrichten oder fortgeschrittene Funktionen wie geteilte Kalender, Sieve-Filter oder Ressourcenbuchung nutzen möchten — Sie sind hier richtig.
+Willkommen! Dieses Handbuch hilft Ihnen, das Beste aus **SOGo Groupware** herauszuholen — Ihrer Open-Source-Kollaborationsplattform für E-Mail, Kalender, Kontakte und mehr. Ob Sie Ihr Konto zum ersten Mal einrichten oder fortgeschrittene Funktionen wie geteilte Kalender, Sieve-Filter oder Ressourcenbuchung nutzen möchten — hier sind Sie richtig.
 
 Jedes Tutorial in diesem Handbuch basiert auf echten, Schritt-für-Schritt-Bildschirmaufnahmen — Sie sehen genau, wo Sie klicken, was Sie eingeben und was Sie erwarten können. Kein Rätselraten, keine vagen Anweisungen.
 
 ## Was erwartet Sie
 
-| Modul: SOGo-Bereich | Was Sie lernen: Wichtige Themen | Tutorials: Anzahl verfügbar |
+| SOGo-Bereich | Was Sie lernen | Tutorials |
 |--------|-------------------|-----------|
-| 📧 **E-Mail** | Verfassen, lesen, organisieren, filtern und signieren von E-Mails | 6 |
+| 📧 **E-Mail** | Verfassen, Lesen, Organisieren, Filtern und Signieren von E-Mails | 6 |
 | 📅 **Kalender** | Ereignisse erstellen, wiederkehrende Termine einrichten, Kalender teilen, Verfügbarkeit prüfen | 7 |
 | 👥 **Kontakte** | Hinzufügen, Bearbeiten, Importieren und Exportieren Ihres Adressbuchs | 3 |
 | ⚙️ **Einstellungen** | Profil anpassen, Passwörter ändern, Abwesenheitsnotizen einrichten | 4 |
@@ -38,7 +38,7 @@ Jedes Tutorial in diesem Handbuch basiert auf echten, Schritt-für-Schritt-Bilds
 
 - **Neu bei SOGo?** Beginnen Sie mit [Erste Schritte](./sogo-login), um die Oberfläche kennenzulernen.
 - **Sie verwenden SOGo 6?** Wechseln Sie mit dem Versions-Dropdown oben zur SOGo 6-Version.
-- **Suchen Sie etwas Bestimmtes?** Durchsuchen Sie die Seitenleiste für eine vollständige Liste aller Tutorials.
+- **Suchen Sie etwas Bestimmtes?** Über die Seitenleiste finden Sie eine vollständige Liste aller Tutorials.
 
 ## Erste Schritte
 
@@ -69,15 +69,15 @@ Jedes Tutorial in diesem Handbuch basiert auf echten, Schritt-für-Schritt-Bilds
 
 Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Aktion | Tastenkombination: Zu drückende Taste | Hinweise: Zusätzliche Informationen |
+| Aktion | Tastenkombination | Hinweise |
 |--------|--------------------------------------|------------------------------|
-| | Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
-| | Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
-| | Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
-| | Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
 **Reihenfolge der Screenreader-Navigation:**
-1. Seitenleisten-Navigation → `Tab` zum Betreten
+1. Modul-Navigation → `Tab` zum Betreten
 2. Modulinhalte → `Pfeiltasten` zum Navigieren
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns

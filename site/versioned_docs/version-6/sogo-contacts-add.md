@@ -42,7 +42,7 @@ A blank contact form will appear.
 
 Fill in the contact's details. The most commonly used fields are:
 
-| Field | Description: What to enter | Recommended: Always fill? |
+| Field | Description | Recommended |
 | :--- | :--- | :--- |
 | **First Name** | Given name | ✅ Always |
 | **Last Name** | Family name | ✅ Always |
@@ -61,7 +61,7 @@ but you can customize it (e.g., "John D. (IT Support)").
 
 Scroll down to access more fields:
 
-| Section | Fields: Available details |
+| Section | Fields |
 | :--- | :--- |
 | **Address** | Street, City, ZIP, Country |
 | **Other Email** | Secondary email addresses |
@@ -91,20 +91,20 @@ The contact will now appear in your contact list. You can:
 
 ### Create a Group
 
-1. In the left sidebar, click **+** next to **Contact Groups**
+1. In the top navigation, click **+** next to **Contact Groups**
 2. Enter a name for the group (e.g., "Team", "Clients", "Family")
 3. Click **OK**
 
 ### Add Contacts to a Group
 
 1. Drag a contact from the list onto the group name, or
-2. Right-click the group, select **Add Members**, and choose contacts
+2. Click the three-dot menu (⋯) next to the group, select **Add Members**, and choose contacts
 
 ## Importing Contacts (CSL/vCard)
 
 To import contacts from another service:
 
-1. Click the **gear icon** ⚙ in the contacts toolbar
+1. Click the **three-dot menu** (⋯) in the contacts toolbar
 2. Select **Import**
 3. Choose a file:
    - **vCard (.vcf)** — Standard format, works with most address books
@@ -135,13 +135,13 @@ SOGo 6 supports full keyboard navigation for contacts management.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
-| | New contact | `+` or `C` | Creates new contact |
-| | Navigate contacts | `J` / `K` | Next/previous contact |
-| | Search contacts | `/` | Focus search field |
-| | Edit contact | `E` | Edit selected contact |
-| | Delete contact | `D` | Delete selected contact |
-| | Cancel | `Escape` | Close dialog |
+| Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
+| New contact | `+` or `C` | Creates new contact |
+| Navigate contacts | `J` / `K` | Next/previous contact |
+| Search contacts | `/` | Focus search field |
+| Edit contact | `E` | Edit selected contact |
+| Delete contact | `D` | Delete selected contact |
+| Cancel | `Escape` | Close dialog |
 
 ### Screen Reader Workflow
 

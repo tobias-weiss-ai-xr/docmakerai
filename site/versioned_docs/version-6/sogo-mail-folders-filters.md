@@ -27,7 +27,7 @@ Click **Mail** in the sidebar. Your folders are listed on the left:
 
 ### Step 2: Create a New Folder
 
-1. Right-click on any folder (e.g., Inbox)
+1. Click the three-dot menu (⋯) next to any folder (e.g., Inbox)
 2. Select **New Folder** or **Add Folder**
 3. Enter a name (e.g., "Projects", "Clients", "Archive")
 4. Click **OK**
@@ -38,7 +38,7 @@ Alternatively, click the **+** icon next to the folder list header.
 
 To organize further, create subfolders:
 
-1. Right-click on a folder you created
+1. Click the three-dot menu (⋯) next to a folder you created
 2. Select **New Subfolder**
 3. Name it (e.g., "Projects/Active", "Projects/Completed")
 
@@ -55,13 +55,13 @@ To organize further, create subfolders:
 ### Step 4: Move Messages to Folders
 
 **Drag and drop:** Click a message and drag it onto a folder
-**Right-click:** Right-click a message → **Move to folder** → select destination
+**Three-dot menu (⋯):** Click the three-dot menu (⋯) next to a message → **Move to folder** → select destination
 **Keyboard:** Select messages, press `V`, then choose folder
 
 ### Step 5: Rename or Delete a Folder
 
-- **Rename:** Right-click folder → **Rename**
-- **Delete:** Right-click folder → **Delete** (empties folder first)
+- **Rename:** Three-dot menu (⋯) next to folder → **Rename**
+- **Delete:** Three-dot menu (⋯) next to folder → **Delete** (empties folder first)
 
 :::warning
 Deleting a folder also deletes all messages inside it.
@@ -75,7 +75,7 @@ Filters run when email arrives — before you see it in your inbox.
 
 ### Step 1: Open Filter Settings
 
-1. Click the **gear icon** ⚙ (Settings) in the top toolbar
+1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Mail** → **Filters**
 
 ![Mail filters settings](./assets/01-mail-filters.png)
@@ -88,7 +88,7 @@ Click **Add Filter** or the **+** button.
 
 Choose when the filter should apply:
 
-| Condition | Example: When this condition matches |
+| Condition | Example |
 | :--- | :--- |
 | **From contains** | `@example.com` → all mail from that domain |
 | **Subject contains** | `[Spam]` → flag potential spam |
@@ -103,7 +103,7 @@ You can combine multiple conditions:
 
 Choose what happens when conditions are met:
 
-| Action | Use Case: When to apply |
+| Action | Use Case |
 | :--- | :--- |
 | **Move to folder** | Sort into the right folder |
 | **Copy to folder** | Keep a copy in inbox + file in folder |
@@ -174,13 +174,13 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Mail | `Alt+M`, `Tab` to Mail |
-| | Open folder management | Right-click folder, gear icon |
-| | Create folder | `Ctrl+Shift+N` |
-| | Open filters | `F` or gear icon → Filters |
-| | Create new filter | `Ctrl+F` or "+" button |
-| | Navigate filter conditions | `Tab` between fields |
-| | Add action | `A` to add, `D` to delete action |
+| Navigate to Mail | `Alt+M`, `Tab` to Mail |
+| Open folder management | Three-dot menu (⋯) next to folder |
+| Create folder | `Ctrl+Shift+N` |
+| Open filters | `F` or three-dot menu (⋯) → Filters |
+| Create new filter | `Ctrl+F` or "+" button |
+| Navigate filter conditions | `Tab` between fields |
+| Add action | `A` to add, `D` to delete action |
 
 ### Screen Reader Workflow
 
@@ -192,13 +192,13 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 3. `Enter` to open mail view
 
 **Step 2: Create Folder**
-1. Right-click on mail account or press gear icon
+1. Click three-dot menu (⋯) next to mail account
 2. Navigate to "New Folder" or press `Ctrl+Shift+N`
 3. Type folder name
 4. Press `Enter` to create
 
 **Step 3: Open Filters**
-1. Gear icon settings
+1. Three-dot menu (⋯) settings
 2. Arrow to "Filters"
 3. Press `Enter`
 
@@ -232,4 +232,4 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 
 ### High Contrast Mode
 
-SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: three-dot menu (⋯) → General → Theme → Dark/High Contrast.

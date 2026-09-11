@@ -42,7 +42,7 @@ A new message composition window will open.
 
 Fill in the recipient fields:
 
-| Field | Description: What this field is for |
+| Field | Description |
 |-------|-------------|
 | **To** | Primary recipient(s). Separate multiple addresses with commas or semicolons |
 | **Cc** | Carbon copy — recipients receive a copy, visible to others |
@@ -72,7 +72,7 @@ Examples:
 Type your message in the large text area. The toolbar above provides
 formatting options:
 
-| Button | Action: What this button does |
+| Button | Action |
 |--------|--------|
 | **B** | Bold |
 | *I* | Italic |
@@ -140,22 +140,22 @@ filters for automatic sorting.
 
 SOGo 5 supports full keyboard navigation for composing and sending emails.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
-| | New message / Compose | `c` | Opens compose window |
-| | Focus To field | `Tab` | First field in compose |
-| | Focus Cc field | `Tab` or `Ctrl+Shift+C` | Carbon copy |
-| | Focus Bcc field | `Tab` or `Ctrl+Shift+B` | Blind carbon copy |
-| | Focus Subject field | `Tab` | After recipient fields |
-| | Focus message body | `Tab` | Large text area |
-| | Send message | `Ctrl+Enter` or `Tab` to Send button |
-| | Save as Draft | `Ctrl+S` | Saves to Drafts folder |
-| | Attach file | `Ctrl+Shift+A` | Opens file picker |
-| | Bold | `Ctrl+B` | Formatting toolbar |
-| | Italic | `Ctrl+I` | Formatting toolbar |
-| | Underline | `Ctrl+U` | Formatting toolbar |
-| | Cancel / Close | `Escape` | Discard message |
+| Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
+| New message / Compose | `c` | Opens compose window |
+| Focus To field | `Tab` | First field in compose |
+| Focus Cc field | `Tab` or `Ctrl+Shift+C` | Carbon copy |
+| Focus Bcc field | `Tab` or `Ctrl+Shift+B` | Blind carbon copy |
+| Focus Subject field | `Tab` | After recipient fields |
+| Focus message body | `Tab` | Large text area |
+| Send message | `Ctrl+Enter` or `Tab` to Send button |
+| Save as Draft | `Ctrl+S` | Saves to Drafts folder |
+| Attach file | `Ctrl+Shift+A` | Opens file picker |
+| Bold | `Ctrl+B` | Formatting toolbar |
+| Italic | `Ctrl+I` | Formatting toolbar |
+| Underline | `Ctrl+U` | Formatting toolbar |
+| Cancel / Close | `Escape` | Discard message |
 
 ### Screen Reader Workflow
 
@@ -209,7 +209,7 @@ Form fields in focus order:
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "To, editable combobox" | Recipient field ready | Type email or contact name |
 | "Subject, edit" | Subject line ready | Type subject |

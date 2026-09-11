@@ -25,7 +25,7 @@ Resource booking in SOGo is typically implemented as special calendar accounts m
 
 ## Resource Booking Overview
 
-| Resource Type: Description | Example Use Case |
+| Resource Type | Example Use Case |
 |---------------|------------------|
 | **Meeting Room** | Small team huddle room, board room, conference hall |
 | **Equipment** | Projector, video conference system, specialized lab equipment |
@@ -62,7 +62,7 @@ Resources often appear with a location icon (📍) or are labeled as [Room] or e
 
 Choose the date/time for the booking. SOGo shows resource availability:
 
-| Visual Indicator: Description | Meaning |
+| Visual Indicator | Meaning |
 |------------------|---------|
 | **Green/H highlighted** | Resource available (can book) |
 | **Grayed out** | Already booked (conflict) |
@@ -96,7 +96,7 @@ Some configurations allow you to overlay multiple resources to find common avail
 
 Resource accounts are typically created with these attributes:
 
-| Setting: Description | Value |
+| Setting | Value |
 |---------|-------|
 | **User Role** | Resource (not person) |
 | **Location** | Physical address or room number |
@@ -117,7 +117,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Managing Bookings
 
-| Action: Description | How To |
+| Action | How To |
 |--------|--------|
 | **Modify booking** | Find event in calendar, edit start/end time or update attendees, save |
 | **Cancel booking** | Delete event (if you are the event owner) |
@@ -132,7 +132,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot find resource in attendees | Resource not configured outside calendars | Ask admin to make resource bookable; ensure it's listed as a shareable calendar |
 | Booking fails with conflict | Time slot already booked | Choose another time slot with available resource |
@@ -141,7 +141,7 @@ Setting up resources requires administrative access to SOGo automated scripts or
 
 ## Integration with Other Features
 
-| Integration: Description | Notes |
+| Integration | Notes |
 |------------|-------|
 | **Free/busy** | Resource busy times shown in free/busy free-for-all queries |
 | **Calendar sharing** | Share your calendar with resource team to coordinate scheduling |
@@ -158,10 +158,10 @@ SOGo 6 supports full keyboard navigation for booking resources.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

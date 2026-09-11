@@ -50,7 +50,7 @@ meeting — directly from the event creation dialog.
 
 The grid shows time slots for each person:
 
-| Color | Meaning: Availability status |
+| Color | Meaning |
 |:-------|:---------|
 | ✅ **Green** | Available |
 | ❌ **Red** | Busy (has an event) |
@@ -71,7 +71,7 @@ The event's start/end time updates to match.
 
 By default, SOGo 6 is configured so that other users can see:
 
-| Permission | What's Visible: What others can see |
+| Permission | What's Visible |
 |:-----------|:----------------|
 | **Free/Busy** | Only whether you're available or busy (no details) |
 | **View (read-only)** | Event titles and times |
@@ -108,14 +108,14 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Open Calendar module | `Alt+C` | From any module
-| | Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog
-| | Open Attendees section | `Tab` to Attendees field | Section within event dialog
-| | Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid
-| | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field
-| | Navigate time grid | `Tab` and arrow keys | Move between time slots
-| | Select available time slot | `Enter` on a green slot | Locks the meeting time
-| | Confirm event | `Tab` to Save, then `Enter` | Creates the event
+| Open Calendar module | `Alt+C` | From any module |
+| Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog |
+| Open Attendees section | `Tab` to Attendees field | Section within event dialog |
+| Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid |
+| Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field |
+| Navigate time grid | `Tab` and arrow keys | Move between time slots |
+| Select available time slot | `Enter` on a green slot | Locks the meeting time |
+| Confirm event | `Tab` to Save, then `Enter` | Creates the event |
 
 ### Screen Reader Workflow
 
@@ -192,4 +192,4 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
 ### High Contrast Mode
 
-SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+SOGo 6's dark mode and high contrast mode work with all sections described above. Toggle via: three-dot menu (⋯) → General → Theme → Dark/High Contrast.

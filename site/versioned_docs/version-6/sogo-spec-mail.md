@@ -152,7 +152,7 @@ Source: `capture/run_captures.py` — `record_mail_compose()`, `record_mail_read
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Compose and send | an authenticated session with the mail module open | the user clicks the compose button | the compose window will open |
 | Open and read message | the inbox is displayed with messages | the user clicks a message | the message will open in the preview pane |
@@ -171,10 +171,10 @@ SOGo 6 supports full keyboard navigation for mail features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

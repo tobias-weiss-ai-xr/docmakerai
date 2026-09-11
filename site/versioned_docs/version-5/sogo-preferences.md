@@ -21,7 +21,7 @@ Customize your SOGo 5 experience by adjusting personal preferences such as langu
 
 ### Step 1: Open Preferences
 
-Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preferences page.
+Click the **three-dot menu** (⋯) (Settings) in the top toolbar to open the Preferences page.
 
 ![Preferences settings page](./assets/preferences.png)
 
@@ -29,7 +29,7 @@ Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preference
 
 The **General** tab allows you to configure:
 
-| Setting: Description | Description | Example |
+| Setting | Description | Example |
 |---------|-------------|---------|
 | **Language** | Interface language | Deutsch, English |
 | **Time Zone** | Your local time zone | Europe/Berlin |
@@ -55,7 +55,7 @@ Switch to the **Notifications** tab to configure:
 
 ### Calendar Defaults
 
-| Preference: Description | Description |
+| Preference | Description |
 |------------|-------------|
 | **Default View** | Day, Week, Month, or Year |
 | **Working Hours** | Define your work day start and end times |
@@ -63,7 +63,7 @@ Switch to the **Notifications** tab to configure:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Settings not saving | Session timeout | Log out and back in, then try again |
 | Language change not applied | Requires page reload | Refresh the page after changing the language setting |
@@ -74,12 +74,12 @@ Switch to the **Notifications** tab to configure:
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

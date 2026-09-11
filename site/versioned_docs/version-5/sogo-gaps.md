@@ -21,7 +21,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 14 `.png` files were referenced from English markdown docs but did not exist in `site/docs/assets/`. They existed in `site/i18n/de/docusaurus-plugin-content-docs/current/assets/` and have been copied over.
 
-| PNG File: Description | Referenced By | Used In Section |
+| PNG File | Referenced By | Used In Section |
 |---|---|---|
 | `00-login-page.png` | `sogo-login.md:24` | Step 1 — Login page view |
 | `01-calendar-create-view.png` | `sogo-calendar-create-event.md:24` | Step 1 — Open Calendar |
@@ -44,7 +44,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 ## 2. Missing Animated WebP Captures (🟡 HIGH)
 
-| WebP File: Description | Referenced By | Status |
+| WebP File | Referenced By | Status |
 |---|---|---|
 | `calendar-create-event-dblclick.png` | `ROADMAP.md:156` | Planned Phase 2 — double-click step animation |
 | `calendar-create-event-form.png` | `ROADMAP.md:163` | Planned Phase 2 — form-filling step animation |
@@ -60,14 +60,14 @@ Both are described as "Phase 2: Multi-Step Annotated GIFs" in ROADMAP.md. They a
 10 files existed in `site/i18n/de/docusaurus-plugin-content-docs/current/assets/` that were **not referenced by any markdown file**:
 
 ### Legacy GIFs (3 files — left over from initial GIF pipeline)
-| File: Description | Size | Notes |
+| File | Size | Notes |
 |---|---|---|
 | `calendar-create-event.gif` | 99 KB | Superseded by `.png` version |
 | `calendar-recurring.gif` | 102 KB | Superseded by `.png` version |
 | `mail-compose.gif` | 15 KB | Superseded by `.png` version |
 
 ### Unreferenced PNGs (7 files — never wired into any doc)
-| File: Description | Size | Possible Intent |
+| File | Size | Possible Intent |
 |---|---|---|
 | `00-dashboard.png` | 5 KB | Dashboard overview (no doc was written) |
 | `02-compose-window.png` | 17 KB | Compose window detail (not referenced) |
@@ -87,7 +87,7 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 ### ✅ Round 1 — Core Flows (6 features — WebP captures + markdown docs created)
 
-| Doc: Description | Feature | WebP |
+| Doc | Feature | WebP |
 |---|---|---|
 | `sogo-logout.md` | Logout | `logout.png` (41 frames, 93KB) |
 | `sogo-preferences.md` | Preferences & Settings | `preferences.png` (6 frames, 4KB) |
@@ -98,7 +98,7 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 ### ✅ Round 2 — Advanced Features (6 features — WebP captures + markdown docs created)
 
-| Doc: Description | Feature | WebP |
+| Doc | Feature | WebP |
 |---|---|---|
 | `sogo-mail-read.md` | Mail — Read & View Messages | `mail-read.png` (18 frames, 3KB) |
 | `sogo-mail-reply-forward-delete.md` | Mail — Reply / Forward / Delete | `mail-reply-forward-delete.png` (18 frames, 3KB) |
@@ -109,7 +109,7 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 ### ✅ Round 3 — Advanced & Infrastructure-Dependent Features (3 features — docs created with infrastructure notes)
 
-| Doc: Description | Feature | Captures |
+| Doc | Feature | Captures |
 |---|---|---|
 | `sogo-delegation.md` | Delegation & Permissions | No WebP — requires multi-user ACL infrastructure |
 | `sogo-tasks.md` | Tasks / To-Do Module | No WebP — module not enabled in test environment |
@@ -125,7 +125,7 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 ## 5. Documentation Overview (Final State)
 
 ### 27 Documented Features
-| Doc: Description | Type | Features Covered |
+| Doc | Type | Features Covered |
 |---|------|------------------|
 | `sogo-login.md` | Core | Login flow, accessibility keyboard nav, screen reader workflow |
 | `sogo-logout.md` | Core | Logout workflow |
@@ -166,7 +166,7 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 ## 6. Action Priority Matrix (Final Status)
 
-| Priority: Description | Category | Items | Status |
+| Priority | Category | Items | Status |
 |---|---|---|---|---|
 | **P0** | Copy missing PNGs | 14 files from `i18n/de/` → `site/docs/assets/` | ✅ DONE |
 | **P1** | New captures & docs | **Logout** doc + capture | ✅ DONE |
@@ -194,12 +194,12 @@ The following SOGo 5 modules and features had **no documentation page**. Status 
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

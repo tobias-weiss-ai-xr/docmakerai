@@ -52,7 +52,7 @@ vCard (`.vcf`) is the standard format for sharing contacts across applications l
 
 ## Import Options
 
-| Duplicate Handling: Description | Description |
+| Duplicate Handling | Description |
 |--------------------|-------------|
 | **Skip duplicates** | Ignores contacts with the same email address |
 | **Update existing** | Overwrites existing contact data with imported information |
@@ -60,7 +60,7 @@ vCard (`.vcf`) is the standard format for sharing contacts across applications l
 
 ## Export Options
 
-| Format: Description | Description | Typical Size (100 contacts) |
+| Format | Description | Typical Size (100 contacts) |
 |--------|--------------|-----------------------------|
 | **vCard 3.0** | Standard vCard format | ~25 KB |
 | **vCard 4.0** | Newer format with extended fields | ~30 KB |
@@ -72,7 +72,7 @@ To back up your entire address book, periodically export all contacts to a vCard
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Import/Export actions not visible | Feature not enabled | Contact your administrator |
 | Import fails | Corrupted vCard file | Open the file in a text editor and verify format |
@@ -86,10 +86,10 @@ SOGo 6 supports full keyboard navigation for importing and exporting contacts.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter

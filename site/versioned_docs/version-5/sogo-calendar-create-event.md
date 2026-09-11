@@ -38,7 +38,7 @@ Day, Week, Month, and Year views using the buttons in the top toolbar.
 
 There are three ways to create an event:
 
-| Method | Action: Create event using different methods |
+| Method | Action |
 |--------|--------------------------------------------------------------|
 | **Click the + button** | Click the **+** (plus) button in the top toolbar |
 | **Double-click** | Double-click on any time slot in the calendar grid |
@@ -52,7 +52,7 @@ Choose whichever method you prefer. A new event dialog will appear.
 
 Fill in the event details:
 
-| Field | Description: What to enter in this field | Example |
+| Field | Description | Example |
 |-------|-------------------------------------------|---------|
 | **Title** | A short name for your event | "Team Standup" |
 | **Location** | Where the event takes place | "Conference Room B" |
@@ -104,7 +104,7 @@ instructions for the event. This field supports plain text.
 
 For events that repeat, click the **Repeat** section and choose a pattern:
 
-| Pattern | Example: Recurrence pattern description |
+| Pattern | Example |
 |---------|------------------------------------------|
 | **Daily** | Standup meeting every day |
 | **Weekly** | Team meeting every Tuesday |
@@ -136,16 +136,16 @@ You have successfully created a calendar event. You can now:
 
 SOGo 5 supports full keyboard navigation for calendar events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | New event | `e` | Opens event dialog |
-| | Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
-| | Navigate calendar | `Arrow keys` | Move through days/times |
-| | Select time slot | `Enter` | Opens event dialog |
-| | Next/prev day | `J` / `K` | Navigate calendar |
-| | Open dialog | `Enter` | Edit event |
-| | Save event | `Ctrl+S` or `Enter` | Save and close |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| New event | `e` | Opens event dialog |
+| Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
+| Navigate calendar | `Arrow keys` | Move through days/times |
+| Select time slot | `Enter` | Opens event dialog |
+| Next/prev day | `J` / `K` | Navigate calendar |
+| Open dialog | `Enter` | Edit event |
+| Save event | `Ctrl+S` or `Enter` | Save and close |
 
 ### Screen Reader Workflow
 
@@ -219,7 +219,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Event dialog, Title field" | Dialog opened, focus on title | Enter event details |
 | "Title is invalid" | Empty or too short title | Enter a proper title |

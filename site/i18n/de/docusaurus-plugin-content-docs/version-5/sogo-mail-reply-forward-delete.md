@@ -57,16 +57,16 @@ Klicken Sie auf das **Löschen**-Symbol (Papierkorb).
 Die E-Mail wird in den Ordner **Papierkorb** verschoben.
 
 :::tip
-Um eine E-Mail endgültig zu löschen, leeren Sie den Papierkorb, indem Sie mit der rechten Maustaste darauf klicken und „Papierkorb leeren" auswählen.
+Um eine E-Mail endgültig zu löschen, leeren Sie den Papierkorb, indem Sie auf das Dreipunkt-Menü (⋯) daneben klicken und „Papierkorb leeren" auswählen.
 :::
 
 ## Tastenkombinationen
 
-| Aktion: Description | Windows/Linux | Mac |
+| Aktion | Windows/Linux | Mac |
 |--------|--------------|-----|
-| Antworten | `Ctrl + R` | `⌘ + R` |
+| Antworten | `Strg + R` | `⌘ + R` |
 | Löschen | `Entf` | `Entf` |
-| Weiterleiten | `Ctrl + F` | `⌘ + F` |
+| Weiterleiten | `Strg + F` | `⌘ + F` |
 
 :::warning
 Löschaktionen verschieben E-Mails in den Papierkorb. Zum Wiederherstellen wählen Sie den Papierkorb aus und ziehen die E-Mail zurück in den Posteingang.
@@ -74,7 +74,7 @@ Löschaktionen verschieben E-Mails in den Papierkorb. Zum Wiederherstellen wähl
 
 ## Fehlerbehebung
 
-| Problem: Description | Mögliche Ursache | Lösung |
+| Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Antworten/Weiterleiten-Button nicht sichtbar | E-Mail-Text bereits geöffnet | Schließen Sie das Verfassen-Fenster und versuchen Sie es erneut |
 | E-Mail nach Löschen nicht im Papierkorb | Papierkorb voll | Leeren Sie zuerst den Papierkorb |
@@ -83,29 +83,28 @@ Löschaktionen verschieben E-Mails in den Papierkorb. Zum Wiederherstellen wähl
 ## Fazit
 
 Sie haben erfolgreich gelernt, wie Sie in SOGo 5 auf E-Mails antworten, sie weiterleiten und löschen.
-## Accessibility
+## Barrierefreiheit
 
-### Keyboard Navigation
+### Tastaturnavigation
 
-This application supports keyboard navigation. No mouse required for completing this task.
+Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Aktion | Tastenkombination | Hinweise |
+|--------|-------------------|----------|
+| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
+| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
+| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
+| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
+**Reihenfolge der Screenreader-Navigation:**
+1. Modul-Navigation → `Tab` zum Betreten
+2. Modulinhalte → `Pfeiltasten` zum Navigieren
+3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
+4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
-### High Contrast Mode
+### Hochkontrastmodus
 
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
+- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
+- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
+- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
