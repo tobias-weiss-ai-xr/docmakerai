@@ -135,7 +135,7 @@ Work emails default to Identity 1.
 ## Conclusion
 
 Signatures and identities help you communicate professionally.
-Set up a clean signature and add auxiliary identities if you
+Set up a complete signature and add alternate identities if you
 manage multiple email addresses.
 
 ## Accessibility

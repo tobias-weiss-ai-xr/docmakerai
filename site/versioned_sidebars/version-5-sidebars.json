@@ -24,8 +24,8 @@
       "items": [
         "sogo-calendar-create-event",
         "sogo-calendar-recurring",
-        "sogo-calendar-views",
         "sogo-calendar-edit-delete",
+        "sogo-calendar-views",
         "sogo-calendar-ical",
         "sogo-calendar-share",
         "sogo-calendar-subscribe",

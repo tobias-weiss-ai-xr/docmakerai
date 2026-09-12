@@ -6,7 +6,7 @@ sidebar_label: "Antworten, Weiterleiten & Löschen"
 
 # E-Mail — Antworten, Weiterleiten & Löschen
 
-Nach dem Lesen einer E-Mail können Sie auf den Absender antworten, an andere weiterleiten oder sie löschen.
+Nach dem Lesen einer E-Mail können Sie darauf antworten, sie an andere weiterleiten oder sie löschen.
 
 ## Voraussetzungen
 
@@ -22,7 +22,7 @@ Klicken Sie auf die E-Mail, auf die Sie antworten möchten.
 
 ### Schritt 2: Auf Antworten klicken
 
-Klicken Sie auf die Schaltfläche **Antworten** in der Symbolleiste des E-Mail-Viewers.
+Klicken Sie auf das Symbol **Antworten** in der Symbolleiste des E-Mail-Viewers.
 
 Der Antwort-Editor öffnet sich mit vorausgefülltem Empfänger und Betreff.
 
@@ -38,7 +38,7 @@ Klicken Sie auf die E-Mail, die Sie weiterleiten möchten.
 
 ### Schritt 2: Auf Weiterleiten klicken
 
-Klicken Sie auf die Schaltfläche **Weiterleiten**.
+Klicken Sie auf das Symbol **Weiterleiten**.
 
 ### Schritt 3: Empfänger hinzufügen
 
@@ -76,7 +76,7 @@ Löschaktionen verschieben E-Mails in den Papierkorb. Zum Wiederherstellen wähl
 
 | Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
-| Antworten/Weiterleiten-Button nicht sichtbar | E-Mail-Text bereits geöffnet | Schließen Sie das Verfassen-Fenster und versuchen Sie es erneut |
+| Antworten/Weiterleiten-Symbol nicht sichtbar | E-Mail-Text bereits geöffnet | Schließen Sie das Verfassen-Fenster und versuchen Sie es erneut |
 | E-Mail nach Löschen nicht im Papierkorb | Papierkorb voll | Leeren Sie zuerst den Papierkorb |
 | Antwort kommt zurück | Ungültige Empfänger-E-Mail | Überprüfen Sie, ob die E-Mail-Adresse korrekt ist |
 

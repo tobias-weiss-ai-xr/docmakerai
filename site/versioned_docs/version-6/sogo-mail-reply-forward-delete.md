@@ -10,7 +10,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 # Mail — Reply, Forward & Delete
 
-After reading an email, you can reply to the sender, forward to others, or delete it.
+After reading an email, you can reply to it, forward it to others, or delete it.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Click on the email you want to reply to.
 
 ### Step 2: Click Reply
 
-Click the **Reply** button in the email viewer toolbar.
+Click the **Reply** icon in the email viewer toolbar.
 
 The reply composer opens with the recipient and subject pre-filled.
 
@@ -42,7 +42,7 @@ Click on the email you want to forward.
 
 ### Step 2: Click Forward
 
-Click the **Forward** button.
+Click the **Forward** icon.
 
 ### Step 3: Add Recipients
 
@@ -80,7 +80,7 @@ Delete actions move emails to the Trash folder. To recover, select the Trash fol
 
 | Issue | Possible Cause | Solution |
 |-------|---------------|----------|
-| Reply/Forward button not visible | Email body already open | Close the compose window and try again |
+| Reply/Forward icon not visible | Email body already open | Close the compose window and try again |
 | Email not in Trash after delete | Trash folder full | Empty the Trash folder first |
 | Reply bounces | Invalid recipient email | Verify the email address is correct |
 ## Accessibility

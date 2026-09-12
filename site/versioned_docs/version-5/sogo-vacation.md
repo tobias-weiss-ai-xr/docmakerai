@@ -81,8 +81,8 @@ who email multiple times.
 
 ### Step 6: Save
 
-Click **Save** or **Apply**. The Sieve script is activated on the
-mail server.
+Click **Save** or **Apply**. The Sieve script — a server-side mail filter that applies rules to incoming email
+automatically — is activated on the mail server.
 
 ## Calendar: Marking Your Absence
 
