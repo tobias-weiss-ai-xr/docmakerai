@@ -7,10 +7,10 @@
 
 | Status | Anzahl | Bedeutung |
 |---|---|---|
-| ✅ Erledigt/REF | **91** | `DONE-B*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
-| 🔧 Wave 1 (Textfixes) | **15** | Wörtliche Korrekturen, rein textuell |
+| ✅ Erledigt/REF | **110** | `DONE-B*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
+| ✅ Wave 1 (Textfixes) | ~~15~~ erledigt | Wörtliche Korrekturen, rein textuell |
 | 🔧 Wave 2 (UI-Flows) | **50** | Abläufe an echte SOGo-5-Oberfläche anpassen |
-| 💬 Wave 3 (Struktur) | **4** | Redaktionelle Entscheidungen (User-Input nötig) |
+| ✅ Wave 3 (Struktur) | ~~4~~ erledigt (T3.3 folgt nach T2.16) | Redaktionelle Entscheidungen (User-Input nötig) |
 | ⛔ Blockiert (Wave 5) | **7** | Screenshot-Neuerfassung, nur in CI möglich |
 
 ## Globale Regeln (für jede Task)
@@ -289,6 +289,12 @@ Legende: `DONE-B1` Tabellen-Header · `DONE-B2` Accessibility-Übersetzung · `D
 | 165 | `sogo-contacts-import-export#accessibility` | Dieser Abschnitt ist auf Englisch verfasst. Die Tabelle… | DONE-B2 |
 | 166 | `sogo-global-search` | NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO! Ich gebe auf… | T2.7 |
 | 167 | `sogo-global-search#schritt-1-suche-%C3%B6ffnen` | Okay, noch so viel: es gibt keine „Schaltfläche Suchen“… | T2.7 |
+
+
+## Fortschritts-Log
+
+- **2026-05-Sitzung:** Wave 1 + Wave 3 ausgeführt (Commit `a85613d`). T1.1–T1.11 (T1.8 war bereits gefixt) und T3.1, T3.2, T3.4, T3.5, T3.6 erledigt; T3.3 folgt nach T2.16. Gates: alte Phrasen = 0 in allen 4 Dirs, 112 Tests grün, ruff clean, Build EN+DE grün, DE-Sidebar-Labels gerendert verifiziert. Alle `T1.x`/`T3.x`-Einträge in der Matrix gelten damit als DONE.
+- **Offen:** Wave 2 (T2.1–T2.17, 50 Punkte), Wave 4 (Screenreader-Dok), Wave 5 (Screenshots, CI-only), T6.1-Guards, Wave 7 (Release).
 
 ## Abschlusskriterium
 
