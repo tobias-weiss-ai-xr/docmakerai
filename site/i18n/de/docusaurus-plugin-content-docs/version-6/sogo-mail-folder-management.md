@@ -28,6 +28,7 @@ Die Ordnerliste zeigt Ihre Standardordner:
 - **Entwürfe** — Speichert noch nicht gesendete E-Mail-Entwürfe
 - **Papierkorb** — Enthält gelöschte E-Mails
 - **Spam** — Enthält als Spam identifizierte Nachrichten
+- **Vorlagen** — Enthält wiederverwendbare E-Mail-Vorlagen
 
 ### Schritt 3: Neuen Ordner erstellen
 

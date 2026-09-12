@@ -31,7 +31,7 @@ Verfügbare Ansichten:
 | **Woche** | `7` | Fünf-Tage-Arbeitswochenansicht (Standard) |
 | **Monat** | `31` | Monatsraster für eine breitere Übersicht |
 
-### Schritt 3: Durch die Zeit navigieren
+### Schritt 3: Durch die Kalenderansichten navigieren
 
 Verwenden Sie die **Pfeil-Buttons** (◀ ▶) neben dem Datum, um vorwärts oder rückwärts zu navigieren:
 
@@ -48,14 +48,6 @@ Klicken Sie auf die Datumskopfzeile (z. B. „15.–19. Juni 2026"), um eine D
 **Tastenkombination:** Drücken Sie `T`, um von jeder Ansicht aus zu Heute zu springen.
 :::
 
-## Ansichtsvergleich
-
-| Funktion | Tag | Woche | Monat |
-|----------|-----|-------|-------|
-| Stündliche Zeitleiste | Ja | Ja | Nein |
-| Ganztägige Ereignisse | Ja | Ja | Ja |
-| Serientermine | Zeigt Vorkommen | Zeigt Vorkommen | Zeigt Vorkommen |
-| Am besten geeignet für | Detaillierte Planung | Wochenübersicht | Monatsplanung |
 
 ## Fazit
 

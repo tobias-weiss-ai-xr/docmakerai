@@ -91,7 +91,7 @@ Your administrator can change default permission levels via the
 ### All times show "No data"
 
 - The colleague hasn't shared their calendar with you
-- Contact them or your administrator to grant free/busy access
+- Ask the person or your administrator to grant you free/busy access
 - Default roles may be restricted (`PublicDAndTViewer` must be set)
 
 ## Conclusion

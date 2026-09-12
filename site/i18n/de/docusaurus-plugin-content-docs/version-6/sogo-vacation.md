@@ -77,8 +77,8 @@ schreiben, nicht zu überfluten.
 
 ### Schritt 6: Speichern
 
-Klicken Sie auf **Speichern** oder **Übernehmen**. Das Sieve-Skript wird auf dem
-Mail-Server aktiviert.
+Klicken Sie auf **Speichern** oder **Übernehmen**. Das Sieve-Skript — ein serverseitiger Mailfilter, der Regeln automatisch auf eingehende
+E-Mails anwendet — wird auf dem Mail-Server aktiviert.
 
 ## Kalender: Abwesenheit markieren
 

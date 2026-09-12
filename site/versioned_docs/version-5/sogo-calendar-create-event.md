@@ -15,7 +15,7 @@ import PageSEO from '@site/src/components/PageSEO';
 # Create a Calendar Event
 
 This tutorial walks you through creating a new event in SOGo 5's calendar,
-including setting time, adding attendees, and configuring reminders.
+including setting the date and time, adding attendees, and configuring reminders.
 
 ## Prerequisites
 
@@ -92,8 +92,12 @@ To receive a reminder before the event:
    - **1 day before**
    - **Custom** — enter your own time
 3. Choose the reminder method:
-   - **Display** — A popup notification in SOGo 5
-   - **Email** — An email sent to your address
+   - **Display** — A popup notification appears in your browser when the reminder fires
+   - **Email** — An email sent to your address. **Note:** Email alarms require the
+     server-side `sogo-ealarms-notify` service — contact your administrator if email
+     reminders never arrive
+4. You can combine multiple alarms per event (e.g., **15 minutes before** as a popup
+   plus **1 day before** as an email): click **Add alarm** to do so
 
 ### Step 6: Add a Description (Optional)
 

@@ -51,8 +51,8 @@ If the event is part of a recurring series, you will be asked:
 
 | Option | Effect |
 |--------|--------|
-| **This event only** | Changes only the selected instance |
-| **All events in the series** | Changes every occurrence of the recurring event |
+| **This event only** | Changes only this individual event |
+| **All events in the series** | Changes every instance of the series |
 
 Select the option that matches your intent.
 
@@ -71,8 +71,8 @@ For recurring events, you will be asked:
 
 | Option | Effect |
 |--------|--------|
-| **Delete this event only** | Removes only the selected instance |
-| **Delete all events in the series** | Removes every occurrence |
+| **Delete this event only** | Deletes only this individual event |
+| **Delete all events in the series** | Deletes every instance of the series |
 
 :::warning
 Deletion cannot be undone. Consider this before permanently removing events.

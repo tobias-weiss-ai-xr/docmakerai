@@ -7,7 +7,7 @@ sidebar_label: "Kalenderereignis erstellen"
 # Kalenderereignis erstellen
 
 Dieses Tutorial führt Sie durch das Erstellen eines neuen Ereignisses im SOGo 6-Kalender,
-einschließlich der Festlegung von Zeit, dem Hinzufügen von Teilnehmern und der Konfiguration von Erinnerungen.
+einschließlich Datum und Uhrzeit, dem Hinzufügen von Teilnehmern und der Konfiguration von Erinnerungen.
 
 ## Voraussetzungen
 
@@ -82,8 +82,12 @@ Um eine Erinnerung vor dem Ereignis zu erhalten:
    - **1 Tag vorher**
    - **Benutzerdefiniert** — eigene Zeit eingeben
 3. Wählen Sie die Erinnerungsmethode:
-   - **Anzeige** — Eine Popup-Benachrichtigung in SOGo 6
-   - **E-Mail** — Eine E-Mail an Ihre Adresse
+   - **Anzeige** — Eine Popup-Benachrichtigung erscheint in Ihrem Browser, wenn die Erinnerung ausgelöst wird
+   - **E-Mail** — Eine E-Mail an Ihre Adresse. **Hinweis:** E-Mail-Alarme erfordern den
+     serverseitigen Dienst `sogo-ealarms-notify` — wenden Sie sich an Ihren Administrator,
+     wenn E-Mail-Erinnerungen nicht ankommen
+4. Sie können mehrere Alarme pro Ereignis kombinieren (z. B. **15 Minuten vorher** als
+   Popup-Erinnerung plus **1 Tag vorher** als E-Mail): klicken Sie dazu auf **Alarm hinzufügen**
 
 ### Schritt 6: Beschreibung hinzufügen (Optional)
 

@@ -34,6 +34,7 @@ The folder list shows your default folders:
 - **Drafts** — Stores draft emails not yet sent
 - **Trash** — Holds deleted emails
 - **Spam** — Contains messages identified as spam
+- **Templates** — Contains reusable email templates
 
 ### Step 3: Create a New Folder
 

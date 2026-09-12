@@ -129,7 +129,7 @@ Geschäftliche E-Mails verwenden standardmäßig Identität 1.
 ## Fazit
 
 Signaturen und Identitäten helfen Ihnen, professionell zu kommunizieren.
-Richten Sie eine saubere Signatur ein und fügen Sie bei Bedarf hilfsweise Identitäten hinzu,
+Richten Sie eine vollständige Signatur ein und fügen Sie bei Bedarf Behelfsidentitäten hinzu,
 wenn Sie mehrere E-Mail-Adressen verwalten.
 ## Barrierefreiheit
 

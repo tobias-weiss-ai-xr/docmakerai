@@ -85,7 +85,7 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
 ### Alle Zeiten zeigen "Keine Daten"
 
 - Der Kollege hat seinen Kalender nicht für Sie freigegeben
-- Kontaktieren Sie ihn oder Ihren Administrator, um Frei/Gebucht-Zugriff zu gewähren
+- Bitten Sie die Person oder Ihren Administrator, Ihnen den Frei/Gebucht-Zugriff zu gewähren
 - Standardrollen können eingeschränkt sein (`PublicDAndTViewer` muss gesetzt sein)
 
 ## Fazit

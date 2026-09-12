@@ -7,7 +7,7 @@ sidebar_label: "Kontakt hinzufügen"
 # Kontakt hinzufügen
 
 Dieses Tutorial erklärt, wie Sie Kontakte zu Ihrem SOGo 5-Adressbuch hinzufügen
-und in Gruppen organisieren.
+und in Listen organisieren.
 
 ## Voraussetzungen
 
@@ -24,7 +24,7 @@ um Ihr Adressbuch zu öffnen.
 ![Kontaktmodul in der Navigationsleiste](./assets/01-contacts-module.png)
 
 Die Kontaktansicht zeigt Ihr Adressbuch mit allen vorhandenen Kontakten.
-Auf der linken Seite sehen Sie Ihre Adressbücher und Kontaktgruppen.
+Auf der linken Seite sehen Sie Ihre Adressbücher und Listen.
 
 ### Schritt 2: Neuen Kontakt erstellen
 
@@ -43,8 +43,9 @@ Füllen Sie die Details des Kontakts aus. Die am häufigsten verwendeten Felder 
 | **E-Mail** | Primäre E-Mail-Adresse | ✅ Immer |
 | **Telefon** | Telefonnummer | Optional |
 | **Mobil** | Mobiltelefonnummer | Optional |
-| **Firma** | Organisation oder Unternehmen | Optional |
-| **Position** | Berufliche Tätigkeit | Optional |
+| **Organisation** | Organisation oder Unternehmen | Optional |
+| **Rolle** | Funktion oder Rolle im Unternehmen | Optional |
+| **Titel** | z. B. Dr., Prof. | Optional |
 
 :::tip
 Das Feld **Anzeigename** wird automatisch aus Vor- und Nachname ausgefüllt,
@@ -81,18 +82,18 @@ Der Kontakt wird nun in Ihrer Kontaktliste angezeigt. Sie können:
 - Darauf klicken, um Details anzuzeigen oder zu bearbeiten
 - Bei der E-Mail-Eingabe den Namen tippen, um die automatische Vervollständigung zu nutzen
 
-## Kontakte in Gruppen organisieren
+## Kontakte in Listen organisieren
 
-### Gruppe erstellen
+### Liste erstellen
 
-1. Klicken Sie oben in der Navigationsleiste auf **+** neben **Kontaktgruppen**
-2. Geben Sie einen Namen für die Gruppe ein (z. B. "Team", "Kunden", "Familie")
+1. Klicken Sie oben in der Navigationsleiste auf **+** neben **Listen**
+2. Geben Sie einen Namen für die Liste ein (z. B. "Team", "Kunden", "Familie")
 3. Klicken Sie auf **OK**
 
-### Kontakte zu einer Gruppe hinzufügen
+### Kontakte zu einer Liste hinzufügen
 
-1. Ziehen Sie einen Kontakt aus der Liste auf den Gruppennamen, oder
-2. Klicken Sie auf das Dreipunkt-Menü (⋯) neben die Gruppe, wählen Sie **Mitglieder hinzufügen** und wählen Sie Kontakte aus
+1. Ziehen Sie einen Kontakt aus der Liste auf den Listennamen, oder
+2. Klicken Sie auf das Dreipunkt-Menü (⋯) neben die Liste, wählen Sie **Mitglieder hinzufügen** und wählen Sie Kontakte aus
 
 ## Kontakte importieren (CSV/vCard)
 

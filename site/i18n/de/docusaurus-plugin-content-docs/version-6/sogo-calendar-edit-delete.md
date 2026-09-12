@@ -45,8 +45,8 @@ Wenn das Ereignis Teil einer Terminserie ist, werden Sie gefragt:
 
 | Option | Auswirkung |
 |--------|-----------|
-| **Nur dieses Ereignis** | Ändert nur das ausgewählte Vorkommen |
-| **Alle Ereignisse der Serie** | Ändert jedes Vorkommen des Serientermins |
+| **Nur dieses Ereignis** | Ändert nur ausgewähltes Einzelereignis |
+| **Alle Ereignisse der Serie** | Ändert jede Instanz des Serientermins |
 
 Wählen Sie die Option, die Ihrer Absicht entspricht.
 
@@ -65,8 +65,8 @@ Bei Serienterminen werden Sie gefragt:
 
 | Option | Auswirkung |
 |--------|-----------|
-| **Nur dieses Ereignis löschen** | Entfernt nur das ausgewählte Vorkommen |
-| **Alle Ereignisse der Serie löschen** | Entfernt jedes Vorkommen |
+| **Nur dieses Ereignis löschen** | Löscht nur ausgewähltes Einzelereignis |
+| **Alle Ereignisse der Serie löschen** | Löscht jede Instanz des Serientermins |
 
 :::warning
 Löschungen können nicht rückgängig gemacht werden. Bedenken Sie dies, bevor Sie Ereignisse endgültig entfernen.

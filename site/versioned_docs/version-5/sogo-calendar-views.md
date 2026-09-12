@@ -37,7 +37,7 @@ Available views:
 | **Week** | `7` | Five-day work week view (default) |
 | **Month** | `31` | Full month grid for a broader overview |
 
-### Step 3: Navigate Through Time
+### Step 3: Navigate Through the Calendar Views
 
 Use the **arrow buttons** (◀ ▶) next to the date to move forward or backward:
 
@@ -54,14 +54,7 @@ Click the date header (e.g., "June 15–19, 2026") to open a date picker for jum
 **Keyboard shortcut:** Press `T` to jump to Today from any view.
 :::
 
-## View Comparison
 
-| Feature | Day | Week | Month |
-|---------|-----|------|-------|
-| Hour-by-hour timeline | Yes | Yes | No |
-| All-day events | Yes | Yes | Yes |
-| Recurring events | Shows instances | Shows instances | Shows instances |
-| Best for | Detailed planning | Weekly overview | Monthly planning |
 ## Accessibility
 
 ### Keyboard Navigation

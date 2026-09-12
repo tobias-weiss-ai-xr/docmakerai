@@ -11,7 +11,7 @@ import PageSEO from '@site/src/components/PageSEO';
 # Add a Contact
 
 This tutorial explains how to add contacts to your SOGo 6 address book
-and organize them into groups.
+and organize them into lists.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ to open your address book.
 ![Contacts module in sidebar](./assets/01-contacts-module.png)
 
 The contacts view shows your address book with any existing contacts.
-On the left, you'll see your address books and contact groups.
+On the left, you'll see your address books and lists.
 
 ### Step 2: Create a New Contact
 
@@ -49,8 +49,9 @@ Fill in the contact's details. The most commonly used fields are:
 | **Email** | Primary email address | ✅ Always |
 | **Phone** | Telephone number | Optional |
 | **Mobile** | Mobile phone number | Optional |
-| **Company** | Organization or company | Optional |
-| **Job Title** | Position at work | Optional |
+| **Organisation** | Organization or company | Optional |
+| **Role** | Function or role at the company | Optional |
+| **Title** | e.g., Dr., Prof. | Optional |
 
 :::tip
 The **Display Name** field is auto-filled from First + Last name,
@@ -87,18 +88,18 @@ The contact will now appear in your contact list. You can:
 - Click on it to view or edit details
 - Start typing the name when composing an email to auto-complete
 
-## Organizing Contacts into Groups
+## Organizing Contacts into Lists
 
-### Create a Group
+### Create a List
 
-1. In the top navigation, click **+** next to **Contact Groups**
-2. Enter a name for the group (e.g., "Team", "Clients", "Family")
+1. In the top navigation, click **+** next to **Lists**
+2. Enter a name for the list (e.g., "Team", "Clients", "Family")
 3. Click **OK**
 
-### Add Contacts to a Group
+### Add Contacts to a List
 
-1. Drag a contact from the list onto the group name, or
-2. Click the three-dot menu (⋯) next to the group, select **Add Members**, and choose contacts
+1. Drag a contact from the list onto the list name, or
+2. Click the three-dot menu (⋯) next to the list, select **Add Members**, and choose contacts
 
 ## Importing Contacts (CSL/vCard)
 
@@ -176,8 +177,8 @@ Form fields appear in this order (screen reader focus sequence):
 
 4. **Phone** - main phone number
 5. **Mobile** - mobile phone number
-6. **Company** - organization or company
-7. **Job Title** - position at work
+6. **Organisation** - organization or company
+7. **Role** - function or role at the company
 
 **Additional sections (scroll or `Tab` further):**
 
@@ -219,7 +220,7 @@ Form fields appear in this order (screen reader focus sequence):
 **contacts-add.png:** This 3.5-second animated GIF shows adding a contact in SOGo 6's address book interface.
 
 - **Frame 1 (0-1.7s):** Contacts module view showing existing contacts (address book list on left, contact items in main view)
-- **Frame 2 (1.7-3.5s):** "+" button clicked (highlighted), blank contact form appears with fields for First Name, Last Name, Email, Phone, Company, Job Title
+- **Frame 2 (1.7-3.5s):** "+" button clicked (highlighted), blank contact form appears with fields for First Name, Last Name, Email, Phone, Organisation, Role
 
 **Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above.
 
