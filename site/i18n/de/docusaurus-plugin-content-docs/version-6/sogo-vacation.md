@@ -24,7 +24,7 @@ Kalender als abwesend, wenn Sie im Urlaub oder außer Haus sind.
 1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
 2. Wählen Sie **Abwesenheitsnotiz** aus dem Einstellungsmenü
 
-![Abwesenheitseinstellungen](./assets/01-vacation-settings.png)
+![Abwesenheitseinstellungen](./assets/vacation.png)
 
 ### Schritt 2: Automatische Antwort aktivieren
 

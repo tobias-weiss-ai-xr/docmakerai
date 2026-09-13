@@ -176,16 +176,11 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 ### Visual Content Descriptions
 
-**mail-signatures.png:** This 3-second animated GIF shows creating a new email identity (with its signature) in SOGo 5.
+**mail-signatures.png:** This static screenshot shows creating a new email identity (with its signature) in SOGo 5.
 
-- **Frame 1 (0-1s):** Settings screen with Mail → IMAP Accounts selected, cursor hovering over the "New Identity" button
-- **Frame 2 (1-2s):** Signature editor open with name field filled ("Professional") and user typing signature text (name, title, contact info)
-- **Frame 3 (2-3s):** Save button clicked, signature appears in the signatures list with confirmation message
 
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow: Creating an Email Signature** above. It provides the same information in text format suitable for screen readers.
+**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow: Creating an Email Signature** above. It provides the same information in text format suitable for screen readers.
 
-**Duration:** 3 seconds, 3 frames  
-**File size:** 22 KB (approximate)
 
 ### High Contrast Mode
 

@@ -7,11 +7,11 @@
 
 | Status | Anzahl | Bedeutung |
 |---|---|---|
-| ✅ Erledigt/REF | **160** (alle 167 Einträge: 160 erledigt + 7 offen T5.x, Stand T7.2-Matrixcheck) | `DONE-B*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
+| ✅ Erledigt/REF | **167/167** (alle Einträge erledigt, Stand Nachprüfung T5.1/T5.2) | `DONE-B*`/`DONE-T*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
 | ✅ Wave 1 (Textfixes) | ~~15~~ erledigt | Wörtliche Korrekturen, rein textuell |
 | ✅ Wave 2 (UI-Flows) | ~~50~~ erledigt (7 Punkte T5-Bildnacharbeit ausgenommen) | Abläufe an echte SOGo-5-Oberfläche anpassen |
 | ✅ Wave 3 (Struktur) | ~~4~~ erledigt (T3.3: Querverweis-Lösung in Wave 2) | Redaktionelle Entscheidungen (User-Input nötig) |
-| ✅ Wave 5 | ~~7~~ weitgehend erledigt — 22/22 Live-SOGo-6-Captures (`85fc2a9`), in v6-Doku verdrahtet; v5-Bildpfade (T5.1/T5.2 DE) offen |
+| ✅ Wave 5 | erledigt — 22/22 Live-SOGo-6-Captures (`85fc2a9`) + Nachverdrahtung v5/DE (T5.1/T5.2): vacation überall, filters/signatures de5+de6 (Blanks ersetzt); Blank-/Error-Screenshot-Guard-Test ergänzt |
 
 ## Globale Regeln (für jede Task)
 
@@ -101,12 +101,12 @@ graph LR
 | T4.2 | sogo-login: Tastatur-Tabelle (Benutzername/Passwort/Angemeldet bleiben/Submit/Escape) + Screenreader-Workflow mit Ankündigungen („Anmeldung, Überschriftsebene 1", „Benutzername, Bearbeiten, leer", …) | Screenreader-Dok, Tabellen |
 | T4.3 | NVDA-Hinweis zentral (einmalig, z. B. im Accessibility-Template/login): Lesemodus vs. Fokusmodus, h-Sprungnavigation | Screenreader-Dok, Abs. 6 |
 
-## Wave 5 — Screenshots (blockiert: capture pipeline nur in CI)
+## Wave 5 — Screenshots ✅ erledigt (T5.1/T5.2: verifizierte Live-SOGo-6-Captures verdrahtet; T5.3: deutsche UI-Captures bleiben bewusste Lücke)
 
 | ID | Task | Kritik |
 |---|---|---|
-| T5.1 | sogo-vacation: Schritt-1-Bild zeigt „An error occurred during object publishing" → neu erfassen; Schritt-4-Bild im hellen Modus unlesbar → neu | #23, #26 |
-| T5.2 | Dark/Light-Lesbarkeit prüfen/neu erfassen: share CalDAV (grau auf schwarz), subscribe, signatures (Tagmodus), filters, contacts | #67, #73, #107, #113, #135 |
+| T5.1 | ✅ DONE-T5.1 — Schritt-1: Live-Capture `vacation.png` in allen 4 dirs (Fehlerbild ersetzt); Schritt-4-Bild war bereits entfernt | #23, #26 |
+| T5.2 | ✅ DONE-T5.2 — Lesbarkeits-Fälle durch helle Live-Captures ersetzt (signatures/filters in de5+de6, vorher inhaltsleere Blanks); Text-Anteile (#73/#107/#113/#135) via Wave-2/3-Rewrites + Guards | #67, #73, #107, #113, #135 |
 | T5.3 | **Nach Wave 2:** Screenshots aller geänderten UI-Pfade neu erfassen (compose, signatures, ical, share, subscribe, freebusy, contacts, global-search) — DE-Bildsymbole fehlen komplett (bekannte Lücke: keine deutschen UI-Captures) | folgt |
 
 ## Wave 6 — Regression-Guards ✅ erledigt
@@ -122,7 +122,7 @@ graph LR
 ## Wave 7 — Release
 
 > **2026-05-Sitzung 3:** T7.1 ✓ (114 Tests, ruff check+format, Build EN+DE) ·
-> T7.2 ✓ (69 T*-Zeilen → DONE-T*, 7 offen T5.x) · T7.3 push → CI.
+> T7.2 ✓ (alle 76 T*-Zeilen → DONE-T*, 0 offen) · T7.3 push → CI.
 | ID | Task |
 |---|---|
 | T7.1 | Lokale Vollprüfung: pytest ≥ 112 grün, ruff clean, `docusaurus build` EN+DE |
@@ -159,10 +159,10 @@ Legende: `DONE-T*` Task oben ausgeführt (W1–W4) · `DONE-B1` Tabellen-Header 
 | 20 | `sogo-password-change#accessibility` | Ab hier ist alles noch auf Englisch verfasst. Die Tabel… | DONE-B2 |
 | 21 | `sogo-vacation` |  | DONE-B1 |
 | 22 |  `sogo-vacation#voraussetzungen` |  „Die Abwesenheitsnotiz muss von Ihrem Administrator akt… | DONE-T2.14 |
-| 23 | `sogo-vacation/#schritt-1-abwesenheitseinstellungen-%C3%B6ffnen` | Die Abbildung macht keinen Sinn für mich. „An error occ… | T5.1 |
+| 23 | `sogo-vacation/#schritt-1-abwesenheitseinstellungen-%C3%B6ffnen` | Die Abbildung macht keinen Sinn für mich. „An error occ… | DONE-T5.1 |
 | 24 | `sogo-vacation/#schritt-2-auto-antwort-aktivieren` | „Schritt 2: Auto-Antwort aktivieren“  „Schritt 2: Autom… | DONE-B5 |
 | 25 | `sogo-vacation/#schritt-3-zeitraum-festlegen` | Spaltenüberschrift „Feld: Description“  „Eingabefeld“ S… | DONE-B1 |
-| 26 | `sogo-vacation/#schritt-4-auto-antwort-nachricht-verfassen` | Ich kann in dieser Abbildung im hellen Modus kaum etwas… | T5.1 |
+| 26 | `sogo-vacation/#schritt-4-auto-antwort-nachricht-verfassen` | Ich kann in dieser Abbildung im hellen Modus kaum etwas… | DONE-T5.1 |
 | 27 | `sogo-vacation/#schritt-5-antwortoptionen-w%C3%A4hlen` | Spaltenüberschrift „Option: Description“  „Option“ Kein… | DONE-B1 |
 | 28 |  `sogo-vacation/#schritt-6-speichern` |  „Das Sieve-Skript wird auf dem Mail-Server aktiviert.“ … | DONE-T1.6 |
 | 29 | `sogo-vacation/#test-e-mail-senden` | Sie werden eine Sprachwissenschaftlerin nie sagen hören… | DONE-B5 |
@@ -203,13 +203,13 @@ Legende: `DONE-T*` Task oben ausgeführt (W1–W4) · `DONE-B1` Tabellen-Header 
 | 64 |  `sogo-calendar-share#schritt-2-einen-kalender-zum-freigeben-ausw%C3%A4hlen` |  Der Persönlich-Kalender heißt allerdings wie das Accoun… | DONE-T2.15 |
 | 65 |  `sogo-calendar-share#schritt-3-einen-benutzer-hinzuf%C3%BCgen` |  Den Reiter gibt es nicht – nach „Freigabe…“ gibt man di… | DONE-T2.15 |
 | 66 |  `sogo-calendar-share#schritt-4-berechtigungsstufe-festlegen` |  Ausgehend vom aktuellen Interface unter „Freigabe…“ kom… | DONE-T2.15 |
-| 67 | `sogo-calendar-share#freigabe-%C3%BCber-caldav-erweitert` | Bin zu faul, das zu überprüfen, aber die graue Schrift … | T5.2 |
+| 67 | `sogo-calendar-share#freigabe-%C3%BCber-caldav-erweitert` | Bin zu faul, das zu überprüfen, aber die graue Schrift … | DONE-T5.2 |
 | 68 |  `sogo-calendar-share#freigabe-entfernen-oder-%C3%A4ndern` |  Jup, das ist nicht die genaue Abfolge an Schritten, aus… | DONE-T2.15 |
 | 69 | `sogo-calendar-share#fazit` | „(…) sind eine großartige Möglichkeit (…)“ – ich lass d… | DONE-B7 |
 | 70 | `sogo-calendar-share#accessibility` | Dis.Is.Still.In.English!!!! | DONE-B2 |
 | 71 |  `sogo-calendar-subscribe` |  Ich versteh nicht genau, warum das ein eigenes Tutorial… | DONE-T3.3 |
 | 72 | `sogo-calendar-subscribe#schritt-1-ical-feed-url-finden` | Ich finde die Beispiele in dieser Quelle nicht wirklich… | DONE-B1 |
-| 73 | `sogo-calendar-subscribe#schritt-2-kalendereinstellungen-%C3%B6ffnen` | Dieser Ablauf hier passt nicht zu den tatsächlichen Ein… | T5.2 |
+| 73 | `sogo-calendar-subscribe#schritt-2-kalendereinstellungen-%C3%B6ffnen` | Dieser Ablauf hier passt nicht zu den tatsächlichen Ein… | DONE-T5.2 |
 | 74 |  `sogo-calendar-subscribe#schritt-3-feed-url-eingeben` |  Hab eben extra einen Feiertagskalender abonniert – so, … | DONE-T2.16 |
 | 75 |  `sogo-calendar-subscribe#schritt-4-sync-optionen-konfigurieren` |  Keine Ahnung, wo diese Funktion sein soll; ich hab jede… | DONE-T2.16 |
 | 76 |  `sogo-calendar-subscribe#schritt-5-abonnement-speichern` |  Welches Symbol? | DONE-T2.16 |
@@ -243,13 +243,13 @@ Legende: `DONE-T*` Task oben ausgeführt (W1–W4) · `DONE-B1` Tabellen-Header 
 | 104 | `sogo-mail-signatures` |  | DONE-B1 |
 | 105 |  `sogo-mail-signatures#schritt-1-einstellungen-%C3%B6ffnen` |  Entweder das mit der Signatur wird mit dem nächsten SOG… | DONE-T2.4 |
 | 106 |  `sogo-mail-signatures#schritt-2-neue-signatur-hinzuf%C3%BCgen` |  Nope, zumindest nicht, wenn es bei dem aktuellen Aufbau… | DONE-T2.4 |
-| 107 | `sogo-mail-signatures#schritt-3-signatur-schreiben` | Erstens kann man den Text in der Abbildung im Tagmodus … | T5.2 |
+| 107 | `sogo-mail-signatures#schritt-3-signatur-schreiben` | Erstens kann man den Text in der Abbildung im Tagmodus … | DONE-T5.2 |
 | 108 |  `sogo-mail-signatures#schritt-4-signaturplatzierung-w%C3%A4hlen` |  Aktuell sind das zumindest nicht die Optionen, die man … | DONE-T2.4 |
 | 109 |  `sogo-mail-signatures#teil-2-signatur-manuell-einf%C3%BCgen` |  Siehe Punkt direkt obendrüber. | DONE-T2.4 |
 | 110 |  `sogo-mail-signatures#schritt-1-einstellungen-%C3%B6ffnen-1` |  Es gibt keinen Reiter „Identitäten“ in der aktuellen Ve… | DONE-T2.4 |
 | 111 |  `sogo-mail-signatures#schritt-3-hilfsidentit%C3%A4t-hinzuf%C3%BCgen` |  Kann ich nicht überprüfen… | DONE-T2.4 |
 | 112 |  `sogo-mail-signatures#schritt-4-identit%C3%A4t-beim-verfassen-wechseln` |  Aktuell gibt es keinen Dropdown-Pfeil neben meiner E-Ma… | DONE-T2.4 |
-| 113 | `sogo-mail-signatures#beispiel-gesch%C3%A4ftlich--privat` | Ich finde diese Abbildung, ehrlich gesagt, nicht so hil… | T5.2 |
+| 113 | `sogo-mail-signatures#beispiel-gesch%C3%A4ftlich--privat` | Ich finde diese Abbildung, ehrlich gesagt, nicht so hil… | DONE-T5.2 |
 | 114 |  `sogo-mail-signatures#fazit` |  Was ist eine „saubere“ Signatur? Meinen Sie eine vollst… | DONE-T1.2 |
 | 115 | `sogo-mail-signatures#accessibility` | Ding-dong! Round sixteen! | DONE-B2 |
 | 116 | `sogo-mail-folder-management` |  | DONE-B1 |
@@ -271,7 +271,7 @@ Legende: `DONE-T*` Task oben ausgeführt (W1–W4) · `DONE-B1` Tabellen-Header 
 | 132 |  `sogo-mail-folders-filters#schritt-3-verschachtelte-unterordner-erstellen` |  Immer noch Punkt 102. Und die Abbildung ist mal wieder … | DONE-T2.6 |
 | 133 |  `sogo-mail-folders-filters#schritt-4-nachrichten-in-ordner-verschieben` |  Mit Rechtsklick lässt sich nach wie vor nichts tun, auc… | DONE-T2.6 |
 | 134 | `sogo-mail-folders-filters#schritt-5-ordner-umbenennen-oder-l%C3%B6schen` | Der Rechtsklick macht mich fertig. Der IST NICHT VORGES… | DONE-B4 |
-| 135 | `sogo-mail-folders-filters#schritt-1-filtereinstellungen-%C3%B6ffnen` | Ein erster Schritt, der stimmt! Hab mich noch so sehr g… | T5.2 |
+| 135 | `sogo-mail-folders-filters#schritt-1-filtereinstellungen-%C3%B6ffnen` | Ein erster Schritt, der stimmt! Hab mich noch so sehr g… | DONE-T5.2 |
 | 136 |  `sogo-mail-folders-filters#schritt-2-neuen-filter-erstellen` |  Korrekterweise klickt man auf „Filter erstellen“. | DONE-T2.6 |
 | 137 |  `sogo-mail-folders-filters#schritt-3-bedingungen-festlegen` |  Tabelle, Spalte 1, Überschrift. Aber jetzt mal Spaß bei… | DONE-T2.6 |
 | 138 |  `sogo-mail-folders-filters#schritt-4-aktionen-festlegen` |  Selbes Spiel wie oben: Erstens stimmen die beschriebene… | DONE-T2.6 |

@@ -17,7 +17,7 @@ Absenderidentitäten (z. B. geschäftlich vs. privat).
 2. Wählen Sie **E-Mail** → **IMAP-Konten**
 3. Klicken Sie auf Ihr E-Mail-Konto, um dessen Identität zu bearbeiten
 
-![Signatur-Einstellungen](./assets/01-mail-signatures.png)
+![Signatur-Einstellungen](./assets/mail-signatures.png)
 
 ### Schritt 2: Neue Identität anlegen
 

@@ -241,18 +241,11 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**calendar-create-event.png:** This 6-second animated GIF shows creating a calendar event in SOGo 5's week view.
+**calendar-create-event.png:** This static screenshot shows creating a calendar event in SOGo 5's week view.
 
-- **Frame 1 (0-1.2s):** Calendar grid in week view with Monday 10:00 highlighted (focus ring)
-- **Frame 2 (1.2-2.4s):** Event dialog opens from double-click, cursor in Title field
-- **Frame 3 (2.4-3.6s):** Title "Team Standup" and location "Conference Room B" entered
-- **Frame 4 (3.6-4.8s):** Alarm/Reminder section expanded, "15 minutes before" selected
-- **Frame 5 (4.8-6.3s):** Save button clicked, event appears on calendar grid labeled "Team Standup" at Monday 10:00
 
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above. It provides the same information in text format suitable for screen readers.
+**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow** section above. It provides the same information in text format suitable for screen readers.
 
-**Duration:** 6.3 seconds, 5 frames  
-**File size:** 171 KB
 
 ### High Contrast Mode
 
