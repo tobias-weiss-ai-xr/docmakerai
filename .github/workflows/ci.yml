@@ -42,7 +42,7 @@ jobs:
 
   python-quality:
     name: python-tests
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     if: always()
     defaults:
       run:
@@ -102,7 +102,7 @@ jobs:
 
   accessibility-check:
     name: Accessibility Validation
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     if: always()
     steps:
       - uses: actions/checkout@v4
@@ -122,7 +122,7 @@ jobs:
 
   coverage-guard:
     name: Coverage Trend Guard
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
@@ -162,7 +162,7 @@ jobs:
 
   build-site:
     name: Build Docusaurus Site
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     defaults:
       run:
         working-directory: site
@@ -203,7 +203,7 @@ jobs:
 
   lighthouse:
     name: Lighthouse CI
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
@@ -216,7 +216,7 @@ jobs:
 
   bundle-size:
     name: Bundle Size Budget
-    runs-on: [self-hosted, ci-host]
+    runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     permissions:
       contents: read
