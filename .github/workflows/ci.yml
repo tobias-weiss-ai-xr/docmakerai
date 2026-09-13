@@ -70,7 +70,7 @@ jobs:
 
       - name: Test with pytest + coverage
         run: |
-          pytest --cov=. --cov-report=xml --cov-report=term-missing -q
+          python3 -m pytest scripts/tests accessibility/tests --cov=scripts --cov=accessibility --cov-report=xml --cov-report=term-missing -q
 
       - name: Upload coverage artifact
         if: always()
@@ -115,7 +115,7 @@ jobs:
         continue-on-error: true
 
       - name: Test accessibility validator
-        run: pytest accessibility/tests/ -q
+        run: python3 -m pytest accessibility/tests/ -q
 
   coverage-guard:
     name: Coverage Trend Guard

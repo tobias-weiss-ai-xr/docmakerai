@@ -17,7 +17,8 @@ for (const v of VERSIONS) {
 
       // Verify it doesn't return 404
       const href = await stylesheet.getAttribute('href');
-      const response = await page.request.get(href);
+      expect(href).toBeTruthy();
+      const response = await page.request.get(href!);
       expect(response.status()).toBe(200);
     });
 
@@ -36,7 +37,8 @@ for (const v of VERSIONS) {
       await expect(logo).toHaveAttribute('src', /logo\.svg/);
 
       const src = await logo.getAttribute('src');
-      const response = await page.request.get(src);
+      expect(src).toBeTruthy();
+      const response = await page.request.get(src!);
       expect(response.status()).toBe(200);
     });
 
