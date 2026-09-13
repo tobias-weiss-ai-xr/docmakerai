@@ -237,6 +237,62 @@ def _line(ref: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# feedback taskfleet Wave 6 guards (T6.1, reviewer-verified phrases)
+# ---------------------------------------------------------------------------
+
+
+FORBIDDEN_PHRASES = [
+    "Durch die Zeit",
+    "Kontaktgruppen",
+    "Schaltfläche **Verfassen**",
+    "Schaltfläche **Suche**",
+    "Schaltfläche Verfassen",
+    "Schaltfläche Suche",
+    "hilfsweise",
+]
+
+
+REQUIRED_CONTAINS = {
+    "i18n/de/docusaurus-plugin-content-docs/version-{v}/sogo-mail-folders-filters.md": [
+        "Beende die Filterverarbeitung",
+        "Filter erstellen",
+        "serverseitige E-Mail-Filterung",
+    ],
+    "i18n/de/docusaurus-plugin-content-docs/version-{v}/sogo-mail-signatures.md": [
+        "IMAP-Konten",
+        "Neue Identität",
+    ],
+}
+
+
+def test_wave6_forbidden_phrases_absent():
+    dirs = [
+        SITE / "i18n/de/docusaurus-plugin-content-docs/version-5",
+        SITE / "i18n/de/docusaurus-plugin-content-docs/version-6",
+        SITE / "versioned_docs/version-5",
+        SITE / "versioned_docs/version-6",
+    ]
+    bad = [
+        f"{p.relative_to(SITE)}: {phrase}"
+        for d in dirs
+        for p in sorted(d.glob("*.md"))
+        for phrase in FORBIDDEN_PHRASES
+        if phrase in _read(p)
+    ]
+    assert not bad, "Reviewer-verified phrases that must not reappear:\n" + "\n".join(bad)
+
+
+def test_wave6_required_phrases_present():
+    missing = []
+    for tpl, phrases in REQUIRED_CONTAINS.items():
+        for v in ("5", "6"):
+            path = SITE / tpl.format(v=v)
+            text = path.read_text(encoding="utf-8") if path.exists() else ""
+            missing += [f"{path.name} (v{v}): {p}" for p in phrases if p not in text]
+    assert not missing, "Required verified phrases missing:\n" + "\n".join(missing)
+
+
+# ---------------------------------------------------------------------------
 # translation / version parity
 # ---------------------------------------------------------------------------
 
