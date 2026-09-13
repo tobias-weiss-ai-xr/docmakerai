@@ -31,13 +31,13 @@ Click the **three-dot menu** (⋯) above the contact list and choose the action 
 
 ### Step 3: Export Contacts
 
-1. Select **Export** from the Actions menu
+1. Select **Export** from the three-dot menu
 2. Choose the address book to export
 3. The contacts download as a `.vcf` (vCard) file
 
 ### Step 4: Import Contacts
 
-1. Click **Import** from the Actions menu
+1. Click **Import** from the three-dot menu
 2. Select the `.vcf` file you want to import
 3. Choose the target address book
 4. Select how to handle duplicates:
