@@ -1,3 +1,4 @@
+# CI pipeline: ruff, tests, dual-locale build, lighthouse, bundle-size
 name: CI
 
 on:
