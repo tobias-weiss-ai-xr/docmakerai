@@ -36,6 +36,31 @@ jobs:
         working-directory: site
         run: npx playwright install --with-deps
 
+      # The suite tests the LIVE site — if it races the Pages deploy of this
+      # same commit it fails on a half-updated site (seen twice: navbar links
+      # and dropdown visibility vanished mid-deploy). Wait for this commit's
+      # deploy workflow first; if no deploy ran, the live site is current.
+      - name: Wait for the Pages deploy of this commit
+        run: |
+          repo="${{ github.repository }}"
+          sha="${{ github.sha }}"
+          ok=""
+          for i in $(seq 1 40); do
+            state=$(curl -sf "https://api.github.com/repos/$repo/actions/runs?head_sha=$sha" \
+              | jq -r '[.workflow_runs[] | select(.path == ".github/workflows/deploy.yml")][0] | if . == null then "none" else "\(.status) \(.conclusion // "none")" end' \
+              || echo retry)
+            echo "deploy state: $state"
+            case "$state" in
+              "completed success"|"completed skipped"|"none") ok=1; break ;;
+              completed*) ok=0; break ;;
+            esac
+            sleep 15
+          done
+          if [ "$ok" != "1" ]; then
+            echo "Pages deploy did not settle successfully in 10 minutes (state: $state)"
+            exit 1
+          fi
+
       - name: Run Playwright tests on live site
         working-directory: site
         run: npx playwright test
