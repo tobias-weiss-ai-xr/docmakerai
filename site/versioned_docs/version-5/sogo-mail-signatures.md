@@ -21,8 +21,6 @@ sender identities (e.g., work vs. personal email).
 2. Select **Mail** → **IMAP Accounts**
 3. Click your email account to edit its identity
 
-![Mail signatures settings](./assets/01-mail-signatures.png)
-
 ### Step 2: Create a New Identity
 
 Signatures are managed per identity — there is no separate "Signatures" section. Use **New Identity** to add another identity.
@@ -173,14 +171,6 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 | "Mail Preferences Saved" | Settings updated successfully | Continue to next task |
 | "From, combo box" | Sender identity selector | Arrow keys to change identity |
 | "Delete signature, button" | Remove this signature | Press Enter, confirm |
-
-### Visual Content Descriptions
-
-**mail-signatures.png:** This static screenshot shows creating a new email identity (with its signature) in SOGo 5.
-
-
-**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow: Creating an Email Signature** above. It provides the same information in text format suitable for screen readers.
-
 
 ### High Contrast Mode
 

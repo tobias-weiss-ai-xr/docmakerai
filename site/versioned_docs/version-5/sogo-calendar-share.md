@@ -27,8 +27,6 @@ and control what they can see or do.
 2. In the calendar list, click the **three-dot menu** (⋯) next to the calendar you want to share
 3. Select **Sharing…**
 
-![Calendar settings with sharing options](./assets/01-calendar-settings.png)
-
 Note: Your default calendar is not named "Personal" — it carries the account abbreviation assigned individually by the university computing center.
 
 ### Step 2: Enter the Person

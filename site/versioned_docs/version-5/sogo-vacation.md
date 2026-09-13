@@ -28,8 +28,6 @@ in the calendar when you're on vacation or out of office.
 1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Vacation** from the settings menu
 
-![Vacation settings menu](./assets/vacation.png)
-
 ### Step 2: Enable Auto-Reply
 
 Toggle **Enable auto-reply** to **ON**.
@@ -222,14 +220,6 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 | "Message, content editable" | Message textarea | Type your auto-reply |
 | "Save, button" | Ready to save | Press Enter to save |
 | "Settings saved" | Success | Auto-reply now active or updated |
-
-### Visual Content Descriptions
-
-**vacation.png:** This static screenshot shows configuring vacation auto-reply in SOGo 5.
-
-
-**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow** section above.
-
 
 ### High Contrast Mode
 
