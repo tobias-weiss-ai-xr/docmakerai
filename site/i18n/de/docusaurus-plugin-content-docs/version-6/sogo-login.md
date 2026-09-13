@@ -50,7 +50,13 @@ SOGo 6 unterstützt die vollständige Tastaturnavigation für die Anmeldung.
 | Anmeldeformular absenden | `Eingabetaste` in einem beliebigen Feld |
 
 Je nach Instanz liegen in der Tab-Reihenfolge vor dem Benutzernamen-Feld noch der Sprachumschalter und das Passwort-Auge (Passwort anzeigen). `Escape` erreicht zunächst den Fokusmodus des Screenreaders und leert die Eingaben nicht — das Formular bleibt ausgefüllt.
+> **NVDA-Hinweis:** NVDA startet im *Lesemodus*. Formularfelder schalten
+> automatisch in den *Fokusmodus*; mit `NVDA+Leertaste` wechseln Sie manuell.
+> Zwischen Überschriften springen Sie mit `h` (nur im Lesemodus). Alle
+> übrigen Hinweise auf dieser Seite gelten für jedes gängige Screenreader-Programm.
+
 ### Screenreader-Workflow
+
 
 1. Ob der Screenreader die Seite nach dem Laden vorliest, hängt von dessen Einstellungen ab. Verlässlicher Einstieg: mit `Strg+Pos1` an den Seitenanfang springen und die Seite anschließend schrittweise durch Navigieren mit `Tab` erschließen
 2. `Tab` (ggf. mehrfach) zum Benutzernamen-Feld — "Benutzername, Bearbeiten, leer"

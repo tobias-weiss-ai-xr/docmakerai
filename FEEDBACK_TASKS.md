@@ -11,7 +11,7 @@
 | ✅ Wave 1 (Textfixes) | ~~15~~ erledigt | Wörtliche Korrekturen, rein textuell |
 | ✅ Wave 2 (UI-Flows) | ~~50~~ erledigt (7 Punkte T5-Bildnacharbeit ausgenommen) | Abläufe an echte SOGo-5-Oberfläche anpassen |
 | ✅ Wave 3 (Struktur) | ~~4~~ erledigt (T3.3: Querverweis-Lösung in Wave 2) | Redaktionelle Entscheidungen (User-Input nötig) |
-| ⛔ Blockiert (Wave 5) | **7** | Screenshot-Neuerfassung, nur in CI möglich |
+| ✅ Wave 5 | ~~7~~ weitgehend erledigt — 22/22 Live-SOGo-6-Captures (`85fc2a9`), in v6-Doku verdrahtet; v5-Bildpfade (T5.1/T5.2 DE) offen |
 
 ## Globale Regeln (für jede Task)
 
@@ -90,7 +90,10 @@ graph LR
 | T3.5 | Ansichtsvergleich-Tabelle streichen (inhaltsleer lt. Reviewerin) | Löschen | #47 |
 | T3.6 | Sidebar-Oberbegriffe auf Deutsch („Basics", „Calendar", „Mail", „Contacts", „Tools", „Advanced" → DE) | i18n-Sidebar-Labels | — |
 
-## Wave 4 — Screenreader-Dokument einarbeiten (noch nicht begonnen)
+## Wave 4 — Screenreader-Dokument einarbeiten ✅ erledigt
+
+> **2026-05-Sitzung 3:** T4.2 durch Review-Integration auf origin/main (`d40e662`);
+> T4.1 Leitlinie jetzt in `AGENTS.md`, T4.3 NVDA-Hinweis zentral in sogo-login (4 Dirs).
 
 | ID | Task | Quelle |
 |---|---|---|
@@ -301,7 +304,7 @@ Legende: `DONE-B1` Tabellen-Header · `DONE-B2` Accessibility-Übersetzung · `D
 
 - **2026-05-Sitzung 2:** Wave 2 ausgeführt. T2.2–T2.17 in allen 4 Dirs: share („Freigaben…", Person direkt, HRZ-Kürzel, qualit. Berechtigung), subscribe („Webkalender" auf Oberfläche, Sync-Optionen gestrichen, „Neu laden beim Anmelden", Halluzinations-Bilder+Demo-Sektionen entfernt), signatures (IMAP-Konten/Neue Identität/Allgemein/X-Wechsel, EN-A11y+Frames umgeschrieben), filters („Filter erstellen", „Beende die Filterverarbeitung" 2×, Admin-Hinweise), ical („Links zu diesem Kalender"), freebusy (Schritte 2+3 gemerged, T2.8-Erklärung), global-search (→„Suche", pro Modul, FAQ-Zeile gelöscht, Index-Karten), compose (Stiftsymbol, Priorität im Dreipunkt-Menü), contacts (Dreipunkt-Menü, generische Adressbuchnamen), views (Symbol-Spalte entfernt), mail-read (Doppelklick soft), recurring/vacation (Admin-Kontext), folder-mgmt (Verschieben-Symbol = Pfeil). Verwaiste Assets calendar-share/calendar-subscribe.png gelöscht. Zahnrad-Guard um reviewer-verifizierte Ausnahme erweitert (Zahnrad = Einstellungen ist korrekt). Gates: 112 Tests grün, ruff clean, Build EN+DE grün.
 - **2026-05-Sitzung:** Wave 1 + Wave 3 ausgeführt (Commit `a85613d`). T1.1–T1.11 (T1.8 war bereits gefixt) und T3.1, T3.2, T3.4, T3.5, T3.6 erledigt; T3.3 folgt nach T2.16. Gates: alte Phrasen = 0 in allen 4 Dirs, 112 Tests grün, ruff clean, Build EN+DE grün, DE-Sidebar-Labels gerendert verifiziert. Alle `T1.x`/`T3.x`-Einträge in der Matrix gelten damit als DONE.
-- **Offen:** Wave 4 (Screenreader-Dok), Wave 5 (Screenshots, CI-only), T6.1-Guards, Wave 7 (Release).
+- **Offen:** T6.1-Guards, Wave 7 (Matrix-Check + Release); Wave-5-Rest: v5/DE-Bildpfade T5.1/T5.2.
 
 ## Abschlusskriterium
 

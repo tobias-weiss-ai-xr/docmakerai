@@ -54,7 +54,13 @@ SOGo 6 supports full keyboard navigation for login.
 | Submit login form | `Enter` on any field |
 
 Depending on the instance, the tab order starts with the language selector and the show-password toggle before the username field. `Escape` first reaches the screen reader's focus mode and does not clear the form — your input is kept.
+> **NVDA note:** NVDA starts in *browse mode* (reading mode). Form fields
+> switch it to *focus mode* automatically; `NVDA+Space` toggles manually. To
+> jump between headings, press `h` (browse mode only). All other tips on this
+> page apply to any current screen reader.
+
 ### Screen Reader Workflow
+
 
 1. Whether the screen reader reads the page after it loads depends on its settings. A reliable start: press `Ctrl+Home` to jump to the top of the page, then explore it step by step by navigating with `Tab`
 2. `Tab` (repeat as needed) to the username field — "Username, edit, blank"
