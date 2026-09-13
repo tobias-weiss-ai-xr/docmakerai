@@ -74,7 +74,7 @@ Filter werden beim Eintreffen von E-Mails ausgeführt — bevor Sie sie in Ihrem
 1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
 2. Wählen Sie **E-Mail** → **Filter**
 
-![E-Mail-Filtereinstellungen](./assets/01-mail-filters.png)
+![E-Mail-Filtereinstellungen](./assets/mail-filters.png)
 
 ### Schritt 2: Neuen Filter erstellen
 

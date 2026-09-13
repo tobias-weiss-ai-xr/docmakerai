@@ -227,17 +227,11 @@ Form fields in focus order:
 
 ### Visual Content Descriptions
 
-**mail-compose.png:** This 4-second animated GIF shows composing and sending an email in SOGo 5.
+**mail-compose.png:** This static screenshot shows composing and sending an email in SOGo 5.
 
-- **Frame 1 (0-1s):** Inbox view with Compose button highlighted in the toolbar
-- **Frame 2 (1-2s):** Compose window opens with cursor in To field, user types recipient email
-- **Frame 3 (2-3s):** Subject line entered, message body being typed
-- **Frame 4 (3-4s):** Send button clicked, message sent confirmation, email appears in Sent folder
 
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above. It provides the same information in text format suitable for screen readers.
+**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow** section above. It provides the same information in text format suitable for screen readers.
 
-**Duration:** 4 seconds, 4 frames  
-**File size:** 28 KB (approximate)
 
 ### High Contrast Mode
 

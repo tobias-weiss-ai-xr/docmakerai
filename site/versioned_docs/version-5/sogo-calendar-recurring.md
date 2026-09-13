@@ -220,11 +220,8 @@ SOGo 5 supports full keyboard navigation for recurring events.
 
 ### Visual Content Descriptions
 
-**calendar-recurring.png:** This 3.2-second animated GIF shows creating a recurring event.
+**calendar-recurring.png:** This static screenshot shows creating a recurring event.
 
-- **Frame 1 (0-0.8s):** Create event dialog open with title, date, time fields filled
-- **Frame 2 (0.8-2.2s):** Recurrence section expanded, frequency dropdown showing "Weekly" selected, interval set to "Every 1 week", specific weekdays checked (Monday, Wednesday, Friday)
-- **Frame 3 (2.2-3.2s):** Event details saved, confirmation showing recurring icon in calendar, series indicator visible
 
 ### High Contrast Mode
 

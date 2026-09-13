@@ -218,15 +218,11 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**contacts-add.png:** This 3.5-second animated GIF shows adding a contact in SOGo 6's address book interface.
+**contacts-add.png:** This static screenshot shows adding a contact in SOGo 6's address book interface.
 
-- **Frame 1 (0-1.7s):** Contacts module view showing existing contacts (address book list on left, contact items in main view)
-- **Frame 2 (1.7-3.5s):** "+" button clicked (highlighted), blank contact form appears with fields for First Name, Last Name, Email, Phone, Organisation, Role
 
-**Screen Reader Alternative:** If you cannot view this GIF, please use the **Screen Reader Workflow** section above.
+**Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow** section above.
 
-**Duration:** 3.5 seconds, 2 frames  
-**File size:** 18 KB
 
 ### High Contrast Mode
 

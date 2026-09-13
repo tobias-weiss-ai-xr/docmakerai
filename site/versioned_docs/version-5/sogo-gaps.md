@@ -36,7 +36,7 @@ import PageSEO from '@site/src/components/PageSEO';
 | `01-mail-inbox.png` | `sogo-mail-compose.md:24` | Step 1 — Mail inbox |
 | `01-mail-filters.png` | `sogo-mail-folders-filters.md:77` | Step 1 — Mail filters |
 | `01-mail-signatures.png` | `sogo-mail-signatures.md:19` | Step 1 — Signatures settings |
-| `01-vacation-settings.png` | `sogo-vacation.md:26` | Step 1 — Vacation settings |
+| `vacation.png` | `sogo-vacation.md:26` | Step 1 — Vacation settings |
 
 **Status:** All 14 files copied to `site/docs/assets/` ✅
 

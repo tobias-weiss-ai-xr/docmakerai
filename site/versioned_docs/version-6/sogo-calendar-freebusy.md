@@ -182,11 +182,6 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
 **[freebusy.png]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 6.
 
-- **Frame 1 (0–1.0s):** User opens the Calendar module and clicks **+** to create a new event. The event creation dialog appears
-- **Frame 2 (1.0–2.5s):** User clicks the Attendees section and then clicks **Free/Busy** button. The free/busy time grid opens showing the user's own calendar with colored time slots
-- **Frame 3 (2.5–4.5s):** User clicks **Add Person**, types a colleague's name, and selects them from the autocomplete list. The colleague's schedule appears in the grid below
-- **Frame 4 (4.5–6.0s):** User scrolls horizontally through the grid. Green available slots and red busy slots are visible for both the user and the colleague
-- **Frame 5 (6.0–8.0s):** User finds an overlapping green slot at 2:00 PM and clicks it. The event time updates. User clicks **Save** to confirm the meeting
 
 ### High Contrast Mode
 

@@ -882,3 +882,45 @@ def test_admonition_types_are_valid(md_files):
             if m and m.group(1).lower() not in valid:
                 bad.append(f"{name}:{i}: :::{m.group(1)}")
     assert not bad, "Unknown admonition type:\n" + "\n".join(bad)
+
+
+# ---------------------------------------------------------------------------
+# Screenshot sanity: blank / error-page captures must never ship again
+# (T5.1: vacation step-1 image showed SOGo's
+#  "An error occurred during object publishing" page — nearly pure white,
+#  almost no edges, almost no colors).
+
+#: images that are legitimately near-empty (verified live captures)
+_BLANK_ALLOWED = {"logout.png"}
+
+
+def _blank_metrics(png: Path):
+    from PIL import Image, ImageFilter, ImageStat
+
+    im = Image.open(png).convert("RGB")
+    small = im.resize((800, 500))
+    edges = small.convert("L").filter(ImageFilter.FIND_EDGES)
+    px = list(edges.getdata())
+    edge_ratio = sum(1 for v in px if v > 40) / len(px)
+    n_colors = len(set(im.resize((64, 40)).getdata()))
+    luma = ImageStat.Stat(im.convert("L")).mean[0]
+    return edge_ratio, n_colors, luma
+
+
+@pytest.mark.parametrize("doc_dir", DOC_DIRS, ids=lambda d: d.name + "-" + d.parent.name)
+def test_screenshots_are_not_blank_or_error_pages(doc_dir):
+    """A screenshot that is almost white with almost no content is either a
+    failed capture (SOGo error page) or a blank placeholder — both must not
+    ship. Calibrated: real UI screenshots have luma <= 232, >= 97 quantized
+    colors and >= 1.5% edge pixels; error pages sit at luma ~248 / ~33 colors."""
+    bad = []
+    for png in sorted((doc_dir / "assets").glob("*.png")):
+        if png.name in _BLANK_ALLOWED:
+            continue
+        edge_ratio, n_colors, luma = _blank_metrics(png)
+        if (luma > 238 and n_colors < 60) or (edge_ratio < 0.0125 and n_colors < 45):
+            bad.append(f"{png.name}: luma={luma:.0f} colors={n_colors} edges={edge_ratio:.1%}")
+    assert not bad, (
+        "Blank/error-page screenshot(s) detected (failed captures must be "
+        "re-taken or removed, never published):\n" + "\n".join(bad)
+    )
