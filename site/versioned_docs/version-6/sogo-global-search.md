@@ -1,16 +1,16 @@
 ---
-title: "Global Search"
-description: "Search across all modules in SOGo 6"
-sidebar_label: "Global Search"
+title: "Search"
+description: "Search your emails, contacts, and calendar in SOGo 6"
+sidebar_label: "Search"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Global Search" description="Step-by-step tutorial to search across all modules in SOGo 6" keywords={["global search", "search", "find", "modules", "quick access"]} />
+<PageSEO title="Search" description="Step-by-step tutorial to search emails, contacts, and calendar events in SOGo 6" keywords={["search", "find", "modules", "quick access"]} />
 
-# Global Search
+# Search in SOGo 6
 
-Quickly find emails, contacts, calendar events, and more using SOGo 6's global search feature.
+Searching in SOGo 6 works per module: search emails in the Mail module, contacts in the Address Book, and calendar events in the Calendar — each via the search field of that surface.
 
 ## Prerequisites
 
@@ -19,19 +19,19 @@ Quickly find emails, contacts, calendar events, and more using SOGo 6's global s
 
 ## Step-by-Step Instructions
 
-### Step 1: Open Search
+### Step 1: Open a Module
 
-Click the **Search** button in the top toolbar or use the keyboard shortcut.
+There is no central search button. Open the module you want to search — **Mail**, **Calendar**, or **Address Book** in the top bar.
 
-![Opening and using global search in SOGo 6](./assets/global-search.png)
+![Searching in SOGo 6](./assets/global-search.png)
 
 ### Step 2: Enter Your Query
 
-Type your search term into the search field. Results appear as you type.
+Type your search term into the module's search field. Results appear as you type.
 
 ### Step 3: Browse Results
 
-Search results are grouped by module:
+Each module searches its own content:
 
 | Module | What It Searches |
 |--------|------------------|
@@ -53,7 +53,7 @@ Click on any result to navigate directly to that item.
 | **By keyword** | `Invoice` | Finds all matching items with "Invoice" |
 
 :::tip
-Use **global search** to find items across all modules at once instead of searching within each module individually.
+Search in the module where you expect the item — results are shown per module.
 :::
 
 ## Troubleshooting
@@ -61,14 +61,13 @@ Use **global search** to find items across all modules at once instead of search
 | Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | No results found | Typo in search term | Double-check spelling or try a partial word |
-| Search button not visible | Narrow browser window | Widen the window or use the menu button (☰) |
 | Mail results not showing | IMAP server unavailable | Mail search requires an active IMAP connection |
 | Results loading slowly | Large mailbox | Narrow your search with more specific terms |
 ## Accessibility
 
 ### Keyboard Navigation
 
-SOGo 6 supports full keyboard navigation for using global search.
+SOGo 6 supports full keyboard navigation for searching.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|

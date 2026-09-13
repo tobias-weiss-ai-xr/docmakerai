@@ -48,9 +48,9 @@ The folder list shows your default folders:
 2. Drag it to the target folder in the list
 3. Release to drop
 
-#### Method 2: Using the Move Button
+#### Method 2: Using the Move Icon
 1. Select an email
-2. Click the **Move** button (folder icon with arrow)
+2. Click the **Move** icon — a plain arrow, not a folder icon (do not confuse it with the reply arrow)
 3. Select the target folder from the dropdown
 
 :::info

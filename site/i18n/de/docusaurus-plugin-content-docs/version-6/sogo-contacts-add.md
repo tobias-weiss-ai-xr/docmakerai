@@ -69,8 +69,9 @@ Scrollen Sie nach unten, um auf weitere Felder zuzugreifen:
 Wenn Sie mehrere Adressbücher haben, wählen Sie über das Dropdown-Menü oben im
 Kontaktformular aus, in welchem gespeichert werden soll.
 
-- **Persönliches Adressbuch** — Ihre eigenen Kontakte
-- **Freigegebene Adressbücher** — Team- oder Abteilungskontakte (falls verfügbar)
+In der Regel gibt es ein persönliches Adressbuch — an der Uni Marburg trägt es
+Ihr Account-Kürzel, ähnlich wie Ihr Persönlich-Kalender — sowie möglicherweise
+weitere freigegebene Adressbücher.
 - **Gesammelte Adressen** — Automatisch aus gesendeten E-Mails gespeichert
 
 ### Schritt 6: Kontakt speichern

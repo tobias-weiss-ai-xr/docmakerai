@@ -24,23 +24,19 @@ planen — direkt aus dem Dialog zur Ereigniserstellung.
 
 ![Ereignisdialog mit Teilnehmeroptionen](./assets/01-event-dialog.png)
 
-### Schritt 2: Frei/Gebucht-Ansicht öffnen
+### Schritt 2: Teilnehmer hinzufügen
 
 1. Klicken Sie im Ereignisdialog auf den Bereich **Teilnehmer**
-2. Klicken Sie auf die Schaltfläche **Frei/Gebucht** oder **Verfügbarkeit**
-3. Ein Zeitraster mit Ihrem Kalender öffnet sich
+2. Beginnen Sie mit der Eingabe des Namens oder der E-Mail-Adresse eines Kollegen
+3. Wählen Sie die Person aus der automatischen Vervollständigungsliste aus
+4. Wiederholen Sie den Vorgang für jede Person, die Sie prüfen möchten
 
-### Schritt 3: Einen Kollegen hinzufügen
-
-1. Klicken Sie im Frei/Gebucht-Raster auf **Person hinzufügen** oder **Verfügbarkeit prüfen**
+Sobald Personen eingetragen sind, öffnet sich das Frei/Gebucht-Raster automatisch —
+es gibt keine separate Frei/Gebucht-Schaltfläche.
 
 ![Frei/Gebucht-Verfügbarkeitsraster](./assets/02-freebusy-grid.png)
 
-2. Beginnen Sie mit der Eingabe des Namens eines Kollegen
-3. Wählen Sie ihn aus der automatischen Vervollständigungsliste aus
-4. Wiederholen Sie den Vorgang für jede Person, die Sie prüfen möchten
-
-### Schritt 4: Das Raster lesen
+### Schritt 3: Das Raster lesen
 
 Das Raster zeigt Zeitbereiche für jede Person:
 
@@ -51,12 +47,12 @@ Das Raster zeigt Zeitbereiche für jede Person:
 | 🟡 **Gelb** | Vorläufig / vielleicht teilnehmend |
 | ⬜ **Weiß** | Keine Daten (nicht freigegeben oder außerhalb der Arbeitszeit) |
 
-### Schritt 5: Einen gemeinsamen Zeitraum finden
+### Schritt 4: Einen gemeinsamen Zeitraum finden
 
 Suchen Sie nach einem Zeitraum, in dem alle Teilnehmer grün sind.
 SOGo 5 schlägt möglicherweise automatisch den nächsten verfügbaren Termin vor.
 
-### Schritt 6: Zeit bestätigen
+### Schritt 5: Zeit bestätigen
 
 Klicken Sie auf den gewünschten Zeitbereich im Raster.
 Die Start-/Endzeit des Ereignisses wird entsprechend aktualisiert.
@@ -70,6 +66,8 @@ Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen
 | **Frei/Gebucht** | Nur ob Sie verfügbar oder beschäftigt sind (keine Details) |
 | **Anzeigen (schreibgeschützt)** | Ereignistitel und -zeiten |
 | **Vertrauliche Ereignisse** | Nur als "Beschäftigt" markiert, auch für Betrachter |
+
+Wer nur die Frei/Gebucht-Berechtigung hat, sieht lediglich belegte und freie Zeiten — ohne Titel oder Details. Ereignisse, die Sie als vertraulich markieren, erscheinen für andere ohnehin nur als „beschäftigt".
 
 Ihr Administrator kann die standardmäßigen Berechtigungsstufen über die
 Einstellung `SOGoCalendarDefaultRoles` ändern.

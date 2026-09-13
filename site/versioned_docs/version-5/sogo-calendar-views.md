@@ -31,11 +31,11 @@ The calendar opens in **Week view** by default. Use the view switcher buttons in
 
 Available views:
 
-| View | Icon | Description |
-|------|------|-------------|
-| **Day** | `1` | Detailed view of a single day's events in hourly slots |
-| **Week** | `7` | Five-day work week view (default) |
-| **Month** | `31` | Full month grid for a broader overview |
+| View | Description |
+|------|-------------|
+| **Day** | Detailed view of a single day's events in hourly slots |
+| **Week** | Five-day work week view (default) |
+| **Month** | Full month grid for a broader overview |
 
 ### Step 3: Navigate Through the Calendar Views
 

@@ -31,11 +31,8 @@ Click the **three-dot menu** (⋯) in the calendar toolbar.
 
 ### Step 3: Export Your Calendar
 
-The calendar settings panel displays export options:
-
-1. Find the **Export** or **Share** section
-2. Click the download link or copy the calendar URL
-3. The calendar is exported as an `.ics` (iCal) file
+1. Open the settings of the desired calendar via the three-dot menu
+2. Choose the export option — the calendar is downloaded as an `.ics` (iCal) file
 
 ### Step 4: Import a Calendar
 
@@ -62,11 +59,11 @@ Importing a calendar with hundreds of events may take several minutes. Do not cl
 
 ## Sharing via iCal
 
-You can share your calendar by providing the iCal URL:
+To subscribe to your calendar from another application (e.g., on your phone), you need the calendar URL:
 
-1. Copy the **Calendar URL** from the Export settings
-2. Share the URL with others
-3. They can subscribe to your calendar in their own application
+1. Open the settings of the desired calendar via the three-dot menu
+2. You will find the calendar URL there under **Links to this calendar** — not in the export dialog
+3. Share the URL with others; they can use it to subscribe to your calendar in their own application
 
 ## Troubleshooting
 

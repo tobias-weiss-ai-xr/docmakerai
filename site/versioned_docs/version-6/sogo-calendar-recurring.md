@@ -152,7 +152,7 @@ Click **Add Alarm** to add additional reminders.
 ### Alarm not firing
 
 - **Display alarms** require the browser tab to be open
-- **Email alarms** require server-side configuration (`sogo-ealarms-notify`)
+- **Email alarms** require the `sogo-ealarms-notify` service to run on the server — a task for your IT administration; ask your administrator to set it up
 - Check your browser's notification permissions
 
 ## Conclusion

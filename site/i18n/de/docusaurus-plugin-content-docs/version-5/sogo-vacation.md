@@ -14,7 +14,8 @@ Kalender als abwesend, wenn Sie im Urlaub oder außer Haus sind.
 - Ein SOGo 5-Konto mit gültigen Anmeldedaten
 - Sie sind bei SOGo 5 angemeldet
 - Die Abwesenheitsnotiz muss von Ihrem Administrator aktiviert sein
-  (`SOGoVacationEnabled = YES` — eine Servereinstellung, die Ihr Administrator konfiguriert)
+  (`SOGoVacationEnabled = YES` — eine Servereinstellung, die für Nutzerinnen und
+  Nutzer nicht einsehbar ist; fragen Sie im Zweifel Ihren Administrator)
 
 ## Schritt-für-Schritt-Anleitung
 

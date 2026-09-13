@@ -215,7 +215,23 @@ def test_de_shortcut_key_label_is_strg(md_files):
 )
 def test_no_outdated_ui_references(md_files, pattern, what):
     bad = _violations(md_files, pattern, flags=re.IGNORECASE)
+    # Reviewer-verified exception: the settings gear exists and is called
+    # "Zahnrad"/"gear icon" in the real UI (SOGo_5_Kritik: "immerhin stimmt
+    # das Zahnrad diesmal"). Only flag gear words NOT tied to settings.
+    if what in ("Zahnrad (gear icon)", "gear icon"):
+        bad = [
+            v for v in bad
+            if not re.search(
+                r"Einstellungen|Settings|settings|kein Zahnrad|no gear icon",
+                _line(v), re.IGNORECASE
+            )
+        ]
     assert not bad, f"'{what}' — SOGo 5 uses top nav + three-dot menu:\n" + "\n".join(bad)
+
+
+def _line(ref: str) -> str:
+    path, _, lineno = ref.rpartition(":")
+    return _read(Path(path))[int(lineno) - 1]
 
 
 # ---------------------------------------------------------------------------

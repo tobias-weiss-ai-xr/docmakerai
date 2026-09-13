@@ -7,10 +7,10 @@
 
 | Status | Anzahl | Bedeutung |
 |---|---|---|
-| ✅ Erledigt/REF | **110** | `DONE-B*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
+| ✅ Erledigt/REF | **160** | `DONE-B*` = gefixt + regressionstest-gesichert; `DONE` = Lob/keine Aktion; `REF` = Querverweis |
 | ✅ Wave 1 (Textfixes) | ~~15~~ erledigt | Wörtliche Korrekturen, rein textuell |
-| 🔧 Wave 2 (UI-Flows) | **50** | Abläufe an echte SOGo-5-Oberfläche anpassen |
-| ✅ Wave 3 (Struktur) | ~~4~~ erledigt (T3.3 folgt nach T2.16) | Redaktionelle Entscheidungen (User-Input nötig) |
+| ✅ Wave 2 (UI-Flows) | ~~50~~ erledigt (7 Punkte T5-Bildnacharbeit ausgenommen) | Abläufe an echte SOGo-5-Oberfläche anpassen |
+| ✅ Wave 3 (Struktur) | ~~4~~ erledigt (T3.3: Querverweis-Lösung in Wave 2) | Redaktionelle Entscheidungen (User-Input nötig) |
 | ⛔ Blockiert (Wave 5) | **7** | Screenshot-Neuerfassung, nur in CI möglich |
 
 ## Globale Regeln (für jede Task)
@@ -51,7 +51,13 @@ graph LR
 | T1.10 | Intro-Grammatik: „können Sie darauf antworten", „sie an andere weiterleiten"; Teil 1+2: „Klicken Sie auf das Symbol für …" statt „auf die Schaltfläche" | sogo-mail-reply-forward-delete.md | #124 |
 | T1.11 | „Vorlagen"-Ordner in der Ordnerliste erwähnen | sogo-mail-folder-management.md (Schritt 2) | #118 |
 
-## Wave 2 — UI-Flow-Korrekturen
+## Wave 2 — UI-Flow-Korrekturen ✅ erledigt
+
+> **2026-05-Sitzung:** T2.1–T2.17 ausgeführt (Details unten im Fortschritts-Log).
+> T2.1: Die tatsächlichen Kritikpunkte (#33–#38) waren bereits in Wave 1/Baseline erledigt;
+> die in der Tabelle genannten Sichtbarkeits-/Checkbox-Details stehen in keiner der 167 Kritiken —
+> keine neuen UI-Claims erfunden. T3.3: Subscribe bleibt eigenständig (URL-Abo ≠ Datei-Import),
+> Querverweis zur iCal-Seite ergänzt.
 
 | ID | Task | Datei | Kritik |
 |---|---|---|---|
@@ -293,8 +299,9 @@ Legende: `DONE-B1` Tabellen-Header · `DONE-B2` Accessibility-Übersetzung · `D
 
 ## Fortschritts-Log
 
+- **2026-05-Sitzung 2:** Wave 2 ausgeführt. T2.2–T2.17 in allen 4 Dirs: share („Freigaben…", Person direkt, HRZ-Kürzel, qualit. Berechtigung), subscribe („Webkalender" auf Oberfläche, Sync-Optionen gestrichen, „Neu laden beim Anmelden", Halluzinations-Bilder+Demo-Sektionen entfernt), signatures (IMAP-Konten/Neue Identität/Allgemein/X-Wechsel, EN-A11y+Frames umgeschrieben), filters („Filter erstellen", „Beende die Filterverarbeitung" 2×, Admin-Hinweise), ical („Links zu diesem Kalender"), freebusy (Schritte 2+3 gemerged, T2.8-Erklärung), global-search (→„Suche", pro Modul, FAQ-Zeile gelöscht, Index-Karten), compose (Stiftsymbol, Priorität im Dreipunkt-Menü), contacts (Dreipunkt-Menü, generische Adressbuchnamen), views (Symbol-Spalte entfernt), mail-read (Doppelklick soft), recurring/vacation (Admin-Kontext), folder-mgmt (Verschieben-Symbol = Pfeil). Verwaiste Assets calendar-share/calendar-subscribe.png gelöscht. Zahnrad-Guard um reviewer-verifizierte Ausnahme erweitert (Zahnrad = Einstellungen ist korrekt). Gates: 112 Tests grün, ruff clean, Build EN+DE grün.
 - **2026-05-Sitzung:** Wave 1 + Wave 3 ausgeführt (Commit `a85613d`). T1.1–T1.11 (T1.8 war bereits gefixt) und T3.1, T3.2, T3.4, T3.5, T3.6 erledigt; T3.3 folgt nach T2.16. Gates: alte Phrasen = 0 in allen 4 Dirs, 112 Tests grün, ruff clean, Build EN+DE grün, DE-Sidebar-Labels gerendert verifiziert. Alle `T1.x`/`T3.x`-Einträge in der Matrix gelten damit als DONE.
-- **Offen:** Wave 2 (T2.1–T2.17, 50 Punkte), Wave 4 (Screenreader-Dok), Wave 5 (Screenshots, CI-only), T6.1-Guards, Wave 7 (Release).
+- **Offen:** Wave 4 (Screenreader-Dok), Wave 5 (Screenshots, CI-only), T6.1-Guards, Wave 7 (Release).
 
 ## Abschlusskriterium
 

@@ -13,6 +13,9 @@ import PageSEO from '@site/src/components/PageSEO';
 Import external calendars into your SOGo 6 calendar — public holidays,
 team calendars, or any `.ics` feed available online.
 
+Unlike the [iCal import/export](./sogo-calendar-ical), subscribing here adds a
+live feed that refreshes automatically on each login — not a one-time file import.
+
 ## Prerequisites
 
 - A SOGo 6 account with valid credentials
@@ -31,40 +34,19 @@ You need the web address (URL) of an iCal feed. Common examples:
 | Team calendar | `https://teamup.com/.../events.ics` |
 | Shared SOGo 6 calendar | `https://sogo.example.com/SOGo/dav/username/calendar/shared/` |
 
-### Step 2: Open Calendar Settings
+### Step 2: Open Web Calendar
 
-1. Click **Calendar** in the sidebar
-2. Locate the calendar list on the left side
-3. Click the **three-dot menu** (⋯) next to the calendar section header
-4. Select **Subscribe to URL**
+1. Click **Calendar** in the top navigation bar
+2. Click **Web Calendar** — the option sits directly on the surface; there is no gear icon for it
 
 ![Calendar view with subscription options](./assets/01-calendar-view.png)
 
-### Step 3: Enter the Feed URL
+### Step 3: Paste the Feed URL and Subscribe
 
-In the subscription dialog:
+1. Paste the copied feed URL
+2. Confirm the subscription
 
-1. **URL:** Paste the iCal feed URL
-2. **Name:** Enter a display name (e.g., "German Holidays")
-3. **Color:** Choose a calendar color for visibility
-
-![Subscribe to iCal feed dialog](./assets/calendar-subscribe.png)
-
-### Step 4: Configure Sync Options
-
-| Option | Description |
-|:-------|:------------|
-| **Refresh interval** | How often to check for updates (every hour, daily, etc.) |
-| **Remove reminders** | Strip alarm information from external events |
-| **Remove attachments** | Don't download external file attachments |
-
-Recommended defaults: Refresh **daily**, remove reminders (external
-calendars often have irrelevant alarms).
-
-### Step 5: Save the Subscription
-
-Click **Subscribe** or **OK**. The calendar appears in your calendar
-list with a subscription icon 📡.
+The subscribed calendar then appears in your calendar list.
 
 ## Managing Subscriptions
 
@@ -74,21 +56,19 @@ Subscribed calendars work like your own — events appear in the
 calendar view. You can toggle visibility by checking/unchecking
 the calendar in the list.
 
-### Refresh Manually
+### Refreshing
 
-Click the three-dot menu (⋯) next to the subscribed calendar → **Refresh** to fetch the
-latest data immediately.
+Data from subscribed calendars is reloaded when you log in: open **Settings (gear icon)** → **Calendar** and enable **Reload on login**.
 
 ### Edit Subscription Properties
 
-Click the three-dot menu (⋯) next to the calendar → **Properties**:
+Three-dot menu (⋯) next to the calendar → **Properties**:
 - Change the display name or color
 - Update the feed URL
-- Adjust refresh interval
 
 ### Unsubscribe
 
-Click the three-dot menu (⋯) next to the calendar → **Unsubscribe** or **Delete**.
+Choose the remove option in the three-dot menu (⋯) next to the calendar.
 The calendar is removed from your view. The source is unaffected.
 
 ## Troubleshooting
@@ -101,8 +81,7 @@ The calendar is removed from your view. The source is unaffected.
 
 ### Calendar not updating
 
-- Check the refresh interval setting
-- Manually refresh: three-dot menu (⋯) → **Refresh**
+- Log out and back in (subscribed calendars are reloaded on login, see above)
 - The feed provider may have changed the URL
 
 ### Events have wrong times
@@ -125,64 +104,42 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| Open subscription dialog | `Ctrl+Shift+S` or three-dot menu (⋯) |
-| Select calendar type | Arrow keys in dropdown |
-| Enter calendar URL | Tab to URL field, type |
-| Display name field | Tab, type name |
-| Refresh frequency | Arrow key to select |
-| Subscribe or save | `Ctrl+S` or `Enter` |
+| Open Calendar module | `Alt+C` | From any module |
+| Open Web Calendar | `Tab` to **Web Calendar**, `Enter` | Sits directly on the calendar surface |
+| Enter the feed URL | `Tab` to the URL field, paste | Full address of the `.ics` feed |
+| Confirm subscription | `Enter` | The calendar appears in the list |
 
 ### Screen Reader Workflow
 
 **Subscribing to External Calendar**
 
 **Step 1: Navigate to Calendar Module**
-1. `Alt+M` to focus sidebar
-2. Arrow keys to "Calendar"
-3. `Enter` to open calendar view
+1. `Alt+C` to open the Calendar module
+2. Screen reader announces: "Calendar, module heading"
 
-**Step 2: Open Subscription Dialog**
-1. Three-dot menu (⋯) settings or press `Ctrl+Shift+S`
-2. "Subscribe to Calendar" option
-3. Press `Enter`
-
-**Step 3: Select Calendar Type**
-1. Tab to calendar type dropdown
-2. Arrow keys to select (iCal, CalDAV, etc.)
-3. Press `Enter`
-
-**Step 4: Enter Calendar Details**
-1. Tab to URL field
-2. Type or paste calendar URL
-3. Tab to display name field
-4. Type friendly name (e.g., "Team Calendar")
-5. Tab to refresh frequency
-6. Select frequency with arrow keys
-
-**Step 5: Complete Subscription**
-1. Tab to "Subscribe" or "Save" button
+**Step 2: Open Web Calendar**
+1. `Tab` to the **Web Calendar** control
 2. Press `Enter`
-3. Screen reader announces calendar added
+
+**Step 3: Subscribe to the Feed**
+1. `Tab` to the URL field
+2. Paste the calendar URL
+3. Press `Enter` to confirm
+4. Screen reader announces the calendar was added
+
+**Step 4: Verify**
+1. `Tab` through the calendar list
+2. The subscribed calendar appears there
 
 **Common Screen Reader Announcements:**
 
 | Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
-| "Subscribe to calendar, dialog" | Subscription dialog open | Select calendar type |
-| "Calendar type, combo box" | Calendar format selector | Arrow to select type |
-| "URL, edit" | Calendar address field | Type full calendar URL |
-| "Display name, edit" | Friendly calendar name | Type memorable name |
+| "Web Calendar" | Subscription control focused | Press Enter to open |
+| "URL, edit" | Calendar address field | Paste the full calendar URL |
+| "Display name, edit" | Friendly calendar name | Type a memorable name (if offered) |
 | "Refresh frequency" | How often to sync | Arrow to select interval |
 | "Calendar subscribed" | Success | Calendar now visible |
-
-### Visual Content Descriptions
-
-**calendar-subscribe.png:** This 3-second animated GIF shows subscribing to an external calendar.
-
-- **Frame 1 (0-0.8s):** Calendar view with Calendars list on left
-- **Frame 2 (0.8-2s):** Subscription dialog open, calendar type dropdown showing "iCal/ICS" selected, URL field populated with calendar address, display name "Team Calendar" typed
-- **Frame 3 (2-3s):** Calendar list now shows "Team Calendar" with subscribed icon, refresh frequency set to "Every 30 minutes"
 
 ### High Contrast Mode
 

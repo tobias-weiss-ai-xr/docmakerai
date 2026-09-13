@@ -25,11 +25,11 @@ Der Kalender öffnet standardmäßig in der **Wochenansicht**. Verwenden Sie die
 
 Verfügbare Ansichten:
 
-| Ansicht | Symbol | Beschreibung |
-|---------|--------|-------------|
-| **Tag** | `1` | Detaillierte Ansicht eines einzelnen Tages mit stündlichen Zeitfenstern |
-| **Woche** | `7` | Fünf-Tage-Arbeitswochenansicht (Standard) |
-| **Monat** | `31` | Monatsraster für eine breitere Übersicht |
+| Ansicht | Beschreibung |
+|---------|-------------|
+| **Tag** | Detaillierte Ansicht eines einzelnen Tages mit stündlichen Zeitfenstern |
+| **Woche** | Fünf-Tage-Arbeitswochenansicht (Standard) |
+| **Monat** | Monatsraster für eine breitere Übersicht |
 
 ### Schritt 3: Durch die Kalenderansichten navigieren
 

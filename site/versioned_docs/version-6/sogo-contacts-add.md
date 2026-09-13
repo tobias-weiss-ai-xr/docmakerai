@@ -75,8 +75,9 @@ Scroll down to access more fields:
 If you have multiple address books, select which one to save to using
 the dropdown at the top of the contact form.
 
-- **Personal Address Book** — Your own contacts
-- **Shared Address Books** — Team or department contacts (if available)
+Typically there is a personal address book — at the University of Marburg it
+carries your account abbreviation, like your Personal calendar — and possibly
+additional shared address books.
 - **Collected Addresses** — Automatically saved from sent emails
 
 ### Step 6: Save the Contact
