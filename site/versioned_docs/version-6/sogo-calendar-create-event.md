@@ -58,7 +58,7 @@ Fill in the event details:
 | **Location** | Where the event takes place | "Conference Room B" |
 | **Start** | Date and time the event begins | Today at 10:00 |
 | **End** | Date and time the event ends | Today at 11:00 |
-| **Calendar** | Which calendar to save to | "Personal" |
+| **Calendar** | Which calendar to save to — chosen from your calendar list | your account abbreviation |
 | **Category** | A color-coded category | Meeting (blue) |
 
 :::tip
@@ -198,7 +198,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 4. **End time** - same format as start
 
-5. **Calendar dropdown** - select "Personal"
+5. **Calendar dropdown** - select your calendar (its name is your account abbreviation)
 
 6. **Category dropdown** - select color-coded category
 

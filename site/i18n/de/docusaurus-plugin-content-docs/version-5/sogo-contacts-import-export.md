@@ -25,13 +25,13 @@ Klicken Sie auf das **Dreipunkt-Menü** (⋯) über der Kontaktliste und wählen
 
 ### Schritt 3: Kontakte exportieren
 
-1. Wählen Sie **Export** aus dem Aktionsmenü
+1. Wählen Sie **Export** aus dem Dreipunkt-Menü
 2. Wählen Sie das zu exportierende Adressbuch aus
 3. Die Kontakte werden als `.vcf`-Datei (vCard) heruntergeladen
 
 ### Schritt 4: Kontakte importieren
 
-1. Klicken Sie auf **Import** im Aktionsmenü
+1. Klicken Sie auf **Import** im Dreipunkt-Menü
 2. Wählen Sie die `.vcf`-Datei aus, die Sie importieren möchten
 3. Wählen Sie das Zieladressbuch aus
 4. Wählen Sie, wie mit Duplikaten umgegangen werden soll:

@@ -133,15 +133,6 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 1. `Tab` through the calendar list
 2. The subscribed calendar appears there
 
-**Common Screen Reader Announcements:**
-
-| Announcement | Meaning | Action |
-|--------------------------------------|------------------------|-------------------|
-| "Web Calendar" | Subscription control focused | Press Enter to open |
-| "URL, edit" | Calendar address field | Paste the full calendar URL |
-| "Display name, edit" | Friendly calendar name | Type a memorable name (if offered) |
-| "Refresh frequency" | How often to sync | Arrow to select interval |
-| "Calendar subscribed" | Success | Calendar now visible |
 
 ### High Contrast Mode
 

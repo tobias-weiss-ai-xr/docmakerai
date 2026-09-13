@@ -48,7 +48,7 @@ Füllen Sie die Ereignisdetails aus:
 | **Ort** | Wo das Ereignis stattfindet | "Konferenzraum B" |
 | **Beginn** | Datum und Uhrzeit des Ereignisbeginns | Heute um 10:00 |
 | **Ende** | Datum und Uhrzeit des Ereignisendes | Heute um 11:00 |
-| **Kalender** | In welchem Kalender gespeichert werden soll | "Persönlich" |
+| **Kalender** | In welchem Kalender gespeichert werden soll — Auswahl aus Ihrer Kalenderliste | Ihr Account-Kürzel (vom Hochschulrechenzentrum vergeben) |
 | **Kategorie** | Eine farbcodierte Kategorie | Besprechung (blau) |
 
 :::tip
