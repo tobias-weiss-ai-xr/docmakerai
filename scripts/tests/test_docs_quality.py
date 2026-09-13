@@ -969,7 +969,7 @@ def test_image_version_discipline(doc_dir):
             kind = entry["kind"]
             if kind == "shared":
                 continue
-            if is_v5 and kind == "sogo5-mockup":
+            if is_v5 and kind in ("sogo5-mockup", "sogo5-live"):
                 continue
             if not is_v5 and kind == "sogo6-live":
                 continue

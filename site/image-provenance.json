@@ -1,56 +1,50 @@
 {
-  "_readme": "Provenance of every doc asset. kind: sogo5-mockup | sogo6-live | shared. Guarded by test_image_version_discipline (scripts/tests/test_docs_quality.py): v5 docs may reference sogo5-mockup/shared, v6 docs sogo6-live/shared; sogo5-mockup in a v6 doc requires waived=true (T5.3 backlog). Every referenced image MUST have an entry - new images without provenance fail CI.",
+  "_readme": "Provenance of every doc asset. kind: sogo5-mockup | sogo5-live | sogo6-live | shared. Guarded by test_image_version_discipline (scripts/tests/test_docs_quality.py): v5 docs may reference sogo5-mockup/sogo5-live/shared, v6 docs sogo6-live/shared; sogo5-mockup in a v6 doc requires waived=true (T5.3 backlog). Every referenced image MUST have an entry - new images without provenance fail CI.",
   "assets": {
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/00-login-page.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-create-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-recurring-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-settings.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/02-freebusy-grid.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/02-recurrence-options.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/03-recurring-saved.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/mail-filters.png": {
-      "kind": "shared",
-      "origin": "live-pipeline",
-      "note": "Settings page whose UI is unchanged between SOGo 5 and 6; SOGo-6 live capture deliberately replaces the broken v5 placeholder (blank/error image) - T5.1/T5.2 decision"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-5/assets/mail-signatures.png": {
-      "kind": "shared",
-      "origin": "live-pipeline",
-      "note": "Settings page whose UI is unchanged between SOGo 5 and 6; SOGo-6 live capture deliberately replaces the broken v5 placeholder (blank/error image) - T5.1/T5.2 decision"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-5/assets/vacation.png": {
-      "kind": "shared",
-      "origin": "live-pipeline",
-      "note": "Settings page whose UI is unchanged between SOGo 5 and 6; SOGo-6 live capture deliberately replaces the broken v5 placeholder (blank/error image) - T5.1/T5.2 decision"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/00-login-page.png": {
       "kind": "sogo5-mockup",
@@ -122,103 +116,99 @@
       "note": "Settings page whose UI is unchanged between SOGo 5 and 6; SOGo-6 live capture deliberately replaces the broken v5 placeholder (blank/error image) - T5.1/T5.2 decision"
     },
     "versioned_docs/version-5/assets/00-login-page.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/01-calendar-create-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/01-calendar-recurring-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
-    "versioned_docs/version-5/assets/01-calendar-settings.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/01-calendar-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/01-mail-filters.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
-    "versioned_docs/version-5/assets/01-mail-signatures.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/02-freebusy-grid.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/02-recurrence-options.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/03-recurring-saved.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/calendar-edit-delete.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/calendar-recurring.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/contacts-add.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/contacts-edit-delete.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/freebusy.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/global-search.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/mail-compose.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/mail-folder-management.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/mail-reply-forward-delete.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-5/assets/preferences.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
-    },
-    "versioned_docs/version-5/assets/vacation.png": {
-      "kind": "shared",
-      "origin": "live-pipeline",
-      "note": "Settings page whose UI is unchanged between SOGo 5 and 6; SOGo-6 live capture deliberately replaces the broken v5 placeholder (blank/error image) - T5.1/T5.2 decision"
+      "kind": "sogo5-live",
+      "origin": "live-capture",
+      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
     },
     "versioned_docs/version-6/assets/00-login-page.png": {
       "kind": "sogo5-mockup",

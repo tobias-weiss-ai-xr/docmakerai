@@ -23,8 +23,6 @@ und steuern, was diese sehen oder tun können.
 2. Klicken Sie in der Kalenderliste auf das **Dreipunkt-Menü** (⋯) neben dem Kalender, den Sie freigeben möchten
 3. Wählen Sie **Freigaben…**
 
-![Kalendereinstellungen mit Freigabeoptionen](./assets/01-calendar-settings.png)
-
 Hinweis: Ihr Standardkalender trägt nicht den Namen „Persönlich", sondern das
 Account-Kürzel, das das Hochschulrechenzentrum individuell vergibt.
 
