@@ -6,7 +6,7 @@ sidebar_label: "Abmelden"
 
 # Abmelden
 
-Klicken Sie auf das **Ein/Aus-Symbol** ⏻ in der oberen rechten Symbolleiste, um Ihre SOGo 6-Sitzung zu beenden. Sie werden zur Anmeldeseite weitergeleitet.
+Klicken Sie auf Ihren **Avatar** in der oberen rechten Symbolleiste und wählen Sie **Abmelden**, um Ihre SOGo 6-Sitzung zu beenden. Sie werden zur Anmeldeseite weitergeleitet.
 
 :::tip
 Wenn Sie einen gemeinsam genutzten oder öffentlichen Computer verwenden, melden Sie sich immer ab, wenn Sie fertig sind. Schließen Sie nicht einfach den Browser-Tab.
@@ -27,14 +27,14 @@ SOGo 6 unterstützt die vollständige Tastaturnavigation für die Abmeldung.
 
 | Aktion | Tastenkombination | Hinweise |
 |--------|----------------------------------|---------------------------|
-| Zum Ein/Aus-Symbol navigieren | `Tab` zur oberen Symbolleiste |
-| Abmeldung auslösen | `Eingabetaste` auf dem Ein/Aus-Symbol |
+| Zum Avatar-Button navigieren | `Tab` zur oberen rechten Symbolleiste |
+| Menü öffnen und Abmeldung auslösen | `Eingabetaste` auf dem Avatar-Button, dann `Eingabetaste` auf Abmelden |
 | Abmeldung bestätigen | `Eingabetaste` im Dialog (falls angezeigt) |
 
 ### Screenreader-Workflow
 
-1. `Tab` durch die Symbolleiste, bis "Ein/Aus-Symbol, Schaltfläche" angesagt wird
-2. `Eingabetaste` zum Abmelden
+1. `Tab` durch die obere rechte Symbolleiste, bis der Avatar-Button angesagt wird
+2. `Eingabetaste` zum Öffnen des Menüs, dann `Eingabetaste` auf **Abmelden**
 3. Je nach Screenreader-Einstellungen wird eine Bestätigung angesagt, oder Sie werden direkt zur Anmeldeseite weitergeleitet
 4. Sie werden zur Anmeldeseite zurückgeleitet, Sitzung beendet
 

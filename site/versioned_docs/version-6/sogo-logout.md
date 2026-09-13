@@ -6,13 +6,13 @@ sidebar_label: "Logout"
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Logout" description="How to securely log out of SOGo 6 — end your session with the power icon" keywords={["logout", "sign out", "session", "security", "SOGo 6"]} />
+<PageSEO title="Logout" description="How to securely log out of SOGo 6 — end your session via the avatar menu" keywords={["logout", "sign out", "session", "security", "SOGo 6"]} />
 
 # Logout
 
-Click the **power icon** ⏻ in the top-right toolbar to end your SOGo 6 session. You'll be redirected to the login page.
+Click your **avatar** in the top-right toolbar and select **Logout** to end your SOGo 6 session. You'll be returned to the login page.
 
-![Logout button in the top-right toolbar](./assets/logout.png)
+![After logging out you are returned to the SOGo 6 login page](./assets/logout.png)
 
 :::tip
 On shared or public computers, always log out when you're done. Don't just close the browser tab.
@@ -33,14 +33,14 @@ SOGo 6 supports full keyboard navigation for logout.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Navigate to power icon | `Tab` to top toolbar |
-| Activate logout | `Enter` on power icon |
+| Navigate to the avatar button | `Tab` to the top-right toolbar |
+| Open the menu and activate logout | `Enter` on the avatar button, then `Enter` on Logout |
 | Confirm logout | `Enter` on dialog (if shown) |
 
 ### Screen Reader Workflow
 
-1. `Tab` through toolbar until "Power icon, button" is announced
-2. `Enter` to click logout
+1. `Tab` through the top-right toolbar until the avatar button is announced
+2. `Enter` to open the menu, then `Enter` on **Logout**
 3. Depending on the screen reader settings a confirmation is announced, or you are redirected straight to the login page
 4. You are returned to the login page, session ended
 

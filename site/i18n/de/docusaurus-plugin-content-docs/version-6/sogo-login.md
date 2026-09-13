@@ -17,7 +17,7 @@ Willkommen! Diese Seite hilft Ihnen, sich mit der SOGo 6-Oberfläche vertraut zu
 Nach der Anmeldung besteht die SOGo-Oberfläche aus drei Hauptbereichen:
 
 - **Obere Navigationsleiste** — Modulnavigation: Wechseln Sie zwischen **E-Mail**, **Kalender**, **Kontakte** und **Aufgaben**.
-- **Obere Symbolleiste** — Modul-Tabs, das Dreipunkt-Menü (⋯) und das Abmelde-Symbol ⏻.
+- **Obere Symbolleiste** — Modul-Tabs, das Dreipunkt-Menü (⋯) und Ihr Avatar (oben rechts, zum Abmelden).
 - **Hauptbereich** — Hier wird der Inhalt des aktiven Moduls angezeigt.
 
 ![SOGo 6-Anmeldeseite](./assets/00-login-page.png)
@@ -34,7 +34,7 @@ Klicken Sie immer auf den **grünen Speichern-Button**, um Ihre Änderungen zu b
 
 ## Abmelden
 
-Klicken Sie auf das **Ein/Aus-Symbol** ⏻ in der oberen rechten Ecke der Symbolleiste, um Ihre Sitzung zu beenden. Details finden Sie unter [Abmelden](./sogo-logout).
+Klicken Sie auf Ihren **Avatar** in der oberen rechten Ecke der Symbolleiste und wählen Sie **Abmelden**, um Ihre Sitzung zu beenden. Details finden Sie unter [Abmelden](./sogo-logout).
 
 ## Barrierefreiheit
 

@@ -21,7 +21,7 @@ Open your browser, enter your SOGo 6 instance URL (e.g. `https://demov6.sogo.nu/
 Once logged in, the SOGo interface is divided into three main areas:
 
 - **Top navigation** — Module navigation: click to switch between **Mail**, **Calendar**, **Contacts**, and **Tasks**.
-- **Top toolbar** — Module tabs, the three-dot menu (⋯), and the logout power icon ⏻.
+- **Top toolbar** — Module tabs, the three-dot menu (⋯), and your avatar (top right, for logging out).
 - **Main content area** — Where the active module's content is displayed.
 
 ![SOGo 6 login page](./assets/00-login-page.png)
@@ -38,7 +38,7 @@ Always click the **green Save** button to confirm your changes. Preferences are 
 
 ## Logging Out
 
-Click the **power icon** ⏻ in the top-right corner of the toolbar to end your session. See [Logout](./sogo-logout) for details.
+Click your **avatar** in the top-right corner of the toolbar and select **Logout** to end your session. See [Logout](./sogo-logout) for details.
 
 ## Accessibility
 
