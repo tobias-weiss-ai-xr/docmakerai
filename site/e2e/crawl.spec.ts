@@ -19,7 +19,7 @@ const BASE = (
  *  crawl verifies local preview builds (PLAYWRIGHT_BASE_URL) and prod. */
 const PROD = 'https://tobias-weiss-ai-xr.github.io/docmakerai/';
 
-async function sitemapUrls(request: ReturnType<typeof import('@playwright/test').request>): Promise<string[]> {
+async function sitemapUrls(request: import('@playwright/test').APIRequestContext): Promise<string[]> {
   const res = await request.get('sitemap.xml');
   expect(res.status()).toBe(200);
   const xml = await res.text();

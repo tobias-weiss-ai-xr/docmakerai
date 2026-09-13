@@ -22,7 +22,9 @@ for (const v of VERSIONS) {
 
       // Logo must be constrained to reasonable size (max-height: 2rem = 32px)
       // This catches the bug where global img {width:640px; height:400px} blew up the logo
-      const { width, height } = await logo.boundingBox();
+      const box = await logo.boundingBox();
+      expect(box).not.toBeNull();
+      const { width, height } = box!;
 
       // Logo should be at most ~40px (2rem) in either dimension
       expect(width, 'Logo width should be <= 40px').toBeLessThanOrEqual(40);
