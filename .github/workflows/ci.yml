@@ -12,10 +12,6 @@ permissions:
   statuses: write
   actions: write
 
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   cleanup-artifacts:
     name: Cleanup old artifacts
