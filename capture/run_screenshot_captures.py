@@ -1032,7 +1032,7 @@ async def main():
         stdout_b = b""
         try:
             stdout_b, _ = await asyncio.wait_for(proc.communicate(), timeout=120)
-        except (asyncio.TimeoutError, TimeoutError):
+        except TimeoutError:
             # Isolate the hung workflow; never let it kill the whole run.
             with contextlib.suppress(Exception):
                 proc.kill()
