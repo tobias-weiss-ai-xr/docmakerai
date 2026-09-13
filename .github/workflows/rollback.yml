@@ -1,3 +1,4 @@
+# Manual rollback of the GitHub Pages deployment
 name: Rollback Deployment
 
 on:
