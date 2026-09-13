@@ -15,16 +15,12 @@ export default function SEO() {
       <meta property="og:title" content="SOGo User Guide - Complete Tutorials for Email, Calendar & Collaboration" />
       <meta property="og:description" content="Master SOGo groupware with our comprehensive tutorials covering email, calendar, contacts, and collaboration workflows." />
       <meta property="og:image" content={`${siteConfig.url}${siteConfig.baseUrl}img/docusaurus-social-card.jpg`} />
-      <meta property="og:url" content={`${siteConfig.url}${siteConfig.baseUrl}`} />
-      <meta property="og:site_name" content={siteConfig.title} />
       <meta property="og:locale" content={i18n.currentLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="SOGo User Guide" />
       <meta name="twitter:description" content="Learn SOGo through step-by-step tutorials. Email, calendar, contacts, and collaboration documentation." />
       <meta name="twitter:image" content={`${siteConfig.url}${siteConfig.baseUrl}img/docusaurus-social-card.jpg`} />
-
-      <link rel="canonical" href={`${siteConfig.url}${siteConfig.baseUrl}`} />
 
       <script type="application/ld+json">
         {JSON.stringify({

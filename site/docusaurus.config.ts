@@ -74,7 +74,9 @@ const config: Config = {
         logo: {
           alt: 'SOGo Logo',
           src: 'img/logo.svg',
-          href: '/sogo5/',  // Point to SOGo 5 as default homepage
+          // Default brand target; src/theme/Navbar/Logo overrides this
+          // per version (brand follows the version being read).
+          href: '/sogo5/',
         },
         items: [
           {

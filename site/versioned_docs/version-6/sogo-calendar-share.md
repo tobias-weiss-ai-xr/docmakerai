@@ -110,7 +110,7 @@ SOGo 6 supports full keyboard navigation for calendar sharing features.
 
 **Step 1: Open Calendar Module**
 - Press `Alt+C` to navigate to the Calendar module
-- Screen reader announces: "Calendar, module heading"
+- You should hear: "Calendar, module heading"
 
 **Step 2: Open the Sharing Dialog**
 - Press `Tab` to navigate the calendar list
@@ -118,21 +118,23 @@ SOGo 6 supports full keyboard navigation for calendar sharing features.
 - Press `Tab` to the three-dot menu (⋯) next to it, `Enter` to open
 - Arrow keys to "Sharing…", `Enter`
 
+![The sharing dialog](./assets/calendar-share.png)
+
 **Step 3: Enter the Person**
 - Press `Tab` to the input field
 - Start typing the colleague's name or email
-- Screen reader announces: "Edit, autocomplete, suggestions available"
+- You should hear: "Edit, autocomplete, suggestions available"
 - Use `Down` arrow to navigate suggestions, `Enter` to select
 
 **Step 4: Set the Permission**
 - Press `Tab` to the permission control
 - Choose view-only or editing for the person
-- Screen reader announces the selected option
+- You should hear the selected option
 
 **Step 5: Confirm and Save**
 - Press `Tab` to reach the Save button
 - Press `Enter` to apply the share
-- Screen reader announces: "Saved successfully" or similar confirmation
+- You should hear: "Saved successfully" or similar confirmation
 
 **Step 6: Verify (Optional)**
 - Open a private/incognito browser window

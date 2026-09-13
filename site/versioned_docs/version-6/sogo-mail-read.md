@@ -19,6 +19,8 @@ View and read emails in your SOGo 6 inbox.
 
 ## Step-by-Step Instructions
 
+![Reading an email in SOGo 6](./assets/mail-read.png)
+
 ### Step 1: Open the Mail Module
 
 In the sidebar navigation on the left, click **Mail** to open the inbox.

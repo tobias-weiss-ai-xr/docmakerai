@@ -115,7 +115,7 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
 **Step 1: Navigate to Calendar Module**
 1. `Alt+C` to open the Calendar module
-2. Screen reader announces: "Calendar, module heading"
+2. You should hear: "Calendar, module heading"
 
 **Step 2: Open Web Calendar**
 1. `Tab` to the **Web Calendar** control
@@ -125,7 +125,9 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 1. `Tab` to the URL field
 2. Paste the calendar URL
 3. Press `Enter` to confirm
-4. Screen reader announces the calendar was added
+
+![Subscribing via Web Calendar](./assets/calendar-subscribe.png)
+4. You should hear the calendar was added
 
 **Step 4: Verify**
 1. `Tab` through the calendar list

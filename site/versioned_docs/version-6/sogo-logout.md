@@ -12,6 +12,8 @@ import PageSEO from '@site/src/components/PageSEO';
 
 Click the **power icon** ⏻ in the top-right toolbar to end your SOGo 6 session. You'll be redirected to the login page.
 
+![Logout button in the top-right toolbar](./assets/logout.png)
+
 :::tip
 On shared or public computers, always log out when you're done. Don't just close the browser tab.
 :::
@@ -39,7 +41,7 @@ SOGo 6 supports full keyboard navigation for logout.
 
 1. `Tab` through toolbar until "Power icon, button" is announced
 2. `Enter` to click logout
-3. Screen reader announces: "Logout successful" or redirect to login page
+3. Depending on the screen reader settings a confirmation is announced, or you are redirected straight to the login page
 4. You are returned to the login page, session ended
 
 ### High Contrast Mode

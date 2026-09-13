@@ -1,6 +1,7 @@
 ---
 sidebar_label: "Übersicht"
 sidebar_position: 1
+description: "SOGo 6 Benutzerhandbuch: E-Mail, Kalender, Kontakte und Einstellungen Schritt für Schritt mit annotierten Screenshots erklärt."
 ---
 
 import ThemedImage from '@theme/ThemedImage';

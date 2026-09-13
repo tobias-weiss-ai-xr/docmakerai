@@ -23,6 +23,8 @@ Organize your emails using folders for archiving and easy access.
 
 In the sidebar, click **Mail** to open the inbox. The folder list appears on the left side of the email view.
 
+![Mail folder management](./assets/mail-folder-management.png)
+
 ### Step 2: Browse Folders
 
 The folder list shows your default folders:
