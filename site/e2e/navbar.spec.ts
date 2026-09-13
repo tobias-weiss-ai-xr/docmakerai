@@ -65,10 +65,9 @@ for (const v of VERSIONS) {
       );
     });
 
-    test('navbar has Docs/Tutorials links', async ({ page }) => {
+    test('navbar has Tutorials link', async ({ page }) => {
       await page.goto(`sogo${v}/`);
       const navbar = page.locator('.navbar');
-      await expect(navbar.getByRole('link', { name: 'Docs' })).toBeVisible();
       await expect(navbar.getByRole('link', { name: 'Tutorials' })).toBeVisible();
     });
 

@@ -23,14 +23,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies with Bun
+      - name: Install dependencies
         working-directory: site
-        run: bun install
+        # npm ci (lockfile-pinned), not bun install: a floating @playwright/test
+        # breaks reproducibility — 1.63 surfaced the stale 'Docs' navbar claim.
+        run: npm ci
 
       - name: Install Playwright browsers
         working-directory: site
