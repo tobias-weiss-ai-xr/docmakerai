@@ -25,7 +25,6 @@ and organize them into lists.
 In the sidebar navigation on the left, click **Contacts**
 to open your address book.
 
-![Contacts module in sidebar](./assets/01-contacts-module.png)
 
 The contacts view shows your address book with any existing contacts.
 On the left, you'll see your address books and lists.

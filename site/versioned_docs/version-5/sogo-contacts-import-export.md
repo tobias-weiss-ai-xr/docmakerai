@@ -27,7 +27,6 @@ In the sidebar, click **Contacts** to open the address book.
 
 Click the **three-dot menu** (⋯) above the contact list and choose the action you need (such as **Export** or **Import**).
 
-![Contacts import/export menu in SOGo 5](./assets/contacts-import-export.png)
 
 ### Step 3: Export Contacts
 

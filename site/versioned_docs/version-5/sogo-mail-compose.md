@@ -25,7 +25,6 @@ using SOGo 5's webmail interface.
 In the sidebar navigation on the left, click **Mail**
 to open your inbox.
 
-![Mail module in sidebar](./assets/01-mail-inbox.png)
 
 Your inbox shows received messages in the main view, with folders
 (Inbox, Sent, Drafts, Trash) listed in the left panel.
