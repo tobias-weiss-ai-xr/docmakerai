@@ -28,7 +28,7 @@ Ihr Posteingang zeigt empfangene Nachrichten in der Hauptansicht, mit Ordnern
 
 ### Schritt 2: Neue Nachricht beginnen
 
-Klicken Sie auf die Schaltfläche **Verfassen** in der Symbolleiste über Ihrer Nachrichtenliste.
+Klicken Sie auf das Stiftsymbol (**Verfassen**) in der Symbolleiste über Ihrer Nachrichtenliste.
 
 Ein neues Nachrichtenfenster wird geöffnet.
 
@@ -63,8 +63,8 @@ Beispiele:
 
 ### Schritt 5: Nachricht schreiben
 
-Geben Sie Ihre Nachricht in das große Textfeld ein. Die Symbolleiste bietet
-Formatierungsoptionen:
+Geben Sie Ihre Nachricht in das große Textfeld ein. Je nach Einstellung Ihres
+E-Mail-Editors stehen Ihnen Formatierungsoptionen zur Verfügung (etwa Fett, Kursiv, Listen):
 
 | Schaltfläche | Aktion |
 |-------------|--------|
@@ -85,8 +85,8 @@ Um eine Datei anzuhängen:
 
 Wenn Ihre Nachricht zeitkritisch ist, können Sie eine Prioritätsstufe festlegen:
 
-- Klicken Sie auf die Schaltfläche **Priorität** in der Symbolleiste
-- Wählen Sie **Niedrig**, **Normal** oder **Hoch**
+- Öffnen Sie das Dreipunkt-Menü (⋯) im Nachrichtenfenster
+- Wählen Sie **Priorität** und dann die gewünschte Stufe (etwa **Hoch** oder **Niedrig**) — eine eigene Prioritäts-Schaltfläche gibt es nicht
 
 Nachrichten mit hoher Priorität zeigen ein rotes Ausrufezeichen ❗ im
 Posteingang des Empfängers.
@@ -106,7 +106,7 @@ Wenn Sie noch nicht bereit zum Senden sind:
 
 - Klicken Sie stattdessen auf **Als Entwurf speichern**
 - Die Nachricht wird in Ihrem Ordner **Entwürfe** gespeichert
-- Um später fortzufahren, öffnen Sie den Ordner Entwürfe und klicken auf die Nachricht
+- Um später fortzufahren, öffnen Sie den Ordner **Entwürfe** und klicken auf das Stiftsymbol der Nachricht, um sie zu bearbeiten
 
 ## Fehlerbehebung
 

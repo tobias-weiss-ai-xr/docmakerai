@@ -23,9 +23,9 @@ Migrate contacts between applications using vCard import/export.
 
 In the sidebar, click **Contacts** to open the address book.
 
-### Step 2: Access Actions Menu
+### Step 2: Open the Three-Dot Menu
 
-Click the **Actions** menu button (often a downward arrow or three dots) near the top of the contact list.
+Click the **three-dot menu** (⋯) above the contact list and choose the action you need (such as **Export** or **Import**).
 
 ![Contacts import/export menu in SOGo 6](./assets/contacts-import-export.png)
 

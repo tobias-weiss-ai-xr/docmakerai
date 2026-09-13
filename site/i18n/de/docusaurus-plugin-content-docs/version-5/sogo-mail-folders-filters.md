@@ -78,7 +78,7 @@ Filter werden beim Eintreffen von E-Mails ausgeführt — bevor Sie sie in Ihrem
 
 ### Schritt 2: Neuen Filter erstellen
 
-Klicken Sie auf **Filter hinzufügen** oder die **+**-Schaltfläche.
+Klicken Sie auf **Filter erstellen**.
 
 ### Schritt 3: Bedingungen festlegen
 
@@ -97,7 +97,7 @@ Sie können mehrere Bedingungen kombinieren:
 
 ### Schritt 4: Aktionen festlegen
 
-Wählen Sie, was passiert, wenn die Bedingungen erfüllt sind:
+Wählen Sie, was passiert, wenn die Bedingungen erfüllt sind. Die genauen Bezeichnungen können je nach Version leicht variieren — typische Aktionen:
 
 | Aktion | Anwendungsfall |
 |--------|---------------|
@@ -108,6 +108,8 @@ Wählen Sie, was passiert, wenn die Bedingungen erfüllt sind:
 | **Als markiert kennzeichnen** | Wichtige Absender hervorheben |
 | **Verwerfen** | Spam löschen (mit Vorsicht verwenden) |
 | **Mit Nachricht ablehnen** | Unerwünschte E-Mails mit eigener Nachricht zurückweisen |
+
+**Wichtig:** Die Mails werden nur dann tatsächlich verschoben, wenn Sie als letzte Aktion **Beende die Filterverarbeitung** hinzufügen.
 
 ### Schritt 5: Filterpriorität festlegen
 
@@ -123,10 +125,14 @@ sofort auf dem Server aktiviert.
 
 ### Beispiel 1: Arbeits-E-Mails sortieren
 
-```
-Bedingung: Von enthält "@firma.com"
-Aktion:    In Ordner "Arbeit" verschieben
-```
+Ziel: Alle E-Mails von `@firma.com` in den Ordner „Arbeit" verschieben.
+
+1. Legen Sie vorher den Ordner „Arbeit" an (Teil 1, Schritt 2)
+2. Filtereinstellungen öffnen → **Filter erstellen**
+3. Bedingung: **Von enthält** `@firma.com`
+4. Aktion: **In Ordner verschieben** → Ordner „Arbeit" wählen
+5. Letzte Aktion: **Beende die Filterverarbeitung**
+6. Klicken Sie auf **Speichern**
 
 ### Beispiel 2: Dringende Nachrichten markieren
 
@@ -146,14 +152,12 @@ Aktion:    In Ordner "Newsletter" verschieben
 
 ### Filter funktionieren nicht
 
-- Überprüfen Sie, ob Sieve aktiviert ist (`SOGoSieveScriptsEnabled = YES`)
-- Verifizieren Sie Ihre Sieve-Server-Adresse in der SOGo 5-Konfiguration
+- Prüfen Sie, ob die letzte Aktion des Filters **Beende die Filterverarbeitung** ist (siehe Schritt 4)
 - Testen Sie zuerst mit einem einfachen Filter (z. B. alle E-Mails von sich selbst verschieben)
-- Überprüfen Sie die Server-Protokolle auf Sieve-Kompilierungsfehler
+- Ob Sieve aktiviert ist (`SOGoSieveScriptsEnabled = YES`), welche Sieve-Server-Adresse konfiguriert ist und ob die Server-Protokolle Sieve-Kompilierungsfehler zeigen, gehört zur Serverkonfiguration — das ist Aufgabe Ihrer IT-Administration. Fragen Sie im Zweifel Ihren Administrator.
 
 ### Ordner wird nicht angezeigt
 
-- Klicken Sie auf die Schaltfläche **Aktualisieren** in der Ordnerliste
 - Melden Sie sich ab und wieder an
 - Überprüfen Sie, ob der Ordner erstellt wurde (nicht versehentlich mit Schrägstrichen benannt)
 

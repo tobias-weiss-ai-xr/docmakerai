@@ -32,7 +32,7 @@ Your inbox shows received messages in the main view, with folders
 
 ### Step 2: Start a New Message
 
-Click the **Compose** button in the toolbar above your message list.
+Click the pen icon (**Compose**) in the toolbar above your message list.
 
 A new message composition window will open.
 
@@ -69,8 +69,7 @@ Examples:
 
 ### Step 5: Write Your Message
 
-Type your message in the large text area. The toolbar above provides
-formatting options:
+Type your message in the large text area. Depending on your email editor settings, formatting options are available (such as bold, italic, and lists):
 
 | Button | Action |
 |--------|--------|
@@ -91,8 +90,8 @@ To attach a file:
 
 If your message is time-sensitive, you can set a priority level:
 
-- Click the **Priority** button in the toolbar
-- Choose **Low**, **Normal**, or **High**
+- Open the three-dot menu (⋯) in the compose window
+- Choose **Priority** and then the level you need (e.g., **High** or **Low**) — there is no separate Priority button
 
 High-priority messages will show a red exclamation mark ❗ in the
 recipient's inbox.
@@ -112,7 +111,7 @@ If you are not ready to send:
 
 - Click **Save as Draft** instead of Send
 - The message is saved in your **Drafts** folder
-- To continue later, open the Drafts folder and click the message
+- To continue later, open the **Drafts** folder and click the pen icon on the message to edit it
 
 ## Troubleshooting
 

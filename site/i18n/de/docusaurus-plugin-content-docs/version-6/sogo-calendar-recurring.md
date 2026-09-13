@@ -147,7 +147,7 @@ Klicken Sie auf **Alarm hinzufügen**, um weitere Erinnerungen zu ergänzen.
 ### Alarm wird nicht ausgelöst
 
 - **Anzeige-Alarme** erfordern, dass der Browser-Tab geöffnet ist
-- **E-Mail-Alarme** erfordern eine serverseitige Konfiguration (`sogo-ealarms-notify`)
+- **E-Mail-Alarme** erfordern, dass der Dienst `sogo-ealarms-notify` auf dem Server läuft — eine Aufgabe Ihrer IT-Administration; konfigurieren lassen müssen Sie ihn im Zweifel von Ihrem Administrator
 - Überprüfen Sie die Browser-Benachrichtigungsberechtigungen
 
 ## Fazit

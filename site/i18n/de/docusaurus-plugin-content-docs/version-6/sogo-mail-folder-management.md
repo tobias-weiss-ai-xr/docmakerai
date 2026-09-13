@@ -44,9 +44,9 @@ Die Ordnerliste zeigt Ihre Standardordner:
 2. Ziehen Sie sie in der Liste auf den Zielordner
 3. Loslassen zum Ablegen
 
-#### Methode 2: Verschieben-Button verwenden
+#### Methode 2: Verschieben-Symbol verwenden
 1. Wählen Sie eine E-Mail aus
-2. Klicken Sie auf die Schaltfläche **Verschieben** (Ordnersymbol mit Pfeil)
+2. Klicken Sie auf das **Verschieben**-Symbol — ein reiner Pfeil, kein Ordnersymbol (nicht mit dem Antwort-Pfeil zu verwechseln)
 3. Wählen Sie den Zielordner aus dem Dropdown
 
 :::info

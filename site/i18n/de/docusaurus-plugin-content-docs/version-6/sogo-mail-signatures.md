@@ -11,55 +11,45 @@ Absenderidentitäten (z. B. geschäftlich vs. privat).
 
 ## Teil 1: Eine E-Mail-Signatur erstellen
 
-### Schritt 1: Einstellungen öffnen
+### Schritt 1: Identitätseinstellungen öffnen
 
-1. Klicken Sie auf das **Dreipunkt-Menü** (⋯) (Einstellungen) in der oberen Symbolleiste
-2. Wählen Sie **E-Mail** → **Signaturen**
+1. Klicken Sie auf das Zahnrad-Symbol (**Einstellungen**) in der oberen Symbolleiste
+2. Wählen Sie **E-Mail** → **IMAP-Konten**
+3. Klicken Sie auf Ihr E-Mail-Konto, um dessen Identität zu bearbeiten
 
 ![Signatur-Einstellungen](./assets/01-mail-signatures.png)
 
-### Schritt 2: Neue Signatur hinzufügen
+### Schritt 2: Neue Identität anlegen
 
-Klicken Sie auf **Signatur hinzufügen** oder die **+**-Schaltfläche.
+Signaturen werden pro Identität gepflegt — es gibt keinen separaten „Signaturen“-Bereich. Über **Neue Identität** legen Sie eine weitere Identität an.
 
 ### Schritt 3: Signatur schreiben
 
-Geben Sie Ihren Signaturtext ein. SOGo 6 unterstützt **Klartext**-Signaturen.
+Geben Sie Ihren Signaturtext in das Feld **Signatur** ein. SOGo 6 unterstützt **Klartext**-Signaturen.
 
-**Empfohlenes Signaturformat:**
+**Gebräuchliches Signaturformat an der Universität Marburg:**
 ```
-Mit freundlichen Grüßen,
+Mit freundlichen Grüßen
 Max Mustermann
-Projektleiter | Firmenname
-Telefon: +49 123 456 789
-E-Mail: max.mustermann@firma.com
+Einrichtung / Institut
+Philipps-Universität Marburg
+Telefon: +49 6421 28-XXXXX
+E-Mail: max.mustermann@uni-marburg.de
 ```
 
 ### Schritt 4: Signaturplatzierung wählen
 
-Wählen Sie, wann die Signatur eingefügt wird:
+Die Optionen zur Signaturplatzierung finden Sie im Reiter **Allgemein** der Identität — nicht dort, wo Sie die Signatur erstellt haben. Wählen Sie dort, ob und wohin die Signatur beim Verfassen automatisch eingefügt werden soll.
 
-| Option | Verhalten |
-|--------|-----------|
-| **Nur an neue Nachrichten anhängen** | Signatur wird an neue E-Mails angehängt, nicht an Antworten |
-| **An alle Nachrichten anhängen** | Wird sowohl an neue als auch an beantwortete/weitergeleitete Nachrichten angehängt |
-| **Keine automatische Einfügung** | Manuelles Einfügen über die Verfassen-Symbolleiste |
+### Schritt 5: Speichern
 
-### Schritt 5: Als Standard festlegen
+Klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
 
-Wenn Sie mehrere Signaturen haben, wählen Sie aus, welche standardmäßig verwendet wird.
+## Teil 2: Signatur verwenden
 
-### Schritt 6: Speichern
-
-Klicken Sie auf **Speichern**, um zu übernehmen.
-
-## Teil 2: Signatur manuell einfügen
-
-Beim Verfassen einer Nachricht können Sie eine Signatur einfügen:
-
-1. Klicken Sie auf die Schaltfläche **Signatur** in der Verfassen-Symbolleiste
-2. Wählen Sie aus, welche Signatur eingefügt werden soll
-3. Die Signatur wird an der Cursorposition eingefügt
+Ihre Signatur wird beim Verfassen automatisch entsprechend der gewählten
+Platzierung eingefügt (Reiter **Allgemein**, siehe Teil 1). Um eine andere
+Signatur zu verwenden, wechseln Sie die Identität (siehe Teil 4).
 
 ## Teil 3: HTML-Signaturen (Erweitert)
 
@@ -75,56 +65,21 @@ mit Bildern oder Formatierung:
 Kompatibilität zwischen E-Mail-Programmen.
 :::
 
-## Teil 4: Identitäten verwalten
+## Teil 4: Identitäten verwalten und wechseln
 
-Identitäten ermöglichen es Ihnen, E-Mails von verschiedenen Adressen aus demselben
-SOGo 6-Konto zu senden.
+Ihre E-Mail-Adresse und Ihre Signatur sind an die Identität gebunden, die Sie in
+Teil 1 über **E-Mail** → **IMAP-Konten** bearbeiten. Zusätzliche Behelfsidentitäten
+stehen zur Verfügung, wenn Ihr Administrator sie konfiguriert hat
+(`SOGoMailAuxiliaryUserAccountsEnabled`).
 
-### Schritt 1: Einstellungen öffnen
-
-Gehen Sie zu **Einstellungen** → **E-Mail** → **Identitäten**
-
-### Schritt 2: Ihre Identitäten anzeigen
-
-Sie sehen Ihre primäre Identität (die mit Ihrem SOGo 6-Konto verknüpfte
-E-Mail-Adresse). Zusätzliche Identitäten können angezeigt werden, wenn sie von
-Ihrem Administrator konfiguriert wurden.
-
-### Schritt 3: Hilfsidentität hinzufügen
-
-Wenn von Ihrem Administrator aktiviert (`SOGoMailAuxiliaryUserAccountsEnabled`):
-
-1. Klicken Sie auf **Identität hinzufügen**
-2. Geben Sie ein:
-   - **Vollständiger Name** — Anzeigename für Empfänger
-   - **E-Mail-Adresse** — Die Absenderadresse
-   - **Antwort-an-Adresse** — (optional) Abweichende Adresse für Antworten
-3. Klicken Sie auf **Speichern**
-
-### Schritt 4: Identität beim Verfassen wechseln
+### Identität beim Verfassen wechseln
 
 Beim Schreiben einer neuen Nachricht:
 
 1. Suchen Sie das Feld **Von** im Verfassen-Fenster
-2. Klicken Sie auf den Dropdown-Pfeil neben Ihrer E-Mail-Adresse
-3. Wählen Sie aus, als welche Identität Sie senden möchten
+2. Klicken Sie auf das **X** neben Ihrer E-Mail-Adresse
+3. Die Auswahl der verfügbaren Identitäten öffnet sich darüber — wählen Sie die gewünschte Identität aus
 
-## Beispiel: Geschäftlich + Privat
-
-```
-Identität 1 (Standard):
-  Name:  Max Mustermann
-  E-Mail: max@firma.com
-  Signatur: Professionell (Titel, Telefon, Firma)
-
-Identität 2 (Hilfsidentität):
-  Name:  Max M.
-  E-Mail: max.mustermann@gmail.com
-  Signatur: Lässig (nur Name)
-
-Beim Verfassen einer privaten E-Mail zu Identität 2 wechseln.
-Geschäftliche E-Mails verwenden standardmäßig Identität 1.
-```
 
 ## Fazit
 

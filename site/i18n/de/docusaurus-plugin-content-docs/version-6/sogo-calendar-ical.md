@@ -25,11 +25,8 @@ Klicken Sie auf das **Dreipunkt-Menü** (⋯) in der Kalender-Symbolleiste.
 
 ### Schritt 3: Kalender exportieren
 
-Das Kalendereinstellungsfeld zeigt Exportoptionen an:
-
-1. Suchen Sie den Abschnitt **Export** oder **Teilen**
-2. Klicken Sie auf den Download-Link oder kopieren Sie die Kalender-URL
-3. Der Kalender wird als `.ics`-Datei (iCal) exportiert
+1. Öffnen Sie über das Dreipunkt-Menü die Einstellungen des gewünschten Kalenders
+2. Wählen Sie die Option zum Exportieren — der Kalender wird als `.ics`-Datei (iCal) heruntergeladen
 
 ### Schritt 4: Kalender importieren
 
@@ -56,11 +53,11 @@ Der Import eines Kalenders mit Hunderten von Ereignissen kann mehrere Minuten da
 
 ## Freigabe über iCal
 
-Sie können Ihren Kalender teilen, indem Sie die iCal-URL bereitstellen:
+Um Ihren Kalender in einer anderen Anwendung (z. B. auf dem Smartphone) zu abonnieren, benötigen Sie die Kalender-URL:
 
-1. Kopieren Sie die **Kalender-URL** aus den Export-Einstellungen
-2. Teilen Sie die URL mit anderen
-3. Diese können Ihren Kalender in ihrer eigenen Anwendung abonnieren
+1. Öffnen Sie die Einstellungen des gewünschten Kalenders über das Dreipunkt-Menü
+2. Die Kalender-URL finden Sie dort unter **Links zu diesem Kalender** — nicht im Export-Dialog
+3. Teilen Sie die URL mit anderen; sie können Ihren Kalender damit in ihrer eigenen Anwendung abonnieren
 
 ## Fehlerbehebung
 

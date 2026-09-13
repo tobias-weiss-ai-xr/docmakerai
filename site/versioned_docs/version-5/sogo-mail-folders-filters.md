@@ -82,7 +82,7 @@ Filters run when email arrives — before you see it in your inbox.
 
 ### Step 2: Create a New Filter
 
-Click **Add Filter** or the **+** button.
+Click **Create filter**.
 
 ### Step 3: Define Conditions
 
@@ -101,7 +101,7 @@ You can combine multiple conditions:
 
 ### Step 4: Define Actions
 
-Choose what happens when conditions are met:
+Choose what happens when conditions are met. Exact labels may vary slightly between versions — typical actions:
 
 | Action | Use Case |
 | :--- | :--- |
@@ -112,6 +112,8 @@ Choose what happens when conditions are met:
 | **Mark as flagged** | Highlight important senders |
 | **Discard** | Delete spam (use with caution) |
 | **Reject with message** | Bounce unwanted email with a custom message |
+
+**Important:** Messages are only actually moved if you add **Stop processing filter rules** as the last action.
 
 ### Step 5: Set Filter Priority
 
@@ -127,10 +129,14 @@ activated on the server immediately.
 
 ### Example 1: Sort Work Emails
 
-```
-Condition: From contains "@company.com"
-Action:    Move to folder "Work"
-```
+Goal: Move all email from `@company.com` into the "Work" folder.
+
+1. Create the "Work" folder first (Part 1, Step 2)
+2. Open the filter settings → **Create filter**
+3. Condition: **From contains** `@company.com`
+4. Action: **Move to folder** → choose the "Work" folder
+5. Last action: **Stop processing filter rules**
+6. Click **Save**
 
 ### Example 2: Flag Urgent Messages
 
@@ -150,14 +156,12 @@ Action:    Move to folder "Newsletters"
 
 ### Filters not working
 
-- Check that Sieve is enabled (`SOGoSieveScriptsEnabled = YES`)
-- Verify your Sieve server address in the SOGo 5 configuration
+- Check that the filter's last action is **Stop processing filter rules** (see Step 4)
 - Test with a simple filter first (e.g., move all mail from yourself)
-- Check server logs for Sieve compilation errors
+- Whether Sieve is enabled (`SOGoSieveScriptsEnabled = YES`), which Sieve server address is configured, and whether server logs show Sieve compilation errors is part of the server configuration — that is your IT administration's job. Ask your administrator if in doubt.
 
 ### Folder not showing
 
-- Click the **Refresh** button in the folder list
 - Log out and log back in
 - Check that the folder was created (not accidentally named with slashes)
 

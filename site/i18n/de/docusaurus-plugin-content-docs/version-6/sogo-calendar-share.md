@@ -13,58 +13,41 @@ und steuern, was diese sehen oder tun können.
 
 - Ein SOGo 6-Konto mit gültigen Anmeldedaten
 - Sie sind bei SOGo 6 angemeldet
-- Sie haben mindestens einen Kalender (z. B. den standardmäßigen "Persönlich"-Kalender)
+- Sie haben mindestens einen Kalender (Ihr Standardkalender trägt das Account-Kürzel, das das Hochschulrechenzentrum individuell vergibt)
 
 ## Schritt-für-Schritt-Anleitung
 
-### Schritt 1: Kalendereinstellungen öffnen
+### Schritt 1: Freigaben-Dialog öffnen
 
 1. Klicken Sie oben in der Navigationsleiste auf **Kalender**
-2. Klicken Sie in der oberen Symbolleiste auf das **Dreipunkt-Menü** (⋯) (Einstellungen)
-3. Wählen Sie **Kalender** aus dem Einstellungsmenü
-
-Alternativ klicken Sie auf das Dreipunkt-Menü (⋯) neben einen Kalendernamen in der oberen Navigationsleiste
-und wählen Sie **Eigenschaften** oder **Freigabe**.
-
-### Schritt 2: Einen Kalender zum Freigeben auswählen
+2. Klicken Sie in der Kalenderliste auf das **Dreipunkt-Menü** (⋯) neben dem Kalender, den Sie freigeben möchten
+3. Wählen Sie **Freigaben…**
 
 ![Kalendereinstellungen mit Freigabeoptionen](./assets/01-calendar-settings.png)
 
-In der Kalenderliste sehen Sie alle Ihre Kalender:
+Hinweis: Ihr Standardkalender trägt nicht den Namen „Persönlich", sondern das
+Account-Kürzel, das das Hochschulrechenzentrum individuell vergibt.
 
-- **Persönlich** — Ihr Standardkalender
-- Alle zusätzlichen Kalender, die Sie erstellt haben
+### Schritt 2: Person eintragen
 
-Wählen Sie den Kalender aus, den Sie freigeben möchten.
+Im Freigaben-Dialog geben Sie direkt die Person ein, die die Freigabe erhalten soll:
 
-### Schritt 3: Einen Benutzer hinzufügen
+1. Beginnen Sie mit der Eingabe des Namens oder der E-Mail-Adresse der Person
+2. Wählen Sie sie aus der automatischen Vervollständigungsliste aus
 
-1. Klicken Sie im Reiter **Berechtigungen** oder **Freigabe** auf **Benutzer hinzufügen**
-2. Beginnen Sie mit der Eingabe des Namens oder der E-Mail-Adresse der Person
-3. Wählen Sie sie aus der automatischen Vervollständigungsliste aus
+### Schritt 3: Berechtigung festlegen
 
-### Schritt 4: Berechtigungsstufe festlegen
+Wählen Sie für die eingetragene Person die gewünschte Berechtigung — von reinem
+Ansehen bis zur Bearbeitungsberechtigung. Für die Zusammenarbeit in einem Team
+genügt in der Regel eine Berechtigung, die das Anzeigen sowie das Erstellen und
+Bearbeiten von Ereignissen erlaubt.
 
-Wählen Sie, was der Benutzer tun kann:
+### Schritt 4: Freigabe bestätigen
 
-| Berechtigung | Kann anzeigen | Kann erstellen/bearbeiten | Kann löschen | Kann freigeben |
-|--------------|---------------|--------------------------|-------------|---------------|
-| **Frei/Gebucht** | ✅ Nur Zeitslots | ❌ | ❌ | ❌ |
-| **Anzeigen (schreibgeschützt)** | ✅ Alle Details | ❌ | ❌ | ❌ |
-| **Anzeigen + Antworten** | ✅ Alle Details | ❌ | ❌ | ❌ |
-| **Ändern** | ✅ Alle Details | ✅ Eigene Ereignisse | ✅ Eigene Ereignisse | ❌ |
-| **Alle ändern** | ✅ Alle Details | ✅ Beliebiges Ereignis | ✅ Beliebiges Ereignis | ❌ |
-| **Admin** | ✅ Alle Details | ✅ Beliebiges Ereignis | ✅ Beliebiges Ereignis | ✅ Kann andere hinzufügen |
+Speichern Sie die Freigabe. Die Person kann nun auf Ihren Kalender entsprechend
+der festgelegten Berechtigung zugreifen.
 
-**Empfohlen für die meisten Fälle:** **Ändern** erlaubt einem Kollegen, Ereignisse
-in Ihrem Kalender zu erstellen und zu bearbeiten.
-
-### Schritt 5: Freigabe bestätigen
-
-Klicken Sie auf **OK** oder **Speichern**, um die Berechtigung zu übernehmen. Der Benutzer kann nun
-auf Ihren Kalender entsprechend der von Ihnen festgelegten Berechtigungsstufe zugreifen.
-
-### Schritt 6: Überprüfen (Optional)
+### Schritt 5: Überprüfen (Optional)
 
 Um zu überprüfen, ob die Freigabe funktioniert:
 
@@ -90,12 +73,11 @@ die Zugriff erhalten haben.
 
 ## Freigabe entfernen oder ändern
 
-Um den Zugriff später zu entziehen oder zu ändern:
+Öffnen Sie erneut das **Dreipunkt-Menü** (⋯) neben dem Kalender und wählen Sie **Freigaben…**:
 
-1. Gehen Sie zu **Kalendereinstellungen** → **Berechtigungen**
-2. Suchen Sie den Benutzer in der Liste
-3. Zum Ändern: Wählen Sie eine andere Berechtigungsstufe
-4. Zum Entfernen: Klicken Sie auf die **X**- oder **Entfernen**-Schaltfläche neben dem Namen
+- **Ändern:** Passen Sie die Berechtigung der Person an
+- **Entfernen:** Entfernen Sie den Eintrag der Person aus der Freigabeliste
+- Speichern Sie anschließend die Änderung
 
 ## Fazit
 

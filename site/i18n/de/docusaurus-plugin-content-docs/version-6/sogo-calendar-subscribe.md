@@ -27,38 +27,19 @@ Sie benötigen die Webadresse (URL) eines iCal-Feeds. Häufige Beispiele:
 | Team-Kalender | `https://teamup.com/.../events.ics` |
 | Freigegebener SOGo 6-Kalender | `https://sogo.example.com/SOGo/dav/benutzername/calendar/shared/` |
 
-### Schritt 2: Kalendereinstellungen öffnen
+### Schritt 2: Webkalender öffnen
 
 1. Klicken Sie oben in der Navigationsleiste auf **Kalender**
-2. Suchen Sie die Kalenderliste auf der linken Seite
-3. Klicken Sie auf das **Dreipunkt-Menü** (⋯) neben der Kalenderbereichsüberschrift
-4. Wählen Sie **URL abonnieren**
+2. Klicken Sie auf **Webkalender** — die Option liegt direkt auf der Oberfläche, es gibt kein Zahnrad dafür
 
 ![Kalenderansicht mit Abonnementoptionen](./assets/01-calendar-view.png)
 
-### Schritt 3: Feed-URL eingeben
+### Schritt 3: Feed-URL einfügen und abonnieren
 
-Im Abonnement-Dialog:
+1. Fügen Sie die kopierte Feed-URL ein
+2. Bestätigen Sie das Abonnement
 
-1. **URL:** Fügen Sie die iCal-Feed-URL ein
-2. **Name:** Geben Sie einen Anzeigenamen ein (z. B. "Deutsche Feiertage")
-3. **Farbe:** Wählen Sie eine Kalenderfarbe zur besseren Sichtbarkeit
-
-### Schritt 4: Sync-Optionen konfigurieren
-
-| Option | Beschreibung |
-|--------|-------------|
-| **Aktualisierungsintervall** | Wie oft auf Updates geprüft wird (stündlich, täglich usw.) |
-| **Erinnerungen entfernen** | Alarminformationen aus externen Ereignissen entfernen |
-| **Anhänge entfernen** | Externe Dateianhänge nicht herunterladen |
-
-Empfohlene Voreinstellungen: Aktualisierung **täglich**, Erinnerungen entfernen (externe
-Kalender haben oft irrelevante Alarme).
-
-### Schritt 5: Abonnement speichern
-
-Klicken Sie auf **Abonnieren** oder **OK**. Der Kalender erscheint in Ihrer
-Kalenderliste mit einem Abonnementsymbol 📡.
+Der abonnierte Kalender erscheint anschließend in Ihrer Kalenderliste.
 
 ## Abonnements verwalten
 
@@ -68,21 +49,20 @@ Abonnierte Kalender funktionieren wie Ihre eigenen — Ereignisse werden in der
 Kalenderansicht angezeigt. Sie können die Sichtbarkeit durch Aktivieren/Deaktivieren
 des Kalenders in der Liste umschalten.
 
-### Manuell aktualisieren
+### Aktualisierung
 
-Klicken Sie auf das Dreipunkt-Menü (⋯) neben den abonnierten Kalender → **Aktualisieren**,
-um die neuesten Daten sofort abzurufen.
+Die Daten abonnierter Kalender werden beim Anmelden neu geladen:
+Öffnen Sie **Einstellungen** (Zahnrad) → **Kalender** und aktivieren Sie **Neu laden beim Anmelden**.
 
 ### Abonnement-Eigenschaften bearbeiten
 
 Dreipunkt-Menü (⋯) neben dem Kalender → **Eigenschaften**:
 - Anzeigenamen oder Farbe ändern
 - Feed-URL aktualisieren
-- Aktualisierungsintervall anpassen
 
 ### Abonnement kündigen
 
-Dreipunkt-Menü (⋯) neben dem Kalender → **Abonnement kündigen** oder **Löschen**.
+Wählen Sie im Dreipunkt-Menü (⋯) neben dem Kalender die Option zum Entfernen.
 Der Kalender wird aus Ihrer Ansicht entfernt. Die Quelle bleibt unverändert.
 
 ## Fehlerbehebung
@@ -95,8 +75,7 @@ Der Kalender wird aus Ihrer Ansicht entfernt. Die Quelle bleibt unverändert.
 
 ### Kalender wird nicht aktualisiert
 
-- Überprüfen Sie die Einstellung des Aktualisierungsintervalls
-- Manuell aktualisieren: Dreipunkt-Menü (⋯) → **Aktualisieren**
+- Melden Sie sich ab und wieder an (abonnierte Kalender werden beim Anmelden neu geladen, siehe oben)
 - Der Feed-Anbieter hat möglicherweise die URL geändert
 
 ### Ereignisse haben falsche Uhrzeiten

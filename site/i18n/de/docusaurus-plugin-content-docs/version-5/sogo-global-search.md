@@ -1,12 +1,12 @@
 ---
 title: "Globale Suche"
-description: "Suche über alle Module in SOGo 5"
-sidebar_label: "Globale Suche"
+description: "E-Mails, Kontakte und Kalender in SOGo 5 durchsuchen"
+sidebar_label: "Suche"
 ---
 
-# Globale Suche
+# Suche in SOGo 5
 
-Finden Sie schnell E-Mails, Kontakte, Kalenderereignisse und mehr mit der globalen Suchfunktion von SOGo 5.
+Die Suche in SOGo 5 erfolgt pro Modul: E-Mails durchsuchen Sie im E-Mail-Modul, Kontakte im Adressbuch und Kalenderereignisse im Kalender — jeweils über das Suchfeld der Oberfläche.
 
 ## Voraussetzungen
 
@@ -15,17 +15,17 @@ Finden Sie schnell E-Mails, Kontakte, Kalenderereignisse und mehr mit der global
 
 ## Schritt-für-Schritt-Anleitung
 
-### Schritt 1: Suche öffnen
+### Schritt 1: Modul öffnen
 
-Klicken Sie auf die Schaltfläche **Suche** in der oberen Symbolleiste oder verwenden Sie die Tastenkombination.
+Es gibt keine zentrale Such-Schaltfläche. Öffnen Sie das Modul, in dem Sie suchen möchten — **E-Mail**, **Kalender** oder **Adressbuch** in der oberen Leiste.
 
 ### Schritt 2: Suchbegriff eingeben
 
-Geben Sie Ihren Suchbegriff in das Suchfeld ein. Ergebnisse erscheinen während der Eingabe.
+Geben Sie Ihren Suchbegriff in das Suchfeld des Moduls ein. Ergebnisse erscheinen während der Eingabe.
 
 ### Schritt 3: Ergebnisse durchsuchen
 
-Suchergebnisse werden nach Modul gruppiert:
+Jedes Modul durchsucht seine eigenen Inhalte:
 
 | Modul | Was durchsucht wird |
 |-------|-------------------|
@@ -47,7 +47,7 @@ Klicken Sie auf ein beliebiges Ergebnis, um direkt zu diesem Element zu navigier
 | **Nach Stichwort** | `Rechnung` | Findet alle passenden Elemente mit „Rechnung" |
 
 :::tip
-Verwenden Sie die **globale Suche**, um Elemente in allen Modulen gleichzeitig zu finden, anstatt in jedem Modul einzeln zu suchen.
+Suchen Sie in dem Modul, in dem Sie das gesuchte Element erwarten — die Ergebnisse werden pro Modul angezeigt.
 :::
 
 ## Fehlerbehebung
@@ -55,13 +55,12 @@ Verwenden Sie die **globale Suche**, um Elemente in allen Modulen gleichzeitig z
 | Problem | Mögliche Ursache | Lösung |
 |---------|-----------------|--------|
 | Keine Ergebnisse gefunden | Tippfehler im Suchbegriff | Überprüfen Sie die Rechtschreibung oder versuchen Sie ein Teilwort |
-| Such-Button nicht sichtbar | Schmales Browserfenster | Verbreitern Sie das Fenster oder verwenden Sie den Menü-Button (☰) |
 | E-Mail-Ergebnisse werden nicht angezeigt | IMAP-Server nicht verfügbar | Die E-Mail-Suche erfordert eine aktive IMAP-Verbindung |
 | Ergebnisse laden langsam | Großes Postfach | Grenzen Sie Ihre Suche mit spezifischeren Begriffen ein |
 
 ## Fazit
 
-Sie können nun die globale Suche in SOGo 5 verwenden, um schnell in allen Modulen zu suchen.
+Sie können nun in jedem SOGo-5-Modul gezielt nach E-Mails, Kontakten und Kalenderereignissen suchen.
 ## Barrierefreiheit
 
 ### Tastaturnavigation

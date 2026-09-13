@@ -28,25 +28,21 @@ meeting — directly from the event creation dialog.
 
 ![Event dialog with attendee options](./assets/01-event-dialog.png)
 
-### Step 2: Open Free/Busy View
+### Step 2: Add Attendees
 
 1. In the event dialog, click the **Attendees** section
-2. Click **Free/Busy** or **Availability** button
-3. A time grid opens showing your calendar
+2. Start typing a colleague's name or email address
+3. Select the person from the auto-complete list
+4. Repeat for each person you want to check
 
-### Step 3: Add a Colleague
-
-1. In the free/busy grid, click **Add Person** or **Check Availability**
+Once attendees are entered, the free/busy grid opens automatically —
+there is no separate Free/Busy button.
 
 ![Free/busy availability grid](./assets/02-freebusy-grid.png)
 
-2. Start typing a colleague's name
-3. Select them from the auto-complete list
-4. Repeat for each person you want to check
-
 ![Free/busy grid showing colleague availability](./assets/freebusy.png)
 
-### Step 4: Read the Grid
+### Step 3: Read the Grid
 
 The grid shows time slots for each person:
 
@@ -57,12 +53,12 @@ The grid shows time slots for each person:
 | 🟡 **Yellow** | Tentative / maybe attending |
 | ⬜ **White** | No data (not shared, or outside working hours) |
 
-### Step 5: Find a Common Slot
+### Step 4: Find a Common Slot
 
 Look for a time when all attendees are green.
 SOGo 5 may suggest the next available slot automatically.
 
-### Step 6: Confirm the Time
+### Step 5: Confirm the Time
 
 Click on the desired time slot in the grid.
 The event's start/end time updates to match.
@@ -76,6 +72,8 @@ By default, SOGo 5 is configured so that other users can see:
 | **Free/Busy** | Only whether you're available or busy (no details) |
 | **View (read-only)** | Event titles and times |
 | **Confidential events** | Marked as "Busy" only, even to viewers |
+
+People with free/busy-only permission see only busy and free time slots — without titles or details. Events you mark as confidential appear to others as "busy" anyway.
 
 Your administrator can change default permission levels via the
 `SOGoCalendarDefaultRoles` setting.

@@ -56,7 +56,7 @@ Use the navigation controls at the top:
 | Cannot see attachments | File size too large | Contact your administrator for attachment size limits |
 
 :::tip
-Double-click on a message subject to open it in a new tab for easier reading.
+Double-click on a message subject to open it in a new tab for easier reading (depending on your browser settings).
 :::
 ## Accessibility
 

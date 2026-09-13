@@ -32,7 +32,7 @@ Jedes Tutorial in diesem Handbuch basiert auf echten, Schritt-für-Schritt-Bilds
 | 📅 **Kalender** | Ereignisse erstellen, wiederkehrende Termine einrichten, Kalender teilen, Verfügbarkeit prüfen | 7 |
 | 👥 **Kontakte** | Hinzufügen, Bearbeiten, Importieren und Exportieren Ihres Adressbuchs | 3 |
 | ⚙️ **Einstellungen** | Profil anpassen, Passwörter ändern, Abwesenheitsnotizen einrichten | 4 |
-| 🔍 **Erweitert** | Delegation, Aufgaben, Ressourcenbuchung und globale Suche | 4 |
+| 🔍 **Erweitert** | Delegation, Aufgaben, Ressourcenbuchung und Suche in E-Mails, Kontakten und Kalender | 4 |
 
 ## Direkt loslegen
 

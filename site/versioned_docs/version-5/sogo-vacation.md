@@ -18,7 +18,8 @@ in the calendar when you're on vacation or out of office.
 - A SOGo 5 account with valid credentials
 - You are logged into SOGo 5
 - Vacation/auto-reply must be enabled by your administrator
-  (`SOGoVacationEnabled = YES`)
+  (`SOGoVacationEnabled = YES` — a server setting that is not visible to users;
+  ask your administrator if in doubt)
 
 ## Step-by-Step Instructions
 

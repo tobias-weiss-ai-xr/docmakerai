@@ -52,7 +52,7 @@ Verwenden Sie die Navigationssteuerung oben:
 | Anhänge nicht sichtbar | Dateigröße zu groß | Kontaktieren Sie Ihren Administrator zu Anhangsgrößenbeschränkungen |
 
 :::tip
-Doppelklicken Sie auf einen Nachrichtenbetreff, um ihn zum einfacheren Lesen in einem neuen Tab zu öffnen.
+Doppelklicken Sie auf einen Nachrichtenbetreff, um ihn — je nach Browsereinstellung — zum einfacheren Lesen in einem neuen Tab zu öffnen.
 :::
 
 ## Fazit

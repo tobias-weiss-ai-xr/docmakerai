@@ -32,7 +32,7 @@ Every tutorial in this guide is built from real, step-by-step screen captures �
 | 📅 **Calendar** | Create events, set recurring meetings, share calendars, and check availability | 7 |
 | 👥 **Contacts** | Add, edit, import, and export your address book | 3 |
 | ⚙️ **Preferences** | Customize your profile, change passwords, set vacation replies | 4 |
-| 🔍 **Advanced** | Delegation, tasks, resource booking, and global search | 4 |
+| 🔍 **Advanced** | Delegation, tasks, resource booking, and search across your emails, contacts, and calendar | 4 |
 
 ## Jump Right In
 

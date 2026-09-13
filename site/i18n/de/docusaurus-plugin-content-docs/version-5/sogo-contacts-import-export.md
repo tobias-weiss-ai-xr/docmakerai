@@ -19,9 +19,9 @@ Migrieren Sie Kontakte zwischen Anwendungen mit vCard-Import/Export.
 
 Klicken Sie oben in der Navigationsleiste auf **Kontakte**, um das Adressbuch zu öffnen.
 
-### Schritt 2: Aktionsmenü aufrufen
+### Schritt 2: Dreipunkt-Menü öffnen
 
-Klicken Sie auf die Schaltfläche **Aktionen** (oft ein nach unten zeigender Pfeil oder drei Punkte) in der Nähe des oberen Bereichs der Kontaktliste.
+Klicken Sie auf das **Dreipunkt-Menü** (⋯) über der Kontaktliste und wählen Sie die gewünschte Aktion (etwa **Exportieren** oder **Importieren**).
 
 ### Schritt 3: Kontakte exportieren
 
