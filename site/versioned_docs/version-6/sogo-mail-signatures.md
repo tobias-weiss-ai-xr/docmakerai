@@ -21,7 +21,7 @@ sender identities (e.g., work vs. personal email).
 2. Select **Mail** → **IMAP Accounts**
 3. Click your email account to edit its identity
 
-![Mail signatures settings](./assets/01-mail-signatures.png)
+![Mail signatures settings](./assets/mail-signatures.png)
 
 ### Step 2: Create a New Identity
 

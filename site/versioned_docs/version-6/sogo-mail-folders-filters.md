@@ -78,7 +78,7 @@ Filters run when email arrives — before you see it in your inbox.
 1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Mail** → **Filters**
 
-![Mail filters settings](./assets/01-mail-filters.png)
+![Mail filters settings](./assets/mail-filters.png)
 
 ### Step 2: Create a New Filter
 

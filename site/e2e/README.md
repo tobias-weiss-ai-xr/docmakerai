@@ -1,0 +1,78 @@
+# E2E Tests for docmakerai site
+
+End-to-end tests using [Playwright](https://playwright.dev/) to verify the deployed docmakerai site (SOGo User Guide).
+
+## Running tests
+
+### Against the live deploy (gh-pages)
+```bash
+npm run test:e2e
+```
+By default, tests run against `https://tobias-weiss-ai-xr.github.io/docmakerai/`.
+
+### Against a local dev server
+
+1. Start the Docusaurus dev server:
+```bash
+npm run start
+```
+
+2. In a second terminal, run tests with the local URL:
+```bash
+PLAYWRIGHT_BASE_URL=http://localhost:3000 npm run test:e2e
+```
+
+### Headed mode (for local debugging)
+```bash
+npm run test:e2e:headed
+```
+
+### UI mode (interactive test runner)
+```bash
+npm run test:e2e:ui
+```
+
+## Test suites
+
+| File | Purpose |
+|------|---------|
+| `homepage.spec.ts` | Root redirect, landing page, locale switching |
+| `docs.spec.ts` | Doc content presence, regression for DocItem Layout bug |
+| `navbar.spec.ts` | Logo sizing (regression for global img rule), nav links, per-version brand |
+| `sidebars.spec.ts` | Sidebar categories, navigation, TOC |
+| `custom.spec.ts` | Custom components (SEO, DocVoteWidget) |
+| `assets.spec.ts` | CSS/JS bundle, favicon, logo, social card load |
+| `404.spec.ts` | 404 status, 404 page content, way back home |
+| `theme.spec.ts` | Color-mode toggle + persistence, skip link, a11y names, footer |
+| `crawl.spec.ts` | Sitemap-driven whole-site crawl: per-page invariants (h1, alt,
+  descriptions, anchors, images), German render quality, link rot |
+| `interactions.spec.ts` | Version/locale switches, theme persistence, history, URL edges |
+| `versions.ts` | Shared version list + `ON_PROD_DEPLOY` gate — version-agnostic
+  specs loop over it |
+
+## Version matrix
+
+Chrome/structure tests (navbar, theme, sidebar, 404, assets, docs, custom)
+run against **both** `/sogo5/` and `/sogo6/` — the specs loop over
+`VERSIONS` and substitute the version into paths and expected text.
+Version-specific data (e.g. the different sidebar category trees) lives as
+per-version maps inside the spec. Site-level behavior (root redirect shell,
+`de` locale) runs once. When adding a version, extend `versions.ts` and the
+per-version data maps.
+
+## CI
+
+Tests run automatically on push to `main` (for changes in `site/` or the workflow file).
+
+## Adding new tests
+
+- Place `.spec.ts` files in the `e2e/` directory
+- Use `test.describe()` to group related tests
+- Follow the existing patterns for selectors and assertions
+- Keep tests independent and fast (test live site, no setup needed)
+
+## Debugging
+
+- If a test fails, Playwright creates trace files in `traces/`
+- View traces: `npx playwright show-report`
+- Increase timeout: `test.setTimeout(10000)` for slow tests

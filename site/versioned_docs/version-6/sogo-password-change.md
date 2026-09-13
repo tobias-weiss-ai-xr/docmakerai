@@ -12,6 +12,8 @@ import PageSEO from '@site/src/components/PageSEO';
 
 Update your SOGo 6 account password to keep your account secure.
 
+![Changing your password](./assets/password-change.png)
+
 ## Prerequisites
 
 - A SOGo 6 account with valid credentials

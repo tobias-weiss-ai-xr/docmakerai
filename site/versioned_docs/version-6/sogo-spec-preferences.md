@@ -14,6 +14,8 @@ Capture SOGo preferences and utility workflows as annotated WebP animations
 for the user guide. Covers general settings, password change, vacation
 auto-reply configuration, and global search.
 
+![The SOGo preferences](./assets/preferences.png)
+
 ## Prerequisites
 
 - authenticated session

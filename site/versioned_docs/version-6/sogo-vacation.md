@@ -28,7 +28,7 @@ in the calendar when you're on vacation or out of office.
 1. Click the **three-dot menu** (⋯) (Settings) in the top toolbar
 2. Select **Vacation** from the settings menu
 
-![Vacation settings menu](./assets/01-vacation-settings.png)
+![Vacation settings menu](./assets/vacation.png)
 
 ### Step 2: Enable Auto-Reply
 
@@ -197,7 +197,7 @@ SOGo 6 supports full keyboard navigation for vacation settings.
 1. `Tab` to message text area
 2. Type auto-reply message
 3. For multi-line: Enter to create new lines
-4. Screen reader announces: "Message, content editable, blank"
+4. You should hear: "Message, content editable, blank"
 
 **Step 6: Configure Reply Options**
 1. `Tab` to "Send reply to" dropdown
@@ -211,7 +211,7 @@ SOGo 6 supports full keyboard navigation for vacation settings.
 1. `Tab` to Save button
 2. `Enter` to activate
 3. Screen reader: "Save, button"
-4. Screen reader announces: "Settings saved" or "Auto-reply enabled"
+4. You should hear: "Settings saved" or "Auto-reply enabled"
 
 **Common Screen Reader Announcements:**
 
@@ -247,4 +247,4 @@ SOGo 6 supports theme customization (light/dark mode) via user preferences. Work
 **Important Toggle States:**
 - Toggle ON (checked) → Usually blue or highlighted background
 - Toggle OFF (unchecked) → Usually gray or unhighlighted  
-- Screen reader announces checked/unchecked status
+- You should hear the checked/unchecked status

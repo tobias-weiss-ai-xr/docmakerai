@@ -205,7 +205,7 @@ SOGo 5 supports full keyboard navigation for recurring events.
 **Step 5: Save Recurring Event**
 1. Tab to "Save" button
 2. Press `Enter`
-3. Screen reader announces series created
+3. You should hear a confirmation that the series was created
 
 **Common Screen Reader Announcements:**
 
