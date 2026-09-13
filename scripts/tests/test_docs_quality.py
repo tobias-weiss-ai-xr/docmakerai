@@ -890,8 +890,9 @@ def test_admonition_types_are_valid(md_files):
 #  "An error occurred during object publishing" page — nearly pure white,
 #  almost no edges, almost no colors).
 
-#: images that are legitimately near-empty (verified live captures)
-_BLANK_ALLOWED = {"logout.png"}
+#: files that are legitimately near-empty (verified live captures), as
+#: (site-relative dir, filename) — name-only would skip future copies
+_BLANK_ALLOWED = {("versioned_docs/version-6", "logout.png")}
 
 
 def _blank_metrics(png: Path):
@@ -915,7 +916,7 @@ def test_screenshots_are_not_blank_or_error_pages(doc_dir):
     colors and >= 1.5% edge pixels; error pages sit at luma ~248 / ~33 colors."""
     bad = []
     for png in sorted((doc_dir / "assets").glob("*.png")):
-        if png.name in _BLANK_ALLOWED:
+        if (str(doc_dir.relative_to(SITE)), png.name) in _BLANK_ALLOWED:
             continue
         edge_ratio, n_colors, luma = _blank_metrics(png)
         if (luma > 238 and n_colors < 60) or (edge_ratio < 0.0125 and n_colors < 45):
@@ -924,3 +925,90 @@ def test_screenshots_are_not_blank_or_error_pages(doc_dir):
         "Blank/error-page screenshot(s) detected (failed captures must be "
         "re-taken or removed, never published):\n" + "\n".join(bad)
     )
+
+
+# ---------------------------------------------------------------------------
+# Image provenance: wrong-version screenshots must never ship again
+# (the SOGo 5 logout doc showed SOGo 6's login page with a stale mockup arrow
+#  pointing at the layout switch — site/image-provenance.json records, per
+#  asset file, whether it is a SOGo 5 mockup, a SOGo 6 live capture, or
+#  deliberately shared between versions)
+
+_PROVENANCE = json.loads((SITE / "image-provenance.json").read_text(encoding="utf-8"))["assets"]
+
+
+def test_provenance_manifest_is_current():
+    """Every asset file has a provenance entry and every entry points at a
+    real file — a new image without provenance cannot slip into a doc, and
+    deleted files must not leave stale entries behind."""
+    on_disk = {str(p.relative_to(SITE)) for d in DOC_DIRS for p in (d / "assets").glob("*.png")}
+    listed = set(_PROVENANCE)
+    missing = sorted(on_disk - listed)
+    stale = sorted(listed - on_disk)
+    assert not missing, (
+        "images without provenance entry — classify them in "
+        "site/image-provenance.json (kind: sogo5-mockup | sogo6-live | shared):\n"
+        + "\n".join(missing)
+    )
+    assert not stale, "stale provenance entries (file deleted):\n" + "\n".join(stale)
+
+
+@pytest.mark.parametrize("doc_dir", DOC_DIRS, ids=lambda d: d.name + "-" + d.parent.name)
+def test_image_version_discipline(doc_dir):
+    """v5 docs must not show SOGo 6 captures and v6 docs must not show SOGo 5
+    mockups — the exact mixup behind the wrong logout screenshot. ``shared``
+    assets (settings pages unchanged between versions, T5.1/T5.2 decision) are
+    allowed for both; v6 references to SOGo 5 mockups are accepted only as
+    flagged T5.3 waivers."""
+    is_v5 = str(doc_dir).endswith("version-5")
+    rel_dir = str(doc_dir.relative_to(SITE))
+    bad = []
+    for md in sorted(doc_dir.glob("*.md")):
+        for name in re.findall(r"\]\(\./assets/([\w.-]+\.png)\)", md.read_text(encoding="utf-8")):
+            entry = _PROVENANCE[f"{rel_dir}/assets/{name}"]
+            kind = entry["kind"]
+            if kind == "shared":
+                continue
+            if is_v5 and kind == "sogo5-mockup":
+                continue
+            if not is_v5 and kind == "sogo6-live":
+                continue
+            if (
+                not is_v5
+                and kind == "sogo5-mockup"
+                and entry.get("waived")
+                and "T5.3" in entry.get("note", "")
+            ):
+                continue  # known backlog, tracked in the manifest
+            bad.append(f"{md.name}: {name} (kind={kind})")
+    assert not bad, (
+        "Wrong-version screenshot(s) wired into a doc — see "
+        "site/image-provenance.json:\n" + "\n".join(bad)
+    )
+
+
+# ---------------------------------------------------------------------------
+# SOGo 6 logout affordance: the live capture pipeline proves logout lives in
+# the avatar menu ("Click your avatar and select Logout",
+# capture/run_screenshot_captures.py:record_logout). The power icon is the
+# SOGo 5 toolbar affordance and must not be claimed for SOGo 6 docs again.
+
+_V6_FORBIDDEN_LOGOUT_CLAIMS = {
+    "power icon": "SOGo 6 logout is the avatar menu, not a power icon",
+    "Ein/Aus-Symbol": "SOGo 6 logout ist das Avatar-Menü, kein Ein/Aus-Symbol",
+}
+
+
+@pytest.mark.parametrize(
+    "doc_dir",
+    [d for d in DOC_DIRS if "version-6" in str(d)],
+    ids=lambda d: "v6-" + ("de" if "i18n" in str(d) else "en"),
+)
+def test_sogo6_docs_do_not_claim_power_icon_logout(doc_dir):
+    bad = [
+        f"{md.name}: '{phrase}'"
+        for md in sorted(doc_dir.glob("*.md"))
+        for phrase in _V6_FORBIDDEN_LOGOUT_CLAIMS
+        if phrase in md.read_text(encoding="utf-8")
+    ]
+    assert not bad, "SOGo 6 docs claim the SOGo 5 logout affordance:\n" + "\n".join(bad)
