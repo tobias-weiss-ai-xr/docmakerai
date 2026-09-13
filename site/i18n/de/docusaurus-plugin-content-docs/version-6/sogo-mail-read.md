@@ -23,7 +23,6 @@ Klicken Sie oben in der Navigationsleiste auf **E-Mail**, um den Posteingang zu 
 
 Der Posteingang zeigt Nachrichten als Liste an. Klicken Sie auf eine beliebige E-Mail, um sie anzuzeigen.
 
-![Mail-Posteingang in SOGo 6](./assets/01-mail-inbox.png)
 
 Die E-Mail wird im Vorschaufenster mit folgenden Abschnitten geöffnet:
 

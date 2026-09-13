@@ -21,7 +21,6 @@ Dieses Tutorial behandelt die Grundlagen des Verfassens und Sendens von E-Mails
 Klicken Sie oben in der Navigationsleiste auf **E-Mail**,
 um Ihren Posteingang zu öffnen.
 
-![E-Mail-Modul in der Navigationsleiste](./assets/01-mail-inbox.png)
 
 Ihr Posteingang zeigt empfangene Nachrichten in der Hauptansicht, mit Ordnern
 (Inbox, Gesendet, Entwürfe, Papierkorb) im linken Bereich.

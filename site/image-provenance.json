@@ -21,15 +21,7 @@
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
-    "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-contacts-module.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-mail-inbox.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
@@ -90,19 +82,7 @@
       "waived": true,
       "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
     },
-    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/01-contacts-module.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/01-mail-inbox.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "waived": true,
@@ -161,19 +141,11 @@
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
-    "versioned_docs/version-5/assets/01-contacts-module.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
     "versioned_docs/version-5/assets/01-event-dialog.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
     "versioned_docs/version-5/assets/01-mail-filters.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site"
-    },
-    "versioned_docs/version-5/assets/01-mail-inbox.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
@@ -193,27 +165,12 @@
       "kind": "sogo5-mockup",
       "origin": "original-site"
     },
-    "versioned_docs/version-5/assets/calendar-create-event.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
-    },
     "versioned_docs/version-5/assets/calendar-edit-delete.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
     },
-    "versioned_docs/version-5/assets/calendar-ical.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
-    },
     "versioned_docs/version-5/assets/calendar-recurring.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
-    },
-    "versioned_docs/version-5/assets/calendar-views.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
@@ -224,11 +181,6 @@
       "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
     },
     "versioned_docs/version-5/assets/contacts-edit-delete.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
-    },
-    "versioned_docs/version-5/assets/contacts-import-export.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "note": "same asset name as a live capture, but this is the older SOGo 5 illustration"
@@ -298,19 +250,7 @@
       "waived": true,
       "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
     },
-    "versioned_docs/version-6/assets/01-contacts-module.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
     "versioned_docs/version-6/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
-    "versioned_docs/version-6/assets/01-mail-inbox.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "waived": true,

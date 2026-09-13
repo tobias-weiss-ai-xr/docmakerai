@@ -21,7 +21,6 @@ und in Listen organisieren.
 Klicken Sie oben in der Navigationsleiste auf **Kontakte**,
 um Ihr Adressbuch zu öffnen.
 
-![Kontaktmodul in der Navigationsleiste](./assets/01-contacts-module.png)
 
 Die Kontaktansicht zeigt Ihr Adressbuch mit allen vorhandenen Kontakten.
 Auf der linken Seite sehen Sie Ihre Adressbücher und Listen.
