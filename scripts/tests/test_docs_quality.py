@@ -220,10 +220,12 @@ def test_no_outdated_ui_references(md_files, pattern, what):
     # das Zahnrad diesmal"). Only flag gear words NOT tied to settings.
     if what in ("Zahnrad (gear icon)", "gear icon"):
         bad = [
-            v for v in bad
+            v
+            for v in bad
             if not re.search(
                 r"Einstellungen|Settings|settings|kein Zahnrad|no gear icon",
-                _line(v), re.IGNORECASE
+                _line(v),
+                re.IGNORECASE,
             )
         ]
     assert not bad, f"'{what}' — SOGo 5 uses top nav + three-dot menu:\n" + "\n".join(bad)
