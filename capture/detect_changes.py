@@ -40,6 +40,25 @@ def load_baseline(workflow: str, baselines_dir: Path = DEFAULT_BASELINES_DIR) ->
     return json.loads(f.read_text())["phash"]
 
 
+def find_duplicates(
+    image_paths: list[Path], threshold: int = DEFAULT_THRESHOLD
+) -> list[tuple[int, Path, Path]]:
+    """Return all pairs of images whose phash distance is below threshold.
+
+    Guards against the same UI state being shipped as several "different"
+    doc screenshots (e.g. an empty calendar presented as event dialog AND
+    freebusy grid).
+    """
+    hashes = [(p, imagehash.phash(Image.open(p))) for p in image_paths]
+    dupes = []
+    for i, (p1, h1) in enumerate(hashes):
+        for p2, h2 in hashes[i + 1 :]:
+            dist = h1 - h2
+            if dist < threshold:
+                dupes.append((dist, p1, p2))
+    return dupes
+
+
 def detect_drift(
     workflow: str,
     new_phash: str,

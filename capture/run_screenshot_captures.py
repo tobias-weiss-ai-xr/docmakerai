@@ -25,8 +25,10 @@ from playwright.async_api import BrowserContext, Page, async_playwright
 
 try:
     from capture.annotate import annotate_frame
+    from capture.detect_changes import find_duplicates
 except ImportError:
     from annotate import annotate_frame
+    from detect_changes import find_duplicates
 
 
 ROOT = Path(__file__).resolve().parent
@@ -234,6 +236,38 @@ async def _clear_overlays(page) -> None:
     await page.wait_for_timeout(200)
 
 
+class CaptureError(RuntimeError):
+    """Target UI state could not be reached — fail the workflow instead of
+    capturing an empty/wrong screenshot (the old `if is_visible: click`
+    pattern silently skipped actions and shipped identical empty shots)."""
+
+
+async def require(locator, what: str, timeout_ms: int = 10000) -> None:
+    """Hard-fail wait: continue only when `what` is actually visible."""
+    try:
+        await locator.first.wait_for(state="visible", timeout=timeout_ms)
+    except Exception as e:
+        raise CaptureError(f"UI state not reached: {what}") from e
+
+
+async def click_required(page, selector: str, what: str, timeout_ms: int = 10000) -> None:
+    loc = page.locator(selector).first
+    await require(loc, what, timeout_ms)
+    await safe_click(loc)
+
+
+async def fill_required(page, selector: str, value: str, what: str, timeout_ms: int = 10000) -> None:
+    loc = page.locator(selector).first
+    await require(loc, what, timeout_ms)
+    await loc.fill(value)
+
+
+async def wait_outcome(page, text: str, what: str, timeout_ms: int = 10000) -> None:
+    """Verify-then-shoot: the concrete result (e.g. the event title in the
+    grid) must be visible before a screenshot is allowed."""
+    await require(page.get_by_text(text), what, timeout_ms)
+
+
 async def safe_click(locator, timeout_ms: int = 5000) -> None:
     """Click with a DOM-click fallback when overlays still intercept."""
     try:
@@ -300,12 +334,32 @@ class ScreenshotRecorder:
     async def result(self, page, text: str) -> None:
         print(f"   [RESULT] {text}")
 
-    async def capture(self, page, label: str) -> Path | None:
-        """Take a full-page screenshot and annotate it with the given label."""
+    async def capture(self, page, label: str, scope=None, margin: int = 24) -> Path | None:
+        """Screenshot at the result moment, annotated with the given label.
+
+        With ``scope`` (a Locator), captures that widget (dialog, panel) with
+        a margin instead of the full viewport — the gist fills the frame.
+        """
         raw_path = self.screenshot_dir / f"{self.name}_raw.png"
         annotated_path = self.screenshot_dir / f"{self.name}.png"
         try:
-            await page.screenshot(path=str(raw_path), full_page=False)
+            if scope is not None:
+                box = await scope.bounding_box()
+            else:
+                box = None
+            if box:
+                vp = page.viewport_size or {"width": 1280, "height": 800}
+                x = max(0, box["x"] - margin)
+                y = max(0, box["y"] - margin)
+                clip = {
+                    "x": x,
+                    "y": y,
+                    "width": min(vp["width"] - x, box["width"] + 2 * margin),
+                    "height": min(vp["height"] - y, box["height"] + 2 * margin),
+                }
+                await page.screenshot(path=str(raw_path), clip=clip)
+            else:
+                await page.screenshot(path=str(raw_path), full_page=False)
         except Exception as e:
             print(f"  Screenshot failed: {e}")
             return None
@@ -337,64 +391,105 @@ class ScreenshotRecorder:
         return annotated_path
 
 
+async def dismiss_hints(page) -> None:
+    """Best-effort dismissal of first-run hint/consent overlays (e.g. the
+    'Got it' bubble). Intentionally NOT a hard requirement: the overlay is
+    ephemeral UI, not part of any workflow's target state."""
+    with contextlib.suppress(Exception):
+        btn = page.locator('button:has-text("Got it")').first
+        if await btn.is_visible(timeout=2000):
+            await btn.click()
+            await page.wait_for_timeout(500)
+
+
 # ── Workflow Runners (Task-First Narrative) ──
 
 
 async def record_calendar_create_event(context: BrowserContext) -> Path | None:
-    """Task-first capture: Create a new calendar event."""
+    """Create a calendar event: open dialog, fill real details, save, verify."""
     rec = ScreenshotRecorder("calendar-create-event", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
-    await page.wait_for_timeout(1000)
+    await dismiss_hints(page)
 
-    # 1. CONTEXT: User needs to schedule a meeting
-    await rec.context(page, "Schedule a team meeting to discuss project updates")
-    await page.wait_for_timeout(800)
+    await click_required(page, 'button:has-text("Create Event")', "'Create Event' button")
+    dlg = page.locator("[role='dialog']").first
+    await require(dlg, "event dialog")
 
-    # 2. CHALLENGE: Finding where to create an event
-    await rec.challenge(page, "Click the 'Create Event' button to open the event editor")
-    create_btn = page.locator('button:has-text("Create Event")').first
-    if await create_btn.is_visible(timeout=3000):
-        await create_btn.click()
-        await page.wait_for_timeout(1500)
+    # Fill real data — an empty dialog tells the reader nothing.
+    await fill_required(
+        page,
+        "[role='dialog'] input[placeholder='Enter event title']",
+        "Team Meeting",
+        "event title field",
+    )
+    await fill_required(
+        page,
+        "[role='dialog'] input[placeholder='Add location']",
+        "Meeting Room 2",
+        "location field",
+    )
+    await page.wait_for_timeout(500)
 
-    # 3. SOLUTION: Fill in event details and save
-    await rec.solution(page, "Enter event title, set date and time, then save the event")
-    await page.wait_for_timeout(1500)
+    # The filled dialog IS the instructional gist — capture it scoped.
+    shot = await rec.capture(
+        page, "Creating a new event: title, time and location", scope=dlg
+    )
 
-    # 4. RESULT: Event is created and visible on the calendar
-    await rec.result(page, "The new event appears on the calendar at the scheduled time")
-    await page.wait_for_timeout(800)
-    return await rec.capture(page, "The new event appears on the calendar at the scheduled time")
+    # Verify-then-keep: the event must actually save and appear.
+    await click_required(
+        page,
+        "[role='dialog'] button:has-text('Create Event')",
+        "dialog 'Create Event' submit button",
+    )
+    await wait_outcome(page, "Team Meeting", "saved event in the calendar grid")
+    return shot
 
 
 async def record_calendar_recurring(context: BrowserContext) -> Path | None:
-    """Task-first capture: Create a recurring weekly event."""
+    """Recurring event: enable Repeat, pick weekly, save, verify."""
     rec = ScreenshotRecorder("calendar-recurring", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
-    await page.wait_for_timeout(1000)
+    await dismiss_hints(page)
 
-    await rec.context(page, "Set up a recurring weekly meeting that repeats automatically")
-    await page.wait_for_timeout(600)
+    await click_required(page, 'button:has-text("Create Event")', "'Create Event' button")
+    dlg = page.locator("[role='dialog']").first
+    await require(dlg, "event dialog")
 
-    await rec.challenge(
-        page, "Manually creating the same event every week is tedious and error-prone"
+    await fill_required(
+        page,
+        "[role='dialog'] input[placeholder='Enter event title']",
+        "Weekly Standup",
+        "event title field",
     )
-    create_btn = page.locator('button:has-text("Create Event")').first
-    if await create_btn.is_visible(timeout=3000):
-        await create_btn.click()
-        await page.wait_for_timeout(1000)
 
-    await rec.solution(page, "Enter event details and save to confirm the event creation")
-    title = page.locator('input[placeholder="Enter event title"]').first
-    if await title.is_visible(timeout=3000):
-        await title.fill("Weekly Team Standup")
+    # Enable repetition; shoot with the frequency dropdown OPEN — clearly
+    # distinct from the plain filled dialog, and shows the actual options.
+    switch = dlg.locator("div:has(> label:has-text('Repeat')) button[role='switch']")
+    await require(switch, "'Repeat' toggle switch")
+    await switch.click()
+    await page.wait_for_timeout(800)
+    freq = dlg.locator("[role='combobox']:has-text('Week')").first
+    await require(freq, "recurrence frequency selector")
+    await freq.click()
+    await page.locator("[role='option']").first.wait_for(state="visible", timeout=8000)
+    await page.wait_for_timeout(400)
+
+    shot = await rec.capture(
+        page, "Configuring a weekly recurring event", scope=dlg
+    )
+
+    await page.locator("[role='option']", has_text="Week(s)").first.click()
     await page.wait_for_timeout(600)
 
-    await rec.result(page, "Event is created and appears on the calendar")
-    await page.wait_for_timeout(800)
-    return await rec.capture(page, "Event is created and appears on the calendar")
+    await click_required(
+        page,
+        "[role='dialog'] button:has-text('Create Event')",
+        "dialog 'Create Event' submit button",
+    )
+    await wait_outcome(page, "Weekly Standup", "saved recurring event in the calendar grid")
+    return shot
 
 
 async def record_mail_compose(context: BrowserContext) -> Path | None:
@@ -593,27 +688,45 @@ async def record_calendar_share(context: BrowserContext) -> Path | None:
 
 
 async def record_freebusy(context: BrowserContext) -> Path | None:
-    """Task-first capture: Create a new calendar event."""
+    """Invite attendees: the event dialog with an attendee added.
+
+    The SOGo 6 event form has no separate free/busy grid — the truthful
+    figure for the availability workflow is the attendee section of the
+    dialog (the doc caption says so).
+    """
     rec = ScreenshotRecorder("freebusy", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "calendar")
-    await page.wait_for_timeout(1000)
+    await dismiss_hints(page)
 
-    await rec.context(page, "Schedule a team meeting using the calendar")
-    await page.wait_for_timeout(1000)
+    await click_required(page, 'button:has-text("Create Event")', "'Create Event' button")
+    dlg = page.locator("[role='dialog']").first
+    await require(dlg, "event dialog")
 
-    await rec.challenge(page, "Click the Create Event button to open the event editor")
-    create_btn = page.locator('button:has-text("Create Event")').first
-    if await create_btn.is_visible(timeout=3000):
-        await create_btn.click()
-        await page.wait_for_timeout(1500)
+    await fill_required(
+        page,
+        "[role='dialog'] input[placeholder='Enter event title']",
+        "Project Sync",
+        "event title field",
+    )
+    search = dlg.locator("input[placeholder='Search by name or email...']")
+    await require(search, "attendee search field")
+    await search.scroll_into_view_if_needed()
+    await search.fill("sogo-tests2@example.org")
+    # The suggestion option renders an (untranslated) i18n key, not the
+    # address — wait for any option, then click it.
+    await require(page.locator("[role='option']").first, "attendee suggestion")
+    await page.locator("[role='option']").first.click()
+    await wait_outcome(page, "sogo-tests2@example.org", "added attendee in the dialog")
 
-    await rec.solution(page, "Fill in the event title and details in the event editor")
-    await page.wait_for_timeout(1000)
-
-    await rec.result(page, "Event can be created with a title and basic details")
-    await page.wait_for_timeout(800)
-    return await rec.capture(page, "Event can be created with a title and basic details")
+    # Scope to the attendee section (search + added chip + busy status):
+    # the gist of inviting attendees, not another full-dialog shot.
+    section = search.locator(
+        "xpath=ancestor::div[contains(@class,'space-y-2')][1]"
+    )
+    return await rec.capture(
+        page, "Inviting attendees: added participant with busy status", scope=section
+    )
 
 
 async def record_logout(context: BrowserContext) -> Path | None:
@@ -967,8 +1080,40 @@ async def setup_authenticated_context(browser, _video_dir=None) -> BrowserContex
 # ── Main ──
 
 
+WORKFLOWS = [
+    ("calendar-create-event", "record_calendar_create_event"),
+    ("calendar-recurring", "record_calendar_recurring"),
+    ("mail-compose", "record_mail_compose"),
+    ("contacts-add", "record_contacts_add"),
+    ("vacation", "record_vacation"),
+    ("mail-signatures", "record_mail_signatures"),
+    ("mail-filters", "record_mail_filters"),
+    ("calendar-subscribe", "record_calendar_subscribe"),
+    ("calendar-share", "record_calendar_share"),
+    ("freebusy", "record_freebusy"),
+    ("logout", "record_logout"),
+    ("preferences", "record_preferences"),
+    ("calendar-views", "record_calendar_views"),
+    ("contacts-edit-delete", "record_contacts_edit_delete"),
+    ("calendar-edit-delete", "record_calendar_edit_delete"),
+    ("global-search", "record_global_search"),
+    ("mail-read", "record_mail_read"),
+    ("mail-folder-management", "record_mail_folder_management"),
+    ("mail-reply-forward-delete", "record_mail_reply_forward_delete"),
+    ("password-change", "record_password_change"),
+    ("calendar-ical", "record_calendar_ical"),
+    ("contacts-import-export", "record_contacts_import_export"),
+]
+
+
 async def main():
     clean_dirs()
+
+    # --only wf1,wf2: run a subset (proof runs, targeted re-captures)
+    only = None
+    if len(sys.argv) > 2 and sys.argv[1] == "--only":
+        only = {w.strip() for w in sys.argv[2].split(",") if w.strip()}
+    selected = [wf for wf in WORKFLOWS if only is None or wf[0] in only]
 
     async with async_playwright() as p:
         verify_browser = await p.chromium.launch(
@@ -988,36 +1133,11 @@ async def main():
             await verify_browser.close()
         print("  Login verified.\n")
 
-    workflows = [
-        ("calendar-create-event", "record_calendar_create_event"),
-        ("calendar-recurring", "record_calendar_recurring"),
-        ("mail-compose", "record_mail_compose"),
-        ("contacts-add", "record_contacts_add"),
-        ("vacation", "record_vacation"),
-        ("mail-signatures", "record_mail_signatures"),
-        ("mail-filters", "record_mail_filters"),
-        ("calendar-subscribe", "record_calendar_subscribe"),
-        ("calendar-share", "record_calendar_share"),
-        ("freebusy", "record_freebusy"),
-        ("logout", "record_logout"),
-        ("preferences", "record_preferences"),
-        ("calendar-views", "record_calendar_views"),
-        ("contacts-edit-delete", "record_contacts_edit_delete"),
-        ("calendar-edit-delete", "record_calendar_edit_delete"),
-        ("global-search", "record_global_search"),
-        ("mail-read", "record_mail_read"),
-        ("mail-folder-management", "record_mail_folder_management"),
-        ("mail-reply-forward-delete", "record_mail_reply_forward_delete"),
-        ("password-change", "record_password_change"),
-        ("calendar-ical", "record_calendar_ical"),
-        ("contacts-import-export", "record_contacts_import_export"),
-    ]
-
     start_time = time.time()
     results = []
     worker_script = Path(__file__).parent / "run_single_screenshot.py"
 
-    for name, fn_name in workflows:
+    for name, fn_name in selected:
         print(f"\n── {name} ──")
         wf_start = time.time()
         proc = await asyncio.create_subprocess_exec(
@@ -1069,6 +1189,16 @@ async def main():
     total_ok = sum(1 for _, ok, _ in results if ok)
     print(f"\n  {total_ok}/{len(results)} succeeded")
     print(f"\n  Total time: {time.time() - start_time:.1f}s")
+
+    # Duplicate gate: two workflows producing the same image means at least
+    # one captured the wrong state. Fail the run instead of shipping the lie.
+    shots = sorted(SCREENSHOT_DIR.glob("*.png"))
+    dupes = find_duplicates(shots)
+    if dupes:
+        print("\n  ✗ Near-duplicate screenshots — same state captured under different names:")
+        for d, a, b in dupes:
+            print(f"    dist={d}: {a.name} <-> {b.name}")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

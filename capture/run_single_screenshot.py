@@ -41,9 +41,22 @@ async def run_one(module_path: str, fn_name: str):
         else:
             print(json.dumps({"ok": False, "error": "no result"}))
     except Exception as e:
+        # A failed workflow must not leave a screenshot behind: main() treats
+        # an existing PNG as success, so a half-captured shot of the wrong
+        # state would silently "succeed".
+        stem = fn_name[len("record_") :].replace("_", "-")
+        for suffix in (".png", "_raw.png", "_metadata.json"):
+            with contextlib_suppress():
+                (SCREENSHOT_DIR / f"{stem}{suffix}").unlink()
         print(json.dumps({"ok": False, "error": str(e)}))
     sys.stdout.flush()
     os._exit(0)
+
+
+def contextlib_suppress():
+    import contextlib
+
+    return contextlib.suppress(OSError)
 
 
 if __name__ == "__main__":

@@ -30,6 +30,39 @@ make capture-sogo6
 ## Capture a Single Doc
 
 ```bash
+# Subset run (targeted re-captures / proofs):
+SOGO_URL=https://demov6.sogo.nu SOGO_ENV_INTERCEPT=0 \
+  python3 capture/run_screenshot_captures.py --only calendar-create-event,calendar-recurring,freebusy
+```
+
+## Truthful Capture Rules (read before porting a workflow)
+
+Workflows must capture states that were **verified to exist**, not whatever
+happened to be on screen when a timer ran out:
+
+- **Hard-fail interactions**: use `click_required` / `fill_required` /
+  `require` instead of `if await loc.is_visible(): ...`. A missed selector
+  raises `CaptureError` and the workflow produces NO screenshot — the old
+  silent-skip pattern shipped identical empty-calendar shots under names
+  like "freebusy grid".
+- **Verify-then-shoot**: `wait_outcome(page, "Team Meeting", ...)` asserts
+  the concrete result (saved event in the grid) before keeping a capture.
+  The worker deletes any artifact if a later step fails.
+- **Element-scoped capture**: `rec.capture(page, label, scope=locator)`
+  frames the relevant dialog/section with a margin — the gist fills the
+  image instead of an empty viewport.
+- **Duplicate gate**: `scripts/tests/test_screenshot_duplicates.py` fails
+  CI if any two shipped (non-mockup) assets are perceptually near-identical
+  (phash distance < 10, `capture/detect_changes.py::find_duplicates`). The
+  run itself also fails on duplicate output. Known-broken legacy v6 assets
+  are listed in `BROKEN_V6_LEGACY` in the test — remove a name there when
+  its re-capture lands. v5 dirs are strict-xfail pending a SOGo 5 demo
+  stack (demo.sogo.nu rejects demo/demo).
+- Live demo: `SOGO_URL=https://demov6.sogo.nu SOGO_ENV_INTERCEPT=0` (the
+  public demo serves a correct same-origin /env; the intercept is only for
+  the local stack).
+
+```bash
 make capture-sogo6-doc DOC=calendar-create-event
 make capture-sogo6-doc DOC=mail-compose
 make capture-sogo6-doc DOC=logout

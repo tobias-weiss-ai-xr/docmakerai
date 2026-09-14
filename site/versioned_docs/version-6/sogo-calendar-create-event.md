@@ -46,7 +46,7 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
-![Creating a new event in the SOGo 6 calendar](./assets/calendar-create-event.png)
+![Creating a new event: filled event dialog](./assets/calendar-create-event.png)
 
 ### Step 3: Enter Event Details
 
@@ -241,7 +241,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 ### Visual Content Descriptions
 
-**calendar-create-event.png:** This static screenshot shows creating a calendar event in SOGo 6's week view.
+**calendar-create-event.png:** Static screenshot of the filled event dialog (title, time, location) in SOGo 6.
 
 
 **Screen Reader Alternative:** If you cannot view this image, please use the **Screen Reader Workflow** section above. It provides the same information in text format suitable for screen readers.
