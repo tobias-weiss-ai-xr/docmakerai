@@ -1,0 +1,6 @@
+{
+  "workflow": "calendar-recurring",
+  "label": "Weekly recurrence selected in event dialog",
+  "png_file": "calendar-recurring.png",
+  "png_size_kb": 38
+}

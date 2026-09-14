@@ -29,14 +29,6 @@ sys.path.insert(0, str(ROOT))
 
 from capture.detect_changes import DEFAULT_THRESHOLD, find_duplicates  # noqa: E402
 
-V5_BLOCKED = (
-    "Known v5 duplicate cluster (same empty calendar shipped as event dialog, "
-    "freebusy grid, recurrence options, ...). Re-capture blocked: no SOGo 5 "
-    "instance available (demo.sogo.nu rejects demo/demo; local docker stack "
-    "removed). Stand up a SOGo 5 demo stack, re-capture with "
-    "capture/run_screenshot_captures.py helpers, then remove this xfail."
-)
-
 # Old run_screenshot_captures.py output in version-6 EN, shipped before the
 # verify-then-shoot mechanism existed: several of these are the SAME broken
 # empty-UI capture (calendar-edit-delete == calendar-ical == calendar-share
@@ -85,10 +77,7 @@ def _provenance() -> dict:
 
 
 @pytest.mark.parametrize("asset_dir", ASSET_DIRS)
-def test_no_near_duplicate_assets(asset_dir: str, request) -> None:
-    if "/version-5/" in f"/{asset_dir}/":
-        request.applymarker(pytest.mark.xfail(strict=True, reason=V5_BLOCKED))
-
+def test_no_near_duplicate_assets(asset_dir: str) -> None:
     base = ROOT / asset_dir
     pngs = sorted(base.glob("*.png"))
     assert pngs, f"{asset_dir} contains no screenshots"

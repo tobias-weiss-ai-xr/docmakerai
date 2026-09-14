@@ -1,0 +1,6 @@
+{
+  "workflow": "contacts-edit-delete",
+  "label": "Editing a contact's phone number and saving changes",
+  "png_file": "contacts-edit-delete.png",
+  "png_size_kb": 63
+}
