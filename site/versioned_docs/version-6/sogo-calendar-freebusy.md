@@ -35,12 +35,12 @@ meeting — directly from the event creation dialog.
 3. Select the person from the auto-complete list
 4. Repeat for each person you want to check
 
-Once attendees are entered, the free/busy grid opens automatically —
-there is no separate Free/Busy button.
+Once attendees are entered, the event dialog shows each attendee's
+availability (busy) status.
 
 ![Free/busy availability grid](./assets/02-freebusy-grid.png)
 
-![Free/busy grid showing colleague availability](./assets/freebusy.png)
+![Adding attendees to an event](./assets/freebusy.png)
 
 ### Step 3: Read the Grid
 
@@ -180,7 +180,7 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 
 ### Visual Content Descriptions
 
-**[freebusy.png]:** Animated demonstration of checking colleague availability via the free/busy grid in SOGo 6.
+**[freebusy.png]:** Static screenshot of adding an attendee with their availability (busy) status in the SOGo 6 event dialog.
 
 
 ### High Contrast Mode

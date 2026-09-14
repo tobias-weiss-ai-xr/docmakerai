@@ -266,7 +266,8 @@
     },
     "versioned_docs/version-6/assets/calendar-create-event.png": {
       "kind": "sogo6-live",
-      "origin": "live-pipeline"
+      "origin": "live-capture",
+      "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
     },
     "versioned_docs/version-6/assets/calendar-edit-delete.png": {
       "kind": "sogo6-live",
@@ -278,7 +279,8 @@
     },
     "versioned_docs/version-6/assets/calendar-recurring.png": {
       "kind": "sogo6-live",
-      "origin": "live-pipeline"
+      "origin": "live-capture",
+      "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
     },
     "versioned_docs/version-6/assets/calendar-share.png": {
       "kind": "sogo6-live",
@@ -306,7 +308,8 @@
     },
     "versioned_docs/version-6/assets/freebusy.png": {
       "kind": "sogo6-live",
-      "origin": "live-pipeline"
+      "origin": "live-capture",
+      "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
     },
     "versioned_docs/version-6/assets/global-search.png": {
       "kind": "sogo6-live",
