@@ -1,0 +1,6 @@
+{
+  "workflow": "mail-reply-forward-delete",
+  "label": "Mail open with reply, forward and delete actions",
+  "png_file": "mail-reply-forward-delete.png",
+  "png_size_kb": 67
+}

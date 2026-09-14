@@ -1,0 +1,6 @@
+{
+  "workflow": "02-freebusy-grid",
+  "label": "Free/busy availability grid",
+  "png_file": "02-freebusy-grid.png",
+  "png_size_kb": 26
+}

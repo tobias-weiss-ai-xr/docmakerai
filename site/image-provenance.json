@@ -9,42 +9,42 @@
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-create-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-recurring-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-calendar-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/01-event-dialog.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/02-freebusy-grid.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/02-recurrence-options.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/03-recurring-saved.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/mail-filters.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/00-login-page.png": {
       "kind": "sogo5-mockup",
@@ -123,42 +123,42 @@
     "versioned_docs/version-5/assets/01-calendar-create-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/01-calendar-recurring-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/01-calendar-view.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/01-event-dialog.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/01-mail-filters.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/02-freebusy-grid.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/02-recurrence-options.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/03-recurring-saved.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/calendar-edit-delete.png": {
       "kind": "sogo5-live",
@@ -168,27 +168,27 @@
     "versioned_docs/version-5/assets/calendar-recurring.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/contacts-add.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/contacts-edit-delete.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/freebusy.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/global-search.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/mail-compose.png": {
       "kind": "sogo5-live",
@@ -198,12 +198,12 @@
     "versioned_docs/version-5/assets/mail-folder-management.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/mail-reply-forward-delete.png": {
       "kind": "sogo5-live",
       "origin": "live-capture",
-      "note": "Real SOGo 5.8 live capture from the docker demo stack (SOGo 5 + Stalwart mail, German/English UI)"
+      "note": "Real SOGo 5 live re-capture from the dedicated sogo5-capture stack on vhrz2392 (SOGo 5.12.9 nightwing accessibility image, LDAP/Postgres, port 8085). Distinct-state framing per duplicate gate. Freebusy grids render without busy bars: this build's freebusy.ifb/ajaxRead page-action 500s (upstream demo returns 200)."
     },
     "versioned_docs/version-5/assets/preferences.png": {
       "kind": "sogo5-live",

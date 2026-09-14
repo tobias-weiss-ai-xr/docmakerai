@@ -334,7 +334,8 @@ class ScreenshotRecorder:
     async def result(self, page, text: str) -> None:
         print(f"   [RESULT] {text}")
 
-    async def capture(self, page, label: str, scope=None, margin: int = 24) -> Path | None:
+    async def capture(self, page, label: str, scope=None, margin: int = 24,
+                      locale: str = "en") -> Path | None:
         """Screenshot at the result moment, annotated with the given label.
 
         With ``scope`` (a Locator), captures that widget (dialog, panel) with
@@ -364,13 +365,14 @@ class ScreenshotRecorder:
             print(f"  Screenshot failed: {e}")
             return None
         if not raw_path.exists() or raw_path.stat().st_size < 1000:
+            raw_path.unlink(missing_ok=True)
             return None
         annotate_frame(
             str(raw_path),
             label,
             4,
             [],
-            locale="en",
+            locale=locale,
             output_path=str(annotated_path),
         )
         raw_path.unlink(missing_ok=True)
