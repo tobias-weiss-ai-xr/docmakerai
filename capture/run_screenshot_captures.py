@@ -339,16 +339,25 @@ class ScreenshotRecorder:
                       locale: str = "en") -> Path | None:
         """Screenshot at the result moment, annotated with the given label.
 
-        With ``scope`` (a Locator), captures that widget (dialog, panel) with
-        a margin instead of the full viewport — the gist fills the frame.
+        With ``scope`` (a Locator, or a list of Locators whose bounding
+        boxes are unioned), captures that widget (dialog, panel, section)
+        with a margin instead of the full viewport — the gist fills the
+        frame.
         """
         raw_path = self.screenshot_dir / f"{self.name}_raw.png"
         annotated_path = self.screenshot_dir / f"{self.name}.png"
         try:
+            box = None
             if scope is not None:
-                box = await scope.bounding_box()
-            else:
-                box = None
+                scopes = scope if isinstance(scope, list) else [scope]
+                boxes = [b for b in await asyncio.gather(*(s.bounding_box() for s in scopes)) if b]
+                if boxes:
+                    box = {
+                        "x": min(b["x"] for b in boxes),
+                        "y": min(b["y"] for b in boxes),
+                        "width": max(b["x"] + b["width"] for b in boxes) - min(b["x"] for b in boxes),
+                        "height": max(b["y"] + b["height"] for b in boxes) - min(b["y"] for b in boxes),
+                    }
             if box:
                 vp = page.viewport_size or {"width": 1280, "height": 800}
                 x = max(0, box["x"] - margin)
@@ -476,11 +485,17 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     freq = dlg.locator("[role='combobox']:has-text('Week')").first
     await require(freq, "recurrence frequency selector")
     await freq.click()
+    options = page.locator("[role='listbox']").first
+    await require(options, "recurrence frequency options listbox")
     await page.locator("[role='option']").first.wait_for(state="visible", timeout=8000)
     await page.wait_for_timeout(400)
 
+    # Scene = the recurrence controls with the frequency options open — a
+    # plain dialog shot phash-clashes with calendar-create-event (dist=8).
+    repeat_section = switch.locator("xpath=ancestor::div[2]")
     shot = await rec.capture(
-        page, "Configuring a weekly recurring event", scope=dlg
+        page, "Configuring a weekly recurring event: frequency options",
+        scope=[repeat_section, freq, options],
     )
 
     await page.locator("[role='option']", has_text="Week(s)").first.click()
@@ -520,7 +535,10 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(500)
 
     # Filled compose panel IS the instructional gist — actual sending not needed.
-    return await rec.capture(page, "Compose panel: To, Subject, and body filled")
+    # Scene = the floating compose panel (3rd div ancestor of Send:
+    # button-group -> footer bar -> panel; probe 2026-09-14).
+    panel = page.get_by_role("button", name="Send").locator("xpath=ancestor::div[3]")
+    return await rec.capture(page, "Compose panel: To, Subject, and body filled", scope=panel)
 
 
 async def record_contacts_add(context: BrowserContext) -> Path | None:
@@ -542,8 +560,11 @@ async def record_contacts_add(context: BrowserContext) -> Path | None:
     await em.fill("john.doe@company.com")
     await page.wait_for_timeout(500)
 
+    # Scene = the identity section (name + email rows) — a full dialog shot
+    # phash-clashes with the calendar event dialogs (dist=8).
+    identity = page.locator('input[name="firstName"]').locator("xpath=ancestor::div[3]")
     return await rec.capture(
-        page, "New contact dialog with First Name, Last Name, Email filled", scope=dlg
+        page, "New contact: First Name, Last Name, Email filled", scope=identity
     )
 
 
@@ -559,7 +580,7 @@ async def record_vacation(context: BrowserContext) -> Path | None:
     await require(section, "Vacation settings section")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Vacation auto-reply settings page")
+    return await rec.capture(page, "Vacation auto-reply settings", scope=section)
 
 
 async def record_mail_signatures(context: BrowserContext) -> Path | None:
@@ -570,9 +591,13 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     await navigate_to_settings(page, "Email")
 
     await require(page.get_by_text("Signature"), "Signature settings section")
+    sig_section = page.locator("form, section").filter(has_text="Signature").first
+    await require(sig_section, "Signature settings form")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Email settings page showing the Signature configuration section")
+    return await rec.capture(
+        page, "Email settings: Signature configuration", scope=sig_section
+    )
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
@@ -585,7 +610,9 @@ async def record_mail_filters(context: BrowserContext) -> Path | None:
     await wait_outcome(page, "Add filter", "Filters list with 'Add filter' button")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Mail Filters settings page")
+    filters_form = page.locator("form").filter(has_text="Add filter").first
+    await require(filters_form, "Filters form")
+    return await rec.capture(page, "Mail Filters settings", scope=filters_form)
 
 
 async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
@@ -681,9 +708,11 @@ async def record_preferences(context: BrowserContext) -> Path | None:
     await navigate_to_settings(page, "General")
 
     await require(page.get_by_text("Timezone"), "Timezone setting")
+    gen_form = page.locator("form").filter(has_text="Timezone").first
+    await require(gen_form, "General settings form")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "General Preferences settings page")
+    return await rec.capture(page, "General Preferences settings", scope=gen_form)
 
 
 async def record_calendar_views(context: BrowserContext) -> Path | None:
@@ -737,10 +766,13 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     await phone_in.fill("+1 555-1234")
     await page.wait_for_timeout(400)
 
-    # Full page, not scope=dlg: a scoped contact dialog is visually near-
-    # identical to the calendar event dialogs (phash dist=8 → duplicate gate
-    # flags it). Full page keeps the address-book context and stays distinct.
-    return await rec.capture(page, "Contact dialog: editing phone number in new contact")
+    # Scene = the phone section of the contact dialog (the caption's subject;
+    # also visually distinct from the calendar event dialogs).
+    phone_section = phone_in.locator("xpath=ancestor::div[3]")
+    return await rec.capture(
+        page, "Contact dialog: editing phone number in new contact",
+        scope=[phone_section, dlg.locator('button:has-text("Add phone")')],
+    )
 
 
 async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
@@ -759,10 +791,12 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(800)
 
     # Wait for details/popover with Edit/Delete
-    await require(page.locator('button:has-text("Edit"), [role="button"][aria-label*="Edit"]').first, "Edit button")
+    edit_btn = page.locator('button:has-text("Edit"), [role="button"][aria-label*="Edit"]').first
+    await require(edit_btn, "Edit button")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Calendar event detailed view with Edit and Delete options")
+    popover = page.locator("[role='dialog']").first
+    return await rec.capture(page, "Event details: Edit and Delete options", scope=popover)
 
 
 async def record_global_search(context: BrowserContext) -> Path | None:
@@ -779,10 +813,17 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     # Search executes on Enter; a filter popover (role=dialog) opens (probe
     # 2026-09-14). Wait for it as the visible outcome.
     await page.keyboard.press("Enter")
-    await require(page.locator("[role='dialog']").first, "Search filter popover")
+    popover = page.locator("[role='dialog']").first
+    await require(popover, "Search filter popover")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Global search: search term entered and results shown")
+    # Scene = search bar (3rd div ancestor of the input: wrapper -> flex-1
+    # -> header search cluster) united with the filter popover.
+    search_cluster = search_in.locator("xpath=ancestor::div[3]")
+    return await rec.capture(
+        page, "Global search: term entered, filter popover open",
+        scope=[search_cluster, popover],
+    )
 
 
 async def record_mail_read(context: BrowserContext) -> Path | None:
@@ -815,7 +856,7 @@ async def record_mail_read(context: BrowserContext) -> Path | None:
     await require(pane.get_by_text(subject), "Subject in reading pane")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Message opened in reading pane")
+    return await rec.capture(page, "Message opened in reading pane", scope=pane)
 
 
 async def record_mail_folder_management(context: BrowserContext) -> Path | None:
@@ -835,7 +876,9 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
     await require(page.get_by_text("Sent"), "Sent folder content context")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Mail folder sidebar with Sent folder open")
+    folder_list = sent.locator("xpath=ancestor::ul[1]")
+    await require(folder_list, "folder list")
+    return await rec.capture(page, "Mail folder sidebar with Sent folder open", scope=folder_list)
 
 
 # NOTE: record_mail_reply_forward_delete was removed — the SOGo 6 demo reading
@@ -864,7 +907,9 @@ async def record_password_change(context: BrowserContext) -> Path | None:
         await confirm.fill("new-password")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(page, "Security page: Password change form filled")
+    pw_form = current.locator("xpath=ancestor::form[1]")
+    await require(pw_form, "Password form")
+    return await rec.capture(page, "Security page: Password change form filled", scope=pw_form)
 
 
 # NOTE: record_calendar_ical and record_contacts_import_export were removed —
