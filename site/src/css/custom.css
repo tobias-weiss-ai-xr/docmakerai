@@ -64,11 +64,13 @@ img[src*="icon"], img[src*="badge"] {
   max-width: 50px;
 }
 
-/* Documentation content images (SOGo screenshots, 1280x800 scaled) */
+/* Documentation content images (SOGo screenshots).
+   Cap size, never distort: height follows the image's own aspect ratio.
+   (A fixed 640x400 box stretched every non-16:10 scoped shot.) */
 .markdown img {
-  width: 640px;
-  height: 400px;
-  max-width: 100%;
+  max-width: 640px;
+  width: auto;
+  height: auto;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
