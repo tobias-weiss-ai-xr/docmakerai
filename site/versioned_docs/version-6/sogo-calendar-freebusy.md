@@ -13,11 +13,36 @@ import PageSEO from '@site/src/components/PageSEO';
 Check when your colleagues are available before scheduling a
 meeting — directly from the event creation dialog.
 
+## Why Calendar Sharing Must Be Mutual
+
+Free/busy data is not public. Availability is only shown for calendars that
+each attendee has actively shared — which is why sharing has to go both ways:
+
+- **You see colleagues only if they shared with you.** A calendar without
+  granted access renders as "No data" — their availability stays invisible.
+- **Colleagues see you only if you shared with them.** The same check runs
+  in reverse when someone else schedules the meeting.
+- **One-way sharing breaks the workflow.** If only one side shares, every
+  lookup in the other direction fails — the "Are you free at…?" emails come
+  back exactly where free/busy was supposed to end them.
+
+Before relying on availability display, make sharing mutual — once:
+
+1. [Share your own calendar](./sogo-calendar-share.md) — at minimum
+   free/busy permission for your team
+2. Ask attendees to do the same — or have your administrator set an
+   organization-wide default (`SOGoCalendarDefaultRoles`)
+
+That is why "No data" is not an error: it is the permission system
+working as intended.
+
 ## Prerequisites
 
 - A SOGo 6 account with valid credentials
 - You are logged into SOGo 6
-- The colleague has a SOGo 6 account and has shared their free/busy info
+- Mutual calendar sharing: the colleague shared their free/busy info with
+  you, and you shared yours (see
+  [Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual))
 
 ## Step-by-Step Instructions
 
@@ -65,6 +90,9 @@ The event's start/end time updates to match.
 
 ## What Others See
 
+This is the permission that mutual sharing grants — see
+[Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual).
+
 By default, SOGo 6 is configured so that other users can see:
 
 | Permission | What's Visible |
@@ -88,6 +116,8 @@ Your administrator can change default permission levels via the
 
 ### All times show "No data"
 
+- This is missing sharing, not a malfunction — see
+  [Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual)
 - The colleague hasn't shared their calendar with you
 - Ask the person or your administrator to grant you free/busy access
 - Default roles may be restricted (`PublicDAndTViewer` must be set)
@@ -97,6 +127,8 @@ Your administrator can change default permission levels via the
 Free/busy lookup helps you find meeting times without the
 back-and-forth of "Are you free at...?" emails. It works for
 anyone in your organization who shares calendar availability.
+The one-time prerequisite is mutual sharing: availability is only shown
+for calendars whose owners have granted access — in both directions.
 
 ## Accessibility
 
