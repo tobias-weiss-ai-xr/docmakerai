@@ -9,11 +9,41 @@ sidebar_label: "Frei/Gebucht-Abfrage"
 Prüfen Sie die Verfügbarkeit Ihrer Kollegen, bevor Sie eine Besprechung
 planen — direkt aus dem Dialog zur Ereigniserstellung.
 
+## Warum die Kalenderfreigabe gegenseitig sein muss
+
+Frei/Gebucht-Daten sind nicht öffentlich. Das Raster kann nur Verfügbarkeiten
+zeigen, die jede Person aktiv freigegeben hat — deshalb muss die Freigabe in
+beide Richtungen laufen:
+
+- **Sie sehen Kollegen nur, wenn diese für Sie freigegeben haben.** Ohne
+  erteilte Freigabe bleibt die Zeile auf „Keine Daten“ — die Verfügbarkeit
+  bleibt unsichtbar.
+- **Kollegen sehen Sie nur, wenn Sie freigegeben haben.** Dieselbe Prüfung
+  läuft umgekehrt ab, wenn jemand anderes die Besprechung plant.
+- **Einseitige Freigabe bricht den Workflow.** Gibt nur eine Seite frei,
+  schlägt jede Abfrage in der anderen Richtung fehl — und die E-Mail-Frage
+  „Sind Sie um … frei?“ ist genau da wieder da, wo die Frei/Gebucht-Abfrage
+  sie eigentlich überflüssig machen sollte.
+
+Bevor Sie sich auf das Raster verlassen, stellen Sie die Freigabe einmalig
+gegenseitig sicher:
+
+1. [Geben Sie Ihren eigenen Kalender frei](./sogo-calendar-share.md) —
+   mindestens die Frei/Gebucht-Berechtigung für Ihr Team
+2. Bitten Sie die Teilnehmer, es Ihnen gleichzutun — oder lassen Sie Ihre
+   Verwaltung einen organisationsweiten Standard setzen
+   (`SOGoCalendarDefaultRoles`)
+
+„Keine Daten“ ist daher kein Fehler: Das Berechtigungssystem funktioniert
+genau wie vorgesehen.
+
 ## Voraussetzungen
 
 - Ein SOGo 5-Konto mit gültigen Anmeldedaten
 - Sie sind bei SOGo 5 angemeldet
-- Der Kollege hat ein SOGo 5-Konto und seine Frei/Gebucht-Informationen freigegeben
+- Gegenseitige Kalenderfreigabe: Der Kollege hat seine Frei/Gebucht-
+  Informationen für Sie freigegeben, und Sie Ihre für ihn (siehe
+  [Warum die Kalenderfreigabe gegenseitig sein muss](#warum-die-kalenderfreigabe-gegenseitig-sein-muss))
 
 ## Schritt-für-Schritt-Anleitung
 
@@ -59,6 +89,9 @@ Die Start-/Endzeit des Ereignisses wird entsprechend aktualisiert.
 
 ## Was andere sehen
 
+Dies ist die Berechtigung, die die gegenseitige Freigabe erteilt — siehe
+[Warum die Kalenderfreigabe gegenseitig sein muss](#warum-die-kalenderfreigabe-gegenseitig-sein-muss).
+
 Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen können:
 
 | Berechtigung | Was sichtbar ist |
@@ -82,6 +115,8 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
 
 ### Alle Zeiten zeigen "Keine Daten"
 
+- Es fehlt eine Freigabe, keine Störung — siehe
+  [Warum die Kalenderfreigabe gegenseitig sein muss](#warum-die-kalenderfreigabe-gegenseitig-sein-muss)
 - Der Kollege hat seinen Kalender nicht für Sie freigegeben
 - Bitten Sie die Person oder Ihren Administrator, Ihnen den Frei/Gebucht-Zugriff zu gewähren
 - Standardrollen können eingeschränkt sein (`PublicDAndTViewer` muss gesetzt sein)
@@ -91,6 +126,8 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
 Die Frei/Gebucht-Abfrage hilft Ihnen, Besprechungstermine zu finden, ohne die
 lästige E-Mail-Frage "Sind Sie um ... frei?". Sie funktioniert für
 alle in Ihrer Organisation, die ihre Kalenderverfügbarkeit freigeben.
+Die einmalige Voraussetzung ist die gegenseitige Freigabe: Das Raster zeigt
+nur Kalender, deren Besitzer Zugriff gewährt haben — in beide Richtungen.
 ## Barrierefreiheit
 
 ### Tastaturnavigation
