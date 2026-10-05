@@ -14,12 +14,12 @@ SOGo supports full keyboard navigation. No mouse required for completing this ta
 | Open compose | `c` | Compose new email |
 | New event | `Tab` to Create Event, `Enter` | Create calendar event |
 | Refresh | `r` | Refresh inbox |
-| Navigate messages | `j` (next) / `k` (previous) | Gmail-style navigation |
+| Navigate messages | `Tab` through the message list | Next/previous message |
 | Open message | `Enter` | Select and open |
 | Reply | `r` | Reply to current message |
 | Forward | `f` | Forward current message |
-| Delete | `d` | Move to trash |
-| Archive | `a` | Archive message |
+| Delete | `Tab` to Delete, `Enter` | Move to trash |
+| Archive | `Tab` to Archive, `Enter` | Archive message |
 | Mark read/unread | `.` / `,` | Toggle read status |
 | Star | `s` | Mark as important |
 | Cancel/close dialog | `Escape` | Cancel current action |

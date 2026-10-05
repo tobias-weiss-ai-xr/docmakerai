@@ -136,3 +136,11 @@ pre code {
   outline: 2px solid var(--ifm-color-primary, #0066cc);
   outline-offset: 2px;
 }
+
+/* Print: the still above the video already covers print output;
+   a black video box adds nothing on paper. */
+@media print {
+  .video-fallback {
+    display: none;
+  }
+}

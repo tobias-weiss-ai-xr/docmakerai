@@ -156,7 +156,7 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 | Focus Bcc field | `Tab` | Blind carbon copy |
 | Focus Subject field | `Tab` | After recipient fields |
 | Focus message body | `Tab` | Large text area |
-| Send message | `Ctrl+Enter` or `Tab` to Send button |
+| Send message | `Tab` to Send button, `Enter` |
 | Save as Draft | `Tab` to the draft/save button, `Enter` | Saves to Drafts folder |
 | Attach file | `Tab` to the attach button, `Enter` | Opens file picker |
 | Bold | `Ctrl+B` | Formatting toolbar |
@@ -210,7 +210,7 @@ Form fields in focus order:
 4. Screen reader: "Attachment, filename.ext"
 
 **Step 7: Send or Save as Draft**
-- **Send:** `Ctrl+Enter` or `Tab` to Send button, `Enter` to activate
+- **Send:** `Tab` to the Send button, `Enter` to activate
 - **Save as Draft:** `Tab` to the draft/save button, then `Enter`
 - Screen reader: "Message sent" or "Message saved to drafts"
 
@@ -226,7 +226,6 @@ Form fields in focus order:
 | "Message saved to drafts" | Draft saved | Can continue later from Drafts |
 
 **Keyboard Shortcuts in Compose Window:**
-- `Ctrl+Enter` → Send message
 - `Escape` → Cancel / discard
 - `Tab` → Next field
 - `Shift+Tab` → Previous field
