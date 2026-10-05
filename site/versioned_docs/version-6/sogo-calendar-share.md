@@ -95,7 +95,7 @@ SOGo 6 supports full keyboard navigation for calendar sharing features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Open Calendar module | `Alt+C` | From any module |
+| Open Calendar module | `Tab` to Calendars, then `Enter` | From any module |
 | Select a calendar | `Tab` then `Up`/`Down` | In the calendar list |
 | Open the three-dot menu (⋯) | `Tab` then `Enter` | Next to the selected calendar |
 | Choose **Sharing…** | Arrow keys, then `Enter` | Opens the sharing dialog |
@@ -109,7 +109,7 @@ SOGo 6 supports full keyboard navigation for calendar sharing features.
 **Sharing a Calendar: Adding a Colleague with Modify Permission**
 
 **Step 1: Open Calendar Module**
-- Press `Alt+C` to navigate to the Calendar module
+- `Tab` to the Calendars module button, then `Enter`
 - You should hear: "Calendar, module heading"
 
 **Step 2: Open the Sharing Dialog**

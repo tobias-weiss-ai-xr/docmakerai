@@ -149,16 +149,16 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Navigate to Mail | `Alt+M`, `Tab` to sidebar, select Mail |
+| Navigate to Mail | `Tab` to Mail, then `Enter` |
 | New message / Compose | `c` | Opens compose window |
 | Focus To field | `Tab` | First field in compose |
-| Focus Cc field | `Tab` or `Ctrl+Shift+C` | Carbon copy |
-| Focus Bcc field | `Tab` or `Ctrl+Shift+B` | Blind carbon copy |
+| Focus Cc field | `Tab` | Carbon copy |
+| Focus Bcc field | `Tab` | Blind carbon copy |
 | Focus Subject field | `Tab` | After recipient fields |
 | Focus message body | `Tab` | Large text area |
 | Send message | `Ctrl+Enter` or `Tab` to Send button |
-| Save as Draft | `Ctrl+S` | Saves to Drafts folder |
-| Attach file | `Ctrl+Shift+A` | Opens file picker |
+| Save as Draft | `Tab` to the draft/save button, `Enter` | Saves to Drafts folder |
+| Attach file | `Tab` to the attach button, `Enter` | Opens file picker |
 | Bold | `Ctrl+B` | Formatting toolbar |
 | Italic | `Ctrl+I` | Formatting toolbar |
 | Underline | `Ctrl+U` | Formatting toolbar |
@@ -167,7 +167,7 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 ### Screen Reader Workflow
 
 **Step 1: Navigate to Mail Module**
-1. `Alt+M` or `Tab` to sidebar navigation
+1. `Tab` to the sidebar navigation
 2. Arrow keys to "Mail" - `Enter` to activate
 3. Screen reader: "Mail module, inbox view"
 
@@ -204,14 +204,14 @@ Form fields in focus order:
 3. Screen reader: "Message body, content editable"
 
 **Step 6: Attach Files (Optional)**
-1. `Ctrl+Shift+A` to open file picker
+1. `Tab` to the attach button, then `Enter`
 2. Navigate to file using standard file dialog
 3. Select file and confirm
 4. Screen reader: "Attachment, filename.ext"
 
 **Step 7: Send or Save as Draft**
 - **Send:** `Ctrl+Enter` or `Tab` to Send button, `Enter` to activate
-- **Save as Draft:** `Ctrl+S`
+- **Save as Draft:** `Tab` to the draft/save button, then `Enter`
 - Screen reader: "Message sent" or "Message saved to drafts"
 
 **Common Screen Reader Announcements:**
@@ -227,8 +227,6 @@ Form fields in focus order:
 
 **Keyboard Shortcuts in Compose Window:**
 - `Ctrl+Enter` → Send message
-- `Ctrl+S` → Save as Draft
-- `Ctrl+Shift+A` → Attach file
 - `Escape` → Cancel / discard
 - `Tab` → Next field
 - `Shift+Tab` → Previous field
