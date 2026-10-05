@@ -1012,3 +1012,67 @@ def test_sogo6_docs_do_not_claim_power_icon_logout(doc_dir):
         if phrase in md.read_text(encoding="utf-8")
     ]
     assert not bad, "SOGo 6 docs claim the SOGo 5 logout affordance:\n" + "\n".join(bad)
+
+
+# ── Keyboard-shortcut fabrications (fixed 2026-09, live-verified demov6) ──
+# SOGo 6 has NO app shortcuts: e/d/w/m/y/J/K/t/n, Alt+M/C/A/S, Ctrl+N/S,
+# Ctrl+Enter, Ctrl+Shift+R/C/B/A are all no-ops (probed with sidebar and
+# toolbar focus, and inside the event dialog). The only verified keyboard
+# paths: Tab (to module buttons, Create Event, view buttons), Enter
+# (activate), Escape (close dialog), native arrow keys inside
+# dropdowns/radios. See commit a86e1ea.
+_FORBIDDEN_KEY_CLAIMS = [
+    r"`e`", r"`w`", r"`d`", r"`m`", r"`y`", r"`t`", r"`n`", r"`j`", r"`k`",
+    r"`J` / `K`", r"`j` / `k`", r"`Shift+E`",
+    r"Alt\+M", r"Alt\+C", r"Alt\+A", r"Alt\+P", r"Alt\+S",
+    r"Ctrl\+N", r"Ctrl\+S", r"Ctrl\+Enter", r"Ctrl\+Shift\+R",
+    r"Ctrl\+Shift\+C", r"Ctrl\+Shift\+B", r"Ctrl\+Shift\+A", r"Ctrl\+Shift\+S",
+    r"Cmd\+S", r"Cmd\+Enter", r"Strg\+N", r"Strg\+S", r"Strg\+Enter",
+]
+# Win+Ctrl+C is the Windows OS high-contrast toggle — allowed.
+_KEY_CLAIM_ALLOW = [re.compile(p) for p in [r"Win\+Ctrl\+C"]]
+
+
+def test_no_fabricated_keyboard_shortcuts(md_files):
+    """No doc page may claim SOGo app keyboard shortcuts that don't exist."""
+    bad = []
+    for path, fpath in sorted(md_files.items()):
+        if not str(path).endswith(".md") or Path(path).name in DE_EXCLUDE:
+            continue
+        text = fpath.read_text(encoding="utf-8")
+        for pat in _FORBIDDEN_KEY_CLAIMS:
+            rx = re.compile(re.escape(pat) if pat.startswith("`") else pat)
+            for m in rx.finditer(text):
+                ctx = text[max(0, m.start() - 40) : m.end() + 40].replace("\n", " ")
+                if any(a.search(ctx) for a in _KEY_CLAIM_ALLOW):
+                    continue
+                bad.append(f"{path}: '{m.group(0)}' at …{ctx}…")
+    assert not bad, (
+        "Fabricated keyboard-shortcut claims (SOGo 6 has none — verified "
+        "live; only Tab/Enter/Escape + native arrow semantics are real):\n"
+        + "\n".join(bad)
+    )
+
+
+# ── Clip embeds ↔ static/clips consistency ──
+CLIPS_DIR = SITE / "static" / "clips"
+_SRCMP4 = re.compile(r'srcMp4="/docmakerai/clips/([^"]+\.mp4)"')
+_POSTER = re.compile(r'poster="/docmakerai/clips/([^"]+\.png)"')
+
+
+def test_clip_embeds_match_static_clips():
+    """Every embedded clip/poster exists in static/clips, and no clip is orphaned."""
+    if not CLIPS_DIR.exists():
+        pytest.skip("no clips dir")
+    md_all = [p for d in DOC_DIRS for p in d.glob("*.md")]
+    referenced_mp4, referenced_png = set(), set()
+    for p in md_all:
+        text = p.read_text(encoding="utf-8")
+        referenced_mp4.update(_SRCMP4.findall(text))
+        referenced_png.update(_POSTER.findall(text))
+    disk_mp4 = {p.name for p in CLIPS_DIR.glob("*.mp4")}
+    disk_png = {p.name for p in CLIPS_DIR.glob("*.png")}
+    missing = (referenced_mp4 - disk_mp4) | (referenced_png - disk_png)
+    orphaned = (disk_mp4 - referenced_mp4) | (disk_png - referenced_png)
+    assert not missing, f"pages embed clips that don't exist in static/clips: {sorted(missing)}"
+    assert not orphaned, f"static/clips files no page embeds (orphans): {sorted(orphaned)}"
