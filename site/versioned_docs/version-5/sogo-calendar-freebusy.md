@@ -135,8 +135,8 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Open Calendar module | `Alt+C` | From any module |
-| Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog |
+| Open Calendar module | `Tab` to Calendars, then `Enter` | From any module |
+| Create new event | `Tab` to **Create Event**, then `Enter` | Opens event creation dialog |
 | Open Attendees section | `Tab` to Attendees field | Section within event dialog |
 | Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid |
 | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field |
@@ -149,11 +149,11 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 **Free/Busy Lookup: Checking Colleague Availability for a Meeting**
 
 **Step 1: Open Calendar Module**
-- Press `Alt+C` to navigate to the Calendar module
+- `Tab` to the Calendars module button, then `Enter`
 - You should hear: "Calendar, module heading"
 
 **Step 2: Create a New Event**
-- Press `Ctrl+N` to create a new event, or tab to the + button and press `Enter`
+- `Tab` to the **Create Event** button and press `Enter`
 - You should hear: "New event dialog"
 - The event dialog opens with fields for title, date, time, and attendees
 

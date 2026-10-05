@@ -12,7 +12,7 @@ SOGo supports full keyboard navigation. No mouse required for completing this ta
 |--------|------------------|-------|
 | Navigate modules | `Tab` / `Shift+Tab` | Cycles through Mail, Calendar, Contacts |
 | Open compose | `c` | Compose new email |
-| New event | `e` | Create calendar event |
+| New event | `Tab` to Create Event, `Enter` | Create calendar event |
 | Refresh | `r` | Refresh inbox |
 | Navigate messages | `j` (next) / `k` (previous) | Gmail-style navigation |
 | Open message | `Enter` | Select and open |

@@ -146,9 +146,9 @@ SOGo 6 supports full keyboard navigation for contacts management.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
+| Navigate to Contacts | `Tab` to Address Books, then `Enter` |
 | New contact | `+` or `C` | Creates new contact |
-| Navigate contacts | `J` / `K` | Next/previous contact |
+| Navigate contacts | `Tab` through the contact list | Next/previous contact |
 | Search contacts | `/` | Focus search field |
 | Edit contact | `E` | Edit selected contact |
 | Delete contact | `D` | Delete selected contact |
@@ -157,7 +157,7 @@ SOGo 6 supports full keyboard navigation for contacts management.
 ### Screen Reader Workflow
 
 **Step 1: Navigate to Contacts Module**
-1. `Alt+M` or `Tab` to sidebar
+1. `Tab` to the sidebar
 2. Arrow keys to "Contacts"
 3. `Enter` to activate Contacts module
 4. Screen reader: "Contacts module, heading, level 2"
@@ -220,7 +220,6 @@ Form fields appear in this order (screen reader focus sequence):
 | "Please enter a valid email" | Invalid email format | Fix email address |
 
 **Keyboard Shortcuts in Contact Form:**
-- `Ctrl+S` or `Cmd+S` → Save (alias for Enter on Save button)
 - `Escape` → Cancel/discard
 - `Tab` → Next field
 - `Shift+Tab` → Previous field

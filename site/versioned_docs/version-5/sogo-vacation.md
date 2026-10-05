@@ -155,18 +155,18 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Open settings | `Alt+M`, `Tab` to three-dot menu (⋯) |
+| Open settings | `Tab` to the three-dot menu (⋯) |
 | Navigate settings | `Arrow keys` in settings menu |
 | Open Vacation settings | `V` or search for "Vacation" |
 | Enable toggle | `Space` to toggle ON/OFF |
 | Navigate form fields | `Tab` between fields |
-| Save settings | `Ctrl+S` or Enter on Save button |
+| Save settings | `Tab` to Save, then `Enter` |
 | Cancel | `Escape` closes dialog |
 
 ### Screen Reader Workflow
 
 **Step 1: Open Settings Menu**
-1. `Alt+M` to focus sidebar
+1. `Tab` to reach the sidebar
 2. `Tab` to three-dot menu (⋯) (settings)
 3. `Enter` to open menu
 4. Screen reader: "Settings, popup menu..."

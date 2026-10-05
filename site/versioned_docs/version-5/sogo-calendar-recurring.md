@@ -169,26 +169,26 @@ SOGo 5 supports full keyboard navigation for recurring events.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| Navigate to Calendar | `Tab` to Calendars, then `Enter` |
 | Create new event | `N` or `+` |
-| Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
+| Open recurrence settings | `Tab` to the recurrence field |
 | Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
 | Set recurrence end | Tab to end fields |
 | Set interval | Arrow key + Tab |
-| Save recurring event | `Ctrl+S` or `Enter` |
+| Save recurring event | `Tab` to **Save**, then `Enter` |
 
 ### Screen Reader Workflow
 
 **Creating Recurring Event**
 
 **Step 1: Create New Event**
-1. `Alt+M` to focus sidebar
+1. `Tab` to reach the sidebar
 2. Arrow keys to "Calendar"
 3. Press `N` or `+` for new event
 
 **Step 2: Open Recurrence Settings**
 1. Event dialog opens
-2. Tab to "Recurrence" label or press `Ctrl+Shift+R`
+2. Tab to the recurrence field
 3. Press `Space` to expand recurrence section
 
 **Step 3: Set Recurrence Frequency**

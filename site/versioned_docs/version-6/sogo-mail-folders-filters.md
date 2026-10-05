@@ -188,9 +188,9 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Navigate to Mail | `Alt+M`, `Tab` to Mail |
+| Navigate to Mail | `Tab` to Mail, then `Enter` |
 | Open folder management | Three-dot menu (⋯) next to folder |
-| Create folder | `Ctrl+Shift+N` |
+| Create folder | `Tab` to the folder menu, `Enter` |
 | Open filters | `F` or three-dot menu (⋯) → Filters |
 | Create new filter | `Ctrl+F` or "+" button |
 | Navigate filter conditions | `Tab` between fields |
@@ -201,13 +201,13 @@ SOGo 6 supports full keyboard navigation for mail folders and filters.
 **Setting Up Mail Folders and Filters**
 
 **Step 1: Navigate to Mail Module**
-1. `Alt+M` to focus sidebar
+1. `Tab` to reach the sidebar
 2. Arrow keys to "Mail"
 3. `Enter` to open mail view
 
 **Step 2: Create Folder**
 1. Click three-dot menu (⋯) next to mail account
-2. Navigate to "New Folder" or press `Ctrl+Shift+N`
+2. `Tab` to the folder menu and open it with `Enter`
 3. Type folder name
 4. Press `Enter` to create
 

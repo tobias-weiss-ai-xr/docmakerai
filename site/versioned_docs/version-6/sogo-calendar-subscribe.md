@@ -106,7 +106,7 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Open Calendar module | `Alt+C` | From any module |
+| Open Calendar module | `Tab` to Calendars, then `Enter` | From any module |
 | Open Web Calendar | `Tab` to **Web Calendar**, `Enter` | Sits directly on the calendar surface |
 | Enter the feed URL | `Tab` to the URL field, paste | Full address of the `.ics` feed |
 | Confirm subscription | `Enter` | The calendar appears in the list |
@@ -116,7 +116,7 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 **Subscribing to External Calendar**
 
 **Step 1: Navigate to Calendar Module**
-1. `Alt+C` to open the Calendar module
+1. `Tab` to the Calendars module button, then `Enter`
 2. You should hear: "Calendar, module heading"
 
 **Step 2: Open Web Calendar**

@@ -141,21 +141,21 @@ SOGo 5 supports full keyboard navigation for calendar events.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| New event | `e` | Opens event dialog |
-| Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
+| Navigate to Calendar | `Tab` to Calendars, then `Enter` |
+| New event | `Tab` to **Create Event**, then `Enter` | Opens event dialog |
+| Switch views | `Tab` to the view buttons in the toolbar, then `Enter` | Day, Week, Month, Year |
 | Navigate calendar | `Arrow keys` | Move through days/times |
 | Select time slot | `Enter` | Opens event dialog |
-| Next/prev day | `J` / `K` | Navigate calendar |
+| Next/prev day | `Tab` to the navigation buttons, then `Enter` | Navigate the calendar |
 | Open dialog | `Enter` | Edit event |
-| Save event | `Ctrl+S` or `Enter` | Save and close |
+| Save event | `Tab` to **Save**, then `Enter` | Save and close |
 
 ### Screen Reader Workflow
 
 This section describes creating a calendar event using keyboard and screen reader.
 
 **Step 1: Navigate to Calendar Module**
-1. `Tab` or `Alt+M` to reach sidebar
+1. `Tab` to reach the sidebar
 2. Arrows to "Calendar" - `Enter` to activate
 3. Screen reader: "Calendar, week view"
 4. Arrows to navigate to desired day
@@ -163,15 +163,14 @@ This section describes creating a calendar event using keyboard and screen reade
 **Step 2: Create Event (Three Methods)**
 
 **Method 1: Plus button**
-- `e` or `Shift+E` to focus New Event button
+- `Tab` to the **Create Event** button
 - Screen reader: "New Event, button"
 - `Enter` to activate - opens event dialog
 
-**Method 2: Double-click time slot**
-- Arrows to navigate calendar grid (navigation described below)
-- Locate desired time slot (e.g., Monday 10:00)
-- Double-click with `Enter` twice quickly OR use `Shift+Enter` then `Enter`
-- Screen reader: "Event dialog, Title field, edit"
+**Method 2: Double-click time slot** *(mouse only)*
+- Locate the desired time slot (e.g., Monday 10:00)
+- Double-click it
+- Keyboard users: use the **Create Event** button instead (`Tab`, then `Enter`)
 
 **Method 3: Date picker plus button**
 - `Tab` to mini-calendar on left side
@@ -232,11 +231,9 @@ Form fields appear in this order (screen reader focus sequence):
 | "Calendar updated" | Existing event modified | Changes saved successfully |
 
 **Keyboard Shortcuts in Event Dialog:**
-- `Ctrl+Enter` or `Cmd+Enter` → Save and close
 - `Escape` → Cancel/discard
 - `Tab` → Next field
 - `Shift+Tab` → Previous field
-- `Ctrl+Shift+S` → Save (alias)
 
 ### Visual Content Descriptions
 

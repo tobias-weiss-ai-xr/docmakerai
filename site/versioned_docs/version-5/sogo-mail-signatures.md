@@ -95,14 +95,14 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 | Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| Open Settings | `Alt+S` or `Tab` to gear icon, `Enter` | Top toolbar |
+| Open Settings | `Tab` to gear icon, `Enter` | Top toolbar |
 | Navigate to Mail section | `Tab` through settings sidebar | Arrow keys to Mail option |
 | Navigate to IMAP Accounts | `Tab` or arrow keys to IMAP Accounts link | Under Mail settings |
 | Add new identity | `Tab` to New Identity button, `Enter` | Opens identity editor |
 | Focus name field | `Tab` | First field in editor |
 | Focus signature text area | `Tab` | Body of the signature |
 | Switch to General tab | `Tab` to General tab, `Enter` | Placement options live here |
-| Save changes | `Tab` to Save button, `Enter` or `Ctrl+S` | Applies settings |
+| Save changes | `Tab` to Save button, `Enter` | Applies settings |
 | Switch sender identity | `Tab` to the X in the From field, `Enter` | In compose window; the identity list opens above |
 | Delete identity | `Tab` to delete / remove button, `Enter` | Confirm deletion |
 | Close settings | `Escape` | Returns to main interface |
