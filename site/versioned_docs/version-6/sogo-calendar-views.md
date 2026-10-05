@@ -5,6 +5,7 @@ sidebar_label: "Calendar Views"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
+import VideoFallback from '@site/src/components/VideoFallback';
 
 <PageSEO title="Calendar Views" description="Step-by-step tutorial to switch between Day, Week, and Month views in the SOGo 6 calendar" keywords={["calendar views", "day view", "week view", "month view", "navigation"]} />
 
@@ -28,6 +29,14 @@ In the sidebar navigation on the left, click **Calendar** to open the calendar v
 The calendar opens in **Week view** by default. Use the view switcher buttons in the top toolbar to change between available views.
 
 ![Switching between Day, Week, and Month views in SOGo 6 calendar](./assets/calendar-views.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-views.mp4"
+  poster="/docmakerai/clips/calendar-views.png"
+  alt="Short clip: switching between Day, Week and Month views in the SOGo 6 calendar"
+  width="640"
+  height="400"
+/>
 
 Available views:
 

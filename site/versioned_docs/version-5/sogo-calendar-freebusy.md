@@ -28,7 +28,7 @@ attendee has actively shared — which is why sharing has to go both ways:
 
 Before relying on the grid, make sharing mutual — once:
 
-1. [Share your own calendar](./sogo-calendar-share.md) — at minimum
+1. [Share your own calendar](./sogo-calendar-share) — at minimum
    free/busy permission for your team
 2. Ask attendees to do the same — or have your administrator set an
    organization-wide default (`SOGoCalendarDefaultRoles`)

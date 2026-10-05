@@ -4,6 +4,8 @@ description: "Erfahren Sie, wie Sie E-Mails in SOGo 6 schreiben, formatieren und
 sidebar_label: "E-Mail verfassen und senden"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # E-Mail verfassen und senden
 
 Dieses Tutorial behandelt die Grundlagen des Verfassens und Sendens von E-Mails
@@ -30,6 +32,14 @@ Ihr Posteingang zeigt empfangene Nachrichten in der Hauptansicht, mit Ordnern
 Klicken Sie auf das Stiftsymbol (**Verfassen**) in der Symbolleiste über Ihrer Nachrichtenliste.
 
 Ein neues Nachrichtenfenster wird geöffnet.
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-compose.mp4"
+  poster="/docmakerai/clips/mail-compose.png"
+  alt="Kurzclip: Verfassen-Fenster öffnen und Empfänger, Betreff und Text ausfüllen in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 3: Nachricht adressieren
 

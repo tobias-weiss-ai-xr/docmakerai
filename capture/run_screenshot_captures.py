@@ -57,6 +57,21 @@ def clean_dirs() -> None:
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
 
+# ── Video timeline markers (per process: one workflow per subprocess) ──
+# Each page in a recording context gets its OWN webm whose timeline starts
+# at page creation; trim windows are computed from these monotonic offsets
+# in the worker after the context closes.
+VIDEO_T0: float | None = None  # context created (unused for trimming)
+VIDEO_PAGE_T0: float | None = None  # workflow page created (= its webm t0)
+VIDEO_START: float | None = None  # first module navigation done (action start)
+VIDEO_END: float | None = None  # final screenshot taken (action end)
+VIDEO_PAGE_PATH: str | None = None  # webm of the workflow page
+
+
+def record_video_enabled() -> bool:
+    return os.environ.get("SOGO_RECORD_VIDEO", "1") == "1"
+
+
 async def _env_intercept(route):
     """Intercept /env to fix the API base URL.
 
@@ -188,11 +203,13 @@ async def goto(page, url_suffix: str, wait_ms: int = 1500) -> None:
 
 async def navigate_to_module(page, module: str, wait_ms: int = 3000) -> None:
     """Navigate to an SOGo 6 module via sidebar tab click (SPA navigation)."""
+    global VIDEO_START
     await resilient_goto(
         page, SOGO_URL + "/en/u/0/INBOX", wait_selector="button[role='tab'], main, [data-testid]"
     )
     await _clear_overlays(page)
     await page.wait_for_timeout(2000)
+    VIDEO_START = time.monotonic()
 
     tab_labels = {
         "calendar": "Calendars",
@@ -320,7 +337,11 @@ class ScreenshotRecorder:
         self.screenshot_dir = screenshot_dir
 
     async def start(self, context: BrowserContext) -> Page:
+        global VIDEO_PAGE_PATH, VIDEO_PAGE_T0
+        VIDEO_PAGE_T0 = time.monotonic()
         page = await context.new_page()
+        if page.video:
+            VIDEO_PAGE_PATH = await page.video.path()
         return page
 
     async def context(self, page, text: str) -> None:
@@ -358,6 +379,7 @@ class ScreenshotRecorder:
                         "width": max(b["x"] + b["width"] for b in boxes) - min(b["x"] for b in boxes),
                         "height": max(b["y"] + b["height"] for b in boxes) - min(b["y"] for b in boxes),
                     }
+            global VIDEO_END
             if box:
                 vp = page.viewport_size or {"width": 1280, "height": 800}
                 x = max(0, box["x"] - margin)
@@ -371,6 +393,7 @@ class ScreenshotRecorder:
                 await page.screenshot(path=str(raw_path), clip=clip)
             else:
                 await page.screenshot(path=str(raw_path), full_page=False)
+            VIDEO_END = time.monotonic()
         except Exception as e:
             print(f"  Screenshot failed: {e}")
             return None
@@ -921,12 +944,21 @@ async def record_password_change(context: BrowserContext) -> Path | None:
 # ── Parallel Runner ──
 
 
-async def setup_authenticated_context(browser, _video_dir=None) -> BrowserContext:
-    ctx = await browser.new_context(
+async def setup_authenticated_context(browser, video_dir=None) -> BrowserContext:
+    global VIDEO_T0
+    kwargs = dict(
         viewport={"width": 1280, "height": 800},
         locale="en-US",
         ignore_https_errors=True,
     )
+    if video_dir is not None:
+        Path(video_dir).mkdir(parents=True, exist_ok=True)
+        kwargs.update(
+            record_video_dir=str(video_dir),
+            record_video_size={"width": 1280, "height": 800},
+        )
+    ctx = await browser.new_context(**kwargs)
+    VIDEO_T0 = time.monotonic()
     # Log in on an initial page to establish session cookies in the context
     login_page = await ctx.new_page()
     await login(login_page, ctx)
@@ -1032,6 +1064,10 @@ async def main():
         png_path = SCREENSHOT_DIR / f"{name}.png"
         if png_path.exists():
             shutil.copy2(str(png_path), str(ASSETS_DIR / png_path.name))
+            mp4_path = SCREENSHOT_DIR / f"{name}.mp4"
+            if mp4_path.exists():
+                shutil.copy2(str(mp4_path), str(ASSETS_DIR / mp4_path.name))
+                print(f"     clip {mp4_path.name} — {mp4_path.stat().st_size // 1024}KB")
             meta_path = SCREENSHOT_DIR / f"{name}_metadata.json"
             if meta_path.exists():
                 meta = json.loads(meta_path.read_text())
