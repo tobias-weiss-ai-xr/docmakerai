@@ -4,6 +4,8 @@ description: "Automatische E-Mail-Antworten und Kalenderblöcke für Ihre Abwese
 sidebar_label: "Abwesenheitsnotiz"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # Abwesenheitsnotiz
 
 Konfigurieren Sie automatische E-Mail-Antworten und markieren Sie sich im
@@ -25,6 +27,14 @@ Kalender als abwesend, wenn Sie im Urlaub oder außer Haus sind.
 2. Wählen Sie **Abwesenheitsnotiz** aus dem Einstellungsmenü
 
 ![Abwesenheitseinstellungen](./assets/vacation.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/vacation.mp4"
+  poster="/docmakerai/clips/vacation.png"
+  alt="Kurzclip: Abwesenheitsnotiz mit Nachrichtentext in SOGo 6 aktivieren"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 2: Automatische Antwort aktivieren
 

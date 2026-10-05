@@ -4,6 +4,8 @@ description: "Organize your emails with folders in SOGo 6"
 sidebar_label: "Folder Management"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Mail — Folder Management" description="Step-by-step tutorial to organize your emails with folders in SOGo 6" keywords={["folder management", "organize", "inbox", "mail folders", "email organization"]} />
@@ -24,6 +26,14 @@ Organize your emails using folders for archiving and easy access.
 In the sidebar, click **Mail** to open the inbox. The folder list appears on the left side of the email view.
 
 ![Mail folder management](./assets/mail-folder-management.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-folder-management.mp4"
+  poster="/docmakerai/clips/mail-folder-management.png"
+  alt="Short clip: managing mail folders from the folder action menu in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Browse Folders
 

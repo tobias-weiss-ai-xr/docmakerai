@@ -4,6 +4,8 @@ description: "E-Mail-Signaturen und mehrere Absenderidentitäten einrichten"
 sidebar_label: "E-Mail-Signaturen und Identitäten"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # E-Mail-Signaturen und Identitäten
 
 Konfigurieren Sie professionelle E-Mail-Signaturen und verwalten Sie mehrere
@@ -18,6 +20,14 @@ Absenderidentitäten (z. B. geschäftlich vs. privat).
 3. Klicken Sie auf Ihr E-Mail-Konto, um dessen Identität zu bearbeiten
 
 ![Signatur-Einstellungen](./assets/mail-signatures.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-signatures.mp4"
+  poster="/docmakerai/clips/mail-signatures.png"
+  alt="Kurzclip: E-Mail-Signatur in den SOGo-6-Einstellungen schreiben und speichern"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 2: Neue Identität anlegen
 

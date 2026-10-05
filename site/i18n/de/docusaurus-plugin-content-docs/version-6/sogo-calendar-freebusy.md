@@ -4,6 +4,8 @@ description: "Verfügbarkeit von Kollegen vor der Terminplanung prüfen"
 sidebar_label: "Frei/Gebucht-Abfrage"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # Frei/Gebucht-Abfrage
 
 Prüfen Sie die Verfügbarkeit Ihrer Kollegen, bevor Sie eine Besprechung
@@ -52,7 +54,7 @@ genau wie vorgesehen.
 1. Öffnen Sie das Modul **Kalender**
 2. Klicken Sie auf **+**, um ein neues Ereignis zu erstellen, oder klicken Sie auf ein vorhandenes Ereignis, um es zu bearbeiten
 
-![Ereignisdialog mit Teilnehmeroptionen](./assets/01-event-dialog.png)
+![Ereignisdialog mit Teilnehmeroptionen](./assets/calendar-create-event.png)
 
 ### Schritt 2: Teilnehmer hinzufügen
 
@@ -64,7 +66,15 @@ genau wie vorgesehen.
 Sobald Personen eingetragen sind, öffnet sich das Frei/Gebucht-Raster automatisch —
 es gibt keine separate Frei/Gebucht-Schaltfläche.
 
-![Frei/Gebucht-Verfügbarkeitsraster](./assets/02-freebusy-grid.png)
+![Teilnehmer im Ereignisdialog mit Verfügbarkeit](./assets/freebusy.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/freebusy.mp4"
+  poster="/docmakerai/clips/freebusy.png"
+  alt="Kurzclip: Teilnehmer hinzufügen und dessen Verfügbarkeit im SOGo-6-Ereignisdialog ablesen"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 3: Das Raster lesen
 

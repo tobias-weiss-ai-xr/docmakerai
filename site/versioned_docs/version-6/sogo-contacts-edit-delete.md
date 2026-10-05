@@ -4,6 +4,8 @@ description: "Modify or remove contacts in the SOGo 6 address book"
 sidebar_label: "Edit & Delete Contacts"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Edit & Delete Contacts" description="Step-by-step tutorial to modify or remove contacts in the SOGo 6 address book" keywords={["contacts", "editing", "deleting", "address book", "management"]} />
@@ -27,6 +29,14 @@ In the sidebar navigation on the left, click **Contacts** to open the address bo
 Find the contact you want to edit and click on their name or entry.
 
 ![Editing a contact's phone number and saving changes](./assets/contacts-edit-delete.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/contacts-edit-delete.mp4"
+  poster="/docmakerai/clips/contacts-edit-delete.png"
+  alt="Short clip: opening a contact, editing the phone entry and deleting the contact in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Modify Contact Details
 

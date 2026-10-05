@@ -4,6 +4,8 @@ description: "Spec-based guide covering SOGo preferences and utility workflows i
 sidebar_label: "Preferences Specification Guide"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Preferences — Spec-Based Guide" description="Spec-based guide covering SOGo preferences and utility workflows including general settings, password change, and vacation auto-reply." keywords="SOGo 6, preferences, settings, password, vacation, global search, spec" />
@@ -15,6 +17,14 @@ for the user guide. Covers general settings, password change, vacation
 auto-reply configuration, and global search.
 
 ![The SOGo preferences](./assets/preferences.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/preferences.mp4"
+  poster="/docmakerai/clips/preferences.png"
+  alt="Short clip: setting timezone and general preferences in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ## Prerequisites
 

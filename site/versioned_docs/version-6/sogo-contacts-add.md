@@ -4,6 +4,8 @@ description: "Learn how to add and organize contacts in the SOGo 6 address book"
 sidebar_label: "Add a Contact"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Add a Contact" description="Step-by-step tutorial to add and organize contacts in the SOGo 6 address book" keywords={["contacts", "address book", "add contact", "organize", "groups"]} />
@@ -36,6 +38,14 @@ Click the **+** (plus) button to add a new contact.
 A blank contact form will appear.
 
 ![Step 2: Add New Contact](./assets/contacts-add.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/contacts-add.mp4"
+  poster="/docmakerai/clips/contacts-add.png"
+  alt="Short clip: creating a new contact and filling the identity fields in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 3: Enter Contact Information
 

@@ -4,6 +4,8 @@ description: "Modify or remove existing events in the SOGo 6 calendar"
 sidebar_label: "Edit & Delete Events"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Edit & Delete Calendar Events" description="Step-by-step tutorial to modify or remove existing events in the SOGo 6 calendar" keywords={["calendar", "editing", "deleting", "events", "modification"]} />
@@ -25,6 +27,14 @@ Learn how to modify event details or remove events from your SOGo 6 calendar.
 Click on any event in the calendar to open its details.
 
 ![Editing and deleting a calendar event](./assets/calendar-edit-delete.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-edit-delete.mp4"
+  poster="/docmakerai/clips/calendar-edit-delete.png"
+  alt="Short clip: opening an event's context menu and deleting it in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Modify Event Details
 

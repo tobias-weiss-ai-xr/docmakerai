@@ -4,6 +4,8 @@ description: "Set up automatic email replies and calendar blocks for your absenc
 sidebar_label: "Vacation & Out-of-Office"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Vacation & Out-of-Office" description="Step-by-step tutorial to set up automatic email replies and calendar blocks for your absence in SOGo 6" keywords={["vacation", "out of office", "auto-reply", "absence", "automatic reply"]} />
@@ -29,6 +31,14 @@ in the calendar when you're on vacation or out of office.
 2. Select **Vacation** from the settings menu
 
 ![Vacation settings menu](./assets/vacation.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/vacation.mp4"
+  poster="/docmakerai/clips/vacation.png"
+  alt="Short clip: enabling a vacation auto-reply with message text in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Enable Auto-Reply
 

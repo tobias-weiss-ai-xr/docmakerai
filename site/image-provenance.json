@@ -1,5 +1,4 @@
 {
-  "_readme": "Provenance of every doc asset. kind: sogo5-mockup | sogo5-live | sogo6-live | shared. Guarded by test_image_version_discipline (scripts/tests/test_docs_quality.py): v5 docs may reference sogo5-mockup/sogo5-live/shared, v6 docs sogo6-live/shared; sogo5-mockup in a v6 doc requires waived=true (T5.3 backlog). Every referenced image MUST have an entry - new images without provenance fail CI.",
   "assets": {
     "i18n/de/docusaurus-plugin-content-docs/version-5/assets/00-login-page.png": {
       "kind": "sogo5-live",
@@ -71,18 +70,6 @@
       "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
     },
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/01-calendar-view.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
-    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/02-freebusy-grid.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
       "waived": true,
@@ -240,18 +227,6 @@
       "waived": true,
       "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
     },
-    "versioned_docs/version-6/assets/01-event-dialog.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
-    "versioned_docs/version-6/assets/02-freebusy-grid.png": {
-      "kind": "sogo5-mockup",
-      "origin": "original-site",
-      "waived": true,
-      "note": "KNOWN GAP (T5.3 backlog): SOGo-5 mockup still wired into a v6 doc; replace when a live SOGo-6 capture exists"
-    },
     "versioned_docs/version-6/assets/02-recurrence-options.png": {
       "kind": "sogo5-mockup",
       "origin": "original-site",
@@ -354,6 +329,16 @@
     "versioned_docs/version-6/assets/vacation.png": {
       "kind": "sogo6-live",
       "origin": "live-pipeline"
+    },
+    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/calendar-create-event.png": {
+      "kind": "sogo6-live",
+      "origin": "live-capture",
+      "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/freebusy.png": {
+      "kind": "sogo6-live",
+      "origin": "live-capture",
+      "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
     }
   }
 }
