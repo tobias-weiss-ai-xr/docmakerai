@@ -4,9 +4,22 @@ description: "Sicheres Abmelden aus SOGo 6: Sitzung beenden, Browser schließen 
 sidebar_label: "Abmelden"
 ---
 
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # Abmelden
 
 Klicken Sie auf Ihren **Avatar** in der oberen rechten Symbolleiste und wählen Sie **Abmelden**, um Ihre SOGo 6-Sitzung zu beenden. Sie werden zur Anmeldeseite weitergeleitet.
+
+![Nach der Abmeldung sind Sie wieder auf der SOGo-6-Anmeldeseite](./assets/logout.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/logout.mp4"
+  poster="/docmakerai/clips/logout.png"
+  alt="Kurzclip: Avatarmenü öffnen und sich aus SOGo 6 abmelden"
+  width="640"
+  height="400"
+/>
 
 :::tip
 Wenn Sie einen gemeinsam genutzten oder öffentlichen Computer verwenden, melden Sie sich immer ab, wenn Sie fertig sind. Schließen Sie nicht einfach den Browser-Tab.
