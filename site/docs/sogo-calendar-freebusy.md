@@ -48,14 +48,16 @@ meeting — directly from the event creation dialog.
 
 ### Step 4: Read the Grid
 
-The grid shows time slots for each person:
+The grid shows time slots for each person. Don't rely on color names —
+the exact colors depend on your SOGo skin and theme; read the status
+labels instead:
 
-| Color | Meaning: Availability status |
+| Status | Meaning |
 |:-------|:---------|
-| ✅ **Green** | Available |
-| ❌ **Red** | Busy (has an event) |
-| 🟡 **Yellow** | Tentative / maybe attending |
-| ⬜ **White** | No data (not shared, or outside working hours) |
+| **Busy** | The colleague has an event |
+| **Tentative** | Maybe attending |
+| **Available** | Free at that time |
+| No entry / no data | Calendar not shared with you, or outside working hours |
 
 ### Step 5: Find a Common Slot
 
@@ -77,9 +79,6 @@ By default, SOGo 5 is configured so that other users can see:
 | **View (read-only)** | Event titles and times |
 | **Confidential events** | Marked as "Busy" only, even to viewers |
 
-Your administrator can change default permission levels via the
-`SOGoCalendarDefaultRoles` setting.
-
 ## Troubleshooting
 
 ### Colleague not showing up
@@ -92,7 +91,6 @@ Your administrator can change default permission levels via the
 
 - The colleague hasn't shared their calendar with you
 - Contact them or your administrator to grant free/busy access
-- Default roles may be restricted (`PublicDAndTViewer` must be set)
 
 ## Conclusion
 
@@ -106,16 +104,15 @@ anyone in your organization who shares calendar availability.
 
 SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|----------------------------------|---------------------------|
-| | Open Calendar module | `Alt+C` | From any module
-| | Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog
-| | Open Attendees section | `Tab` to Attendees field | Section within event dialog
-| | Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid
-| | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field
-| | Navigate time grid | `Tab` and arrow keys | Move between time slots
-| | Select available time slot | `Enter` on a green slot | Locks the meeting time
-| | Confirm event | `Tab` to Save, then `Enter` | Creates the event
+| Action | Keyboard Shortcut | Notes |
+|--------|-------------------|-------|
+| Open Calendar module | `Alt+C` | From any module |
+| Create new event | `Ctrl+N` or `Tab` then `Enter` on + button | Opens event creation dialog |
+| Open Attendees section | `Tab` to Attendees field | Section within event dialog |
+| Add a colleague | `Tab` to the attendee field, type the name | Activates autocomplete |
+| Read availability | `Tab` through attendee rows | Availability shows per person |
+| Select available time slot | `Enter` on an available slot | Locks the meeting time |
+| Confirm event | `Tab` to Save, then `Enter` | Creates the event |
 
 ### Screen Reader Workflow
 
@@ -182,13 +179,7 @@ SOGo 5 supports full keyboard navigation for free/busy lookup features.
 
 ### Visual Content Descriptions
 
-**[freebusy.png]:** Screenshot of checking colleague availability via the free/busy grid in SOGo 5.
-
-- **Frame 1 (0–1.0s):** User opens the Calendar module and clicks **+** to create a new event. The event creation dialog appears
-- **Frame 2 (1.0–2.5s):** User clicks the Attendees section and then clicks **Free/Busy** button. The free/busy time grid opens showing the user's own calendar with colored time slots
-- **Frame 3 (2.5–4.5s):** User clicks **Add Person**, types a colleague's name, and selects them from the autocomplete list. The colleague's schedule appears in the grid below
-- **Frame 4 (4.5–6.0s):** User scrolls horizontally through the grid. Green available slots and red busy slots are visible for both the user and the colleague
-- **Frame 5 (6.0–8.0s):** User finds an overlapping green slot at 2:00 PM and clicks it. The event time updates. User clicks **Save** to confirm the meeting
+**[freebusy.png]:** Screenshot of checking colleague availability in the event dialog.
 
 ### High Contrast Mode
 

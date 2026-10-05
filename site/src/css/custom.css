@@ -117,3 +117,22 @@ pre code {
 .skip-to-content:focus {
   top: 0;
 }
+
+/* VideoFallback (docs clips): native video, poster preview, no fetch
+   until play. Styling lives here once instead of per component instance. */
+.video-fallback {
+  display: block;
+  max-width: 640px;
+}
+
+.video-fallback .video-element {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background-color: #000;
+}
+
+.video-fallback .video-element:focus {
+  outline: 2px solid var(--ifm-color-primary, #0066cc);
+  outline-offset: 2px;
+}

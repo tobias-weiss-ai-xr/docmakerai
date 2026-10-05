@@ -1039,10 +1039,22 @@ WORKFLOWS = [
 async def main():
     clean_dirs()
 
-    # --only wf1,wf2: run a subset (proof runs, targeted re-captures)
+    # --only wf1,wf2: run a subset (proof runs, targeted re-captures).
+    # The full clean_dirs() above already ran — restore the scratch of the
+    # workflows NOT selected, so a targeted re-capture can't destroy their
+    # clips/PNGs from an earlier full run (assets copies are safe, but the
+    # scratch webm/mp4 pipeline artifacts would be lost).
     only = None
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         only = {w.strip() for w in sys.argv[2].split(",") if w.strip()}
+        for name, _fn in WORKFLOWS:
+            if name in only:
+                continue
+            src_png, src_vid = ASSETS_DIR / f"{name}.png", ASSETS_DIR / f"{name}.mp4"
+            if src_png.exists():
+                shutil.copy2(src_png, SCREENSHOT_DIR / f"{name}.png")
+            if src_vid.exists():
+                shutil.copy2(src_vid, SCREENSHOT_DIR / f"{name}.mp4")
     selected = [wf for wf in WORKFLOWS if only is None or wf[0] in only]
 
     async with async_playwright() as p:

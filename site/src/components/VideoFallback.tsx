@@ -14,7 +14,7 @@
  * - Fallback to static image if video unavailable
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 interface VideoFallbackProps {
   srcMp4: string; // MP4 video URL (H.264 codec)
@@ -33,23 +33,12 @@ interface VideoFallbackProps {
 }
 
 /**
- * HTML5 video component with MP4/WebM fallback and accessibility support.
+ * HTML5 video component with MP4/WebM source fallback.
  *
- * Renders a native HTML5 video element with:
- * - MP4 (H.264) as primary codec (widely supported)
- * - WebM (VP9) as secondary codec (better compression)
- * - WebVTT captions for accessibility
- * - Poster image for instant preview
- * - Fallback image for unsupported browsers
- *
- * Keyboard shortcuts (when focused):
- * - Space/Enter: Toggle play/pause
- * - Arrow Left: Rewind 5 seconds
- * - Arrow Right: Forward 5 seconds
- * - Arrow Up: Volume up
- * - Arrow Down: Volume down
- * - M: Toggle mute
- * - F: Toggle fullscreen
+ * Native <video> with controls (the browser's own keyboard handling:
+ * Space toggles, arrows seek/volume, M mutes, F fullscreen) plus a
+ * poster for instant preview. preload="none" keeps pages light:
+ * nothing is fetched until the user presses play.
  */
 export default function VideoFallback({
   srcMp4,
@@ -66,60 +55,9 @@ export default function VideoFallback({
   controls = true,
   fallbackImage,
 }: VideoFallbackProps): React.JSX.Element {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  const handleError = () => {
-    setHasError(true);
-    setIsLoading(false);
-  };
-
-  const handleLoadStart = () => setIsLoading(true);
-  const handleCanPlay = () => setIsLoading(false);
-
-  // Focus handler for keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLVideoElement>) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    switch (e.key) {
-      case ' ':
-      case 'Enter':
-        e.preventDefault();
-        video.paused ? video.play() : video.pause();
-        break;
-      case 'ArrowLeft':
-        e.preventDefault();
-        video.currentTime = Math.max(0, video.currentTime - 5);
-        break;
-      case 'ArrowRight':
-        e.preventDefault();
-        video.currentTime = Math.min(video.duration, video.currentTime + 5);
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        video.volume = Math.min(1, video.volume + 0.1);
-        break;
-      case 'ArrowDown':
-        e.preventDefault();
-        video.volume = Math.max(0, video.volume - 0.1);
-        break;
-      case 'm':
-      case 'M':
-        e.preventDefault();
-        video.muted = !video.muted;
-        break;
-      case 'f':
-      case 'F':
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
-        } else {
-          video.requestFullscreen();
-        }
-        break;
-    }
-  };
+  const handleError = () => setHasError(true);
 
   // Fallback to image if video unavailable
   if ((hasError || !srcMp4) && fallbackImage) {
@@ -136,11 +74,8 @@ export default function VideoFallback({
   }
 
   return (
-    <div className={`video-fallback ${className}`} role="application" aria-label={alt || 'Video player'}>
-      {isLoading && <div className="video-loading" aria-hidden="true">Loading video...</div>}
-
+    <div className={`video-fallback ${className}`}>
       <video
-        ref={videoRef}
         width={width}
         height={height}
         poster={poster}
@@ -148,10 +83,10 @@ export default function VideoFallback({
         loop={loop}
         muted={muted}
         controls={controls}
+        // The poster (same still as above) is the preview — don't touch the
+        // clip until the user presses play.
+        preload="none"
         onError={handleError}
-        onLoadStart={handleLoadStart}
-        onCanPlay={handleCanPlay}
-        onKeyDown={handleKeyDown}
         aria-label={alt || 'Video'}
         className="video-element"
       >
@@ -182,48 +117,6 @@ export default function VideoFallback({
           )}
         </div>
       </video>
-
-      <style {...({'jsx': true} as any)}>{`
-        .video-fallback {
-          position: relative;
-          display: inline-block;
-        }
-
-        .video-element {
-          width: 100%;
-          height: auto;
-          border-radius: 4px;
-          background-color: #000;
-        }
-
-        .video-loading {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          color: #fff;
-          font-size: 14px;
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        .video-fallback-message {
-          padding: 20px;
-          text-align: center;
-          color: #000;
-        }
-
-        .video-fallback-message a {
-          color: #0066cc;
-          text-decoration: underline;
-        }
-
-        /* Keyboard focus indicator */
-        .video-element:focus {
-          outline: 2px solid #0066cc;
-          outline-offset: 2px;
-        }
-      `}</style>
     </div>
   );
 }
