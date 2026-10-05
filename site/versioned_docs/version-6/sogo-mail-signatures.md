@@ -4,6 +4,8 @@ description: "Set up email signatures and multiple sender identities"
 sidebar_label: "Mail Signatures & Identities"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Mail Signatures & Identities" description="Step-by-step tutorial to set up email signatures and multiple sender identities in SOGo 6" keywords={["email signatures", "identities", "sender", "professional", "configuration"]} />
@@ -22,6 +24,14 @@ sender identities (e.g., work vs. personal email).
 3. Click your email account to edit its identity
 
 ![Mail signatures settings](./assets/mail-signatures.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-signatures.mp4"
+  poster="/docmakerai/clips/mail-signatures.png"
+  alt="Short clip: writing and saving an email signature in SOGo 6 settings"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Create a New Identity
 

@@ -4,6 +4,8 @@ description: "Import external calendars (holidays, team calendars) into SOGo 6"
 sidebar_label: "Subscribe to an iCal Feed"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Subscribe to an iCal Feed" description="Step-by-step tutorial to import external calendars into SOGo 6" keywords={["ical feed", "subscribe", "external calendar", "sync", "calendar subscription"]} />
@@ -127,6 +129,14 @@ SOGo 6 supports full keyboard navigation for subscribing to calendars.
 3. Press `Enter` to confirm
 
 ![Subscribing via Web Calendar](./assets/calendar-subscribe.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-subscribe.mp4"
+  poster="/docmakerai/clips/calendar-subscribe.png"
+  alt="Short clip: subscribing to a calendar by URL in SOGo 6 settings"
+  width="640"
+  height="400"
+/>
 4. You should hear the calendar was added
 
 **Step 4: Verify**

@@ -4,6 +4,8 @@ description: "Organisieren Sie Ihren Posteingang mit Ordnern und automatischen E
 sidebar_label: "E-Mail-Ordner und Filter"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # E-Mail-Ordner und Filter
 
 Erfahren Sie, wie Sie Ihren Posteingang mit Ordnern und
@@ -75,6 +77,14 @@ Filter werden beim Eintreffen von E-Mails ausgeführt — bevor Sie sie in Ihrem
 2. Wählen Sie **E-Mail** → **Filter**
 
 ![E-Mail-Filtereinstellungen](./assets/mail-filters.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-filters.mp4"
+  poster="/docmakerai/clips/mail-filters.png"
+  alt="Kurzclip: E-Mail-Filter mit Bedingung und Aktion in den SOGo-6-Einstellungen anlegen"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 2: Neuen Filter erstellen
 

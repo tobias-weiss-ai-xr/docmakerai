@@ -4,6 +4,8 @@ description: "How to change your SOGo 6 password"
 sidebar_label: "Password Change"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Password Change" description="Step-by-step tutorial to change your SOGo 6 account password" keywords={["password change", "security", "account", "authentication", "credentials"]} />
@@ -13,6 +15,14 @@ import PageSEO from '@site/src/components/PageSEO';
 Update your SOGo 6 account password to keep your account secure.
 
 ![Changing your password](./assets/password-change.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/password-change.mp4"
+  poster="/docmakerai/clips/password-change.png"
+  alt="Short clip: changing the account password in SOGo 6 security settings"
+  width="640"
+  height="400"
+/>
 
 ## Prerequisites
 

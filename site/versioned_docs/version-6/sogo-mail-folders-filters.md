@@ -4,6 +4,8 @@ description: "Organize your inbox with folders and automatic mail filters"
 sidebar_label: "Mail Folders & Filters"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Mail Folders & Filters" description="Step-by-step tutorial to organize your inbox with folders and automatic mail filters in SOGo 6" keywords={["mail folders", "filters", "sieve", "organize", "inbox management"]} />
@@ -79,6 +81,14 @@ Filters run when email arrives — before you see it in your inbox.
 2. Select **Mail** → **Filters**
 
 ![Mail filters settings](./assets/mail-filters.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-filters.mp4"
+  poster="/docmakerai/clips/mail-filters.png"
+  alt="Short clip: creating a mail filter with condition and action in SOGo 6 settings"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Create a New Filter
 

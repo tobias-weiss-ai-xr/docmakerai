@@ -4,6 +4,8 @@ description: "Step-by-step guide to creating events in the SOGo 6 calendar"
 sidebar_label: "Create a Calendar Event"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO
@@ -47,6 +49,14 @@ There are three ways to create an event:
 Choose whichever method you prefer. A new event dialog will appear.
 
 ![Creating a new event: filled event dialog](./assets/calendar-create-event.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-create-event.mp4"
+  poster="/docmakerai/clips/calendar-create-event.png"
+  alt="Short clip: opening the event dialog and filling in title, date and time in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 3: Enter Event Details
 

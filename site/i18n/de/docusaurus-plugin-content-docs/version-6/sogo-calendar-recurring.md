@@ -5,6 +5,7 @@ sidebar_label: "Wiederkehrende Ereignisse und Erinnerungen"
 ---
 
 import VideoFallback from '@site/src/components/VideoFallback';
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

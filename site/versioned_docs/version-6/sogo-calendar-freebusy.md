@@ -4,6 +4,8 @@ description: "Check colleagues' availability before scheduling meetings"
 sidebar_label: "Free/Busy Lookup"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Free/Busy Lookup" description="Step-by-step tutorial to check colleague availability before scheduling meetings in SOGo 6" keywords={["free busy", "availability", "scheduling", "meetings", "colleagues"]} />
@@ -51,7 +53,7 @@ working as intended.
 1. Open the **Calendar** module
 2. Click **+** to create a new event, or click an existing event to edit
 
-![Event dialog with attendee options](./assets/01-event-dialog.png)
+![Event dialog with attendee options](./assets/calendar-create-event.png)
 
 ### Step 2: Add Attendees
 
@@ -63,9 +65,23 @@ working as intended.
 Once attendees are entered, the event dialog shows each attendee's
 availability (busy) status.
 
-![Free/busy availability grid](./assets/02-freebusy-grid.png)
-
 ![Adding attendees to an event](./assets/freebusy.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/freebusy.mp4"
+  poster="/docmakerai/clips/freebusy.png"
+  alt="Short clip: adding an attendee and reading their availability in the SOGo 6 event dialog"
+  width="640"
+  height="400"
+/>
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/freebusy.mp4"
+  poster="/docmakerai/clips/freebusy.png"
+  alt="Short clip: adding an attendee and reading their availability in the SOGo 6 event dialog"
+  width="640"
+  height="400"
+/>
 
 ### Step 3: Read the Grid
 
