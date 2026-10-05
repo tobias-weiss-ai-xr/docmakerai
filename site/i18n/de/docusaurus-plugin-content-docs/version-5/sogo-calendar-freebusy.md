@@ -30,9 +30,7 @@ gegenseitig sicher:
 
 1. [Geben Sie Ihren eigenen Kalender frei](./sogo-calendar-share) —
    mindestens die Frei/Gebucht-Berechtigung für Ihr Team
-2. Bitten Sie die Teilnehmer, es Ihnen gleichzutun — oder lassen Sie Ihre
-   Verwaltung einen organisationsweiten Standard setzen
-   (`SOGoCalendarDefaultRoles`)
+2. Bitten Sie die Teilnehmer, es Ihnen gleichzutun
 
 „Keine Daten“ ist daher kein Fehler: Das Berechtigungssystem funktioniert
 genau wie vorgesehen.
@@ -68,18 +66,20 @@ es gibt keine separate Frei/Gebucht-Schaltfläche.
 
 ### Schritt 3: Das Raster lesen
 
-Das Raster zeigt Zeitbereiche für jede Person:
+Das Raster zeigt Zeitbereiche für jede Person. Verlassen Sie sich nicht auf
+Farbnamen — die genauen Farben hängen vom SOGo-Skin und Design ab; lesen Sie
+stattdessen die Statusbezeichnungen:
 
-| Farbe | Bedeutung |
+| Status | Bedeutung |
 |-------|----------|
-| ✅ **Grün** | Verfügbar |
-| ❌ **Rot** | Beschäftigt (hat ein Ereignis) |
-| 🟡 **Gelb** | Vorläufig / vielleicht teilnehmend |
-| ⬜ **Weiß** | Keine Daten (nicht freigegeben oder außerhalb der Arbeitszeit) |
+| **Beschäftigt** | Der Kollege hat ein Ereignis |
+| **Vorläufig** | Nimmt vielleicht teil |
+| **Verfügbar** | Zu dieser Zeit frei |
+| Kein Eintrag / keine Daten | Kalender nicht für Sie freigegeben oder außerhalb der Arbeitszeit |
 
 ### Schritt 4: Einen gemeinsamen Zeitraum finden
 
-Suchen Sie nach einem Zeitraum, in dem alle Teilnehmer grün sind.
+Suchen Sie nach einem Zeitraum, in dem alle Teilnehmer als verfügbar angezeigt werden.
 SOGo 5 schlägt möglicherweise automatisch den nächsten verfügbaren Termin vor.
 
 ### Schritt 5: Zeit bestätigen
@@ -102,9 +102,6 @@ Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen
 
 Wer nur die Frei/Gebucht-Berechtigung hat, sieht lediglich belegte und freie Zeiten — ohne Titel oder Details. Ereignisse, die Sie als vertraulich markieren, erscheinen für andere ohnehin nur als „beschäftigt".
 
-Ihr Administrator kann die standardmäßigen Berechtigungsstufen über die
-Einstellung `SOGoCalendarDefaultRoles` ändern.
-
 ## Fehlerbehebung
 
 ### Kollege wird nicht angezeigt
@@ -119,7 +116,6 @@ Einstellung `SOGoCalendarDefaultRoles` ändern.
   [Warum die Kalenderfreigabe gegenseitig sein muss](#warum-die-kalenderfreigabe-gegenseitig-sein-muss)
 - Der Kollege hat seinen Kalender nicht für Sie freigegeben
 - Bitten Sie die Person oder Ihren Administrator, Ihnen den Frei/Gebucht-Zugriff zu gewähren
-- Standardrollen können eingeschränkt sein (`PublicDAndTViewer` muss gesetzt sein)
 
 ## Fazit
 

@@ -32,8 +32,7 @@ Before relying on availability display, make sharing mutual — once:
 
 1. [Share your own calendar](./sogo-calendar-share) — at minimum
    free/busy permission for your team
-2. Ask attendees to do the same — or have your administrator set an
-   organization-wide default (`SOGoCalendarDefaultRoles`)
+2. Ask attendees to do the same
 
 That is why "No data" is not an error: it is the permission system
 working as intended.
@@ -75,29 +74,27 @@ availability (busy) status.
   height="400"
 />
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/freebusy.mp4"
-  poster="/docmakerai/clips/freebusy.png"
-  alt="Short clip: adding an attendee and reading their availability in the SOGo 6 event dialog"
-  width="640"
-  height="400"
-/>
-
 ### Step 3: Read the Grid
 
-The grid shows time slots for each person:
+The grid shows time slots for each person. Colors as shown in the
+dialog legend (SOGo 6 live UI):
 
 | Color | Meaning |
 |:-------|:---------|
-| ✅ **Green** | Available |
-| ❌ **Red** | Busy (has an event) |
+| 🟠 **Amber** | Busy (has an event) |
 | 🟡 **Yellow** | Tentative / maybe attending |
-| ⬜ **White** | No data (not shared, or outside working hours) |
+| 🟢 **Pale green** | Available |
+| 🟩 **Green** | Suggested window (SOGo 6's pick for the meeting) |
+| ◾ **Gray** | Non-working hours |
+
+A row with no colored blocks at all means "No data": the colleague's
+calendar is not shared with you — see
+[Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual).
 
 ### Step 4: Find a Common Slot
 
-Look for a time when all attendees are green.
-SOGo 6 may suggest the next available slot automatically.
+Look for time blocks that show as Available for everyone — SOGo 6
+highlights its suggestion as a solid green "Suggested window".
 
 ### Step 5: Confirm the Time
 
@@ -119,9 +116,6 @@ By default, SOGo 6 is configured so that other users can see:
 
 People with free/busy-only permission see only busy and free time slots — without titles or details. Events you mark as confidential appear to others as "busy" anyway.
 
-Your administrator can change default permission levels via the
-`SOGoCalendarDefaultRoles` setting.
-
 ## Troubleshooting
 
 ### Colleague not showing up
@@ -136,7 +130,6 @@ Your administrator can change default permission levels via the
   [Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual)
 - The colleague hasn't shared their calendar with you
 - Ask the person or your administrator to grant you free/busy access
-- Default roles may be restricted (`PublicDAndTViewer` must be set)
 
 ## Conclusion
 
@@ -160,7 +153,7 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 | Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid |
 | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field |
 | Navigate time grid | `Tab` and arrow keys | Move between time slots |
-| Select available time slot | `Enter` on a green slot | Locks the meeting time |
+| Select available time slot | `Enter` on an available slot | Locks the meeting time |
 | Confirm event | `Tab` to Save, then `Enter` | Creates the event |
 
 ### Screen Reader Workflow
@@ -198,7 +191,7 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 - Use `Tab` to move between colleague rows in the grid
 - Use `Left`/`Right` arrow keys to move across time slots
 - You should hear each slot: "10:00 AM, available" or "11:00 AM, busy"
-- Color meanings are conveyed as text: "Available (green)", "Busy (red)", "Tentative (yellow)", "No data (white)"
+- Statuses are announced as text ("Available", "Busy", "Tentative") — you never have to rely on colors
 - Repeat for each colleague added
 
 **Step 7: Select a Common Available Slot**
@@ -223,7 +216,7 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 | "Person added to grid" | Colleague's schedule is loaded | Continue adding more or find a slot |
 | "10:00 AM, available" | Time slot is free | Select this slot for the meeting |
 | "2:00 PM, busy" | Time slot is occupied | Move to a different time slot |
-| "No data, white" | Free/busy not shared | Ask colleague to enable sharing or contact admin |
+| "No data" (row without entries) | Free/busy not shared | Ask colleague to enable sharing or contact admin |
 | "Event saved" | Meeting is created | Event is on your calendar |
 
 ### Visual Content Descriptions
