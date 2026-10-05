@@ -4,6 +4,8 @@ description: "E-Mails, Kontakte und Kalender in SOGo 6 durchsuchen"
 sidebar_label: "Suche"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # Suche in SOGo 6
 
 Die Suche in SOGo 6 erfolgt pro Modul: E-Mails durchsuchen Sie im E-Mail-Modul, Kontakte im Adressbuch und Kalenderereignisse im Kalender — jeweils über das Suchfeld der Oberfläche.
@@ -22,6 +24,14 @@ Es gibt keine zentrale Such-Schaltfläche. Öffnen Sie das Modul, in dem Sie suc
 ### Schritt 2: Suchbegriff eingeben
 
 Geben Sie Ihren Suchbegriff in das Suchfeld des Moduls ein. Ergebnisse erscheinen während der Eingabe.
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/global-search.mp4"
+  poster="/docmakerai/clips/global-search.png"
+  alt="Kurzclip: Suchbegriff in SOGo 6 eingeben und die Nachrichtenliste auf die Treffer reduzieren"
+  width="640"
+  height="400"
+/>
 
 ### Schritt 3: Ergebnisse durchsuchen
 

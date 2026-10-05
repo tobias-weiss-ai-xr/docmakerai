@@ -16,6 +16,7 @@ import asyncio
 import contextlib
 import json
 import os
+import re
 import shutil
 import sys
 import time
@@ -823,29 +824,63 @@ async def record_calendar_edit_delete(context: BrowserContext) -> Path | None:
 
 
 async def record_global_search(context: BrowserContext) -> Path | None:
-    """Global search: search bar focused with results dropdown."""
+    """Global search: term entered, message list filtered to matches.
+
+    The demo UI changed ~2026-10-05: Enter filters the list inline — the
+    old filter popover ([role=dialog], probed 2026-09-14) is gone. The
+    term is derived from the first inbox message so demo resets can't
+    rot it ("Team" found nothing after the 2026-10-05 reset)."""
     rec = ScreenshotRecorder("global-search", SCREENSHOT_DIR)
     page = await rec.start(context)
     await navigate_to_module(page, "mail")
     await dismiss_hints(page)
 
-    search_in = page.locator('input[placeholder*="earch"]').first
-    await click_required(page, search_in, "Search input")
-    await search_in.fill("Team")
+    def msg_count(main_text: str) -> int | None:
+        m = re.search(r"(\d+) messages", main_text)
+        return int(m.group(1)) if m else None
 
-    # Search executes on Enter; a filter popover (role=dialog) opens (probe
-    # 2026-09-14). Wait for it as the visible outcome.
-    await page.keyboard.press("Enter")
-    popover = page.locator("[role='dialog']").first
-    await require(popover, "Search filter popover")
-    await page.wait_for_timeout(400)
+    first_row = page.locator('main div[role="button"]').first
+    await require(first_row, "Message in inbox")
+    total = msg_count(await page.locator("main").first.inner_text()) or 0
+    row_text = await first_row.inner_text()
+    # Prefer distinctive subject words (longest line first) — common words
+    # like senders' names match everything and prove nothing.
+    lines = sorted(row_text.split("\n"), key=len, reverse=True)
+    candidates: list[str] = []
+    for line in lines:
+        candidates += [
+            w for w in re.split(r"\W+", line) if len(w) >= 4 and w.isalpha() and w not in candidates
+        ]
+    if not candidates:
+        raise CaptureError("no usable search term in first inbox row")
+
+    search_in = page.locator('input[placeholder*="earch"]').first
+    term = ""
+    found = 0
+    for term in candidates[:4]:
+        await click_required(page, search_in, "Search input")
+        await search_in.fill(term)
+        await page.keyboard.press("Enter")
+        await page.wait_for_timeout(1800)
+        main_text = await page.locator("main").first.inner_text()
+        found = msg_count(main_text) or 0
+        # 0 = no evidence of filtering; >= total = term too broad
+        if 0 < found < total:
+            print(f"   [SEARCH] term {term!r}: {found}/{total} messages")
+            break
+    else:
+        raise CaptureError(f"no search term narrowed the list (tried {candidates[:4]})")
 
     # Scene = search bar (3rd div ancestor of the input: wrapper -> flex-1
-    # -> header search cluster) united with the filter popover.
+    # -> header search cluster) united with the filtered-list header.
     search_cluster = search_in.locator("xpath=ancestor::div[3]")
+    result_header = page.locator("main").first.get_by_text(
+        re.compile(rf"^{found} messages$")
+    )
+    await require(result_header, f"Filtered result count ({found} messages)")
     return await rec.capture(
-        page, "Global search: term entered, filter popover open",
-        scope=[search_cluster, popover],
+        page, f"Global search: term {term!r} entered, list filtered to {found} messages",
+        scope=[search_cluster, result_header],
     )
 
 

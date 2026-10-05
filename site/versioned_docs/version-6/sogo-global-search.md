@@ -4,6 +4,8 @@ description: "Search your emails, contacts, and calendar in SOGo 6"
 sidebar_label: "Search"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Search" description="Step-by-step tutorial to search emails, contacts, and calendar events in SOGo 6" keywords={["search", "find", "modules", "quick access"]} />
@@ -24,6 +26,14 @@ Searching in SOGo 6 works per module: search emails in the Mail module, contacts
 There is no central search button. Open the module you want to search — **Mail**, **Calendar**, or **Address Book** in the top bar.
 
 ![Searching in SOGo 6](./assets/global-search.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/global-search.mp4"
+  poster="/docmakerai/clips/global-search.png"
+  alt="Short clip: typing a search term in SOGo 6 and the message list filtering down to the matches"
+  width="640"
+  height="400"
+/>
 
 ### Step 2: Enter Your Query
 
