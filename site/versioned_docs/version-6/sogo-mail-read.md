@@ -4,6 +4,9 @@ description: "Navigate your inbox and read emails in SOGo 6"
 sidebar_label: "Mail — Read"
 ---
 
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
 import PageSEO from '@site/src/components/PageSEO';
 
 <PageSEO title="Mail — Read & View Messages" description="Step-by-step tutorial to navigate your inbox and read emails in SOGo 6" keywords={["read email", "inbox", "view messages", "navigation", "mail"]} />
@@ -20,6 +23,14 @@ View and read emails in your SOGo 6 inbox.
 ## Step-by-Step Instructions
 
 ![Reading an email in SOGo 6](./assets/mail-read.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-read.mp4"
+  poster="/docmakerai/clips/mail-read.png"
+  alt="Short clip: clicking a message in the inbox and reading it in the reading pane in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 1: Open the Mail Module
 

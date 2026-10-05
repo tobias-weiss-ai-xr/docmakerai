@@ -339,6 +339,14 @@
       "kind": "sogo6-live",
       "origin": "live-capture",
       "note": "Live capture from demov6.sogo.nu via capture/run_screenshot_captures.py (verified state, element-scoped shot)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/logout.png": {
+      "kind": "sogo6-live",
+      "origin": "live-pipeline"
+    },
+    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/mail-read.png": {
+      "kind": "sogo6-live",
+      "origin": "live-pipeline"
     }
   }
 }

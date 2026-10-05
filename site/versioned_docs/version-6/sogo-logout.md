@@ -5,6 +5,7 @@ sidebar_label: "Logout"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
+import VideoFallback from '@site/src/components/VideoFallback';
 
 <PageSEO title="Logout" description="How to securely log out of SOGo 6 — end your session via the avatar menu" keywords={["logout", "sign out", "session", "security", "SOGo 6"]} />
 
@@ -13,6 +14,14 @@ import PageSEO from '@site/src/components/PageSEO';
 Click your **avatar** in the top-right toolbar and select **Logout** to end your SOGo 6 session. You'll be returned to the login page.
 
 ![After logging out you are returned to the SOGo 6 login page](./assets/logout.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/logout.mp4"
+  poster="/docmakerai/clips/logout.png"
+  alt="Short clip: opening the avatar menu and logging out of SOGo 6"
+  width="640"
+  height="400"
+/>
 
 :::tip
 On shared or public computers, always log out when you're done. Don't just close the browser tab.

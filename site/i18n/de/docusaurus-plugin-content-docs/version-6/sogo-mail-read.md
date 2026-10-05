@@ -4,6 +4,9 @@ description: "Navigieren Sie durch Ihren Posteingang und lesen Sie E-Mails in SO
 sidebar_label: "E-Mail — Lesen"
 ---
 
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # E-Mail — Nachrichten lesen und anzeigen
 
 Zeigen Sie E-Mails in Ihrem SOGo 6-Posteingang an und lesen Sie sie.
@@ -22,6 +25,16 @@ Klicken Sie oben in der Navigationsleiste auf **E-Mail**, um den Posteingang zu 
 ### Schritt 2: Eine E-Mail auswählen
 
 Der Posteingang zeigt Nachrichten als Liste an. Klicken Sie auf eine beliebige E-Mail, um sie anzuzeigen.
+
+![Eine E-Mail in SOGo 6 lesen](./assets/mail-read.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-read.mp4"
+  poster="/docmakerai/clips/mail-read.png"
+  alt="Kurzclip: Nachricht im Posteingang anklicken und im Lesebereich lesen in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 
 Die E-Mail wird im Vorschaufenster mit folgenden Abschnitten geöffnet:
