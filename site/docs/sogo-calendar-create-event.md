@@ -42,14 +42,6 @@ There are three ways to create an event:
 
 Choose whichever method you prefer. A new event dialog will appear.
 
-<VideoFallback
-  srcMp4="./assets/page@285e5b1bfc532a4e5c67a2ec8f95cc41.mp4"
-  poster="./assets/01-calendar-create-view.png"
-  alt="Creating a new event in the SOGo 5 calendar"
-  width="800"
-  height="600"
-/>
-
 ### Step 3: Enter Event Details
 
 Fill in the event details:
@@ -138,16 +130,16 @@ You have successfully created a calendar event. You can now:
 
 SOGo 5 supports full keyboard navigation for calendar events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|----------------------------------|---------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | New event | `e` | Opens event dialog |
-| | Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
-| | Navigate calendar | `Arrow keys` | Move through days/times |
-| | Select time slot | `Enter` | Opens event dialog |
-| | Next/prev day | `J` / `K` | Navigate calendar |
-| | Open dialog | `Enter` | Edit event |
-| | Save event | `Ctrl+S` or `Enter` | Save and close |
+| Action | Keyboard Shortcut | Notes |
+|--------|-------------------|-------|
+| Navigate to Calendar | `Alt+M`, then `Tab` | Jump to the Calendar module |
+| New event | `e` | Opens event dialog |
+| Switch views | `d`, `w`, `m`, `y` | Day, Week, Month, Year |
+| Navigate calendar | `Arrow keys` | Move through days/times |
+| Select time slot | `Enter` | Opens event dialog |
+| Next/prev day | `J` / `K` | Navigate calendar |
+| Open dialog | `Enter` | Edit event |
+| Save event | `Ctrl+S` or `Enter` | Save and close |
 
 ### Screen Reader Workflow
 
