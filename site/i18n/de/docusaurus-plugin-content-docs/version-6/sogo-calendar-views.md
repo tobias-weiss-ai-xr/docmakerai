@@ -4,6 +4,8 @@ description: "Zwischen Tages-, Wochen- und Monatsansichten im SOGo 6-Kalender we
 sidebar_label: "Kalenderansichten"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
+
 # Kalenderansichten
 
 Wechseln Sie zwischen verschiedenen Kalenderansichten, um Ihren Terminplan im passenden Detailgrad zu sehen — von der fokussierten Tagesübersicht bis zum gesamten Monat auf einen Blick.
@@ -22,6 +24,14 @@ Klicken Sie oben in der Navigationsleiste auf **Kalender**, um die Kalenderansic
 ### Schritt 2: Zwischen Ansichten wechseln
 
 Der Kalender öffnet standardmäßig in der **Wochenansicht**. Verwenden Sie die Ansichtswechsler-Buttons in der oberen Symbolleiste, um zwischen den verfügbaren Ansichten zu wechseln.
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-views.mp4"
+  poster="/docmakerai/clips/calendar-views.png"
+  alt="Kurzclip: Wechsel zwischen Tag-, Wochen- und Monatsansicht im SOGo-6-Kalender"
+  width="640"
+  height="400"
+/>
 
 Verfügbare Ansichten:
 

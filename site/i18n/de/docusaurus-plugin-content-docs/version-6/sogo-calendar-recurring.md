@@ -4,6 +4,7 @@ description: "Wiederholende Ereignisse mit E-Mail- und Bildschirmerinnerungen ei
 sidebar_label: "Wiederkehrende Ereignisse und Erinnerungen"
 ---
 
+import VideoFallback from '@site/src/components/VideoFallback';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -40,6 +41,14 @@ Füllen Sie aus:
 Klicken Sie auf den Bereich **Wiederholen**, um ihn zu erweitern:
 
 ![Wiederholungsoptionen im Ereignisdialog](./assets/02-recurrence-options.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-recurring.mp4"
+  poster="/docmakerai/clips/calendar-recurring.png"
+  alt="Kurzclip: Wiederholen aktivieren und die Häufigkeitsoptionen öffnen im SOGo-6-Ereignisdialog"
+  width="640"
+  height="400"
+/>
 
 | Option | Beschreibung | Beispiel |
 |--------|-------------|----------|

@@ -7,6 +7,7 @@ sidebar_label: "Recurring Events & Alarms"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import PageSEO from '@site/src/components/PageSEO';
+import VideoFallback from '@site/src/components/VideoFallback';
 
 <PageSEO title="Recurring Events & Alarms" description="Step-by-step tutorial to set up repeating events with email and display reminders in SOGo 6" keywords={["recurring events", "alarms", "reminders", "repeating", "notifications"]} />
 
@@ -58,6 +59,14 @@ For **weekly** recurrence, you can select multiple days
 :::
 
 ![Configuring weekly recurrence: frequency dropdown in the event dialog](./assets/calendar-recurring.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/calendar-recurring.mp4"
+  poster="/docmakerai/clips/calendar-recurring.png"
+  alt="Short clip: enabling Repeat and opening the frequency options in the SOGo 6 event dialog"
+  width="640"
+  height="400"
+/>
 
 ### Step 4: Set an End Date (Recommended)
 

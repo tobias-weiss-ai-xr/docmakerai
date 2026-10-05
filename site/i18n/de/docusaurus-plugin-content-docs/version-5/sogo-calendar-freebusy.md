@@ -28,7 +28,7 @@ beide Richtungen laufen:
 Bevor Sie sich auf das Raster verlassen, stellen Sie die Freigabe einmalig
 gegenseitig sicher:
 
-1. [Geben Sie Ihren eigenen Kalender frei](./sogo-calendar-share.md) —
+1. [Geben Sie Ihren eigenen Kalender frei](./sogo-calendar-share) —
    mindestens die Frei/Gebucht-Berechtigung für Ihr Team
 2. Bitten Sie die Teilnehmer, es Ihnen gleichzutun — oder lassen Sie Ihre
    Verwaltung einen organisationsweiten Standard setzen

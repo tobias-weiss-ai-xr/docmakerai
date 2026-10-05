@@ -5,6 +5,7 @@ sidebar_label: "Compose and Send an Email"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
+import VideoFallback from '@site/src/components/VideoFallback';
 
 <PageSEO title="Compose and Send an Email" description="Step-by-step tutorial to write, format, and send emails in the SOGo 6 webmail interface" keywords={["compose email", "send email", "formatting", "attachments", "webmail"]} />
 
@@ -36,6 +37,14 @@ Click the pen icon (**Compose**) in the toolbar above your message list.
 A new message composition window will open.
 
 ![Step 2: Compose New Message](./assets/mail-compose.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/mail-compose.mp4"
+  poster="/docmakerai/clips/mail-compose.png"
+  alt="Short clip: opening the compose panel and filling recipient, subject and body in SOGo 6"
+  width="640"
+  height="400"
+/>
 
 ### Step 3: Address Your Message
 
