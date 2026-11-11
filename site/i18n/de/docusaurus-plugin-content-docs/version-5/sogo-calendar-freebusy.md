@@ -89,18 +89,30 @@ Die Start-/Endzeit des Ereignisses wird entsprechend aktualisiert.
 
 ## Was andere sehen
 
-Dies ist die Berechtigung, die die gegenseitige Freigabe erteilt — siehe
-[Warum die Kalenderfreigabe gegenseitig sein muss](#warum-die-kalenderfreigabe-gegenseitig-sein-muss).
+Was eine Kollegin oder ein Kollege sehen kann, hängt von zwei Dingen ab:
+von den Rechten, die die Person auf Ihrem Kalender hat, und davon, wie
+das einzelne Ereignis eingestuft ist.
 
-Standardmäßig ist SOGo 5 so konfiguriert, dass andere Benutzer Folgendes sehen können:
+**1. Die Rechte auf dem Kalender.** Wenn ein Kalender freigegeben wird,
+wird pro Person eine dieser Berechtigungen erteilt:
 
-| Berechtigung | Was sichtbar ist |
-|-------------|-----------------|
-| **Frei/Gebucht** | Nur ob Sie verfügbar oder beschäftigt sind (keine Details) |
-| **Anzeigen (schreibgeschützt)** | Ereignistitel und -zeiten |
-| **Vertrauliche Ereignisse** | Nur als "Beschäftigt" markiert, auch für Betrachter |
+| Recht | Was es erlaubt |
+|:------|:---------------|
+| Ereignisse ohne Details sehen | Nur belegte und freie Zeiten — keine Titel, keine Details |
+| Ereignisse mit Details sehen | Titel, Zeiten und Beschreibungen |
+| Antworten | Auf Einladungen reagieren |
+| Bearbeiten | Ereignisse anlegen, ändern und löschen |
 
-Wer nur die Frei/Gebucht-Berechtigung hat, sieht lediglich belegte und freie Zeiten — ohne Titel oder Details. Ereignisse, die Sie als vertraulich markieren, erscheinen für andere ohnehin nur als „beschäftigt".
+Die Frei/Gebucht-Anzeige in dieser Anleitung ist die Ansicht „ohne
+Details“.
+
+**2. Die Einstufung des Ereignisses.** Jedes Ereignis trägt eine
+Sichtbarkeit — je Ereignis im Ereignisdialog einstellbar: *Öffentlich*,
+*Privat* oder *Vertraulich*.
+
+Was eine Person für ein bestimmtes Ereignis sieht, hängt von beidem ab:
+ihrem Recht am Kalender und der Einstufung des Ereignisses. Mit „ohne
+Details“ sieht sie nur belegte Blöcke — unabhängig von der Einstufung.
 
 ## Fehlerbehebung
 
