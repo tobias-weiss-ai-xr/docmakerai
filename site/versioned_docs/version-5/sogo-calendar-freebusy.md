@@ -91,18 +91,28 @@ The event's start/end time updates to match.
 
 ## What Others See
 
-This is the permission that mutual sharing grants — see
-[Why Calendar Sharing Must Be Mutual](#why-calendar-sharing-must-be-mutual).
+What a colleague can see depends on two things: the rights they have on
+your calendar, and how each event is classified.
 
-By default, SOGo 5 is configured so that other users can see:
+**1. The rights they have on your calendar.** When a calendar is shared,
+one of these rights is granted per person:
 
-| Permission | What's Visible |
-|:-----------|:----------------|
-| **Free/Busy** | Only whether you're available or busy (no details) |
-| **View (read-only)** | Event titles and times |
-| **Confidential events** | Marked as "Busy" only, even to viewers |
+| Right | What it allows |
+|:------|:---------------|
+| See events without details | Busy/free times only — no titles, no details |
+| See events with details | Titles, times and descriptions |
+| Answer | Respond to invitations |
+| Edit | Create, change and delete events |
 
-People with free/busy-only permission see only busy and free time slots — without titles or details. Events you mark as confidential appear to others as "busy" anyway.
+The free/busy view described in this guide is the "without details"
+view.
+
+**2. How each event is classified.** Every event carries a visibility,
+set per event in the event dialog — *Public*, *Private* or *Confidential*.
+
+What someone actually sees for a given event depends on both: their
+right on the calendar and the event's classification. With "see without
+details" they only ever see busy blocks — regardless of classification.
 
 ## Troubleshooting
 
