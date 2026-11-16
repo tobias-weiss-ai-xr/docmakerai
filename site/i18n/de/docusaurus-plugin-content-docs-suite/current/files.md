@@ -1,0 +1,96 @@
+---
+title: "Dateien mit OpenCloud"
+sidebar_label: "Dateien (OpenCloud)"
+sidebar_position: 14
+description: "Dateien speichern, teilen und gemeinsam bearbeiten in OpenCloud"
+---
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
+# Dateien mit OpenCloud
+
+[OpenCloud](https://cloud.openedusuite.org) ist Ihr Dateispeicher in
+der openEduSuite: Dokumente, Bilder und Ordner im persönlichen Bereich
+ablegen, mit anderen teilen und von überall erreichen. Öffnen Sie es
+über die Kachel **OpenCloud** im [Portal](/suite/portal) oder direkt —
+die Anmeldung funktioniert mit Ihrem openEduSuite-Konto.
+
+## Ihr persönlicher Bereich
+
+Nach der Anmeldung landen Sie in Ihrem persönlichen Bereich: die Ansicht
+**All files** (Alle Dateien) zeigt Ihre Dateien und Ordner.
+
+![OpenCloud persönlicher Bereich: All files](./assets/cloud-files.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/cloud-files.mp4"
+  poster="/docmakerai/clips/cloud-files.png"
+  alt="Kurzclip: die persönliche Dateiansicht in OpenCloud"
+  width="640"
+  height="400"
+/>
+
+Die Navigation bietet:
+
+- **Personal** (Persönlich) — Ihre eigenen Dateien, mit **All files**,
+  **Favorites** (Favoriten) und **Deleted files** (Gelöschte Dateien)
+- **Shares** (Freigaben) — mit Ihnen geteilte und von Ihnen geteilte
+  Dateien
+- **Spaces** (Bereiche) — gemeinsame Flächen für Teams und Projekte
+
+## Dateien hinzufügen
+
+Wählen Sie **New** (Neu), um zu erstellen oder hochzuladen:
+
+- **Folder** (Ordner) — ein neuer Ordner
+- **Files Upload** — eine oder mehrere Dateien von Ihrem Rechner
+  hochladen
+- **Folder Upload** — einen ganzen Ordner hochladen
+- **Note**, **Markdown file**, **Shortcut** — direkt in der Cloud
+  anlegen
+
+![New-Menü: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut](./assets/cloud-new.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/cloud-new.mp4"
+  poster="/docmakerai/clips/cloud-new.png"
+  alt="Kurzclip: das New-Menü mit Upload- und Erstellungsoptionen"
+  width="640"
+  height="400"
+/>
+
+## Freigaben
+
+Unter **Shares** finden Sie alles Geteilte:
+
+- **Shared with me** — Dateien und Ordner, die Kolleginnen und Kollegen
+  mit Ihnen geteilt haben
+- **Shared with others** — was Sie geteilt haben
+- **Shared via link** — Ihre Freigabelinks
+
+![Freigaben: mit mir geteilte Dateien](./assets/cloud-shares.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/cloud-shares.mp4"
+  poster="/docmakerai/clips/cloud-shares.png"
+  alt="Kurzclip: die Freigaben-Ansicht mit ihren Unterfiltern"
+  width="640"
+  height="400"
+/>
+
+Gelöschte Dateien landen zuerst in **Deleted files** — von dort lassen
+sie sich wiederherstellen oder endgültig entfernen.
+
+## Barrierefreiheit
+
+| Aktion | Taste |
+|--------|-------|
+| Durch die Dateiliste und Schaltflächen bewegen | `Tab` |
+| Fokussierte Datei oder Menüeintrag öffnen | `Enter` |
+| New-Menü öffnen | `Enter` auf der Schaltfläche New |
+
+- Die Dateiansicht ist eine gewöhnliche Web-Liste: `Tab` bewegt Sie
+  durch Dateien und Schaltflächen, `Enter` öffnet das fokussierte
+  Element.
+- Verlieren Sie die Orientierung, drücken Sie `Strg+Pos1`, um zum
+  Seitenanfang zurückzukehren.

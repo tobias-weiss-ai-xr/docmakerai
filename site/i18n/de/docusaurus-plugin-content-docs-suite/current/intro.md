@@ -44,6 +44,10 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
 
 ## Stand der Dokumentation
 
+- **Portal**: [Das Portal](/suite/portal) — Ihr digitaler Arbeitsplatz
+  mit allen App-Kacheln an einem Ort
+- **Dateien**: [Dateien mit OpenCloud](/suite/files) — Dateien speichern,
+  teilen und gemeinsam bearbeiten
 - **Helpdesk**: [Ein Ticket erstellen](/suite/helpdesk-create-ticket) —
   das Support-Ticketsystem (Request Tracker)
 - **Anmeldung und Ihr Konto**: [Anmelden](/suite/sso-login) und

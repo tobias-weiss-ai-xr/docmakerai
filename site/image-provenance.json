@@ -411,6 +411,46 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/rt-create.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "suite-docs/assets/portal-public.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/portal-public.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/portal-apps.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/portal-apps.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/cloud-files.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/cloud-files.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/cloud-new.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/cloud-new.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/cloud-shares.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/cloud-shares.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
     }
   }
 }

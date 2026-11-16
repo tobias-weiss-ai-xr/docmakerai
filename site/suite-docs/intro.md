@@ -44,6 +44,10 @@ apps available to you.
 
 ## Documentation Status
 
+- **Portal**: [The Portal](/suite/portal) — your digital workplace
+  with all app tiles in one place
+- **Files**: [Files with OpenCloud](/suite/files) — store, share and
+  work on files together
 - **Helpdesk**: [Create a Ticket](/suite/helpdesk-create-ticket) — the
   support ticket system (Request Tracker)
 - **Signing in and your account**: [Signing In](/suite/sso-login) and

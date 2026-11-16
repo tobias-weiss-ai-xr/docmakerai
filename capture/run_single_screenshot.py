@@ -53,6 +53,9 @@ async def run_one(module_path: str, fn_name: str):
     from playwright.async_api import async_playwright
 
     record = os.environ.get("SOGO_RECORD_VIDEO", "1") == "1"
+    no_video = getattr(mod, "NO_VIDEO_WORKFLOWS", ())
+    if fn_name in no_video:
+        record = False
     video_dir = SCREENSHOT_DIR / f"{fn_name}_vid" if record else None
 
     p = await async_playwright().start()
