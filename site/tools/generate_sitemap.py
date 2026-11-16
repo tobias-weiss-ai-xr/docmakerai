@@ -37,7 +37,7 @@ def locale_of(path: str) -> str | None:
         return None
     if parts[0] == "de":
         return "de"
-    if parts[0] in ("sogo5", "sogo6", "docs"):
+    if parts[0] in ("sogo5", "sogo6", "docs", "suite"):  # EN docs route bases
         return "en"
     return None
 

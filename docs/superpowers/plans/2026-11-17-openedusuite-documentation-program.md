@@ -23,16 +23,16 @@ provenance manifest + clips conventions (existing).
 
 ---
 
-## 0. Decision Gates (blocking — need user answers before Wave 1 starts)
+## 0. Decision Gates — RESOLVED 2026-11-17 (empirical probes + standing recommendations)
 
-| # | Question | Recommendation |
-|---|----------|----------------|
-| G1 | **Audience:** end users only, or also staff/admin? | End users (students/staff as users). Admin/ops docs stay in openEduSuite-hrz `docs/` — link out, don't duplicate. |
-| G2 | **Component scope:** which apps are *user-facing in production* on openedusuite.org? E.g. is grommunio an evaluation parallel to SOGo? ILIAS vs Moodle — both? BookStack and XWiki share `wiki.` host — what's the split? | Take the portal entries (LDIF, `odApplicationOrder`) as the source of truth: what appears in the portal gets documented. |
-| G3 | **Capture target:** production portal.openedusuite.org (read-only flows, real accounts?) or the eval cluster / a dedicated docs-tenant? | Dedicated test tenant on the eval cluster if available; production only for flows that are safe read-only (portal, file listing). SOGo precedent: public demo, disposable accounts. |
-| G4 | **Docs URL/home:** stay under graphwiz GH Pages (`/docmakerai/`) or move to docs.openedusuite.org later? | Stay now (no infra work), design URLs so a future domain move is config-only (`baseUrl` + asset prefix). |
-| G5 | **Languages:** EN+DE from day one (as SOGo)? | Yes — existing i18n pipeline and DE-own-assets policy apply unchanged. |
-| G6 | **Versioning:** per-product versions like SOGo v5/v6? | No versioning for wave 1+2 products (single current). SOGo keeps its versioned instance. Revisit when a product does a breaking major. |
+| # | Question | Resolution |
+|---|----------|------------|
+| G1 | **Audience:** end users only, or also staff/admin? | **End users.** Admin/ops docs stay in openEduSuite-hrz `docs/` — link out, don't duplicate. |
+| G2 | **Component scope:** which apps are user-facing in production? | **Portal entries (LDIF) = product truth; `helmfile/apps/edu/` (42 staged) = deployment universe; landscape.openedusuite.org (189 entries) = ecosystem context, not scope.** Open questions remain for grommunio-vs-SOGo, ILIAS-vs-Moodle, BookStack-vs-XWiki split — per-wave confirmation when each goes live. |
+| G3 | **Capture target:** production vs eval tenant? | **Live on openedusuite.org today (2026-11-17): `id.` (Keycloak), `mail.` (SOGo ✓), `n8n.`; `excalidraw.` = 403 restricted; all other portal hosts 404.** → Captures before go-live target the eval cluster (tenant credentials = Wave 1 prerequisite). |
+| G4 | **Docs URL/home:** stay under graphwiz GH Pages (`/docmakerai/`) or move to docs.openedusuite.org later? | **Stay at `/docmakerai/` now**; `/suite/…` URLs are domain-move-safe (config-only). |
+| G5 | **Languages:** EN+DE from day one (as SOGo)? | **EN+DE** — Wave 0 overview shipped bilingually; DE-own-assets policy applies. |
+| G6 | **Versioning:** per-product versions like SOGo v5/v6? | **No versioning** for suite products (single `current`). SOGo keeps its versioned instance. Revisit on a breaking major. |
 
 ## 1. Component Inventory (from portal-entries LDIF + helmfile/apps/edu)
 
@@ -127,7 +127,7 @@ Unknown/unreachable UI → hedge honestly (delegation-page precedent).
 
 ## 6. Wave Plans (to be written with writing-plans when each wave starts)
 
-- [ ] Wave 0: site architecture + capture profiles (G1–G6 answered)
+- [x] Wave 0: site architecture shipped (`02…`/see wave0 plan): `/suite` docs instance, EN+DE overview, sitemap merge fix, tests guard the section. Capture profiles deferred to Wave 1 (YAGNI).
 - [ ] Wave 1: portal, sso+ssp, files, helpdesk (+ SOGo cross-links)
 - [ ] Wave 2: wiki/projects, etherpad, planka, drawio, excalidraw, bookstack
 - [ ] Wave 3: LMS, BBB, jupyter, rstudio, overleaf

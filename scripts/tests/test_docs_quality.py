@@ -25,6 +25,8 @@ DOC_DIRS = [
     SITE / "versioned_docs" / "version-6",
     SITE / "i18n" / "de" / "docusaurus-plugin-content-docs" / "version-5",
     SITE / "i18n" / "de" / "docusaurus-plugin-content-docs" / "version-6",
+    SITE / "suite-docs",
+    SITE / "i18n" / "de" / "docusaurus-plugin-content-docs-suite" / "current",
 ]
 DE_DIRS = [d for d in DOC_DIRS if "i18n" in str(d)]
 
