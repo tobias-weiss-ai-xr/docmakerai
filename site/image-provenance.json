@@ -451,6 +451,30 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/cloud-shares.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (home./cloud.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/ai-chat.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/ai-chat.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/operaton-tasklist.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/operaton-tasklist.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/n8n-workflows.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/n8n-workflows.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
     }
   }
 }

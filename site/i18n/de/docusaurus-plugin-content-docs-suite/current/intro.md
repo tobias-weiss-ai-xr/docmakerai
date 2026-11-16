@@ -48,6 +48,12 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   mit allen App-Kacheln an einem Ort
 - **Dateien**: [Dateien mit OpenCloud](/suite/files) — Dateien speichern,
   teilen und gemeinsam bearbeiten
+- **KI-Chat**: [KI-Chat (Open WebUI)](/suite/ai-chat) — Fragen stellen
+  und mit Texten arbeiten
+- **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
+  — Ihre Aufgaben und Prozesse starten
+- **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine
+  Automatisierungen bauen, die Anwendungen verbinden
 - **Helpdesk**: [Ein Ticket erstellen](/suite/helpdesk-create-ticket) —
   das Support-Ticketsystem (Request Tracker)
 - **Anmeldung und Ihr Konto**: [Anmelden](/suite/sso-login) und

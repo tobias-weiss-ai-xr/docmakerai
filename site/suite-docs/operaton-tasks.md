@@ -1,0 +1,56 @@
+---
+title: "Processes and Tasks (Operaton)"
+sidebar_label: "Processes (Operaton)"
+sidebar_position: 16
+description: "Work through assigned tasks and start processes in the workflow engine Operaton"
+---
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
+# Processes and Tasks (Operaton)
+
+[Operaton](https://operaton.openedusuite.org) is the workflow engine of
+the openEduSuite: administrative and collaborative processes run here
+digitally — approvals, applications, checklists. You meet it when a
+process assigns you a task.
+
+![Operaton Tasklist: tasks, create task, start process](./assets/operaton-tasklist.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/operaton-tasklist.mp4"
+  poster="/docmakerai/clips/operaton-tasklist.png"
+  alt="Short clip: the Operaton task list with tasks and start process"
+  width="640"
+  height="400"
+/>
+
+## Your Tasks
+
+After signing in, open the **Tasklist**. It shows the tasks assigned to
+you, for example under **All tasks**. Open a task to see its form:
+details, fields to fill in, and a button to complete the step —
+sometimes a choice between several paths. What you see
+exactly depends on the process.
+
+Some lists keep a filter so you see only what matters to you; the
+number next to a list entry shows how many tasks it currently holds.
+
+## Starting a Process
+
+Many processes can also be started by you directly: choose **Start process**, pick the
+process, and fill in the form that follows. The
+process then routes through the university's defined steps — you will
+meet it again as a task whenever your part is due.
+
+## Accessibility
+
+| Action | Key |
+|--------|-----|
+| Move through the task list and forms | `Tab` |
+| Open the focused task or button | `Enter` |
+
+- The task list and the forms are ordinary web elements: `Tab` moves
+  you through list entries and form fields in order, `Enter` opens the
+  focused task or triggers the focused button.
+- If you lose your orientation, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page.

@@ -896,7 +896,14 @@ def test_admonition_types_are_valid(md_files):
 
 #: files that are legitimately near-empty (verified live captures), as
 #: (site-relative dir, filename) — name-only would skip future copies
-_BLANK_ALLOWED = {("versioned_docs/version-6", "logout.png")}
+_BLANK_ALLOWED = {
+    ("versioned_docs/version-6", "logout.png"),
+    # Open WebUI is an airy white app: a verified chat exchange still sits at
+    # luma ~254 / ~59 colors / 1.6% edges — content spans the full canvas
+    # (checked 2026-11: dark pixels across >95% of width and height rows).
+    ("suite-docs", "ai-chat.png"),
+    ("i18n/de/docusaurus-plugin-content-docs-suite/current", "ai-chat.png"),
+}
 
 
 def _blank_metrics(png: Path):

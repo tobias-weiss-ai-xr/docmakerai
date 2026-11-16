@@ -1,0 +1,71 @@
+---
+title: "Automatisierung mit n8n"
+sidebar_label: "Automatisierung (n8n)"
+sidebar_position: 17
+description: "Kleine Automatisierungen bauen, die Ihre Anwendungen und Dienste verbinden"
+---
+
+import VideoFallback from '@site/src/components/VideoFallback';
+
+# Automatisierung mit n8n
+
+[n8n](https://n8n.openedusuite.org) verbindet die Dienste der
+openEduSuite: Geschieht etwas an einem Ort, kann n8n an einem anderen
+reagieren — eine Nachricht senden, eine Datei schreiben, ein Ticket
+anlegen, Daten abrufen. Diese Automatisierungen stellen Sie visuell
+aus Bausteinen zusammen.
+
+![n8n-Workflows: Übersicht mit Workflow erstellen und Demo-Workflows](./assets/n8n-workflows.png)
+
+<VideoFallback
+  srcMp4="/docmakerai/clips/n8n-workflows.mp4"
+  poster="/docmakerai/clips/n8n-workflows.png"
+  alt="Kurzclip: die n8n-Workflow-Übersicht mit ihren Demo-Workflows"
+  width="640"
+  height="400"
+/>
+
+## Die Übersicht
+
+Nach der Anmeldung sehen Sie Ihre **Workflows**: die Automatisierungen
+Ihres Kontos, mit fertigen Demo-Workflows zum Lernen. Die Seitenleiste
+führt zu den wichtigen Orten:
+
+- **Overview** — Ihre Workflows, Ausführungen und Zugangsdaten auf
+  einen Blick
+- **Create workflow** — eine neue Automatisierung beginnen
+- **Credentials** (Zugangsdaten) — die Konten und Schlüssel, die Ihre
+  Workflows nutzen
+- **Executions** (Ausführungen) — was lief, wann und mit welchem
+  Ergebnis
+- **Data tables** (Datentabellen) und **Variables** (Variablen) —
+  Speicher und Werte für Ihre Automatisierungen
+
+## Eine erste Automatisierung bauen
+
+1. Wählen Sie **Create workflow** — der Editor öffnet sich mit einem
+   Startpunkt
+2. Wählen Sie einen **Trigger**: was die Automatisierung startet — zum
+   Beispiel ein Zeitplan, ein Webhook oder ein Ereignis in einem Dienst
+3. Fügen Sie Schritte hinzu: jeder Schritt tut genau eines — abrufen,
+   umformen, senden
+4. Testen Sie die Schritte beim Bauen und aktivieren Sie den Workflow
+   danach
+
+Gute erste Automatisierungen sind klein: ein Trigger, ein bis zwei
+Schritte. Die Demo-Workflows zeigen vollständige Beispiele, die Sie
+kopieren und anpassen können. Wenn sich etwas weigert zu funktionieren,
+ist der [Helpdesk](/suite/helpdesk-create-ticket) der richtige Ort zum
+Fragen.
+
+## Barrierefreiheit
+
+| Aktion | Taste |
+|--------|-------|
+| Durch Listen und Dialoge bewegen | `Tab` |
+| Fokussiertes Element öffnen | `Enter` |
+
+- Übersicht und Dialoge sind gewöhnliche Web-Elemente: `Tab` bewegt Sie
+  hindurch, `Enter` öffnet das fokussierte Element.
+- Verlieren Sie die Orientierung, drücken Sie `Strg+Pos1`, um zum
+  Seitenanfang zurückzukehren.
