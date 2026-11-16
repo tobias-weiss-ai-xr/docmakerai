@@ -44,17 +44,25 @@ Füllen Sie die Ereignisdetails aus:
 
 | Eingabefeld | Beschreibung | Beispiel |
 |------|-------------|----------|
-| **Titel** | Ein kurzer Name für Ihr Ereignis | "Team-Besprechung" |
+| **Ereignistitel** | Ein kurzer Name für Ihr Ereignis | "Team-Besprechung" |
+| **Kalender** | In welchem Kalender gespeichert werden soll — Auswahl aus Ihrer Kalenderliste | Ihr persönlicher Kalender |
+| **Ganztägig** | Schalter für Ganztägiges Ereignis (z. B. Geburtstage, Feiertage); die Zeitfelder sind dann deaktiviert | — |
+| **Startzeit / Endzeit** | Datum und Uhrzeit von Beginn und Ende | Heute, 10:00–11:00 |
+| **Zeitzone (Ereignis)** | Zeitzone für Beginn und Ende — nützlich bei Ereignissen über Zeitzonen hinweg | GMT+01:00 Europe/Berlin |
 | **Ort** | Wo das Ereignis stattfindet | "Konferenzraum B" |
-| **Beginn** | Datum und Uhrzeit des Ereignisbeginns | Heute um 10:00 |
-| **Ende** | Datum und Uhrzeit des Ereignisendes | Heute um 11:00 |
-| **Kalender** | In welchem Kalender gespeichert werden soll — Auswahl aus Ihrer Kalenderliste | Ihr Account-Kürzel (vom Hochschulrechenzentrum vergeben) |
-| **Kategorie** | Eine farbcodierte Kategorie | Besprechung (blau) |
+| **Beschreibung** | Notizen, Tagesordnung oder Vorbereitungshinweise | — |
+| **URL** | Optionaler Link (z. B. zum Besprechungsdokument) | — |
 
-:::tip
-Für **Ganztägige Ereignisse** (z. B. Geburtstage, Feiertage) aktivieren Sie den
-Schalter **Ganztägig**. Die Zeitfelder werden dann deaktiviert.
-:::
+Der Dialog bietet darüber hinaus Felder, die beeinflussen, wie das
+Ereignis für andere erscheint:
+
+| Feld | Optionen | Wirkung |
+|--------|---------|--------|
+| **Visibility** | Public · Private · Confidential | Einstufung pro Ereignis — siehe [Frei/Gebucht: Was andere sehen](./sogo-calendar-freebusy#was-andere-sehen) |
+| **Show as** | Busy · Free · Out of office · Tentative | Wie das Ereignis erscheint, wenn jemand Ihre Verfügbarkeit prüft |
+| **Status** | Confirmed · Tentative · Cancelled | Der Status des Ereignisses selbst |
+| **Labels** | — | Optionale Labels für das Ereignis |
+| **Participants** | — | Eingeladene Personen — siehe nächster Schritt |
 
 ### Schritt 4: Teilnehmer hinzufügen (Optional)
 
@@ -74,20 +82,10 @@ SOGo 6 sendet jedem Teilnehmer eine E-Mail-Einladung, wenn Sie das Ereignis spei
 
 Um eine Erinnerung vor dem Ereignis zu erhalten:
 
-1. Klicken Sie auf den Bereich **Alarm**, um ihn zu erweitern
-2. Wählen Sie, wann Sie erinnert werden möchten:
-   - **15 Minuten vorher** (Standard)
-   - **30 Minuten vorher**
-   - **1 Stunde vorher**
-   - **1 Tag vorher**
-   - **Benutzerdefiniert** — eigene Zeit eingeben
-3. Wählen Sie die Erinnerungsmethode:
-   - **Anzeige** — Eine Popup-Benachrichtigung erscheint in Ihrem Browser, wenn die Erinnerung ausgelöst wird
-   - **E-Mail** — Eine E-Mail an Ihre Adresse. **Hinweis:** E-Mail-Alarme erfordern den
-     serverseitigen Dienst `sogo-ealarms-notify` — wenden Sie sich an Ihren Administrator,
-     wenn E-Mail-Erinnerungen nicht ankommen
-4. Sie können mehrere Alarme pro Ereignis kombinieren (z. B. **15 Minuten vorher** als
-   Popup-Erinnerung plus **1 Tag vorher** als E-Mail): klicken Sie dazu auf **Alarm hinzufügen**
+1. Klicken Sie auf **Add reminder** (Erinnerung hinzufügen)
+2. Legen Sie fest, wie weit im Voraus Sie erinnert werden möchten
+
+Sie können mehrere Erinnerungen pro Ereignis hinzufügen.
 
 ### Schritt 6: Beschreibung hinzufügen (Optional)
 
@@ -100,18 +98,17 @@ Für sich wiederholende Ereignisse klicken Sie auf den Bereich **Wiederholen** u
 
 | Zeitlicher Abstand | Beispiel |
 |--------|----------|
-| **Täglich** | Tägliches Standup-Meeting |
-| **Wöchentlich** | Team-Meeting jeden Dienstag |
-| **Alle zwei Wochen** | Sprint-Review alle zwei Wochen |
-| **Monatlich** | Abteilungsmeeting am ersten Montag jedes Monats |
-| **Jährlich** | Geburtstag oder Jahrestag |
+| **Day(s)** — täglich | Tägliches Standup-Meeting |
+| **Week(s)** — wöchentlich | Team-Meeting jeden Dienstag |
+| **Month(s)** — monatlich | Abteilungsmeeting am ersten Montag jedes Monats |
+| **Year(s)** — jährlich | Geburtstag oder Jahrestag |
 
 Sie können auch ein **Enddatum** für die Wiederholung festlegen (z. B. Wiederholung bis
 zum Semesterende).
 
 ### Schritt 8: Ereignis speichern
 
-Klicken Sie auf **Speichern** oder **OK** (je nach Ihrer SOGo 6-Version), um das Ereignis zu erstellen.
+Klicken Sie auf **Create Event** (Ereignis erstellen), um das Ereignis zu erstellen — oder auf **Cancel** (Abbrechen), um es zu verwerfen.
 
 Das Ereignis wird in Ihrem Kalender angezeigt. Wenn Sie Teilnehmer hinzugefügt haben, erhalten diese
 eine E-Mail-Einladung, die sie annehmen oder ablehnen können.

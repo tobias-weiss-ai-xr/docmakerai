@@ -54,9 +54,9 @@ working as intended.
 
 ![Event dialog with attendee options](./assets/calendar-create-event.png)
 
-### Step 2: Add Attendees
+### Step 2: Add Participants
 
-1. In the event dialog, click the **Attendees** section
+1. In the event dialog, click the **Participants** section
 2. Start typing a colleague's name or email address
 3. Select the person from the auto-complete list
 4. Repeat for each person you want to check
@@ -160,7 +160,7 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 |--------|----------------------------------|---------------------------|
 | Open Calendar module | `Tab` to Calendars, then `Enter` | From any module |
 | Create new event | `Tab` to **Create Event**, then `Enter` | Opens event creation dialog |
-| Open Attendees section | `Tab` to Attendees field | Section within event dialog |
+| Open Participants section | `Tab` to Attendees field | Section within event dialog |
 | Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid |
 | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field |
 | Navigate time grid | `Tab` and arrow keys | Move between time slots |
@@ -180,10 +180,10 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 - You should hear: "New event dialog"
 - The event dialog opens with fields for title, date, time, and attendees
 
-**Step 3: Open Attendees Section**
+**Step 3: Open Participants Section**
 - Press `Tab` repeatedly to navigate through event fields (title, date, time)
-- Stop when you reach the Attendees section
-- You should hear: "Attendees, section"
+- Stop when you reach the Participants section
+- You should hear: "Participants"
 
 **Step 4: Open Free/Busy View**
 - Press `Tab` to reach the Free/Busy or Availability button

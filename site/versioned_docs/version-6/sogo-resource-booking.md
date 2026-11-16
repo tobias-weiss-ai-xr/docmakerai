@@ -43,11 +43,11 @@ Click **Calendar** in the navigation sidebar.
 1. Click the **+** (plus) button
 2. Or double-click on a time slot in the calendar grid
 
-### Step 3: Add Attendees
+### Step 3: Add Participants
 
 In the event dialog:
 
-1. Expand or click **Attendees**
+1. Expand or click **Participants**
 2. Search for or select your colleagues (for notification purposes)
 3. Find and add the **resource** — this may appear as:
    - A special resource tab or icon
