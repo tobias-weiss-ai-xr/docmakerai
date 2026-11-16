@@ -44,6 +44,8 @@ apps available to you.
 
 ## Documentation Status
 
+- **Helpdesk**: [Create a Ticket](/suite/helpdesk-create-ticket) — the
+  support ticket system (Request Tracker)
 - **Signing in and your account**: [Signing In](/suite/sso-login) and
   [Your Account](/suite/sso-account) — one login for all apps, password
   changes, two-factor authentication

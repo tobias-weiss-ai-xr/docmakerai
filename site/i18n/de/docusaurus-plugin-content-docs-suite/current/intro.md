@@ -44,6 +44,8 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
 
 ## Stand der Dokumentation
 
+- **Helpdesk**: [Ein Ticket erstellen](/suite/helpdesk-create-ticket) —
+  das Support-Ticketsystem (Request Tracker)
 - **Anmeldung und Ihr Konto**: [Anmelden](/suite/sso-login) und
   [Ihr Konto](/suite/sso-account) — ein Login für alle Anwendungen,
   Passwortwechsel, Zwei-Faktor-Authentifizierung

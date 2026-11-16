@@ -387,6 +387,30 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sso-devices.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "suite-docs/assets/rt-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/rt-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "suite-docs/assets/rt-dashboard.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/rt-dashboard.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "suite-docs/assets/rt-create.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/rt-create.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (rt.openedusuite.org via oauth2-proxy + openedusuite realm)"
     }
   }
 }
