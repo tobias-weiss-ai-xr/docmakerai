@@ -50,6 +50,8 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   teilen und gemeinsam bearbeiten
 - **KI-Chat**: [KI-Chat (Open WebUI)](/suite/ai-chat) — Fragen stellen
   und mit Texten arbeiten
+- **KI-Assistenten**: [Eigene KI-Assistenten bauen (Dify)](/suite/dify)
+  — Assistenten um die Modelle der Hochschule bauen
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine

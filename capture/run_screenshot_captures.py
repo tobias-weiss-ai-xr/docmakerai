@@ -1053,6 +1053,7 @@ WORKFLOWS = [
     ("ai-chat", "record_ai_chat"),
     ("operaton-tasklist", "record_operaton_tasklist"),
     ("n8n-workflows", "record_n8n_workflows"),
+    ("dify-home", "record_dify_home"),
 ]
 
 
@@ -1556,3 +1557,20 @@ async def record_n8n_workflows(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(7000)
     scope = page.locator("main, [class*='content'], body").first
     return await rec.capture(page, "n8n workflows: overview with create workflow and demo workflows", scope=scope)
+
+
+# --- Dify (AI app builder) ---------------------------------------------------
+DIFY_URL = os.environ.get("DIFY_URL", "https://dify.openedusuite.org")
+
+
+async def record_dify_home(context: BrowserContext) -> Path | None:
+    """Dify home: welcome, templates, and the app-builder navigation."""
+    rec = ScreenshotRecorder("dify-home", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    # dify sits behind an oauth2 start URL; the gate auto-forwards to Keycloak
+    await keycloak_sso(page, DIFY_URL + "/oauth2/start", "a:has-text('Marketplace')")
+    await page.wait_for_timeout(3000)
+    scope = page.locator("main, body").first
+    return await rec.capture(page, "Dify home: welcome, templates, and app-builder navigation", scope=scope)

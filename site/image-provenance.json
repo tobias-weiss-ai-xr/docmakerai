@@ -475,6 +475,14 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/n8n-workflows.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (ai./operaton./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/dify-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (dify.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/dify-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (dify.openedusuite.org via openedusuite realm)"
     }
   }
 }
