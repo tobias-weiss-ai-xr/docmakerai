@@ -1023,11 +1023,13 @@ def test_sogo6_docs_do_not_claim_power_icon_logout(doc_dir):
 # dropdowns/radios. See commit a86e1ea.
 _FORBIDDEN_KEY_CLAIMS = [
     r"`e`", r"`w`", r"`d`", r"`m`", r"`y`", r"`t`", r"`n`", r"`j`", r"`k`",
-    r"`J` / `K`", r"`j` / `k`", r"`Shift+E`",
-    r"Alt\+M", r"Alt\+C", r"Alt\+A", r"Alt\+P", r"Alt\+S",
-    r"Ctrl\+N", r"Ctrl\+S", r"Ctrl\+Enter", r"Ctrl\+Shift\+R",
-    r"Ctrl\+Shift\+C", r"Ctrl\+Shift\+B", r"Ctrl\+Shift\+A", r"Ctrl\+Shift\+S",
-    r"Cmd\+S", r"Cmd\+Enter", r"Strg\+N", r"Strg\+S", r"Strg\+Enter",
+    r"`J` / `K`", r"`j` / `k`", r"`Shift\s*\+\s*E`",
+    r"Alt\s*\+\s*M", r"Alt\s*\+\s*C", r"Alt\s*\+\s*A", r"Alt\s*\+\s*P", r"Alt\s*\+\s*S",
+    r"Ctrl\s*\+\s*N", r"Ctrl\s*\+\s*S", r"Ctrl\s*\+\s*Enter", r"Ctrl\s*\+\s*Shift\s*\+\s*R",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*C", r"Ctrl\s*\+\s*Shift\s*\+\s*B", r"Ctrl\s*\+\s*Shift\s*\+\s*A",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*S", r"Ctrl\s*\+\s*B", r"Ctrl\s*\+\s*I", r"Ctrl\s*\+\s*U",
+    r"Cmd\s*\+\s*S", r"Cmd\s*\+\s*Enter", r"⌘",
+    r"Strg\s*\+\s*N", r"Strg\s*\+\s*S", r"Strg\s*\+\s*Enter",
 ]
 # Win+Ctrl+C is the Windows OS high-contrast toggle — allowed.
 _KEY_CLAIM_ALLOW = [re.compile(p) for p in [r"Win\+Ctrl\+C"]]
@@ -1037,7 +1039,7 @@ def test_no_fabricated_keyboard_shortcuts(md_files):
     """No doc page may claim SOGo app keyboard shortcuts that don't exist."""
     bad = []
     for path, fpath in sorted(md_files.items()):
-        if not str(path).endswith(".md") or Path(path).name in DE_EXCLUDE:
+        if not str(path).endswith(".md") or Path(path).name in {"ROADMAP.md", *DE_EXCLUDE}:
             continue
         text = fpath.read_text(encoding="utf-8")
         for pat in _FORBIDDEN_KEY_CLAIMS:

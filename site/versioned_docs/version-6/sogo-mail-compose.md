@@ -159,9 +159,9 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 | Send message | `Tab` to Send button, `Enter` |
 | Save as Draft | `Tab` to the draft/save button, `Enter` | Saves to Drafts folder |
 | Attach file | `Tab` to the attach button, `Enter` | Opens file picker |
-| Bold | `Ctrl+B` | Formatting toolbar |
-| Italic | `Ctrl+I` | Formatting toolbar |
-| Underline | `Ctrl+U` | Formatting toolbar |
+| Bold | Formatting toolbar (B) |
+| Italic | Formatting toolbar (I) |
+| Underline | Formatting toolbar (U) |
 | Cancel / Close | `Escape` | Discard message |
 
 ### Screen Reader Workflow
@@ -200,7 +200,7 @@ Form fields in focus order:
 
 **Step 5: Write Message Body**
 1. Type your message in the large text area
-2. For formatting: `Ctrl+B` (bold), `Ctrl+I` (italic), `Ctrl+U` (underline)
+2. For formatting: use the toolbar buttons (B, I, U)
 3. Screen reader: "Message body, content editable"
 
 **Step 6: Attach Files (Optional)**
