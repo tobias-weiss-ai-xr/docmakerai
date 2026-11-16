@@ -1038,6 +1038,9 @@ WORKFLOWS = [
     ("sso-account", "record_sso_account"),
     ("sso-signing-in", "record_sso_signing_in"),
     ("sso-devices", "record_sso_devices"),
+    ("rt-login", "record_rt_login"),
+    ("rt-dashboard", "record_rt_dashboard"),
+    ("rt-create", "record_rt_create"),
 ]
 
 
@@ -1272,3 +1275,90 @@ async def record_sso_devices(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(2000)
     scope = page.locator("main").first
     return await rec.capture(page, "Account console: Device activity with Sign out buttons", scope=scope)
+
+
+# --- Helpdesk: Request Tracker (RT 6) at rt.openedusuite.org ---------------
+# Fronted by an oauth2-proxy gate ("Sign in with OpenID Connect" button)
+# that federates into the openedusuite Keycloak realm — same credentials
+# as suite_login(). RT is a classic server-rendered app: direct URLs are
+# more robust than the dropdown navigation.
+RT_URL = os.environ.get("RT_URL", "https://rt.openedusuite.org")
+
+
+async def rt_login(page: Page) -> None:
+    """Full SSO chain: oauth2-proxy gate -> Keycloak realm login -> RT."""
+    _suite_require_credentials()
+    await page.goto(RT_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_selector("button:has-text('Sign in')", timeout=30000)
+    await page.locator(
+        "button:has-text('Sign in with OpenID Connect'), button:has-text('Sign in')"
+    ).first.click()
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_load_state("networkidle")
+    await page.wait_for_selector("#main-navigation, nav", timeout=30000)
+    await page.wait_for_timeout(2500)
+
+
+async def record_rt_login(context: BrowserContext) -> Path | None:
+    """The oauth2-proxy gate: helpdesk opens through openEduSuite SSO."""
+    rec = ScreenshotRecorder("rt-login", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(RT_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_selector("button:has-text('Sign in')", timeout=30000)
+    await page.wait_for_timeout(600)
+    scope = page.locator(".box, form, main, body").first
+    return await rec.capture(page, "Helpdesk sign-in via openEduSuite single sign-on", scope=scope)
+
+
+async def record_rt_dashboard(context: BrowserContext) -> Path | None:
+    """RT home after login: quick create + my open tickets."""
+    rec = ScreenshotRecorder("rt-dashboard", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    await rt_login(page)
+    VIDEO_START = time.monotonic()
+    await page.goto(RT_URL + "/index.html", wait_until="networkidle")
+    await page.wait_for_timeout(2000)
+    scope = page.locator("#body, main").first
+    return await rec.capture(page, "RT dashboard: quick create and my open tickets", scope=scope)
+
+
+async def record_rt_create(context: BrowserContext) -> Path | None:
+    """Create Ticket form filled (queue, requestor, subject, message).
+
+    Deliberately NOT submitted: RT 6's htmx widget flow did not create a
+    ticket under scripted submit (Requestors is a TomSelect, the editor is
+    CKEditor, widgets autosave via XHR) — the docs therefore claim nothing
+    beyond the verified Create button. Capture the honest filled form.
+    """
+    rec = ScreenshotRecorder("rt-create", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    await rt_login(page)
+    VIDEO_START = time.monotonic()
+    await page.goto(RT_URL + "/Ticket/Create.html", wait_until="networkidle")
+    await page.wait_for_timeout(2500)
+    await page.locator("select[name='Queue']").first.select_option(label="General")
+    # Requestors is a TomSelect widget: use its control, commit with Enter
+    await page.locator(".ts-control").first.click()
+    await page.keyboard.type("testuser")
+    await page.keyboard.press("Enter")
+    await page.keyboard.press("Tab")
+    await page.wait_for_timeout(1500)
+    subj = page.locator("input[name='Subject']").first
+    await subj.click()
+    await subj.type("Dokumentationstest: Hilfeseite Erstellung")
+    await page.locator("h1").first.click()
+    await page.wait_for_timeout(2000)
+    body = page.locator(".ck-editor__editable").first
+    await body.click()
+    await body.type("Testticket für die Dokumentation — kann geschlossen werden.")
+    await page.locator("h1").first.click()
+    await page.wait_for_timeout(1500)
+    scope = page.locator("#body, main").first
+    return await rec.capture(page, "Create Ticket form: queue, requestor, subject, message", scope=scope)
