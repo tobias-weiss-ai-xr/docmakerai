@@ -113,10 +113,10 @@ Wait management relies on SOGo's mail and alert infrastructure. Ensure your emai
 
 | Action | Shortcut |
 |--------|----------|
-| New task | `Ctrl + N` / `⌘ + N` |
-| Complete task | Checkmark next to item or `Ctrl + Enter` |
+| New task | `Tab` to New task, then `Enter` |
+| Complete task | Checkmark next to the item |
 | Delete task | `Delete` key |
-| Undo complete | `Ctrl + Z` / `⌘ + Z` |
+| Undo complete | Checkmark next to the item |
 
 ## Tasks Integration
 

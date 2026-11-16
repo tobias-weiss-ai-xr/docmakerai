@@ -160,10 +160,10 @@ SOGo 6 supports full keyboard navigation for free/busy lookup features.
 |--------|----------------------------------|---------------------------|
 | Open Calendar module | `Tab` to Calendars, then `Enter` | From any module |
 | Create new event | `Tab` to **Create Event**, then `Enter` | Opens event creation dialog |
-| Open Participants section | `Tab` to Attendees field | Section within event dialog |
-| Open Free/Busy view | `Tab` to Free/Busy button, then `Enter` | Opens availability grid |
+| Open Participants section | `Tab` to the Participants field | Section within event dialog |
+| Open availability view | `Tab` to the availability button, then `Enter` | Opens the availability grid |
 | Add Person to grid | `Tab` to Add Person, then `Enter` | Activates autocomplete field |
-| Navigate time grid | `Tab` and arrow keys | Move between time slots |
+| Move through controls | `Tab` / `Shift+Tab` | The time grid itself is not keyboard-focusable |
 | Select available time slot | `Enter` on an available slot | Locks the meeting time |
 | Confirm event | `Tab` to Save, then `Enter` | Creates the event |
 

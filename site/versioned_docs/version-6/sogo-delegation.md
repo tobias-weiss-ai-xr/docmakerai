@@ -1,167 +1,76 @@
 ---
 title: "Delegation & Permissions"
-description: "Share calendars and mail folders with specific permissions"
+description: "How sharing and rights work in SOGo 6"
 sidebar_label: "Delegation & Permissions"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
 
-<PageSEO title="Delegation & Permissions" description="Step-by-step tutorial to share calendars and mail folders with specific permissions in SOGo 6" keywords={["delegation", "permissions", "access control", "sharing", "acl"]} />
+<PageSEO title="Delegation & Permissions" description="How SOGo 6 calendar sharing works: the rights a person can get and how to combine them" keywords={["delegation", "permissions", "access control", "sharing", "acl"]} />
 
 # Delegation & Permissions
 
-Delegate access to your calendars, mail folders and other resources by assigning specific permissions to other users.
+Delegate access to your calendars by granting other users rights on them.
 
 ## Prerequisites
 
 - A SOGo 6 account with valid credentials
 - You are logged into SOGo 6
-- At least two users with SOGo accounts (for delegation demonstration)
-- Permissions managed per-folder or per-calendar
+- At least two users with SOGo accounts (for delegation)
 
-## Delegation Overview
+## The Rights Model
 
-SOGo supports granular ACL-based permissions for:
+When you share a calendar, you grant each person one of these rights:
 
-| Resource Type | What Can Be Shared |
-|---------------|-------------------|
-| **Calendar** | Read-only, Full Control, Confidential availability |
-| **Address Book** | Read, Write, Modify permissions |
-| **Mail Folders** | View, Read, Post, Create, Delete access |
-| **Categories** | Permission levels for event categorization |
+| Right | What it allows |
+|:------|:---------------|
+| See events without details | Busy/free times only — no titles, no details |
+| See events with details | Titles, times and descriptions |
+| Answer | Respond to invitations |
+| Edit | Create, change and delete events |
 
-## Permission Levels
+How a given event appears to that person then depends on both their right
+and the event's classification — see
+[Free/Busy: What Others See](./sogo-calendar-freebusy#what-others-see).
 
-| Permission | Description |
-|------------|-------------|
-| **Owner** | Full control, can change permissions |
-| **Can Read** | View items only |
-| **Can Edit** | Modify existing items |
-| **Can Create** | Add new items |
-| **Can Delete** | Remove items |
-| **Reviewer** | Combination of read + approve/reject |
+The same two-axis model applies to address books and mail folders where
+your deployment enables sharing.
 
-:::tip
-Use different permission levels based on trust level. For example, a colleague may get "Can Read" access to your calendar, while a delegated assistant may get "Can Edit" plus "Can Create."
-:::
+## Sharing in Practice
 
-## Step-by-Step Instructions
-
-### Step 1: Open Resource Settings
-
-In the module you want to share (Calendar or Contacts), click the **three-dot menu** (⋯) or **Share** button.
+Where the sharing controls live depends on your deployment: they appear
+with the per-item or per-collection menus of a module.
 
 :::info
-Not all modules in this test environment show the Share button. In a production setup with fully-permissive ACLs enabled, sharing options appear on individual items and collections.
+The demo environment at demov6.sogo.nu does not expose the share
+controls, so this guide deliberately shows no walkthrough of them.
 :::
 
-### Step 2: View Current Permissions
+## Related Settings
 
-The Share/Acl panel displays:
+Calendar behavior you can set yourself (avatar menu → **Calendar**):
 
-- Current owner
-- Existing delegated users/groups
-- Current permission level for each
+- Default calendar and default classification (e.g. *Confidential*)
+- Whether off-work hours show as busy — see
+  [Free/Busy](./sogo-calendar-freebusy)
+- First day of the week
 
-### Step 3: Add User or Group
+## See Also
 
-1. Click **Add** or **Share** button
-2. Search for recipient by username, email address
-3. Select the target from search results
+- [Free/Busy](./sogo-calendar-freebusy) — how shared availability looks
+- [Calendar Sharing](./sogo-calendar-share) — mutual sharing walkthrough
 
-### Step 4: Assign Permission Level
-
-Choose the appropriate permission from the dropdown:
-
-- **Viewer (Markiert als Viewer)**
-- **Participant (Markiert als Participant)**
-- **Editor (Markiert als Editor)**
-- **Administrator (Vollzugriff)**
-
-### Step 5: Send Notification
-
-Toggle **Send email notification** if you want SOGo to email the recipient about the shared resource.
-
-### Step 6: Save
-
-Click **Apply** or **Save** to activate the sharing.
-
-## Practical Delegation Examples
-
-| Scenario | Recommended Permission | Why |
-|----------|------------------------|-----|
-| **Assistant** | Administrator | Needs full control to manage calendar on your behalf |
-| **Team Lead** | Participant | Can create/edit events to schedule team meetings |
-| **Colleague** | Viewer | Should see your availability without modifying |
-| **Project Team** | Viewer (time-focused) | Only needs to know when you're busy/free |
-
-:::warning
-Changes to delegation permissions take effect immediately. Double-check permission levels before saving.
-:::
-
-## Recipient-Side View
-
-When a resource is shared to you:
-
-1. The shared resource appears in your module navigation (e.g., Calendar → Shared Calendars)
-2. Permission level determines what you can do:
-   - **Viewer:** Items appear fused or overlaid but are read-only
-   - **Participant:** Appears in your view, you can add/edit but deletions restricted
-   - **Administrator:** Full edit and delete access
-
-## Troubleshooting
-
-| Issue | Possible Cause | Solution |
-|-------|---------------|----------|
-| Share button not visible | ACLs disabled in configuration | Ask administrator to enable `SOGoACLsSendEMailNotifications` |
-| Cannot find user in search | User doesn't exist in SOGo | Verify recipient has SOGo account |
-| Cannot select Admin permission | You are not resource owner | Only owner can grant Administrator access |
-| Shared resource not appearing | Sharing not yet synced or network issue | Refresh the page or re-login after a few seconds |
-| Delegation not working for mail | Mail sharing disabled | Check `SOGoMailAuxiliaryUserAccountsEnabled` in SOGo config |
-
-## Security Considerations
-
-1. **Principle of Least Privilege** — Grant the minimum permission needed
-2. **Auditing** — Periodically review who has access to your resources
-3. **When to Revoke** — Remove delegation when collaboration ends or roles change
-4. **Confidential Information** — Be cautious with shared calendars that contain sensitive meetings
-
-## Advanced Delegation with Resources
-
-For rooms, projectors, or equipment:
-
-| Resource Type | How to Set Up |
-|---------------|---------------|
-| **Meeting Room** | Create resource account, set as resource type |
-| **Projector** | Add to calendar, mark as resource, grant booking permissions |
-| **Equipment** | Create as shared calendar item, enable resource booking |
-
-:::info
-Resource configuration typically requires administrator-level access to SOGo automated setup. Individual users delegate calendar items as regular events.
-:::
 ## Accessibility
 
 ### Keyboard Navigation
 
-SOGo 6 supports full keyboard navigation for delegation and permissions settings.
+The sharing controls, where your deployment shows them, are regular
+buttons and dropdowns: reach them with `Tab` / `Shift+Tab` and activate
+with `Enter`.
 
-| Action | Keyboard Shortcut | Notes |
-|--------|--------------------------------------|------------------------------|
-| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| Select/activate | `Enter` or `Space` | Activate button or link |
-| Cancel/close | `Escape` | Cancel current action |
-| Navigate lists | `Arrow keys` | Move through items |
+### Screen Readers
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
-
-### High Contrast Mode
-
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+- `Strg+Pos1` / `Ctrl+Home` takes you to the top of the page — a reliable
+  starting point for exploring with `h` (headings) in your screen reader.
+- The rights tables above use real table markup, so screen readers can
+  navigate them row by row.

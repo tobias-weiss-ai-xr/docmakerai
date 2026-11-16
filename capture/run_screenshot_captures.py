@@ -1033,6 +1033,7 @@ WORKFLOWS = [
     ("mail-read", "record_mail_read"),
     ("mail-folder-management", "record_mail_folder_management"),
     ("password-change", "record_password_change"),
+    ("tasks-add", "record_tasks_add"),
 ]
 
 
@@ -1149,3 +1150,40 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+async def record_tasks_add(context: BrowserContext) -> Path | None:
+    """Task creation: New task dialog with the title filled.
+
+    Verified on demov6: module has All tasks / Today / Upcoming / Overdue /
+    Completed views; dialog fields Title, Calendar, Due date, Start date,
+    Status, Priority, Description; defaults 'To do' / 'No priority'; the
+    confirm button is 'Save' (unlike the event dialog's 'Create Event').
+    """
+    rec = ScreenshotRecorder("tasks-add", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await navigate_to_module(page, "tasks")
+    await dismiss_hints(page)
+
+    await click_required(page, 'button:has-text("New task")', "'New task' button")
+    dlg = page.locator("[role='dialog']").first
+    await require(dlg, "New task dialog")
+    await page.wait_for_timeout(500)
+
+    await fill_required(
+        page,
+        "[role='dialog'] input[name='title']",
+        "Book meeting room",
+        "task title field",
+    )
+    await page.wait_for_timeout(400)
+
+    # Scene = the filled title + the Status/Priority rows below it; a plain
+    # full-dialog shot phash-clashes with other module dialogs.
+    scope = (
+        page.locator("[role='dialog'] input[name='title']")
+        .locator("xpath=ancestor::div[2]")
+    )
+    return await rec.capture(
+        page, "New task dialog: title filled, Status and Priority defaults", scope=scope
+    )

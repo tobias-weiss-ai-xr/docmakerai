@@ -64,9 +64,9 @@ Um eine E-Mail endgültig zu löschen, leeren Sie den Papierkorb, indem Sie auf 
 
 | Aktion | Windows/Linux | Mac |
 |--------|--------------|-----|
-| Antworten | `Strg + R` | `⌘ + R` |
+| Antworten | `Tab` zu Antworten, dann `Enter` |
 | Löschen | `Entf` | `Entf` |
-| Weiterleiten | `Strg + F` | `⌘ + F` |
+| Weiterleiten | `Tab` zu Weiterleiten, dann `Enter` |
 
 :::warning
 Löschaktionen verschieben E-Mails in den Papierkorb. Zum Wiederherstellen wählen Sie den Papierkorb aus und ziehen die E-Mail zurück in den Posteingang.

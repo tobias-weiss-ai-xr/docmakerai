@@ -70,9 +70,9 @@ To permanently delete an email, empty the Trash folder by clicking the three-dot
 
 | Action | Windows/Linux | Mac |
 |--------|--------------|-----|
-| Reply | `Ctrl + R` | `⌘ + R` |
+| Reply | `Tab` to Reply, then `Enter` |
 | Delete | `Delete` | `Delete` |
-| Forward | `Ctrl + F` | `⌘ + F` |
+| Forward | `Tab` to Forward, then `Enter` |
 
 :::warning
 Delete actions move emails to the Trash folder. To recover, select the Trash folder and drag the email back to Inbox.

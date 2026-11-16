@@ -6,172 +6,60 @@ sidebar_label: "Ressourcenbuchung"
 
 # Ressourcenbuchung
 
-Reservieren und planen Sie gemeinsam genutzte Ressourcen — Besprechungsräume, Projektoren, Labore oder Ausrüstung — über die integrierte Kalender-Ressourcenbuchung von SOGo.
+Reservieren Sie gemeinsam genutzte Ressourcen — Besprechungsräume, Projektoren, Ausrüstung — über den Kalender.
 
 :::info
-Die Ressourcenbuchung in SOGo wird typischerweise als spezielle Kalenderkonten implementiert, die als Ressourcen markiert sind. Ihr Administrator konfiguriert diese Ressourcenkonten, und sie erscheinen als verfügbare Räume oder Ausrüstung bei der Planung von Besprechungen.
+Eine Ressource ist üblicherweise ein besonderes Kalenderkonto, das Ihr
+Administrator bereitstellt. Die Demo-Umgebung unter demov6.sogo.nu hat
+keine Ressourcenkonten — deshalb beschreibt diese Anleitung den Weg der
+Buchung ohne Screenshots einer Ressourcen-Auswahl.
 :::
 
 ## Voraussetzungen
 
 - Ein SOGo 6-Konto mit gültigen Anmeldedaten
 - Sie sind bei SOGo 6 angemeldet
-- Ressourcenkonten vom Administrator konfiguriert
-- Zugriff auf das Kalendermodul
+- Ressourcenkonten von Ihrem Administrator konfiguriert
 
-## Übersicht über die Ressourcenbuchung
+## Der Weg der Buchung
 
-| Ressourcentyp | Beispiel-Anwendungsfall |
-|---------------|------------------------|
-| **Besprechungsraum** | Kleiner Team-Besprechungsraum, Konferenzraum, Veranstaltungssaal |
-| **Ausrüstung** | Projektor, Videokonferenzsystem, spezielle Laborausrüstung |
-| **Fahrzeug** | Firmenwagen, Servicefahrzeug |
-| **Sonstiges** | Trainingsarbeitsplatz, Demo-Umgebung |
+Eine Ressource buchen heißt: ein Ereignis anlegen und die Ressource als
+Teilnehmer hinzufügen:
 
-## Schritt-für-Schritt-Anleitung
+1. Öffnen Sie das **Kalender**-Modul
+2. Legen Sie ein Ereignis an — klicken Sie auf die **+**-Schaltfläche in
+   der Symbolleiste oder doppelklicken Sie auf ein Zeitfeld im Kalender
+   (siehe [Ereignis erstellen](./sogo-calendar-create-event))
+3. Klappen Sie im Ereignisdialog **Participants** (Teilnehmer) aus
+4. Tippen Sie den Namen der Ressource ein — Räume und Ausrüstung
+   erscheinen in derselben automatischen Vervollständigung wie Personen
+5. Fügen Sie die teilnehmenden Personen hinzu
+6. Klicken Sie auf **Create Event** (Ereignis erstellen)
 
-### Schritt 1: Kalender öffnen
+## Verfügbarkeit der Ressource prüfen
 
-Klicken Sie in der Navigationsseitenleiste auf **Kalender**.
+Prüfen Sie vor der Buchung, wann die Ressource frei ist:
 
-### Schritt 2: Neues Ereignis erstellen
+- Fügen Sie sie zum Ereignis hinzu und nutzen Sie die Verfügbarkeitsansicht —
+  siehe [Frei/Gebucht](./sogo-calendar-freebusy)
+- Die belegten Zeiten der Ressource erscheinen wie die jedes Teilnehmers
 
-1. Klicken Sie auf die **+** (Plus)-Schaltfläche
-2. Oder doppelklicken Sie auf einen Zeitraum im Kalenderraster
+Wird eine Buchung abgelehnt, wählen Sie einen anderen Zeitpunkt — die
+Ressource ist dann bereits reserviert.
 
-### Schritt 3: Teilnehmer hinzufügen
-
-Im Ereignisdialog:
-
-1. Erweitern oder klicken Sie auf **Teilnehmer**
-2. Suchen Sie nach Ihren Kollegen oder wählen Sie sie aus (zu Benachrichtigungszwecken)
-3. Suchen und fügen Sie die **Ressource** hinzu — diese kann erscheinen als:
-   - Ein spezieller Ressourcen-Tab oder ein Ressourcensymbol
-   - Eine Liste von Räumen/Ausrüstung, die Sie auswählen können
-   - Ein automatische Vervollständigungsvorschlag bei Eingabe des Ressourcennamens
-
-:::tip
-Ressourcen erscheinen oft mit einem Ortsymbol (📍) oder sind als [Raum] oder Ausrüstungsname in der automatische Vervollständigung gekennzeichnet.
-:::
-
-### Schritt 4: Zeitfenster auswählen
-
-Wählen Sie Datum/Uhrzeit für die Buchung. SOGo zeigt die Ressourcenverfügbarkeit an:
-
-| Visueller Hinweis | Bedeutung |
-|-------------------|-----------|
-| **Grün/markiert** | Ressource verfügbar (buchbar) |
-| **Abgegraut** | Bereits gebucht (Konflikt) |
-| **Teilweise verfügbar** | Teilweise Verfügbarkeit (Ressource teilweise genutzt) |
-
-### Schritt 5: Buchung bestätigen
-
-1. Fügen Sie Ereignistitel und Details hinzu
-2. Bestätigen Sie, dass die Ressource in den Teilnehmern aufgeführt ist
-3. Klicken Sie auf **Speichern** oder **Erstellen**
-
-SOGo prüft auf Konflikte:
-- **Kein Konflikt:** Ressource gebucht, Teilnehmer benachrichtigt
-- **Konflikt vorhanden:** SOGo kann:
-  - Konflikt anzeigen, Buchung verhindern
-  - Buchung zulassen, aber Warnung anzeigen
-
-### Schritt 6: Ressourcenverfügbarkeit anzeigen
-
-Optional, um den Zeitplan einer Ressource anzuzeigen:
-
-1. Suchen Sie im Kalender den Bereich **Ressourcen** oder die Navigation
-2. Klicken Sie auf die Ressource (z. B. „Konferenzraum A")
-3. Zeigen Sie den Kalender der Ressource in einem separaten Tab an
-
-:::info
-Einige Konfigurationen erlauben es, mehrere Ressourcen zu überlagern, um gemeinsame Verfügbarkeit zu finden.
-:::
-
-## Ressourcenkonfiguration (Administrator)
-
-Ressourcenkonten werden typischerweise mit diesen Attributen erstellt:
-
-| Einstellung | Wert |
-|-------------|------|
-| **Benutzerrolle** | Ressource (keine Person) |
-| **Standort** | Physische Adresse oder Raumnummer |
-| **Kapazität** | Anzahl der Personen, die untergebracht werden können |
-| **Ausrüstungsliste** | Spezifische Ausrüstung, die in der Ressource verfügbar ist |
-
-:::note
-Die Einrichtung von Ressourcen erfordert Administratorzugriff auf SOGo-Automatisierungsskripte oder direkte Datenbankbearbeitungen. Fragen Sie Ihren Admin, wenn eine benötigte Ressource nicht verfügbar ist.
-:::
-
-## Best Practices
-
-1. **Buchen Sie im Voraus** — Ressourcen werden gemeinsam genutzt; Last-Minute-Buchungen können fehlschlagen.
-2. **Geben Sie Details an** — Fügen Sie in der Ereignisbeschreibung den Besprechungszweck, benötigte Vorbereitungen und die Anzahl der Teilnehmer hinzu.
-3. **Seien Sie rücksichtsvoll** — Wenn Sie nur wenige Minuten benötigen, blockieren Sie nicht unnötig einen ganzen Tag.
-4. **Freigeben, wenn erledigt** — Wenn Sie früher fertig sind oder das Treffen ausfällt, entfernen Sie das Ereignis/die Buchung.
-5. **Vermeiden Sie Doppelbuchungen** — Das Ressourcensystem prüft Konflikte für Sie, aber seien Sie umsichtig.
-
-## Buchungen verwalten
-
-| Aktion | Vorgehen |
-|--------|---------|
-| **Buchung ändern** | Ereignis im Kalender finden, Start-/Endzeit bearbeiten oder Teilnehmer aktualisieren, speichern |
-| **Buchung stornieren** | Ereignis löschen (wenn Sie der Ereignisbesitzer sind) |
-| **Verfügbarkeit prüfen** | Ressourcenkalender direkt anzeigen; alle Buchungen sehen |
-| **Konflikte lösen** | Wenn Konfliktwarnung erscheint, alternative Zeit wählen |
-
-## Berechtigungen und Delegation
-
-- Nur Benutzer mit Berechtigung zur Ressourcenplanung können buchen
-- Ein Administrator kann einschränken, wer bestimmte stark nachgefragte Ressourcen buchen darf
-- Einige Ressourcen akzeptieren Buchungen automatisch, andere erfordern Bestätigung durch den Ressourcenverwalter
-
-## Fehlerbehebung
-
-| Problem | Mögliche Ursache | Lösung |
-|---------|-----------------|--------|
-| Ressource in Teilnehmern nicht gefunden | Ressource außerhalb von Kalendern nicht konfiguriert | Bitten Sie den Admin, die Ressource buchbar zu machen; stellen Sie sicher, dass sie als freigebbarer Kalender aufgeführt ist |
-| Buchung schlägt mit Konflikt fehl | Zeitfenster bereits gebucht | Wählen Sie ein anderes Zeitfenster mit verfügbarer Ressource |
-| Ressource erscheint nicht als Kategorie | Nur für bestimmte Gruppen konfiguriert | Fragen Sie beim Admin nach, ob Sie Berechtigung zum Buchen dieser Ressource haben |
-| Ressourcenkalender kann nicht angezeigt werden | Berechtigungen schränken Lesezugriff ein | Kontaktieren Sie den Admin für Ansichtsberechtigungen |
-
-## Integration mit anderen Funktionen
-
-| Integration | Hinweise |
-|-------------|---------|
-| **Belegt/Frei** | Belegte Zeiten der Ressource werden in Belegt/Frei-Abfragen angezeigt |
-| **Kalenderfreigabe** | Teilen Sie Ihren Kalender mit dem Ressourcenteam zur Koordination der Terminplanung |
-| **E-Mail-Benachrichtigungen** | Teilnehmer und Ressourcenverwalter können Buchungsbestätigungen erhalten |
-
-:::info
-In größeren Organisationen kann die Ressourcenbuchung zusätzliche Planungstools oder Connector-Integrationen erfordern. Dies deckt das Kern-SOGo-Szenario ab, in dem Ressourcen als spezielle Kalender modelliert werden.
-:::
-
-## Fazit
-
-Sie haben erfolgreich gelernt, wie Sie Ressourcen in SOGo 6 buchen.
 ## Barrierefreiheit
 
 ### Tastaturnavigation
 
-Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
+| Aktion | Wie | Hinweis |
+|--------|-----|---------|
+| Buchungsereignis anlegen | `Tab` zu **Create Event**, dann `Enter` | Siehe Ereignis erstellen |
+| Participants öffnen | `Tab` zum Feld Participants | Bereich im Ereignisdialog |
+| Buchung speichern | `Tab` zu **Create Event**, dann `Enter` | Bestätigen-Schaltfläche des Dialogs |
 
-| Aktion | Tastenkombination | Hinweise |
-|--------|-------------------|----------|
-| Module navigieren | `Tab` / `Umschalt+Tab` | Wechselt zwischen Bereichen |
-| Auswählen/Aktivieren | `Eingabetaste` oder `Leertaste` | Link oder Schaltfläche aktivieren |
-| Abbrechen/Schließen | `Escape` | Aktuelle Aktion abbrechen |
-| Listen navigieren | `Pfeiltasten` | Durch Einträge bewegen |
+### Screenreader
 
-**Reihenfolge der Screenreader-Navigation:**
-1. Modul-Navigation → `Tab` zum Betreten
-2. Modulinhalte → `Pfeiltasten` zum Navigieren
-3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
-4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
-
-### Hochkontrastmodus
-
-SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
-- **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
-- **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
-- **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
+- `Strg+Pos1` bringt Sie an den Seitenanfang — ein verlässlicher
+  Ausgangspunkt, um die Seite mit `h` (Überschriften) zu erschließen.
+- In der Verfügbarkeitsansicht sind belegte Blöcke rein visuell — die
+  Frei/Gebucht-Daten dahinter liest der Screenreader als Text vor.

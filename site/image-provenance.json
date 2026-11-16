@@ -347,6 +347,14 @@
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/mail-read.png": {
       "kind": "sogo6-live",
       "origin": "live-pipeline"
+    },
+    "versioned_docs/version-6/assets/tasks-add.png": {
+      "kind": "sogo6-live",
+      "origin": "live-pipeline"
+    },
+    "i18n/de/docusaurus-plugin-content-docs/version-6/assets/tasks-add.png": {
+      "kind": "sogo6-live",
+      "origin": "live-pipeline"
     }
   }
 }

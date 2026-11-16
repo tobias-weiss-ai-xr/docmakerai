@@ -1,177 +1,88 @@
 ---
 title: "Tasks / To-Do Module"
-description: "Create and manage task lists in SOGo 6"
+description: "Create and manage tasks in SOGo 6"
 sidebar_label: "Tasks / To-Do"
 ---
 
 import PageSEO from '@site/src/components/PageSEO';
+import VideoFallback from '@site/src/components/VideoFallback';
 
-<PageSEO title="Tasks / To-Do Module" description="Step-by-step tutorial to create and manage task lists in the SOGo 6 task management module" keywords={["tasks", "todo", "task management", "priorities", "productivity"]} />
+<PageSEO title="Tasks / To-Do Module" description="Step-by-step tutorial for the SOGo 6 task module: create tasks, set status, priority and due dates" keywords={["tasks", "todo", "task management", "priorities", "productivity"]} />
 
 # Tasks / To-Do Module
 
-Organize tasks, set priorities, and manage to-do items within SOGo 6's task management module.
-
-:::info
-In many SOGo deployments, the Tasks module appears only when `SOGoDocumentsEnabled` is set to `YES` in the server configuration. Your administrator may also need to enable the Tasks module explicitly via additional server settings.
-:::
+Organize tasks, set priorities and due dates in the SOGo 6 task module.
 
 ## Prerequisites
 
 - A SOGo 6 account with valid credentials
-- Tasks module enabled in SOGo configuration
 - You are logged into SOGo 6
 
-## Features Overview
+## The Module at a Glance
 
-| Feature | Description |
-|---------|-------------|
-| **Task Lists** | Create multiple task categories (e.g., personal, work, projects) |
-| **Priority Levels** | Urgent, High, Medium, Low tags |
-| **Due Dates** | Set deadlines and过期 reminders |
-| **Status Tracking** | Pending, In Progress, Completed, Deferred |
-| **Integration** | Link tasks to events, contacts |
+In the navigation sidebar, click **Tasks** to enter the module.
 
-## Step-by-Step Instructions
+Tasks are grouped into views along the top of the module:
 
-### Step 1: Open Tasks Module
+| View | Shows |
+|------|-------|
+| **All tasks** | Every task |
+| **Today** | Tasks due today |
+| **Upcoming** | Tasks due later |
+| **Overdue** | Tasks past their due date |
+| **Completed** | Finished tasks |
 
-In the navigation sidebar, click **Tasks** or **To-Do** to enter the module.
+Tasks are saved to a calendar — by default your personal calendar.
 
-:::tip
-If Tasks does not appear in the sidebar, contact your administrator to enable it through the `SOGoDocumentsEnabled` configuration and restart SOGo.
-:::
+## Create a Task
 
-### Step 2: Create a New Task
-
-#### Option A: Quick Add
-1. Click the **+ Task** button (near the top of the task view)
-2. Enter task title
-3. Press Enter or click off the input field to save
-
-#### Option B: Detailed Add
-1. Click **New Task** or **Create Task**
-2. Fill in the task details:
-   - Title
-   - Description
-   - Priority
-   - Due date
-   - Related project or list
-
-### Step 3: Edit Task Details
-
-After creation, click on the task to open the detail view and modify:
+1. Click **New task**
+2. Fill in the dialog:
 
 | Field | Description |
 |-------|-------------|
 | **Title** | Short task name |
-| **Description** | Detailed notes about the task |
-| **Due Date** | When the task must be completed |
-| **Priority** | Urgent, High, Normal, Low |
-| **Status** | Pending, In Progress, Completed, Deferred |
-| **Complete** | Checkbox to mark as done |
-| **Percent Complete** | Slider for progress tracking |
-| **Category / List** | Choose which task list to assign to |
+| **Calendar** | Which calendar to save the task to |
+| **Due date** | When the task must be completed |
+| **Start date** | When the task starts |
+| **Status** | Task status — default: *To do* |
+| **Priority** | Task priority — default: *No priority* |
+| **Description** | Detailed notes |
 
-### Step 4: Organize Tasks by Lists
+3. Click **Save**
 
-Create or select task categories:
+![New task dialog: title filled, Status and Priority defaults](./assets/tasks-add.png)
 
-1. Click the **Lists** or **Categories** icon in the toolbar
-2. Click **New List**
-3. Name the list (e.g., "Work", "Personal", "Project X")
-4. Click **Save**
+<VideoFallback
+  srcMp4="/docmakerai/clips/tasks-add.mp4"
+  poster="/docmakerai/clips/tasks-add.png"
+  alt="Short clip: opening the New task dialog and filling in the title in SOGo 6"
+  width="640"
+  height="400"
+/>
 
-Drag tasks to reorder within lists.
+## Work with Tasks
 
-### Step 5: Set Reminders
+- Open a task to edit any of its fields
+- The **Completed** view collects finished tasks
+- The **Overdue** view shows tasks that passed their due date
 
-For important tasks:
-
-1. Click the task to open details
-2. Click **Add Reminder**
-3. Specify timing:
-   - **On Due Date** — at the exact due time
-   - **Minutes Before** — advance notification
-   - **Days Before** — for longer reminders
-
-:::note
-Wait management relies on SOGo's mail and alert infrastructure. Ensure your email is configured properly to receive task reminders.
-:::
-
-## Views and Sorting
-
-| View | Use Case |
-|------|---------|
-| **All Tasks** | Overview of everything pending |
-| **Due Soon** | Focus on upcoming deadlines |
-| **Priority** | Sort by urgency then by due date |
-| **Category** | Filter by list/project |
-| **Completed** | Review finished tasks |
-
-## Keyboard Shortcuts
-
-| Action | Shortcut |
-|--------|----------|
-| New task | `Ctrl + N` / `⌘ + N` |
-| Complete task | Checkmark next to item or `Ctrl + Enter` |
-| Delete task | `Delete` key |
-| Undo complete | `Ctrl + Z` / `⌘ + Z` |
-
-## Tasks Integration
-
-SOGo Tasks can be linked with:
-
-| Integration | How To |
-|------------|--------|
-| **Calendar** | Convert an event invitation to a task; set task due date to event date |
-| **Contacts** | Assign owner or delegate from address book |
-| **Mail** | Create task from email content (forward to task list) |
-
-:::tip
-Use tasks to follow up on meeting actions. After a meeting, create tasks for deliverables or next steps.
-:::
-
-## Best practices
-
-1. **Use clear, specific titles:** "Call Sarah" is better than "Phone" if it explains who and what.
-2. **Set realistic due dates:** Avoid overcommitting on timing.
-3. **Review regularly:** Schedule time weekly to review and update tasks.
-4. **Delete completed tasks:** keep the task list clean. Archive rather than delete if you might need history.
-5. **Delegate where appropriate:** If someone else should handle it, mention in the description or create a task for them.
-
-## Troubleshooting
-
-| Issue | Possible Cause | Solution |
-|-------|---------------|----------|
-| Tasks module not visible | `SOGoDocumentsEnabled` set to NO | Ask admin to enable in SOGo config |
-| Cannot create task | Write permissions missing on task list | Check ACLs on the task list |
-| Task reminders not arriving | Mail not configured or tasks disabled | Verify mail server settings are correct |
-| Task list not syncing | Network issue or server problem | Refresh the page or re-login |
-| Cannot change priority or due date | Task locked by external system (e.g., mobile app) | Complete current change and retry after a sync cycle |
 ## Accessibility
 
 ### Keyboard Navigation
 
-SOGo 6 supports full keyboard navigation for managing tasks.
+| Action | How | Notes |
+|--------|-----|-------|
+| Open Tasks module | `Tab` to Tasks, then `Enter` | From any module |
+| Create a task | `Tab` to **New task**, then `Enter` | Opens the task dialog |
+| Move through dialog fields | `Tab` / `Shift+Tab` | Arrow keys work inside dropdowns |
+| Save the task | `Tab` to **Save**, then `Enter` | Confirm button of the dialog |
 
-| Action | Keyboard Shortcut | Notes |
-|--------|--------------------------------------|------------------------------|
-| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| Select/activate | `Enter` or `Space` | Activate button or link |
-| Cancel/close | `Escape` | Cancel current action |
-| Navigate lists | `Arrow keys` | Move through items |
+### Screen Readers
 
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
-
-### High Contrast Mode
-
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+- `Strg+Pos1` / `Ctrl+Home` takes you to the top of the page — a reliable
+  starting point for exploring with `h` (headings) in your screen reader.
+- After opening the task dialog, `Tab` reaches the fields in their visual
+  order: Title, Calendar, Due date, Start date, Status, Priority,
+  Description.
+- You should hear the field labels as you move through them.

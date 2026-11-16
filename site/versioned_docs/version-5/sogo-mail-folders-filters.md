@@ -182,7 +182,7 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 | Open folder management | Three-dot menu (⋯) next to folder |
 | Create folder | `Tab` to the folder menu, `Enter` |
 | Open filters | `F` or three-dot menu (⋯) → Filters |
-| Create new filter | `Ctrl+F` or "+" button |
+| Create new filter | The **+** button |
 | Navigate filter conditions | `Tab` between fields |
 | Add action | `A` to add, `D` to delete action |
 
@@ -207,7 +207,7 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 3. Press `Enter`
 
 **Step 4: Create Filter**
-1. Focus on "+" button or press `Ctrl+F`
+1. Tab to the **+** button, then press `Enter`
 2. Type filter name
 3. Tab to condition dropdown
 4. Select condition (e.g., "From contains")

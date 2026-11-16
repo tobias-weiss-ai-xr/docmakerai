@@ -109,10 +109,10 @@ Die Erinnerungsverwaltung nutzt die E-Mail- und Benachrichtigungsinfrastruktur v
 
 | Aktion | Tastenkombination |
 |--------|------------------|
-| Neue Aufgabe | `Strg + N` / `⌘ + N` |
+| Neue Aufgabe | `Tab` zu New task, dann `Enter` |
 | Aufgabe erledigen | Häkchen neben dem Element oder `Strg + Eingabetaste` |
 | Aufgabe löschen | `Entf`-Taste |
-| Erledigt rückgängig | `Strg + Z` / `⌘ + Z` |
+| Erledigt rückgängig | Häkchen neben dem Eintrag |
 
 ## Aufgabenintegration
 
