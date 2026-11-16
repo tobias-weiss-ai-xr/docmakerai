@@ -1,0 +1,56 @@
+---
+title: "openEduSuite Overview"
+sidebar_label: "Overview"
+sidebar_position: 0
+slug: /
+description: "What the openEduSuite is and which apps it brings to higher education"
+---
+
+# openEduSuite
+
+openEduSuite is an open-source digital workplace for higher education: a
+federated suite of established open-source applications behind one login,
+brought together for teaching, collaboration and administration.
+
+## One Login, Many Apps
+
+The suite is connected through a single sign-on: you sign in once with your
+university account, and every app recognizes you. Changing your password
+happens in one central place.
+
+## The Apps
+
+| Area | App | What it's for |
+|------|-----|---------------|
+| Email & groupware | **SOGo** | Mail, calendar, contacts and tasks |
+| Files | **OpenCloud** | Personal and shared files, share links |
+| Wiki & knowledge | **XWiki**, **BookStack** | Wikis and documentation |
+| Projects | **OpenProject** | Project planning and collaboration |
+| Boards | **Planka** | Kanban boards |
+| Collaborative writing | **Etherpad** | Shared text documents |
+| Diagrams | **draw.io**, **Excalidraw** | Diagrams and whiteboards |
+| Learning management | **Moodle**, **ILIAS** | Courses and e-learning |
+| Video conferencing | **BigBlueButton** | Online lectures and meetings |
+| Computing | **JupyterHub**, **RStudio** | Notebooks and data science |
+| Scientific writing | **Overleaf** | Collaborative LaTeX |
+| Surveys | **LimeSurvey** | Questionnaires and surveys |
+| Document management | **Paperless-ngx**, **Mayan EDMS** | Document archiving |
+| Helpdesk | **Zammad** | Support tickets |
+| AI services | **Open WebUI**, and more | Language-model assistance |
+| Automation | **n8n** | Workflow automation for staff |
+
+Not every institution runs every app — your university's portal shows the
+apps available to you.
+
+## Documentation Status
+
+- **SOGo** (mail, calendar, contacts, tasks) is fully documented here:
+  start with [SOGo 6](/sogo6/) or [SOGo 5](/sogo5/)
+- Guides for the other apps are being added step by step as they go live
+
+## Where to Start
+
+1. Open your university's openEduSuite portal
+2. Sign in once with your university account
+3. Launch apps from the portal
+4. For mail, calendar and tasks, read the [SOGo guides](/sogo6/)

@@ -64,6 +64,20 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'suite',
+        path: 'suite-docs',
+        routeBasePath: 'suite',
+        sidebarPath: './suite-sidebars.ts',
+        editUrl: undefined,
+        breadcrumbs: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
@@ -79,6 +93,7 @@ const config: Config = {
           href: '/sogo5/',
         },
         items: [
+          { to: '/suite', label: 'openEduSuite', position: 'left' },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
