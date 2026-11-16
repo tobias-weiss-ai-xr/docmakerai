@@ -355,6 +355,38 @@
     "i18n/de/docusaurus-plugin-content-docs/version-6/assets/tasks-add.png": {
       "kind": "sogo6-live",
       "origin": "live-pipeline"
+    },
+    "suite-docs/assets/sso-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sso-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "suite-docs/assets/sso-account.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sso-account.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "suite-docs/assets/sso-signing-in.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sso-signing-in.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "suite-docs/assets/sso-devices.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sso-devices.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)"
     }
   }
 }

@@ -1034,6 +1034,10 @@ WORKFLOWS = [
     ("mail-folder-management", "record_mail_folder_management"),
     ("password-change", "record_password_change"),
     ("tasks-add", "record_tasks_add"),
+    ("sso-login", "record_sso_login"),
+    ("sso-account", "record_sso_account"),
+    ("sso-signing-in", "record_sso_signing_in"),
+    ("sso-devices", "record_sso_devices"),
 ]
 
 
@@ -1187,3 +1191,84 @@ async def record_tasks_add(context: BrowserContext) -> Path | None:
     return await rec.capture(
         page, "New task dialog: title filled, Status and Priority defaults", scope=scope
     )
+
+
+# --- openEduSuite SSO (Keycloak realm account console) --------------------
+# The suite's user-facing identity UI is Keycloak's realm account console:
+#   https://id.openedusuite.org/realms/openedusuite/account/
+# Credentials come from the environment (never hardcode them):
+#   SUITE_USERNAME, SUITE_PASSWORD
+SUITE_IDP = os.environ.get("SUITE_IDP", "https://id.openedusuite.org/realms/openedusuite/account/")
+SUITE_USERNAME = os.environ.get("SUITE_USERNAME", "")
+SUITE_PASSWORD = os.environ.get("SUITE_PASSWORD", "")
+
+
+def _suite_require_credentials() -> None:
+    if not SUITE_USERNAME or not SUITE_PASSWORD:
+        raise SystemExit(
+            "suite workflows need SUITE_USERNAME and SUITE_PASSWORD in the environment"
+        )
+
+
+async def suite_login(page: Page) -> None:
+    """Log in through the openEduSuite SSO (Keycloak realm login form)."""
+    _suite_require_credentials()
+    await page.goto(SUITE_IDP, wait_until="domcontentloaded")
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_load_state("networkidle")
+    await page.wait_for_timeout(2000)
+
+
+async def record_sso_login(context: BrowserContext) -> Path | None:
+    """The openEduSuite login screen (empty — no credentials in frame)."""
+    rec = ScreenshotRecorder("sso-login", SCREENSHOT_DIR)
+    global VIDEO_START
+    page = await rec.start(context)
+    VIDEO_START = time.monotonic()
+    await page.goto(SUITE_IDP, wait_until="domcontentloaded")
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.wait_for_timeout(600)
+    scope = page.locator("form").first
+    return await rec.capture(page, "openEduSuite login screen: Username or email, password, Sign In", scope=scope)
+
+
+async def record_sso_account(context: BrowserContext) -> Path | None:
+    """Account console: Personal info (Username, Email, First/Last name)."""
+    rec = ScreenshotRecorder("sso-account", SCREENSHOT_DIR)
+    global VIDEO_START
+    page = await rec.start(context)
+    await suite_login(page)
+    VIDEO_START = time.monotonic()
+    await page.goto(SUITE_IDP, wait_until="networkidle")
+    await page.wait_for_timeout(2000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "Account console: Personal info fields", scope=scope)
+
+
+async def record_sso_signing_in(context: BrowserContext) -> Path | None:
+    """Account console: Signing in (Basic authentication, Two-factor)."""
+    rec = ScreenshotRecorder("sso-signing-in", SCREENSHOT_DIR)
+    global VIDEO_START
+    page = await rec.start(context)
+    await suite_login(page)
+    VIDEO_START = time.monotonic()
+    await page.goto(SUITE_IDP.rstrip("/") + "/account-security/signing-in", wait_until="networkidle")
+    await page.wait_for_timeout(2000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "Account console: Signing in — Basic and Two-factor authentication", scope=scope)
+
+
+async def record_sso_devices(context: BrowserContext) -> Path | None:
+    """Account console: Device activity (sign out per device / all)."""
+    rec = ScreenshotRecorder("sso-devices", SCREENSHOT_DIR)
+    global VIDEO_START
+    page = await rec.start(context)
+    await suite_login(page)
+    VIDEO_START = time.monotonic()
+    await page.goto(SUITE_IDP.rstrip("/") + "/account-security/device-activity", wait_until="networkidle")
+    await page.wait_for_timeout(2000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "Account console: Device activity with Sign out buttons", scope=scope)
