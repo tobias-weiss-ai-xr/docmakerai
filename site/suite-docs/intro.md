@@ -48,6 +48,12 @@ apps available to you.
   with all app tiles in one place
 - **Files**: [Files with OpenCloud](/suite/files) — store, share and
   work on files together
+- **AI Chat**: [AI Chat (Open WebUI)](/suite/ai-chat) — ask questions
+  and work with texts
+- **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
+  — your tasks and starting processes
+- **Automation**: [Automation with n8n](/suite/n8n) — build small
+  automations that connect your apps
 - **Helpdesk**: [Create a Ticket](/suite/helpdesk-create-ticket) — the
   support ticket system (Request Tracker)
 - **Signing in and your account**: [Signing In](/suite/sso-login) and

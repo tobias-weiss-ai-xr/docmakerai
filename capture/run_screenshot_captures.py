@@ -1050,6 +1050,9 @@ WORKFLOWS = [
     ("cloud-files", "record_cloud_files"),
     ("cloud-new", "record_cloud_new"),
     ("cloud-shares", "record_cloud_shares"),
+    ("ai-chat", "record_ai_chat"),
+    ("operaton-tasklist", "record_operaton_tasklist"),
+    ("n8n-workflows", "record_n8n_workflows"),
 ]
 
 
@@ -1484,3 +1487,72 @@ async def record_cloud_shares(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(7000)
     scope = page.locator("main").first
     return await rec.capture(page, "Shares: files shared with me", scope=scope)
+
+
+# --- AI chat (Open WebUI), Operaton, n8n ------------------------------------
+AI_URL = os.environ.get("AI_URL", "https://ai.openedusuite.org")
+OPERATON_URL = os.environ.get("OPERATON_URL", "https://operaton.openedusuite.org")
+N8N_URL = os.environ.get("N8N_URL", "https://n8n.openedusuite.org")
+
+
+async def keycloak_sso(page: Page, url: str, landing: str) -> None:
+    """Open url, pass an oauth2-proxy gate if present, log into the
+    openedusuite realm, and wait for the landing selector."""
+    _suite_require_credentials()
+    await page.goto(url, wait_until="domcontentloaded")
+    gate = page.locator("button:has-text('Sign in with OpenID Connect') >> visible=true")
+    try:
+        await gate.first.click(timeout=8000)
+    except Exception:
+        pass  # no gate — direct Keycloak redirect or already signed in
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_selector(landing, timeout=45000)
+    await page.wait_for_timeout(6000)
+
+
+async def record_ai_chat(context: BrowserContext) -> Path | None:
+    """Open WebUI: a real answered chat exchange (model verified live)."""
+    rec = ScreenshotRecorder("ai-chat", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await keycloak_sso(page, AI_URL + "/", "[contenteditable='true'], textarea")
+    await page.wait_for_timeout(3000)
+    box = page.locator("[contenteditable='true'], textarea").first
+    await box.click()
+    await box.type("Erkläre in fünf Aufzählungspunkten, was ein Helpdesk tut.")
+    await page.keyboard.press("Enter")
+    # wait for the answer to render (model latency) and settle
+    await page.wait_for_timeout(22000)
+    scope = page.locator("main, #chat, body").first
+    return await rec.capture(page, "AI chat: question asked, answer received", scope=scope)
+
+
+async def record_operaton_tasklist(context: BrowserContext) -> Path | None:
+    """Operaton Tasklist: all tasks, create task, start process."""
+    rec = ScreenshotRecorder("operaton-tasklist", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')")
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(OPERATON_URL + "/operaton/app/tasklist/default/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(7000)
+    # Operaton's layout is absolutely positioned: body stays ~117px tall, so
+    # a scoped shot misses everything — capture the full viewport instead.
+    return await rec.capture(page, "Operaton Tasklist: tasks, create task, start process")
+
+
+async def record_n8n_workflows(context: BrowserContext) -> Path | None:
+    """n8n workflows overview: list with create and demo workflows."""
+    rec = ScreenshotRecorder("n8n-workflows", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, N8N_URL + "/", "button:has-text('Create workflow'), a, h1")
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(N8N_URL + "/home/workflows", wait_until="domcontentloaded")
+    await page.wait_for_timeout(7000)
+    scope = page.locator("main, [class*='content'], body").first
+    return await rec.capture(page, "n8n workflows: overview with create workflow and demo workflows", scope=scope)
