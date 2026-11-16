@@ -41,22 +41,17 @@ Fill in:
 
 ### Step 3: Configure Recurrence
 
-Click the **Repeat** or **Recurrence** section to expand it:
+Toggle **Repeat** on:
 
 ![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
 | Option | Description | Example Use |
 |:-------|:------------|:-------------|
-| **Daily** | Repeats every N days | Morning check-in |
-| **Weekly** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |
-| **Bi-weekly** | Repeats every 2 weeks | Sprint planning |
-| **Monthly** | Repeats on a day of the month | Department meeting on 1st |
-| **Yearly** | Repeats on a date each year | Birthday, anniversary |
+| **Day(s)** | Repeats every N days | Morning check-in |
+| **Week(s)** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |
+| **Month(s)** | Repeats on a day of the month | Department meeting on 1st |
+| **Year(s)** | Repeats on a date each year | Birthday, anniversary |
 
-:::tip
-For **weekly** recurrence, you can select multiple days
-(e.g., Monday, Wednesday, Friday) by checking the boxes.
-:::
 
 ![Configuring weekly recurrence: frequency dropdown in the event dialog](./assets/calendar-recurring.png)
 
@@ -77,57 +72,21 @@ repetition:
 - **End after N occurrences:** Limit the number of repetitions
 - **No end date:** Use sparingly — only for permanent events
 
-### Step 5: Save the Recurring Event
+### Step 5: Create the Recurring Event
 
-Click **Save**. The event is created with a recurrence icon 🔄
+Click **Create Event**. The event is created and marked as recurring
 indicating it repeats.
 
 ![Recurring event saved in calendar](./assets/03-recurring-saved.png)
 
 ## Part 2: Adding Alarms (Reminders)
 
-### Step 1: Open the Alarm Settings
+To receive a reminder before the event:
 
-In the event dialog, click the **Alarm** or **Reminder** section.
+1. In the event dialog, click **Add reminder**
+2. Set how far in advance you want to be reminded
 
-### Step 2: Choose Reminder Type
-
-<Tabs>
-  <TabItem value="display" label="Display (Popup)" default>
-
-A popup notification appears in your browser when the reminder fires.
-
-1. Select **Display** as the alarm type
-2. Choose when: **15 minutes before** (default), **1 hour before**,
-   **1 day before**, or **Custom**
-3. The reminder will appear as a browser notification
-
-  </TabItem>
-  <TabItem value="email" label="Email">
-
-An email is sent to your SOGo 6 email address.
-
-1. Select **Email** as the alarm type
-2. Choose the timing
-3. Check your email when the reminder fires
-
-:::info
-**Server-side requirement:** Email alarms require the
-`sogo-ealarms-notify` daemon to be running on the server.
-Contact your administrator if email reminders don't arrive.
-:::
-
-  </TabItem>
-</Tabs>
-
-### Step 3: Add Multiple Alarms
-
-You can add more than one alarm per event:
-- **15 minutes before** — popup reminder
-- **1 day before** — email reminder with preparation notes
-- **At time of event** — final notification
-
-Click **Add Alarm** to add additional reminders.
+You can add more than one reminder per event.
 
 ## Part 3: Editing or Stopping Recurrence
 
@@ -156,12 +115,10 @@ Click **Add Alarm** to add additional reminders.
 
 - Make sure you're editing a new or existing event in the **Calendar**
   module, not an invitation received via email
-- Some SOGo 6 themes hide the Repeat section behind a "More options" button
 
 ### Alarm not firing
 
 - **Display alarms** require the browser tab to be open
-- **Email alarms** require the `sogo-ealarms-notify` service to run on the server — a task for your IT administration; ask your administrator to set it up
 - Check your browser's notification permissions
 
 ## Conclusion
@@ -184,7 +141,7 @@ SOGo 6 supports full keyboard navigation for recurring events.
 | Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
 | Set recurrence end | Tab to end fields |
 | Set interval | Arrow key + Tab |
-| Save recurring event | `Tab` to **Save**, then `Enter` |
+| Create the recurring event | `Tab` to **Create Event**, then `Enter` |
 
 ### Screen Reader Workflow
 
@@ -211,8 +168,8 @@ SOGo 6 supports full keyboard navigation for recurring events.
 3. Tab to end date/occurrence count
 4. Specify when recurrence should end
 
-**Step 5: Save Recurring Event**
-1. Tab to "Save" button
+**Step 5: Create Recurring Event**
+1. Tab to the "Create Event" button
 2. Press `Enter`
 3. You should hear a confirmation that the series was created
 

@@ -64,23 +64,31 @@ Fill in the event details:
 
 | Field | Description | Example |
 |-------|-------------------------------------------|---------|
-| **Title** | A short name for your event | "Team Standup" |
+| **Event title** | A short name for your event | "Team Standup" |
+| **Calendar** | Which calendar to save to — chosen from your calendar list | your personal calendar |
+| **All day** | Toggle for all-day events (e.g., birthdays, holidays); the time fields are disabled | — |
+| **Start time / End time** | Date and time the event begins and ends | Today, 10:00–11:00 |
+| **Timezone (event)** | Time zone for start and end — useful when events span time zones | GMT+01:00 Europe/Berlin |
 | **Location** | Where the event takes place | "Conference Room B" |
-| **Start** | Date and time the event begins | Today at 10:00 |
-| **End** | Date and time the event ends | Today at 11:00 |
-| **Calendar** | Which calendar to save to — chosen from your calendar list | your account abbreviation |
-| **Category** | A color-coded category | Meeting (blue) |
+| **Description** | Notes, agenda or preparation instructions | — |
+| **URL** | Optional link (e.g., to the meeting document) | — |
 
-:::tip
-For **all-day events** (e.g., birthdays, holidays), toggle the
-**All-day** switch. The time fields will be disabled.
-:::
+The dialog also has further fields that shape how the event appears to
+others:
 
-### Step 4: Add Attendees (Optional)
+| Field | Options | Effect |
+|--------|---------|--------|
+| **Visibility** | Public · Private · Confidential | Per-event classification — see [Free/Busy: What Others See](./sogo-calendar-freebusy#what-others-see) |
+| **Show as** | Busy · Free · Out of office · Tentative | How the event appears when someone checks your availability |
+| **Status** | Confirmed · Tentative · Cancelled | The event's own status |
+| **Labels** | — | Optional labels for the event |
+| **Participants** | — | Invitees — see the next step |
+
+### Step 4: Add Participants (Optional)
 
 If you want to invite other people:
 
-1. Click the **Attendees** section to expand it
+1. Click the **Participants** section to expand it
 2. Start typing a colleague's name or email address
 3. Select the person from the auto-complete suggestions
 4. Choose their **participation role**:
@@ -94,20 +102,10 @@ SOGo 6 will send an email invitation to each attendee when you save the event.
 
 To receive a reminder before the event:
 
-1. Click the **Alarm** section to expand it
-2. Choose when to be reminded:
-   - **15 minutes before** (default)
-   - **30 minutes before**
-   - **1 hour before**
-   - **1 day before**
-   - **Custom** — enter your own time
-3. Choose the reminder method:
-   - **Display** — A popup notification appears in your browser when the reminder fires
-   - **Email** — An email sent to your address. **Note:** Email alarms require the
-     server-side `sogo-ealarms-notify` service — contact your administrator if email
-     reminders never arrive
-4. You can combine multiple alarms per event (e.g., **15 minutes before** as a popup
-   plus **1 day before** as an email): click **Add alarm** to do so
+1. Click **Add reminder**
+2. Set how far in advance you want to be reminded
+
+You can add more than one reminder per event.
 
 ### Step 6: Add a Description (Optional)
 
@@ -120,18 +118,17 @@ For events that repeat, click the **Repeat** section and choose a pattern:
 
 | Pattern | Example |
 |---------|------------------------------------------|
-| **Daily** | Standup meeting every day |
-| **Weekly** | Team meeting every Tuesday |
-| **Bi-weekly** | Sprint review every two weeks |
-| **Monthly** | Department meeting first Monday of each month |
-| **Yearly** | Birthday or anniversary |
+| **Day(s)** | Standup meeting every day |
+| **Week(s)** | Team meeting every Tuesday |
+| **Month(s)** | Department meeting first Monday of each month |
+| **Year(s)** | Birthday or anniversary |
 
 You can also set an **end date** for the recurrence (e.g., repeat until
 the end of the semester).
 
 ### Step 8: Save the Event
 
-Click **Save** or **OK** (depending on your SOGo 6 version) to create the event.
+Click **Create Event** to create the event (or **Cancel** to discard it).
 
 The event will appear on your calendar. If you added attendees, they will
 receive an email invitation that they can accept or decline.
@@ -211,8 +208,8 @@ Form fields appear in this order (screen reader focus sequence):
 
 6. **Category dropdown** - select color-coded category
 
-7. **Attendees section** - optional
-   - For adding people: `Tab` to Attendees, `Enter` to expand
+7. **Participants section** - optional
+   - For adding people: `Tab` to Participants, `Enter` to expand
    - Type first letters of name, `Arrow` to choose
    - `Enter` to select
 
