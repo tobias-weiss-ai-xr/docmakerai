@@ -41,7 +41,9 @@ def md_files():
     for d in DOC_DIRS:
         if not d.exists():
             continue
-        for p in sorted(d.glob("*.md")):
+        for p in sorted(d.rglob("*.md")):
+            # i18n dirs are per-page mirrors; only the EN tree may hold extra
+            # meta pages (ROADMAP), and asset dirs never contain markdown.
             files[str(p.relative_to(REPO_ROOT))] = p
     return files
 
@@ -973,7 +975,7 @@ def test_image_version_discipline(doc_dir):
                 continue
             if is_v5 and kind in ("sogo5-mockup", "sogo5-live"):
                 continue
-            if not is_v5 and kind == "sogo6-live":
+            if not is_v5 and kind in ("sogo6-live", "suite-live"):
                 continue
             if (
                 not is_v5
@@ -1068,7 +1070,7 @@ def test_clip_embeds_match_static_clips():
     """Every embedded clip/poster exists in static/clips, and no clip is orphaned."""
     if not CLIPS_DIR.exists():
         pytest.skip("no clips dir")
-    md_all = [p for d in DOC_DIRS for p in d.glob("*.md")]
+    md_all = [p for d in DOC_DIRS for p in d.rglob("*.md")]
     referenced_mp4, referenced_png = set(), set()
     for p in md_all:
         text = p.read_text(encoding="utf-8")

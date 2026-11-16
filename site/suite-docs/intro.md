@@ -44,6 +44,9 @@ apps available to you.
 
 ## Documentation Status
 
+- **Signing in and your account**: [Signing In](/suite/sso-login) and
+  [Your Account](/suite/sso-account) — one login for all apps, password
+  changes, two-factor authentication
 - **SOGo** (mail, calendar, contacts, tasks) is fully documented here:
   start with [SOGo 6](/sogo6/) or [SOGo 5](/sogo5/)
 - Guides for the other apps are being added step by step as they go live

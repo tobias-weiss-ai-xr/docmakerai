@@ -44,6 +44,9 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
 
 ## Stand der Dokumentation
 
+- **Anmeldung und Ihr Konto**: [Anmelden](/suite/sso-login) und
+  [Ihr Konto](/suite/sso-account) — ein Login für alle Anwendungen,
+  Passwortwechsel, Zwei-Faktor-Authentifizierung
 - **SOGo** (E-Mail, Kalender, Kontakte, Aufgaben) ist hier vollständig
   dokumentiert: beginnen Sie mit [SOGo 6](/sogo6/) oder [SOGo 5](/sogo5/)
 - Anleitungen für die weiteren Anwendungen entstehen Schritt für Schritt,
