@@ -774,6 +774,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/helpdesk-create-ticket/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/helpdesk-create-ticket/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/helpdesk-create-ticket/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sso-account/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sso-account/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sso-account/"/>
