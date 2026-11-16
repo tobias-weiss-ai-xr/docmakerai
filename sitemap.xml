@@ -786,6 +786,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ai-chat/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/dify/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/dify/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/dify/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/files/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/files/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/files/"/>
