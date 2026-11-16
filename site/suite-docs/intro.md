@@ -35,7 +35,7 @@ happens in one central place.
 | Scientific writing | **Overleaf** | Collaborative LaTeX |
 | Surveys | **LimeSurvey** | Questionnaires and surveys |
 | Document management | **Paperless-ngx**, **Mayan EDMS** | Document archiving |
-| Helpdesk | **Zammad** | Support tickets |
+| Helpdesk | **Request Tracker (RT)** | Support tickets |
 | AI services | **Open WebUI**, and more | Language-model assistance |
 | Automation | **n8n** | Workflow automation for staff |
 

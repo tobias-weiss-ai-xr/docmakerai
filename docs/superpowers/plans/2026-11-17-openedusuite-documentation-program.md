@@ -45,20 +45,14 @@ Wave assignment by user impact (portal order = visibility):
 | Login/SSO (Keycloak) | id.openedusuite.org | Everyone logs in; session behavior |
 | Passwort ändern (SSP) | ssp.openedusuite.org | Password self-service; pairs with SSO |
 | Meine Dateien (OpenCloud) | files.openedusuite.org | Files: upload/share/share-links — high value |
-| Helpdesk (Zammad) | helpdesk.openedusuite.org | Ticket creation — users need it when stuck |
+| Helpdesk — Request Tracker (RT 6) | helpdesk.openedusuite.org | Ticket creation — users need it when stuck. RT 6.0.3 confirmed in services-rt.md; Zammad is NOT used |
 | SOGo Mail ✓ | mail.openedusuite.org | DONE (28 pages, 19 workflows) — cross-link only |
 
-**Wave 2 — Collaboration**
-Wiki & Projekte (XWiki + OpenProject, projects./wiki.), Etherpad, Planka,
-draw.io, Excalidraw, BookStack (split vs XWiki per G2).
-
-**Wave 3 — Teaching & learning**
-LMS (Moodle and/or ILIAS per G2), BigBlueButton, JupyterHub, RStudio,
-Overleaf, Slidev/Typst (if user-facing).
-
-**Wave 4 — Specialist & staff**
-LimeSurvey, Paperless-ngx, Mayan EDMS, Open WebUI/LLM services, n8n (staff),
-eudi-issuer, Discourse/Indico (seeds exist — confirm prod status per G2).
+**Out of scope for now** (user decision 2026-11-17: do not plan the whole
+landscape — Wave 1 components only): collaboration apps (XWiki/OpenProject,
+Etherpad, Planka, draw.io, Excalidraw, BookStack), teaching (LMS,
+BigBlueButton, JupyterHub, RStudio, Overleaf), specialist/staff apps
+(LimeSurvey, Paperless, Open WebUI, n8n, eudi-issuer). Revisit on request.
 
 **Explicit non-goals:** infra/ops/admin documentation (stays in
 openEduSuite-hrz), internal services (seaweedfs, mariadb, kasmvnc/ttyd/
@@ -129,9 +123,7 @@ Unknown/unreachable UI → hedge honestly (delegation-page precedent).
 
 - [x] Wave 0: site architecture shipped (`02…`/see wave0 plan): `/suite` docs instance, EN+DE overview, sitemap merge fix, tests guard the section. Capture profiles deferred to Wave 1 (YAGNI).
 - [ ] Wave 1: portal, sso+ssp, files, helpdesk (+ SOGo cross-links)
-- [ ] Wave 2: wiki/projects, etherpad, planka, drawio, excalidraw, bookstack
-- [ ] Wave 3: LMS, BBB, jupyter, rstudio, overleaf
-- [ ] Wave 4: specialist/staff apps (confirm prod status first)
+- (waves 2–4 deferred — out of scope per user decision 2026-11-17)
 
 ## Self-Review
 
