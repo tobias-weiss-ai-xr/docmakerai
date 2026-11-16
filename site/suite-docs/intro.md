@@ -50,6 +50,8 @@ apps available to you.
   work on files together
 - **AI Chat**: [AI Chat (Open WebUI)](/suite/ai-chat) — ask questions
   and work with texts
+- **AI Assistants**: [Build Your Own AI Assistants (Dify)](/suite/dify)
+  — assemble assistants around the university's models
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small
