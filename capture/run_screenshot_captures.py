@@ -1004,7 +1004,11 @@ async def setup_authenticated_context(browser, video_dir=None) -> BrowserContext
         escaped = json.dumps(sogo_auth)
         await ctx.add_init_script(f"""
             try {{
-                sessionStorage.setItem('sogo_auth', {escaped});
+                // SOGo-only: other origins (portal, RT, OpenCloud) must not
+                // see this key — it breaks their SPA hydration.
+                if (location.hostname.endsWith('.sogo.nu')) {{
+                    sessionStorage.setItem('sogo_auth', {escaped});
+                }}
             }} catch(e) {{}}
         """)
     await login_page.close()
@@ -1041,6 +1045,11 @@ WORKFLOWS = [
     ("rt-login", "record_rt_login"),
     ("rt-dashboard", "record_rt_dashboard"),
     ("rt-create", "record_rt_create"),
+    ("portal-public", "record_portal_public"),
+    ("portal-apps", "record_portal_apps"),
+    ("cloud-files", "record_cloud_files"),
+    ("cloud-new", "record_cloud_new"),
+    ("cloud-shares", "record_cloud_shares"),
 ]
 
 
@@ -1284,6 +1293,10 @@ async def record_sso_devices(context: BrowserContext) -> Path | None:
 # more robust than the dropdown navigation.
 RT_URL = os.environ.get("RT_URL", "https://rt.openedusuite.org")
 
+# Workflows whose target app breaks under Playwright video recording
+# (the portal SPA fails to hydrate with the recorder attached) — stills only.
+NO_VIDEO_WORKFLOWS = {"portal-public", "portal-apps"}
+
 
 async def rt_login(page: Page) -> None:
     """Full SSO chain: oauth2-proxy gate -> Keycloak realm login -> RT."""
@@ -1362,3 +1375,112 @@ async def record_rt_create(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(1500)
     scope = page.locator("#body, main").first
     return await rec.capture(page, "Create Ticket form: queue, requestor, subject, message", scope=scope)
+
+
+# --- Portal (home.openedusuite.org) and Files (cloud.openedusuite.org) ------
+PORTAL_URL = os.environ.get("PORTAL_URL", "https://home.openedusuite.org")
+CLOUD_URL = os.environ.get("CLOUD_URL", "https://cloud.openedusuite.org")
+
+
+async def portal_login(page: Page) -> None:
+    """Portal SSO: Anmelden -> oauth2 -> Keycloak realm login."""
+    _suite_require_credentials()
+    await page.goto(PORTAL_URL + "/", wait_until="domcontentloaded")
+    # the portal labels the link "Anmelden" (de) or "Login" (en) depending
+    # on locale detection — match either
+    await page.wait_for_selector("a:has-text('Anmelden'), a:has-text('Login')", timeout=30000)
+    await page.click("a:has-text('Anmelden'), a:has-text('Login')")
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_load_state("domcontentloaded")
+    # locale-proof: match the sign-out href, not its label
+    await page.wait_for_selector("a[href*='oauth2/sign_out']", timeout=30000)
+    await page.wait_for_timeout(4000)
+
+
+async def cloud_login(page: Page) -> None:
+    """OpenCloud SSO login; dismiss the old-browser banner when it shows."""
+    _suite_require_credentials()
+    await page.goto(CLOUD_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_selector("input[name='username']", timeout=30000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_load_state("domcontentloaded")
+    await page.wait_for_selector("main", timeout=30000)
+    await page.wait_for_timeout(8000)
+    banner = page.locator("button:has-text('I want to continue anyway') >> visible=true").first
+    try:
+        await banner.click(timeout=15000)
+        await page.wait_for_timeout(1500)
+    except Exception:
+        pass  # banner absent or already gone — the app is usable either way
+
+
+async def record_portal_public(context: BrowserContext) -> Path | None:
+    """Portal before login: university news, weather, events."""
+    rec = ScreenshotRecorder("portal-public", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(PORTAL_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_selector("h1, h2", timeout=30000)
+    await page.wait_for_timeout(2500)
+    scope = page.locator("main, #app, body").first
+    return await rec.capture(page, "Portal (signed out): news, weather and events of the university", scope=scope)
+
+
+async def record_portal_apps(context: BrowserContext) -> Path | None:
+    """Portal after SSO login: the app tiles of the digital workplace."""
+    rec = ScreenshotRecorder("portal-apps", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await portal_login(page)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(PORTAL_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(4000)
+    scope = page.locator("main, #app, body").first
+    return await rec.capture(page, "Portal (signed in): app tiles for mail, tickets, files and more", scope=scope)
+
+
+async def record_cloud_files(context: BrowserContext) -> Path | None:
+    """OpenCloud Personal space: All files."""
+    rec = ScreenshotRecorder("cloud-files", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await cloud_login(page)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "OpenCloud Personal space: All files", scope=scope)
+
+
+async def record_cloud_new(context: BrowserContext) -> Path | None:
+    """OpenCloud New menu: folder, uploads, note, markdown, shortcut."""
+    rec = ScreenshotRecorder("cloud-new", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await cloud_login(page)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    await page.click("button:has-text('New')")
+    await page.wait_for_timeout(1500)
+    scope = page.locator("[role='menu'], .oc-dropdown-modal, main").first
+    return await rec.capture(page, "New menu: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut", scope=scope)
+
+
+async def record_cloud_shares(context: BrowserContext) -> Path | None:
+    """OpenCloud Shares: Files shared with me (empty state)."""
+    rec = ScreenshotRecorder("cloud-shares", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await cloud_login(page)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(CLOUD_URL + "/files/shares/with-me", wait_until="domcontentloaded")
+    await page.wait_for_timeout(7000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "Shares: files shared with me", scope=scope)
