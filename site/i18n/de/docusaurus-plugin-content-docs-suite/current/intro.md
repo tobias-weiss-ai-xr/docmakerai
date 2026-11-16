@@ -35,7 +35,7 @@ Passworts erfolgt an einer zentralen Stelle.
 | Wissenschaftliches Schreiben | **Overleaf** | Kollaboratives LaTeX |
 | Umfragen | **LimeSurvey** | Fragebögen und Erhebungen |
 | Dokumentenverwaltung | **Paperless-ngx**, **Mayan EDMS** | Dokumentenarchivierung |
-| Helpdesk | **Zammad** | Support-Tickets |
+| Helpdesk | **Request Tracker (RT)** | Support-Tickets |
 | KI-Dienste | **Open WebUI** und weitere | Sprachmodell-Unterstützung |
 | Automatisierung | **n8n** | Workflow-Automatisierung für das Personal |
 
