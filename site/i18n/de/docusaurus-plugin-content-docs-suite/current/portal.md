@@ -45,14 +45,14 @@ gemeinsame Markdown-Notizen; Projekte und Pläne in
 [BigBlueButton (intern)](/suite/bbb).
 
 **Arbeit und Studium** — Paper mit [Typst](/suite/typst) und
-**TOSS (Typst Server)**; Formulare in **Grist**; Veranstaltungen auf
+**TOSS (Typst Server)**; Formulare in [Grist](/suite/grist); Veranstaltungen auf
 [Indico](/suite/indico); Ihre [Tickets](/suite/helpdesk-create-ticket)
 im Request Tracker; Automatisierung mit
 [Operaton](/suite/operaton-tasks) und [n8n](/suite/n8n); KI in
 [Open WebUI](/suite/ai-chat) und [Dify](/suite/dify).
 
 **Forschung** — wissenschaftliche Workflows in **EWOKS** und
-**OpenScience**, die KI-Werkbank **F13** und Digitalisierungs-
+**OpenScience**, die KI-Textwerkbank [F13](/suite/f13) und Digitalisierungs-
 Workflows in **Kitodo**.
 
 Einige Kacheln führen aus der Suite hinaus zu Hochschul-Diensten —

@@ -63,6 +63,10 @@ apps available to you.
   the browser, with live preview
 - **Events**: [Events (Indico)](/suite/indico) — the campus event
   calendar, from announcement to archive
+- **Forms**: [Forms and Tables (Grist)](/suite/grist) — sovereign
+  data capture, from form to table
+- **Text AI**: [Text Assistance (F13)](/suite/f13) — AI for
+  administrative texts, with source checks
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small

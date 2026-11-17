@@ -1065,6 +1065,8 @@ WORKFLOWS = [
     ("bbb-rooms", "record_bbb_rooms"),
     ("toss-projects", "record_toss_projects"),
     ("indico-home", "record_indico_home"),
+    ("grist-home", "record_grist_home"),
+    ("f13-home", "record_f13_home"),
 ]
 
 
@@ -1841,3 +1843,43 @@ async def record_indico_home(context: BrowserContext) -> Path | None:
     await page.wait_for_selector("text=T. User", timeout=45000, state="attached")
     await page.wait_for_timeout(3000)
     return await rec.capture(page, "Indico home: categories and create event")
+
+
+# --- Grist / F13 --------------------------------------------------------------
+GRIST_URL = os.environ.get("GRIST_URL", "https://grist.openedusuite.org")
+F13_URL = os.environ.get("F13_URL", "https://f13.openedusuite.org")
+
+
+async def record_grist_home(context: BrowserContext) -> Path | None:
+    """Grist sovereign data capture: home with workspaces and the
+    add menu. Read-only — no documents are created.
+
+    Fresh context (Element recipe): the SOGo-preflight context stalls
+    Grist's SPA; a clean one renders instantly."""
+    rec = ScreenshotRecorder("grist-home", SCREENSHOT_DIR)
+    fresh = await context.browser.new_context(
+        viewport={"width": 1280, "height": 800},
+        ignore_https_errors=True,
+        locale="de-DE",
+    )
+    try:
+        page = await rec.start(fresh)
+        await keycloak_sso(page, GRIST_URL + "/", "text=Neu hinzufügen", timeout=60000)
+        await page.wait_for_timeout(3000)
+        return await rec.capture(page, "Grist home: workspaces, documents, add new")
+    finally:
+        await fresh.close()
+
+
+async def record_f13_home(context: BrowserContext) -> Path | None:
+    """F13 text assistance: consent gate accepted once (account-level,
+    same choice every user makes), then the welcome screen."""
+    rec = ScreenshotRecorder("f13-home", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, F13_URL + "/", "text=Willkommen bei F13", timeout=60000)
+    await page.wait_for_timeout(2000)
+    consent = page.locator("button", has_text="Einverstanden")
+    if await consent.count():
+        await consent.first.click()
+        await page.wait_for_timeout(4000)
+    return await rec.capture(page, "F13 welcome: text assistance apps")
