@@ -57,6 +57,10 @@ apps available to you.
 - **Chat**: [Chat (Element)](/suite/chat) — messaging on the open
   Matrix network, with first-login verification explained
 - **Wiki**: [Wiki (XWiki)](/suite/xwiki) — the shared knowledge base
+- **Conferences**: [Video Conferences (BigBlueButton)](/suite/bbb) —
+  your conference rooms for lectures, seminars, and meetings
+- **Papers**: [Writing Papers (Typst)](/suite/typst) — typesetting in
+  the browser, with live preview
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small

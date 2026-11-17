@@ -547,6 +547,22 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/chat-firstlogin.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (chat.openedusuite.org via openedusuite realm; German wall, de-DE context)"
+    },
+    "suite-docs/assets/bbb-rooms.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (bbb./toss.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/bbb-rooms.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (bbb./toss.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/toss-projects.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (bbb./toss.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/toss-projects.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (bbb./toss.openedusuite.org via openedusuite realm)"
     }
   }
 }
