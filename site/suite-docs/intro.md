@@ -61,6 +61,8 @@ apps available to you.
   your conference rooms for lectures, seminars, and meetings
 - **Papers**: [Writing Papers (Typst)](/suite/typst) — typesetting in
   the browser, with live preview
+- **Events**: [Events (Indico)](/suite/indico) — the campus event
+  calendar, from announcement to archive
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small
