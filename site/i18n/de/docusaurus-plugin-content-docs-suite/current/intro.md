@@ -52,6 +52,11 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   und mit Texten arbeiten
 - **KI-Assistenten**: [Eigene KI-Assistenten bauen (Dify)](/suite/dify)
   — Assistenten um die Modelle der Hochschule bauen
+- **Projekte**: [Projekte und Aufgaben (OpenProject)](/suite/openproject)
+  — Pläne, Status, Arbeitspakete und Zeitpläne
+- **Chat**: [Chat (Element)](/suite/chat) — Nachrichten im offenen
+  Matrix-Netzwerk, mit der Erstanmelde-Verifizierung erklärt
+- **Wiki**: [Wiki (XWiki)](/suite/xwiki) — die gemeinsame Wissensbasis
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine
