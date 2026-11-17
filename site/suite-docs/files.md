@@ -40,6 +40,9 @@ Choose **New** to create or upload:
 - **Note**, **Markdown file**, **Shortcut** — create these directly in
   the cloud
 
+**Files Upload** opens your computer's file picker: choose one or more
+files, and they land in **All files**.
+
 ![New menu: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut](./assets/cloud-new.png)
 
 <VideoFallback
@@ -52,6 +55,28 @@ Choose **New** to create or upload:
 
 ![New folder: named, created, visible in All files](./assets/cloud-create-folder.png)
 
+
+## Working With Files
+
+Select a file or folder — right-click it, or open the **⋯** menu at the
+end of its row — and the actions appear above the table: **Download**,
+**Delete**, **Copy to**, **Move to**, **Add to favorites**. The row
+menu itself offers **Open**, **Share**, **Copy permanent link**, and
+more.
+
+### Sharing
+
+Choose **Share** and the share panel opens next to the file:
+
+- **Share with people** — invite people directly; with **Can view**
+  they can look, and richer roles can be picked as your university
+  enables them
+- **Permanent link** — copy a stable link to this exact file
+- **Public links** — add a link anyone with it can use (**Add link**);
+  without one, the panel says so plainly ("This folder has no public
+  link.")
+
+![Share panel: share with people, permanent link, public links](./assets/cloud-share.png)
 
 ## Shares
 

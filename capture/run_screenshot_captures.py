@@ -1055,6 +1055,9 @@ WORKFLOWS = [
     ("n8n-workflows", "record_n8n_workflows"),
     ("dify-home", "record_dify_home"),
     ("cloud-create-folder", "record_cloud_create_folder"),
+    ("operaton-startprocess", "record_operaton_startprocess"),
+    ("cloud-share", "record_cloud_share"),
+    ("n8n-editor", "record_n8n_editor"),
 ]
 
 
@@ -1529,6 +1532,12 @@ async def record_ai_chat(context: BrowserContext) -> Path | None:
     await page.keyboard.press("Enter")
     # wait for the answer to render (model latency) and settle
     await page.wait_for_timeout(22000)
+    # follow-up that only makes sense with context — proves the chat
+    # keeps the conversation
+    await box.click()
+    await box.type("Nenne zu Punkt 2 ein konkretes Beispiel aus einer Universität.")
+    await page.keyboard.press("Enter")
+    await page.wait_for_timeout(22000)
     scope = page.locator("main, #chat, body").first
     return await rec.capture(page, "AI chat: question asked, answer received", scope=scope)
 
@@ -1612,3 +1621,46 @@ async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(5000)
     scope = page.locator("main").first
     return await rec.capture(page, "New folder: named, created, visible in All files", scope=scope)
+
+
+async def record_operaton_startprocess(context: BrowserContext) -> Path | None:
+    """Start-process panel with the deployed processes (list only — starting
+    one has real side effects on the system, so none is ever started)."""
+    rec = ScreenshotRecorder("operaton-startprocess", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')")
+    await page.goto(OPERATON_URL + "/operaton/app/tasklist/default/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(7000)
+    # 'Start process' is not a <button> — plain text click on the entry
+    await page.click("text=Start process")
+    await page.wait_for_timeout(4000)
+    return await rec.capture(page, "Start process: deployed processes to choose from")
+
+
+async def record_cloud_share(context: BrowserContext) -> Path | None:
+    """Share panel: right-click a folder, open Share, share-with-people and
+    public-link areas. Still only — the panel itself is static."""
+    rec = ScreenshotRecorder("cloud-share", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await cloud_login(page)
+    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    row = page.locator("span").filter(has_text="Dokumentationstest").first
+    await row.click(button="right")
+    await page.wait_for_timeout(2000)
+    await page.locator(":text-is('Share')").first.click()
+    await page.wait_for_timeout(3000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "Share panel: share with people, permanent link, public links", scope=scope)
+
+
+async def record_n8n_editor(context: BrowserContext) -> Path | None:
+    """Open a demo workflow in the editor: nodes and connections on canvas."""
+    rec = ScreenshotRecorder("n8n-editor", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, N8N_URL + "/", "button:has-text('Create workflow'), a, h1")
+    await page.goto(N8N_URL + "/home/workflows", wait_until="domcontentloaded")
+    await page.wait_for_timeout(7000)
+    await page.locator("text=Demo: Webhook Echo").first.click()
+    await page.wait_for_timeout(6000)
+    return await rec.capture(page, "Workflow editor: nodes and connections on the canvas")

@@ -28,6 +28,16 @@ leads to the important places:
 - **Data tables** and **Variables** — storage and values for your
   automations
 
+## Looking Inside: the Editor
+
+Open a demo workflow to see how an automation is built: the editor
+shows the flow as connected nodes on a canvas — each node is one step,
+the lines show where the data flows. Tabs above the canvas lead to
+**Executions** (what ran, with what result) and further views of the
+workflow.
+
+![Workflow editor: nodes and connections on the canvas](./assets/n8n-editor.png)
+
 ## Building a First Automation
 
 1. Choose **Create workflow** — the editor opens with a start point

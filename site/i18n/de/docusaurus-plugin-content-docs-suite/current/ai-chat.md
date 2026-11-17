@@ -31,8 +31,8 @@ Melden Sie sich mit Ihrem openEduSuite-Konto an.
    Vorschlagskarten können als Einstieg dienen
 3. Senden Sie mit `Enter` — die Antwort erscheint, während sie
    geschrieben wird
-4. Stellen Sie Rückfragen: der Chat behält den Zusammenhang des
-   Gesprächs
+4. Stellen Sie Rückfragen — der Chat behält den Zusammenhang des
+   Gesprächs, wie der Clip oben zeigt
 
 Über dem Eingabefeld sehen Sie, welches Modell antwortet — dort können
 Sie ein anderes wählen, falls die Hochschule mehrere anbietet.

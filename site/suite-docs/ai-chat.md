@@ -30,8 +30,8 @@ openEduSuite account.
 2. At the bottom, write your question into the message field —
    suggestion cards can serve as a starting point
 3. Send it with `Enter` — the answer streams in as it is written
-4. Ask follow-up questions: the chat keeps the context of the
-   conversation
+4. Ask follow-up questions — the chat keeps the context of the
+   conversation, as the clip above shows
 
 Above the message field you see which model answers — pick another one
 there if your university offers several.
