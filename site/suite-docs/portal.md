@@ -2,7 +2,7 @@
 title: "The Portal"
 sidebar_label: "Portal"
 sidebar_position: 13
-description: "Your digital workplace: news, events, and all openEduSuite apps in one place"
+description: "Your digital workplace: news, events, and every openEduSuite app in one place"
 ---
 
 # The Portal
@@ -20,21 +20,44 @@ openEduSuite account — the same login that works everywhere in the
 suite. See [Signing In](/suite/sso-login) for details.
 
 After signing in, the portal shows your personal digital workplace:
+the app tiles, university news and events, and — via **Konto** — the
+[account console](/suite/sso-account). **Abmelden** signs you out.
 
-- **App tiles** — one click to your mail and calendar
-  (E-Mail & Kalender, SOGo), the [helpdesk](/suite/helpdesk-create-ticket)
-  (Tickets & Service Desk), your [files](/suite/files) (OpenCloud), and
-  many more services
-- **University news and events** — current announcements and dates
-- **Your account** — via **Konto** you reach the account console
-  (profile, password, two-factor authentication), via **Abmelden**
-  (Sign out) you leave the portal
+![Portal (signed in): the full app tile list](./assets/portal-apps.png)
 
-![Portal (signed in): app tiles for mail, tickets, files and more](./assets/portal-apps.png)
+## The App Tiles
 
-Not every tile is for everyone — what you see depends on your role. If
-a service you need is missing, ask at the
-[helpdesk](/suite/helpdesk-create-ticket).
+The tiles carry the German names of the services. Where we have a
+guide, it is linked — the list mirrors the portal as it stands today:
+
+**Communication** — **E-Mail & Kalender (SOGo6)** for mail and
+calendars, plus separate webmail for staff and students
+(**SOGo Beschäftigten-Post**, **SOGo Studierenden-Post**);
+[Element Chat](/suite/chat) for messaging; the
+**Forum (Discourse)** for discussions.
+
+**Files and collaboration** — your files in [OpenCloud](/suite/files)
+and **Nextcloud**; wikis with [XWiki](/suite/xwiki) and
+**XWiki Beschäftigte**; **HedgeDoc** for shared Markdown notes; projects and
+plans in [OpenProject](/suite/openproject); video rooms in
+[BigBlueButton (intern)](/suite/bbb).
+
+**Work and study** — papers with [Typst](/suite/typst) and
+**TOSS (Typst Server)**; forms in **Grist**; events on
+[Indico](/suite/indico); your [tickets](/suite/helpdesk-create-ticket)
+at the Request Tracker; automation with [Operaton](/suite/operaton-tasks)
+and [n8n](/suite/n8n); AI in [Open WebUI](/suite/ai-chat) and
+[Dify](/suite/dify).
+
+**Research** — scientific workflows in **EWOKS** and **OpenScience**,
+the **F13** AI workbench, and digitization workflows in **Kitodo**.
+
+A few tiles lead outside the suite to university services — the
+**MARVIN** campus management, the **ILIAS** learning platform,
+**hessenbox** for cloud sync, and the staff directory. Not every tile
+is for everyone: what you see depends on your role, and not every
+backend is on at every hour — if a service you need stays dark, ask
+at the [helpdesk](/suite/helpdesk-create-ticket).
 
 ## Accessibility
 
