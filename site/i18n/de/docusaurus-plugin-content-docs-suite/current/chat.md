@@ -33,6 +33,12 @@ Verschlüsselung ein, die Ihre Nachrichten schützt:
   nur, wenn Sie nichts verlieren können — etwa auf einem frischen
   Konto.
 
+Nach dem Überspringen fragt der Assistent noch zwei kurze
+Bestätigungen: einen **Einmalanmeldungs-Schritt** („Zum Fortfahren,
+nutze ‚Single Sign-On' um deine Identität zu bestätigen") und die
+Einrichtung der Verschlüsselung (**Bestätigen**). Je ein Klick —
+dann schließt **Fertig** den Dialog und der Messenger gehört Ihnen.
+
 Nutzen Sie den Chat ernsthaft, verifizieren Sie beim ersten
 gelegenen Moment sauber auf einem zweiten Gerät — eine ehrliche
 Minute schlägt einen verlorenen Verlauf.

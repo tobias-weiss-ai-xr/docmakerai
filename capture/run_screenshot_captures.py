@@ -1064,6 +1064,7 @@ WORKFLOWS = [
     ("xwiki-main", "record_xwiki_main"),
     ("bbb-rooms", "record_bbb_rooms"),
     ("toss-projects", "record_toss_projects"),
+    ("indico-home", "record_indico_home"),
 ]
 
 
@@ -1797,3 +1798,46 @@ async def record_toss_projects(context: BrowserContext) -> Path | None:
     await keycloak_sso(page, TOSS_URL + "/", "text=Create Project")
     await page.wait_for_timeout(3000)
     return await rec.capture(page, "Typst projects: create a new project")
+
+
+# --- Indico ------------------------------------------------------------------
+INDICO_URL = os.environ.get("INDICO_URL", "https://indico.openedusuite.org")
+
+
+async def record_indico_home(context: BrowserContext) -> Path | None:
+    """Indico events platform: home with categories, signed in via the
+    app's own 'openEduSuite SSO' button (behind the oauth2 gate).
+    Read-only — events are never created from captures."""
+    rec = ScreenshotRecorder("indico-home", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto(INDICO_URL + "/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    gate = page.locator("button:has-text('Sign in with OpenID Connect') >> visible=true")
+    if await gate.count():
+        await gate.first.click()
+        await page.wait_for_timeout(3000)
+    if await page.locator("input[name='username'] >> visible=true").count():
+        await page.fill("input[name='username']", SUITE_USERNAME)
+        await page.fill("input[name='password']", SUITE_PASSWORD)
+        await page.click("input[type='submit'], button[type='submit']")
+        await page.wait_for_timeout(9000)
+    # Indico follows the browser locale ('Einloggen' | 'Log in');
+    # its own login dialog offers the realm as 'openEduSuite SSO'
+    login = (
+        page.locator("a:has-text('Einloggen')")
+        .or_(page.locator("button:has-text('Einloggen')"))
+        .or_(page.locator("a:has-text('Login')"))
+        .or_(page.locator("button:has-text('Login')"))
+        .or_(page.locator("a:has-text('Log in')"))
+        .or_(page.locator("button:has-text('Log in')"))
+        .filter(visible=True)
+    )
+    await login.first.wait_for(timeout=30000)
+    await login.first.click()
+    await page.wait_for_selector("text=openEduSuite SSO", timeout=20000)
+    await page.locator("text=openEduSuite SSO").first.click()
+    # 'Mein Profil'/'My profile' lives in a collapsed user menu in some
+    # locales — the account name is the reliable logged-in marker
+    await page.wait_for_selector("text=T. User", timeout=45000, state="attached")
+    await page.wait_for_timeout(3000)
+    return await rec.capture(page, "Indico home: categories and create event")

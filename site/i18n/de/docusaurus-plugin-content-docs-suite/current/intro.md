@@ -61,6 +61,9 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   Ihre Konferenzräume für Lehrveranstaltungen, Seminare, Besprechungen
 - **Paper**: [Papier schreiben (Typst)](/suite/typst) — Textsatz im
   Browser, mit Live-Vorschau
+- **Veranstaltungen**: [Veranstaltungen (Indico)](/suite/indico) —
+  der Campus-Veranstaltungskalender, von der Ankündigung bis ins
+  Archiv
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine

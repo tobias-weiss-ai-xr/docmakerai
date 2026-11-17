@@ -563,6 +563,14 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/toss-projects.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (bbb./toss.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/indico-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (indico.openedusuite.org: oauth2 gate + realm + app-internal 'openEduSuite SSO')"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/indico-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (indico.openedusuite.org: oauth2 gate + realm + app-internal 'openEduSuite SSO')"
     }
   }
 }

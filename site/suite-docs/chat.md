@@ -34,6 +34,12 @@ messages:
   **Fortfahren** (continue) only if you have nothing to lose — on a
   fresh account, for example.
 
+After skipping, the wizard asks two quick confirmations: a
+**single sign-on** step ("use Single Sign-On to confirm your
+identity") and the encryption setup (**Bestätigen** — confirm). Each
+is one click; then **Fertig** (done) closes the dialog and the
+messenger is yours.
+
 If you use the chat seriously, verify properly on your second device
 the first chance you get — one honest minute beats a lost history.
 
