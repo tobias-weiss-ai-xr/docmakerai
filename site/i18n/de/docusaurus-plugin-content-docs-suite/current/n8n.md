@@ -5,8 +5,6 @@ sidebar_position: 17
 description: "Kleine Automatisierungen bauen, die Ihre Anwendungen und Dienste verbinden"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Automatisierung mit n8n
 
 [n8n](https://n8n.openedusuite.org) verbindet die Dienste der
@@ -16,14 +14,6 @@ anlegen, Daten abrufen. Diese Automatisierungen stellen Sie visuell
 aus Bausteinen zusammen.
 
 ![n8n-Workflows: Übersicht mit Workflow erstellen und Demo-Workflows](./assets/n8n-workflows.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/n8n-workflows.mp4"
-  poster="/docmakerai/clips/n8n-workflows.png"
-  alt="Kurzclip: die n8n-Workflow-Übersicht mit ihren Demo-Workflows"
-  width="640"
-  height="400"
-/>
 
 ## Die Übersicht
 

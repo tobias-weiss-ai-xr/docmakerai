@@ -5,8 +5,6 @@ sidebar_position: 16
 description: "Zugewiesene Aufgaben bearbeiten und Prozesse starten in der Workflow-Engine Operaton"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Prozesse und Aufgaben (Operaton)
 
 [Operaton](https://operaton.openedusuite.org) ist die Workflow-Engine
@@ -15,14 +13,6 @@ digital ab — Freigaben, Anträge, Checklisten. Ihnen begegnen Sie, wenn
 ein Prozess Ihnen eine Aufgabe zuweist.
 
 ![Operaton-Tasklist: Aufgaben, Aufgabe erstellen, Prozess starten](./assets/operaton-tasklist.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/operaton-tasklist.mp4"
-  poster="/docmakerai/clips/operaton-tasklist.png"
-  alt="Kurzclip: die Operaton-Aufgabenliste mit Aufgaben und Prozessstart"
-  width="640"
-  height="400"
-/>
 
 ## Ihre Aufgaben
 

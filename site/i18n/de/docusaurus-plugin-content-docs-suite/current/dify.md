@@ -5,8 +5,6 @@ sidebar_position: 18
 description: "Eigene KI-Assistenten und Mini-Apps zusammenbauen — mit Vorlagen, Wissen und ohne Programmierung"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Eigene KI-Assistenten bauen (Dify)
 
 [Dify](https://dify.openedusuite.org) ist der Low-Code-Baukasten für
@@ -16,14 +14,6 @@ der [KI-Chat](/suite/ai-chat) ein fertiges Gespräch ist, formen Sie in
 Dify Ihr eigenes.
 
 ![Dify-Startseite: Willkommen, Vorlagen und die Navigation des Baukastens](./assets/dify-home.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/dify-home.mp4"
-  poster="/docmakerai/clips/dify-home.png"
-  alt="Kurzclip: die Dify-Startseite mit Vorlagen und Navigation"
-  width="640"
-  height="400"
-/>
 
 ## Die Übersicht
 

@@ -5,8 +5,6 @@ sidebar_position: 18
 description: "Assemble your own AI assistants and mini-apps — with templates, knowledge, and no programming"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Build Your Own AI Assistants (Dify)
 
 [Dify](https://dify.openedusuite.org) is the low-code builder for AI
@@ -16,14 +14,6 @@ programming. Where the [AI chat](/suite/ai-chat) is a ready-made
 conversation, Dify lets you shape your own.
 
 ![Dify home: welcome, templates, and app-builder navigation](./assets/dify-home.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/dify-home.mp4"
-  poster="/docmakerai/clips/dify-home.png"
-  alt="Short clip: the Dify home page with templates and navigation"
-  width="640"
-  height="400"
-/>
 
 ## The Overview
 
