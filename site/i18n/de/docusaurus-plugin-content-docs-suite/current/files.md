@@ -43,6 +43,9 @@ Wählen Sie **New** (Neu), um zu erstellen oder hochzuladen:
 - **Note**, **Markdown file**, **Shortcut** — direkt in der Cloud
   anlegen
 
+**Files Upload** öffnet die Dateiauswahl Ihres Rechners: Wählen Sie
+eine oder mehrere Dateien, sie landen in **All files**.
+
 ![New-Menü: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut](./assets/cloud-new.png)
 
 <VideoFallback
@@ -55,6 +58,31 @@ Wählen Sie **New** (Neu), um zu erstellen oder hochzuladen:
 
 ![Neuer Ordner: benannt, erstellt, sichtbar in All files](./assets/cloud-create-folder.png)
 
+
+## Mit Dateien arbeiten
+
+Wählen Sie eine Datei oder einen Ordner — mit Rechtsklick oder über
+das **⋯**-Menü am Ende der Zeile — und die Aktionen erscheinen über
+der Tabelle: **Download**, **Delete** (Löschen), **Copy to**
+(Kopieren nach), **Move to** (Verschieben nach), **Add to favorites**
+(Zu Favoriten). Das Zeilenmenü selbst bietet **Open** (Öffnen),
+**Share** (Teilen), **Copy permanent link** (Permanenter Link) und
+mehr.
+
+### Teilen
+
+Wählen Sie **Share**, öffnet sich das Teilen-Fenster neben der Datei:
+
+- **Share with people** (Mit Personen teilen) — Menschen direkt
+  einladen; mit **Can view** (Kann ansehen) können sie hineinschauen,
+  weitere Rollen stehen bereit, sobald Ihre Hochschule sie freigibt
+- **Permanent link** — ein stabiler Link genau zu dieser Datei zum
+  Kopieren
+- **Public links** (Öffentliche Links) — einen Link hinzufügen, den
+  jeder damit Kenntliche nutzen kann (**Add link**); ohne Link sagt es
+  das Fenster klar („This folder has no public link.")
+
+![Teilen-Fenster: mit Personen teilen, permanenter Link, öffentliche Links](./assets/cloud-share.png)
 
 ## Freigaben
 

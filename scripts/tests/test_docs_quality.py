@@ -219,6 +219,12 @@ def test_de_shortcut_key_label_is_strg(md_files):
 )
 def test_no_outdated_ui_references(md_files, pattern, what):
     bad = _violations(md_files, pattern, flags=re.IGNORECASE)
+    # The no-right-click rule is a SOGo 5 truth (its UI has no context
+    # menus). Suite apps differ: OpenCloud's file table HAS a verified
+    # right-click context menu (live-probed 2026-11), so right-click
+    # wording is legitimate in suite docs.
+    if "right-click" in what:
+        bad = [v for v in bad if "suite" not in v.rpartition(":")[0]]
     # Reviewer-verified exception: the settings gear exists and is called
     # "Zahnrad"/"gear icon" in the real UI (SOGo_5_Kritik: "immerhin stimmt
     # das Zahnrad diesmal"). Only flag gear words NOT tied to settings.
@@ -903,6 +909,10 @@ _BLANK_ALLOWED = {
     # (checked 2026-11: dark pixels across >95% of width and height rows).
     ("suite-docs", "ai-chat.png"),
     ("i18n/de/docusaurus-plugin-content-docs-suite/current", "ai-chat.png"),
+    # n8n's editor canvas: nodes on a light canvas — verified content
+    # spans the full canvas (rows 16-788/800, cols 12-1266/1280).
+    ("suite-docs", "n8n-editor.png"),
+    ("i18n/de/docusaurus-plugin-content-docs-suite/current", "n8n-editor.png"),
 }
 
 

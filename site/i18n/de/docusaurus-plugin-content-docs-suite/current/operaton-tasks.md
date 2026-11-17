@@ -25,15 +25,25 @@ Prozess ab.
 
 Einige Listen behalten einen Filter, sodass Sie nur das für Sie
 Relevante sehen; die Zahl neben einem Listeneintrag zeigt, wie viele
-Aufgaben sie gerade enthält.
+Aufgaben sie gerade enthält. Warten keine Aufgaben, sagt die
+Liste es klar („No task matching filters found.") — dann gibt es
+schlicht nichts für Sie zu tun.
 
 ## Einen Prozess starten
 
 Viele Prozesse lassen sich auch von Ihnen direkt starten: Wählen Sie
-**Start process** (Prozess starten), wählen Sie den Prozess und füllen
-Sie das folgende Formular aus. Der Prozess durchläuft dann die in der
-Hochschule festgelegten Schritte — als Aufgabe begegnet er Ihnen
+**Start process** (Prozess starten) — es öffnet sich ein Bereich mit
+den Prozessen, die Ihre Hochschule eingerichtet hat („Click on the
+process to start"). Wählen Sie den Prozess, füllen Sie das folgende
+Formular aus und senden Sie es ab. Der Prozess durchläuft dann die in
+der Hochschule festgelegten Schritte — als Aufgabe begegnet er Ihnen
 wieder, wann immer Ihr Teil dran ist.
+
+![Prozess starten: eingerichtete Prozesse zur Auswahl](./assets/operaton-startprocess.png)
+
+Ein Prozess kann reale Dinge in Bewegung setzen — Benutzerkonten,
+virtuelle Maschinen, Rechnungen. Starten Sie nur, wofür Sie zuständig
+sind.
 
 ## Barrierefreiheit
 

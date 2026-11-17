@@ -31,6 +31,17 @@ führt zu den wichtigen Orten:
 - **Data tables** (Datentabellen) und **Variables** (Variablen) —
   Speicher und Werte für Ihre Automatisierungen
 
+## Ein Blick hinein: der Editor
+
+Öffnen Sie einen Demo-Workflow, um zu sehen, wie eine Automatisierung
+aufgebaut ist: der Editor zeigt den Ablauf als verbundene Knoten auf
+einer Fläche — jeder Knoten ist ein Schritt, die Linien zeigen, wohin
+die Daten fließen. Registerkarten über der Fläche führen zu
+**Executions** (Ausführungen: was lief, mit welchem Ergebnis) und
+weiteren Ansichten des Workflows.
+
+![Workflow-Editor: Knoten und Verbindungen auf der Fläche](./assets/n8n-editor.png)
+
 ## Eine erste Automatisierung bauen
 
 1. Wählen Sie **Create workflow** — der Editor öffnet sich mit einem
