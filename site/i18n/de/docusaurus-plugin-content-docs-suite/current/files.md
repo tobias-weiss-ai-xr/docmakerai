@@ -22,14 +22,6 @@ Nach der Anmeldung landen Sie in Ihrem persönlichen Bereich: die Ansicht
 
 ![OpenCloud persönlicher Bereich: All files](./assets/cloud-files.png)
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/cloud-files.mp4"
-  poster="/docmakerai/clips/cloud-files.png"
-  alt="Kurzclip: die persönliche Dateiansicht in OpenCloud"
-  width="640"
-  height="400"
-/>
-
 Die Navigation bietet:
 
 - **Personal** (Persönlich) — Ihre eigenen Dateien, mit **All files**,
@@ -42,7 +34,9 @@ Die Navigation bietet:
 
 Wählen Sie **New** (Neu), um zu erstellen oder hochzuladen:
 
-- **Folder** (Ordner) — ein neuer Ordner
+- **Folder** (Ordner) — ein neuer Ordner: der Dialog fragt nach dem
+  **Folder name** (Ordnernamen), mit **Create** (Erstellen) landet der
+  Ordner in **All files**
 - **Files Upload** — eine oder mehrere Dateien von Ihrem Rechner
   hochladen
 - **Folder Upload** — einen ganzen Ordner hochladen
@@ -52,12 +46,15 @@ Wählen Sie **New** (Neu), um zu erstellen oder hochzuladen:
 ![New-Menü: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut](./assets/cloud-new.png)
 
 <VideoFallback
-  srcMp4="/docmakerai/clips/cloud-new.mp4"
-  poster="/docmakerai/clips/cloud-new.png"
-  alt="Kurzclip: das New-Menü mit Upload- und Erstellungsoptionen"
+  srcMp4="/docmakerai/clips/cloud-create-folder.mp4"
+  poster="/docmakerai/clips/cloud-create-folder.png"
+  alt="Kurzclip: einen neuen Ordner anlegen — New-Menü, Ordnername, Erstellen"
   width="640"
   height="400"
 />
+
+![Neuer Ordner: benannt, erstellt, sichtbar in All files](./assets/cloud-create-folder.png)
+
 
 ## Freigaben
 
@@ -69,14 +66,6 @@ Unter **Shares** finden Sie alles Geteilte:
 - **Shared via link** — Ihre Freigabelinks
 
 ![Freigaben: mit mir geteilte Dateien](./assets/cloud-shares.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/cloud-shares.mp4"
-  poster="/docmakerai/clips/cloud-shares.png"
-  alt="Kurzclip: die Freigaben-Ansicht mit ihren Unterfiltern"
-  width="640"
-  height="400"
-/>
 
 Gelöschte Dateien landen zuerst in **Deleted files** — von dort lassen
 sie sich wiederherstellen oder endgültig entfernen.

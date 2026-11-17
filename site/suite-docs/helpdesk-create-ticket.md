@@ -24,28 +24,12 @@ the helpdesk. See [Signing In](/suite/sso-login) for how the login works.
 
 ![Helpdesk sign-in via openEduSuite single sign-on](./assets/rt-login.png)
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/rt-login.mp4"
-  poster="/docmakerai/clips/rt-login.png"
-  alt="Short clip: the helpdesk sign-in page and single sign-on"
-  width="640"
-  height="400"
-/>
-
 ## The Dashboard
 
 After signing in you see your dashboard: a quick way to create tickets
 and a list of your open tickets.
 
 ![RT dashboard: quick create and my open tickets](./assets/rt-dashboard.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/rt-dashboard.mp4"
-  poster="/docmakerai/clips/rt-dashboard.png"
-  alt="Short clip: the helpdesk dashboard with quick create and open tickets"
-  width="640"
-  height="400"
-/>
 
 ## Creating a Ticket
 

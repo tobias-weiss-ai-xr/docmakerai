@@ -25,28 +25,12 @@ zurück im Helpdesk. Wie die Anmeldung funktioniert, siehe
 
 ![Helpdesk-Anmeldung über den openEduSuite-Single-Sign-On](./assets/rt-login.png)
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/rt-login.mp4"
-  poster="/docmakerai/clips/rt-login.png"
-  alt="Kurzclip: die Anmeldeseite des Helpdesk und der Single Sign-On"
-  width="640"
-  height="400"
-/>
-
 ## Das Dashboard
 
 Nach der Anmeldung sehen Sie Ihr Dashboard: einen schnellen Weg, Tickets
 zu erstellen, und eine Liste Ihrer offenen Tickets.
 
 ![RT-Dashboard: Schnelles Erstellen und meine offenen Tickets](./assets/rt-dashboard.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/rt-dashboard.mp4"
-  poster="/docmakerai/clips/rt-dashboard.png"
-  alt="Kurzclip: das Helpdesk-Dashboard mit Schnellerfassung und offenen Tickets"
-  width="640"
-  height="400"
-/>
 
 ## Ein Ticket erstellen
 

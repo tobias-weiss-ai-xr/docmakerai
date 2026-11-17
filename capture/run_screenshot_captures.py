@@ -1054,6 +1054,7 @@ WORKFLOWS = [
     ("operaton-tasklist", "record_operaton_tasklist"),
     ("n8n-workflows", "record_n8n_workflows"),
     ("dify-home", "record_dify_home"),
+    ("cloud-create-folder", "record_cloud_create_folder"),
 ]
 
 
@@ -1574,3 +1575,40 @@ async def record_dify_home(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(3000)
     scope = page.locator("main, body").first
     return await rec.capture(page, "Dify home: welcome, templates, and app-builder navigation", scope=scope)
+
+
+async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
+    """OpenCloud: create a folder end-to-end (New -> Folder -> name -> Create).
+
+    Interactive demo — replaces the former static cloud-new clip: the video
+    shows the actual flow, the result screenshot shows the created folder.
+    """
+    rec = ScreenshotRecorder("cloud-create-folder", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await cloud_login(page)
+    global VIDEO_START
+    VIDEO_START = time.monotonic()
+    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    await page.click("button:has-text('New')")
+    await page.wait_for_timeout(1500)
+    await page.locator("[role='menu'] :text('Folder')").first.click()
+    await page.wait_for_timeout(2000)
+    # the modal re-mounts on open (form key -v-2): the LAST modal owns the
+    # live form; it also holds the E2E-encrypt checkbox — text input only
+    name_input = page.locator(".oc-modal input:not([type='checkbox']), [role='dialog'] input:not([type='checkbox'])").last
+    for attempt in range(3):
+        await name_input.fill("Dokumentationstest")
+        await name_input.press("End")
+        await page.wait_for_timeout(800)
+        btn = page.locator("button:has-text('Create') >> visible=true").last
+        try:
+            if await btn.is_enabled():
+                break
+        except Exception:
+            pass
+    # submitting via Enter works even when the button state lags behind
+    await name_input.press("Enter")
+    await page.wait_for_timeout(5000)
+    scope = page.locator("main").first
+    return await rec.capture(page, "New folder: named, created, visible in All files", scope=scope)

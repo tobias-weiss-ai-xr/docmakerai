@@ -5,8 +5,6 @@ sidebar_position: 17
 description: "Build small automations that connect your apps and services"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Automation with n8n
 
 [n8n](https://n8n.openedusuite.org) connects the services of the
@@ -15,14 +13,6 @@ another — send a message, write a file, create a ticket, fetch data.
 You assemble these automations visually from building blocks.
 
 ![n8n workflows: overview with create workflow and demo workflows](./assets/n8n-workflows.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/n8n-workflows.mp4"
-  poster="/docmakerai/clips/n8n-workflows.png"
-  alt="Short clip: the n8n workflows overview with its demo workflows"
-  width="640"
-  height="400"
-/>
 
 ## The Overview
 

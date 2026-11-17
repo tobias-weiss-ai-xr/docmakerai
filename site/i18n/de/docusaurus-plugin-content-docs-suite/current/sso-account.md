@@ -5,8 +5,6 @@ sidebar_position: 11
 description: "Profil, Passwort, Zwei-Faktor-Authentifizierung und aktive Sitzungen in der openEduSuite-Kontoverwaltung"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Ihr Konto
 
 Die Kontoverwaltung regelt alles rund um Ihren openEduSuite-Login: Ihr
@@ -25,14 +23,6 @@ Zeigt Ihre Kontodaten:
 
 ![Kontoverwaltung: Personal info mit Username, Email, First name und Last name](./assets/sso-account.png)
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/sso-account.mp4"
-  poster="/docmakerai/clips/sso-account.png"
-  alt="Kurzclip: die Kontoverwaltung mit persönlichen Informationen"
-  width="640"
-  height="400"
-/>
-
 Benutzername und Name verwaltet Ihre Hochschule; wenden Sie sich an den
 Helpdesk, wenn dort etwas nicht stimmt.
 
@@ -48,14 +38,6 @@ Zwei Bereiche steuern Ihre Anmeldung:
 
 ![Kontoverwaltung: Signing in mit Basic authentication und Two-factor authentication](./assets/sso-signing-in.png)
 
-<VideoFallback
-  srcMp4="/docmakerai/clips/sso-signing-in.mp4"
-  poster="/docmakerai/clips/sso-signing-in.png"
-  alt="Kurzclip: die Seite Signing in mit Passwort- und Zwei-Faktor-Optionen"
-  width="640"
-  height="400"
-/>
-
 Die Zwei-Faktor-Authentifizierung verbindet Ihren Login mit einer
 Authenticator-App auf Ihrem Telefon: Nach der Passworteingabe tippen Sie
 zusätzlich einen Code aus der App ein. Wir empfehlen die Einrichtung —
@@ -69,14 +51,6 @@ beenden, oder **Sign out all devices**, um alle Sitzungen auf einmal zu
 beenden.
 
 ![Kontoverwaltung: Device activity mit Sign-out-Schaltflächen je Gerät](./assets/sso-devices.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/sso-devices.mp4"
-  poster="/docmakerai/clips/sso-devices.png"
-  alt="Kurzclip: die Seite Device activity mit angemeldeten Geräten"
-  width="640"
-  height="400"
-/>
 
 Nutzen Sie sie, wenn Sie an einem gemeinsam genutzten Rechner fertig
 sind, oder wenn Sie auf Nummer sicher gehen wollen, nachdem Sie ein

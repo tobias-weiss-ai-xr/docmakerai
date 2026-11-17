@@ -5,8 +5,6 @@ sidebar_position: 16
 description: "Work through assigned tasks and start processes in the workflow engine Operaton"
 ---
 
-import VideoFallback from '@site/src/components/VideoFallback';
-
 # Processes and Tasks (Operaton)
 
 [Operaton](https://operaton.openedusuite.org) is the workflow engine of
@@ -15,14 +13,6 @@ digitally — approvals, applications, checklists. You meet it when a
 process assigns you a task.
 
 ![Operaton Tasklist: tasks, create task, start process](./assets/operaton-tasklist.png)
-
-<VideoFallback
-  srcMp4="/docmakerai/clips/operaton-tasklist.mp4"
-  poster="/docmakerai/clips/operaton-tasklist.png"
-  alt="Short clip: the Operaton task list with tasks and start process"
-  width="640"
-  height="400"
-/>
 
 ## Your Tasks
 
