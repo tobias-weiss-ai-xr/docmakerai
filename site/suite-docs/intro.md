@@ -52,6 +52,11 @@ apps available to you.
   and work with texts
 - **AI Assistants**: [Build Your Own AI Assistants (Dify)](/suite/dify)
   — assemble assistants around the university's models
+- **Projects**: [Projects and Tasks (OpenProject)](/suite/openproject)
+  — plans, statuses, work packages, and timelines
+- **Chat**: [Chat (Element)](/suite/chat) — messaging on the open
+  Matrix network, with first-login verification explained
+- **Wiki**: [Wiki (XWiki)](/suite/xwiki) — the shared knowledge base
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small

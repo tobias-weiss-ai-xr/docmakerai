@@ -515,6 +515,38 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/n8n-editor.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (operaton./cloud./n8n.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/openproject-projects.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/openproject-projects.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/openproject-project.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/openproject-project.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/xwiki-main.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/xwiki-main.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (openproject./chat./xwiki.openedusuite.org via openedusuite realm)"
+    },
+    "suite-docs/assets/chat-firstlogin.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (chat.openedusuite.org via openedusuite realm; German wall, de-DE context)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/chat-firstlogin.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (chat.openedusuite.org via openedusuite realm; German wall, de-DE context)"
     }
   }
 }

@@ -1058,6 +1058,10 @@ WORKFLOWS = [
     ("operaton-startprocess", "record_operaton_startprocess"),
     ("cloud-share", "record_cloud_share"),
     ("n8n-editor", "record_n8n_editor"),
+    ("openproject-projects", "record_openproject_projects"),
+    ("openproject-project", "record_openproject_project"),
+    ("chat-firstlogin-de", "record_chat_firstlogin_de"),
+    ("xwiki-main", "record_xwiki_main"),
 ]
 
 
@@ -1303,7 +1307,9 @@ RT_URL = os.environ.get("RT_URL", "https://rt.openedusuite.org")
 
 # Workflows whose target app breaks under Playwright video recording
 # (the portal SPA fails to hydrate with the recorder attached) — stills only.
-NO_VIDEO_WORKFLOWS = {"portal-public", "portal-apps"}
+# portal SPAs break under video hydration load; Element's wall is
+# still-only (no clip) and its SPA loads faster without recording.
+NO_VIDEO_WORKFLOWS = {"portal-public", "portal-apps", "chat-firstlogin"}
 
 
 async def rt_login(page: Page) -> None:
@@ -1500,9 +1506,14 @@ OPERATON_URL = os.environ.get("OPERATON_URL", "https://operaton.openedusuite.org
 N8N_URL = os.environ.get("N8N_URL", "https://n8n.openedusuite.org")
 
 
-async def keycloak_sso(page: Page, url: str, landing: str) -> None:
+async def keycloak_sso(page: Page, url: str, landing: str, state: str = "visible", timeout: int = 45000) -> None:
     """Open url, pass an oauth2-proxy gate if present, log into the
-    openedusuite realm, and wait for the landing selector."""
+    openedusuite realm, and wait for the landing selector.
+
+    state: "visible" (default) or "attached" — heavy SPA modals (Element's
+    verification wall) render DOM text that Playwright never reports as
+    visible; "attached" + a settle wait is the reliable recipe there.
+    """
     _suite_require_credentials()
     await page.goto(url, wait_until="domcontentloaded")
     gate = page.locator("button:has-text('Sign in with OpenID Connect') >> visible=true")
@@ -1514,7 +1525,9 @@ async def keycloak_sso(page: Page, url: str, landing: str) -> None:
     await page.fill("input[name='username']", SUITE_USERNAME)
     await page.fill("input[name='password']", SUITE_PASSWORD)
     await page.click("input[type='submit'], button[type='submit']")
-    await page.wait_for_selector(landing, timeout=45000)
+    await page.wait_for_selector(landing, timeout=timeout, state=state)
+    if state == "attached":
+        await page.wait_for_timeout(8000)  # let the SPA paint
     await page.wait_for_timeout(6000)
 
 
@@ -1664,3 +1677,83 @@ async def record_n8n_editor(context: BrowserContext) -> Path | None:
     await page.locator("text=Demo: Webhook Echo").first.click()
     await page.wait_for_timeout(6000)
     return await rec.capture(page, "Workflow editor: nodes and connections on the canvas")
+
+
+# --- OpenProject / Element chat / XWiki --------------------------------------
+OPENPROJECT_URL = os.environ.get("OPENPROJECT_URL", "https://openproject.openedusuite.org")
+CHAT_URL = os.environ.get("CHAT_URL", "https://chat.openedusuite.org")
+XWIKI_URL = os.environ.get("XWIKI_URL", "https://xwiki.openedusuite.org")
+
+
+async def record_openproject_projects(context: BrowserContext) -> Path | None:
+    """OpenProject: All projects table with status chips and favorites."""
+    rec = ScreenshotRecorder("openproject-projects", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, OPENPROJECT_URL + "/", "a:has-text('All projects')")
+    await page.goto(OPENPROJECT_URL + "/projects", wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    return await rec.capture(page, "All projects: status, favorites, and the project list")
+
+
+async def record_openproject_project(context: BrowserContext) -> Path | None:
+    """OpenProject: the demo project overview — status, timeline, milestones."""
+    rec = ScreenshotRecorder("openproject-project", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, OPENPROJECT_URL + "/", "a:has-text('All projects')")
+    await page.goto(OPENPROJECT_URL + "/projects/demo-project", wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    return await rec.capture(page, "Project overview: status, timeline with milestones, news")
+
+
+async def record_chat_firstlogin(context: BrowserContext) -> Path | None:
+    """Element chat: the first-login identity verification wall (English UI).
+
+    Every fresh device/session hits this wall (cross-signing); it is the
+    stable, reproducible surface — the room list behind it is not.
+    Element follows the browser locale: the worker context is en-US, so
+    the wall reads "Confirm your identity". German users get the German
+    wall — captured by record_chat_firstlogin_de.
+    """
+    rec = ScreenshotRecorder("chat-firstlogin", SCREENSHOT_DIR)
+    # the SOGo-preflight context stalls Element's SPA; a fresh en-US
+    # context lands on the wall fast (server default locale is de)
+    en_ctx = await context.browser.new_context(
+        viewport={"width": 1280, "height": 800}, locale="en-US", ignore_https_errors=True)
+    page = await rec.start(en_ctx)
+    try:
+        await keycloak_sso(page, CHAT_URL + "/", "text=Confirm your identity", state="attached", timeout=120000)
+        await page.wait_for_timeout(3000)
+        return await rec.capture(page, "First login: verify your identity")
+    finally:
+        await en_ctx.close()
+
+
+async def record_chat_firstlogin_de(context: BrowserContext) -> Path | None:
+    """Element wall in German: fresh de-DE context (server default is de)."""
+    rec = ScreenshotRecorder("chat-firstlogin-de", SCREENSHOT_DIR)
+    de_ctx = await context.browser.new_context(
+        viewport={"width": 1280, "height": 800}, locale="de-DE", ignore_https_errors=True)
+    page = await rec.start(de_ctx)
+    try:
+        await keycloak_sso(page, CHAT_URL + "/", "text=Bestätige deine Identität", state="attached")
+        await page.wait_for_timeout(3000)
+        return await rec.capture(page, "Erstanmeldung: Identität bestätigen")
+    finally:
+        await de_ctx.close()
+
+
+async def record_xwiki_main(context: BrowserContext) -> Path | None:
+    """XWiki: logged-in main page (public view + Log-in -> Keycloak SSO)."""
+    rec = ScreenshotRecorder("xwiki-main", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto(XWIKI_URL + "/bin/view/Main/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(4000)
+    await page.locator("a:has-text('Log-in')").first.click()
+    await page.wait_for_selector("input[name='username']", timeout=40000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_selector("a:has-text('Log-in')", state="detached", timeout=40000)
+    await page.wait_for_selector("a:has-text('Edit')", timeout=40000)
+    await page.wait_for_timeout(5000)
+    return await rec.capture(page, "XWiki main page, signed in: edit and create actions")
