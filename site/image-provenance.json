@@ -571,6 +571,22 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/indico-home.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (indico.openedusuite.org: oauth2 gate + realm + app-internal 'openEduSuite SSO')"
+    },
+    "suite-docs/assets/grist-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/grist-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
+    },
+    "suite-docs/assets/f13-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/f13-home.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
     }
   }
 }

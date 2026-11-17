@@ -64,6 +64,10 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
 - **Veranstaltungen**: [Veranstaltungen (Indico)](/suite/indico) —
   der Campus-Veranstaltungskalender, von der Ankündigung bis ins
   Archiv
+- **Formulare**: [Formulare und Tabellen (Grist)](/suite/grist) —
+  souveräne Datenerfassung, vom Formular zur Tabelle
+- **Text-KI**: [Text-Assistenz (F13)](/suite/f13) — KI für
+  Behördentexte, mit Quellenprüfung
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine

@@ -43,14 +43,14 @@ plans in [OpenProject](/suite/openproject); video rooms in
 [BigBlueButton (intern)](/suite/bbb).
 
 **Work and study** — papers with [Typst](/suite/typst) and
-**TOSS (Typst Server)**; forms in **Grist**; events on
+**TOSS (Typst Server)**; forms in [Grist](/suite/grist); events on
 [Indico](/suite/indico); your [tickets](/suite/helpdesk-create-ticket)
 at the Request Tracker; automation with [Operaton](/suite/operaton-tasks)
 and [n8n](/suite/n8n); AI in [Open WebUI](/suite/ai-chat) and
 [Dify](/suite/dify).
 
 **Research** — scientific workflows in **EWOKS** and **OpenScience**,
-the **F13** AI workbench, and digitization workflows in **Kitodo**.
+the [F13](/suite/f13) AI text workbench, and digitization workflows in **Kitodo**.
 
 A few tiles lead outside the suite to university services — the
 **MARVIN** campus management, the **ILIAS** learning platform,
