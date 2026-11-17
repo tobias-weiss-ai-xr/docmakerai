@@ -57,6 +57,10 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
 - **Chat**: [Chat (Element)](/suite/chat) — Nachrichten im offenen
   Matrix-Netzwerk, mit der Erstanmelde-Verifizierung erklärt
 - **Wiki**: [Wiki (XWiki)](/suite/xwiki) — die gemeinsame Wissensbasis
+- **Konferenzen**: [Videokonferenzen (BigBlueButton)](/suite/bbb) —
+  Ihre Konferenzräume für Lehrveranstaltungen, Seminare, Besprechungen
+- **Paper**: [Papier schreiben (Typst)](/suite/typst) — Textsatz im
+  Browser, mit Live-Vorschau
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine

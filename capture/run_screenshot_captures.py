@@ -1062,6 +1062,8 @@ WORKFLOWS = [
     ("openproject-project", "record_openproject_project"),
     ("chat-firstlogin-de", "record_chat_firstlogin_de"),
     ("xwiki-main", "record_xwiki_main"),
+    ("bbb-rooms", "record_bbb_rooms"),
+    ("toss-projects", "record_toss_projects"),
 ]
 
 
@@ -1757,3 +1759,41 @@ async def record_xwiki_main(context: BrowserContext) -> Path | None:
     await page.wait_for_selector("a:has-text('Edit')", timeout=40000)
     await page.wait_for_timeout(5000)
     return await rec.capture(page, "XWiki main page, signed in: edit and create actions")
+
+
+# --- BigBlueButton / Typst ---------------------------------------------------
+BBB_URL = os.environ.get("BBB_URL", "https://bbb.openedusuite.org")
+TOSS_URL = os.environ.get("TOSS_URL", "https://toss.openedusuite.org")
+
+
+async def record_bbb_rooms(context: BrowserContext) -> Path | None:
+    """BigBlueButton/Greenlight: your rooms after SSO. Read-only —
+    sessions are never started from captures."""
+    rec = ScreenshotRecorder("bbb-rooms", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto(BBB_URL + "/", wait_until="domcontentloaded")
+    # Greenlight follows the browser locale: German 'Anmelden' or
+    # English 'Sign in'; both exist twice (hidden form button + nav)
+    login = (
+        page.locator("button:has-text('Anmelden')")
+        .or_(page.locator("button:has-text('Sign in')"))
+        .filter(visible=True)
+    )
+    await login.first.wait_for(timeout=45000)
+    await login.first.click()
+    await page.wait_for_selector("input[name='username']", timeout=45000)
+    await page.fill("input[name='username']", SUITE_USERNAME)
+    await page.fill("input[name='password']", SUITE_PASSWORD)
+    await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_selector("text=New Room", timeout=45000)
+    await page.wait_for_timeout(3000)
+    return await rec.capture(page, "Your rooms: new room, start, recordings")
+
+
+async def record_toss_projects(context: BrowserContext) -> Path | None:
+    """Typst Collaboration (toss): projects with the Create Project form."""
+    rec = ScreenshotRecorder("toss-projects", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await keycloak_sso(page, TOSS_URL + "/", "text=Create Project")
+    await page.wait_for_timeout(3000)
+    return await rec.capture(page, "Typst projects: create a new project")
