@@ -798,6 +798,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/bbb/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/calrs/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/calrs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/calrs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/calrs/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/calrs/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/calrs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/calrs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/calrs/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/chat/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/chat/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/chat/"/>
