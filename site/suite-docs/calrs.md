@@ -8,11 +8,15 @@ description: "A dedicated calendar service — currently reachable only by link,
 # Calendar Service (calrs)
 
 At [calendar.openedusuite.org](https://calendar.openedusuite.org)
-runs **calrs** — "Powered by calrs 🦀", as the page footer says — a
-calendar service of its own, separate from the
-[SOGo calendars](/sogo6/sogo-calendar-views). Note that it currently
-has **no tile on the portal**: you reach it only through a link, and
-access is managed by administrators.
+runs **calrs** — "Powered by calrs 🦀", as the page footer says —
+the open-source booking service from
+[cal.rs](https://cal.rs): appointment booking in the Cal.com style,
+with the booked slots managed on a calendar backend. It is separate
+from the [SOGo calendars](/sogo6/sogo-calendar-views), though
+calendars can be connected: bookings appear in SOGo as a subscribed
+calendar. Note that it currently has **no tile on the portal**: you
+reach it only through a link, and access is managed by
+administrators.
 
 ![calrs sign-in: SSO or email](./assets/calrs-login.png)
 
@@ -38,7 +42,9 @@ the [helpdesk](/suite/helpdesk-create-ticket)) to link the two, or
 to receive email credentials.
 
 Self-registration is disabled ("Registration is disabled") — new
-accounts are likewise created by administrators.
+accounts are likewise created by administrators. The public booking
+pages (`/booking`) exist in the router, but until an event type is
+published they answer "Event type not found".
 
 ## Until Access Is Set Up
 
