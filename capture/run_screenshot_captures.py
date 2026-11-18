@@ -1067,7 +1067,8 @@ WORKFLOWS = [
     ("indico-home", "record_indico_home"),
     ("grist-home", "record_grist_home"),
     ("f13-home", "record_f13_home"),
-    ("calrs-login", "record_calrs_login"),
+    ("calrs-booking", "record_calrs_booking"),
+    ("calrs-dashboard", "record_calrs_dashboard"),
 ]
 
 
@@ -1900,3 +1901,36 @@ async def record_calrs_login(context: BrowserContext) -> Path | None:
     await page.wait_for_selector("text=Sign in with SSO", timeout=30000)
     await page.wait_for_timeout(3000)
     return await rec.capture(page, "calrs sign-in: SSO or email")
+
+
+# --- calrs booking pages ------------------------------------------------------
+CALRS_BOOK_URL = os.environ.get("CALRS_BOOK_URL", "https://calendar.openedusuite.org/u/testuser/vc")
+
+
+async def record_calrs_booking(context: BrowserContext) -> Path | None:
+    """calrs public booking page (Buchungstyp 'Video Consultation' on
+    testuser's account): slot picker, no login needed."""
+    rec = ScreenshotRecorder("calrs-booking", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto(CALRS_BOOK_URL, wait_until="domcontentloaded")
+    await page.wait_for_selector("text=Video Consultation", timeout=30000)
+    await page.wait_for_timeout(4000)
+    return await rec.capture(page, "calrs public booking page: pick a slot")
+
+
+async def record_calrs_dashboard(context: BrowserContext) -> Path | None:
+    """calrs dashboard after SSO (subject re-pin healed the account link):
+    Overview / Event Types / Bookings / Teams."""
+    rec = ScreenshotRecorder("calrs-dashboard", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto("https://calendar.openedusuite.org/", wait_until="domcontentloaded")
+    await page.wait_for_timeout(6000)
+    await page.locator("text=Sign in with SSO >> visible=true").first.click()
+    await page.wait_for_timeout(4000)
+    if await page.locator("input[name='username'] >> visible=true").count():
+        await page.fill("input[name='username']", SUITE_USERNAME)
+        await page.fill("input[name='password']", SUITE_PASSWORD)
+        await page.click("input[type='submit'], button[type='submit']")
+    await page.wait_for_selector("text=Event Types", timeout=45000)
+    await page.wait_for_timeout(3000)
+    return await rec.capture(page, "calrs dashboard: overview after SSO login")

@@ -1,67 +1,79 @@
 ---
-title: "Calendar Service (calrs)"
-sidebar_label: "Calendar (calrs)"
+title: "Bookings (calrs)"
+sidebar_label: "Bookings (calrs)"
 sidebar_position: 27
-description: "A dedicated calendar service — currently reachable only by link, with administrator-managed access"
+description: "Appointment booking for everyone — pick a slot on a colleague's page, no account needed"
 ---
 
-# Calendar Service (calrs)
+# Bookings (calrs)
 
-At [calendar.openedusuite.org](https://calendar.openedusuite.org)
-runs **calrs** — "Powered by calrs 🦀", as the page footer says —
-the open-source booking service from
-[cal.rs](https://cal.rs): appointment booking in the Cal.com style,
-with the booked slots managed on a calendar backend. It is separate
-from the [SOGo calendars](/sogo6/sogo-calendar-views), though
-calendars can be connected: bookings appear in SOGo as a subscribed
-calendar. Note that it currently has **no tile on the portal**: you
-reach it only through a link, and access is managed by
-administrators.
+[calrs](https://calendar.openedusuite.org) is the openEduSuite's
+booking service — "Powered by calrs 🦀", from
+[cal.rs](https://cal.rs). Every member has a public booking page:
+colleagues and guests pick a free slot there, no account required,
+and the booking lands in the shared booking calendar that SOGo
+mirrors.
 
-![calrs sign-in: SSO or email](./assets/calrs-login.png)
+![Public booking page: pick a free slot](./assets/calrs-booking.png)
 
-## Signing In
+## Booking an Appointment
 
-The sign-in page offers two paths:
+You do not sign in to book. Open the host's booking page — its
+address follows the pattern
 
-- **Sign in with SSO** — through the openEduSuite account
-- **Sign in with email** — with a calrs-specific account
+```
+https://calendar.openedusuite.org/u/<name>/vc
+```
 
-### The Current SSO Hurdle
+where `<name>` is the host's account name (dots become dashes:
+`andreas.simon@…` → `/u/andreas-simon/`). Two booking types are
+ready for every member:
 
-Signing in via SSO can end in an account error:
+- **Video Consultation** (`vc`) — 30 minutes
+- **Test-Termin** (`test`) — 15 minutes, for trying it out
 
-> Account error: An account with this email already exists. The
-> identity provider has not verified that you own this address, so
-> we cannot link them automatically. Contact an administrator.
+Pick a day, pick a free slot, enter name and email, and the booking
+is fixed. Confirmed bookings flow into the shared booking calendar;
+in [SOGo](/sogo6/sogo-calendar-views) you can watch them arrive via
+the subscribed booking calendar.
 
-If you see this, nothing went wrong on your side — the service
-already knows your email address, but cannot yet connect it to your
-openEduSuite account on its own. **Contact an administrator** (see
-the [helpdesk](/suite/helpdesk-create-ticket)) to link the two, or
-to receive email credentials.
+## Your Own Booking Page
 
-Self-registration is disabled ("Registration is disabled") — new
-accounts are likewise created by administrators. The public booking
-pages (`/booking`) exist in the router, but until an event type is
-published they answer "Event type not found".
+Sign in with **Sign in with SSO** and your openEduSuite account.
+Your dashboard opens with **Overview**, **Event Types**,
+**Bookings**, and **Teams**:
 
-## Until Access Is Set Up
+![calrs dashboard after SSO login](./assets/calrs-dashboard.png)
 
-Your working calendar remains [SOGo](/sogo6/sogo-calendar-views):
-mail, calendars, and tasks in one place, with
-[invitations](/sogo6/sogo-calendar-create-event) and
-[delegation](/sogo6/sogo-delegation).
+- **Event Types** — your bookable meeting types: title, length, and
+  description. The two from the suite bootstrap are yours to keep or
+  to edit.
+- **Bookings** — what others booked with you, upcoming first.
+- **Teams** — bookable types shared across several people
+  (round-robin), for service desks and consultation hours.
+
+Your own page is at `/u/<your name>/vc` — share the link in your
+email signature or the [wiki](/suite/xwiki), and people book you
+without a single email thread.
+
+## Bookings and SOGo
+
+calrs manages the booking flow; the calendar underneath speaks
+CalDAV. The shared booking calendar is the same collection SOGo
+mirrors — so a booked slot blocks the time in [SOGo's calendar
+view](/sogo6/sogo-calendar-views) too, and free/busy stays honest in
+both directions.
 
 ## Accessibility
 
 | Action | Key |
 |--------|-----|
-| Move through form fields and buttons | `Tab` |
-| Confirm the focused control | `Enter` |
+| Move through days, slots, and the booking form | `Tab` |
+| Open or pick the focused element | `Enter` |
 
-- The sign-in page is a small, ordinary form: `Tab` moves you
-  between the SSO button, email, password, and sign-in;
-  `Enter` confirms.
-- If you lose your orientation, `Ctrl+Home` (German keyboards:
-  `Strg+Pos1`) returns you to the top of the page.
+- The booking page is a plain page in reading order: day picker,
+  slot list, then the form for name and email — `Tab` walks you
+  through it, `Enter` picks.
+- The dashboard uses ordinary links and tables; `Escape` closes
+  dialogs. `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you
+  to the top of the page.

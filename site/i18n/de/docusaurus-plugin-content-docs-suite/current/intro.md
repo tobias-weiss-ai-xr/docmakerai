@@ -68,8 +68,8 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   souveräne Datenerfassung, vom Formular zur Tabelle
 - **Text-KI**: [Text-Assistenz (F13)](/suite/f13) — KI für
   Behördentexte, mit Quellenprüfung
-- **Kalender-Dienst**: [Kalender-Dienst (calrs)](/suite/calrs) — ein
-  eigenes Kalender-Werkzeug, Zugang über die Verwaltung
+- **Terminbuchung**: [Terminbuchung (calrs)](/suite/calrs) —
+  öffentliche Slot-Buchung für jedes Mitglied, ganz ohne Konto
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine
