@@ -588,13 +588,21 @@
       "kind": "suite-live",
       "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
     },
-    "suite-docs/assets/calrs-login.png": {
+    "suite-docs/assets/calrs-booking.png": {
       "kind": "suite-live",
-      "origin": "live-pipeline (calendar.openedusuite.org/auth/login, anonymous)"
+      "origin": "live-pipeline (calendar.openedusuite.org/u/testuser/vc, anonymous public page)"
     },
-    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/calrs-login.png": {
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/calrs-booking.png": {
       "kind": "suite-live",
-      "origin": "live-pipeline (calendar.openedusuite.org/auth/login, anonymous)"
+      "origin": "live-pipeline (calendar.openedusuite.org/u/testuser/vc, anonymous public page)"
+    },
+    "suite-docs/assets/calrs-dashboard.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (calendar.openedusuite.org, SSO login post subject-re-pin)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/calrs-dashboard.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (calendar.openedusuite.org, SSO login post subject-re-pin)"
     }
   }
 }

@@ -1,70 +1,78 @@
 ---
-title: "Kalender-Dienst (calrs)"
-sidebar_label: "Kalender (calrs)"
+title: "Terminbuchung (calrs)"
+sidebar_label: "Terminbuchung (calrs)"
 sidebar_position: 27
-description: "Ein eigener Kalender-Dienst — derzeit nur per Link erreichbar, Zugang über die Verwaltung"
+description: "Terminbuchung für alle — Slot auf der Buchungsseite wählen, ganz ohne Konto"
 ---
 
-# Kalender-Dienst (calrs)
+# Terminbuchung (calrs)
 
-Auf
-[calendar.openedusuite.org](https://calendar.openedusuite.org) läuft
-**calrs** — „Powered by calrs 🦀", wie der Seitenfuß sagt — der
-Open-Source-Buchungsdienst von [cal.rs](https://cal.rs):
-Terminbuchung nach Cal.com-Art, die gebuchten Slots verwaltet ein
-Kalender-Backend. Er ist von den
-[SOGo-Kalendern](/sogo6/sogo-calendar-views) getrennt, ließe sich
-aber mit ihnen verbinden: Buchungen erscheinen in SOGo als
-abonnierter Kalender. Beachten Sie: Er hat derzeit keine Kachel im
-**Portal** — Sie erreichen ihn nur über einen Link, und der Zugang
-wird von der Verwaltung gepflegt.
+[calrs](https://calendar.openedusuite.org) ist der Buchungsdienst der
+openEduSuite — „Powered by calrs 🦀", von [cal.rs](https://cal.rs).
+Jedes Mitglied hat eine öffentliche Buchungsseite: Kolleginnen und
+Gäste wählen dort einen freien Slot, ganz ohne Konto, und die
+Buchung landet im gemeinsamen Buchungskalender, den SOGo spiegelt.
 
-![calrs-Anmeldung: SSO oder E-Mail](./assets/calrs-login.png)
+![Öffentliche Buchungsseite: freien Slot wählen](./assets/calrs-booking.png)
 
-## Anmelden
+## Einen Termin buchen
 
-Die Anmeldeseite bietet zwei Wege:
+Zum Buchen melden Sie sich nicht an. Öffnen Sie die Buchungsseite
+der gastgebenden Person — die Adresse folgt dem Muster
 
-- **Sign in with SSO** — über das openEduSuite-Konto
-- **Sign in with email** — mit einem calrs-eigenen Konto
+```
+https://calendar.openedusuite.org/u/<name>/vc
+```
 
-### Die aktuelle SSO-Hürde
+wobei `<name>` der Kontoname ist (Punkte werden zu Bindestrichen:
+`andreas.simon@…` → `/u/andreas-simon/`). Zwei Buchungstypen stehen
+für jedes Mitglied bereit:
 
-Die Anmeldung über SSO kann in einem Konto-Fehler enden:
+- **Video Consultation** (`vc`) — 30 Minuten
+- **Test-Termin** (`test`) — 15 Minuten, zum Ausprobieren
 
-> Account error: An account with this email already exists. The
-> identity provider has not verified that you own this address, so
-> we cannot link them automatically. Contact an administrator.
+Tag wählen, freien Slot wählen, Name und E-Mail eintragen — fertig
+ist die Buchung. Bestätigte Buchungen fließen in den gemeinsamen
+Buchungskalender; in [SOGo](/sogo6/sogo-calendar-views) sehen Sie
+sie über den abonnierten Buchungskalender eintreffen.
 
-Sehen Sie diese Meldung, ist auf Ihrer Seite nichts schiefgelaufen
-— der Dienst kennt Ihre E-Mail-Adresse bereits, kann sie aber noch
-nicht von selbst mit Ihrem openEduSuite-Konto verbinden. Wenden Sie
-sich **an die Verwaltung** (siehe
-[Helpdesk](/suite/helpdesk-create-ticket)), um beide zu verknüpfen
-oder E-Mail-Zugangsdaten zu erhalten.
+## Ihre eigene Buchungsseite
 
-Die Selbstregistrierung ist deaktiviert („Registration is
-disabled") — auch neue Konten legt die Verwaltung an. Die
-öffentlichen Buchungsseiten (`/booking`) existieren zwar, antworten
-jedoch so lange „Event type not found", bis ein Buchungstyp
-veröffentlicht ist.
+Melden Sie sich mit **Sign in with SSO** und Ihrem
+openEduSuite-Konto an. Das Dashboard öffnet mit **Overview**,
+**Event Types**, **Bookings** und **Teams**:
 
-## Bis der Zugang eingerichtet ist
+![calrs-Dashboard nach SSO-Anmeldung](./assets/calrs-dashboard.png)
 
-Ihr Arbeitskalender bleibt [SOGo](/sogo6/sogo-calendar-views): Post,
-Kalender und Aufgaben an einem Ort, mit
-[Einladungen](/sogo6/sogo-calendar-create-event) und
-[Delegation](/sogo6/sogo-delegation).
+- **Event Types** — Ihre buchbaren Terminarten: Titel, Dauer und
+  Beschreibung. Die beiden aus der Suite-Einrichtung gehören Ihnen —
+  behalten oder bearbeiten Sie sie.
+- **Bookings** — was andere bei Ihnen gebucht haben, Kommendes
+  zuerst.
+- **Teams** — buchbare Arten für mehrere Personen gemeinsam
+  (Round-Robin), für Servicestellen und Sprechstunden.
+
+Ihre eigene Seite liegt unter `/u/<ihr name>/vc` — setzen Sie den
+Link in die E-Mail-Signatur oder ins [Wiki](/suite/xwiki), und
+Leute buchen Sie ohne einen einzigen Terminfindungs-Thread.
+
+## Buchungen und SOGo
+
+calrs steuert den Buchungsablauf; der Kalender darunter spricht
+CalDAV. Der gemeinsame Buchungskalender ist dieselbe Sammlung, die
+SOGo spiegelt — ein gebuchter Slot blockiert die Zeit also auch in
+[SOGo-Kalenderansicht](/sogo6/sogo-calendar-views), und Frei/Beschäftigt
+bleibt in beide Richtungen ehrlich.
 
 ## Barrierefreiheit
 
 | Aktion | Taste |
 |--------|-------|
-| Durch Formularfelder und Schaltflächen bewegen | `Tab` |
-| Fokussiertes Feld bestätigen | `Enter` |
+| Durch Tage, Slots und das Buchungsformular bewegen | `Tab` |
+| Fokussiertes Element öffnen oder wählen | `Enter` |
 
-- Die Anmeldeseite ist ein kleines, gewöhnliches Formular: `Tab`
-  bewegt Sie zwischen SSO-Schaltfläche, E-Mail, Passwort und
-  Anmeldung; `Enter` bestätigt.
-- Verlieren Sie die Orientierung, bringt Sie `Strg+Pos1` zum
-  Seitenanfang zurück.
+- Die Buchungsseite ist eine schlichte Seite in Lesereihenfolge:
+  Tageswahl, Slotliste, dann das Formular für Name und E-Mail —
+  `Tab` führt Sie hindurch, `Enter` wählt.
+- Das Dashboard nutzt gewöhnliche Links und Tabellen; `Escape`
+  schließt Dialoge. `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
