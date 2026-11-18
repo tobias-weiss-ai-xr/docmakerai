@@ -67,6 +67,8 @@ apps available to you.
   data capture, from form to table
 - **Text AI**: [Text Assistance (F13)](/suite/f13) — AI for
   administrative texts, with source checks
+- **Calendar service**: [Calendar Service (calrs)](/suite/calrs) — a
+  dedicated calendar tool, administrator-managed
 - **Processes**: [Processes and Tasks (Operaton)](/suite/operaton-tasks)
   — your tasks and starting processes
 - **Automation**: [Automation with n8n](/suite/n8n) — build small
