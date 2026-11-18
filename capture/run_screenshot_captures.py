@@ -1067,6 +1067,7 @@ WORKFLOWS = [
     ("indico-home", "record_indico_home"),
     ("grist-home", "record_grist_home"),
     ("f13-home", "record_f13_home"),
+    ("calrs-login", "record_calrs_login"),
 ]
 
 
@@ -1883,3 +1884,19 @@ async def record_f13_home(context: BrowserContext) -> Path | None:
         await consent.first.click()
         await page.wait_for_timeout(4000)
     return await rec.capture(page, "F13 welcome: text assistance apps")
+
+
+# --- calrs (calendar service) -------------------------------------------------
+CALRS_URL = os.environ.get("CALRS_URL", "https://calendar.openedusuite.org")
+
+
+async def record_calrs_login(context: BrowserContext) -> Path | None:
+    """calrs calendar service: the sign-in page with both login paths.
+    Anonymous — the SSO path currently ends in an account-linking
+    error and email credentials are managed by administrators."""
+    rec = ScreenshotRecorder("calrs-login", SCREENSHOT_DIR)
+    page = await rec.start(context)
+    await page.goto(CALRS_URL + "/auth/login", wait_until="domcontentloaded")
+    await page.wait_for_selector("text=Sign in with SSO", timeout=30000)
+    await page.wait_for_timeout(3000)
+    return await rec.capture(page, "calrs sign-in: SSO or email")

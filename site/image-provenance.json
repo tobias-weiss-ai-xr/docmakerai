@@ -587,6 +587,14 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/f13-home.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (grist./f13.openedusuite.org via openedusuite realm; grist needs fresh context)"
+    },
+    "suite-docs/assets/calrs-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (calendar.openedusuite.org/auth/login, anonymous)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/calrs-login.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (calendar.openedusuite.org/auth/login, anonymous)"
     }
   }
 }
