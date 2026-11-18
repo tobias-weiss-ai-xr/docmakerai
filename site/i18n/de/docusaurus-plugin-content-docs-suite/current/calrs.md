@@ -9,11 +9,15 @@ description: "Ein eigener Kalender-Dienst — derzeit nur per Link erreichbar, Z
 
 Auf
 [calendar.openedusuite.org](https://calendar.openedusuite.org) läuft
-**calrs** — „Powered by calrs 🦀", wie der Seitenfuß sagt — ein
-Kalender-Dienst für sich, getrennt von den
-[SOGo-Kalendern](/sogo6/sogo-calendar-views). Beachten Sie: Er hat
-derzeit **keine Kachel im Portal** — Sie erreichen ihn nur über
-einen Link, und der Zugang wird von der Verwaltung gepflegt.
+**calrs** — „Powered by calrs 🦀", wie der Seitenfuß sagt — der
+Open-Source-Buchungsdienst von [cal.rs](https://cal.rs):
+Terminbuchung nach Cal.com-Art, die gebuchten Slots verwaltet ein
+Kalender-Backend. Er ist von den
+[SOGo-Kalendern](/sogo6/sogo-calendar-views) getrennt, ließe sich
+aber mit ihnen verbinden: Buchungen erscheinen in SOGo als
+abonnierter Kalender. Beachten Sie: Er hat derzeit **keine Kachel im
+Portal** — Sie erreichen ihn nur über einen Link, und der Zugang
+wird von der Verwaltung gepflegt.
 
 ![calrs-Anmeldung: SSO oder E-Mail](./assets/calrs-login.png)
 
@@ -40,7 +44,10 @@ sich **an die Verwaltung** (siehe
 oder E-Mail-Zugangsdaten zu erhalten.
 
 Die Selbstregistrierung ist deaktiviert („Registration is
-disabled") — auch neue Konten legt die Verwaltung an.
+disabled") — auch neue Konten legt die Verwaltung an. Die
+öffentlichen Buchungsseiten (`/booking`) existieren zwar, antworten
+jedoch so lange „Event type not found", bis ein Buchungstyp
+veröffentlicht ist.
 
 ## Bis der Zugang eingerichtet ist
 
