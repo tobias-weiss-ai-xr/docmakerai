@@ -12,7 +12,7 @@ sidebar_label: "Roadmap"
 - SOGo 5: https://demo.sogo.nu/
 - SOGo 6: https://demov6.sogo.nu/
 
-**Build Status:** CI pipeline using self-hosted runner on legions (192.168.42.42). Builds take ~4-5 min (cached) / ~10 min (cold).
+**Build Status:** CI pipeline using self-hosted runner on an internal host. Builds take ~4-5 min (cached) / ~10 min (cold).
 
 **Staging:** Deferred — own preview deployment system replacing Netlify (see Sprint 13).
 
@@ -32,8 +32,8 @@ sidebar_label: "Roadmap"
 - [x] **Test:** pytest with 99.34% coverage on `capture/tests/` + `accessibility/tests/`
 - [x] **Build:** Docusaurus build for both `en` + `de` locales
 - [x] **Deploy:** GitHub Pages deployment on `main` push
-- [x] Self-hosted runner on legions (192.168.42.42) with labels `linux, legions`
-- [x] Runner service: `legions-docmaker-runner`
+- [x] Self-hosted runner on an internal host with label `linux`
+- [x] Runner service: `docmaker-runner`
 
 ### Sprint 3: Asset Optimization
 - [x] Create `capture/optimize.py` — batch image optimizer
@@ -111,9 +111,9 @@ sidebar_label: "Roadmap"
 - [ ] DOM structure comparison (deferred — pHash covers most cases)
 
 ### Infrastructure
-- [x] Self-hosted runner on legions (192.168.42.42)
-- [x] Runner name: legions-docmaker-runner
-- [x] Labels: linux, legions
+- [x] Self-hosted runner on an internal host
+- [x] Runner name: docmaker-runner
+- [x] Labels: linux
 - [x] SSH config updated
 - [x] Test coverage: 99.34% (192/192 tests passing)
 - [x] coverage.xml artifact upload in CI
@@ -169,7 +169,7 @@ This documentation site supports keyboard navigation, screen readers, and high-c
 
 | Issue: | Status: | Notes: |
 | ----- | ------ | ----- |
-| Docusaurus build takes 30+ min on legions | 🔵 | Node 24 vs Node 20, npm cache cold |
+| Docusaurus build takes 30+ min on the internal runner | 🔵 | Node 24 vs Node 20, npm cache cold |
 | Python PEP 668 blocks pip | ✅ Fixed | `--break-system-packages` added |
 | `@docusaurus/remark-plugin-content-docs` infinite loop | ✅ Fixed | Plugin removed, using manual PageSEO imports |
 | GitHub API intermittent connectivity | ⚠️ | `api.github.com` connection issues |
@@ -199,8 +199,8 @@ This documentation site supports keyboard navigation, screen readers, and high-c
 | Metric: | Value: |
 | ------- | ----- |
 | Test coverage | 99.34% (192/192 passing) |
-| CI runner | Self-hosted on legions (192.168.42.42) |
-| Runner labels | linux, legions |
+| CI runner | Self-hosted on an internal host |
+| Runner labels | linux |
 | Runner version | 2.335.1 |
 | SEO geo tags | geo.region=DE, geo.placename=Berlin, ICBM |
 | Asset size reduction | 54% (2.1MB → 976KB) |

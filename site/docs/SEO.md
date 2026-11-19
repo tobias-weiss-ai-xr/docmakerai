@@ -40,7 +40,7 @@ This ensures Facebook, LinkedIn, and Twitter display correct language-specific p
 
 ### GEO Tags FAQ
 
-**Why Berlin?** Berlin has one of the highest GitHub CI runner densities in the EU, and the `legion` host (192.168.42.42) is part of that ecosystem.
+**Why Berlin?** Berlin has one of the highest GitHub CI runner densities in the EU, and the internal CI runner is part of that ecosystem.
 
 **What about English pages?** Geo tags are site-wide; English pages still benefit from DE geo-targeting because DACH users frequently search in English for tech documentation.
 
@@ -271,10 +271,10 @@ This application supports keyboard navigation. No mouse required for completing 
 
 | Action | Keyboard Shortcut: What key to press | Notes: Additional information |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
