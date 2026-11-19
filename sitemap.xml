@@ -834,6 +834,54 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/dify/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/discourse/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/discourse/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/discourse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/discourse/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/discourse/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/discourse/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/discourse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/discourse/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/drawio/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/drawio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/drawio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/drawio/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/drawio/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/drawio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/drawio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/drawio/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/ewoks/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/ewoks/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ewoks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ewoks/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ewoks/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/ewoks/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ewoks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/ewoks/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/excalidraw/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/excalidraw/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/excalidraw/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/excalidraw/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/excalidraw/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/excalidraw/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/excalidraw/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/excalidraw/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/f13/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/f13/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/f13/"/>
@@ -870,6 +918,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/grist/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/hedgedoc/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/hedgedoc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/hedgedoc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/hedgedoc/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/hedgedoc/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/hedgedoc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/hedgedoc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/hedgedoc/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/helpdesk-create-ticket/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/helpdesk-create-ticket/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/helpdesk-create-ticket/"/>
@@ -894,6 +954,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/indico/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/kitodo/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/kitodo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/kitodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/kitodo/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/kitodo/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/kitodo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/kitodo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/kitodo/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/lms/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/lms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/lms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/lms/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/lms/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/lms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/lms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/lms/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/n8n/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/n8n/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/n8n/"/>
@@ -904,6 +988,18 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/n8n/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/n8n/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/n8n/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/nextcloud/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/nextcloud/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/nextcloud/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/nextcloud/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/nextcloud/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/nextcloud/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/nextcloud/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/nextcloud/"/>
   </url>
   <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/openproject/</loc>
@@ -918,6 +1014,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openproject/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/openscience/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/openscience/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openscience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openscience/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openscience/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/openscience/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openscience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/openscience/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/operaton-tasks/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/operaton-tasks/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/operaton-tasks/"/>
@@ -930,6 +1038,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/operaton-tasks/"/>
   </url>
   <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/overleaf/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/overleaf/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/overleaf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/overleaf/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/overleaf/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/overleaf/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/overleaf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/overleaf/"/>
+  </url>
+  <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/portal/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/portal/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/portal/"/>
@@ -940,6 +1060,18 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/portal/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/portal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/portal/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sogo-classic/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sogo-classic/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sogo-classic/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sogo-classic/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sogo-classic/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sogo-classic/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sogo-classic/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/suite/sogo-classic/"/>
   </url>
   <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/suite/sso-account/</loc>
