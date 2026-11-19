@@ -17,7 +17,7 @@ conversation, Dify lets you shape your own.
 
 ## The Overview
 
-After signing in with your openEduSuite account you see **Home** with
+After signing in from the [portal](/suite/portal) with your openEduSuite account you see **Home** with
 a greeting and **Templates** — ready-made starting points for agents,
 workflows, and assistants, sorted by purpose (for example *Agent*,
 *Workflow*, *Writing*, *Assistant*).

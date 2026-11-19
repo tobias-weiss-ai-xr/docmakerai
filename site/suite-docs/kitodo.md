@@ -10,7 +10,7 @@ description: "Digitized collections — scans and metadata of library and archiv
 Kitodo.Production is the openEduSuite's tile for digitized
 collections — presenting scans and metadata of library and archive
 material, and managing the digitization workflow behind it. The
-portal tile opens `https://kitodo.openedusuite.org/kitodo/` —
+[portal](/suite/portal) tile opens `https://kitodo.openedusuite.org/kitodo/` —
 with your suite account you pass the sign-in gate directly.
 
 ![Kitodo.Production sign-in after the suite gate](./assets/kitodo-app.png)

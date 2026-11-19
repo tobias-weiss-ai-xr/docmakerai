@@ -17,7 +17,7 @@ lives — who does what, by when, and how far along it is.
 
 ## The Overview
 
-After signing in with your openEduSuite account, the navigation leads
+After signing in from the [portal](/suite/portal), the navigation leads
 to everything: **Home**, **All projects**, **My page**, and the
 working areas — **Projects**, **Work packages**, **Gantt charts**,
 **Boards**, **News**, and **Wiki**.

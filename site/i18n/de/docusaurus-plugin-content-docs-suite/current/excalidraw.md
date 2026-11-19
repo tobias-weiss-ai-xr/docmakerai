@@ -10,7 +10,7 @@ description: "Ideen auf einem gemeinsamen Whiteboard skizzieren"
 [Excalidraw](https://excalidraw.openedusuite.org) ist das
 Whiteboard der openEduSuite — Ideen, Strukturen und Abläufe
 skizzieren, im handgezeichneten Look, der zum Iterieren einlädt
-statt zum Perfektionieren. Die Portalkachel
+statt zum Perfektionieren. Die [Portal](/suite/portal)kachel
 **Whiteboard (Excalidraw)** und das Suite-Konto öffnen das Board
 direkt; der Willkommensbildschirm lädt ein, ein Werkzeug zu wählen
 und loszuzeichnen.

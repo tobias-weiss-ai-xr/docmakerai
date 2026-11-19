@@ -9,7 +9,7 @@ description: "Build scientific workflows in the browser and follow their executi
 
 [EWOKS](https://ewoks.openedusuite.org) is the openEduSuite's
 workflow editor, built on the [ewoks](https://ewoks.readthedocs.io)
-workflow system of the ESRF. Open the portal tile
+workflow system of the ESRF. Open the [portal](/suite/portal) tile
 **Scientific Workflows (EWOKS)** and sign in with SSO — the editor
 starts in the **Edit** view. The header names the app **EwoksWeb** and
 offers two tabs:

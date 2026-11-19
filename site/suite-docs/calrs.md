@@ -9,7 +9,7 @@ description: "Appointment booking for everyone — pick a slot on a colleague's 
 
 [calrs](https://calendar.openedusuite.org) is the openEduSuite's
 booking service — "Powered by calrs", says the footer of every
-page — from [cal.rs](https://cal.rs). Reach it through the portal
+page — from [cal.rs](https://cal.rs). Reach it through the [portal](/suite/portal)
 tile **Bookings (calrs)**. Every member has a public booking page:
 colleagues and guests pick a free slot there, no account required.
 

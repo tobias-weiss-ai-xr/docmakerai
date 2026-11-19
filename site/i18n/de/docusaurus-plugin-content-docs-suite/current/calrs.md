@@ -41,7 +41,7 @@ Person einen Kalender verbunden hat (siehe **Sources** unten).
 ## Ihre eigene Buchungsseite
 
 Wählen Sie auf der Anmeldeseite **Sign in with SSO** und melden Sie
-sich mit Ihrem openEduSuite-Konto an. Das Dashboard öffnet sich:
+sich im [Portal](/suite/portal) mit Ihrem openEduSuite-Konto an. Das Dashboard öffnet sich:
 Die Seitenleiste gruppiert **Overview**, **Event Types**,
 **Bookings** und **Teams** unter Scheduling, gefolgt von
 **Invite Links**, **Sources**, **Profile & Settings** und

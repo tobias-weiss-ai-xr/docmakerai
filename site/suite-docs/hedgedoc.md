@@ -9,7 +9,7 @@ description: "Shared Markdown notes — several people, one document, in real ti
 
 [HedgeDoc](https://hedgedoc.openedusuite.org) is the openEduSuite's
 service for shared Markdown notes — several people writing in one
-document at the same time, live. Open the portal tile **HedgeDoc**
+document at the same time, live. Open the [portal](/suite/portal) tile **HedgeDoc**
 and pass the suite sign-in: the landing page greets you with
 "Ideas grow better together".
 

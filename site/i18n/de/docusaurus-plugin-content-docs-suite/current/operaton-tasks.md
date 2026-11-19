@@ -16,7 +16,8 @@ ein Prozess Ihnen eine Aufgabe zuweist.
 
 ## Ihre Aufgaben
 
-Öffnen Sie nach der Anmeldung die **Tasklist**. Sie zeigt die Ihnen
+Öffnen Sie nach der Anmeldung aus dem [Portal](/suite/portal) die
+**Tasklist**. Sie zeigt die Ihnen
 zugewiesenen Aufgaben, zum Beispiel unter **All tasks**. Öffnen Sie
 eine Aufgabe, um ihr Formular zu sehen: Details, auszufüllende Felder
 und eine Schaltfläche zum Abschließen des Schritts — manchmal eine

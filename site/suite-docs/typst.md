@@ -17,7 +17,7 @@ live, and the PDF export is one click.
 
 ## Signing In
 
-Sign in with your openEduSuite account — single sign-on takes you
+From the [portal](/suite/portal) tile, sign in with your openEduSuite account — single sign-on takes you
 straight to your **Projects** page. It lists your papers with
 owner and last-edited date, each with **Open**, **Rename**,
 **Copy**, and **Archive** actions, and switches between **Active**

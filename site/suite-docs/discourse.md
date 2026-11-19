@@ -9,7 +9,7 @@ description: "The suite's meeting place — sign in with your account to read an
 
 [Discourse](https://discourse.openedusuite.org) is the
 openEduSuite's forum — questions, announcements, and discussions
-in threads. It sits behind the suite sign-in: the tile opens a
+in threads. It sits behind the suite sign-in: the [portal](/suite/portal) tile opens a
 gate page with **Sign in with OpenID Connect**, which signs you
 in with your openEduSuite account. Only then do the forum and its
 content load.

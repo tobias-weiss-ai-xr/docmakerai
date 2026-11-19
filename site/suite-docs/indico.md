@@ -16,7 +16,7 @@ and meetings with dates, rooms, and materials in one place.
 
 ## Signing In
 
-Indico greets you in your language (German by default:
+Open the Indico tile in the [portal](/suite/portal); Indico greets you in your language (German by default:
 **Einloggen**). Its login dialog offers two paths: a local Indico
 account, or — the one for you — **openEduSuite SSO** under "oder
 verbinden mit": one click through the university sign-in and you are

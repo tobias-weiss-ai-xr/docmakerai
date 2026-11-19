@@ -10,7 +10,7 @@ description: "Write LaTeX papers together, live-compiled"
 [Overleaf](https://overleaf.openedusuite.org) is the LaTeX
 workbench of the openEduSuite — write papers, theses, and
 reports in LaTeX, compiled while you type, together in one
-project. The portal tile **LaTeX (Overleaf)** and the suite
+project. The [portal](/suite/portal) tile **LaTeX (Overleaf)** and the suite
 account open the **Projects** page directly; the instance
 answers as *openEduSuite Overleaf* (SSO).
 

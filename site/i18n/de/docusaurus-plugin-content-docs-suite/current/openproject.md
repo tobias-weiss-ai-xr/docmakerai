@@ -17,7 +17,7 @@ OpenProject der *Plan* — wer macht was, bis wann, und wie weit es ist.
 
 ## Die Übersicht
 
-Nach der Anmeldung mit Ihrem openEduSuite-Konto führt die Navigation
+Aus dem [Portal](/suite/portal): nach der Anmeldung mit Ihrem openEduSuite-Konto führt die Navigation
 zu allem: **Home** (Start), **All projects** (Alle Projekte),
 **My page** (Meine Seite) und die Arbeitsbereiche — **Projects**
 (Projekte), **Work packages** (Arbeitspakete), **Gantt charts**

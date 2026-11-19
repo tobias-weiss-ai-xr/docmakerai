@@ -17,7 +17,7 @@ capture", as the welcome screen says.
 
 ## Signing In
 
-Grist signs you in with your openEduSuite account. Your home lists
+The [portal](/suite/portal) tile signs you into Grist with your openEduSuite account. Your home lists
 **Alle Dokumente** (all documents) organized in workspaces —
 **Home** to start — with **Papierkorb** (trash) for what you removed
 and an **Admin-Bereich** for team administration.

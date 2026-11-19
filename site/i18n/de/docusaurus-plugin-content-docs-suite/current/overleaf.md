@@ -10,7 +10,7 @@ description: "LaTeX-Paper gemeinsam schreiben, live kompiliert"
 [Overleaf](https://overleaf.openedusuite.org) ist die
 LaTeX-Werkbank der openEduSuite — Paper, Abschlussarbeiten und
 Berichte in LaTeX schreiben, beim Tippen kompiliert, gemeinsam
-in einem Projekt. Die Portalkachel **LaTeX (Overleaf)** und das
+in einem Projekt. Die [Portal](/suite/portal)kachel **LaTeX (Overleaf)** und das
 Suite-Konto öffnen die Seite **Projects** direkt; die Instanz
 meldet sich als *openEduSuite Overleaf* (SSO).
 

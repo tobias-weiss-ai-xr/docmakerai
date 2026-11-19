@@ -9,7 +9,7 @@ description: "Die zwei klassischen SOGo-Instanzen — vollständige Anleitungen 
 
 Neben der [Suite-Mail SOGo6](/sogo6/sogo-login) betreibt die
 openEduSuite zwei **klassische SOGo**-Instanzen, erreichbar über
-die Portalkacheln **SOGo Beschäftigten-Post** und
+die [Portal](/suite/portal)kacheln **SOGo Beschäftigten-Post** und
 **SOGo Studierenden-Post**. Die Anmeldung läuft über SSO — Ihr
 Konto, kein zweites Passwort — und das Postfach öffnet im
 **Posteingang**.

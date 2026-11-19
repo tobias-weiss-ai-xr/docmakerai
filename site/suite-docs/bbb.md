@@ -18,8 +18,9 @@ installation.
 ## Signing In
 
 BigBlueButton greets you in German ("Willkommen in BigBlueButton").
-Choose **Anmelden** (sign in) in the top right — the openEduSuite
-sign-in follows, and you land in your rooms.
+Open the BigBlueButton tile in the [portal](/suite/portal), choose
+**Anmelden** (sign in) in the top right — the openEduSuite sign-in
+follows, and you land in your rooms.
 
 ## Your Rooms
 
