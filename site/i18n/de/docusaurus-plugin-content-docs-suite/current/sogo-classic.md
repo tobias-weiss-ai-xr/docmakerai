@@ -9,16 +9,19 @@ description: "Die zwei klassischen SOGo-Instanzen — vollständige Anleitungen 
 
 Neben der [Suite-Mail SOGo6](/sogo6/sogo-login) betreibt die
 openEduSuite zwei **klassische SOGo**-Instanzen, erreichbar über
-die Portalkacheln **sogo-staff** und **sogo-students**. Die
-Anmeldung läuft über SSO — Ihr Konto, kein zweites Passwort — und
-das Postfach öffnet im **Posteingang**.
+die Portalkacheln **SOGo Beschäftigten-Post** und
+**SOGo Studierenden-Post**. Die Anmeldung läuft über SSO — Ihr
+Konto, kein zweites Passwort — und das Postfach öffnet im
+**Posteingang**.
 
 ![Klassisches SOGo: der Posteingang nach SSO-Anmeldung](./assets/sogo-staff.png)
 
-- **sogo-staff** — die Instanz für Beschäftigte.
-- **sogo-students** — die Instanz für Studierende.
+- **SOGo Beschäftigten-Post** — die Instanz für Beschäftigte,
+  Webmail für Beschäftigten-Konten.
+- **SOGo Studierenden-Post** — die Instanz für Studierende,
+  Webmail für Studierenden-Konten.
 
-Beide sprechen die klassische SOGo-Oberfläche: Mail, Kalender und
+Beide öffnen direkt die SOGo-5-Oberfläche: Mail, Kalender und
 Adressbuch im bewährten Layout. Die vollständigen Anleitungen
 liegen unter **SOGo 5** in dieser Dokumentation — jeder dort
 gezeigte Schritt gilt für beide Instanzen:
@@ -34,8 +37,8 @@ gezeigte Schritt gilt für beide Instanzen:
 
 | Instanz | Oberfläche | Anleitungen |
 |---------|-----------|-------------|
-| SOGo6 (Suite-Kachel) | Die neue Oberfläche | `/sogo6/…`-Seiten |
-| sogo-staff / sogo-students | Klassische Oberfläche | `/sogo5/…`-Seiten |
+| SOGo6 (Suite-Kachel **E-Mail & Kalender (SOGo6)**) | Die neue Oberfläche | `/sogo6/…`-Seiten |
+| SOGo Beschäftigten-Post / SOGo Studierenden-Post | Klassische Oberfläche | `/sogo5/…`-Seiten |
 
 Zeigen Postfach und Suite-Mail dieselben Nachrichten, ist Ihr
 Konto über beide Wege erreichbar — die Anleitungen behandeln jede
