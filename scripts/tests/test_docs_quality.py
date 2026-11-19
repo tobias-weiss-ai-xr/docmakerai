@@ -1050,7 +1050,8 @@ _FORBIDDEN_KEY_CLAIMS = [
     r"`e`", r"`w`", r"`d`", r"`m`", r"`y`", r"`t`", r"`n`", r"`j`", r"`k`",
     r"`J` / `K`", r"`j` / `k`", r"`Shift\s*\+\s*E`",
     r"Alt\s*\+\s*M", r"Alt\s*\+\s*C", r"Alt\s*\+\s*A", r"Alt\s*\+\s*P", r"Alt\s*\+\s*S",
-    r"Ctrl\s*\+\s*N(?!\w)", r"Ctrl\s*\+\s*S(?!hift)", r"Ctrl\s*\+\s*Enter", r"Ctrl\s*\+\s*Shift\s*\+\s*R",
+    r"Ctrl\s*\+\s*N(?!\w)", r"Ctrl\s*\+\s*S(?!hift)", r"Ctrl\s*\+\s*Enter",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*R",
     r"Ctrl\s*\+\s*Shift\s*\+\s*C", r"Ctrl\s*\+\s*Shift\s*\+\s*B", r"Ctrl\s*\+\s*Shift\s*\+\s*A",
     r"Ctrl\s*\+\s*Shift\s*\+\s*S", r"Ctrl\s*\+\s*B", r"Ctrl\s*\+\s*I", r"Ctrl\s*\+\s*U",
     r"Cmd\s*\+\s*S", r"Cmd\s*\+\s*Enter", r"⌘",
@@ -1150,7 +1151,8 @@ def test_every_suite_page_links_the_portal(md_files):
     bad = []
     for path, fpath in sorted(md_files.items()):
         name = Path(path).name
-        if name in _NAV_EXEMPT or "suite-docs" not in str(path) and "content-docs-suite" not in str(path):
+        in_suite = "suite-docs" in str(path) or "content-docs-suite" in str(path)
+        if name in _NAV_EXEMPT or not in_suite:
             continue
         if not _PORTAL_LINK.search(fpath.read_text(encoding="utf-8")):
             bad.append(str(path))
@@ -1162,7 +1164,8 @@ def test_suite_pages_have_accessibility_sections(md_files):
     bad = []
     for path, fpath in sorted(md_files.items()):
         name = Path(path).name
-        if name in _NAV_EXEMPT or "suite-docs" not in str(path) and "content-docs-suite" not in str(path):
+        in_suite = "suite-docs" in str(path) or "content-docs-suite" in str(path)
+        if name in _NAV_EXEMPT or not in_suite:
             continue
         if not _ACCESSIBILITY.search(fpath.read_text(encoding="utf-8")):
             bad.append(str(path))
@@ -1212,10 +1215,16 @@ def test_en_de_section_depth_mirrors():
         sd = _section_metrics(de.read_text(encoding="utf-8"))
         if len(se) != len(sd):  # covered by H2-mirror test
             continue
-        for ve, vd in zip(se, sd):
+        for ve, vd in zip(se, sd, strict=False):
             for metric in ("bullets", "rows"):
                 if abs(ve[metric] - vd[metric]) >= 3:
-                    bad.append(f"{en.name} [{ve['name'][:30]}] {metric}: EN={ve[metric]} DE={vd[metric]}")
+                    bad.append(
+                        f"{en.name} [{ve['name'][:30]}] {metric}:"
+                        f" EN={ve[metric]} DE={vd[metric]}"
+                    )
             if vd["words"] < ve["words"] * 0.55 and ve["words"] > 60:
-                bad.append(f"{en.name} [{ve['name'][:30]}] words: EN={ve['words']} DE={vd['words']}")
+                bad.append(
+                    f"{en.name} [{ve['name'][:30]}] words:"
+                    f" EN={ve['words']} DE={vd['words']}"
+                )
     assert not bad, "EN/DE section-depth gaps:\n" + "\n".join(bad)

@@ -74,7 +74,9 @@ def _iter_published_files():
         if not d.exists():
             continue
         for f in sorted(d.rglob("*")):
-            if f.is_file() and f.suffix in {".md", ".mdx", ".ts", ".tsx", ".json", ".css", ".html", ".txt"}:
+            if f.is_file() and f.suffix in {
+                ".md", ".mdx", ".ts", ".tsx", ".json", ".css", ".html", ".txt"
+            }:
                 yield f
     for f in PUBLISHED_FILES:
         if f.exists():
