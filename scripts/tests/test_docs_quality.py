@@ -1181,3 +1181,41 @@ def test_en_de_h2_structure_mirrors():
         if n_en != n_de:
             bad.append(f"{en.name}: EN={n_en} DE={n_de}")
     assert not bad, "EN/DE H2 drift:\n" + "\n".join(bad)
+
+
+def _section_metrics(text):
+    """per-H2-section bullet/table-row/word counts, in reading order"""
+    out, cur = [], None
+    for line in text.splitlines():
+        m = re.match(r"^##[^#]\s*(.+)", line)
+        if m:
+            cur = {"name": m.group(1).strip(), "bullets": 0, "rows": 0, "words": 0}
+            out.append(cur)
+        elif cur:
+            if re.match(r"^\s*[-*]\s", line):
+                cur["bullets"] += 1
+            elif line.startswith("|") and not set(line.strip()) <= set("|-: "):
+                cur["rows"] += 1
+            if line.strip():
+                cur["words"] += len(line.split())
+    return out
+
+
+def test_en_de_section_depth_mirrors():
+    """DE sections must carry EN's substance (bullets, table rows, words)."""
+    bad = []
+    for en in sorted(_SUITE_EN.glob("*.md")):
+        de = _SUITE_DE / en.name
+        if not de.exists():
+            continue
+        se = _section_metrics(en.read_text(encoding="utf-8"))
+        sd = _section_metrics(de.read_text(encoding="utf-8"))
+        if len(se) != len(sd):  # covered by H2-mirror test
+            continue
+        for ve, vd in zip(se, sd):
+            for metric in ("bullets", "rows"):
+                if abs(ve[metric] - vd[metric]) >= 3:
+                    bad.append(f"{en.name} [{ve['name'][:30]}] {metric}: EN={ve[metric]} DE={vd[metric]}")
+            if vd["words"] < ve["words"] * 0.55 and ve["words"] > 60:
+                bad.append(f"{en.name} [{ve['name'][:30]}] words: EN={ve['words']} DE={vd['words']}")
+    assert not bad, "EN/DE section-depth gaps:\n" + "\n".join(bad)
