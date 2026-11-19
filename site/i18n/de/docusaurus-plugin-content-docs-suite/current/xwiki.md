@@ -42,6 +42,19 @@ Für Team-Material, das sich oft ändert, schlägt das Wiki Dateianhänge
 — und es verbindet sich natürlich mit Ihren [Projekten](/suite/openproject)
 und Gesprächen im [Chat](/suite/chat).
 
+## Das Staff-Wiki
+
+Neben dem Haupt-Wiki läuft eine zweite Instanz für Material der
+Beschäftigten: [xwiki-staff.openedusuite.org](https://xwiki-staff.openedusuite.org).
+Sie funktioniert genauso: offen lesbar, und **Log-in** führt Sie mit dem
+Suite-Konto in die openEduSuite-Anmeldung.
+
+![Hauptseite des Staff-Wikis, angemeldet mit dem Suite-Konto](./assets/xwiki-staff.png)
+
+Welches Sie brauchen, steht auf der Hauptseite jeder Instanz — das
+Staff-Wiki hält interne Dokumentation, das Haupt-Wiki alles, das für
+alle gedacht ist.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |

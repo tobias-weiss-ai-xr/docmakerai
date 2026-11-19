@@ -40,6 +40,19 @@ For team material that changes often, the wiki beats file attachments
 — and it links naturally with your [projects](/suite/openproject) and
 conversations in the [chat](/suite/chat).
 
+## The Staff Wiki
+
+Next to the main wiki there is a second instance for staff material:
+[xwiki-staff.openedusuite.org](https://xwiki-staff.openedusuite.org). It
+works the same way: openly readable, and **Log-in** passes you to the
+openEduSuite sign-in with your suite account.
+
+![Staff wiki main page, signed in with the suite account](./assets/xwiki-staff.png)
+
+Which one you need is written on the main page of each — the staff wiki
+holds internal documentation, the main wiki everything meant for
+everyone.
+
 ## Accessibility
 
 | Action | Key |

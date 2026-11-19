@@ -31,30 +31,37 @@ The tiles carry the German names of the services. Where we have a
 guide, it is linked — the list mirrors the portal as it stands today:
 
 **Communication** — **E-Mail & Kalender (SOGo6)** for mail and
-calendars, plus separate webmail for staff and students
-(**SOGo Beschäftigten-Post**, **SOGo Studierenden-Post**);
+calendars, plus the classic webmail instances
+[SOGo (Staff & Students)](/suite/sogo-classic);
 [Element Chat](/suite/chat) for messaging; the
-**Forum (Discourse)** for discussions.
+[Forum (Discourse)](/suite/discourse) for discussions.
 
 **Files and collaboration** — your files in [OpenCloud](/suite/files)
-and **Nextcloud**; wikis with [XWiki](/suite/xwiki) and
-**XWiki Beschäftigte**; **HedgeDoc** for shared Markdown notes; projects and
+and [Nextcloud](/suite/nextcloud); wikis with [XWiki](/suite/xwiki)
+(and the staff wiki described there); projects and
 plans in [OpenProject](/suite/openproject); video rooms in
 [BigBlueButton (intern)](/suite/bbb).
 
-**Work and study** — papers with [Typst](/suite/typst) and
-**TOSS (Typst Server)**; forms in [Grist](/suite/grist); events on
+**Work and study** — papers with [Typst](/suite/typst) (the writing
+studio TOSS lives there too); forms in [Grist](/suite/grist); events on
 [Indico](/suite/indico); appointments booked via
-[calrs](/suite/calrs); your [tickets](/suite/helpdesk-create-ticket)
+[calrs](/suite/calrs); diagrams in [draw.io](/suite/drawio) and sketches
+on the [whiteboard](/suite/excalidraw); LaTeX papers in
+[Overleaf](/suite/overleaf); courses on the suite's own
+[learning platform (ILIAS)](/suite/lms); your [tickets](/suite/helpdesk-create-ticket)
 at the Request Tracker; automation with [Operaton](/suite/operaton-tasks)
 and [n8n](/suite/n8n); AI in [Open WebUI](/suite/ai-chat) and
 [Dify](/suite/dify).
 
-**Research** — scientific workflows in **EWOKS** and **OpenScience**,
-the [F13](/suite/f13) AI text workbench, and digitization workflows in **Kitodo**.
+**Research** — scientific workflows in [EWOKS](/suite/ewoks) and
+[OpenScience](/suite/openscience), the [F13](/suite/f13) AI text
+workbench, digitized collections in the
+[library (Kitodo)](/suite/kitodo), and shared notes in
+[HedgeDoc](/suite/hedgedoc).
 
 A few tiles lead outside the suite to university services — the
-**MARVIN** campus management, the **ILIAS** learning platform,
+**MARVIN** campus management, the university-wide **ILIAS** learning
+platform (the suite's own ILIAS has its own tile above),
 **hessenbox** for cloud sync, and the staff directory. Not every tile
 is for everyone: what you see depends on your role, and not every
 backend is on at every hour — if a service you need stays dark, ask

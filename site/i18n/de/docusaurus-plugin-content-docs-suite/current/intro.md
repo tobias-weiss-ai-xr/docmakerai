@@ -83,6 +83,19 @@ Hochschule zeigt die für Sie verfügbaren Anwendungen.
   dokumentiert: beginnen Sie mit [SOGo 6](/sogo6/) oder [SOGo 5](/sogo5/)
 - Anleitungen für die weiteren Anwendungen entstehen Schritt für Schritt,
   sobald sie live gehen
+- **Diagramme**: [Diagramme (draw.io)](/suite/drawio) — Flussdiagramme
+  und Netzwerkpläne im Browser
+- **Whiteboard**: [Whiteboard (Excalidraw)](/suite/excalidraw) — Ideen
+  auf einem gemeinsamen Board skizzieren
+- **LaTeX**: [LaTeX (Overleaf)](/suite/overleaf) — Paper, live kompiliert
+- **Kurse**: [Lernplattform (ILIAS)](/suite/lms) — Kurse und Materialien
+  der eigenen Suite
+- **Notizen**: [Notizen (HedgeDoc)](/suite/hedgedoc) — gemeinsame
+  Markdown-Notizen
+- **Bibliothek**: [Bibliothek (Kitodo)](/suite/kitodo) — digitalisierte
+  Sammlungen
+- **Klassische Post**: [SOGo (Beschäftigte & Studierende)](/suite/sogo-classic) —
+  die klassischen Webmail-Instanzen
 
 ## Wo Sie beginnen
 
