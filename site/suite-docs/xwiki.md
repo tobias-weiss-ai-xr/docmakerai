@@ -17,28 +17,39 @@ engines.
 
 ## Reading and Signing In
 
-The wiki is openly readable — no account needed to browse. To edit,
-choose **Log-in**: you are passed to the openEduSuite sign-in, and
-back into the wiki with your name attached to what you change.
+The wiki is openly readable — no account is needed to browse. In the
+top bar, **Log-in** sits next to **Register**. Choose **Log-in**: you
+are passed to the openEduSuite sign-in, and back into the wiki with
+your name attached to what you change.
 
 ## The Main Page
 
-The wiki's main page is its front door: welcome text, the first
-sections ("The basics", the **Sandbox** — a page where trying things
-out is explicitly allowed), and pointers to extend the wiki. Signed
-in, the **Edit** and **Create** actions sit ready.
+The wiki's main page is its front door: a **Welcome to your wiki**
+heading with the first sections — **The basics**, **Extend your wiki**
+and **Create your application** — and pointers to extend the wiki.
+**The basics** tells you to log in and then use the **Edit** button
+above this page, the **Create** button above to add more pages, and
+the breadcrumbs above the title to navigate. It also points to a
+**Sandbox** — a place meant for experimenting with the wiki's
+features. The action bar keeps **Edit**, **Create** and **More
+Actions** ready.
 
 ## Writing Together
 
 A wiki grows by small steps: click **Edit**, improve what is there,
-save with a note on what changed. **Create** starts a new page. Work
-in the **Sandbox** first if you want to practice — nobody minds
-experiments there, and old versions of every page are kept, so
-nothing is ever truly lost.
+and save with a short note in the **Version summary** field on what
+changed. **Create** starts a new page. Want to practice first? The
+main page's **The basics** section points to the **Sandbox** as a
+place to experiment.
 
-For team material that changes often, the wiki beats file attachments
-— and it links naturally with your [projects](/suite/openproject) and
-conversations in the [chat](/suite/chat).
+Every change is kept: open **More Actions** and choose **History** —
+it lists all revisions of a page, with **Rollback** available. The
+same menu groups **Copy** under Manage, **Export** and **Print
+Preview** under Actions, and **Source**, **Children**, **Comments**,
+**Attachments** and **Information** under Viewers. For team material
+that changes often, the wiki beats file attachments — and it links
+naturally with your [projects](/suite/openproject) and conversations
+in the [chat](/suite/chat).
 
 ## The Staff Wiki
 
@@ -49,9 +60,8 @@ openEduSuite sign-in with your suite account.
 
 ![Staff wiki main page, signed in with the suite account](./assets/xwiki-staff.png)
 
-Which one you need is written on the main page of each — the staff wiki
-holds internal documentation, the main wiki everything meant for
-everyone.
+Use the staff wiki for internal staff material, and the main wiki for
+content that is meant for everyone.
 
 ## Accessibility
 
