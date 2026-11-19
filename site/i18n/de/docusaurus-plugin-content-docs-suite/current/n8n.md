@@ -17,7 +17,7 @@ aus Bausteinen zusammen.
 
 ## Die Übersicht
 
-Aus dem [Portal](/suite/portal): nach der Anmeldung sehen Sie Ihre **Workflows**: die Automatisierungen
+Nach der Anmeldung aus dem [Portal](/suite/portal) sehen Sie Ihre **Workflows**: die Automatisierungen
 Ihres Kontos, mit fertigen Demo-Workflows zum Lernen. Die Seitenleiste
 führt zu den wichtigen Orten:
 

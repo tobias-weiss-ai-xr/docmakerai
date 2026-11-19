@@ -17,7 +17,8 @@ Dify Ihr eigenes.
 
 ## Die Übersicht
 
-Aus dem [Portal](/suite/portal): nach der Anmeldung mit Ihrem openEduSuite-Konto sehen Sie **Startseite**
+Nach der Anmeldung mit Ihrem openEduSuite-Konto aus dem
+[Portal](/suite/portal) sehen Sie **Startseite**
 mit Begrüßung und **Vorlagen** — fertige Ausgangspunkte für
 Agenten, Workflows und Assistenten, nach Einsatzzweck sortiert (zum
 Beispiel *Agent*, *Workflow*, *Writing*, *Assistant*).
