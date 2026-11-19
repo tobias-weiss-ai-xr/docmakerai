@@ -12,7 +12,7 @@ import VideoFallback from '@site/src/components/VideoFallback';
 Der KI-Chat ([Open WebUI](https://ai.openedusuite.org)) verbindet Sie
 mit einem großen Sprachmodell: Fragen stellen, Texte schreiben oder
 zusammenfassen lassen, Unterstützung bei der Gliederung Ihrer Arbeit.
-Aus dem [Portal](/suite/portal): melden Sie sich mit Ihrem openEduSuite-Konto an.
+Melden Sie sich mit Ihrem openEduSuite-Konto aus dem [Portal](/suite/portal) an.
 
 ![KI-Chat: Frage gestellt, Antwort erhalten](./assets/ai-chat.png)
 

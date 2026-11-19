@@ -9,7 +9,7 @@ description: "Chatten und Nachrichten in der openEduSuite — mit der Verifizier
 
 Der openEduSuite-[Chat](https://chat.openedusuite.org) läuft auf
 [Element](https://element.io) — einem Messenger auf dem offenen
-Matrix-Netzwerk. Aus dem [Portal](/suite/portal): melden Sie sich mit Ihrem openEduSuite-Konto an und
+Matrix-Netzwerk. Melden Sie sich mit Ihrem openEduSuite-Konto aus dem [Portal](/suite/portal) an und
 Sie stehen direkt im Messenger: Räume für Kurse, Arbeitsgruppen oder
 Einzelgespräche, auf jedem Gerät.
 

@@ -38,7 +38,8 @@ Schaltfläche **Log In** in der Kopfzeile öffnet einen Dialog für
 Ihre E-Mail-Adresse oder Ihren Benutzernamen samt Passwort — oder
 einen per E-Mail zugesandten Einmalcode bzw. einen Passkey —,
 während **Sign Up** nach Ihrer E-Mail-Adresse fragt und dort
-einen Bestätigungscode hinschickt. Aus dem [Portal](/suite/portal): nach der Anmeldung öffnen Sie
+einen Bestätigungscode hinschickt. Nach der Anmeldung aus dem
+[Portal](/suite/portal) öffnen Sie
 ein Thema und antworten mit der Schaltfläche **Reply** unter dem
 letzten Beitrag.
 
