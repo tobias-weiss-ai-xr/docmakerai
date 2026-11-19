@@ -9,6 +9,7 @@ description: "Terminbuchung für alle — Slot auf der Buchungsseite wählen, ga
 
 [calrs](https://calendar.openedusuite.org) ist der Buchungsdienst der
 openEduSuite — „Powered by calrs 🦀", von [cal.rs](https://cal.rs).
+Sie erreichen ihn über die Portalkachel **Terminbuchung (calrs)**.
 Jedes Mitglied hat eine öffentliche Buchungsseite: Kolleginnen und
 Gäste wählen dort einen freien Slot, ganz ohne Konto, und die
 Buchung landet im gemeinsamen Buchungskalender, den SOGo spiegelt.
@@ -32,8 +33,9 @@ für jedes Mitglied bereit:
 - **Test-Termin** (`test`) — 15 Minuten, zum Ausprobieren
 
 Tag wählen, freien Slot wählen, Name und E-Mail eintragen — fertig
-ist die Buchung. Bestätigte Buchungen fließen in den gemeinsamen
-Buchungskalender; in [SOGo](/sogo6/sogo-calendar-views) sehen Sie
+ist die Buchung; die Seite bestätigt mit „You're booked".
+Bestätigte Buchungen fließen in den gemeinsamen Buchungskalender;
+in [SOGo](/sogo6/sogo-calendar-views) sehen Sie
 sie über den abonnierten Buchungskalender eintreffen.
 
 ## Ihre eigene Buchungsseite

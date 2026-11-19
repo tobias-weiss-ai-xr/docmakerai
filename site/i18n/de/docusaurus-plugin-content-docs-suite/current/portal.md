@@ -46,7 +46,8 @@ gemeinsame Markdown-Notizen; Projekte und Pläne in
 
 **Arbeit und Studium** — Paper mit [Typst](/suite/typst) und
 **TOSS (Typst Server)**; Formulare in [Grist](/suite/grist); Veranstaltungen auf
-[Indico](/suite/indico); Ihre [Tickets](/suite/helpdesk-create-ticket)
+[Indico](/suite/indico); Termine gebucht über
+[calrs](/suite/calrs); Ihre [Tickets](/suite/helpdesk-create-ticket)
 im Request Tracker; Automatisierung mit
 [Operaton](/suite/operaton-tasks) und [n8n](/suite/n8n); KI in
 [Open WebUI](/suite/ai-chat) und [Dify](/suite/dify).
