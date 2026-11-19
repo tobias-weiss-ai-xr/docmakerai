@@ -1,11 +1,11 @@
 ---
-title: "Research (OpenScience)"
-sidebar_label: "Research (OpenScience)"
+title: "OpenScience"
+sidebar_label: "OpenScience"
 sidebar_position: 29
 description: "Research workspaces, sessions, and files in one place"
 ---
 
-# Research (OpenScience)
+# OpenScience
 
 [OpenScience](https://science.openedusuite.org) is the suite's AI
 research workbench — the portal tile describes it as agents, tools,

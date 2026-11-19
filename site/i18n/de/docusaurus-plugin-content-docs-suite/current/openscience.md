@@ -1,11 +1,11 @@
 ---
-title: "Forschung (OpenScience)"
-sidebar_label: "Forschung (OpenScience)"
+title: "OpenScience"
+sidebar_label: "OpenScience"
 sidebar_position: 29
 description: "Forschungs-Arbeitsbereiche, Sessions und Dateien an einem Ort"
 ---
 
-# Forschung (OpenScience)
+# OpenScience
 
 [OpenScience](https://science.openedusuite.org) ist die KI-
 Forschungswerkbank der Suite — die Portalkachel beschreibt sie als

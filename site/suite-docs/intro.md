@@ -95,7 +95,7 @@ runs every app — your university's portal shows the apps available to you.
   work with texts
 - **AI Assistants**: [Build Your Own AI Assistants (Dify)](/suite/dify) —
   assemble assistants around the university's models
-- **Research**: [Research (OpenScience)](/suite/openscience) — agents,
+- **Research**: [OpenScience](/suite/openscience) — agents,
   tools and data workflows in the browser
 - **Workflows**: [Workflows (EWOKS)](/suite/ewoks) — scientific workflows
   built and followed in the browser

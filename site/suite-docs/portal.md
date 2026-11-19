@@ -80,7 +80,7 @@ spellings. Where we have a guide, it is linked.
 | LaTeX (Overleaf) | LaTeX (Overleaf) | [LaTeX (Overleaf)](/suite/overleaf) |
 | Lernplattform (ILIAS) | Learning platform (ILIAS) | [Learning platform (ILIAS)](/suite/lms) |
 | Open WebUI | Open WebUI | [AI Chat (Open WebUI)](/suite/ai-chat) |
-| OpenScience | OpenScience | [Research (OpenScience)](/suite/openscience) |
+| OpenScience | OpenScience | [OpenScience](/suite/openscience) |
 | F13 | F13 | [Text Assistance (F13)](/suite/f13) |
 
 ### Universität (University)
