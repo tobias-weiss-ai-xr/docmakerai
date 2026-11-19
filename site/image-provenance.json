@@ -603,6 +603,130 @@
     "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/calrs-dashboard.png": {
       "kind": "suite-live",
       "origin": "live-pipeline (calendar.openedusuite.org, SSO login post subject-re-pin)"
+    },
+    "suite-docs/assets/ewoks.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: ewoks.openedusuite.org, workflow editor)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/ewoks.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: ewoks.openedusuite.org, workflow editor)"
+    },
+    "suite-docs/assets/science.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: science.openedusuite.org, projects overview)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/science.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: science.openedusuite.org, projects overview)"
+    },
+    "suite-docs/assets/nextcloud.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: nextcloud.openedusuite.org, dashboard)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/nextcloud.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: nextcloud.openedusuite.org, dashboard)"
+    },
+    "suite-docs/assets/discourse.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (anonymous probe: discourse.openedusuite.org, categories)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/discourse.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (anonymous probe: discourse.openedusuite.org, categories)"
+    },
+    "suite-docs/assets/sogo-staff.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: sogo-staff.openedusuite.org, Posteingang)"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/sogo-staff.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (SSO probe: sogo-staff.openedusuite.org, Posteingang)"
+    },
+    "suite-docs/assets/drawio.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified draw.io editor after portal sign-in (drawio.openedusuite.org)",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/drawio.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified draw.io editor after portal sign-in (drawio.openedusuite.org)",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/excalidraw.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified Excalidraw whiteboard after portal sign-in",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/excalidraw.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified Excalidraw whiteboard after portal sign-in",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/overleaf.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified Overleaf project list after portal sign-in",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/overleaf.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified Overleaf project list after portal sign-in",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/lms.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified ILIAS dashboard after portal sign-in (lms.openedusuite.org)",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/lms.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "SSO-verified ILIAS dashboard after portal sign-in (lms.openedusuite.org)",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/hedgedoc-work.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Healed HedgeDoc home after SSO gate (client-secret repair 2026-11-19)",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/hedgedoc-work.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Healed HedgeDoc home after SSO gate (client-secret repair 2026-11-19)",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/kitodo-app.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Kitodo.Production own login behind SSO gate at /kitodo/ (tile URL fixed 2026-11-19)",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/kitodo-app.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Kitodo.Production own login behind SSO gate at /kitodo/ (tile URL fixed 2026-11-19)",
+      "captured": "2026-11-19"
+    },
+    "suite-docs/assets/xwiki-staff.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Staff wiki main page signed in via SSO (OIDC jars repaired 2026-11-19)",
+      "captured": "2026-11-19"
+    },
+    "i18n/de/docusaurus-plugin-content-docs-suite/current/assets/xwiki-staff.png": {
+      "kind": "suite-live",
+      "origin": "live-pipeline (id.openedusuite.org, openedusuite realm)",
+      "note": "Staff wiki main page signed in via SSO (OIDC jars repaired 2026-11-19)",
+      "captured": "2026-11-19"
     }
   }
 }

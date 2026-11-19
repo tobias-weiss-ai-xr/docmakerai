@@ -32,32 +32,37 @@ Wo wir eine Anleitung haben, ist sie verlinkt — die Liste spiegelt
 das Portal, wie es heute steht:
 
 **Kommunikation** — **E-Mail & Kalender (SOGo6)** für Post und
-Kalender, dazu getrennte Webmails für Beschäftigte und Studierende
-(**SOGo Beschäftigten-Post**, **SOGo Studierenden-Post**);
+Kalender, dazu die klassischen Webmail-Instanzen
+[SOGo (Beschäftigte & Studierende)](/suite/sogo-classic);
 [Element Chat](/suite/chat) für Nachrichten; das
-**Forum (Discourse)** für Diskussionen.
+[Forum (Discourse)](/suite/discourse) für Diskussionen.
 
 **Dateien und Zusammenarbeit** — Ihre Dateien in
-[OpenCloud](/suite/files) und **Nextcloud**; Wikis mit
-[XWiki](/suite/xwiki) und **XWiki Beschäftigte**; **HedgeDoc** für
-gemeinsame Markdown-Notizen; Projekte und Pläne in
-[OpenProject](/suite/openproject); Videoräume in
+[OpenCloud](/suite/files) und [Nextcloud](/suite/nextcloud); Wikis mit
+[XWiki](/suite/xwiki) (dort auch das Staff-Wiki); Projekte und
+Pläne in [OpenProject](/suite/openproject); Videoräume in
 [BigBlueButton (intern)](/suite/bbb).
 
-**Arbeit und Studium** — Paper mit [Typst](/suite/typst) und
-**TOSS (Typst Server)**; Formulare in [Grist](/suite/grist); Veranstaltungen auf
-[Indico](/suite/indico); Termine gebucht über
-[calrs](/suite/calrs); Ihre [Tickets](/suite/helpdesk-create-ticket)
+**Arbeit und Studium** — Paper mit [Typst](/suite/typst) (dort auch
+TOSS, das Schreibstudio); Formulare in [Grist](/suite/grist);
+Veranstaltungen auf [Indico](/suite/indico); Termine gebucht über
+[calrs](/suite/calrs); Diagramme in [draw.io](/suite/drawio) und Skizzen
+auf dem [Whiteboard (Excalidraw)](/suite/excalidraw); LaTeX-Paper in
+[Overleaf](/suite/overleaf); Kurse auf der eigenen
+[Lernplattform (ILIAS)](/suite/lms); Ihre [Tickets](/suite/helpdesk-create-ticket)
 im Request Tracker; Automatisierung mit
 [Operaton](/suite/operaton-tasks) und [n8n](/suite/n8n); KI in
 [Open WebUI](/suite/ai-chat) und [Dify](/suite/dify).
 
-**Forschung** — wissenschaftliche Workflows in **EWOKS** und
-**OpenScience**, die KI-Textwerkbank [F13](/suite/f13) und Digitalisierungs-
-Workflows in **Kitodo**.
+**Forschung** — wissenschaftliche Workflows in [EWOKS](/suite/ewoks)
+und [OpenScience](/suite/openscience), die KI-Textwerkbank
+[F13](/suite/f13), digitalisierte Sammlungen in der
+[Bibliothek (Kitodo)](/suite/kitodo) und gemeinsame Notizen in
+[HedgeDoc](/suite/hedgedoc).
 
 Einige Kacheln führen aus der Suite hinaus zu Hochschul-Diensten —
-das Campus-Management **MARVIN**, die Lernplattform **ILIAS**,
+das Campus-Management **MARVIN**, das uni-weite **ILIAS** (die eigene
+Lernplattform der Suite hat oben ihre eigene Kachel),
 **hessenbox** für Cloud-Sync und das Personenverzeichnis. Nicht jede
 Kachel ist für alle: Was Sie sehen, hängt von Ihrer Rolle ab, und
 nicht jeder Hintergrunddienst läuft zu jeder Stunde — bleibt ein

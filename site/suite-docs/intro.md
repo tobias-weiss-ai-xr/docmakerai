@@ -81,6 +81,17 @@ apps available to you.
 - **SOGo** (mail, calendar, contacts, tasks) is fully documented here:
   start with [SOGo 6](/sogo6/) or [SOGo 5](/sogo5/)
 - Guides for the other apps are being added step by step as they go live
+- **Diagrams**: [Diagrams (draw.io)](/suite/drawio) — flowcharts and
+  network plans in the browser
+- **Whiteboard**: [Whiteboard (Excalidraw)](/suite/excalidraw) — sketch
+  ideas on a shared board
+- **LaTeX**: [LaTeX (Overleaf)](/suite/overleaf) — papers compiled live
+- **Courses**: [Learning platform (ILIAS)](/suite/lms) — the suite's own
+  courses and materials
+- **Notes**: [Notes (HedgeDoc)](/suite/hedgedoc) — shared Markdown notes
+- **Library**: [Library (Kitodo)](/suite/kitodo) — digitized collections
+- **Classic mail**: [SOGo (Staff & Students)](/suite/sogo-classic) — the
+  classic webmail instances
 
 ## Where to Start
 
