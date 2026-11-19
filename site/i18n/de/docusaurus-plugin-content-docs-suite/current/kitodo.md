@@ -21,6 +21,13 @@ mit dem Suite-Konto passieren Sie die Anmelde-Schleuse direkt.
   Kitodo-Kontos, das die Verwaltung vergibt. Das Suite-Konto
   allein ist kein Kitodo-Konto.
 
+Die Anmeldeseite erscheint standardmäßig auf Deutsch; der
+Sprachumschalter über dem Formular bietet **Deutsch**, **Englisch**,
+**Spanisch**. Das Anmeldeformular trägt die Felder **Benutzername**
+und **Passwort** sowie den Button **Anmelden**. In der englischen
+Oberfläche lauten dieselben Felder **Username** (Benutzername) und
+**Password** (Passwort), der Button **Sign in** (Anmelden).
+
 ## Für Lesende, für Beschäftigte
 
 - **Lesende** erreichen digitalisiertes Material, sobald
@@ -41,6 +48,7 @@ Bibliotheks-Team.
 | Durch Formularfelder und Links bewegen | `Tab` |
 | Fokussiertes Formular absenden | `Enter` |
 
-- Die Anmeldeseite ist ein gewöhnliches Formular: Benutzername,
-  Passwort, **Anmelden** — `Tab` führt der Reihe nach.
+- Die Anmeldeseite ist ein gewöhnliches Formular: Felder für
+  Benutzername und Passwort, dann der Anmelde-Button — `Tab`
+  führt der Reihe nach.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
