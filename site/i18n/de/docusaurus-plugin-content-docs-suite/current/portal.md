@@ -82,7 +82,7 @@ verlinkt.
 | LaTeX (Overleaf) | LaTeX (Overleaf) | [LaTeX (Overleaf)](/suite/overleaf) |
 | Lernplattform (ILIAS) | Learning platform (ILIAS) | [Lernplattform (ILIAS)](/suite/lms) |
 | Open WebUI | Open WebUI | [KI-Chat (Open WebUI)](/suite/ai-chat) |
-| OpenScience | OpenScience | [Forschung (OpenScience)](/suite/openscience) |
+| OpenScience | OpenScience | [OpenScience](/suite/openscience) |
 | F13 | F13 | [Text-Assistenz (F13)](/suite/f13) |
 
 ### Universität (englisch: University)

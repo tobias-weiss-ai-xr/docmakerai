@@ -98,7 +98,7 @@ die für Sie verfügbaren Anwendungen.
   mit Texten arbeiten
 - **KI-Assistenten**: [Eigene KI-Assistenten bauen (Dify)](/suite/dify) —
   Assistenten um die Modelle der Hochschule bauen
-- **Forschung**: [Forschung (OpenScience)](/suite/openscience) — Agents,
+- **Forschung**: [OpenScience](/suite/openscience) — Agents,
   Tools und Daten-Workflows im Browser
 - **Workflows**: [Workflows (EWOKS)](/suite/ewoks) — wissenschaftliche
   Workflows im Browser bauen und verfolgen
