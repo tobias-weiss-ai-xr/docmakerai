@@ -17,19 +17,30 @@ und der PDF-Export ist ein Klick.
 
 ## Anmelden
 
-Das Studio meldet Sie mit Ihrem openEduSuite-Konto an. Ihre Seite
-**Projects** (Projekte) listet Ihre Arbeiten; die Navigation bietet
-daneben **Gallery** (Galerie), **Profile** und **Tasks** (Aufgaben)
-sowie **Help** (Hilfe) mit der Typst-Dokumentation.
+Melden Sie sich mit Ihrem openEduSuite-Konto an — Single Sign-On
+bringt Sie direkt auf Ihre Seite **Projects** (Projekte). Sie listet
+Ihre Arbeiten mit Eigentümer und letzter Bearbeitung, jede mit den
+Aktionen **Open** (öffnen), **Rename** (umbenennen), **Copy**
+(kopieren) und **Archive** (archivieren), und schaltet zwischen
+**Active** (aktiv) und **Archived** (archiviert) um. Die Navigation
+bietet daneben **Gallery** (Galerie), **Profile** und **Tasks**
+(Aufgaben) sowie **Help** (Hilfe) — ein Hilfezentrum mit
+Anleitungen zu Einstieg, Bearbeitung und Vorschau, Paketen und
+LaTeX-Projekten.
 
 ## Ein Papier beginnen
 
 **Create Project** (Projekt anlegen) öffnet das kleine Formular:
-Geben Sie Ihrem Papier einen **Title** (Titel), bestätigen Sie — und
-der Editor öffnet: Quelltext auf der einen, die gerenderte Vorschau
-auf der anderen Seite. Typst-Markup ist leichter als LaTeX: `=`
-Überschriften, `-` Listen, `$…$` Formeln. Ist das Papier reif,
-exportieren Sie es im Editor als PDF.
+Geben Sie Ihrem Papier einen **Project name** (Projektnamen),
+wählen Sie **Typst** als Projekttyp (LaTeX steht daneben) — und
+**Create** (anlegen) öffnet den Editor. **Browse templates**
+(Vorlagen durchstöbern) führt in die Galerie gepflegter
+Ausgangspunkte. Der Editor trägt die Reiter **View**, **Files**,
+**Preview**, **Settings** und **Revisions**; Quelltext auf der
+einen, die gerenderte Vorschau auf der anderen Seite. Typst-Markup
+ist leichter als LaTeX: `=` Überschriften, `-` Listen, `$…$`
+Formeln. Ist das Papier reif, exportiert es die Schaltfläche
+**Download PDF** im Vorschaubereich.
 
 ## Warum Typst
 
