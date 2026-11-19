@@ -46,8 +46,8 @@ er zeigt auf HedgeDoc 1.10.4).
   „You are not allowed to access this page. Maybe try logging
   in?"
 - Notizen leben unter eigenen Adressen, und der Zugang unterscheidet
-  sich je Notiz: Die **Features**-Notiz (über **Entdecke alle
-  Funktionen** erreichbar) öffnet sich ohne Anmeldung und dient
+  sich je Notiz: Die **Features**-Notiz (über
+  **Entdecke alle Funktionen** erreichbar) öffnet sich ohne Anmeldung und dient
   als eingebautes Handbuch, die Einleitungs-Notiz nicht.
 
 ## Anmeldung in HedgeDoc
@@ -58,8 +58,8 @@ nicht innerhalb von HedgeDoc an — die Navigation zeigt so lange
 
 1. Wählen Sie **Anmelden**. Es öffnet sich ein Dialog
    **Methode wählen**.
-2. Entscheiden Sie sich für einen Weg: **Einloggen über
-   Keycloak** oder **Einloggen über E-Mail**. Die Reiter
+2. Entscheiden Sie sich für einen Weg: **Einloggen über Keycloak**
+   oder **Einloggen über E-Mail**. Die Reiter
    **Anmelden** und **Registrieren** wechseln zwischen Anmeldung
    und Registrierung eines HedgeDoc-Kontos.
 

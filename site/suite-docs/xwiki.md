@@ -31,8 +31,8 @@ and **Create your application** — and pointers to extend the wiki.
 above this page, the **Create** button above to add more pages, and
 the breadcrumbs above the title to navigate. It also points to a
 **Sandbox** — a place meant for experimenting with the wiki's
-features. The action bar keeps **Edit**, **Create** and **More
-Actions** ready.
+features. The action bar keeps **Edit**, **Create** and
+**More Actions** ready.
 
 ## Writing Together
 
@@ -44,8 +44,8 @@ place to experiment.
 
 Every change is kept: open **More Actions** and choose **History** —
 it lists all revisions of a page, with **Rollback** available. The
-same menu groups **Copy** under Manage, **Export** and **Print
-Preview** under Actions, and **Source**, **Children**, **Comments**,
+same menu groups **Copy** under Manage, **Export** and
+**Print Preview** under Actions, and **Source**, **Children**, **Comments**,
 **Attachments** and **Information** under Viewers. For team material
 that changes often, the wiki beats file attachments — and it links
 naturally with your [projects](/suite/openproject) and conversations

@@ -50,6 +50,8 @@ there if your university offers several.
 
 | Action | Key |
 |--------|-----|
+| Start a new chat | `Ctrl+Shift+O` |
+| Search your chats | `Ctrl+K` |
 | Move to the message field | `Tab` |
 | Send the message | `Enter` |
 
