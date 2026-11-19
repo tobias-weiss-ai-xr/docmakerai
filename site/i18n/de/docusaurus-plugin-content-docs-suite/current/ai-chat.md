@@ -52,6 +52,8 @@ Sie ein anderes wählen, falls die Hochschule mehrere anbietet.
 
 | Aktion | Taste |
 |--------|-------|
+| Neuen Chat starten | `Strg+Umschalt+O` |
+| Chats durchsuchen | `Strg+K` |
 | Zum Eingabefeld bewegen | `Tab` |
 | Nachricht senden | `Enter` |
 

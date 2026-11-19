@@ -17,27 +17,27 @@ Dify Ihr eigenes.
 
 ## Die Übersicht
 
-Nach der Anmeldung mit Ihrem openEduSuite-Konto sehen Sie **Home** mit
-Begrüßung und **Templates** (Vorlagen) — fertige Ausgangspunkte für
+Nach der Anmeldung mit Ihrem openEduSuite-Konto sehen Sie **Startseite**
+mit Begrüßung und **Vorlagen** — fertige Ausgangspunkte für
 Agenten, Workflows und Assistenten, nach Einsatzzweck sortiert (zum
 Beispiel *Agent*, *Workflow*, *Writing*, *Assistant*).
 
 Die Navigation führt zu den Bausteinen:
 
 - **Studio** — Ihre Apps; jeder Assistent, den Sie bauen, lebt hier
-- **Knowledge** (Wissen) — Dokumentsammlungen, aus denen Ihre
+- **Wissen** — Dokumentsammlungen, aus denen Ihre
   Assistenten antworten können
 - **Skills** (Fertigkeiten) — wiederverwendbare Fähigkeiten, die Ihre
   Apps aufrufen können
-- **Integrations** — Verbindungen zu anderen Diensten
+- **Integrationen** — Verbindungen zu anderen Diensten
 - **Marketplace** — Erweiterungen und Inhalte aus der Community
 
 ## Einen ersten Assistenten bauen
 
 Starten Sie mit einer Vorlage, die zu Ihrem Ziel passt: Öffnen Sie sie
-über **Home**, folgen Sie dem Einrichtungsdialog und passen Sie den
+über **Startseite**, folgen Sie dem Einrichtungsdialog und passen Sie den
 Prompt an — die Anweisungen, die dem Assistenten Rolle und Regeln
-vorgeben. Ergänzen Sie Dokumente unter **Knowledge**, wenn der
+vorgeben. Ergänzen Sie Dokumente unter **Wissen**, wenn der
 Assistent aus Ihrem Material antworten soll, und testen Sie das
 Ergebnis in der Vorschau, bevor Sie es weitergeben.
 

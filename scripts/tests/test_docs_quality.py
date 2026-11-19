@@ -1042,15 +1042,19 @@ def test_sogo6_docs_do_not_claim_power_icon_logout(doc_dir):
 # paths: Tab (to module buttons, Create Event, view buttons), Enter
 # (activate), Escape (close dialog), native arrow keys inside
 # dropdowns/radios. See commit a86e1ea.
+# Negative lookaheads keep the guard precise: `Ctrl+S(?!hift)` no longer
+# fires on app-verified `Ctrl+Shift+…` combos (Ewoks action menu shows
+# Ctrl+Shift+N/X in its DOM — live-verified 2026-11-19; Open WebUI displays
+# Ctrl+Shift+O / Ctrl+K in its sidebar — live-verified 2026-11-19).
 _FORBIDDEN_KEY_CLAIMS = [
     r"`e`", r"`w`", r"`d`", r"`m`", r"`y`", r"`t`", r"`n`", r"`j`", r"`k`",
     r"`J` / `K`", r"`j` / `k`", r"`Shift\s*\+\s*E`",
     r"Alt\s*\+\s*M", r"Alt\s*\+\s*C", r"Alt\s*\+\s*A", r"Alt\s*\+\s*P", r"Alt\s*\+\s*S",
-    r"Ctrl\s*\+\s*N", r"Ctrl\s*\+\s*S", r"Ctrl\s*\+\s*Enter", r"Ctrl\s*\+\s*Shift\s*\+\s*R",
+    r"Ctrl\s*\+\s*N(?!\w)", r"Ctrl\s*\+\s*S(?!hift)", r"Ctrl\s*\+\s*Enter", r"Ctrl\s*\+\s*Shift\s*\+\s*R",
     r"Ctrl\s*\+\s*Shift\s*\+\s*C", r"Ctrl\s*\+\s*Shift\s*\+\s*B", r"Ctrl\s*\+\s*Shift\s*\+\s*A",
     r"Ctrl\s*\+\s*Shift\s*\+\s*S", r"Ctrl\s*\+\s*B", r"Ctrl\s*\+\s*I", r"Ctrl\s*\+\s*U",
     r"Cmd\s*\+\s*S", r"Cmd\s*\+\s*Enter", r"⌘",
-    r"Strg\s*\+\s*N", r"Strg\s*\+\s*S", r"Strg\s*\+\s*Enter",
+    r"Strg\s*\+\s*N(?!\w)", r"Strg\s*\+\s*S(?!\w)", r"Strg\s*\+\s*Enter",
 ]
 # Win+Ctrl+C is the Windows OS high-contrast toggle — allowed.
 _KEY_CLAIM_ALLOW = [re.compile(p) for p in [r"Win\+Ctrl\+C"]]
