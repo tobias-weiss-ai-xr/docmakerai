@@ -10,19 +10,33 @@ description: "Diagramme und Abläufe im Browser zeichnen"
 [draw.io](https://drawio.openedusuite.org) ist das
 Diagramm-Werkzeug der openEduSuite — Flussdiagramme,
 Netzwerkpläne, Organigramme, UML. Die Portalkachel
-**Diagramme (draw.io)** und das Suite-Konto öffnen den Editor direkt: keine
-Einrichtung, die Zeichenfläche ist da.
+**Diagramme (draw.io)** und das Suite-Konto öffnen den Editor nach
+einer einmaligen Anmeldung: ein unbenanntes Diagramm auf der
+Zeichenfläche, bereit zum Zeichnen.
 
 ![draw.io-Editor mit einem unbenannten Diagramm](./assets/drawio.png)
 
-- **File | Edit | View | Arrange** — die klassische Menüleiste;
-  jede Form liegt im Formen-Paket links, die Zeichnung auf der
-  Fläche.
-- Diagramme liegen standardmäßig im Browser; über
-  **File → Save as** sichern Sie Ihre Arbeit als `.drawio`- oder
-  `.xml`-Datei — etwa in Ihrem [OpenCloud](/suite/files)-Ordner.
-- **Extras** bündelt die Werkzeugeinstellungen; **Help** öffnet
-  die Dokumentation des Editors.
+- **File | Edit | View | Arrange | Extras | Help | Share** — die
+  Menüleiste. Jede Form liegt im Formen-Bereich links (General,
+  Basic, Arrows, Flowchart, Entity Relation, UML und mehr;
+  **More Shapes** lädt weitere Bibliotheken), die Zeichnung auf
+  der Fläche. Leere Fläche zeigt den Hinweis „Drag elements
+  here", die aktuelle Seite liegt im Reiter **Page-1** unten.
+- Über **File → Save as** (das einfache **File → Save** darunter
+  öffnet denselben Dialog) sichern Sie Ihre Arbeit als Datei:
+  **XML File (.drawio)**, editierbares **PNG**, editierbares
+  **SVG** oder **HTML** — auf dem **Device**, im **Browser** oder
+  als **Download**. Legen Sie die Datei in Ihren
+  [OpenCloud](/suite/files)-Ordner, um sie beim Rest Ihrer
+  Suite-Arbeit zu haben.
+- **Extras** bündelt die Werkzeugeinstellungen: **Theme**,
+  **Language**, **Mathematical Typesetting**, die Diagrammsprache
+  unter **Diagram Language**, den Diagramm-Editor unter
+  **Edit Diagram** und mehr. **Help** hält **Keyboard Shortcuts**,
+  ein **Quick Start Video** und **Support** bereit.
+- **Share** öffnet einen Hinweis: Teilen ist für Google-Drive-
+  und OneDrive-Dateien verfügbar — ein lokal gesichertes Diagramm
+  bleibt, wo Sie es gesichert haben.
 
 ## draw.io, Excalidraw oder Grist
 
@@ -37,6 +51,7 @@ Einrichtung, die Zeichenfläche ist da.
 |--------|-------|
 | Durch Menüs und Leisten bewegen | `Tab` |
 | Fokussiertes Menüelement öffnen | `Enter` |
+| Offene Menüs schließen | `Escape` |
 
 - Der Editor ist eine Canvas-Anwendung; Menüleiste und Leisten
   sind per `Tab` erreichbar, die Zeichenfläche selbst wird mit der
