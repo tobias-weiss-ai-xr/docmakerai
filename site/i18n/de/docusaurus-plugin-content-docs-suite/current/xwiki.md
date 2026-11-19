@@ -24,11 +24,15 @@ geführt — unter Ihrem Namen stehen dann auch Ihre Änderungen.
 
 ## Die Hauptseite
 
-Die Hauptseite des Wikis ist seine Eingangstür: Begrüßungstext, die
-ersten Abschnitte („The basics", der **Sandbox**-Bereich — eine Seite,
-auf der Ausprobieren ausdrücklich erlaubt ist) und Hinweise, das Wiki
-zu erweitern. Angemeldet warten die Aktionen **Edit** (Bearbeiten)
-und **Create** (Anlegen).
+Die Hauptseite des Wikis ist seine Eingangstür: eine Überschrift
+**Welcome to your wiki** mit den ersten Abschnitten — **The basics**,
+**Extend your wiki** und **Create your application** — und Hinweisen,
+das Wiki zu erweitern. **The basics** rät, sich anzumelden und dann die
+Schaltfläche **Edit** über dieser Seite zu nutzen, die Schaltfläche
+**Create** darüber für weitere Seiten und die Brotkrumen über dem Titel
+zur Navigation. Sie weist auch auf den **Sandbox**-Bereich hin — eine
+Seite, auf der Ausprobieren ausdrücklich erlaubt ist. Die
+Aktionsleiste hält **Edit**, **Create** und **More Actions** bereit.
 
 ## Gemeinsam schreiben
 
