@@ -9,19 +9,41 @@ description: "LaTeX-Paper gemeinsam schreiben, live kompiliert"
 
 [Overleaf](https://overleaf.openedusuite.org) ist die
 LaTeX-Werkbank der openEduSuite — Paper, Abschlussarbeiten und
-Berichte in LaTeX schreiben, live kompiliert während Sie tippen,
-gemeinsam in einem Projekt. Die Portalkachel
-**LaTeX (Overleaf)** und das Suite-Konto öffnet **Projects** direkt.
+Berichte in LaTeX schreiben, beim Tippen kompiliert, gemeinsam
+in einem Projekt. Die Portalkachel **LaTeX (Overleaf)** und das
+Suite-Konto öffnen die Seite **Projects** direkt; die Instanz
+meldet sich als *openEduSuite Overleaf* (SSO).
 
 ![Overleaf-Projektliste nach der Suite-Anmeldung](./assets/overleaf.png)
 
-- **Projects** listet Ihre Projekte; **New Project** startet aus
-  einer Vorlage oder von Null.
-- Im Editor stehen Quelle und kompiliertes PDF nebeneinander;
-  jedes Speichern kompiliert neu — Fehler zeigen sich dort, wo
-  sie sind, nicht drei Absätze später.
-- Die Suite-Instanz meldet sich als *openEduSuite Overleaf*; Ihr
-  Konto ist das Suite-Konto (SSO).
+## Ihre Projekte
+
+- Das linke Menü sortiert die Arbeit: **Your projects**,
+  **Shared with you**, **Archived projects** und **Trash**;
+  unter **Organize tags** sammelt **New tag** Projekte, und das
+  Suchfeld filtert die Liste.
+- Die Projektliste ist eine Tabelle — **Title**, **Owner**,
+  **Last modified** — mit Aktionen je Zeile: **Copy**,
+  **Download .zip file**, **Download PDF**, **Archive** und
+  **Trash**.
+- **New project** öffnet das Menü: **Blank project**, ein
+  **Existing project (.zip)**-Import oder **Templates** mit
+  einem **Example project**. Gefragt wird nach dem
+  **Project name**, dann startet **Create** das Projekt.
+
+## Im Editor
+
+- Der Editor teilt sich dreifach: der **File tree** —
+  **New file**, **New folder**, **Upload** — mit dem
+  **File outline** links, die LaTeX-Quelle in der Mitte, das
+  kompilierte PDF rechts.
+- Mit **Auto compile** (Standard) baut sich das PDF beim Tippen
+  neu auf; **Recompile** erzwingt einen Durchlauf, und das
+  Kompiliermenü ergänzt den Modus **Fast [draft]** sowie
+  **Stop on first error**.
+- Die Menüleiste (**File**, **Edit**, **Insert**, …) trägt die
+  LaTeX-Werkzeuge; die obere Leiste öffnet **Share** und
+  **Chat** für die Zusammenarbeit.
 
 ## Overleaf oder Typst
 
@@ -39,7 +61,9 @@ gemeinsam in einem Projekt. Die Portalkachel
 | Durch Projektliste und Menüs bewegen | `Tab` |
 | Fokussiertes Projekt öffnen | `Enter` |
 
-- Die Projektliste ist eine gewöhnliche Liste mit Menüs — `Tab`
-  führt hindurch, `Enter` öffnet.
-- Overleaf pflegt die eigene, umfassende Kürzelliste unter
-  **Help**; `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+- Die Projektliste ist eine gewöhnliche Tabelle: `Tab` führt
+  hindurch, `Enter` öffnet das fokussierte Projekt.
+- Im Editor öffnet **Help → Keyboard shortcuts** Overleafs
+  eigene Kürzelliste.
+- Wenn Sie die Orientierung verlieren, bringt Sie `Strg+Pos1`
+  zum Seitenanfang zurück.
