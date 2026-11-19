@@ -17,26 +17,34 @@ live, and the PDF export is one click.
 
 ## Signing In
 
-The studio signs you in with your openEduSuite account. Your
-**Projects** page lists your papers; the navigation offers
-**Gallery**, **Profile**, and **Tasks** alongside, plus **Help** with
-the Typst documentation.
+Sign in with your openEduSuite account — single sign-on takes you
+straight to your **Projects** page. It lists your papers with
+owner and last-edited date, each with **Open**, **Rename**,
+**Copy**, and **Archive** actions, and switches between **Active**
+and **Archived**. The navigation offers **Gallery**, **Profile**,
+and **Tasks** alongside, plus **Help** — a help center with guides
+on getting started, editing and preview, packages, and LaTeX
+projects.
 
 ## Starting a Paper
 
-**Create Project** opens the small form: give your paper a **Title**,
-confirm, and the editor opens — source text on one side, the rendered
-preview on the other. Typst's markup is lighter than LaTeX: `=`
-headings, `-` lists, `$…$` math. When the paper is ready, export it
-as PDF from the editor.
+**Create Project** opens the small form: give your paper a
+**Project name**, pick **Typst** as the project type (LaTeX sits
+next to it), and **Create** opens the editor. **Browse templates**
+leads to the gallery of maintained starting points. The editor
+carries the tabs **View**, **Files**, **Preview**, **Settings**,
+and **Revisions**; source text on one side, the rendered preview
+on the other. Typst's markup is lighter than LaTeX: `=`
+headings, `-` lists, `$…$` math. When the paper is ready, the
+preview panel's **Download PDF** button exports it.
 
 ## Why Typst
 
 - **Fast feedback** — the preview follows your typing, not a compiler
 - **Gentle syntax** — readable source that still typesets tables,
   figures, math, and bibliographies
-- **In the browser** — nothing to install; your projects wait in the
-  studio wherever you sign in
+- **In the browser** — nothing to install; your projects wait in
+  the studio wherever you sign in
 
 For longer documents that outgrow a chat or the [wiki](/suite/xwiki),
 the studio is the place — and finished PDFs fit right into your
