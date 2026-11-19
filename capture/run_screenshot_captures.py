@@ -1524,10 +1524,9 @@ async def keycloak_sso(page: Page, url: str, landing: str, state: str = "visible
     _suite_require_credentials()
     await page.goto(url, wait_until="domcontentloaded")
     gate = page.locator("button:has-text('Sign in with OpenID Connect') >> visible=true")
-    try:
+    with contextlib.suppress(Exception):
+        # no gate — direct Keycloak redirect or already signed in
         await gate.first.click(timeout=8000)
-    except Exception:
-        pass  # no gate — direct Keycloak redirect or already signed in
     await page.wait_for_selector("input[name='username']", timeout=30000)
     await page.fill("input[name='username']", SUITE_USERNAME)
     await page.fill("input[name='password']", SUITE_PASSWORD)
@@ -1626,7 +1625,7 @@ async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
     # the modal re-mounts on open (form key -v-2): the LAST modal owns the
     # live form; it also holds the E2E-encrypt checkbox — text input only
     name_input = page.locator(".oc-modal input:not([type='checkbox']), [role='dialog'] input:not([type='checkbox'])").last
-    for attempt in range(3):
+    for _attempt in range(3):
         await name_input.fill("Dokumentationstest")
         await name_input.press("End")
         await page.wait_for_timeout(800)

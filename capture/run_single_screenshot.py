@@ -16,10 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from capture.run_screenshot_captures import (
-    SCREENSHOT_DIR,
-    setup_authenticated_context,
-)
+from capture.run_screenshot_captures import SCREENSHOT_DIR
 
 
 def make_clip(video_path: Path, mp4_path: Path, t0, start, end) -> Path | None:

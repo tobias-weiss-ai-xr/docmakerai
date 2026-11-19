@@ -284,9 +284,13 @@ test.describe('Site crawl', () => {
             ).toBe(true);
           }
 
-          // Collect image sources for the whole-version resolution check
+          // Collect image sources for the whole-version resolution check.
+          // Small crops are inlined as data: URIs by Docusaurus — they count
+          // as embedded images (they resolve by construction) but are skipped
+          // by the resolution loop below.
           for (const m of html.matchAll(/<img[^>]*?src="?([^" >]+)/g)) {
-            if (m[1].startsWith('/docmakerai/')) imgSrcs.add(m[1]);
+            if (m[1].startsWith('/docmakerai/') || m[1].startsWith('data:image/'))
+              imgSrcs.add(m[1]);
           }
           const ogImage = html.match(/property=og:image content=([^ >]*)/)?.[1] ?? '';
           if (ogImage) ogImgs.add(ogImage);
@@ -295,6 +299,7 @@ test.describe('Site crawl', () => {
         // Every embedded image across the version resolves (hashed-asset class)
         expect(imgSrcs.size, 'version should embed images').toBeGreaterThan(20);
         for (const src of imgSrcs) {
+          if (src.startsWith('data:')) continue; // inlined, cannot 404
           const res = await request.get(src);
           expect(res.status(), `broken image ${src}`).toBeLessThan(400);
         }

@@ -235,7 +235,7 @@ async def open_dialog_with_attendee(page: Page) -> Locator:
     else:
         raise RuntimeError("attendee suggestion never appeared")
     added = False
-    for attempt in range(3):
+    for _attempt in range(3):
         await att.fill("sogo-tests2")
         # wait until the suggestion list offers the user, then pick it
         for _ in range(20):
@@ -476,11 +476,14 @@ async def main() -> None:
     i = 0
     while i < len(args):
         if args[i] == "--out":
-            out = Path(args[i + 1]); i += 2
+            out = Path(args[i + 1])
+            i += 2
         elif args[i] == "--only":
-            only = {s.strip() for s in args[i + 1].split(",") if s.strip()}; i += 2
+            only = {s.strip() for s in args[i + 1].split(",") if s.strip()}
+            i += 2
         elif args[i] == "--lang":
-            lang = args[i + 1]; i += 2
+            lang = args[i + 1]
+            i += 2
         else:
             i += 1
     global L
