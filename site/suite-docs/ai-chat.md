@@ -11,7 +11,7 @@ import VideoFallback from '@site/src/components/VideoFallback';
 
 The AI chat ([Open WebUI](https://ai.openedusuite.org)) lets you work
 with a large language model: ask questions, have texts written or
-summarized, or get help structuring your work. Sign in with your
+summarized, or get help structuring your work. From the [portal](/suite/portal), sign in with your
 openEduSuite account.
 
 ![AI chat: question asked, answer received](./assets/ai-chat.png)

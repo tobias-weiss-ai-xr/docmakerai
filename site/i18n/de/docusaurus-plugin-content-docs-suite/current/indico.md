@@ -17,6 +17,7 @@ Räumen und Materialien an einem Ort.
 
 ## Anmelden
 
+Öffnen Sie die Indico-Kachel im [Portal](/suite/portal).
 Indico begrüßt Sie auf Deutsch. Sein Anmelde-Dialog bietet zwei
 Wege: ein lokales Indico-Konto oder — der richtige für Sie —
 **openEduSuite SSO** unter „oder verbinden mit": ein Klick durch die

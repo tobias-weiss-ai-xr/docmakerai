@@ -9,7 +9,7 @@ description: "Chatting and messaging in the openEduSuite — with the first-logi
 
 The openEduSuite [chat](https://chat.openedusuite.org) runs on
 [Element](https://element.io) — a chat built on the open Matrix
-network. Sign in with your openEduSuite account and you land directly
+network. From the [portal](/suite/portal) tile, sign in with your openEduSuite account and you land directly
 in the messenger: rooms for courses, working groups, or one-to-one
 conversations, on any device.
 

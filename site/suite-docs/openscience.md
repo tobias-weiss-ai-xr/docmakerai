@@ -8,7 +8,7 @@ description: "Research workspaces, sessions, and files in one place"
 # OpenScience
 
 [OpenScience](https://science.openedusuite.org) is the suite's AI
-research workbench — the portal tile describes it as agents, tools,
+research workbench — the [portal](/suite/portal) tile describes it as agents, tools,
 and data workflows directly in the browser. Reach it through the
 portal tile **OpenScience** and sign in with SSO; the projects
 overview opens right away.

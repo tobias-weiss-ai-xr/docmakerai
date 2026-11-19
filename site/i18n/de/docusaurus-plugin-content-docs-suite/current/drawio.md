@@ -9,7 +9,7 @@ description: "Diagramme und Abläufe im Browser zeichnen"
 
 [draw.io](https://drawio.openedusuite.org) ist das
 Diagramm-Werkzeug der openEduSuite — Flussdiagramme,
-Netzwerkpläne, Organigramme, UML. Die Portalkachel
+Netzwerkpläne, Organigramme, UML. Die [Portal](/suite/portal)kachel
 **Diagramme (draw.io)** und das Suite-Konto öffnen den Editor nach
 einer einmaligen Anmeldung: ein unbenanntes Diagramm auf der
 Zeichenfläche, bereit zum Zeichnen.

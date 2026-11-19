@@ -12,7 +12,7 @@ import VideoFallback from '@site/src/components/VideoFallback';
 The helpdesk is where you ask for help: broken access, questions about a
 service, requests for your workgroup. It runs on
 [Request Tracker (RT)](https://rt.openedusuite.org) — open it and sign in
-with your openEduSuite account if asked.
+with your openEduSuite account if asked — start from the [portal](/suite/portal) tile.
 
 ## Signing In to the Helpdesk
 

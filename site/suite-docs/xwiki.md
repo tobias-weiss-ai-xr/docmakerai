@@ -18,7 +18,8 @@ engines.
 ## Reading and Signing In
 
 The wiki is openly readable — no account is needed to browse. In the
-top bar, **Log-in** sits next to **Register**. Choose **Log-in**: you
+top bar, **Log-in** sits next to **Register** — reached from the
+[portal](/suite/portal) tile. Choose **Log-in**: you
 are passed to the openEduSuite sign-in, and back into the wiki with
 your name attached to what you change.
 

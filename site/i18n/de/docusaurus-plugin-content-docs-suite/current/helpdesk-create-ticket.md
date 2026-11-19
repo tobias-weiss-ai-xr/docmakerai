@@ -12,7 +12,7 @@ import VideoFallback from '@site/src/components/VideoFallback';
 Das Helpdesk ist die Anlaufstelle für Hilfe: gestörter Zugriff, Fragen zu
 einem Dienst, Wünsche für Ihre Arbeitsgruppe. Es läuft auf dem
 [Request Tracker (RT)](https://rt.openedusuite.org) — öffnen Sie ihn und
-melden Sie sich bei Bedarf mit Ihrem openEduSuite-Konto an.
+melden Sie sich bei Bedarf im [Portal](/suite/portal) mit Ihrem openEduSuite-Konto an.
 
 ## Beim Helpdesk anmelden
 

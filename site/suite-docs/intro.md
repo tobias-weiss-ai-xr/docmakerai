@@ -49,7 +49,7 @@ project, among them BookStack, Planka, Etherpad, Moodle, JupyterHub,
 RStudio, LimeSurvey, Paperless-ngx and Mayan EDMS. Not every institution
 runs every app — your university's portal shows the apps available to you.
 
-## Documentation Status
+## The Documentation at a Glance
 
 - **Portal**: [The Portal](/suite/portal) — your digital workplace with
   all app tiles in one place
@@ -108,12 +108,19 @@ runs every app — your university's portal shows the apps available to you.
 - **SOGo** (mail, calendar, contacts, tasks) is fully documented here:
   start with [SOGo 6](/sogo6/) or [SOGo 5](/sogo5/)
 
-Guides for the remaining apps are being added step by step as they go
-live.
-
 ## Where to Start
 
 1. Open your university's openEduSuite portal
 2. Sign in once with your university account
 3. Launch apps from the portal
 4. For mail, calendar and tasks, read the [SOGo guides](/sogo6/)
+
+## Accessibility
+
+- The app table is a standard table: `Tab` walks cell by cell, the arrow
+  keys move inside a row, `Enter` follows a link. Screen readers announce
+  app name and purpose cell by cell.
+- The links below are plain lists — `Tab` steps through them in reading
+  order; each link name tells you where it leads. If you lose your
+  orientation, `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns to
+  the top of the page.

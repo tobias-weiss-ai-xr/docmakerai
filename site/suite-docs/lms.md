@@ -10,7 +10,7 @@ description: "Courses and learning materials of the suite"
 The openEduSuite runs its own learning platform:
 [ILIAS](https://lms.openedusuite.org) — the footer reports
 *powered by ILIAS (v9.23)*. Courses, learning materials, and
-tests of the suite live here. The portal tile
+tests of the suite live here. The [portal](/suite/portal) tile
 **Learning platform (ILIAS)** and the suite account open the
 **Dashboard** directly.
 

@@ -16,7 +16,7 @@ process assigns you a task.
 
 ## Your Tasks
 
-After signing in, open the **Tasklist**. It shows the tasks assigned to
+After signing in from the [portal](/suite/portal), open the **Tasklist**. It shows the tasks assigned to
 you, for example under **All tasks**. Open a task to see its form:
 details, fields to fill in, and a button to complete the step —
 sometimes a choice between several paths. What you see

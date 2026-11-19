@@ -16,7 +16,7 @@ You assemble these automations visually from building blocks.
 
 ## The Overview
 
-After signing in you see your **Workflows**: the automations of your
+After signing in from the [portal](/suite/portal) you see your **Workflows**: the automations of your
 account, with ready-made demo workflows to learn from. The sidebar
 leads to the important places:
 

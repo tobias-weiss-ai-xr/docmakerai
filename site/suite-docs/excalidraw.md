@@ -10,7 +10,7 @@ description: "Sketch ideas on a shared whiteboard"
 [Excalidraw](https://excalidraw.openedusuite.org) is the
 whiteboard of the openEduSuite — sketch ideas, structures, and
 processes with the hand-drawn look that invites iteration rather
-than polish. The portal tile **Whiteboard (Excalidraw)** and the
+than polish. The [portal](/suite/portal) tile **Whiteboard (Excalidraw)** and the
 suite account open the board directly; the welcome screen invites
 you to pick a tool and start drawing.
 

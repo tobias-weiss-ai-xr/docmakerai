@@ -9,7 +9,7 @@ description: "Draw diagrams and flowcharts in the browser"
 
 [draw.io](https://drawio.openedusuite.org) is the diagram tool of
 the openEduSuite — flowcharts, network plans, org charts, UML.
-The portal tile **Diagrams (draw.io)** and the suite account open
+The [portal](/suite/portal) tile **Diagrams (draw.io)** and the suite account open
 the editor after a single sign-in: an untitled diagram on the
 canvas, ready to draw.
 

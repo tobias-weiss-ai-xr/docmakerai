@@ -17,7 +17,7 @@ und der PDF-Export ist ein Klick.
 
 ## Anmelden
 
-Melden Sie sich mit Ihrem openEduSuite-Konto an — Single Sign-On
+Aus dem [Portal](/suite/portal): melden Sie sich mit Ihrem openEduSuite-Konto an — Single Sign-On
 bringt Sie direkt auf Ihre Seite **Projects** (Projekte). Sie listet
 Ihre Arbeiten mit Eigentümer und letzter Bearbeitung, jede mit den
 Aktionen **Open** (öffnen), **Rename** (umbenennen), **Copy**

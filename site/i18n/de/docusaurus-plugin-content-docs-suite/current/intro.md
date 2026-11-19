@@ -50,7 +50,7 @@ JupyterHub, RStudio, LimeSurvey, Paperless-ngx und Mayan EDMS. Nicht jede
 Einrichtung betreibt jede Anwendung — das Portal Ihrer Hochschule zeigt
 die für Sie verfügbaren Anwendungen.
 
-## Stand der Dokumentation
+## Die Dokumentation im Überblick
 
 - **Portal**: [Das Portal](/suite/portal) — Ihr digitaler Arbeitsplatz
   mit allen App-Kacheln an einem Ort
@@ -111,12 +111,18 @@ die für Sie verfügbaren Anwendungen.
 - **SOGo** (E-Mail, Kalender, Kontakte, Aufgaben) ist hier vollständig
   dokumentiert: beginnen Sie mit [SOGo 6](/sogo6/) oder [SOGo 5](/sogo5/)
 
-Anleitungen für die übrigen Anwendungen entstehen Schritt für Schritt,
-sobald sie live gehen.
-
 ## Wo Sie beginnen
 
 1. Öffnen Sie das openEduSuite-Portal Ihrer Hochschule
 2. Melden Sie sich einmal mit Ihrem Hochschulkonto an
 3. Starten Sie Anwendungen aus dem Portal
 4. Für E-Mail, Kalender und Aufgaben lesen Sie die [SOGo-Anleitungen](/sogo6/)
+
+## Barrierefreiheit
+
+- Die App-Tabelle ist eine gewöhnliche Tabelle: `Tab` geht Zelle für
+  Zelle, die Pfeiltasten bewegen innerhalb einer Zeile, `Enter` folgt
+  einem Link. Screenreader lesen App-Name und Zweck Zelle für Zelle vor.
+- Die Links unten sind einfache Listen — `Tab` geht sie in Leserichtung
+  durch; jeder Linkname verrät, wohin er führt. Verlieren Sie die
+  Orientierung, führt `Strg+Pos1` zurück zum Seitenanfang.

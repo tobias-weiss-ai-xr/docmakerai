@@ -9,7 +9,7 @@ description: "The two classic SOGo instances — full tutorials under SOGo 5"
 
 Besides the [SOGo6 suite mail](/sogo6/sogo-login), the
 openEduSuite runs two **classic SOGo** instances, reachable via
-the portal tiles **SOGo Beschäftigten-Post** and
+the [portal](/suite/portal) tiles **SOGo Beschäftigten-Post** and
 **SOGo Studierenden-Post**. Sign-in runs through SSO — your
 account, no second password — and the mailbox opens at the
 **Posteingang** (inbox).

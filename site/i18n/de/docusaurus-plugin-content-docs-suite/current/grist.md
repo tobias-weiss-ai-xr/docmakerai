@@ -18,7 +18,7 @@ der Startseite heißt.
 
 ## Anmelden
 
-Grist meldet Sie mit Ihrem openEduSuite-Konto an. Ihre Startseite
+Grist meldet Sie im [Portal](/suite/portal) mit Ihrem openEduSuite-Konto an. Ihre Startseite
 listet **Alle Dokumente**, organisiert in Arbeitsbereichen — **Home**
 zum Anfang —, mit **Papierkorb** für Entferntes und einem
 **Admin-Bereich** für die Team-Verwaltung.

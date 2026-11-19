@@ -17,6 +17,7 @@ ohne Installation.
 
 ## Anmelden
 
+Öffnen Sie die BigBlueButton-Kachel im [Portal](/suite/portal).
 BigBlueButton begrüßt Sie auf Deutsch („Willkommen in
 BigBlueButton"). Wählen Sie oben rechts **Anmelden** — die
 openEduSuite-Anmeldung folgt, und Sie landen in Ihren Räumen.

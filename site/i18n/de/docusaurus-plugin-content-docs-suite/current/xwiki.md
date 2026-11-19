@@ -18,7 +18,7 @@ längstlebigen offenen Wiki-Engines.
 ## Lesen und anmelden
 
 Das Wiki ist offen lesbar — zum Stöbern braucht es kein Konto. Zum
-Bearbeiten wählen Sie **Log-in** (Anmelden): Sie werden zur
+Bearbeiten wählen Sie im [Portal](/suite/portal) **Log-in** (Anmelden): Sie werden zur
 openEduSuite-Anmeldung geleitet und mit Ihrem Namen zurück ins Wiki
 geführt — unter Ihrem Namen stehen dann auch Ihre Änderungen.
 

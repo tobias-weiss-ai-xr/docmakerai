@@ -10,7 +10,7 @@ description: "Digitalisierte Sammlungen — Scans und Metadaten aus Bibliothek u
 Kitodo.Production ist die Kachel der openEduSuite für
 digitalisierte Sammlungen — Scans und Metadaten aus Bibliothek und
 Archiv, samt dem Digitalisierungs-Workflow dahinter. Die
-Portalkachel öffnet `https://kitodo.openedusuite.org/kitodo/` —
+[Portal](/suite/portal)kachel öffnet `https://kitodo.openedusuite.org/kitodo/` —
 mit dem Suite-Konto passieren Sie die Anmelde-Schleuse direkt.
 
 ![Kitodo.Production-Anmeldung nach der Suite-Schleuse](./assets/kitodo-app.png)

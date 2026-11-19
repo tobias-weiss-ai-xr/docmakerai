@@ -10,7 +10,7 @@ description: "Gemeinsame Markdown-Notizen — mehrere Personen, ein Dokument, in
 [HedgeDoc](https://hedgedoc.openedusuite.org) ist der Dienst der
 openEduSuite für gemeinsame Markdown-Notizen — mehrere Personen
 schreiben gleichzeitig in einem Dokument, live. Öffnen Sie die
-Portalkachel **HedgeDoc** und durchlaufen Sie die Suite-Anmeldung:
+[Portal](/suite/portal)kachel **HedgeDoc** und durchlaufen Sie die Suite-Anmeldung:
 Die Startseite begrüßt Sie mit „Ideas grow better together".
 
 ![HedgeDoc-Startseite nach der Suite-Anmeldung](./assets/hedgedoc-work.png)

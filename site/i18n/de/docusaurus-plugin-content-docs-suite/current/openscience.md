@@ -8,7 +8,7 @@ description: "Forschungs-Arbeitsbereiche, Sessions und Dateien an einem Ort"
 # OpenScience
 
 [OpenScience](https://science.openedusuite.org) ist die KI-
-Forschungswerkbank der Suite — die Portalkachel beschreibt sie als
+Forschungswerkbank der Suite — die [Portal](/suite/portal)kachel beschreibt sie als
 Agents, Tools und Daten-Workflows direkt im Browser. Sie erreichen
 sie über die Portalkachel **OpenScience** und melden sich per SSO
 an; die Projektübersicht öffnet sich sofort.

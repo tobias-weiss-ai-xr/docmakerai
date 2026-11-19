@@ -10,7 +10,7 @@ description: "Wissenschaftliche Workflows im Browser bauen und ihre Ausführung 
 [EWOKS](https://ewoks.openedusuite.org) ist der Workflow-Editor der
 openEduSuite, aufbauend auf dem Workflow-System
 [ewoks](https://ewoks.readthedocs.io) des ESRF. Öffnen Sie die
-Portalkachel **Scientific Workflows (EWOKS)** und melden Sie sich per
+[Portal](/suite/portal)-Kachel **Scientific Workflows (EWOKS)** und melden Sie sich per
 SSO an — der Editor startet in der Ansicht **Edit**. Die Kopfzeile
 nennt die Anwendung **EwoksWeb** und bietet zwei Reiter:
 

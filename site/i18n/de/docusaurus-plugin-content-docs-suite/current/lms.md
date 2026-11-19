@@ -10,7 +10,7 @@ description: "Kurse und Lernmaterialien der Suite"
 Die openEduSuite betreibt eine eigene Lernplattform:
 [ILIAS](https://lms.openedusuite.org) — die Fußzeile meldet
 *powered by ILIAS (v9.23)*. Kurse, Lernmaterialien und Tests der
-Suite leben hier. Die Portalkachel
+Suite leben hier. Die [Portal](/suite/portal)kachel
 **Lernplattform (ILIAS)** und das Suite-Konto öffnen das
 **Dashboard** direkt.
 
