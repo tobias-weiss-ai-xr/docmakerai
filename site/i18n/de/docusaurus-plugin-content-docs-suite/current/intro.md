@@ -20,82 +20,99 @@ Passworts erfolgt an einer zentralen Stelle.
 
 ## Die Anwendungen
 
+Die Anwendungen unten sind die, die das Referenz-Portal unter
+[home.openedusuite.org](https://home.openedusuite.org) zeigt — die
+vollständige Kachelliste steht in [Das Portal](/suite/portal).
+
 | Bereich | Anwendung | Wofür |
 |---------|-----------|-------|
 | E-Mail & Groupware | **SOGo** | E-Mail, Kalender, Kontakte und Aufgaben |
-| Dateien | **OpenCloud** | Persönliche und geteilte Dateien, Freigabelinks |
-| Wiki & Wissen | **XWiki**, **BookStack** | Wikis und Dokumentation |
+| Dateien | **OpenCloud**, **Nextcloud** | Persönliche und geteilte Dateien, Freigabelinks |
+| Wiki & Wissen | **XWiki** | Wikis und Dokumentation |
 | Projekte | **OpenProject** | Projektplanung und Zusammenarbeit |
-| Boards | **Planka** | Kanban-Boards |
-| Gemeinsames Schreiben | **Etherpad** | Geteilte Textdokumente |
+| Chat & Forum | **Element**, **Discourse** | Nachrichten und Diskussionen |
 | Diagramme | **draw.io**, **Excalidraw** | Diagramme und Whiteboards |
-| Lernplattform | **Moodle**, **ILIAS** | Kurse und E-Learning |
+| Lernplattform | **ILIAS** | Kurse und E-Learning |
 | Videokonferenzen | **BigBlueButton** | Online-Lehre und Meetings |
-| Wissenschaftliches Rechnen | **JupyterHub**, **RStudio** | Notebooks und Data Science |
-| Wissenschaftliches Schreiben | **Overleaf** | Kollaboratives LaTeX |
-| Umfragen | **LimeSurvey** | Fragebögen und Erhebungen |
-| Dokumentenverwaltung | **Paperless-ngx**, **Mayan EDMS** | Dokumentenarchivierung |
+| Wissenschaftliches Schreiben | **Typst**, **Overleaf** | Paper im Browser, Live-Vorschau und LaTeX |
+| Gemeinsame Notizen | **HedgeDoc** | Kollaborative Markdown-Notizen |
+| Veranstaltungen | **Indico** | Veranstaltungsmanagement und Kalender |
+| Formulare | **Grist** | Formulare und Tabellen-Datenbanken |
+| Terminbuchung | **calrs** | Öffentliche Slot-Buchung, ganz ohne Konto |
+| Digitalisierung | **Kitodo** | Digitalisierungs-Workflows für Sammlungen |
 | Helpdesk | **Request Tracker (RT)** | Support-Tickets |
-| KI-Dienste | **Open WebUI** und weitere | Sprachmodell-Unterstützung |
-| Automatisierung | **n8n** | Workflow-Automatisierung für das Personal |
+| KI-Dienste | **Open WebUI**, **Dify**, **F13**, **OpenScience** | Sprachmodelle, Assistenten, Text- und Forschungswerkbänke |
+| Automatisierung | **n8n**, **Operaton**, **EWOKS** | Workflow-Automatisierung, Prozesse, wissenschaftliche Workflows |
 
-Nicht jede Einrichtung betreibt jede Anwendung — das Portal Ihrer
-Hochschule zeigt die für Sie verfügbaren Anwendungen.
+Über diese Instanz hinaus sind im openEduSuite-Projekt weitere
+Komponenten vorgesehen, unter ihnen BookStack, Planka, Etherpad, Moodle,
+JupyterHub, RStudio, LimeSurvey, Paperless-ngx und Mayan EDMS. Nicht jede
+Einrichtung betreibt jede Anwendung — das Portal Ihrer Hochschule zeigt
+die für Sie verfügbaren Anwendungen.
 
 ## Stand der Dokumentation
 
 - **Portal**: [Das Portal](/suite/portal) — Ihr digitaler Arbeitsplatz
   mit allen App-Kacheln an einem Ort
+- **Anmeldung und Ihr Konto**: [Anmelden: Ein Login für alle Anwendungen](/suite/sso-login)
+  und [Ihr Konto](/suite/sso-account) — ein Login für alle Anwendungen,
+  Passwortwechsel, Zwei-Faktor-Authentifizierung
 - **Dateien**: [Dateien mit OpenCloud](/suite/files) — Dateien speichern,
   teilen und gemeinsam bearbeiten
-- **KI-Chat**: [KI-Chat (Open WebUI)](/suite/ai-chat) — Fragen stellen
-  und mit Texten arbeiten
-- **KI-Assistenten**: [Eigene KI-Assistenten bauen (Dify)](/suite/dify)
-  — Assistenten um die Modelle der Hochschule bauen
-- **Projekte**: [Projekte und Aufgaben (OpenProject)](/suite/openproject)
-  — Pläne, Status, Arbeitspakete und Zeitpläne
+- **Dateien (klassische Cloud)**: [Dateien (Nextcloud)](/suite/nextcloud) —
+  die klassische Cloud neben OpenCloud
+- **Klassische Post**: [Mail klassisch: SOGo (Personal & Studierende)](/suite/sogo-classic)
+  — die beiden klassischen Webmail-Instanzen
 - **Chat**: [Chat (Element)](/suite/chat) — Nachrichten im offenen
   Matrix-Netzwerk, mit der Erstanmelde-Verifizierung erklärt
-- **Wiki**: [Wiki (XWiki)](/suite/xwiki) — die gemeinsame Wissensbasis
-- **Konferenzen**: [Videokonferenzen (BigBlueButton)](/suite/bbb) —
-  Ihre Konferenzräume für Lehrveranstaltungen, Seminare, Besprechungen
+- **Forum**: [Forum (Discourse)](/suite/discourse) — Fragen, Ankündigungen
+  und Threads, ohne Konto lesbar
+- **Wiki**: [Wiki (XWiki)](/suite/xwiki) — die gemeinsame Wissensbasis und
+  das Beschäftigten-Wiki
+- **Projekte**: [Projekte und Aufgaben (OpenProject)](/suite/openproject)
+  — Pläne, Status, Arbeitspakete und Zeitpläne
+- **Konferenzen**: [Videokonferenzen (BigBlueButton)](/suite/bbb) — Ihre
+  Konferenzräume für Lehrveranstaltungen, Seminare, Besprechungen
 - **Paper**: [Papier schreiben (Typst)](/suite/typst) — Textsatz im
   Browser, mit Live-Vorschau
-- **Veranstaltungen**: [Veranstaltungen (Indico)](/suite/indico) —
-  der Campus-Veranstaltungskalender, von der Ankündigung bis ins
-  Archiv
+- **Diagramme**: [Diagramme (draw.io)](/suite/drawio) — Flussdiagramme
+  und Netzwerkpläne im Browser
+- **Whiteboard**: [Whiteboard (Excalidraw)](/suite/excalidraw) — Ideen auf
+  einem gemeinsamen Board skizzieren
+- **LaTeX**: [LaTeX (Overleaf)](/suite/overleaf) — Paper, live kompiliert
+- **Notizen**: [Notizen (HedgeDoc)](/suite/hedgedoc) — gemeinsame
+  Markdown-Notizen
+- **Kurse**: [Lernplattform (ILIAS)](/suite/lms) — Kurse und Materialien
+  der eigenen Suite
+- **Veranstaltungen**: [Veranstaltungen (Indico)](/suite/indico) — der
+  Campus-Veranstaltungskalender, von der Ankündigung bis ins Archiv
 - **Formulare**: [Formulare und Tabellen (Grist)](/suite/grist) —
   souveräne Datenerfassung, vom Formular zur Tabelle
-- **Text-KI**: [Text-Assistenz (F13)](/suite/f13) — KI für
-  Behördentexte, mit Quellenprüfung
-- **Terminbuchung**: [Terminbuchung (calrs)](/suite/calrs) —
-  öffentliche Slot-Buchung für jedes Mitglied, ganz ohne Konto
+- **Terminbuchung**: [Terminbuchung (calrs)](/suite/calrs) — öffentliche
+  Slot-Buchung für jedes Mitglied, ganz ohne Konto
+- **Bibliothek**: [Bibliothek (Kitodo)](/suite/kitodo) — digitalisierte
+  Sammlungen
+- **Text-KI**: [Text-Assistenz (F13)](/suite/f13) — KI für Behördentexte,
+  mit Quellenprüfung
+- **KI-Chat**: [KI-Chat (Open WebUI)](/suite/ai-chat) — Fragen stellen und
+  mit Texten arbeiten
+- **KI-Assistenten**: [Eigene KI-Assistenten bauen (Dify)](/suite/dify) —
+  Assistenten um die Modelle der Hochschule bauen
+- **Forschung**: [Forschung (OpenScience)](/suite/openscience) — Agents,
+  Tools und Daten-Workflows im Browser
+- **Workflows**: [Workflows (EWOKS)](/suite/ewoks) — wissenschaftliche
+  Workflows im Browser bauen und verfolgen
 - **Prozesse**: [Prozesse und Aufgaben (Operaton)](/suite/operaton-tasks)
   — Ihre Aufgaben und Prozesse starten
 - **Automatisierung**: [Automatisierung mit n8n](/suite/n8n) — kleine
   Automatisierungen bauen, die Anwendungen verbinden
-- **Helpdesk**: [Ein Ticket erstellen](/suite/helpdesk-create-ticket) —
-  das Support-Ticketsystem (Request Tracker)
-- **Anmeldung und Ihr Konto**: [Anmelden](/suite/sso-login) und
-  [Ihr Konto](/suite/sso-account) — ein Login für alle Anwendungen,
-  Passwortwechsel, Zwei-Faktor-Authentifizierung
+- **Helpdesk**: [Helpdesk: Ein Ticket erstellen](/suite/helpdesk-create-ticket)
+  — das Support-Ticketsystem (Request Tracker)
 - **SOGo** (E-Mail, Kalender, Kontakte, Aufgaben) ist hier vollständig
   dokumentiert: beginnen Sie mit [SOGo 6](/sogo6/) oder [SOGo 5](/sogo5/)
-- Anleitungen für die weiteren Anwendungen entstehen Schritt für Schritt,
-  sobald sie live gehen
-- **Diagramme**: [Diagramme (draw.io)](/suite/drawio) — Flussdiagramme
-  und Netzwerkpläne im Browser
-- **Whiteboard**: [Whiteboard (Excalidraw)](/suite/excalidraw) — Ideen
-  auf einem gemeinsamen Board skizzieren
-- **LaTeX**: [LaTeX (Overleaf)](/suite/overleaf) — Paper, live kompiliert
-- **Kurse**: [Lernplattform (ILIAS)](/suite/lms) — Kurse und Materialien
-  der eigenen Suite
-- **Notizen**: [Notizen (HedgeDoc)](/suite/hedgedoc) — gemeinsame
-  Markdown-Notizen
-- **Bibliothek**: [Bibliothek (Kitodo)](/suite/kitodo) — digitalisierte
-  Sammlungen
-- **Klassische Post**: [SOGo (Beschäftigte & Studierende)](/suite/sogo-classic) —
-  die klassischen Webmail-Instanzen
+
+Anleitungen für die übrigen Anwendungen entstehen Schritt für Schritt,
+sobald sie live gehen.
 
 ## Wo Sie beginnen
 
