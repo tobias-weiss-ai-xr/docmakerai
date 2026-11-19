@@ -108,7 +108,7 @@ jobs:
             **Committer:** @${{ github.actor }}
             **Reason:** ${reason}
             **Previous Commit:** \`${commit.substring(0, 8)}\`
-            **Current Commit:** \`${{ github.sha.substring(0, 8) }}\`
+            **Current Commit:** \`${context.sha.substring(0, 8)}\`
 
             ## Actions
 
