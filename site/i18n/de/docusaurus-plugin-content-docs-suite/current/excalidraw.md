@@ -11,19 +11,33 @@ description: "Ideen auf einem gemeinsamen Whiteboard skizzieren"
 Whiteboard der openEduSuite — Ideen, Strukturen und Abläufe
 skizzieren, im handgezeichneten Look, der zum Iterieren einlädt
 statt zum Perfektionieren. Die Portalkachel
-**Whiteboard (Excalidraw)** und das Suite-Konto öffnen das Board direkt.
+**Whiteboard (Excalidraw)** und das Suite-Konto öffnen das Board
+direkt; der Willkommensbildschirm lädt ein, ein Werkzeug zu wählen
+und loszuzeichnen.
 
 ![Excalidraw-Whiteboard mit angemeldetem Suite-Konto](./assets/excalidraw.png)
 
-- **Öffnen** (`Strg+O`) lädt eine frühere Zeichnung; die
-  Werkzeugleiste hält Rechtecke, Pfeile, Text und den Stift.
+- **Wieder öffnen und weiterarbeiten** — die letzte Zeichnung ist
+  schon da: Excalidraw stellt sie automatisch wieder her, wenn Sie
+  zum Board zurückkehren.
+- Die Werkzeugleiste **Formen** hält das Handwerkzeug, die
+  Auswahl, Rechtecke, Rauten, Ellipsen, Pfeile, Linien, den Stift
+  (**Zeichnen**), Text, Bilder und den Radierer — jedes Werkzeug
+  zeigt sein Kürzel, und **Rückgängig machen** und **Wiederholen**
+  liegen in derselben Werkzeugleiste.
 - Das Board speichert im **Browser-Speicher** — die App sagt es
   selbst: Browserspeicher kann unerwartet geleert werden. Sichern
-  Sie Ihre Arbeit regelmäßig als Datei und bewahren
-  Sie sie in [OpenCloud](/suite/files) oder
+  Sie Ihre Arbeit regelmäßig als Datei (**Speichern als...** im
+  Menü) und bewahren Sie sie in [OpenCloud](/suite/files) oder
   [Nextcloud](/suite/nextcloud) auf.
-- **Hilfe** öffnet die Excalidraw-Dokumentation mit der
-  vollständigen Tastenkürzelliste.
+- Das Menü (Drei-Linien-Schaltfläche oben links) hält **Öffnen**
+  (`Strg+O`) für eine gespeicherte Zeichnung, den Bildexport
+  **Exportiere Bild...**, die **Befehlspalette** (`Strg+/`), die
+  Zeichnungsflächen-Suche (`Strg+F`),
+  **Live-Zusammenarbeit...** zum gemeinsamen Zeichnen und
+  **Zeichenfläche löschen** für einen Neuanfang.
+- **Hilfe** (`?`) öffnet einen Dialog mit der vollständigen
+  Tastenkürzelliste und einem Link zur Excalidraw-Dokumentation.
 
 ## Excalidraw oder draw.io
 
@@ -36,9 +50,14 @@ statt zum Perfektionieren. Die Portalkachel
 
 | Aktion | Taste |
 |--------|-------|
-| Durch Werkzeugleiste und Dialoge bewegen | `Tab` |
+| Durch Werkzeugleiste, Menü und Dialoge bewegen | `Tab` |
 | Fokussiertes Element öffnen | `Enter` |
 
 - Die Zeichenfläche selbst wird mit der Maus bearbeitet;
-  Werkzeugleiste, Dialoge und Hilfe sind per `Tab` erreichbar.
+  Werkzeugleiste, Menü und Dialoge sind per `Tab` erreichbar, und
+  der Hilfedialog listet das Kürzel jedes Werkzeugs.
+- Um die Zeichenfläche zu verschieben, halten Sie `Leertaste`
+  (oder das Mausrad) gedrückt und ziehen Sie — oder benutzen Sie
+  das Handwerkzeug (`H`); die App zeigt diesen Hinweis auf dem
+  Willkommensbildschirm.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
