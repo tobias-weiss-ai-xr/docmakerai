@@ -1103,3 +1103,81 @@ def test_clip_embeds_match_static_clips():
     orphaned = (disk_mp4 - referenced_mp4) | (disk_png - referenced_png)
     assert not missing, f"pages embed clips that don't exist in static/clips: {sorted(missing)}"
     assert not orphaned, f"static/clips files no page embeds (orphans): {sorted(orphaned)}"
+
+
+# ── Cross-page consistency (2026-11-19 iteration round) ─────────────────────
+# Tile labels, EN/DE mirror structure, portal navigation and accessibility
+# coverage were normalized in the consistency/navigation passes; these
+# guards keep them from drifting again.
+
+_SUITE_EN = Path(__file__).resolve().parents[2] / "site" / "suite-docs"
+_SUITE_DE = (
+    Path(__file__).resolve().parents[2]
+    / "site"
+    / "i18n"
+    / "de"
+    / "docusaurus-plugin-content-docs-suite"
+    / "current"
+)
+
+# stale tile labels — the live portal names these differently
+_GHOST_TILES = [
+    "Research (OpenScience)",
+    "Forschung (OpenScience)",
+]
+
+_H2 = re.compile(r"^##[^#]", re.M)
+_PORTAL_LINK = re.compile(r"\]\(/suite/portal\)")
+_ACCESSIBILITY = re.compile(r"(?i)^##.*(accessibility|barrierefrei)", re.M)
+# pages that legitimately carry no portal link / accessibility section
+_NAV_EXEMPT = {"intro.md", "portal.md", "sso-login.md", "sso-account.md"}
+
+
+def test_no_stale_tile_labels(md_files):
+    """Portal tile names must match the live portal (verified 2026-11-19)."""
+    bad = [
+        f"{path}: '{g}'"
+        for path, fpath in sorted(md_files.items())
+        if str(path).endswith(".md") and Path(path).name not in DE_EXCLUDE
+        for g in _GHOST_TILES
+        if g in fpath.read_text(encoding="utf-8")
+    ]
+    assert not bad, "stale tile labels:\n" + "\n".join(bad)
+
+
+def test_every_suite_page_links_the_portal(md_files):
+    """Each app page anchors /suite/portal at its sign-in/launch point."""
+    bad = []
+    for path, fpath in sorted(md_files.items()):
+        name = Path(path).name
+        if name in _NAV_EXEMPT or "suite-docs" not in str(path) and "content-docs-suite" not in str(path):
+            continue
+        if not _PORTAL_LINK.search(fpath.read_text(encoding="utf-8")):
+            bad.append(str(path))
+    assert not bad, "suite pages without a portal link:\n" + "\n".join(bad)
+
+
+def test_suite_pages_have_accessibility_sections(md_files):
+    """Every app page documents keyboard/screen-reader access (AGENTS.md)."""
+    bad = []
+    for path, fpath in sorted(md_files.items()):
+        name = Path(path).name
+        if name in _NAV_EXEMPT or "suite-docs" not in str(path) and "content-docs-suite" not in str(path):
+            continue
+        if not _ACCESSIBILITY.search(fpath.read_text(encoding="utf-8")):
+            bad.append(str(path))
+    assert not bad, "suite pages without an accessibility section:\n" + "\n".join(bad)
+
+
+def test_en_de_h2_structure_mirrors():
+    """EN and DE suite pages must have the same H2 section count."""
+    bad = []
+    for en in sorted(_SUITE_EN.glob("*.md")):
+        de = _SUITE_DE / en.name
+        if not de.exists():
+            continue
+        n_en = len(_H2.findall(en.read_text(encoding="utf-8")))
+        n_de = len(_H2.findall(de.read_text(encoding="utf-8")))
+        if n_en != n_de:
+            bad.append(f"{en.name}: EN={n_en} DE={n_de}")
+    assert not bad, "EN/DE H2 drift:\n" + "\n".join(bad)
