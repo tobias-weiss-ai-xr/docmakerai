@@ -2,29 +2,45 @@
 title: "Forum (Discourse)"
 sidebar_label: "Forum (Discourse)"
 sidebar_position: 31
-description: "Der Treffpunkt der Suite — öffentlich lesen, mit Konto schreiben"
+description: "Der Treffpunkt der Suite — mit Ihrem Konto anmelden zum Lesen und Schreiben"
 ---
 
 # Forum (Discourse)
 
 [Discourse](https://discourse.openedusuite.org) ist das Forum der
 openEduSuite — Fragen, Ankündigungen und Diskussionen in Threads.
-Lesen ist öffentlich: Die Kachel öffnet direkt die Kategorien
-(etwa **General** und **Site Feedback**), ganz ohne Konto.
+Es liegt hinter dem Suite-Login: Die Kachel öffnet eine
+Gate-Seite mit **Sign in with OpenID Connect**, die Sie mit Ihrem
+openEduSuite-Konto anmeldet. Erst danach laden das Forum und
+seine Inhalte.
 
 ![Discourse-Forum mit seinen Kategorien](./assets/discourse.png)
 
-- **Kategorien** bündeln die Threads nach Thema; jede Kategorie
-  zeigt die jüngste Aktivität.
+- **Kategorien** bündeln die Threads nach Thema; die
+  Kategorieliste zeigt jede Kategorie mit ihrer Themenzahl und
+  der jüngsten Aktivität. Das Forum startet mit **General** und
+  **Site Feedback** und enthält Themenbereiche wie **Forschung**,
+  **Campus-Leben**, **Lehre & E-Learning**, **IT & Hilfe** und
+  **Neuigkeiten**.
 - **Themen (Topics)** sind die Threads selbst — neuester Beitrag
   zuerst, Antworten darunter eingebettet.
+- Die Startseite listet **All latest topics** mit den sortierbaren
+  Spalten Thema, Poster, Antworten, Aufrufe und Aktivität sowie
+  den Ansichten **Latest**, **Hot** und **Categories**; das Menü
+  **More** enthält Users, About, Guidelines, Groups und Badges.
 
 ## Schreiben
 
-Zum Schreiben wählen Sie im Forum **Log In** und dort
-**Sign in with OpenID Connect** — das ist das openEduSuite-Konto
-über SSO. Nach dem Redirect sind Sie angemeldet und können ein
-Thema eröffnen oder mit **Reply** antworten.
+Der Suite-SSO (die Schaltfläche **Sign in with OpenID Connect**
+am Gate) führt Sie ins Forum und lässt Sie alles lesen. Um selbst
+zu schreiben, melden Sie sich zusätzlich im Forum an: Die
+Schaltfläche **Log In** in der Kopfzeile öffnet einen Dialog für
+Ihre E-Mail-Adresse oder Ihren Benutzernamen samt Passwort — oder
+einen per E-Mail zugesandten Einmalcode bzw. einen Passkey —,
+während **Sign Up** nach Ihrer E-Mail-Adresse fragt und dort
+einen Bestätigungscode hinschickt. Nach der Anmeldung öffnen Sie
+ein Thema und antworten mit der Schaltfläche **Reply** unter dem
+letzten Beitrag.
 
 ## Barrierefreiheit
 
