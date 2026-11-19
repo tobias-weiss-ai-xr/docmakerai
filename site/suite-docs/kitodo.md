@@ -21,6 +21,13 @@ with your suite account you pass the sign-in gate directly.
   by the administrators. The suite account alone is not a Kitodo
   account.
 
+The login page presents itself in German by default; the language
+switch above the form offers **Deutsch**, **Englisch**, **Spanisch**.
+The sign-in form carries the fields **Benutzername** (user name) and
+**Passwort** (password), and the button **Anmelden** (sign in). In
+the English UI the same form reads **Username**, **Password**, and
+**Sign in**.
+
 ## For Readers, For Staff
 
 - **Readers** reach digitized material once collections are
@@ -41,7 +48,7 @@ library team.
 | Move through form fields and links | `Tab` |
 | Submit the focused form | `Enter` |
 
-- The sign-in page is an ordinary form: user name, password,
-  **Anmelden** — `Tab` walks it in order.
+- The sign-in page is an ordinary form: user name and password
+  fields, then the sign-in button — `Tab` walks it in order.
 - `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you to the
   top of the page.
