@@ -11,18 +11,31 @@ description: "Sketch ideas on a shared whiteboard"
 whiteboard of the openEduSuite — sketch ideas, structures, and
 processes with the hand-drawn look that invites iteration rather
 than polish. The portal tile **Whiteboard (Excalidraw)** and the
-suite account open the board directly.
+suite account open the board directly; the welcome screen invites
+you to pick a tool and start drawing.
 
 ![Excalidraw whiteboard with the suite account signed in](./assets/excalidraw.png)
 
-- **Open** (`Ctrl+O`) loads a previous drawing; the toolbar holds
-  rectangles, arrows, text, and the pen.
+- **Reopen and continue** — your last drawing is already there:
+  Excalidraw restores it automatically when you return to the
+  board.
+- The **Formen** toolbar holds the hand tool, the selection,
+  rectangles, diamonds, ellipses, arrows, lines, the pen
+  (**Zeichnen**), text, images, and the eraser — every tool shows
+  its shortcut, and **Rückgängig machen** and **Wiederholen**
+  (undo and redo) sit in the same toolbar.
 - The board saves in your **browser's storage** — the app says it
   plainly: browser storage can be cleared unexpectedly. Save your
-  work to a file regularly and keep it in
-  [OpenCloud](/suite/files) or [Nextcloud](/suite/nextcloud).
-- **Help** opens the Excalidraw documentation with the full
-  shortcut list.
+  work to a file regularly (**Speichern als...** in the menu) and
+  keep it in [OpenCloud](/suite/files) or
+  [Nextcloud](/suite/nextcloud).
+- The menu (three-line button, top left) holds **Öffnen**
+  (`Ctrl+O`) for a saved drawing, the image export
+  **Exportiere Bild...**, the **Befehlspalette** (`Ctrl+/`), canvas
+  search (`Ctrl+F`), **Live-Zusammenarbeit...** to draw together,
+  and **Zeichenfläche löschen** for a fresh start.
+- **Hilfe** (`?`) opens a dialog with the complete shortcut list
+  and a link to the Excalidraw documentation.
 
 ## Excalidraw or draw.io
 
@@ -35,10 +48,14 @@ suite account open the board directly.
 
 | Action | Key |
 |--------|-----|
-| Move through toolbar and dialogs | `Tab` |
+| Move through toolbar, menu, and dialogs | `Tab` |
 | Open the focused element | `Enter` |
 
-- The canvas itself is drawn with the mouse; toolbar, dialogs, and
-  the help are reachable by `Tab`.
+- The canvas itself is drawn with the mouse; toolbar, menu, and
+  dialogs are reachable by `Tab`, and the help dialog lists the
+  shortcut of every tool.
+- To move the canvas, hold `Space` (or the mouse wheel) while
+  dragging, or use the hand tool (`H`) — the app shows this hint
+  on the welcome screen.
 - `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you to the
   top of the page.
