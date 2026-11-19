@@ -75,7 +75,14 @@ def _iter_published_files():
             continue
         for f in sorted(d.rglob("*")):
             if f.is_file() and f.suffix in {
-                ".md", ".mdx", ".ts", ".tsx", ".json", ".css", ".html", ".txt"
+                ".md",
+                ".mdx",
+                ".ts",
+                ".tsx",
+                ".json",
+                ".css",
+                ".html",
+                ".txt",
             }:
                 yield f
     for f in PUBLISHED_FILES:

@@ -1047,15 +1047,40 @@ def test_sogo6_docs_do_not_claim_power_icon_logout(doc_dir):
 # Ctrl+Shift+N/X in its DOM — live-verified 2026-11-19; Open WebUI displays
 # Ctrl+Shift+O / Ctrl+K in its sidebar — live-verified 2026-11-19).
 _FORBIDDEN_KEY_CLAIMS = [
-    r"`e`", r"`w`", r"`d`", r"`m`", r"`y`", r"`t`", r"`n`", r"`j`", r"`k`",
-    r"`J` / `K`", r"`j` / `k`", r"`Shift\s*\+\s*E`",
-    r"Alt\s*\+\s*M", r"Alt\s*\+\s*C", r"Alt\s*\+\s*A", r"Alt\s*\+\s*P", r"Alt\s*\+\s*S",
-    r"Ctrl\s*\+\s*N(?!\w)", r"Ctrl\s*\+\s*S(?!hift)", r"Ctrl\s*\+\s*Enter",
+    r"`e`",
+    r"`w`",
+    r"`d`",
+    r"`m`",
+    r"`y`",
+    r"`t`",
+    r"`n`",
+    r"`j`",
+    r"`k`",
+    r"`J` / `K`",
+    r"`j` / `k`",
+    r"`Shift\s*\+\s*E`",
+    r"Alt\s*\+\s*M",
+    r"Alt\s*\+\s*C",
+    r"Alt\s*\+\s*A",
+    r"Alt\s*\+\s*P",
+    r"Alt\s*\+\s*S",
+    r"Ctrl\s*\+\s*N(?!\w)",
+    r"Ctrl\s*\+\s*S(?!hift)",
+    r"Ctrl\s*\+\s*Enter",
     r"Ctrl\s*\+\s*Shift\s*\+\s*R",
-    r"Ctrl\s*\+\s*Shift\s*\+\s*C", r"Ctrl\s*\+\s*Shift\s*\+\s*B", r"Ctrl\s*\+\s*Shift\s*\+\s*A",
-    r"Ctrl\s*\+\s*Shift\s*\+\s*S", r"Ctrl\s*\+\s*B", r"Ctrl\s*\+\s*I", r"Ctrl\s*\+\s*U",
-    r"Cmd\s*\+\s*S", r"Cmd\s*\+\s*Enter", r"⌘",
-    r"Strg\s*\+\s*N(?!\w)", r"Strg\s*\+\s*S(?!\w)", r"Strg\s*\+\s*Enter",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*C",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*B",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*A",
+    r"Ctrl\s*\+\s*Shift\s*\+\s*S",
+    r"Ctrl\s*\+\s*B",
+    r"Ctrl\s*\+\s*I",
+    r"Ctrl\s*\+\s*U",
+    r"Cmd\s*\+\s*S",
+    r"Cmd\s*\+\s*Enter",
+    r"⌘",
+    r"Strg\s*\+\s*N(?!\w)",
+    r"Strg\s*\+\s*S(?!\w)",
+    r"Strg\s*\+\s*Enter",
 ]
 # Win+Ctrl+C is the Windows OS high-contrast toggle — allowed.
 _KEY_CLAIM_ALLOW = [re.compile(p) for p in [r"Win\+Ctrl\+C"]]
@@ -1077,8 +1102,7 @@ def test_no_fabricated_keyboard_shortcuts(md_files):
                 bad.append(f"{path}: '{m.group(0)}' at …{ctx}…")
     assert not bad, (
         "Fabricated keyboard-shortcut claims (SOGo 6 has none — verified "
-        "live; only Tab/Enter/Escape + native arrow semantics are real):\n"
-        + "\n".join(bad)
+        "live; only Tab/Enter/Escape + native arrow semantics are real):\n" + "\n".join(bad)
     )
 
 
@@ -1219,12 +1243,10 @@ def test_en_de_section_depth_mirrors():
             for metric in ("bullets", "rows"):
                 if abs(ve[metric] - vd[metric]) >= 3:
                     bad.append(
-                        f"{en.name} [{ve['name'][:30]}] {metric}:"
-                        f" EN={ve[metric]} DE={vd[metric]}"
+                        f"{en.name} [{ve['name'][:30]}] {metric}: EN={ve[metric]} DE={vd[metric]}"
                     )
             if vd["words"] < ve["words"] * 0.55 and ve["words"] > 60:
                 bad.append(
-                    f"{en.name} [{ve['name'][:30]}] words:"
-                    f" EN={ve['words']} DE={vd['words']}"
+                    f"{en.name} [{ve['name'][:30]}] words: EN={ve['words']} DE={vd['words']}"
                 )
     assert not bad, "EN/DE section-depth gaps:\n" + "\n".join(bad)

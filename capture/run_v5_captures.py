@@ -11,6 +11,7 @@ site/image-provenance.json).
 Usage:
   python3 capture/run_v5_captures.py [--out DIR] [--only name,name] [--lang en|de]
 """
+
 from __future__ import annotations
 
 import asyncio
@@ -40,22 +41,46 @@ NEXT_WEEK = f"/SOGo/so/{USER}/Calendar/view#!/calendar/week/20260921"
 # UI strings used as selectors — German values verified against
 # UI/*/German.lproj/Localizable.strings (SOGo 5.12 source).
 UI = {
-    "en": dict(new_event="New Event", create_event="Create a new event",
-               attendees="Invite Attendees", weekly="Weekly",
-               subscribe="Subscribe to a Calendar", new_contact="New Contact",
-               new_card="Create a new address book card", firstname="Firstname",
-               lastname="Lastname", phone="Phone Number", new_phone="New Phone Number",
-               options="Options", new_folder="New Folder", save="Save",
-               search="Search", prefs_mail="Mail",
-               toggle_menu="Toggle Menu", reply="Reply"),
-    "de": dict(new_event="Neuer Termin", create_event="Neuen Termin erstellen",
-               attendees="Teilnehmer einladen", weekly="Wöchentlich",
-               subscribe="Einen Kalender abonnieren", new_contact="Neuer Kontakt",
-               new_card="Neue Adresskarte erzeugen", firstname="Vorname",
-               lastname="Nachname", phone="Telefon", new_phone="Neue Telefonnummer",
-               options="Optionen", new_folder="Neuer Ordner", save="Speichern",
-               search="Suchen", prefs_mail="E-Mail",
-               toggle_menu="Menü umschalten", reply="Antworten"),
+    "en": dict(
+        new_event="New Event",
+        create_event="Create a new event",
+        attendees="Invite Attendees",
+        weekly="Weekly",
+        subscribe="Subscribe to a Calendar",
+        new_contact="New Contact",
+        new_card="Create a new address book card",
+        firstname="Firstname",
+        lastname="Lastname",
+        phone="Phone Number",
+        new_phone="New Phone Number",
+        options="Options",
+        new_folder="New Folder",
+        save="Save",
+        search="Search",
+        prefs_mail="Mail",
+        toggle_menu="Toggle Menu",
+        reply="Reply",
+    ),
+    "de": dict(
+        new_event="Neuer Termin",
+        create_event="Neuen Termin erstellen",
+        attendees="Teilnehmer einladen",
+        weekly="Wöchentlich",
+        subscribe="Einen Kalender abonnieren",
+        new_contact="Neuer Kontakt",
+        new_card="Neue Adresskarte erzeugen",
+        firstname="Vorname",
+        lastname="Nachname",
+        phone="Telefon",
+        new_phone="Neue Telefonnummer",
+        options="Optionen",
+        new_folder="Neuer Ordner",
+        save="Speichern",
+        search="Suchen",
+        prefs_mail="E-Mail",
+        toggle_menu="Menü umschalten",
+        reply="Antworten",
+    ),
 }
 L: dict = {}
 
@@ -76,7 +101,9 @@ async def login(page: Page) -> None:
     await dismiss_hints(page)
 
 
-async def snap(rec: ScreenshotRecorder, page: Page, label: str, scope=None, margin: int = 24) -> None:
+async def snap(
+    rec: ScreenshotRecorder, page: Page, label: str, scope=None, margin: int = 24
+) -> None:
     """rec.capture that hard-fails on empty/blank shots."""
     path = await ScreenshotRecorder.capture(rec, page, label, scope=scope, margin=margin)
     if path is None:
@@ -327,13 +354,13 @@ async def st_freebusy_closeup(page: Page, rec: ScreenshotRecorder) -> None:
     await require(grid, "freebusy grid")
     await grid.scroll_into_view_if_needed()
     await page.wait_for_timeout(600)
-    await snap(rec, page, "Free/busy grid showing colleague availability",
-                      scope=grid, margin=36)
+    await snap(rec, page, "Free/busy grid showing colleague availability", scope=grid, margin=36)
 
 
 async def _fill_contact(page: Page, first: str, last: str, phone: str) -> None:
     def cont(label: str) -> str:
         return f"md-input-container:has(label:has-text('{label}')) input"
+
     await require(page.locator(cont(L["firstname"])).first, "Firstname field")
     await page.locator(cont(L["firstname"])).first.fill(first)
     await page.locator(cont(L["lastname"])).first.fill(last)
@@ -341,7 +368,8 @@ async def _fill_contact(page: Page, first: str, last: str, phone: str) -> None:
     # 'New Phone Number' label is clicked
     add = page.locator(
         "//button[.//md-icon[contains(text(),'add_circle')]]"
-        "[following-sibling::label[contains(.,$PHONELBL)]]").first
+        "[following-sibling::label[contains(.,$PHONELBL)]]"
+    ).first
     await require(add, "'New Phone Number' add button")
     await add.click()
     await page.wait_for_timeout(600)
@@ -362,8 +390,9 @@ async def _click_save(page: Page) -> None:
 
 async def st_contacts_add(page: Page, rec: ScreenshotRecorder) -> None:
     """Contacts doc step 2: the New Contact speed-dial menu open."""
-    await page.goto(f"{BASE}/so/{USER}/Contacts/view#!/addressbooks/personal",
-                    wait_until="domcontentloaded")
+    await page.goto(
+        f"{BASE}/so/{USER}/Contacts/view#!/addressbooks/personal", wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(4000)
     await click_required(page, f'button[aria-label="{L["new_contact"]}"]', "new contact FAB")
     await page.wait_for_timeout(800)
@@ -373,15 +402,15 @@ async def st_contacts_add(page: Page, rec: ScreenshotRecorder) -> None:
 
 
 async def st_contacts_edit(page: Page, rec: ScreenshotRecorder) -> None:
-    await page.goto(f"{BASE}/so/{USER}/Contacts/view#!/addressbooks/personal",
-                    wait_until="domcontentloaded")
+    await page.goto(
+        f"{BASE}/so/{USER}/Contacts/view#!/addressbooks/personal", wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(4000)
     if "Tests Two" not in (await page.content()):
         # seed a contact with a phone number once (two-step speed dial)
         await click_required(page, f'button[aria-label="{L["new_contact"]}"]', "new contact FAB")
         await page.wait_for_timeout(600)
-        await click_required(page, f'button[aria-label="{L["new_card"]}"]',
-                             "mini-fab create card")
+        await click_required(page, f'button[aria-label="{L["new_card"]}"]', "mini-fab create card")
         await page.wait_for_timeout(1500)
         await _fill_contact(page, "Tests", "Two", "+49 6421 99999")
         await _click_save(page)
@@ -398,8 +427,10 @@ async def st_contacts_edit(page: Page, rec: ScreenshotRecorder) -> None:
         raise RuntimeError(f"contact view not opened: {page.url}")
     await page.goto(page.url[: -len("/view")] + "/edit", wait_until="domcontentloaded")
     await page.wait_for_timeout(2000)
-    await require(page.locator(f'md-input-container:has(label:has-text("{L["firstname"]}")) input').first,
-                  "Firstname field in editor")
+    await require(
+        page.locator(f'md-input-container:has(label:has-text("{L["firstname"]}")) input').first,
+        "Firstname field in editor",
+    )
     await snap(rec, page, "Editing a contact's phone number and saving changes")
 
 
@@ -407,10 +438,12 @@ async def st_mail_folders(page: Page, rec: ScreenshotRecorder) -> None:
     await page.goto(f"{BASE}/so/{USER}/Mail/view#!/inbox", wait_until="domcontentloaded")
     await page.wait_for_timeout(4000)
     # per-mailbox Options menu (the account kebab never opens in this build)
-    await click_required(page, f'md-icon[aria-label="{L["options"]}"]:visible',
-                         "mailbox options menu")
-    item = page.locator(".md-open-menu-container:visible "
-                        f'md-menu-item:has-text("{L["new_folder"]}")').first
+    await click_required(
+        page, f'md-icon[aria-label="{L["options"]}"]:visible', "mailbox options menu"
+    )
+    item = page.locator(
+        f'.md-open-menu-container:visible md-menu-item:has-text("{L["new_folder"]}")'
+    ).first
     await require(item, "New Folder menu entry")
     menu = page.locator("md-menu-content:visible").first
     await snap(rec, page, "Mail folder management", scope=menu, margin=40)
@@ -419,7 +452,9 @@ async def st_mail_folders(page: Page, rec: ScreenshotRecorder) -> None:
 async def st_mail_actions(page: Page, rec: ScreenshotRecorder) -> None:
     await page.goto(f"{BASE}/so/{USER}/Mail/view#!/Mail/0/INBOX/1", wait_until="domcontentloaded")
     await page.wait_for_timeout(4000)
-    reply = page.locator(f'md-button[aria-label="{L["reply"]}"], button[aria-label="{L["reply"]}"]').first
+    reply = page.locator(
+        f'md-button[aria-label="{L["reply"]}"], button[aria-label="{L["reply"]}"]'
+    ).first
     await require(reply, "reply toolbar button")
     await snap(rec, page, "Mail open with reply, forward and delete actions")
 
@@ -495,12 +530,14 @@ async def main() -> None:
 
     def fname(n: str) -> str:
         return "mail-filters" if (lang == "de" and n == "01-mail-filters") else n
+
     selected = [(fname(n), fn) for n, fn in STATES if only is None or n in only]
     results: list[tuple[str, str]] = []
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-dev-shm-usage"])
-        ctx = await browser.new_context(viewport={"width": 1280, "height": 800},
-                                        locale="en-US" if lang == "en" else "de-DE")
+        ctx = await browser.new_context(
+            viewport={"width": 1280, "height": 800}, locale="en-US" if lang == "en" else "de-DE"
+        )
         page = await ctx.new_page()
         await login(page)
         for name, fn in selected:
@@ -519,8 +556,8 @@ async def main() -> None:
                 print(f"  FAIL: {e}")
             await ctx.close()
             ctx = await browser.new_context(
-                viewport={"width": 1280, "height": 800},
-                locale="en-US" if lang == "en" else "de-DE")
+                viewport={"width": 1280, "height": 800}, locale="en-US" if lang == "en" else "de-DE"
+            )
             page = await ctx.new_page()
             try:
                 await login(page)
