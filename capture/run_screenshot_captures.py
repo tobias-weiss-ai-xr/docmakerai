@@ -275,7 +275,9 @@ async def click_required(page, selector: str | Locator, what: str, timeout_ms: i
     await safe_click(loc)
 
 
-async def fill_required(page, selector: str, value: str, what: str, timeout_ms: int = 10000) -> None:
+async def fill_required(
+    page, selector: str, value: str, what: str, timeout_ms: int = 10000
+) -> None:
     loc = page.locator(selector).first
     await require(loc, what, timeout_ms)
     await loc.fill(value)
@@ -357,8 +359,9 @@ class ScreenshotRecorder:
     async def result(self, page, text: str) -> None:
         print(f"   [RESULT] {text}")
 
-    async def capture(self, page, label: str, scope=None, margin: int = 24,
-                      locale: str = "en") -> Path | None:
+    async def capture(
+        self, page, label: str, scope=None, margin: int = 24, locale: str = "en"
+    ) -> Path | None:
         """Screenshot at the result moment, annotated with the given label.
 
         With ``scope`` (a Locator, or a list of Locators whose bounding
@@ -377,8 +380,10 @@ class ScreenshotRecorder:
                     box = {
                         "x": min(b["x"] for b in boxes),
                         "y": min(b["y"] for b in boxes),
-                        "width": max(b["x"] + b["width"] for b in boxes) - min(b["x"] for b in boxes),
-                        "height": max(b["y"] + b["height"] for b in boxes) - min(b["y"] for b in boxes),
+                        "width": max(b["x"] + b["width"] for b in boxes)
+                        - min(b["x"] for b in boxes),
+                        "height": max(b["y"] + b["height"] for b in boxes)
+                        - min(b["y"] for b in boxes),
                     }
             global VIDEO_END
             if box:
@@ -468,9 +473,7 @@ async def record_calendar_create_event(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(500)
 
     # The filled dialog IS the instructional gist — capture it scoped.
-    shot = await rec.capture(
-        page, "Creating a new event: title, time and location", scope=dlg
-    )
+    shot = await rec.capture(page, "Creating a new event: title, time and location", scope=dlg)
 
     # Verify-then-keep: the event must actually save and appear.
     await click_required(
@@ -518,7 +521,8 @@ async def record_calendar_recurring(context: BrowserContext) -> Path | None:
     # plain dialog shot phash-clashes with calendar-create-event (dist=8).
     repeat_section = switch.locator("xpath=ancestor::div[2]")
     shot = await rec.capture(
-        page, "Configuring a weekly recurring event: frequency options",
+        page,
+        "Configuring a weekly recurring event: frequency options",
         scope=[repeat_section, freq, options],
     )
 
@@ -545,9 +549,7 @@ async def record_mail_compose(context: BrowserContext) -> Path | None:
     await dismiss_hints(page)
 
     await click_required(page, 'button:has-text("New message")', "compose button")
-    await fill_required(
-        page, 'input[placeholder="To"]', "team@example.org", "To field"
-    )
+    await fill_required(page, 'input[placeholder="To"]', "team@example.org", "To field")
     # The To field is a tag input — the value only registers as a chip on Enter.
     await page.keyboard.press("Enter")
     await fill_required(
@@ -619,9 +621,7 @@ async def record_mail_signatures(context: BrowserContext) -> Path | None:
     await require(sig_section, "Signature settings form")
     await page.wait_for_timeout(400)
 
-    return await rec.capture(
-        page, "Email settings: Signature configuration", scope=sig_section
-    )
+    return await rec.capture(page, "Email settings: Signature configuration", scope=sig_section)
 
 
 async def record_mail_filters(context: BrowserContext) -> Path | None:
@@ -660,6 +660,7 @@ async def record_calendar_subscribe(context: BrowserContext) -> Path | None:
 # entry point (no context menu on events, none on sidebar calendars; probed
 # 2026-09-14). The sogo-calendar-share docs page is SOGo 5 content.
 
+
 async def record_freebusy(context: BrowserContext) -> Path | None:
     """Invite attendees: the event dialog with an attendee added.
 
@@ -694,9 +695,7 @@ async def record_freebusy(context: BrowserContext) -> Path | None:
 
     # Scope to the attendee section (search + added chip + busy status):
     # the gist of inviting attendees, not another full-dialog shot.
-    section = search.locator(
-        "xpath=ancestor::div[contains(@class,'space-y-2')][1]"
-    )
+    section = search.locator("xpath=ancestor::div[contains(@class,'space-y-2')][1]")
     return await rec.capture(
         page, "Inviting attendees: added participant with busy status", scope=section
     )
@@ -794,7 +793,8 @@ async def record_contacts_edit_delete(context: BrowserContext) -> Path | None:
     # also visually distinct from the calendar event dialogs).
     phone_section = phone_in.locator("xpath=ancestor::div[3]")
     return await rec.capture(
-        page, "Contact dialog: editing phone number in new contact",
+        page,
+        "Contact dialog: editing phone number in new contact",
         scope=[phone_section, dlg.locator('button:has-text("Add phone")')],
     )
 
@@ -874,12 +874,11 @@ async def record_global_search(context: BrowserContext) -> Path | None:
     # Scene = search bar (3rd div ancestor of the input: wrapper -> flex-1
     # -> header search cluster) united with the filtered-list header.
     search_cluster = search_in.locator("xpath=ancestor::div[3]")
-    result_header = page.locator("main").first.get_by_text(
-        re.compile(rf"^{found} messages$")
-    )
+    result_header = page.locator("main").first.get_by_text(re.compile(rf"^{found} messages$"))
     await require(result_header, f"Filtered result count ({found} messages)")
     return await rec.capture(
-        page, f"Global search: term {term!r} entered, list filtered to {found} messages",
+        page,
+        f"Global search: term {term!r} entered, list filtered to {found} messages",
         scope=[search_cluster, result_header],
     )
 
@@ -943,6 +942,7 @@ async def record_mail_folder_management(context: BrowserContext) -> Path | None:
 # pane has no Reply/Forward/Delete buttons (only 'Move to folder' and a
 # 'More actions' menu with Archive/Download/Print/…; probed 2026-09-14). The
 # sogo-mail-reply-forward-delete docs page is SOGo 5 content.
+
 
 async def record_password_change(context: BrowserContext) -> Path | None:
     """Password change: Security settings page with password fields filled."""
@@ -1215,10 +1215,7 @@ async def record_tasks_add(context: BrowserContext) -> Path | None:
 
     # Scene = the filled title + the Status/Priority rows below it; a plain
     # full-dialog shot phash-clashes with other module dialogs.
-    scope = (
-        page.locator("[role='dialog'] input[name='title']")
-        .locator("xpath=ancestor::div[2]")
-    )
+    scope = page.locator("[role='dialog'] input[name='title']").locator("xpath=ancestor::div[2]")
     return await rec.capture(
         page, "New task dialog: title filled, Status and Priority defaults", scope=scope
     )
@@ -1263,7 +1260,9 @@ async def record_sso_login(context: BrowserContext) -> Path | None:
     await page.wait_for_selector("input[name='username']", timeout=30000)
     await page.wait_for_timeout(600)
     scope = page.locator("form").first
-    return await rec.capture(page, "openEduSuite login screen: Username or email, password, Sign In", scope=scope)
+    return await rec.capture(
+        page, "openEduSuite login screen: Username or email, password, Sign In", scope=scope
+    )
 
 
 async def record_sso_account(context: BrowserContext) -> Path | None:
@@ -1286,10 +1285,14 @@ async def record_sso_signing_in(context: BrowserContext) -> Path | None:
     page = await rec.start(context)
     await suite_login(page)
     VIDEO_START = time.monotonic()
-    await page.goto(SUITE_IDP.rstrip("/") + "/account-security/signing-in", wait_until="networkidle")
+    await page.goto(
+        SUITE_IDP.rstrip("/") + "/account-security/signing-in", wait_until="networkidle"
+    )
     await page.wait_for_timeout(2000)
     scope = page.locator("main").first
-    return await rec.capture(page, "Account console: Signing in — Basic and Two-factor authentication", scope=scope)
+    return await rec.capture(
+        page, "Account console: Signing in — Basic and Two-factor authentication", scope=scope
+    )
 
 
 async def record_sso_devices(context: BrowserContext) -> Path | None:
@@ -1299,10 +1302,14 @@ async def record_sso_devices(context: BrowserContext) -> Path | None:
     page = await rec.start(context)
     await suite_login(page)
     VIDEO_START = time.monotonic()
-    await page.goto(SUITE_IDP.rstrip("/") + "/account-security/device-activity", wait_until="networkidle")
+    await page.goto(
+        SUITE_IDP.rstrip("/") + "/account-security/device-activity", wait_until="networkidle"
+    )
     await page.wait_for_timeout(2000)
     scope = page.locator("main").first
-    return await rec.capture(page, "Account console: Device activity with Sign out buttons", scope=scope)
+    return await rec.capture(
+        page, "Account console: Device activity with Sign out buttons", scope=scope
+    )
 
 
 # --- Helpdesk: Request Tracker (RT 6) at rt.openedusuite.org ---------------
@@ -1395,7 +1402,9 @@ async def record_rt_create(context: BrowserContext) -> Path | None:
     await page.locator("h1").first.click()
     await page.wait_for_timeout(1500)
     scope = page.locator("#body, main").first
-    return await rec.capture(page, "Create Ticket form: queue, requestor, subject, message", scope=scope)
+    return await rec.capture(
+        page, "Create Ticket form: queue, requestor, subject, message", scope=scope
+    )
 
 
 # --- Portal (home.openedusuite.org) and Files (cloud.openedusuite.org) ------
@@ -1450,7 +1459,9 @@ async def record_portal_public(context: BrowserContext) -> Path | None:
     await page.wait_for_selector("h1, h2", timeout=30000)
     await page.wait_for_timeout(2500)
     scope = page.locator("main, #app, body").first
-    return await rec.capture(page, "Portal (signed out): news, weather and events of the university", scope=scope)
+    return await rec.capture(
+        page, "Portal (signed out): news, weather and events of the university", scope=scope
+    )
 
 
 async def record_portal_apps(context: BrowserContext) -> Path | None:
@@ -1463,7 +1474,9 @@ async def record_portal_apps(context: BrowserContext) -> Path | None:
     await page.goto(PORTAL_URL + "/", wait_until="domcontentloaded")
     await page.wait_for_timeout(4000)
     scope = page.locator("main, #app, body").first
-    return await rec.capture(page, "Portal (signed in): app tiles for mail, tickets, files and more", scope=scope)
+    return await rec.capture(
+        page, "Portal (signed in): app tiles for mail, tickets, files and more", scope=scope
+    )
 
 
 async def record_cloud_files(context: BrowserContext) -> Path | None:
@@ -1473,7 +1486,9 @@ async def record_cloud_files(context: BrowserContext) -> Path | None:
     await cloud_login(page)
     global VIDEO_START
     VIDEO_START = time.monotonic()
-    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.goto(
+        CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(6000)
     scope = page.locator("main").first
     return await rec.capture(page, "OpenCloud Personal space: All files", scope=scope)
@@ -1486,12 +1501,18 @@ async def record_cloud_new(context: BrowserContext) -> Path | None:
     await cloud_login(page)
     global VIDEO_START
     VIDEO_START = time.monotonic()
-    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.goto(
+        CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(6000)
     await page.click("button:has-text('New')")
     await page.wait_for_timeout(1500)
     scope = page.locator("[role='menu'], .oc-dropdown-modal, main").first
-    return await rec.capture(page, "New menu: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut", scope=scope)
+    return await rec.capture(
+        page,
+        "New menu: Folder, Files Upload, Folder Upload, Note, Markdown file, Shortcut",
+        scope=scope,
+    )
 
 
 async def record_cloud_shares(context: BrowserContext) -> Path | None:
@@ -1513,7 +1534,9 @@ OPERATON_URL = os.environ.get("OPERATON_URL", "https://operaton.openedusuite.org
 N8N_URL = os.environ.get("N8N_URL", "https://n8n.openedusuite.org")
 
 
-async def keycloak_sso(page: Page, url: str, landing: str, state: str = "visible", timeout: int = 45000) -> None:
+async def keycloak_sso(
+    page: Page, url: str, landing: str, state: str = "visible", timeout: int = 45000
+) -> None:
     """Open url, pass an oauth2-proxy gate if present, log into the
     openedusuite realm, and wait for the landing selector.
 
@@ -1565,7 +1588,9 @@ async def record_operaton_tasklist(context: BrowserContext) -> Path | None:
     """Operaton Tasklist: all tasks, create task, start process."""
     rec = ScreenshotRecorder("operaton-tasklist", SCREENSHOT_DIR)
     page = await rec.start(context)
-    await keycloak_sso(page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')")
+    await keycloak_sso(
+        page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')"
+    )
     global VIDEO_START
     VIDEO_START = time.monotonic()
     await page.goto(OPERATON_URL + "/operaton/app/tasklist/default/", wait_until="domcontentloaded")
@@ -1585,7 +1610,9 @@ async def record_n8n_workflows(context: BrowserContext) -> Path | None:
     await page.goto(N8N_URL + "/home/workflows", wait_until="domcontentloaded")
     await page.wait_for_timeout(7000)
     scope = page.locator("main, [class*='content'], body").first
-    return await rec.capture(page, "n8n workflows: overview with create workflow and demo workflows", scope=scope)
+    return await rec.capture(
+        page, "n8n workflows: overview with create workflow and demo workflows", scope=scope
+    )
 
 
 # --- Dify (AI app builder) ---------------------------------------------------
@@ -1602,7 +1629,9 @@ async def record_dify_home(context: BrowserContext) -> Path | None:
     await keycloak_sso(page, DIFY_URL + "/oauth2/start", "a:has-text('Marketplace')")
     await page.wait_for_timeout(3000)
     scope = page.locator("main, body").first
-    return await rec.capture(page, "Dify home: welcome, templates, and app-builder navigation", scope=scope)
+    return await rec.capture(
+        page, "Dify home: welcome, templates, and app-builder navigation", scope=scope
+    )
 
 
 async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
@@ -1616,7 +1645,9 @@ async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
     await cloud_login(page)
     global VIDEO_START
     VIDEO_START = time.monotonic()
-    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.goto(
+        CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(6000)
     await page.click("button:has-text('New')")
     await page.wait_for_timeout(1500)
@@ -1624,7 +1655,9 @@ async def record_cloud_create_folder(context: BrowserContext) -> Path | None:
     await page.wait_for_timeout(2000)
     # the modal re-mounts on open (form key -v-2): the LAST modal owns the
     # live form; it also holds the E2E-encrypt checkbox — text input only
-    name_input = page.locator(".oc-modal input:not([type='checkbox']), [role='dialog'] input:not([type='checkbox'])").last
+    name_input = page.locator(
+        ".oc-modal input:not([type='checkbox']), [role='dialog'] input:not([type='checkbox'])"
+    ).last
     for _attempt in range(3):
         await name_input.fill("Dokumentationstest")
         await name_input.press("End")
@@ -1647,7 +1680,9 @@ async def record_operaton_startprocess(context: BrowserContext) -> Path | None:
     one has real side effects on the system, so none is ever started)."""
     rec = ScreenshotRecorder("operaton-startprocess", SCREENSHOT_DIR)
     page = await rec.start(context)
-    await keycloak_sso(page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')")
+    await keycloak_sso(
+        page, OPERATON_URL + "/", "a:has-text('Documentation'), button:has-text('Create task')"
+    )
     await page.goto(OPERATON_URL + "/operaton/app/tasklist/default/", wait_until="domcontentloaded")
     await page.wait_for_timeout(7000)
     # 'Start process' is not a <button> — plain text click on the entry
@@ -1662,7 +1697,9 @@ async def record_cloud_share(context: BrowserContext) -> Path | None:
     rec = ScreenshotRecorder("cloud-share", SCREENSHOT_DIR)
     page = await rec.start(context)
     await cloud_login(page)
-    await page.goto(CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded")
+    await page.goto(
+        CLOUD_URL + "/files/spaces/personal/" + SUITE_USERNAME, wait_until="domcontentloaded"
+    )
     await page.wait_for_timeout(6000)
     row = page.locator("span").filter(has_text="Dokumentationstest").first
     await row.click(button="right")
@@ -1670,7 +1707,9 @@ async def record_cloud_share(context: BrowserContext) -> Path | None:
     await page.locator(":text-is('Share')").first.click()
     await page.wait_for_timeout(3000)
     scope = page.locator("main").first
-    return await rec.capture(page, "Share panel: share with people, permanent link, public links", scope=scope)
+    return await rec.capture(
+        page, "Share panel: share with people, permanent link, public links", scope=scope
+    )
 
 
 async def record_n8n_editor(context: BrowserContext) -> Path | None:
@@ -1724,10 +1763,13 @@ async def record_chat_firstlogin(context: BrowserContext) -> Path | None:
     # the SOGo-preflight context stalls Element's SPA; a fresh en-US
     # context lands on the wall fast (server default locale is de)
     en_ctx = await context.browser.new_context(
-        viewport={"width": 1280, "height": 800}, locale="en-US", ignore_https_errors=True)
+        viewport={"width": 1280, "height": 800}, locale="en-US", ignore_https_errors=True
+    )
     page = await rec.start(en_ctx)
     try:
-        await keycloak_sso(page, CHAT_URL + "/", "text=Confirm your identity", state="attached", timeout=120000)
+        await keycloak_sso(
+            page, CHAT_URL + "/", "text=Confirm your identity", state="attached", timeout=120000
+        )
         await page.wait_for_timeout(3000)
         return await rec.capture(page, "First login: verify your identity")
     finally:
@@ -1738,7 +1780,8 @@ async def record_chat_firstlogin_de(context: BrowserContext) -> Path | None:
     """Element wall in German: fresh de-DE context (server default is de)."""
     rec = ScreenshotRecorder("chat-firstlogin-de", SCREENSHOT_DIR)
     de_ctx = await context.browser.new_context(
-        viewport={"width": 1280, "height": 800}, locale="de-DE", ignore_https_errors=True)
+        viewport={"width": 1280, "height": 800}, locale="de-DE", ignore_https_errors=True
+    )
     page = await rec.start(de_ctx)
     try:
         await keycloak_sso(page, CHAT_URL + "/", "text=Bestätige deine Identität", state="attached")
