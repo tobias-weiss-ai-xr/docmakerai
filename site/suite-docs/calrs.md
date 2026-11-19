@@ -9,7 +9,8 @@ description: "Appointment booking for everyone — pick a slot on a colleague's 
 
 [calrs](https://calendar.openedusuite.org) is the openEduSuite's
 booking service — "Powered by calrs 🦀", from
-[cal.rs](https://cal.rs). Every member has a public booking page:
+[cal.rs](https://cal.rs). Reach it through the portal tile
+**Bookings (calrs)**. Every member has a public booking page:
 colleagues and guests pick a free slot there, no account required,
 and the booking lands in the shared booking calendar that SOGo
 mirrors.
@@ -33,8 +34,9 @@ ready for every member:
 - **Test-Termin** (`test`) — 15 minutes, for trying it out
 
 Pick a day, pick a free slot, enter name and email, and the booking
-is fixed. Confirmed bookings flow into the shared booking calendar;
-in [SOGo](/sogo6/sogo-calendar-views) you can watch them arrive via
+is fixed — the page confirms with "You're booked". Confirmed
+bookings flow into the shared booking calendar; in
+[SOGo](/sogo6/sogo-calendar-views) you can watch them arrive via
 the subscribed booking calendar.
 
 ## Your Own Booking Page
