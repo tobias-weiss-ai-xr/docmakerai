@@ -25,7 +25,8 @@ LOCALES = ("en", "de")  # en is the default locale (no path prefix)
 def page_url(rel_html: str, base: str) -> str:
     """build-relative path -> absolute site URL with trailing slash."""
     path = rel_html.replace(os.sep, "/")
-    if path.endswith("/index.html"):
+    # Root index.html strips to the bare base; nested ones to their dir.
+    if path.endswith("index.html"):
         path = path[: -len("index.html")]
     return base + quote(path)
 
@@ -34,7 +35,7 @@ def locale_of(path: str) -> str | None:
     """Classify a URL path as 'de', 'en', or None (non-doc page)."""
     parts = [p for p in path.split("/") if p]
     if not parts:
-        return None
+        return "en"  # site root: the landing page is an en page
     if parts[0] == "de":
         return "de"
     if parts[0] in ("sogo5", "sogo6", "docs", "suite"):  # EN docs route bases

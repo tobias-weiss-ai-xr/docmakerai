@@ -1,6 +1,6 @@
 /**
  * End-to-end tests for the docmakerai homepage and root routing.
- * Site-level behavior (redirect shell, locales) stays single;
+ * Site-level behavior (landing page, locales) stays single;
  * per-version landing pages are checked for both versions.
  */
 
@@ -8,29 +8,60 @@ import { test, expect } from '@playwright/test';
 import { VERSIONS } from './versions';
 
 test.describe('Homepage', () => {
-  test('root path redirects to /sogo5/', async ({ page }) => {
+  test('root serves the project landing page (no redirect)', async ({ page }) => {
     await page.goto('.');
-    // Shell redirects (meta refresh) into the project base path
+    await expect(page).toHaveURL(/docmakerai\/$/);
+    await expect(page.locator('.landing')).toBeVisible();
+    await expect(page).toHaveTitle(/SOGo User Guide/);
+  });
+
+  test('landing page introduces the project and links to its nucleus + suite', async ({ page }) => {
+    await page.goto('.');
+    const landing = page.locator('.landing');
+
+    // The lead introduces DocMaker AI / the project
+    await expect(landing.getByText(/DocMaker AI/i).first()).toBeVisible();
+
+    // SOGo 5 is the nucleus of the project
+    const nucleus = landing.getByRole('link', { name: /SOGo 5 User Guide/ });
+    await expect(nucleus).toBeVisible();
+    await expect(nucleus).toHaveAttribute('href', /\/docmakerai\/sogo5\/$/);
+    await expect(landing.getByText(/nucleus of this project/i).first()).toBeVisible();
+
+    // openEduSuite card links to the suite
+    const suite = landing.getByRole('link', { name: /openEduSuite/ });
+    await expect(suite).toBeVisible();
+    await expect(suite).toHaveAttribute('href', /\/docmakerai\/suite\/?$/);
+
+    // Secondary entry: SOGo 6
+    await expect(
+      landing.getByRole('link', { name: /SOGo 6/ })
+    ).toBeVisible();
+  });
+
+  test('landing page cards navigate to their destinations', async ({ page }) => {
+    await page.goto('.');
+    await page.locator('.landing-card--nucleus').click();
     await page.waitForURL('**/docmakerai/sogo5/');
-    await expect(page).toHaveURL(/docmakerai\/sogo5\/$/);
+    await expect(page.locator('.theme-doc-markdown')).toBeVisible();
+
+    await page.goto('.');
+    await page.locator('.landing-card--suite').click();
+    await page.waitForURL('**/docmakerai/suite/');
+    await expect(page.locator('.theme-doc-markdown')).toBeVisible();
   });
 
-  test('redirect page shows SOGo User Guide loader', async ({ page }) => {
-    // The meta refresh fires instantly in a browser — verify the shell HTML
-    // deterministically via the response body instead of racing the redirect.
-    const response = await page.request.get('.');
-    const html = await response.text();
-    expect(html).toContain('Redirecting to');
-    expect(html).toContain('href="./sogo5/"');
-    expect(html).toContain('SOGo User Guide');
-    expect(html).toContain('background: #1b1b2f');
-  });
-
-  test('German (de) locale pages load', async ({ page }) => {
-    await page.goto('de/sogo5/');
-    await expect(page).toHaveTitle(/SOGo/);
-    // Should have sidebars and content
+  test('German landing page loads', async ({ page }) => {
+    await page.goto('de/');
+    await expect(page.locator('.landing')).toBeVisible();
     await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    // Same two doors in German
+    await expect(
+      page.locator('.landing').getByRole('link', { name: /SOGo 5 Benutzerhandbuch/ })
+    ).toBeVisible();
+    await expect(
+      page.locator('.landing').getByRole('link', { name: /openEduSuite/ })
+    ).toBeVisible();
   });
 });
 

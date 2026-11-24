@@ -133,6 +133,10 @@ const config: Config = {
             title: 'More',
             items: [
               {
+                label: 'openEduSuite',
+                to: '/suite/',
+              },
+              {
                 label: 'GitHub',
                 href: 'https://github.com/tobias-weiss-ai-xr/docmakerai',
               },

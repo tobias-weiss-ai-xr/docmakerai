@@ -144,3 +144,129 @@ pre code {
     display: none;
   }
 }
+
+/* Root landing page (src/pages/index[.de].tsx). Uses Infima theme vars so
+   light/dark mode, focus states and contrast follow the rest of the site. */
+.landing {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.landing-hero {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.landing-hero__img {
+  display: block;
+  max-width: 640px;
+  margin: 0 auto 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.landing-hero h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.landing-hero__tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+.landing-hero__lead {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.landing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.landing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  text-decoration: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.landing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.landing-card:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.landing-card__badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+
+.landing-card--nucleus .landing-card__badge {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.landing-card--suite .landing-card__badge {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.landing-card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.landing-card p {
+  margin: 0;
+  flex-grow: 1;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.landing-card__cta {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.landing-about {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.landing-about h2 {
+  margin-bottom: 0.75rem;
+}
+
+.landing-about p {
+  color: var(--ifm-color-emphasis-700);
+}
+
+@media (max-width: 640px) {
+  .landing-hero h1 {
+    font-size: 1.7rem;
+  }
+}
