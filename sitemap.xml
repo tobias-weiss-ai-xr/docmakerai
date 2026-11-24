@@ -4,6 +4,14 @@
   <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/"/>
+  </url>
+  <url>
+    <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tobias-weiss-ai-xr.github.io/docmakerai/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tobias-weiss-ai-xr.github.io/docmakerai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tobias-weiss-ai-xr.github.io/docmakerai/"/>
   </url>
   <url>
     <loc>https://tobias-weiss-ai-xr.github.io/docmakerai/de/sogo5/</loc>
