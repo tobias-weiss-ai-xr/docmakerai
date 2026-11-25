@@ -50,7 +50,7 @@ iCal (`.ics`) is a standard calendar file format supported by most calendar appl
 
 ## Import Options
 
-| Option: Description | Description | Use When |
+| Option | Description | Use When |
 |--------|--------------|---------|
 | **Add all events** | Imports all events from the file | First-time import |
 | **Merge duplicates** | Skips events with same date and title | Update existing calendar |
@@ -70,7 +70,7 @@ You can share your calendar by providing the iCal URL:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Import button not visible | Calendar sharing not enabled | Contact your administrator to enable sharing |
  | Import fails | Invalid `.ics` file format | Verify the file opens in a calendar application first |
@@ -81,12 +81,12 @@ You can share your calendar by providing the iCal URL:
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -101,3 +101,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

@@ -157,14 +157,14 @@ This section describes creating a calendar event using keyboard and screen reade
 **Step 1: Navigate to Calendar Module**
 1. `Tab` to reach the sidebar
 2. Arrows to "Calendar" - `Enter` to activate
-3. Screen reader: "Calendar, week view"
+3. You should hear: "Calendar, week view"
 4. Arrows to navigate to desired day
 
 **Step 2: Create Event (Three Methods)**
 
 **Method 1: Plus button**
 - `Tab` to the **Create Event** button
-- Screen reader: "New Event, button"
+- You should hear: "New Event, button"
 - `Enter` to activate - opens event dialog
 
 **Method 2: Double-click time slot** *(mouse only)*
@@ -211,7 +211,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 **Step 4: Save Event**
 - `Tab` to Save button
-- Screen reader: "Save, button"
+- You should hear: "Save, button"
 - `Enter` to activate
 
 **Step 5: Verify Event Saved**
@@ -260,3 +260,6 @@ Current time indicator: Red (#dc3545)
 Selected/focused: Light blue background (#e6f2ff)
 Text: Black (#000000) on light, White (#ffffff) on dark buttons
 ```
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

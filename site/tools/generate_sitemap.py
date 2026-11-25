@@ -62,7 +62,7 @@ def main() -> int:
     groups: dict[str, dict[str, str]] = {}  # key -> {locale: url}
     for html in build.rglob("*.html"):
         rel = html.relative_to(build).as_posix()
-        if rel == "404.html" or rel.endswith("/404.html"):
+        if rel.endswith("404.html") or "404" in rel.split("/"):
             continue
         text = html.read_text(encoding="utf-8", errors="replace")
         # Mirror Docusaurus: unlisted pages carry a robots noindex meta and

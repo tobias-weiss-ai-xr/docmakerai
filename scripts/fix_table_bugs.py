@@ -24,6 +24,7 @@ DIRS = [
     REPO_ROOT / "site" / "versioned_docs" / "version-5",
     REPO_ROOT / "site" / "versioned_docs" / "version-6",
     REPO_ROOT / "site" / "i18n" / "de" / "docusaurus-plugin-content-docs" / "version-6",
+    REPO_ROOT / "site" / "docs",  # current-EN source: must stay table-clean too
 ]
 
 # Special header renames (applied AFTER stripping the ": suffix")
@@ -86,14 +87,13 @@ def fix_table_headers_and_rows(lines: list[str]) -> list[str]:
                 and not re.match(r"^\s*\|[-\s|:]+\|\s*$", lines[i])
             ):
                 data_line = lines[i]
-                data_cols = count_columns(data_line)
-                if data_cols == header_cols + 1 and re.match(r"^\s*\|\s*\|", data_line):
-                    # Empty first cell — remove it
-                    # Split, remove the empty second element, rejoin
+                if re.match(r"^\s*\|\s*\|", data_line):
+                    # Empty leading cell (| | X | ...) — the project gate
+                    # forbids | | anywhere, so drop the leading empty cell
+                    # regardless of column counts (rows may be ragged).
                     parts = data_line.split("|")
-                    # parts[0] = "", parts[1] = "" (empty cell), parts[2:] = content
-                    new_parts = [parts[0]] + parts[2:]
-                    data_line = "|".join(new_parts)
+                    # parts[0] = "", parts[1] = "" (empty cell)
+                    data_line = "|".join([parts[0]] + parts[2:])
                 result.append(data_line)
                 i += 1
         else:

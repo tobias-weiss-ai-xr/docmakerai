@@ -52,7 +52,7 @@ const de: LandingStrings = {
         Besuchen Sie das Projekt auf GitHub
       </a>{' '}
       oder{' '}
-      <a href="https://www.sogo.nu">sogo.nu</a>.
+      <a href="https://www.openedusuite.org">openedusuite.org</a>.
     </>
   ),
 };

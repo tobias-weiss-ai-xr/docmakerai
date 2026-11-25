@@ -152,7 +152,7 @@ Source: `capture/run_captures.py` — `record_mail_compose()`, `record_mail_read
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | Compose and send | an authenticated session with the mail module open | the user clicks the compose button | the compose window will open |
 | Open and read message | the inbox is displayed with messages | the user clicks a message | the message will open in the preview pane |
@@ -169,12 +169,12 @@ Source: `capture/run_captures.py` — `record_mail_compose()`, `record_mail_read
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -189,3 +189,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

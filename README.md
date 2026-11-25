@@ -1,21 +1,21 @@
 <p align="center">
-> **⚠️ Migrated from Codeberg → GitHub**: This repository has moved permanently to [GitHub](https://github.com/tobias-weiss-ai-xr/docmakerai). The Codeberg mirror is deprecated.
-
-  <img src="site/static/img/teaser.svg" alt="DocMaker AI - Automated Screenshot Capture Pipeline" width="100%">
+  <img src="site/static/img/teaser.svg" alt="DocMaker AI — automated screenshot capture pipeline" width="100%">
 </p>
+
+> **Migrated from Codeberg → GitHub**: This repository has moved permanently to [GitHub](https://github.com/tobias-weiss-ai-xr/docmakerai). The Codeberg mirror is deprecated.
 
 # DocMaker AI
 
 > **Live documentation:** [tobias-weiss-ai-xr.github.io/docmakerai/](https://tobias-weiss-ai-xr.github.io/docmakerai/)
 
-![DocMaker AI landing page — SOGo multi-version documentation](assets/docmakerai-landing.png)
+![DocMaker AI landing page — SOGo multi-version documentation plus openEduSuite](assets/docmakerai-landing.png)
 
 **Automated screenshot capture pipeline + Docusaurus documentation site for web applications.**
 
 [![CI](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/ci.yml)
 [![Deploy](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml/badge.svg)](https://github.com/tobias-weiss-ai-xr/docmakerai/actions/workflows/deploy.yml)
 
-DocMaker AI captures UI workflows as annotated WebP animations and generates multi-version Docusaurus documentation sites. Built for the [SOGo Groupware](https://www.sogo.nu) user guide but works for any web application.
+DocMaker AI captures UI workflows as annotated WebP animations and generates multi-version Docusaurus documentation sites. The published site opens at `/` with a landing page that presents the project and the **openEduSuite**, and links the **SOGo 5** user guide as its nucleus. Built for the [SOGo Groupware](https://www.sogo.nu) user guide but works for any web application.
 
 ## What DocMaker AI Does
 
@@ -43,7 +43,7 @@ DocMaker AI captures UI workflows as annotated WebP animations and generates mul
 
 ```bash
 # Node.js 20+ (for Docusaurus)
---version  # >=20.0.0)
+node --version  # >=20.0.0
 
 # Python 3.11+ (for capture pipeline)
 python3 --version  # >=3.11
@@ -107,11 +107,14 @@ docmakerai/
 │   ├── parallel_runner.py     # Concurrent workflow execution
 │   └── tests/                 # pytest test suite (140+ tests)
 ├── site/                       # Docusaurus documentation site
-│   ├── docs/                 # Tutorial markdown sources (27 SOGo tutorials)
-│   ├── versioned_docs/       # Multi-version docs (SOGo 5 + SOGo 6)
+│   ├── docs/                  # Tutorial markdown sources (SOGo tutorials + meta pages)
+│   ├── versioned_docs/        # Multi-version docs (SOGo 5 + SOGo 6)
+│   ├── suite-docs/            # openEduSuite service pages (EN)
+│   ├── i18n/de/               # German translations (docs, suite, landing page)
+│   ├── src/pages/             # Root landing page (EN) + German counterpart
 │   ├── docusaurus.config.ts   # Site configuration (baseUrl: /docmakerai/)
-│   ├── src/                  # Custom CSS
-│   └── package.json          # Dependencies
+│   ├── src/                   # Landing page component, custom CSS, SEO components
+│   └── package.json           # Dependencies
 ├── openspec/                  # Spec-driven development
 │   ├── specs/                # Living specs (auth-login, calendar, mail, contacts, etc.)
 │   ├── config.yaml           # Spec schema
@@ -182,18 +185,19 @@ See [SEO.md](site/docs/SEO.md) for complete implementation details.
 
 ## Development Roadmap
 
-The project follows a 10-sprint optimization & automation plan (see [ROADMAP.md](site/docs/ROADMAP.md)):
+The roadmap is complete; future work is tracked as GitHub issues rather than sprints. See [ROADMAP.md](site/docs/ROADMAP.md) for the full history. Shipped highlights:
 
-✅ **Sprint 1:** OpenSpec spec-driven development
-✅ **Sprint 2:** CI/CD pipeline (lint, test, deploy)
-✅ **Sprint 3:** Asset optimization (54% size reduction)
-✅ **Sprint 4:** Capture reliability (retry, blank detection, quality reports)
-✅ **Sprint 5:** Parallel execution (asyncio workers)
-✅ **Sprint 6:** Accessibility gates (auto-fix + CI validation)
-📋 **Sprint 7:** Video/MP4 pipeline (ffmpeg conversion fallback)
-📋 **Sprint 8:** SOGo change detection (auto-recapture on UI changes)
-📋 **Sprint 9:** Performance benchmarks (Lighthouse CI, bundle tracking)
-📋 **Sprint 10:** Spec-to-docs pipeline (auto-generate docs from specs)
+✅ OpenSpec spec-driven development
+✅ CI/CD pipeline (lint, test, accessibility, build, deploy)
+✅ Asset optimization (54% size reduction)
+✅ Capture reliability (retry, blank detection, quality reports)
+✅ Parallel execution (workers)
+✅ Accessibility gates (auto-fix + CI validation)
+✅ Video/MP4 pipeline (WebP → MP4/WebM)
+✅ SOGo change detection (perceptual-hash drift check)
+✅ Performance benchmarks (Lighthouse CI, bundle tracking)
+✅ Spec-to-docs pipeline (docs generated from specs)
+✅ PR preview deployments
 
 ## Doc Quality Voting
 

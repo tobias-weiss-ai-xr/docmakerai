@@ -4,21 +4,21 @@
 
 SOGo 5 supports full keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through Mail, Calendar, Contacts |
-| | Open compose | `c` | Compose new email |
-| | New event | `e` | Create calendar event |
-| | Refresh | `r` | Refresh inbox |
-| | Navigate messages | `j` (next) / `k` (previous) | Gmail-style navigation |
-| | Open message | `Enter` | Select and open |
-| | Reply | `r` | Reply to current message |
-| | Forward | `f` | Forward current message |
-| | Delete | `d` | Move to trash |
-| | Archive | `a` | Archive message |
-| | Mark read/unread | `.` / `,` | Toggle read status |
-| | Star | `s` | Mark as important |
-| | Escape | Cancel/close dialog | Cancel current action |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through Mail, Calendar, Contacts |
+| Open compose | `c` | Compose new email |
+| New event | `e` | Create calendar event |
+| Refresh | `r` | Refresh inbox |
+| Navigate messages | `j` (next) / `k` (previous) | Gmail-style navigation |
+| Open message | `Enter` | Select and open |
+| Reply | `r` | Reply to current message |
+| Forward | `f` | Forward current message |
+| Delete | `d` | Move to trash |
+| Archive | `a` | Archive message |
+| Mark read/unread | `.` / `,` | Toggle read status |
+| Star | `s` | Mark as important |
+| Escape | Cancel/close dialog | Cancel current action |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -26,7 +26,7 @@ SOGo 5 supports full keyboard navigation. No mouse required for completing this 
 3. Action buttons → `Space` or `Enter` to activate
 4. Forms → `Tab` between fields, arrows for dropdowns
 
-### Screen Reader: [Topic]
+### You should hear: [Topic]
 
 This section describes the workflow for screen reader users (JAWS, NVDA, VoiceOver).
 
@@ -41,7 +41,7 @@ This section describes the workflow for screen reader users (JAWS, NVDA, VoiceOv
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | [Message 1] | [explanation] | [action to take] |
 | [Message 2] | [explanation] | [action to take] |

@@ -226,3 +226,6 @@ SOGo 5 supports full keyboard navigation for recurring events.
 ### High Contrast Mode
 
 SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: three-dot menu (⋯) → General → Theme → Dark/High Contrast.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

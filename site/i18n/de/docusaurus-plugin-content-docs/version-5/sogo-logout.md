@@ -44,3 +44,6 @@ SOGo 5 verfügt derzeit über keinen integrierten Hochkontrastmodus. Browser-/Be
 - **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
 - **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
 - **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
+
+- **Orientierung:** verlieren Sie Ihren Platz, drücken Sie `Strg+Pos1`, um zum
+  Seitenanfang zurückzukehren und von dort weiterzunavigieren.

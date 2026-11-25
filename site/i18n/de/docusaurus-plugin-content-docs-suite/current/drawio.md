@@ -45,6 +45,9 @@ Zeichenfläche, bereit zum Zeichnen.
 - **[Grist](/suite/grist)** — wenn das „Diagramm" eigentlich
   Daten sind: Beziehungen gehören in Tabellen.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -57,3 +60,9 @@ Zeichenfläche, bereit zum Zeichnen.
   sind per `Tab` erreichbar, die Zeichenfläche selbst wird mit der
   Maus bearbeitet.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

@@ -53,7 +53,7 @@ const en: LandingStrings = {
         Head over to the project on GitHub
       </a>
       {' '}or visit{' '}
-      <a href="https://www.sogo.nu">sogo.nu</a>.
+      <a href="https://www.openedusuite.org">openedusuite.org</a>.
     </>
   ),
 };

@@ -46,25 +46,25 @@ Click the **power icon** ⏻ in the top-right corner of the toolbar to end your 
 
 SOGo 5 supports full keyboard navigation for login.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|----------------------------------|---------------------------|
-| | Navigate to username field | `Tab` from address bar |
-| | Move to password field | `Tab` after username |
-| | Toggle "Remember me" | `Tab` to switch, `Space` to toggle |
-| | Submit login form | `Enter` on any field |
-| | Cancel login | `Escape` clears form |
+| Action | Keyboard Shortcut | Notes |
+|--------|-------------------|-------|
+| Reach the username field | `Tab` (repeat as needed) | The username field is usually the first form field |
+| Move to the password field | `Tab` | Next field after the username |
+| Toggle "Remember me" | `Space` | Activates the focused switch |
+| Submit the login form | `Enter` | Works on any field |
+| Leave screen-reader focus mode | `Escape` | Does not clear the form |
 
 ### Screen Reader Workflow
 
-1. After page loads, screen reader announces: "Login, heading level 1"
-2. `Tab` to username field — "Username, edit, blank"
-3. Enter your username
-4. `Tab` to password field — "Password, edit, blank"
-5. Enter your password
-6. `Tab` to "Remember me" switch — "Remember me, switch, off"
-7. `Space` to toggle if desired
-8. `Tab` to Login button — "Login, button"
-9. `Enter` to submit
+1. Start from the top of the page with `Ctrl+Home` (German keyboards: `Strg+Pos1`). Whether your screen reader reads the page on load depends on its settings.
+2. Press `Tab` (repeat as needed) until you hear a username field ("Username, edit, blank"); it is usually the first form field.
+3. Enter your username.
+4. Press `Tab` (repeat as needed) until you hear the password field ("Password, edit, blank").
+5. Enter your password.
+6. Press `Tab` (repeat as needed) until you reach the "Remember me" switch ("Remember me, switch, off").
+7. `Space` toggles it if desired.
+8. Press `Tab` (repeat as needed) until you hear the Login button ("Login, button").
+9. `Enter` submits the form.
 
 ### High Contrast Mode
 

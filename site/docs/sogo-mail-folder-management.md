@@ -58,7 +58,7 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 ## Folder Actions
 
-| Action: Description | How To |
+| Action | How To |
 |--------|--------|
 | **Rename** | Right-click folder → Rename |
 | **Delete** | Right-click folder → Delete (cannot delete default folders like Inbox) |
@@ -66,7 +66,7 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot delete default folder | System folders cannot be deleted | Only custom folders can be deleted |
 | Folder not visible | Sidebar collapsed | Expand the Mail section in the navigation |
@@ -77,12 +77,12 @@ Folder changes are synchronized with the server immediately. Your folder structu
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -97,3 +97,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

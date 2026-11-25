@@ -127,7 +127,7 @@ Source: `capture/run_captures.py` — `record_preferences()`, `record_password_c
 
 ## Appendix: Scenario Reference
 
-| Scenario: Description | Precondition | Action | Expected Result |
+| Scenario | Precondition | Action | Expected Result |
 |---|---|---|---|
 | View preferences | an authenticated session | the user opens the preferences/settings panel | the general settings categories will be visible |
 | Blank capture fallback | the preferences workflow is known to produce blank captures | the capture produces a >90% white frame | the pipeline will fall back to a textual description |
@@ -142,12 +142,12 @@ Source: `capture/run_captures.py` — `record_preferences()`, `record_password_c
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -162,3 +162,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

@@ -41,6 +41,9 @@ whenever your part is due.
 A process can set real things in motion — user accounts, virtual
 machines, invoices. Start only what you are responsible for.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -53,3 +56,8 @@ machines, invoices. Start only what you are responsible for.
   focused task or triggers the focused button.
 - If you lose your orientation, press `Ctrl+Home` (German keyboards:
   `Strg+Pos1`) to return to the top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

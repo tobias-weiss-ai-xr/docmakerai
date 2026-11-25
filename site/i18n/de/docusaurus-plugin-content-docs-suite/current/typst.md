@@ -55,6 +55,9 @@ Für längere Dokumente, die einem Chat oder dem [Wiki](/suite/xwiki)
 entwachsen, ist das Studio der Ort — und fertige PDFs passen direkt
 in Ihre [Cloud-Dateien](/suite/files).
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -67,3 +70,9 @@ in Ihre [Cloud-Dateien](/suite/files).
 - Im Editor schließt `Escape` Überlagerungen und Dialoge; verlieren
   Sie die Orientierung, bringt Sie `Strg+Pos1` zum Seitenanfang
   zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

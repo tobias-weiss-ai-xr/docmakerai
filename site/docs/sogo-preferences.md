@@ -27,7 +27,7 @@ Click the **gear icon** ⚙ (Settings) in the top toolbar to open the Preference
 
 The **General** tab allows you to configure:
 
-| Setting: Description | Description | Example |
+| Setting | Description | Example |
 |---------|-------------|---------|
 | **Language** | Interface language | Deutsch, English |
 | **Time Zone** | Your local time zone | Europe/Berlin |
@@ -53,7 +53,7 @@ Switch to the **Notifications** tab to configure:
 
 ### Calendar Defaults
 
-| Preference: Description | Description |
+| Preference | Description |
 |------------|-------------|
 | **Default View** | Day, Week, Month, or Year |
 | **Working Hours** | Define your work day start and end times |
@@ -61,7 +61,7 @@ Switch to the **Notifications** tab to configure:
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Settings not saving | Session timeout | Log out and back in, then try again |
 | Language change not applied | Requires page reload | Refresh the page after changing the language setting |
@@ -72,12 +72,12 @@ Switch to the **Notifications** tab to configure:
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -92,3 +92,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

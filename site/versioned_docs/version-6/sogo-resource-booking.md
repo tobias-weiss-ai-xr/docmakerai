@@ -67,3 +67,8 @@ already reserved at that time.
   starting point for exploring with `h` (headings) in your screen reader.
 - In the availability view, busy blocks are visual — the free/busy data
   behind them is read out as text by the screen reader.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

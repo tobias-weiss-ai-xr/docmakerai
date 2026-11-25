@@ -38,6 +38,9 @@ Sprechstunde, einen fürs Projekt.
 Teilen Sie den Link eines Raums, können Menschen ohne Konto beitreten
 — praktisch für Gäste von außerhalb der Hochschule.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -51,3 +54,9 @@ Teilen Sie den Link eines Raums, können Menschen ohne Konto beitreten
   verlieren Sie dort die Orientierung, verlässt `Escape`
   Vollbild-Ansichten, und außerhalb bringt `Strg+Pos1` Sie zum
   Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

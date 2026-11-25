@@ -45,7 +45,7 @@ Click the **Repeat** or **Recurrence** section to expand it:
 
 ![Recurrence options in event dialog](./assets/02-recurrence-options.png)
 
-| Option | Description: What this option does | Example Use |
+| Option | Description | Example Use |
 |:-------|:------------|:-------------|
 | **Daily** | Repeats every N days | Morning check-in |
 | **Weekly** | Repeats on selected weekdays | Standup every Mon/Wed/Fri |
@@ -168,15 +168,15 @@ important dates.
 
 SOGo 5 supports full keyboard navigation for recurring events.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | Create new event | `N` or `+` |
-| | Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
-| | Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
-| | Set recurrence end | Tab to end fields |
-| | Set interval | Arrow key + Tab |
-| | Save recurring event | `Ctrl+S` or `Enter` |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| Create new event | `N` or `+` |
+| Open recurrence settings | `Ctrl+Shift+R` or Tab to recurrence |
+| Set frequency | Arrow keys (Daily/Weekly/Monthly/Yearly) |
+| Set recurrence end | Tab to end fields |
+| Set interval | Arrow key + Tab |
+| Save recurring event | `Ctrl+S` or `Enter` |
 
 ### Screen Reader Workflow
 
@@ -206,11 +206,11 @@ SOGo 5 supports full keyboard navigation for recurring events.
 **Step 5: Save Recurring Event**
 1. Tab to "Save" button
 2. Press `Enter`
-3. Screen reader announces series created
+3. You should hear a confirmation that the series was created
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Recurrence, check box" | Recurrence available | Press Space to enable |
 | "Frequency, radio button" | How often to repeat | Arrow to select type |
@@ -230,3 +230,6 @@ SOGo 5 supports full keyboard navigation for recurring events.
 ### High Contrast Mode
 
 SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

@@ -64,6 +64,9 @@ openEduSuite sign-in with your suite account.
 Use the staff wiki for internal staff material, and the main wiki for
 content that is meant for everyone.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -77,3 +80,8 @@ content that is meant for everyone.
   focused link.
 - If you lose your orientation, `Ctrl+Home` (German keyboards:
   `Strg+Pos1`) returns you to the top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

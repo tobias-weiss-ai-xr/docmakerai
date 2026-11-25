@@ -91,3 +91,6 @@ SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzere
 - **Windows:** `Win+Strg+C` schaltet den Hochkontrast um
 - **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
 - **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
+
+- **Orientierung:** verlieren Sie Ihren Platz, drücken Sie `Strg+Pos1`, um zum
+  Seitenanfang zurückzukehren und von dort weiterzunavigieren.

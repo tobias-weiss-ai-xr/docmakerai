@@ -64,3 +64,9 @@ Kontoverwaltung. Siehe [Ihr Konto](/suite/sso-account).
 - Wenn Sie nicht wissen, wo Sie sich auf der Seite befinden, drücken Sie
   `Strg+Pos1`, um zum Seitenanfang zu springen, und erreichen Sie das
   Formular dann mit `Tab`.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

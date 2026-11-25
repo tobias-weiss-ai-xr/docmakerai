@@ -44,6 +44,9 @@ Zeigen Postfach und Suite-Mail dieselben Nachrichten, ist Ihr
 Konto über beide Wege erreichbar — die Anleitungen behandeln jede
 Oberfläche in ihrem eigenen Abschnitt.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -55,3 +58,9 @@ Oberfläche in ihrem eigenen Abschnitt.
   Lesereihenfolge; `Tab` führt durch Mailliste, Ordner und
   Werkzeugleiste.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

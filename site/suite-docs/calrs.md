@@ -82,6 +82,9 @@ slot — a booked slot blocks the time in [SOGo's calendar
 view](/sogo6/sogo-calendar-views) too, and free/busy stays honest
 in both directions.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -95,3 +98,8 @@ in both directions.
 - The dashboard uses ordinary links and tables; `Escape` closes
   dialogs. `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you
   to the top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

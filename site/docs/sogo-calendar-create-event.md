@@ -34,7 +34,7 @@ Day, Week, Month, and Year views using the buttons in the top toolbar.
 
 There are three ways to create an event:
 
-| Method | Action: Create event using different methods |
+| Method | Action |
 |--------|--------------------------------------------------------------|
 | **Click the + button** | Click the **+** (plus) button in the top toolbar |
 | **Double-click** | Double-click on any time slot in the calendar grid |
@@ -46,7 +46,7 @@ Choose whichever method you prefer. A new event dialog will appear.
 
 Fill in the event details:
 
-| Field | Description: What to enter in this field | Example |
+| Field | Description | Example |
 |-------|-------------------------------------------|---------|
 | **Title** | A short name for your event | "Team Standup" |
 | **Location** | Where the event takes place | "Conference Room B" |
@@ -98,7 +98,7 @@ instructions for the event. This field supports plain text.
 
 For events that repeat, click the **Repeat** section and choose a pattern:
 
-| Pattern | Example: Recurrence pattern description |
+| Pattern | Example |
 |---------|------------------------------------------|
 | **Daily** | Standup meeting every day |
 | **Weekly** | Team meeting every Tuesday |
@@ -148,21 +148,21 @@ This section describes creating a calendar event using keyboard and screen reade
 **Step 1: Navigate to Calendar Module**
 1. `Tab` or `Alt+M` to reach sidebar
 2. Arrows to "Calendar" - `Enter` to activate
-3. Screen reader: "Calendar, week view"
+3. You should hear: "Calendar, week view"
 4. Arrows to navigate to desired day
 
 **Step 2: Create Event (Three Methods)**
 
 **Method 1: Plus button**
 - `e` or `Shift+E` to focus New Event button
-- Screen reader: "New Event, button"
+- You should hear: "New Event, button"
 - `Enter` to activate - opens event dialog
 
 **Method 2: Double-click time slot**
 - Arrows to navigate calendar grid (navigation described below)
 - Locate desired time slot (e.g., Monday 10:00)
 - Double-click with `Enter` twice quickly OR use `Shift+Enter` then `Enter`
-- Screen reader: "Event dialog, Title field, edit"
+- You should hear: "Event dialog, Title field, edit"
 
 **Method 3: Date picker plus button**
 - `Tab` to mini-calendar on left side
@@ -203,17 +203,17 @@ Form fields appear in this order (screen reader focus sequence):
 
 **Step 4: Save Event**
 - `Tab` to Save button
-- Screen reader: "Save, button"
+- You should hear: "Save, button"
 - `Enter` to activate
 
 **Step 5: Verify Event Saved**
-- Screen reader announces: "Event saved"
+- You should hear: "Event saved"
 - Event appears on calendar at selected time
 - You can `Tab` to event title to open and read details
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Event dialog, Title field" | Dialog opened, focus on title | Enter event details |
 | "Title is invalid" | Empty or too short title | Enter a proper title |
@@ -261,3 +261,6 @@ Current time indicator: Red (#dc3545)
 Selected/focused: Light blue background (#e6f2ff)
 Text: Black (#000000) on light, White (#ffffff) on dark buttons
 ```
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

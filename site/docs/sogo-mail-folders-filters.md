@@ -94,7 +94,7 @@ Click **Add Filter** or the **+** button.
 
 Choose when the filter should apply:
 
-| Condition | Example: When this condition matches |
+| Condition | Example |
 | :--- | :--- |
 | **From contains** | `@example.com` → all mail from that domain |
 | **Subject contains** | `[Spam]` → flag potential spam |
@@ -109,7 +109,7 @@ You can combine multiple conditions:
 
 Choose what happens when conditions are met:
 
-| Action | Use Case: When to apply |
+| Action | Use Case |
 | :--- | :--- |
 | **Move to folder** | Sort into the right folder |
 | **Copy to folder** | Keep a copy in inbox + file in folder |
@@ -178,15 +178,15 @@ Start with 2–3 filters for your most common email patterns.
 
 SOGo 5 supports full keyboard navigation for mail folders and filters.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Mail | `Alt+M`, `Tab` to Mail |
-| | Open folder management | Right-click folder, gear icon |
-| | Create folder | `Ctrl+Shift+N` |
-| | Open filters | `F` or gear icon → Filters |
-| | Create new filter | `Ctrl+F` or "+" button |
-| | Navigate filter conditions | `Tab` between fields |
-| | Add action | `A` to add, `D` to delete action |
+| Navigate to Mail | `Alt+M`, `Tab` to Mail |
+| Open folder management | Right-click folder, gear icon |
+| Create folder | `Ctrl+Shift+N` |
+| Open filters | `F` or gear icon → Filters |
+| Create new filter | `Ctrl+F` or "+" button |
+| Navigate filter conditions | `Tab` between fields |
+| Add action | `A` to add, `D` to delete action |
 
 ### Screen Reader Workflow
 
@@ -219,7 +219,7 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Mail, tree view" | Mail folder list | Navigate folders |
 | "New folder, button" | Create folder action | Press Enter, type name |
@@ -231,3 +231,6 @@ SOGo 5 supports full keyboard navigation for mail folders and filters.
 ### High Contrast Mode
 
 SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

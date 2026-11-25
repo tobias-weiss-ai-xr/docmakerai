@@ -74,3 +74,9 @@ gewöhnliche Schaltflächen und Dropdowns: erreichen Sie sie mit
   Ausgangspunkt, um die Seite mit `h` (Überschriften) zu erschließen.
 - Die Rechtetabellen oben verwenden echtes Tabellen-Markup — Screenreader
   können sie Zeile für Zeile lesen.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

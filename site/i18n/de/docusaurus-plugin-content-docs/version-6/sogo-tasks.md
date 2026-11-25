@@ -83,3 +83,9 @@ Aufgaben werden in einem Kalender gespeichert — standardmäßig in Ihrem pers�
   in ihrer sichtbaren Reihenfolge: Title, Calendar, Due date, Start
   date, Status, Priority, Description.
 - Sie hören die Feldbezeichnungen, während Sie durch die Felder gehen.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

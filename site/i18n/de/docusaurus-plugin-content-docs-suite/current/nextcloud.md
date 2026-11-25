@@ -106,6 +106,9 @@ Die Suite betreibt bewusst zwei Clouds:
 
 Beide nutzen dasselbe SSO-Konto; die Dateien liegen in jeder getrennt.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -121,3 +124,9 @@ Beide nutzen dasselbe SSO-Konto; die Dateien liegen in jeder getrennt.
 - Der Dateibereich ist eine gewöhnliche Liste mit Werkzeugleiste — `Tab`
   geht sie durch, `Enter` öffnet. Die Kopfsuche, „Apps, Dateien,
   Nachrichten und mehr", zeigt ihre Tastenkombination direkt daneben.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

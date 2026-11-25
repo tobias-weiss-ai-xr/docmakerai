@@ -49,3 +49,6 @@ SOGo 5 currently does not have built-in high contrast mode. Browser/OS-level alt
 - **Windows:** `Win+Ctrl+C` toggles high contrast
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

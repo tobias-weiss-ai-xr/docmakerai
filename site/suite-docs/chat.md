@@ -54,6 +54,9 @@ Element encrypts by design: what you write stays between you and your
 rooms — including from the server operators, once devices are
 verified.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -65,3 +68,8 @@ verified.
   and the conversation, `Enter` sends what you have written.
 - If you lose your orientation, `Ctrl+Home` (German keyboards:
   `Strg+Pos1`) returns you to the top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

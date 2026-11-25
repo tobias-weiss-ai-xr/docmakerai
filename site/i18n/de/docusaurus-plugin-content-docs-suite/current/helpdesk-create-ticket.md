@@ -82,3 +82,9 @@ können den Status im Helpdesk verfolgen.
 - Das Nachrichtenfeld ist ein Rich-Text-Editor; `Tab` führt hinein und
   wieder hinaus. Verlieren Sie die Orientierung, drücken Sie
   `Strg+Pos1`, um zum Seitenanfang zurückzukehren.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

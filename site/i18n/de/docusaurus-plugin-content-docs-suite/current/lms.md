@@ -60,6 +60,9 @@ uni-weite ILIAS der Philipps-Universität (extern) — die
 Suite-Instanz hier ist die eigene der openEduSuite, mit Ihrem
 Suite-Konto.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -73,3 +76,9 @@ Suite-Konto.
   (`role=menuitem`); ihre Einträge tauchen so auch in der
   Element-Navigation eines Screenreaders auf.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

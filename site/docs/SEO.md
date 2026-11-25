@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide describes SEO and geo-targeting improvements implemented for the DocMaker AI SOGo documentation site at https://docmaker.ai/sogo5/ and /sogo6/.
+This guide describes SEO and geo-targeting for the DocMaker AI documentation site at https://tobias-weiss-ai-xr.github.io/docmakerai/. It covers the root landing page (`/`), the SOGo 5 and SOGo 6 guides (`/sogo5/`, `/sogo6/`), and the openEduSuite service pages (`/suite/`) in English and German.
 
 ## GEO Targeting
 
@@ -22,7 +22,7 @@ SOGo is widely used in German-speaking enterprise and educational environments. 
 
 ### Geo-Targeting Reference
 
-| Tag: Description | Value | Purpose |
+| Tag | Value | Purpose |
 |-----|-------|---------|
 | `geo.region` | `DE` | Primary market is German-speaking regions (DACH) in search results |
 | `geo.placename` | `Berlin` | Physical business location for local search ranking boost |
@@ -126,7 +126,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 ### Current Target Audience
 
-| Region: Description | Language | Audience |
+| Region | Language | Audience |
 |--------|----------|----------|
 | DACH | German (DE) | German-speaking SOGo users (Germany, Austria, Switzerland) |
 | Global | English (EN) | International community, developers, admins |
@@ -250,7 +250,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 ### Core Web Vitals Targets
 
-| Metric: Description | Target | Current | Issues |
+| Metric | Target | Current | Issues |
 |--------|--------|---------|--------|
 | LCP (Largest Contentful Paint) | < 2.5s | TBD | Large images making GIFs, unoptimized assets |
 | FID (First Input Delay) | < 100ms | TBD | Heavy JS, large DOM |
@@ -269,7 +269,7 @@ import PageSEO from '@site/src/components/PageSEO';
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
 | Select/activate | `Enter` or `Space` | Activate button or link |
@@ -298,9 +298,10 @@ This application supports keyboard navigation. No mouse required for completing 
 Docusaurus auto-generates `sitemap.xml` at `/sitemap.xml`
 
 **Included:**
-- Versioned pages (`/sogo5/*`, `/sogo6/*`)
-- Docs pages (`/*`)
-- Blog (if enabled)
+- Root landing page (`/`) in English and German, with `hreflang` alternates
+- Versioned pages (`/sogo5/*`, `/sogo6/*`) in English and German
+- openEduSuite pages (`/suite/*`) in English and German
+- Docs pages (`/*`) and their localized counterparts (`/de/*`)
 
 ## Robots.txt
 
@@ -327,13 +328,13 @@ Disallow: /sogo5/docs/
 <link rel="canonical" href={`https://tobias-weiss-ai-xr.github.io/docmakerai/${canonical}`} />
 ```
 
-## Next Steps
+## Maintenance Checks
 
-1. **Add PageSEO to key tutorials** (Calendar, Mail, Contacts workflows)
-2. **Implement image lazy loading** (use `loading="lazy"`)
-3. **Generate WebVTT captions** from task-first metadata
-4. **Add breadcrumbs with structured data**
-5. **Monitor Lighthouse scores** and optimize accordingly
+1. Keep `PageSEO` on every tutorial and suite page.
+2. Use `loading="lazy"` for images below the fold.
+3. Keep WebVTT captions in sync with the task-first metadata.
+4. Add breadcrumbs with structured data where the layout supports them.
+5. Monitor Lighthouse scores and bundle size after each deploy.
 ### High Contrast Mode
 
 SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:

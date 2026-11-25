@@ -46,6 +46,9 @@ Ein Prozess kann reale Dinge in Bewegung setzen — Benutzerkonten,
 virtuelle Maschinen, Rechnungen. Starten Sie nur, wofür Sie zuständig
 sind.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -59,3 +62,9 @@ sind.
   fokussierte Schaltfläche aus.
 - Verlieren Sie die Orientierung, drücken Sie `Strg+Pos1`, um zum
   Seitenanfang zurückzukehren.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

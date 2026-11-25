@@ -150,11 +150,11 @@ SOGo 5 supports full keyboard navigation for contacts management.
 1. `Tab` to the sidebar
 2. Arrow keys to "Contacts"
 3. `Enter` to activate Contacts module
-4. Screen reader: "Contacts module, heading, level 2"
+4. You should hear: "Contacts module, heading, level 2"
 
 **Step 2: Create New Contact**
 1. Focus on "+" button (top of contacts list)
-2. Screen reader: "New contact, button"
+2. You should hear: "New contact, button"
 3. `Enter` to activate
 
 **Step 3: Complete Contact Form**
@@ -171,7 +171,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 3. **Email** - recommended
    - Type primary email address
-   - Screen reader: "Email, edit, text@domain.com, editable combobox"
+   - You should hear: "Email, edit, text@domain.com, editable combobox"
 
 **Optional fields (tab through or skip with `Shift+Tab`):**
 
@@ -232,3 +232,6 @@ SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-
 3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
 **Contact Form Accessibility:** All form fields have associated labels. Use `Tab` to navigate between fields. Screen readers will announce field labels and current values.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

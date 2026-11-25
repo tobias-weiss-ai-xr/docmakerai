@@ -59,6 +59,9 @@ Welches Sie brauchen, steht auf der Hauptseite jeder Instanz — das
 Staff-Wiki hält interne Dokumentation, das Haupt-Wiki alles, das für
 alle gedacht ist.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -72,3 +75,9 @@ alle gedacht ist.
   fokussierten Link.
 - Verlieren Sie die Orientierung, bringt Sie `Strg+Pos1` zum
   Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

@@ -26,7 +26,7 @@ Every tutorial in this guide is built from real, step-by-step screen captures �
 
 ## What's Inside
 
-| Module: SOGo area | What you'll learn: Key topics covered | Tutorials: Number available |
+| Module | What you'll learn | Tutorials |
 |--------|-------------------|-----------|
 | 📧 **Mail** | Compose, read, organize, filter, and sign emails like a pro | 6 |
 | 📅 **Calendar** | Create events, set recurring meetings, share calendars, and check availability | 7 |
@@ -72,12 +72,12 @@ Every page has a **voting widget** at the bottom — click **🔥 Hot** if the p
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -92,3 +92,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

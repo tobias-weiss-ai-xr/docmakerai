@@ -44,6 +44,9 @@ If both mailbox and suite mail show the same messages for you,
 your account is served on both paths — the tutorials cover each
 interface in its own section.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -55,3 +58,8 @@ interface in its own section.
   reading order; `Tab` walks mail list, folders, and toolbar.
 - `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you to the
   top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

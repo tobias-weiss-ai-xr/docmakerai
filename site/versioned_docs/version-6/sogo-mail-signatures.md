@@ -126,36 +126,36 @@ SOGo 6 supports full keyboard navigation for managing signatures and identities.
 **Step 1: Open Settings**
 1. `Tab` to the gear icon (Settings) in the top toolbar
 2. `Enter` to open settings
-3. Screen reader: "Settings menu"
+3. You should hear: "Settings menu"
 
 **Step 2: Navigate to Mail → IMAP Accounts**
 1. `Tab` through the settings sidebar to "Mail" option
 2. `Enter` to expand Mail options
 3. Arrow keys or `Tab` to "IMAP Accounts" link
 4. `Enter` to open the account list
-5. Screen reader: "IMAP Accounts"
+5. You should hear: "IMAP Accounts"
 
 **Step 3: Open Your Account and Add a New Identity**
 1. `Tab` to your email account in the list, `Enter` to open it
 2. `Tab` to the "New Identity" button, `Enter`
-3. Screen reader: "New Identity, dialog" or similar
+3. You should hear: "New Identity, dialog" or similar
 
 **Step 4: Name and Write Your Signature**
 1. `Tab` to the name field
 2. Type a name (e.g., "Professional")
 3. `Tab` to the signature text area
 4. Type your signature content (name, title, contact info)
-5. Screen reader: "Name, edit" then "Signature, content editable"
+5. You should hear: "Name, edit" then "Signature, content editable"
 
 **Step 5: Set the Signature Placement**
 1. `Tab` to the **General** tab of the identity and open it
 2. There, choose whether and where the signature is inserted automatically
-3. Screen reader: "General, tab"
+3. You should hear: "General, tab"
 
 **Step 6: Save the Identity**
 1. `Tab` to the "Save" button
 2. `Enter` to apply changes
-3. Screen reader: "Signature saved" or "Mail Preferences Saved"
+3. You should hear: "Signature saved" or "Mail Preferences Saved"
 
 **Switching Sender Identity (When Composing)**
 
@@ -164,12 +164,12 @@ SOGo 6 supports full keyboard navigation for managing signatures and identities.
 
 **Step 2: Change From Address**
 1. `Tab` to the From field
-2. Screen reader: "From, [current address]"
+2. You should hear: "From, [current address]"
 3. `Tab` to the **X** next to your email address and press `Enter`
 4. The list of available identities opens above it
 5. Arrow keys to select a different identity
 6. `Enter` to confirm selection
-7. Screen reader: "From, [selected identity]"
+7. You should hear: "From, [selected identity]"
 
 **Common Screen Reader Announcements:**
 
@@ -202,3 +202,6 @@ SOGo 6 supports theme customization (light/dark mode) via user preferences. Work
 3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
 **Signature Settings Accessibility:** All form fields (name, text area, placement) have associated labels. Use `Tab` to navigate between fields. Screen readers announce field labels and current values. The Signatures list supports standard keyboard navigation with arrow keys and Enter to activate.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

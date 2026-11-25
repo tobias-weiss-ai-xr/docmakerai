@@ -51,7 +51,7 @@ Email: john.doe@company.com
 
 Select when the signature is inserted:
 
-| Option | Behavior: How signature is inserted |
+| Option | Behavior |
 |:-------|:----------|
 | **Append to new messages only** | Signature added to new emails, not replies |
 | **Append to all messages** | Added to both new and replied/forwarded messages |
@@ -150,7 +150,7 @@ manage multiple email addresses.
 
 SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
 | Open Settings | `Alt+S` or `Tab` to gear icon, `Enter` | Top toolbar |
 | Navigate to Mail section | `Tab` through settings sidebar | Arrow keys to Mail option |
@@ -172,41 +172,41 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 **Step 1: Open Settings**
 1. `Tab` to the gear icon (Settings) in the top toolbar
 2. `Enter` to open settings
-3. Screen reader: "Settings menu"
+3. You should hear: "Settings menu"
 
 **Step 2: Navigate to Mail → Signatures**
 1. `Tab` through the settings sidebar to "Mail" option
 2. `Enter` to expand Mail options
 3. Arrow keys or `Tab` to "Signatures" link
 4. `Enter` to open signature management
-5. Screen reader: "Mail Signatures"
+5. You should hear: "Mail Signatures"
 
 **Step 3: Add a New Signature**
 1. `Tab` to "Add Signature" or "+" button
 2. `Enter` to create new signature
-3. Screen reader: "Add Signature, dialog" or "New signature, edit"
+3. You should hear: "Add Signature, dialog" or "New signature, edit"
 
 **Step 4: Name and Write Your Signature**
 1. `Tab` to the signature name field
 2. Type a name (e.g., "Professional")
 3. `Tab` to the signature text area
 4. Type your signature content (name, title, contact info)
-5. Screen reader: "Name, edit" then "Signature, content editable"
+5. You should hear: "Name, edit" then "Signature, content editable"
 
 **Step 5: Set Signature Placement**
 1. `Tab` to placement dropdown
 2. Arrow keys to select option: "Append to new messages only", "Append to all messages", or "No automatic insertion"
-3. Screen reader: "Placement, combo box, [selected option]"
+3. You should hear: "Placement, combo box, [selected option]"
 
 **Step 6: Set as Default (Optional)**
 1. `Tab` to default signature dropdown if available
 2. Arrow keys to select your preferred default
-3. Screen reader: "Default signature, combo box"
+3. You should hear: "Default signature, combo box"
 
 **Step 7: Save the Signature**
 1. `Tab` to the "Save" button
 2. `Enter` to apply changes
-3. Screen reader: "Signature saved" or "Mail Preferences Saved"
+3. You should hear: "Signature saved" or "Mail Preferences Saved"
 
 **Switching Sender Identity (When Composing)**
 
@@ -215,15 +215,15 @@ SOGo 5 supports full keyboard navigation for managing signatures and identities.
 
 **Step 2: Change From Address**
 1. `Tab` backwards (`Shift+Tab`) from To field to locate the From field
-2. Screen reader: "From, combo box, [current address]"
+2. You should hear: "From, combo box, [current address]"
 3. `Enter` or arrow keys to expand dropdown
 4. Arrow keys to select different identity
 5. `Enter` to confirm selection
-6. Screen reader: "From, [selected identity]"
+6. You should hear: "From, [selected identity]"
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Mail Signatures, heading" | Signature settings page loaded | Proceed to add or edit signatures |
 | "Add Signature, button" | Create new signature | Press Enter to start |
@@ -244,3 +244,6 @@ SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-
 3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
 **Signature Settings Accessibility:** All form fields (name, text area, placement) have associated labels. Use `Tab` to navigate between fields. Screen readers announce field labels and current values. The Signatures list supports standard keyboard navigation with arrow keys and Enter to activate.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

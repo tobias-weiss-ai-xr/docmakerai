@@ -89,6 +89,9 @@ README des Projekts auf GitHub.
 - Das Projekt ist die Einheit: Seine Sessions, Dateien und
   Artefakte sind alle über seine Befehlspalette erreichbar.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -104,3 +107,9 @@ README des Projekts auf GitHub.
 - Die Palette nennt Strg+` (die Backtick-Taste) als Kürzel zum Ein-
   und Ausschalten des Projekt-Terminals.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

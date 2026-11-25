@@ -126,3 +126,9 @@ die für Sie verfügbaren Anwendungen.
 - Die Links unten sind einfache Listen — `Tab` geht sie in Leserichtung
   durch; jeder Linkname verrät, wohin er führt. Verlieren Sie die
   Orientierung, führt `Strg+Pos1` zurück zum Seitenanfang.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

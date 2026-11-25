@@ -181,18 +181,18 @@ SOGo 6 supports full keyboard navigation for vacation settings.
 1. `Tab` to reach the sidebar
 2. `Tab` to three-dot menu (⋯) (settings)
 3. `Enter` to open menu
-4. Screen reader: "Settings, popup menu..."
+4. You should hear: "Settings, popup menu..."
 
 **Step 2: Navigate to Vacation**
 1. Arrow keys to "Vacation" in menu
 2. `Enter` to open Vacation settings
-3. Screen reader: "Vacation, heading, level 3"
+3. You should hear: "Vacation, heading, level 3"
 
 **Step 3: Enable Auto-Reply**
 1. `Tab` to "Enable auto-reply" toggle
-2. Screen reader: "Enable auto-reply, checkbox, not checked"
+2. You should hear: "Enable auto-reply, checkbox, not checked"
 3. `Space` to toggle ON
-4. Screen reader: "Enable auto-reply, checkbox, checked"
+4. You should hear: "Enable auto-reply, checkbox, checked"
 
 **Step 4: Set Date Range**
 1. `Tab` to Start date field
@@ -220,7 +220,7 @@ SOGo 6 supports full keyboard navigation for vacation settings.
 **Step 7: Save Vacation Settings**
 1. `Tab` to Save button
 2. `Enter` to activate
-3. Screen reader: "Save, button"
+3. You should hear: "Save, button"
 4. You should hear: "Settings saved" or "Auto-reply enabled"
 
 **Common Screen Reader Announcements:**
@@ -254,3 +254,6 @@ SOGo 6 supports theme customization (light/dark mode) via user preferences. Work
 - Toggle ON (checked) → Usually blue or highlighted background
 - Toggle OFF (unchecked) → Usually gray or unhighlighted  
 - You should hear the checked/unchecked status
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

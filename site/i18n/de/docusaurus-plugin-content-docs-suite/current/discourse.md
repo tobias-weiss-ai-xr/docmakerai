@@ -43,6 +43,9 @@ einen Bestätigungscode hinschickt. Nach der Anmeldung aus dem
 ein Thema und antworten mit der Schaltfläche **Reply** unter dem
 letzten Beitrag.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -54,3 +57,9 @@ letzten Beitrag.
   Kategorieliste, Themenliste, dann die Schaltflächen — `Tab`
   führt hindurch, `Enter` öffnet.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

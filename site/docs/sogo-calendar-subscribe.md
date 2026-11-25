@@ -25,7 +25,7 @@ team calendars, or any `.ics` feed available online.
 
 You need the web address (URL) of an iCal feed. Common examples:
 
-| Source | Example URL: Calendar address example |
+| Source | Example URL |
 |:-------|:------------|
 | Public holidays | `https://calendar.google.com/calendar/ical/.../basic.ics` |
 | Team calendar | `https://teamup.com/.../events.ics` |
@@ -52,7 +52,7 @@ In the subscription dialog:
 
 ### Step 4: Configure Sync Options
 
-| Option | Description: What this option does |
+| Option | Description |
 |:-------|:------------|
 | **Refresh interval** | How often to check for updates (every hour, daily, etc.) |
 | **Remove reminders** | Strip alarm information from external events |
@@ -123,15 +123,15 @@ third-party calendar feeds.
 
 SOGo 5 supports full keyboard navigation for subscribing to calendars.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
-| | Open subscription dialog | `Ctrl+Shift+S` or gear icon |
-| | Select calendar type | Arrow keys in dropdown |
-| | Enter calendar URL | Tab to URL field, type |
-| | Display name field | Tab, type name |
-| | Refresh frequency | Arrow key to select |
-| | Subscribe or save | `Ctrl+S` or `Enter` |
+| Navigate to Calendar | `Alt+M`, `Tab` to Calendar |
+| Open subscription dialog | `Ctrl+Shift+S` or gear icon |
+| Select calendar type | Arrow keys in dropdown |
+| Enter calendar URL | Tab to URL field, type |
+| Display name field | Tab, type name |
+| Refresh frequency | Arrow key to select |
+| Subscribe or save | `Ctrl+S` or `Enter` |
 
 ### Screen Reader Workflow
 
@@ -163,11 +163,11 @@ SOGo 5 supports full keyboard navigation for subscribing to calendars.
 **Step 5: Complete Subscription**
 1. Tab to "Subscribe" or "Save" button
 2. Press `Enter`
-3. Screen reader announces calendar added
+3. You should hear a confirmation that the calendar was added
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |--------------------------------------|------------------------|-------------------|
 | "Subscribe to calendar, dialog" | Subscription dialog open | Select calendar type |
 | "Calendar type, combo box" | Calendar format selector | Arrow to select type |
@@ -187,3 +187,6 @@ SOGo 5 supports full keyboard navigation for subscribing to calendars.
 ### High Contrast Mode
 
 SOGo 5's dark mode and high contrast mode work with all sections described above. Toggle via: Settings button (gear icon) → General → Theme → Dark/High Contrast.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

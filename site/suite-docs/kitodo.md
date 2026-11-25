@@ -52,3 +52,8 @@ library team.
   fields, then the sign-in button — `Tab` walks it in order.
 - `Ctrl+Home` (German keyboards: `Strg+Pos1`) returns you to the
   top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

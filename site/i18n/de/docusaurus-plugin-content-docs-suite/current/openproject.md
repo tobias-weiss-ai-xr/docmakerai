@@ -56,6 +56,9 @@ Neu im Projekt? Beginnen Sie bei der Übersicht, lesen Sie dann die
 Arbeitspakete mit Ihrem Namen — die sind Ihre. Fragen zu einer Aufgabe
 gehören in ihre Kommentare oder in den [Chat](/suite/chat).
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -69,3 +72,9 @@ gehören in ihre Kommentare oder in den [Chat](/suite/chat).
 - Tabellen melden ihre Spalten und Zeilen auf die übliche Weise;
   verlieren Sie die Orientierung, bringt Sie `Strg+Pos1` zum
   Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

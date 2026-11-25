@@ -1,67 +1,67 @@
-# Website
+# docmakerai — Documentation site
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Docusaurus site for the SOGo user guide (multi-version: SOGo 5 + SOGo 6) and
+the openEduSuite section. Built by [DocMaker AI](../../README.md).
 
-## Installation
+## Prerequisites
 
-```bash
-yarn
-```
+- Node.js >= 20 and npm
+- Playwright browsers for the e2e tests (`npx playwright install`)
 
 ## Local Development
 
 ```bash
-yarn start
+npm install
+npm run start        # dev server, http://localhost:3000 (base path /docmakerai/)
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Most changes are reflected live without restarting the server.
 
 ## Build
 
 ```bash
-yarn build
+npm run build        # dual-locale (en + de) production build into build/
+npm run serve        # serve the built site locally
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+The npm `postbuild` hook regenerates `build/sitemap.xml` with en/de
+hreflang alternates (`tools/generate_sitemap.py`).
 
-## Deployment
-
-Using SSH:
+## Code Quality
 
 ```bash
-USE_SSH=true yarn deploy
+npm run typecheck    # tsc --noEmit
+npm test             # (none wired; python tooling lives at ../scripts, ../accessibility)
+npm run test:e2e     # Playwright suite — runs against the live deploy by default;
+                     # use PLAYWRIGHT_BASE_URL=http://localhost:3000 for local runs
 ```
 
-Not using SSH:
+Docs/table/content regressions are guarded by pytest in the repo root:
 
 ```bash
-GIT_USER=<Your GitHub username> yarn deploy
+cd .. && python3 -m pytest scripts/tests/ accessibility/tests/ -q
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Structure
+
+| Path | What it is |
+|------|------------|
+| `docs/` | Current (unversioned) SOGo tutorials — EN source of truth |
+| `versioned_docs/version-5/`, `version-6/` | Deployed tutorial versions |
+| `i18n/de/` | German mirrors (docs + suite), localized by content folder |
+| `suite-docs/` | openEduSuite app guides (EN) |
+| `src/pages/`, `src/components/LandingPage.tsx` | Root landing page (en/de) |
+| `e2e/` | Playwright end-to-end tests |
+| `tools/`, `plugins/` | Build tooling |
+
 ## Accessibility
 
-### Keyboard Navigation
+The site ships an accessibility-validation gate (`../accessibility/validate.py`)
+and the guides follow the writing guidelines in `../AGENTS.md` (screen-reader
+workflows, keyboard navigation, high-contrast notes). All pages support
+keyboard navigation and browser/OS-level high-contrast and dark mode.
 
-This application supports keyboard navigation. No mouse required for completing this task.
+## Deploy
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
-|--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
-
-**Screen Reader Navigation Order:**
-1. Sidebar navigation → `Tab` to enter
-2. Module content → `Arrow keys` to navigate
-3. Action buttons → `Space` or `Enter` to activate
-4. Forms → `Tab` between fields, arrows for dropdowns
-
-### High Contrast Mode
-
-SOGo supports high contrast and dark mode. Toggle via user preferences or use browser/OS-level accessibility settings:
-- **Windows:** `Win+Ctrl+C` toggles high contrast
-- **macOS:** System Preferences → Accessibility → Display → Increase contrast
-- **Browser Extensions:** Dark Reader, High Contrast (Chrome)
-
+GitHub Pages via `.github/workflows/deploy.yml` on `main`; PR previews are
+built under `/preview/pr-<N>/`.

@@ -141,8 +141,8 @@ const config: Config = {
                 href: 'https://github.com/tobias-weiss-ai-xr/docmakerai',
               },
               {
-                label: 'SOGo',
-                href: 'https://www.sogo.nu',
+                label: 'openedusuite.org',
+                href: 'https://www.openedusuite.org',
               },
             ],
           },

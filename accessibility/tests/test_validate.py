@@ -126,41 +126,72 @@ class TestValidateFile:
         assert len(table_issues) == 1
         assert "header" in table_issues[0]["message"].lower()
 
-    def test_keyboard_navigation_section_present(self, tmp_path):
+    CLEAN_ACCESS = (
+        "## Accessibility\n\n"
+        "Use `Tab` (repeat as needed) until you hear the field; `Enter` activates it.\n\n"
+        "- **Orientation:** press `Ctrl+Home` / `Strg+Pos1` to return to the top.\n"
+        "- **High contrast:** use OS/browser settings or Dark Reader.\n"
+    )
+
+    def test_compliant_accessibility_section(self, tmp_path):
         md = tmp_path / "has_kb.md"
-        md.write_text("# Keyboard Navigation\nUse Tab to navigate.\n")
+        md.write_text("# Title\n\n" + self.CLEAN_ACCESS)
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        kb_issues = [i for i in issues if i["type"] == "missing_keyboard_section"]
-        assert kb_issues == []
+        assert issues == []
 
-    def test_missing_keyboard_section(self, tmp_path):
+    def test_missing_accessibility_section(self, tmp_path):
         md = tmp_path / "no_kb.md"
         md.write_text("# Just a title\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        kb_issues = [i for i in issues if i["type"] == "missing_keyboard_section"]
+        kb_issues = [i for i in issues if i["type"] == "missing_accessibility_section"]
         assert len(kb_issues) == 1
-        assert kb_issues[0]["fixable"] is False
+        assert kb_issues[0]["severity"] == "error"
 
-    def test_gif_with_screen_reader_section(self, tmp_path):
-        md = tmp_path / "gif_ok.md"
+    def test_accessibility_section_without_keyboard_guidance(self, tmp_path):
+        md = tmp_path / "no_kb_guidance.md"
         md.write_text(
-            "![animation](demo.gif)\n\n## Screen Reader: Workflow\nDescription for blind users.\n"
+            "# Title\n\n## Accessibility\n\nDescriptive text only.\n"
+            "High contrast mode is supported.\n"
         )
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        sr_issues = [i for i in issues if i["type"] == "missing_screen_reader"]
-        assert sr_issues == []
+        kb = [i for i in issues if i["type"] == "missing_keyboard_guidance"]
+        assert len(kb) == 1
+        assert kb[0]["severity"] == "error"
 
-    def test_gif_without_screen_reader(self, tmp_path):
-        md = tmp_path / "gif_bad.md"
-        md.write_text("![demo](demo.gif)\n")
+    def test_forbidden_tab_chain(self, tmp_path):
+        md = tmp_path / "tab_chain.md"
+        md.write_text("# Title\n\n" + self.CLEAN_ACCESS + "\nTab from address bar\n")
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
-        sr_issues = [i for i in issues if i["type"] == "missing_screen_reader"]
-        assert len(sr_issues) == 1
-        assert sr_issues[0]["fixable"] is False
+        tab = [i for i in issues if i["type"] == "forbidden_tab_chain"]
+        assert len(tab) == 1
+        assert tab[0]["severity"] == "error"
+
+    def test_predicted_announcement(self, tmp_path):
+        md = tmp_path / "announce.md"
+        md.write_text("# Title\n\n" + self.CLEAN_ACCESS + "\nScreen reader announces: \"Login\"\n")
+        validator = AccessibilityValidator()
+        issues = validator.validate_file(md)
+        ann = [i for i in issues if i["type"] == "predicted_announcement"]
+        assert len(ann) == 1
+        assert ann[0]["severity"] == "error"
+
+    def test_orientation_hint_is_a_warning(self, tmp_path):
+        md = tmp_path / "no_orientation.md"
+        md.write_text(
+            "# Title\n\n## Accessibility\n\nUse `Tab` and `Enter`.\n"
+            "High contrast mode is supported.\n"
+        )
+        validator = AccessibilityValidator()
+        issues = validator.validate_file(md)
+        hint = [i for i in issues if i["type"] == "missing_orientation_hint"]
+        assert len(hint) == 1
+        assert hint[0]["severity"] == "warning"
+        # warnings are not blocking by default
+        assert validator.errors(issues) == []
 
     def test_accessibility_with_high_contrast_mention(self, tmp_path):
         md = tmp_path / "hc_ok.md"
@@ -185,7 +216,6 @@ class TestValidateFile:
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         types = {i["type"] for i in issues}
-        assert "missing_keyboard_section" in types
         assert "missing_accessibility_section" in types
 
 
@@ -309,24 +339,27 @@ class TestPrintReport:
                 "type": "heading_hierarchy",
                 "message": "Bad heading",
                 "file": "test.md",
+                "severity": "warning",
                 "fixable": True,
             },
             {
                 "line": None,
-                "type": "missing_keyboard_section",
-                "message": "No KB",
+                "type": "missing_accessibility_section",
+                "message": "No accessibility section",
                 "file": "test.md",
+                "severity": "error",
                 "fixable": False,
             },
         ]
         validator.print_report(issues)
         captured = capsys.readouterr()
         assert "Total issues found: 2" in captured.out
+        assert "errors: 1, warnings: 1" in captured.out
         assert "Heading Hierarchy" in captured.out
-        assert "Missing Keyboard Section" in captured.out
+        assert "Missing Accessibility Section" in captured.out
         assert "test.md" in captured.out
         assert "HEADING_HIERARCHY" in captured.out
-        assert "MISSING_KEYBOARD_SECTION" in captured.out
+        assert "MISSING_ACCESSIBILITY_SECTION" in captured.out
 
 
 # ---------------------------------------------------------------------------

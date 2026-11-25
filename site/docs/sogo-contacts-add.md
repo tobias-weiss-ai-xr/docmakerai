@@ -42,7 +42,7 @@ A blank contact form will appear.
 
 Fill in the contact's details. The most commonly used fields are:
 
-| Field | Description: What to enter | Recommended: Always fill? |
+| Field | Description | Recommended |
 | :--- | :--- | :--- |
 | **First Name** | Given name | ✅ Always |
 | **Last Name** | Family name | ✅ Always |
@@ -61,7 +61,7 @@ but you can customize it (e.g., "John D. (IT Support)").
 
 Scroll down to access more fields:
 
-| Section | Fields: Available details |
+| Section | Fields |
 | :--- | :--- |
 | **Address** | Street, City, ZIP, Country |
 | **Other Email** | Secondary email addresses |
@@ -133,15 +133,15 @@ attendees to calendar events, or searching for colleagues.
 
 SOGo 5 supports full keyboard navigation for contacts management.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
-| | New contact | `+` or `C` | Creates new contact |
-| | Navigate contacts | `J` / `K` | Next/previous contact |
-| | Search contacts | `/` | Focus search field |
-| | Edit contact | `E` | Edit selected contact |
-| | Delete contact | `D` | Delete selected contact |
-| | Cancel | `Escape` | Close dialog |
+| Navigate to Contacts | `Alt+M`, `Tab` to Contacts |
+| New contact | `+` or `C` | Creates new contact |
+| Navigate contacts | `J` / `K` | Next/previous contact |
+| Search contacts | `/` | Focus search field |
+| Edit contact | `E` | Edit selected contact |
+| Delete contact | `D` | Delete selected contact |
+| Cancel | `Escape` | Close dialog |
 
 ### Screen Reader Workflow
 
@@ -149,11 +149,11 @@ SOGo 5 supports full keyboard navigation for contacts management.
 1. `Alt+M` or `Tab` to sidebar
 2. Arrow keys to "Contacts"
 3. `Enter` to activate Contacts module
-4. Screen reader: "Contacts module, heading, level 2"
+4. You should hear: "Contacts module, heading, level 2"
 
 **Step 2: Create New Contact**
 1. Focus on "+" button (top of contacts list)
-2. Screen reader: "New contact, button"
+2. You should hear: "New contact, button"
 3. `Enter` to activate
 
 **Step 3: Complete Contact Form**
@@ -170,7 +170,7 @@ Form fields appear in this order (screen reader focus sequence):
 
 3. **Email** - recommended
    - Type primary email address
-   - Screen reader: "Email, edit, text@domain.com, editable combobox"
+   - You should hear: "Email, edit, text@domain.com, editable combobox"
 
 **Optional fields (tab through or skip with `Shift+Tab`):**
 
@@ -196,12 +196,12 @@ Form fields appear in this order (screen reader focus sequence):
 **Step 5: Save Contact**
 - `Tab` to Save button
 - `Enter` to activate
-- Screen reader announces: "Contact saved"
+- You should hear: "Contact saved"
 - Contact appears in contact list
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Email, editable combobox" | Email field with suggestions | Type email to see suggestions |
 | "Select address book, combo box" | Choose where to save contact | `Arrow` to select, `Enter` to confirm |
@@ -236,3 +236,6 @@ SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-
 3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
 **Contact Form Accessibility:** All form fields have associated labels. Use `Tab` to navigate between fields. Screen readers will announce field labels and current values.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

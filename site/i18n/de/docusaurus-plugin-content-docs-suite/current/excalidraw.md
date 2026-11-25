@@ -46,6 +46,9 @@ und loszuzeichnen.
 - **Excalidraw** — lautes Denken: Workshops, Entwürfe, schnelle
   Erklärungen.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -61,3 +64,9 @@ und loszuzeichnen.
   das Handwerkzeug (`H`); die App zeigt diesen Hinweis auf dem
   Willkommensbildschirm.
 - `Strg+Pos1` bringt Sie zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

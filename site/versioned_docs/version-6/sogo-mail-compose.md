@@ -169,11 +169,11 @@ SOGo 6 supports full keyboard navigation for composing and sending emails.
 **Step 1: Navigate to Mail Module**
 1. `Tab` to the sidebar navigation
 2. Arrow keys to "Mail" - `Enter` to activate
-3. Screen reader: "Mail module, inbox view"
+3. You should hear: "Mail module, inbox view"
 
 **Step 2: Open Compose Window**
 1. `c` to open new message compose window
-2. Screen reader: "Compose, new message window"
+2. You should hear: "Compose, new message window"
 3. Alternatively: `Tab` to "Compose" button, `Enter` to activate
 
 **Step 3: Address the Message**
@@ -182,7 +182,7 @@ Form fields in focus order:
 
 1. **To field** - required
    - Type recipient email address or start typing a contact name
-   - Screen reader: "To, edit, editable combobox"
+   - You should hear: "To, edit, editable combobox"
    - `Tab` to next field
 
 2. **Cc field** - optional
@@ -196,23 +196,23 @@ Form fields in focus order:
 **Step 4: Write Subject**
 1. Type a clear subject line
 2. `Tab` to next field
-3. Screen reader: "Subject, edit"
+3. You should hear: "Subject, edit"
 
 **Step 5: Write Message Body**
 1. Type your message in the large text area
 2. For formatting: use the toolbar buttons (B, I, U)
-3. Screen reader: "Message body, content editable"
+3. You should hear: "Message body, content editable"
 
 **Step 6: Attach Files (Optional)**
 1. `Tab` to the attach button, then `Enter`
 2. Navigate to file using standard file dialog
 3. Select file and confirm
-4. Screen reader: "Attachment, filename.ext"
+4. You should hear: "Attachment, filename.ext"
 
 **Step 7: Send or Save as Draft**
 - **Send:** `Tab` to the Send button, `Enter` to activate
 - **Save as Draft:** `Tab` to the draft/save button, then `Enter`
-- Screen reader: "Message sent" or "Message saved to drafts"
+- You should hear: "Message sent" or "Message saved to drafts"
 
 **Common Screen Reader Announcements:**
 
@@ -248,3 +248,6 @@ SOGo 6 supports theme customization (light/dark mode) via user preferences. Work
 3. **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
 **Compose Window Accessibility:** All form fields (To, Cc, Bcc, Subject, Body) have associated labels. Use `Tab` to navigate between fields. Screen readers announce field labels and current values. The formatting toolbar buttons are labeled for screen reader use.
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

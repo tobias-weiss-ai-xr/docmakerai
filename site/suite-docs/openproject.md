@@ -51,6 +51,9 @@ New to a project? Start at its overview, then read the work packages
 assigned to you — yours carry your name. Questions about a task belong
 in its comments or in the [chat](/suite/chat).
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -64,3 +67,8 @@ in its comments or in the [chat](/suite/chat).
 - Tables announce their columns and rows in the standard way; if you
   lose your orientation, `Ctrl+Home` (German keyboards: `Strg+Pos1`)
   returns you to the top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

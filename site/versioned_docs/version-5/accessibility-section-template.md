@@ -30,7 +30,7 @@ SOGo supports full keyboard navigation. No mouse required for completing this ta
 3. Action buttons → `Space` or `Enter` to activate
 4. Forms → `Tab` between fields, arrows for dropdowns
 
-### Screen Reader: [Topic]
+### You should hear: [Topic]
 
 This section describes the workflow for screen reader users (JAWS, NVDA, VoiceOver).
 

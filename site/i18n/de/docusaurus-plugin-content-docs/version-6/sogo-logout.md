@@ -58,3 +58,6 @@ SOGo 6 verfügt derzeit über keinen integrierten Hochkontrastmodus. Browser-/Be
 - **macOS:** Systemeinstellungen → Bedienungshilfen → Anzeige → Kontrast erhöhen
 - **Browser-Erweiterungen:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientierung:** verlieren Sie Ihren Platz, drücken Sie `Strg+Pos1`, um zum
+  Seitenanfang zurückzukehren und von dort weiterzunavigieren.

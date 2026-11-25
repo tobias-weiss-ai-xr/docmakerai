@@ -35,7 +35,7 @@ Toggle **Enable auto-reply** to **ON**.
 
 ### Step 3: Set the Date Range
 
-| Field | Description: What this field is for | Example: Example value |
+| Field | Description | Example |
 |:------|:------------|:--------|
 | **Start date** | When your absence begins | 2026-07-15 |
 | **End date** | When you return | 2026-07-28 |
@@ -70,7 +70,7 @@ John Doe
 
 ### Step 5: Choose Reply Options
 
-| Option | Description: What this option does |
+| Option | Description |
 |:-------|:------------|
 | **Send reply to** | Everyone, or only people in your contacts/address book |
 | **Repeated replies** | Send once per sender (default) or every time they write |
@@ -154,15 +154,15 @@ colleagues can see your availability at a glance.
 
 SOGo 5 supports full keyboard navigation for vacation settings.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|----------------------------------|---------------------------|
-| | Open settings | `Alt+M`, `Tab` to gear icon |
-| | Navigate settings | `Arrow keys` in settings menu |
-| | Open Vacation settings | `V` or search for "Vacation" |
-| | Enable toggle | `Space` to toggle ON/OFF |
-| | Navigate form fields | `Tab` between fields |
-| | Save settings | `Ctrl+S` or Enter on Save button |
-| | Cancel | `Escape` closes dialog |
+| Open settings | `Alt+M`, `Tab` to gear icon |
+| Navigate settings | `Arrow keys` in settings menu |
+| Open Vacation settings | `V` or search for "Vacation" |
+| Enable toggle | `Space` to toggle ON/OFF |
+| Navigate form fields | `Tab` between fields |
+| Save settings | `Ctrl+S` or Enter on Save button |
+| Cancel | `Escape` closes dialog |
 
 ### Screen Reader Workflow
 
@@ -170,18 +170,18 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 1. `Alt+M` to focus sidebar
 2. `Tab` to gear icon (settings)
 3. `Enter` to open menu
-4. Screen reader: "Settings, popup menu..."
+4. You should hear: "Settings, popup menu..."
 
 **Step 2: Navigate to Vacation**
 1. Arrow keys to "Vacation" in menu
 2. `Enter` to open Vacation settings
-3. Screen reader: "Vacation, heading, level 3"
+3. You should hear: "Vacation, heading, level 3"
 
 **Step 3: Enable Auto-Reply**
 1. `Tab` to "Enable auto-reply" toggle
-2. Screen reader: "Enable auto-reply, checkbox, not checked"
+2. You should hear: "Enable auto-reply, checkbox, not checked"
 3. `Space` to toggle ON
-4. Screen reader: "Enable auto-reply, checkbox, checked"
+4. You should hear: "Enable auto-reply, checkbox, checked"
 
 **Step 4: Set Date Range**
 1. `Tab` to Start date field
@@ -196,7 +196,7 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 1. `Tab` to message text area
 2. Type auto-reply message
 3. For multi-line: Enter to create new lines
-4. Screen reader announces: "Message, content editable, blank"
+4. You should hear: "Message, content editable, blank"
 
 **Step 6: Configure Reply Options**
 1. `Tab` to "Send reply to" dropdown
@@ -209,12 +209,12 @@ SOGo 5 supports full keyboard navigation for vacation settings.
 **Step 7: Save Vacation Settings**
 1. `Tab` to Save button
 2. `Enter` to activate
-3. Screen reader: "Save, button"
-4. Screen reader announces: "Settings saved" or "Auto-reply enabled"
+3. You should hear: "Save, button"
+4. You should hear: "Settings saved" or "Auto-reply enabled"
 
 **Common Screen Reader Announcements:**
 
-| Announcement: What screen reader says | Meaning: What it means | Action: What to do |
+| Announcement | Meaning | Action |
 |-------------------------------|----------------------|-----------------|
 | "Enable auto-reply, checked/unchecked" | Toggle state | Press Space to change |
 | "Start date, edit" | Date field ready | Enter date (YYYY-MM-DD) |
@@ -234,4 +234,7 @@ SOGo 5 currently does not have built-in high contrast mode. Workarounds for low-
 **Important Toggle States:**
 - Toggle ON (checked) → Usually blue or highlighted background
 - Toggle OFF (unchecked) → Usually gray or unhighlighted  
-- Screen reader announces checked/unchecked status
+- You should hear the checked/unchecked status
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

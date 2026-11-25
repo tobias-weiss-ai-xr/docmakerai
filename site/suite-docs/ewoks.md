@@ -80,6 +80,9 @@ EWOKS workloads often run inside the workspaces of
 [OpenScience](/suite/openscience); both tiles share the same SSO
 account.
 
+If the service stays closed to you, the
+[helpdesk](/suite/helpdesk-create-ticket) reaches its operators.
+
 ## Accessibility
 
 | Action | Key |
@@ -96,3 +99,8 @@ account.
   **New workflow**, `Ctrl+Shift+X` for **Execute workflow**.
 - `Ctrl+Home` (German keyboards: `Strg+Pos1`) jumps back to the
   top of the page.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

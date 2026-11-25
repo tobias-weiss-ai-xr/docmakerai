@@ -30,7 +30,7 @@ Click on any event in the calendar to open its details.
 
 The event editor allows you to change:
 
-| Field: Description | Description |
+| Field | Description |
 |-------|-------------|
 | **Title** | Change the event name |
 | **Location** | Update the venue or room |
@@ -49,7 +49,7 @@ To edit an event:
 
 If the event is part of a recurring series, you will be asked:
 
-| Option: Description | Effect |
+| Option | Effect |
 |--------|--------|
 | **This event only** | Changes only the selected instance |
 | **All events in the series** | Changes every occurrence of the recurring event |
@@ -69,7 +69,7 @@ Click the event you want to delete to view its details.
 
 For recurring events, you will be asked:
 
-| Option: Description | Effect |
+| Option | Effect |
 |--------|--------|
 | **Delete this event only** | Removes only the selected instance |
 | **Delete all events in the series** | Removes every occurrence |
@@ -80,7 +80,7 @@ Deletion cannot be undone. Consider this before permanently removing events.
 
 ## Troubleshooting
 
-| Issue: Description | Possible Cause | Solution |
+| Issue | Possible Cause | Solution |
 |-------|---------------|----------|
 | Cannot edit an event | Read-only calendar (shared by another user) | Check the calendar's color — grey usually means read-only |
 | Delete button not visible | Insufficient permissions on shared calendar | Ask the calendar owner to grant delete permissions |
@@ -91,12 +91,12 @@ Deletion cannot be undone. Consider this before permanently removing events.
 
 This application supports keyboard navigation. No mouse required for completing this task.
 
-| Action | Keyboard Shortcut: What key to press | Notes: Additional information |
+| Action | Keyboard Shortcut | Notes |
 |--------|--------------------------------------|------------------------------|
-| | Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
-| | Select/activate | `Enter` or `Space` | Activate button or link |
-| | Cancel/close | `Escape` | Cancel current action |
-| | Navigate lists | `Arrow keys` | Move through items |
+| Navigate modules | `Tab` / `Shift+Tab` | Cycles through sections |
+| Select/activate | `Enter` or `Space` | Activate button or link |
+| Cancel/close | `Escape` | Cancel current action |
+| Navigate lists | `Arrow keys` | Move through items |
 
 **Screen Reader Navigation Order:**
 1. Sidebar navigation → `Tab` to enter
@@ -111,3 +111,6 @@ SOGo supports high contrast and dark mode. Toggle via user preferences or use br
 - **macOS:** System Preferences → Accessibility → Display → Increase contrast
 - **Browser Extensions:** Dark Reader, High Contrast (Chrome)
 
+
+- **Orientation:** if you lose your place, press `Ctrl+Home` (German keyboards:
+  `Strg+Pos1`) to return to the top of the page and navigate from there.

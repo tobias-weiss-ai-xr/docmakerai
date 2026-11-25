@@ -122,13 +122,7 @@ sidebar_label: "Roadmap"
 
 ## In Progress 🔵
 
-_None — all tracked sprints are either completed or planned._
-
----
-
-## Completed ✅
-
-_All sprints completed. DOM structure comparison in Sprint 11 deferred (pHash covers most cases)._
+_None — all tracked sprints are completed. The DOM-structure comparison in Sprint 11 remains deferred (pHash covers most cases)._
 
 ### Sprint 10: Content Expansion
 - [x] Recapture critical workflows with task-first approach (converted 3 existing WebM to MP4)

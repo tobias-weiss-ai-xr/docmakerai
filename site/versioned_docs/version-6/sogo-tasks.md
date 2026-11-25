@@ -86,3 +86,8 @@ Tasks are saved to a calendar — by default your personal calendar.
   order: Title, Calendar, Due date, Start date, Status, Priority,
   Description.
 - You should hear the field labels as you move through them.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.

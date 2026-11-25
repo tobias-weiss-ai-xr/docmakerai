@@ -63,3 +63,9 @@ Ressource ist dann bereits reserviert.
   Ausgangspunkt, um die Seite mit `h` (Überschriften) zu erschließen.
 - In der Verfügbarkeitsansicht sind belegte Blöcke rein visuell — die
   Frei/Gebucht-Daten dahinter liest der Screenreader als Text vor.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

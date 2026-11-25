@@ -54,6 +54,9 @@ meldet sich als *openEduSuite Overleaf* (SSO).
   die längst als `.tex` existieren. Erste Wahl, wenn das Ziel
   LaTeX spricht.
 
+Bleibt Ihnen der Dienst verschlossen, erreicht das
+[Helpdesk](/suite/helpdesk-create-ticket) seine Betreiber.
+
 ## Barrierefreiheit
 
 | Aktion | Taste |
@@ -67,3 +70,9 @@ meldet sich als *openEduSuite Overleaf* (SSO).
   eigene Kürzelliste.
 - Wenn Sie die Orientierung verlieren, bringt Sie `Strg+Pos1`
   zum Seitenanfang zurück.
+
+- **Hochkontrast und Dunkelmodus:** Kontrast und dunkle Themes kommen vom
+  Betriebssystem oder Browser — Windows `Win+Strg+C`, macOS „Kontrast erhöhen“
+  oder eine Browser-Erweiterung wie Dark Reader. Bietet die App ein eigenes
+  dunkles Theme, schalten Sie es in den Einstellungen; die oben beschriebene
+  Bedienung gilt weiterhin.

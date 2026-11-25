@@ -74,3 +74,8 @@ with `Enter`.
   starting point for exploring with `h` (headings) in your screen reader.
 - The rights tables above use real table markup, so screen readers can
   navigate them row by row.
+
+- **High contrast and dark mode:** contrast and dark themes come from the
+  operating system or browser — Windows `Win+Ctrl+C`, macOS *Increase contrast*,
+  or a browser extension such as Dark Reader. If the app offers its own dark
+  theme, switch it in its settings; the navigation described above still applies.
