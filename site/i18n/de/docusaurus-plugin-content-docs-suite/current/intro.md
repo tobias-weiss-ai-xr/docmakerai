@@ -5,6 +5,16 @@ sidebar_position: 0
 slug: /
 description: "Was die openEduSuite ist und welche Anwendungen sie für Hochschulen mitbringt"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="openEduSuite im Überblick"
+  description="Was die openEduSuite ist und welche Anwendungen sie für Hochschulen mitbringt"
+  keywords={["openEduSuite", "Überblick"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # openEduSuite
 

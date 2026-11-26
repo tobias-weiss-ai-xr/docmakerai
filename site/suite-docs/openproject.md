@@ -4,6 +4,16 @@ sidebar_label: "Projects (OpenProject)"
 sidebar_position: 19
 description: "Your university's project workspace — plans, statuses, work packages, and timelines"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Projects and Tasks (OpenProject)"
+  description="Your university's project workspace — plans, statuses, work packages, and timelines"
+  keywords={["Projects", "and", "Tasks", "OpenProject", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Projects and Tasks (OpenProject)
 

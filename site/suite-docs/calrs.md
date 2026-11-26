@@ -4,6 +4,16 @@ sidebar_label: "Bookings (calrs)"
 sidebar_position: 27
 description: "Appointment booking for everyone — pick a slot on a colleague's page, no account needed"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Bookings (calrs)"
+  description="Appointment booking for everyone — pick a slot on a colleague's page, no account needed"
+  keywords={["Bookings", "calrs", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Bookings (calrs)
 

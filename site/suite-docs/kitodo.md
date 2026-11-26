@@ -4,6 +4,16 @@ sidebar_label: "Library (Kitodo)"
 sidebar_position: 33
 description: "Digitized collections — scans and metadata of library and archive material"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Library (Kitodo)"
+  description="Digitized collections — scans and metadata of library and archive material"
+  keywords={["Library", "Kitodo", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Library (Kitodo)
 

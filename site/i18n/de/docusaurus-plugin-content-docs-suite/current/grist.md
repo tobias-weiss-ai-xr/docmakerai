@@ -4,6 +4,16 @@ sidebar_label: "Formulare (Grist)"
 sidebar_position: 25
 description: "Souveräne Datenerfassung — Formulare, Tabellen und Dokumente unter Ihrer Kontrolle"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Formulare und Tabellen (Grist)"
+  description="Souveräne Datenerfassung — Formulare, Tabellen und Dokumente unter Ihrer Kontrolle"
+  keywords={["Formulare", "und", "Tabellen", "Grist", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Formulare und Tabellen (Grist)
 

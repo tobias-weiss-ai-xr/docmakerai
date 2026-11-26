@@ -4,6 +4,16 @@ sidebar_label: "Signing In"
 sidebar_position: 10
 description: "How the openEduSuite single sign-on works, and what the login screen asks for"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Signing In: One Login for All Apps"
+  description="How the openEduSuite single sign-on works, and what the login screen asks for"
+  keywords={["Signing", "In:", "One", "Login", "for", "All", "Apps", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 

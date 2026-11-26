@@ -4,6 +4,16 @@ sidebar_label: "Diagramme (draw.io)"
 sidebar_position: 35
 description: "Diagramme und Abläufe im Browser zeichnen"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Diagramme (draw.io)"
+  description="Diagramme und Abläufe im Browser zeichnen"
+  keywords={["Diagramme", "draw.io", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Diagramme (draw.io)
 

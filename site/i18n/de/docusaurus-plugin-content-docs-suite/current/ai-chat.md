@@ -4,6 +4,16 @@ sidebar_label: "KI-Chat"
 sidebar_position: 15
 description: "Fragen stellen und mit Texten arbeiten im KI-Chat der Hochschule"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="KI-Chat (Open WebUI)"
+  description="Fragen stellen und mit Texten arbeiten im KI-Chat der Hochschule"
+  keywords={["KI-Chat", "Open", "WebUI", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 

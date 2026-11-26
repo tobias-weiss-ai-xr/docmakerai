@@ -4,6 +4,16 @@ sidebar_label: "SOGo classic"
 sidebar_position: 34
 description: "The two classic SOGo instances — full tutorials under SOGo 5"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Mail classic: SOGo (Staff & Students)"
+  description="The two classic SOGo instances — full tutorials under SOGo 5"
+  keywords={["Mail", "classic:", "SOGo", "Staff", "Students", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Mail classic: SOGo (Staff & Students)
 

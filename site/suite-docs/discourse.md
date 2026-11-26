@@ -4,6 +4,16 @@ sidebar_label: "Forum (Discourse)"
 sidebar_position: 31
 description: "The suite's meeting place — sign in with your account to read and write"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Forum (Discourse)"
+  description="The suite's meeting place — sign in with your account to read and write"
+  keywords={["Forum", "Discourse", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Forum (Discourse)
 

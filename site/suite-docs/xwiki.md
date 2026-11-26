@@ -4,6 +4,16 @@ sidebar_label: "Wiki (XWiki)"
 sidebar_position: 21
 description: "The university's shared knowledge base — read openly, edit with your account"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Wiki (XWiki)"
+  description="The university's shared knowledge base — read openly, edit with your account"
+  keywords={["Wiki", "XWiki", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Wiki (XWiki)
 

@@ -4,6 +4,16 @@ sidebar_label: "Chat (Element)"
 sidebar_position: 20
 description: "Chatting and messaging in the openEduSuite — with the first-login verification explained"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Chat (Element)"
+  description="Chatting and messaging in the openEduSuite — with the first-login verification explained"
+  keywords={["Chat", "Element", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Chat (Element)
 

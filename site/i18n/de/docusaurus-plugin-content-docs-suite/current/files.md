@@ -4,6 +4,16 @@ sidebar_label: "Dateien (OpenCloud)"
 sidebar_position: 14
 description: "Dateien speichern, teilen und gemeinsam bearbeiten in OpenCloud"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Dateien mit OpenCloud"
+  description="Dateien speichern, teilen und gemeinsam bearbeiten in OpenCloud"
+  keywords={["Dateien", "mit", "OpenCloud", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 

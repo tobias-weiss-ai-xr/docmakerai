@@ -4,6 +4,16 @@ sidebar_label: "OpenScience"
 sidebar_position: 29
 description: "Research workspaces, sessions, and files in one place"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="OpenScience"
+  description="Research workspaces, sessions, and files in one place"
+  keywords={["OpenScience", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # OpenScience
 

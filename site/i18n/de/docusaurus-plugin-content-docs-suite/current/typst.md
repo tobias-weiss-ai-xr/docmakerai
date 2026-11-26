@@ -4,6 +4,16 @@ sidebar_label: "Paper (Typst)"
 sidebar_position: 23
 description: "Textsatz im Browser — Typst-Kollaboration mit Live-Vorschau"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Papier schreiben (Typst)"
+  description="Textsatz im Browser — Typst-Kollaboration mit Live-Vorschau"
+  keywords={["Papier", "schreiben", "Typst", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Papier schreiben (Typst)
 

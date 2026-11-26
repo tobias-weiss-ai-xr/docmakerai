@@ -4,6 +4,16 @@ sidebar_label: "LaTeX (Overleaf)"
 sidebar_position: 37
 description: "LaTeX-Paper gemeinsam schreiben, live kompiliert"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="LaTeX (Overleaf)"
+  description="LaTeX-Paper gemeinsam schreiben, live kompiliert"
+  keywords={["LaTeX", "Overleaf", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # LaTeX (Overleaf)
 

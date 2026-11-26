@@ -4,6 +4,16 @@ sidebar_label: "Terminbuchung (calrs)"
 sidebar_position: 27
 description: "Terminbuchung für alle — Slot auf der Buchungsseite wählen, ganz ohne Konto"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Terminbuchung (calrs)"
+  description="Terminbuchung für alle — Slot auf der Buchungsseite wählen, ganz ohne Konto"
+  keywords={["Terminbuchung", "calrs", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Terminbuchung (calrs)
 

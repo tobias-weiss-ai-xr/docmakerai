@@ -4,6 +4,16 @@ sidebar_label: "AI Chat"
 sidebar_position: 15
 description: "Ask questions and work with texts using the university's AI chat"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="AI Chat (Open WebUI)"
+  description="Ask questions and work with texts using the university's AI chat"
+  keywords={["Chat", "Open", "WebUI", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 

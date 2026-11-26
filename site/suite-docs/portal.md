@@ -4,6 +4,16 @@ sidebar_label: "Portal"
 sidebar_position: 13
 description: "Your digital workplace: news, events, and every openEduSuite app in one place"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="The Portal"
+  description="Your digital workplace: news, events, and every openEduSuite app in one place"
+  keywords={["The", "Portal", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # The Portal
 

@@ -34,6 +34,7 @@ DocMaker AI captures UI workflows as annotated WebP animations and generates mul
 - **Retry on failure** — Automatic retry with exponential backoff for transient issues
 - **Multi-language** — German + English locales with translation support
 - **Multi-version** — Docusaurus versioning (SOGo 5 + SOGo 6 demos)
+- **Offline search** — local Docusaurus search for tutorials, versions and suite pages
 - **Accessibility-aware** — WCAG 2.1 Level A validation with auto-fix hooks
 - **Asset optimization** — 54% size reduction via Pillow frame skip + quantization
 

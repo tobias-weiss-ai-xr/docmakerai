@@ -252,15 +252,15 @@ import PageSEO from '@site/src/components/PageSEO';
 
 | Metric | Target | Current | Issues |
 |--------|--------|---------|--------|
-| LCP (Largest Contentful Paint) | < 2.5s | TBD | Large images making GIFs, unoptimized assets |
-| FID (First Input Delay) | < 100ms | TBD | Heavy JS, large DOM |
-| CLS (Cumulative Layout Shift) | < 0.1 | TBD | Image layout shifts |
+| LCP (Largest Contentful Paint) | < 2.5s | CI budget | Large images, unoptimized assets |
+| FID (First Input Delay) | < 100ms | CI budget | Heavy JS, large DOM |
+| CLS (Cumulative Layout Shift) | < 0.1 | CI budget | Image layout shifts |
 
-**Improvements Needed:**
+**Maintained:**
 1. Image lazy loading
-2. Image optimization (Sprint 3 done, but needs task-first MP4)
-3. Minimize JavaScript
-4. Inline critical CSS
+2. Asset optimization (done in Sprint 3; task-first MP4 conversion continues)
+3. Minimized JavaScript
+4. Inline critical CSS where the theme allows it
 
 ## Accessibility SEO
 

@@ -4,6 +4,16 @@ sidebar_label: "Notes (HedgeDoc)"
 sidebar_position: 32
 description: "Shared Markdown notes — several people, one document, in real time"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Notes (HedgeDoc)"
+  description="Shared Markdown notes — several people, one document, in real time"
+  keywords={["Notes", "HedgeDoc", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Notes (HedgeDoc)
 

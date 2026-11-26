@@ -1,5 +1,6 @@
 import React, {type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
+import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import PageSEO from '@site/src/components/PageSEO';
 
@@ -40,13 +41,13 @@ export type LandingStrings = {
 
 export default function LandingPage({strings}: {strings: LandingStrings}): React.JSX.Element {
   return (
-    <>
+    <Layout title={strings.seoTitle}>
       <PageSEO
         title={strings.seoTitle}
         description={strings.seoDescription}
         keywords={strings.keywords}
       />
-      <main className="landing">
+      <div className="landing">
         <section className="landing-hero">
           <img
             src={useBaseUrl('/img/teaser.svg')}
@@ -82,7 +83,7 @@ export default function LandingPage({strings}: {strings: LandingStrings}): React
           <h2>{strings.aboutTitle}</h2>
           <p>{strings.aboutBody}</p>
         </section>
-      </main>
-    </>
+      </div>
+    </Layout>
   );
 }

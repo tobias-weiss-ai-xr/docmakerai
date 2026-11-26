@@ -4,6 +4,16 @@ sidebar_label: "Anmelden"
 sidebar_position: 10
 description: "Wie das Single Sign-On der openEduSuite funktioniert und was der Anmeldebildschirm abfragt"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Anmelden: Ein Login für alle Anwendungen"
+  description="Wie das Single Sign-On der openEduSuite funktioniert und was der Anmeldebildschirm abfragt"
+  keywords={["Anmelden:", "Ein", "Login", "für", "alle", "Anwendungen", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 

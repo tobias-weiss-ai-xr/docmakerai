@@ -4,6 +4,16 @@ sidebar_label: "SOGo klassisch"
 sidebar_position: 34
 description: "Die zwei klassischen SOGo-Instanzen — vollständige Anleitungen unter SOGo 5"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Mail klassisch: SOGo (Personal & Studierende)"
+  description="Die zwei klassischen SOGo-Instanzen — vollständige Anleitungen unter SOGo 5"
+  keywords={["Mail", "klassisch:", "SOGo", "Personal", "Studierende", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Mail klassisch: SOGo (Personal & Studierende)
 

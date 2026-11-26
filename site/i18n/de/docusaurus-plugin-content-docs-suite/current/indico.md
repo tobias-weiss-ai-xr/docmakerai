@@ -4,6 +4,16 @@ sidebar_label: "Veranstaltungen"
 sidebar_position: 24
 description: "Vorlesungen, Konferenzen und Campus-Events — angekündigt, gebucht, archiviert"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Veranstaltungen (Indico)"
+  description="Vorlesungen, Konferenzen und Campus-Events — angekündigt, gebucht, archiviert"
+  keywords={["Veranstaltungen", "Indico", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Veranstaltungen (Indico)
 

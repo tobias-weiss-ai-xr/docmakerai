@@ -4,6 +4,16 @@ sidebar_label: "Ihr Konto"
 sidebar_position: 11
 description: "Profil, Passwort, Zwei-Faktor-Authentifizierung und aktive Sitzungen in der openEduSuite-Kontoverwaltung"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Ihr Konto"
+  description="Profil, Passwort, Zwei-Faktor-Authentifizierung und aktive Sitzungen in der openEduSuite-Kontoverwaltung"
+  keywords={["Ihr", "Konto", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Ihr Konto
 

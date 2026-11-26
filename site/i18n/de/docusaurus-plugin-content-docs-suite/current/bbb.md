@@ -4,6 +4,16 @@ sidebar_label: "Konferenzen (BBB)"
 sidebar_position: 22
 description: "Lehrveranstaltungen, Seminare und Besprechungen — Ihre Konferenzräume in BigBlueButton"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Videokonferenzen (BigBlueButton)"
+  description="Lehrveranstaltungen, Seminare und Besprechungen — Ihre Konferenzräume in BigBlueButton"
+  keywords={["Videokonferenzen", "BigBlueButton", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Videokonferenzen (BigBlueButton)
 

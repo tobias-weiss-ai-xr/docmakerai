@@ -4,6 +4,16 @@ sidebar_label: "Events (Indico)"
 sidebar_position: 24
 description: "Lectures, conferences, and campus events — announced, booked, and archived"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Events (Indico)"
+  description="Lectures, conferences, and campus events — announced, booked, and archived"
+  keywords={["Events", "Indico", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Events (Indico)
 

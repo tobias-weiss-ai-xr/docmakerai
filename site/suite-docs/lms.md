@@ -4,6 +4,16 @@ sidebar_label: "Learning platform (ILIAS)"
 sidebar_position: 38
 description: "Courses and learning materials of the suite"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Learning platform (ILIAS)"
+  description="Courses and learning materials of the suite"
+  keywords={["Learning", "platform", "ILIAS", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Learning platform (ILIAS)
 

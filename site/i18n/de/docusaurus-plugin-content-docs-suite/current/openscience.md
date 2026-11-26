@@ -4,6 +4,16 @@ sidebar_label: "OpenScience"
 sidebar_position: 29
 description: "Forschungs-Arbeitsbereiche, Sessions und Dateien an einem Ort"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="OpenScience"
+  description="Forschungs-Arbeitsbereiche, Sessions und Dateien an einem Ort"
+  keywords={["OpenScience", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # OpenScience
 

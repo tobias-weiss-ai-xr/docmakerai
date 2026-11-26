@@ -4,6 +4,16 @@ sidebar_label: "Processes (Operaton)"
 sidebar_position: 16
 description: "Work through assigned tasks and start processes in the workflow engine Operaton"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Processes and Tasks (Operaton)"
+  description="Work through assigned tasks and start processes in the workflow engine Operaton"
+  keywords={["Processes", "and", "Tasks", "Operaton", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Processes and Tasks (Operaton)
 

@@ -4,6 +4,16 @@ sidebar_label: "Projekte (OpenProject)"
 sidebar_position: 19
 description: "Der Projekt-Arbeitsplatz der Hochschule — Pläne, Status, Arbeitspakete und Zeitpläne"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Projekte und Aufgaben (OpenProject)"
+  description="Der Projekt-Arbeitsplatz der Hochschule — Pläne, Status, Arbeitspakete und Zeitpläne"
+  keywords={["Projekte", "und", "Aufgaben", "OpenProject", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Projekte und Aufgaben (OpenProject)
 

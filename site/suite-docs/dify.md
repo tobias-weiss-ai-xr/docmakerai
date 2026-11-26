@@ -4,6 +4,16 @@ sidebar_label: "AI Assistants (Dify)"
 sidebar_position: 18
 description: "Assemble your own AI assistants and mini-apps — with templates, knowledge, and no programming"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Build Your Own AI Assistants (Dify)"
+  description="Assemble your own AI assistants and mini-apps — with templates, knowledge, and no programming"
+  keywords={["Build", "Your", "Own", "Assistants", "Dify", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Build Your Own AI Assistants (Dify)
 

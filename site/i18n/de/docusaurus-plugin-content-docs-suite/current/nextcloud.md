@@ -4,6 +4,16 @@ sidebar_label: "Dateien (Nextcloud)"
 sidebar_position: 30
 description: "Die klassische Cloud: Dateien, Teilen und Apps"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Dateien (Nextcloud)"
+  description="Die klassische Cloud: Dateien, Teilen und Apps"
+  keywords={["Dateien", "Nextcloud", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Dateien (Nextcloud)
 

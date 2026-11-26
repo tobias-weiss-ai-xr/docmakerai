@@ -4,6 +4,16 @@ sidebar_label: "Conferences (BBB)"
 sidebar_position: 22
 description: "Lectures, seminars, and meetings — your conference rooms in BigBlueButton"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Video Conferences (BigBlueButton)"
+  description="Lectures, seminars, and meetings — your conference rooms in BigBlueButton"
+  keywords={["Video", "Conferences", "BigBlueButton", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Video Conferences (BigBlueButton)
 

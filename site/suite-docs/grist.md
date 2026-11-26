@@ -4,6 +4,16 @@ sidebar_label: "Forms (Grist)"
 sidebar_position: 25
 description: "Sovereign data capture — forms, tables, and documents you keep under control"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Forms and Tables (Grist)"
+  description="Sovereign data capture — forms, tables, and documents you keep under control"
+  keywords={["Forms", "and", "Tables", "Grist", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Forms and Tables (Grist)
 

@@ -76,6 +76,19 @@ const config: Config = {
         breadcrumbs: true,
       },
     ],
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en', 'de'],
+        indexDocs: true,
+        indexPages: true,
+        docsRouteBasePath: ['/', 'suite'],
+        docsDir: ['docs', 'suite-docs', 'versioned_docs'],
+        searchBarPosition: 'right',
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
   ],
 
   themeConfig: {

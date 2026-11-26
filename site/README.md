@@ -54,6 +54,13 @@ cd .. && python3 -m pytest scripts/tests/ accessibility/tests/ -q
 | `e2e/` | Playwright end-to-end tests |
 | `tools/`, `plugins/` | Build tooling |
 
+## Search
+
+The site ships offline local search (`@easyops-cn/docusaurus-search-local`) at
+`/search/` (and `/de/search/`), reachable from the navbar and via `Ctrl+K` /
+`Cmd+K`. It indexes the tutorials, versioned docs, suite pages and the landing
+page without a backend.
+
 ## Accessibility
 
 The site ships an accessibility-validation gate (`../accessibility/validate.py`)

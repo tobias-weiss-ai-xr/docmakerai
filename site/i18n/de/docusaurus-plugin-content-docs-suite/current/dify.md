@@ -4,6 +4,16 @@ sidebar_label: "KI-Assistenten (Dify)"
 sidebar_position: 18
 description: "Eigene KI-Assistenten und Mini-Apps zusammenbauen — mit Vorlagen, Wissen und ohne Programmierung"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Eigene KI-Assistenten bauen (Dify)"
+  description="Eigene KI-Assistenten und Mini-Apps zusammenbauen — mit Vorlagen, Wissen und ohne Programmierung"
+  keywords={["Eigene", "KI-Assistenten", "bauen", "Dify", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Eigene KI-Assistenten bauen (Dify)
 

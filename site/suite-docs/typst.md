@@ -4,6 +4,16 @@ sidebar_label: "Papers (Typst)"
 sidebar_position: 23
 description: "Typesetting papers in the browser — Typst collaboration with live preview"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Writing Papers (Typst)"
+  description="Typesetting papers in the browser — Typst collaboration with live preview"
+  keywords={["Writing", "Papers", "Typst", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Writing Papers (Typst)
 

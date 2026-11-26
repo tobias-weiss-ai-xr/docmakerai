@@ -10,6 +10,10 @@ type PageSEOProps = {
   locale?: string;
   canonical?: string;
   noindex?: boolean;
+  /** Suffix after the page title; defaults to the SOGo guide label. */
+  suffix?: string;
+  /** Topic keywords appended to the page keywords. */
+  defaultKeywords?: string[];
 };
 
 export default function PageSEO({
@@ -20,11 +24,13 @@ export default function PageSEO({
   locale,
   canonical,
   noindex = false,
+  suffix,
+  defaultKeywords,
 }: PageSEOProps) {
   const { i18n, siteConfig } = useDocusaurusContext();
 
   const finalTitle = title
-    ? `${title} | SOGo ${i18n.currentLocale === 'de' ? 'Nutzerhandbuch' : 'User Guide'}`
+    ? `${title} | ${suffix ?? `SOGo ${i18n.currentLocale === 'de' ? 'Nutzerhandbuch' : 'User Guide'}`}`
     : siteConfig.title;
 
   const finalDescription = description ?? siteConfig.tagline;
@@ -49,7 +55,13 @@ export default function PageSEO({
     <Head>
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
-      <meta name="keywords" content={[...keywords, "SOGo", "webmail", "groupware", "email tutorial"].join(', ')} />
+      <meta
+        name="keywords"
+        content={[
+          ...keywords,
+          ...(defaultKeywords ?? ["SOGo", "webmail", "groupware", "email tutorial"]),
+        ].join(', ')}
+      />
       <meta name="author" content="DocMaker AI" />
       <meta name="geo.region" content="DE" />
       <meta name="geo.placename" content="Berlin" />

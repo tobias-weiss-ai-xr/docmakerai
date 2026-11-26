@@ -4,6 +4,16 @@ sidebar_label: "Your Account"
 sidebar_position: 11
 description: "Manage your profile, password, two-factor authentication, and active sessions in the openEduSuite account console"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Your Account"
+  description="Manage your profile, password, two-factor authentication, and active sessions in the openEduSuite account console"
+  keywords={["Your", "Account", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # Your Account
 

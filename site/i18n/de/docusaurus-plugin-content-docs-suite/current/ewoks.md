@@ -4,6 +4,16 @@ sidebar_label: "Workflows (EWOKS)"
 sidebar_position: 28
 description: "Wissenschaftliche Workflows im Browser bauen und ihre Ausführung verfolgen"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Workflows (EWOKS)"
+  description="Wissenschaftliche Workflows im Browser bauen und ihre Ausführung verfolgen"
+  keywords={["Workflows", "EWOKS", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Workflows (EWOKS)
 

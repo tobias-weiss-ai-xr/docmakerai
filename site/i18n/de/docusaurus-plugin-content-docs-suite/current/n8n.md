@@ -4,6 +4,16 @@ sidebar_label: "Automatisierung (n8n)"
 sidebar_position: 17
 description: "Kleine Automatisierungen bauen, die Ihre Anwendungen und Dienste verbinden"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Automatisierung mit n8n"
+  description="Kleine Automatisierungen bauen, die Ihre Anwendungen und Dienste verbinden"
+  keywords={["Automatisierung", "mit", "n8n", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Automatisierung mit n8n
 

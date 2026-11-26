@@ -4,6 +4,16 @@ sidebar_label: "Whiteboard (Excalidraw)"
 sidebar_position: 36
 description: "Ideen auf einem gemeinsamen Whiteboard skizzieren"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Whiteboard (Excalidraw)"
+  description="Ideen auf einem gemeinsamen Whiteboard skizzieren"
+  keywords={["Whiteboard", "Excalidraw", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 # Whiteboard (Excalidraw)
 

@@ -5,6 +5,16 @@ sidebar_position: 0
 slug: /
 description: "What the openEduSuite is and which apps it brings to higher education"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="openEduSuite Overview"
+  description="What the openEduSuite is and which apps it brings to higher education"
+  keywords={["openEduSuite", "Overview"]}
+  suffix="openEduSuite"
+  defaultKeywords={["higher education", "open source"]}
+/>
+
 
 # openEduSuite
 

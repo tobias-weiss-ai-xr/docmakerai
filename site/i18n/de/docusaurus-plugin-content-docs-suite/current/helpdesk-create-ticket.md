@@ -4,6 +4,16 @@ sidebar_label: "Helpdesk: Tickets"
 sidebar_position: 12
 description: "So erreichen Sie das Helpdesk und legen ein Support-Ticket im Request Tracker (RT) an"
 ---
+import PageSEO from '@site/src/components/PageSEO';
+
+<PageSEO
+  title="Helpdesk: Ein Ticket erstellen"
+  description="So erreichen Sie das Helpdesk und legen ein Support-Ticket im Request Tracker (RT) an"
+  keywords={["Helpdesk:", "Ein", "Ticket", "erstellen", "openEduSuite"]}
+  suffix="openEduSuite"
+  defaultKeywords={["Hochschule", "Open Source"]}
+/>
+
 
 import VideoFallback from '@site/src/components/VideoFallback';
 
