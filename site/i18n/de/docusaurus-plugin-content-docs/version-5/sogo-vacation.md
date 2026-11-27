@@ -161,6 +161,66 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Abwesenheitsnotiz aktivieren**
+
+**Schritt 1: Einstellungen-Menü öffnen**
+1. `Tab` (ggf. mehrfach) zur Seitenleiste
+2. `Tab` zum Drei-Punkte-Menü (⋯) (**Einstellungen**)
+3. `Eingabetaste` zum Öffnen des Menüs
+4. Sie hören: „Einstellungen, Popup-Menü“
+
+**Schritt 2: Zu Abwesenheit navigieren**
+1. `Pfeiltasten` zum Eintrag **Abwesenheit** im Menü
+2. `Eingabetaste` zum Öffnen der Abwesenheitseinstellungen
+3. Sie hören: „Abwesenheit, Überschrift, Ebene 3“
+
+**Schritt 3: Automatische Antwort aktivieren**
+1. `Tab` zum Schalter **Automatische Antwort aktivieren**
+2. Sie hören: „Automatische Antwort aktivieren, Kontrollkästchen, nicht aktiviert“
+3. `Leertaste` zum Einschalten
+4. Sie hören: „Automatische Antwort aktivieren, Kontrollkästchen, aktiviert“
+
+**Schritt 4: Zeitraum festlegen**
+1. `Tab` zum Feld **Startdatum**
+2. Datum eingeben oder auswählen (Format: JJJJ-MM-TT)
+3. `Tab` zum Feld **Enddatum**
+4. Enddatum eingeben oder auswählen
+5. `Tab` zur Auswahlliste **Zeitzone**
+6. `Pfeiltasten` zum Auswählen der Zeitzone
+7. `Eingabetaste` zum Bestätigen
+
+**Schritt 5: Nachricht schreiben**
+1. `Tab` zum Nachrichten-Textfeld
+2. Text der automatischen Antwort eingeben
+3. Für mehrere Zeilen: `Eingabetaste` für eine neue Zeile
+4. Sie hören: „Nachricht, Inhalt bearbeitbar, leer“
+
+**Schritt 6: Antwortoptionen festlegen**
+1. `Tab` zur Auswahlliste **Antwort senden an**
+2. `Pfeiltasten` zum Auswählen: „Alle“, „Nur Kontakte“ oder benutzerdefiniert
+3. `Tab` zu **Wiederholte Antworten**
+4. `Pfeiltasten` zum Auswählen: „Einmal pro Absender“ oder „Jedes Mal“
+5. `Tab` zu **Originalbetreff beibehalten**
+6. `Leertaste` zum Ein- und Ausschalten
+
+**Schritt 7: Abwesenheitseinstellungen speichern**
+1. `Tab` zur Schaltfläche **Speichern**
+2. `Eingabetaste` zum Aktivieren
+3. Sie hören: „Speichern, Schaltfläche“
+4. Sie hören: „Einstellungen gespeichert“ oder „Automatische Antwort aktiviert“
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „Automatische Antwort aktivieren, aktiviert/nicht aktiviert“ | Zustand des Schalters | `Leertaste` zum Ändern |
+| „Startdatum, Bearbeiten“ | Datumsfeld bereit | Datum eingeben (JJJJ-MM-TT) |
+| „Nachricht, Inhalt bearbeitbar“ | Nachrichten-Textfeld | Text der Abwesenheitsnotiz eingeben |
+| „Speichern, Schaltfläche“ | Bereit zum Speichern | `Eingabetaste` zum Speichern |
+| „Einstellungen gespeichert“ | Erfolg | Abwesenheitsnotiz ist aktiv bzw. aktualisiert |
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

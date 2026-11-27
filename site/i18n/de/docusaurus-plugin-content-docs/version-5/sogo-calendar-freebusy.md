@@ -155,6 +155,73 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Verfügbarkeitsprüfung: Die Verfügbarkeit von Kollegen für ein Meeting prüfen**
+
+**Schritt 1: Kalender-Modul öffnen**
+- `Tab` (ggf. mehrfach) zur Schaltfläche **Kalender**, dann `Eingabetaste`
+- Sie hören: „Kalender, Modul-Überschrift“
+
+**Schritt 2: Neues Ereignis anlegen**
+- `Tab` zur Schaltfläche **+** (Ereignis erstellen) und `Eingabetaste` drücken
+- Sie hören: „Neues Ereignis, Dialog“
+- Der Ereignis-Dialog öffnet sich mit Feldern für Titel, Datum, Uhrzeit und Teilnehmer
+
+**Schritt 3: Teilnehmerbereich öffnen**
+- Mit `Tab` (ggf. mehrfach) durch die Ereignisfelder (Titel, Datum, Uhrzeit) navigieren
+- Anhalten, wenn Sie den Bereich **Teilnehmer** erreichen
+- Sie hören: „Teilnehmer, Abschnitt“
+
+**Schritt 4: Verfügbarkeitsansicht öffnen**
+- `Tab` zur Schaltfläche **Frei/Gebucht** bzw. **Verfügbarkeit**
+- `Eingabetaste` zum Öffnen des Verfügbarkeitsrasters
+- Sie hören: „Frei/Gebucht-Raster, Ihr Kalender wird angezeigt“
+
+**Schritt 5: Kollegen hinzufügen**
+- `Tab` zum Feld **Person hinzufügen**
+- Name oder E-Mail-Adresse des Kollegen eingeben
+- Sie hören: „Bearbeiten, Autovervollständigung, Vorschläge verfügbar“
+- Mit `Pfeil nach unten` durch die vorgeschlagenen Namen navigieren
+- `Eingabetaste` zum Auswählen des richtigen Kollegen
+- Sie hören: „Person zum Raster hinzugefügt“
+
+**Schritt 6: Raster navigieren und lesen**
+- Mit `Tab` zwischen den Zeilen der Kollegen im Raster wechseln
+- Mit `Pfeil nach links`/`Pfeil nach rechts` über die Zeitslots bewegen
+- Sie hören jeden Slot: „10:00 Uhr, verfügbar“ oder „11:00 Uhr, gebucht“
+- Status werden als Text übermittelt („Verfügbar“, „Gebucht“, „Mit Vorbehalt“) — Sie müssen sich nie auf Farben verlassen
+- Für jeden hinzugefügten Kollegen wiederholen
+
+**Schritt 7: Gemeinsamen freien Slot auswählen**
+- Zu einem Zeitslot navigieren, in dem alle Kollegen als verfügbar angezeigt werden
+- `Eingabetaste` zum Auswählen der Zeit
+- Sie hören: „Zeit ausgewählt: 14:00 Uhr bis 15:00 Uhr“
+- Beginn und Ende des Ereignisses werden automatisch aktualisiert
+
+**Schritt 8: Ereignis speichern**
+- Mit `Tab` zur Schaltfläche **Speichern** navigieren
+- `Eingabetaste` zum Bestätigen und Anlegen des Ereignisses
+- Sie hören: „Ereignis gespeichert“ oder eine ähnliche Bestätigung
+- Das Ereignis erscheint mit der gewählten Zeit in Ihrem Kalender
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „Neues Ereignis, Dialog“ | Das Formular zum Anlegen ist offen | Ereignisdetails ausfüllen |
+| „Frei/Gebucht-Raster, Ihr Kalender wird angezeigt“ | Die Verfügbarkeitsansicht ist aktiv | Kollegen hinzufügen |
+| „Bearbeiten, Autovervollständigung, Vorschläge verfügbar“ | Das Personensuchfeld ist aktiv | Namen des Kollegen eingeben und aus der Liste wählen |
+| „Person zum Raster hinzugefügt“ | Der Terminplan des Kollegen ist geladen | Weitere Personen hinzufügen oder einen Slot suchen |
+| „10:00 Uhr, verfügbar“ | Der Zeitslot ist frei | Diesen Slot für das Meeting auswählen |
+| „14:00 Uhr, gebucht“ | Der Zeitslot ist belegt | Einen anderen Zeitslot wählen |
+| „Keine Daten“ (Zeile ohne Einträge) | Frei/Gebucht nicht freigegeben | Kollegen bitten, die Freigabe zu aktivieren, oder Administration kontaktieren |
+| „Ereignis gespeichert“ | Das Meeting ist angelegt | Das Ereignis ist in Ihrem Kalender |
+
+### Beschreibungen der visuellen Inhalte
+
+**freebusy.png:** Animierte Demonstration der Prüfung der Verfügbarkeit von Kollegen über das Frei/Gebucht-Raster in SOGo 5.
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
