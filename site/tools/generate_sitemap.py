@@ -43,9 +43,14 @@ def locale_of(path: str) -> str | None:
     return None
 
 
-def canonical_key(url_path: str) -> str:
-    """Strip the locale dimension so en/de variants group together."""
-    return url_path.replace("/docmakerai/de/", "/docmakerai/")
+def canonical_key(url: str, base: str) -> str:
+    """Strip the locale dimension so en/de variants group together.
+
+    ``base`` always ends in "/" (see main()), so replacing ``base + "de/"``
+    with ``base`` removes exactly the locale segment for any --base value,
+    not just the production one.
+    """
+    return url.replace(f"{base}de/", base)
 
 
 def main() -> int:
@@ -59,6 +64,9 @@ def main() -> int:
         print(f"error: build dir not found: {build}", file=sys.stderr)
         return 1
 
+    # page_url()/canonical_key() assume a base that ends in a slash.
+    base = args.base if args.base.endswith("/") else f"{args.base}/"
+
     groups: dict[str, dict[str, str]] = {}  # key -> {locale: url}
     for html in build.rglob("*.html"):
         rel = html.relative_to(build).as_posix()
@@ -69,11 +77,11 @@ def main() -> int:
         # must not be advertised in the sitemap.
         if 'content="noindex' in text or "content=noindex" in text:
             continue
-        url = page_url(rel, args.base)
-        loc = locale_of(url[len(args.base) :])
+        url = page_url(rel, base)
+        loc = locale_of(url[len(base) :])
         if loc is None:
             continue
-        groups.setdefault(canonical_key(url), {})[loc] = url
+        groups.setdefault(canonical_key(url, base), {})[loc] = url
 
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',

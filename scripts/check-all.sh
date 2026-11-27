@@ -68,8 +68,8 @@ run_fast() {
   echo "### Fast gate: syntax + lint + unit tests"
 
   run_step "Shell syntax (bash -n)" \
-    bash -n scripts/check-all.sh scripts/runner-health.sh \
-    scripts/seed-doc-votes.sh .githooks/pre-commit
+    bash -n scripts/check-all.sh scripts/verify-dual-locale-build.sh \
+    scripts/runner-health.sh scripts/seed-doc-votes.sh .githooks/pre-commit
 
   run_step "Python syntax (py_compile)" \
     python3 -m py_compile scripts/check_coverage_trend.py \
@@ -108,8 +108,17 @@ run_full() {
       run_step "npm install (site dependencies)" npm install --prefix site
     fi
     run_step "TypeScript typecheck" npm --prefix site run typecheck
-    run_step "Docusaurus build (locale en)" npm --prefix site run build -- --locale en
-    run_step "Docusaurus build (locale de)" npm --prefix site run build -- --locale de
+    # One dual-locale build, exactly like the production deploy
+    # (.github/workflows/deploy.yml). Building `--locale en` and then
+    # `--locale de` does NOT produce a dual-locale artifact: with a single
+    # --locale option Docusaurus disables baseUrl localization, so the de
+    # build writes to the root baseUrl and clobbers the en pages — leaving a
+    # German-only build whose sitemap advertises the German URLs as
+    # hreflang="en"/x-default.
+    run_step "Docusaurus build (dual-locale en + de)" \
+      npm --prefix site run build
+    run_step "Verify dual-locale build artifact" \
+      bash scripts/verify-dual-locale-build.sh
   else
     echo "!! npm not found — skipping typecheck and site build"
   fi

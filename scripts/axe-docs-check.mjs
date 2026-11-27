@@ -39,7 +39,7 @@ const repoRoot = findRepoRoot();
 const siteDir = path.join(repoRoot, "site");
 const buildDir = path.join(siteDir, "build");
 if (!fs.existsSync(buildDir)) {
-  console.error("FATAL: site/build missing — run `npm run build -- --locale en && npm run build -- --locale de` first.");
+  console.error("FATAL: site/build missing — run `npm run build` (dual-locale) first.");
   process.exit(2);
 }
 
