@@ -33,12 +33,16 @@
   --ifm-heading-color: #ffffff;
 }
 
-/* Accessibility: Ensure proper color contrast */
-a {
+/* Accessibility: Ensure proper color contrast.
+   Footer links are EXCLUDED: on the dark footer (--footer--dark, #303846)
+   the green primary would sit at ~1.1:1 (axe color-contrast, serious).
+   They use --ifm-footer-link-color (light neutral, ~8:1) instead —
+   see the .footer--dark override below. */
+a:not(.footer__link-item) {
   color: var(--ifm-color-primary);
 }
 
-a:hover {
+a:not(.footer__link-item):hover {
   color: var(--ifm-color-primary-darker);
 }
 
@@ -277,4 +281,22 @@ pre code {
   .landing-hero h1 {
     font-size: 1.7rem;
   }
+}
+
+/* === Accessibility: contrast fixes (axe/Lighthouse findings, 2026-11) === */
+
+/* Dark footer: the global green link color and Infima's secondary-based
+   footer-link color both fail contrast on the dark slate background
+   (#303846, ~1.1:1). Use a light neutral (~8:1) instead. */
+.footer--dark {
+  --ifm-footer-link-color: #d3dae2;
+  --ifm-footer-color: #d3dae2;
+  --ifm-footer-link-hover-color: #ffffff;
+}
+
+/* Keyboard hint (kbd) inside the navbar search box: it reuses the input's
+   placeholder color (emphasis-500, ~2.6:1 on the input background). As real
+   content it must meet 4.5:1 — darken it. */
+.navbar kbd[class*="searchHint"] {
+  color: var(--ifm-color-emphasis-900);
 }
