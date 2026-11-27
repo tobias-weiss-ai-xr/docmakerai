@@ -187,9 +187,14 @@ jobs:
         run: npm run typecheck
 
       - name: Build (English + German locales)
-        run: |
-          npm run build -- --locale en
-          npm run build -- --locale de
+        # A single dual-locale build, like deploy.yml. `--locale en` followed by
+        # `--locale de` does NOT produce a dual-locale artifact: with a single
+        # --locale option Docusaurus disables baseUrl localization, so the de
+        # build writes to the root baseUrl and clobbers the en pages.
+        run: npm run build
+
+      - name: Verify dual-locale build artifact
+        run: bash ../scripts/verify-dual-locale-build.sh
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v5
