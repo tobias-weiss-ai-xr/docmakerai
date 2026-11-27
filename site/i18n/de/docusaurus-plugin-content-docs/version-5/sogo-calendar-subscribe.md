@@ -112,6 +112,35 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Externen Kalender (iCal-Feed) abonnieren**
+
+**Schritt 1: Zum Kalendermodul navigieren**
+1. `Tab` (ggf. mehrfach) zur Schaltfläche **Kalender** in der Navigationsleiste, dann `Eingabetaste`
+2. Sie hören: „Kalender, Modul-Überschrift“
+
+**Schritt 2: Webkalender öffnen**
+1. `Tab` zur Schaltfläche **Webkalender** — sie liegt direkt auf der Kalenderoberfläche, es gibt kein Zahnrad dafür
+2. `Eingabetaste` drücken
+3. Sie hören: „URL, Bearbeiten“ oder „Webkalender, Dialog“
+
+**Schritt 3: Feed abonnieren**
+1. `Tab` zum URL-Feld
+2. Die kopierte Feed-URL einfügen
+3. `Tab` zur Schaltfläche zum Bestätigen, `Eingabetaste`
+4. Sie hören die Bestätigung, dass der Kalender hinzugefügt wurde
+
+**Schritt 4: Prüfen**
+1. Mit `Tab` durch die Kalenderliste navigieren
+2. Der abonnierte Kalender erscheint dort als eigener Eintrag
+3. Sichtbarkeit umschalten: `Tab` zum Kalender in der Liste, dann `Leertaste`
+
+**Abonnement kündigen (Tastatur)**
+1. `Tab` zum abonnierten Kalender in der Liste
+2. `Tab` zum **Dreipunkt-Menü** (⋯) daneben, `Eingabetaste` zum Öffnen
+3. Pfeiltasten zur Option zum Entfernen, `Eingabetaste`
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
