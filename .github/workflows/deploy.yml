@@ -19,7 +19,7 @@ jobs:
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: dorny/paths-filter@v2
         id: filter
         if: github.event_name == 'push'
@@ -50,7 +50,7 @@ jobs:
       run:
         working-directory: site
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Restore node_modules cache
         uses: actions/cache@v5
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.detect-changes.outputs.should_deploy == 'true' && success()
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Download build artifact
         uses: actions/download-artifact@v5
