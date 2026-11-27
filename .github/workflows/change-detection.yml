@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Uses system Python (Arch ships 3.12+; setup-python has no prebuilt 3.11 for Arch)
       - name: Install dependencies

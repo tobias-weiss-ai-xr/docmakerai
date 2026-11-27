@@ -19,7 +19,7 @@ jobs:
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dorny/paths-filter@v2
         id: filter
         if: github.event_name == 'push'
@@ -50,10 +50,10 @@ jobs:
       run:
         working-directory: site
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Restore node_modules cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: node-cache
         with:
           path: site/node_modules
@@ -69,7 +69,7 @@ jobs:
         run: npm run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docusaurus-build
           path: site/build/
@@ -81,10 +81,10 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.detect-changes.outputs.should_deploy == 'true' && success()
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: docusaurus-build
           path: site/build/
