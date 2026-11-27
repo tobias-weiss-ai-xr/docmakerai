@@ -3,9 +3,9 @@
     "message": "SOGo 5 Benutzerhandbuch",
     "description": "The navbar title"
   },
-  "item.Tutorials": {
-    "message": "Tutorials",
-    "description": "Navbar item with label Tutorials"
+  "item.SOGo": {
+    "message": "SOGo",
+    "description": "Navbar item with label SOGo"
   },
   "item.GitHub": {
     "message": "GitHub",

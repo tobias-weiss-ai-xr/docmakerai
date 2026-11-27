@@ -111,7 +111,7 @@ const config: Config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorials',
+            label: 'SOGo',
           },
           {
             type: 'docsVersionDropdown',
@@ -134,7 +134,7 @@ const config: Config = {
         style: 'dark',
         links: [
           {
-            title: 'Tutorials',
+            title: 'SOGo',
             items: [
               {
                 label: 'SOGo 5 Basics',
