@@ -29,6 +29,7 @@ export type LandingStrings = {
     title: string;
     body: string;
     cta: string;
+    iconAlt: string;
   };
   sogo6: {
     title: string;
@@ -67,6 +68,13 @@ export default function LandingPage({strings}: {strings: LandingStrings}): React
             <span className="landing-card__cta">{strings.nucleus.cta} →</span>
           </Link>
           <Link to="/suite/" className="landing-card landing-card--suite">
+            <img
+              src={useBaseUrl('/img/openedusuite-logo.svg')}
+              alt={strings.suite.iconAlt}
+              className="landing-card__logo"
+              width={56}
+              height={56}
+            />
             <span className="landing-card__badge">{strings.suite.badge}</span>
             <h2>{strings.suite.title}</h2>
             <p>{strings.suite.body}</p>

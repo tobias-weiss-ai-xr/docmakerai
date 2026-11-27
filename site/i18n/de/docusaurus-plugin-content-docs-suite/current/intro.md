@@ -6,6 +6,7 @@ slug: /
 description: "Was die openEduSuite ist und welche Anwendungen sie für Hochschulen mitbringt"
 ---
 import PageSEO from '@site/src/components/PageSEO';
+import OesLogo from '@site/static/img/openedusuite-logo.svg';
 
 <PageSEO
   title="openEduSuite im Überblick"
@@ -15,6 +16,7 @@ import PageSEO from '@site/src/components/PageSEO';
   defaultKeywords={["Hochschule", "Open Source"]}
 />
 
+<OesLogo width="96" height="96" role="img" aria-label="openEduSuite-Logo" />
 
 # openEduSuite
 

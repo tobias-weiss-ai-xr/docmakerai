@@ -6,6 +6,7 @@ slug: /
 description: "What the openEduSuite is and which apps it brings to higher education"
 ---
 import PageSEO from '@site/src/components/PageSEO';
+import OesLogo from '@site/static/img/openedusuite-logo.svg';
 
 <PageSEO
   title="openEduSuite Overview"
@@ -16,6 +17,7 @@ import PageSEO from '@site/src/components/PageSEO';
 />
 
 
+<OesLogo width="96" height="96" role="img" aria-label="openEduSuite logo" />
 # openEduSuite
 
 openEduSuite is an open-source digital workplace for higher education: a

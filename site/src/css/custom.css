@@ -226,6 +226,14 @@ pre code {
   border-radius: 999px;
 }
 
+.landing-card__logo {
+  align-self: flex-start;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(87, 30, 250, 0.25);
+}
+
 .landing-card--nucleus .landing-card__badge {
   background: var(--ifm-color-primary);
   color: #fff;

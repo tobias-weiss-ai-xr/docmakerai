@@ -34,6 +34,7 @@ const de: LandingStrings = {
     title: 'openEduSuite',
     body: 'Der Open-Source-Digital-Arbeitsplatz für Hochschulen: SOGo, Nextcloud, XWiki, OpenProject, BigBlueButton und mehr hinter einem einzigen Single Sign-On.',
     cta: 'Zur openEduSuite',
+    iconAlt: 'openEduSuite-Logo',
   },
   sogo6: {
     title: 'SOGo-6-Anleitungen',
