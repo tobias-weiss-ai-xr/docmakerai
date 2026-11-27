@@ -33,6 +33,61 @@ Tracked on every PR. Fails the build if budgets are exceeded. PR comments show t
 
 The budget configuration lives in `.github/bundle-budget.json`.
 
+## Bundle-Profil
+
+Der mit Abstand größte JavaScript-Baustein eines Produktions-Builds ist
+`assets/js/main.<hash>.js` — die Docusaurus-Application-Shell. Sie wird auf jeder
+Route eager geladen und bestimmt damit First-Paint und Time-to-Interactive der
+gesamten Seite mit.
+
+The numbers below were measured from `docusaurus build` output
+(`site/build/assets/js/`); gzip sizes use `gzip -9`.
+
+### Profile of `main.js`
+
+| Metric: | Value: |
+| --------| ------ |
+| File | `assets/js/main.<hash>.js` |
+| Raw size | 552 KB (565,254 bytes) |
+| Gzip size | 168 KB (171,615 bytes) |
+| Share of total JS (raw) | 24.6% |
+| Share of total JS (gzip) | 31.7% |
+| Load behaviour | eager on every route |
+
+The chunk is the fixed application shell: it agglomerates the React /
+`react-dom` runtime, the Docusaurus core and classic-theme bootstrap, the Prism
+syntax-highlighting engine behind code blocks, and small shared utilities such
+as the `clipboard` copy-button helper and the `nprogress` top progress bar.
+Because it aggregates framework + theme, most of its size is fixed cost rather
+than page-specific content.
+
+### Effect on budgets
+
+| Guardrail: | Budget: | `main.js` contribution: | Status: |
+| ---------- | ------- | ---------------------- | ------- |
+| Total JS (gzip) | ≤ 500 KB | 168 KB of the 528 KB total | largest contributor |
+| Largest JS chunk (gzip) | ≤ 500 KB | 168 KB | within budget |
+| Largest JS chunk (raw) | 512 KB | 552 KB | above raw threshold |
+
+### Why it matters
+
+- `main.js` is parsed and executed on every navigation, not just on first load.
+- 552 KB raw compresses to 168 KB (ratio ~3.3x); the raw figure is what the
+  browser must parse after decompression.
+- It makes up roughly a third of the total gzipped JavaScript, so any future
+  growth in `main.js` moves the whole site closer to the 500 KB total budget.
+
+### Reducing the `main.js` footprint
+
+- Route-level code-splitting for the SOGo guides keeps page-specific modules out
+  of the shell.
+- Lazy-loading heavy dependencies (for example the search index bootstrapping)
+  would move their cost out of the critical path.
+- A dependency audit of `@docusaurus/*` and the classic theme can drop unused
+  modules before they reach the shell.
+- Re-check the profile after each release using the bundle-size CI job so the
+  trend stays visible on PRs.
+
 ## Accessibility
 
 This page is designed to be accessible to all users, including those using screen readers or keyboard navigation.
