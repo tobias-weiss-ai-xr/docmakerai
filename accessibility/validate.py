@@ -44,8 +44,8 @@ FORBIDDEN_TAB_CHAINS = [
 FORBIDDEN_ANNOUNCEMENTS = [
     r"screen\s*reader\s+announces\s*:",
     r"(?<!\bshould\s)(?<!\bwill\s)\bannounces\s*:",
-    r"screen\s*reader\s*:\s*""",
-    r"screenreader\s*:\s*""",
+    r"screen\s*reader\s*:\s*" "",
+    r"screenreader\s*:\s*" "",
     r"\bvorliest\s*:\s*\"",  # German: predicting the load announcement
 ]
 
@@ -55,7 +55,7 @@ KEYBOARD_HINTS = re.compile(
 )
 
 ORIENTATION_HINTS = re.compile(
-    r"(Ctrl\+Home|Strg\+Pos1|Ctrl\+Pos1|" 
+    r"(Ctrl\+Home|Strg\+Pos1|Ctrl\+Pos1|"
     r"to the top of the page|zum Seitenanfang|Seitenanfang)",
     re.IGNORECASE,
 )
@@ -93,7 +93,7 @@ class AccessibilityValidator:
             return None
         start = m.start()
         rest = content[start:]
-        nxt = re.search(r"^#{1,2}\s", rest[len(m.group(0)):], re.MULTILINE)
+        nxt = re.search(r"^#{1,2}\s", rest[len(m.group(0)) :], re.MULTILINE)
         return rest[: len(m.group(0)) + nxt.start()] if nxt else rest
 
     def _issue(self, type_, message, file_path, line=None, severity="error", fixable=False):
@@ -120,9 +120,7 @@ class AccessibilityValidator:
                 if next_is_sep:
                     j = i + 2
                     while (
-                        j < len(lines)
-                        and "|" in lines[j]
-                        and not lines[j].strip().startswith("#")
+                        j < len(lines) and "|" in lines[j] and not lines[j].strip().startswith("#")
                     ):
                         j += 1
                     tables.append(
@@ -172,7 +170,8 @@ class AccessibilityValidator:
                 file_issues.append(
                     self._issue(
                         "heading_hierarchy",
-                        f"Heading level {level} after {prev_level} (progress gradually or reset to h1/h2)",
+                        f"Heading level {level} after {prev_level} "
+                        "(progress gradually or reset to h1/h2)",
                         file_path,
                         line=line_num,
                         severity="warning",
@@ -218,7 +217,8 @@ class AccessibilityValidator:
             file_issues.append(
                 self._issue(
                     "missing_accessibility_section",
-                    f"Missing an Accessibility section ('## {'Barrierefreiheit' if german else 'Accessibility'}')",
+                    f"Missing an Accessibility section "
+                    f"('## {'Barrierefreiheit' if german else 'Accessibility'}')",
                     file_path,
                 )
             )
@@ -228,7 +228,8 @@ class AccessibilityValidator:
             file_issues.append(
                 self._issue(
                     "missing_keyboard_guidance",
-                    "Accessibility section does not describe keyboard navigation (Tab/Enter/Strg/... )",
+                    "Accessibility section does not describe keyboard "
+                    "navigation (Tab/Enter/Strg/... )",
                     file_path,
                 )
             )
@@ -237,7 +238,8 @@ class AccessibilityValidator:
             file_issues.append(
                 self._issue(
                     "missing_orientation_hint",
-                    "Accessibility section should offer an orientation exit (Ctrl+Home / Strg+Pos1)",
+                    "Accessibility section should offer an orientation "
+                    "exit (Ctrl+Home / Strg+Pos1)",
                     file_path,
                     severity="warning",
                 )
@@ -263,7 +265,8 @@ class AccessibilityValidator:
                 file_issues.append(
                     self._issue(
                         "forbidden_tab_chain",
-                        "Tab-for-tab path is forbidden; name the field and say 'Tab (repeat as needed) until ...'",
+                        "Tab-for-tab path is forbidden; name the field "
+                        "and say 'Tab (repeat as needed) until ...'",
                         file_path,
                         line=line,
                     )
@@ -279,7 +282,8 @@ class AccessibilityValidator:
                 file_issues.append(
                     self._issue(
                         "predicted_announcement",
-                        "Do not predict announcements; use 'You should hear: …' (EN) / 'Sie hören: …' (DE)",
+                        "Do not predict announcements; use 'You should "
+                        "hear: …' (EN) / 'Sie hören: …' (DE)",
                         file_path,
                         line=line,
                     )
@@ -411,11 +415,19 @@ def main() -> None:
 
     if args.fix:
         print(f"🔧 Auto-fixing accessibility issues in {directory}...\n")
-        total = validator.fix_file(directory) if directory.is_file() else validator.fix_directory(directory)
+        total = (
+            validator.fix_file(directory)
+            if directory.is_file()
+            else validator.fix_directory(directory)
+        )
         print(f"\n✅ Applied {total} fixes\n")
 
     print(f"Checking markdown in {directory}...\n")
-    issues = validator.validate_file(directory) if directory.is_file() else validator.validate_directory(directory)
+    issues = (
+        validator.validate_file(directory)
+        if directory.is_file()
+        else validator.validate_directory(directory)
+    )
     validator.print_report(issues)
 
     blocking = issues if args.strict else validator.errors(issues)

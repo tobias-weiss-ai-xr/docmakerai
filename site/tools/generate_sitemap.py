@@ -98,7 +98,7 @@ def main() -> int:
             )
         for loc, url in sorted(variants.items()):
             per_locale[loc] += 1
-            lines.append(f"  <url>")
+            lines.append("  <url>")
             lines.append(f"    <loc>{url}</loc>")
             lines.extend(alts)
             lines.append("  </url>")
@@ -109,7 +109,7 @@ def main() -> int:
 
     total = sum(per_locale.values())
     print(
-        f"sitemap: {total} URLs ({', '.join(f'{l}={n}' for l, n in per_locale.items())}), "
+        f"sitemap: {total} URLs ({', '.join(f'{loc}={n}' for loc, n in per_locale.items())}), "
         f"{sum(1 for v in groups.values() if len(v) > 1)} groups with alternates -> {out}"
     )
     return 0

@@ -177,11 +177,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      - name: Install dependencies (cached)
-        run: |
-          if [ ! -d node_modules ]; then
-            npm ci --prefer-offline || npm install
-          fi
+      - name: Install dependencies
+        # npm ci always — a stale prefix-matched cache restore (restore-keys)
+        # can leave node_modules behind without the newest packages
+        # (e.g. a freshly added plugin), so existence checks are unsafe.
+        run: npm ci --prefer-offline || npm install
 
       - name: Type check
         run: npm run typecheck

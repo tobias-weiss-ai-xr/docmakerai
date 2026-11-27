@@ -78,9 +78,8 @@ def fix_table_headers_and_rows(lines: list[str]) -> list[str]:
             result.append(new_header)
             result.append(lines[i + 1])  # separator line unchanged
             i += 2
-            # Fix data rows: remove empty first cell if row has one more column
-            # than header
-            header_cols = count_columns(new_header)
+            # Fix data rows: strip a leading empty cell whenever the row
+            # starts with '| |' (ragged rows included).
             while (
                 i < len(lines)
                 and lines[i].strip().startswith("|")

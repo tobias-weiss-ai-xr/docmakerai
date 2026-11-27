@@ -172,7 +172,7 @@ class TestValidateFile:
 
     def test_predicted_announcement(self, tmp_path):
         md = tmp_path / "announce.md"
-        md.write_text("# Title\n\n" + self.CLEAN_ACCESS + "\nScreen reader announces: \"Login\"\n")
+        md.write_text("# Title\n\n" + self.CLEAN_ACCESS + '\nScreen reader announces: "Login"\n')
         validator = AccessibilityValidator()
         issues = validator.validate_file(md)
         ann = [i for i in issues if i["type"] == "predicted_announcement"]
