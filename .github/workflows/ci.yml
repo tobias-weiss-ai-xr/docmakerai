@@ -45,10 +45,10 @@ jobs:
       run:
         working-directory: .
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Cache Python dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('capture/requirements.txt') }}
@@ -76,7 +76,7 @@ jobs:
 
       - name: Upload coverage artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coverage-report-${{ github.sha }}
           path: coverage.xml
@@ -104,7 +104,7 @@ jobs:
     runs-on: [self-hosted, ci]
     if: always()
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Python deps for accessibility
         run: pip3 install -r capture/requirements.txt --break-system-packages --quiet || true
@@ -124,10 +124,10 @@ jobs:
     runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download PR coverage
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: coverage-report-${{ github.sha }}
           path: coverage-pr/
@@ -166,10 +166,10 @@ jobs:
       run:
         working-directory: site
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Cache npm dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: node-cache
         with:
           path: site/node_modules
@@ -192,7 +192,7 @@ jobs:
           npm run build -- --locale de
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docusaurus-build-${{ github.sha }}
           path: site/build/
@@ -205,7 +205,7 @@ jobs:
     runs-on: [self-hosted, ci]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Run Lighthouse CI against live site
         uses: treosh/lighthouse-ci-action@v11
@@ -222,10 +222,10 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: docusaurus-build-${{ github.sha }}
           path: site/build/
