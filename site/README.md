@@ -42,6 +42,11 @@ Docs/table/content regressions are guarded by pytest in the repo root:
 cd .. && python3 -m pytest scripts/tests/ accessibility/tests/ -q
 ```
 
+The unified pre-push gate wraps lint, unit tests, typecheck and both locale
+builds behind a single command — run `scripts/check-all.sh --full` (or `--fast`
+for a quick gate, `--e2e` to also run the Playwright suite) before pushing.
+See the repo root `README.md`.
+
 ## Structure
 
 | Path | What it is |
