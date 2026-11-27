@@ -155,6 +155,74 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Schritt 1: E-Mail-Modul öffnen**
+1. `Tab` zur Modul-Navigation, Pfeiltasten zur Option **E-Mail**, `Eingabetaste`
+2. Sie hören: „E-Mail-Modul, Posteingang“
+
+**Schritt 2: Verfassen-Fenster öffnen**
+1. `Tab` zum **Verfassen**-Symbol (Stiftsymbol) in der Symbolleiste, `Eingabetaste`
+2. Sie hören: „Verfassen, neues Nachrichtenfenster“
+
+**Schritt 3: Nachricht adressieren**
+
+Die Empfängerfelder in Fokusreihenfolge:
+
+1. **An** – erforderlich
+   - E-Mail-Adresse eingeben oder mit dem Namen eines Kontakts beginnen
+   - Sie hören: „An, Bearbeiten, bearbeitbares Kombinationsfeld“
+   - `Tab` zum nächsten Feld
+2. **Cc** – optional
+   - E-Mail-Adressen für die Kopie eingeben
+   - `Tab` zum nächsten Feld
+3. **Bcc** – optional
+   - E-Mail-Adressen für die Blindkopie eingeben
+   - `Tab` zum nächsten Feld
+
+**Schritt 4: Betreff eingeben**
+1. Geben Sie eine klare Betreffzeile ein
+2. `Tab` zum nächsten Feld
+3. Sie hören: „Betreff, Bearbeiten“
+
+**Schritt 5: Nachricht schreiben**
+1. Geben Sie Ihre Nachricht in das große Textfeld ein
+2. Für Formatierung nutzen Sie die Schaltflächen in der Symbolleiste (B, I, U)
+3. Sie hören: „Nachrichtentext, Inhalt bearbeitbar“
+
+**Schritt 6: Datei anhängen (Optional)**
+1. `Tab` zur Schaltfläche **Anhängen**, `Eingabetaste`
+2. Wählen Sie die Datei über den Standard-Dateidialog aus
+3. Bestätigen Sie die Auswahl
+4. Sie hören: „Anhang, Dateiname.endung“
+
+**Schritt 7: Senden oder als Entwurf speichern**
+- **Senden:** `Tab` zur Schaltfläche **Senden**, `Eingabetaste`
+- **Als Entwurf speichern:** `Tab` zur Schaltfläche **Als Entwurf speichern**, `Eingabetaste`
+- Sie hören: „Nachricht gesendet“ oder „Nachricht in Entwürfen gespeichert“
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „An, bearbeitbares Kombinationsfeld“ | Empfängerfeld bereit | E-Mail-Adresse oder Kontaktname eingeben |
+| „Betreff, Bearbeiten“ | Betreffzeile bereit | Betreff eingeben |
+| „Nachrichtentext, Inhalt bearbeitbar“ | Nachrichtentext bereit | Nachricht eingeben |
+| „Anhang, Schaltfläche“ | Datei angehängt | Datei ist zum Senden bereit |
+| „Nachricht gesendet“ | Erfolg | E-Mail wurde zugestellt |
+| „Nachricht in Entwürfen gespeichert“ | Entwurf gespeichert | Später über den Ordner Entwürfe fortsetzen |
+
+**Tastenkürzel im Verfassen-Fenster:**
+- `Escape` → Abbrechen/verwerfen
+- `Tab` → Nächstes Feld
+- `Umschalt+Tab` → Vorheriges Feld
+
+### Beschreibungen der visuellen Inhalte
+
+**Videoclip „E-Mail verfassen“:** Der Kurzclip zeigt, wie Sie in SOGo 6 das Verfassen-Fenster öffnen und Empfänger, Betreff sowie Nachrichtentext ausfüllen.
+
+**Screenreader-Alternative:** Wenn Sie den Clip nicht ansehen können, verwenden Sie den Abschnitt **Screenreader-Workflow** weiter oben. Er bietet dieselben Informationen in Textform, die für Screenreader geeignet ist.
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

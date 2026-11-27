@@ -140,6 +140,83 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Kontakt anlegen**
+
+**Schritt 1: Zum Kontakte-Modul navigieren**
+1. `Tab` (ggf. mehrfach) zur Seitenleiste
+2. `Pfeiltasten` zu **Kontakte**
+3. `Eingabetaste` zum Aktivieren des Kontakte-Moduls
+4. Sie hören: „Kontakte-Modul, Überschrift, Ebene 2“
+
+**Schritt 2: Neuen Kontakt anlegen**
+1. `Tab` zur Schaltfläche **+** (Neuer Kontakt) am Anfang der Kontaktliste
+2. Sie hören: „Neuer Kontakt, Schaltfläche“
+3. `Eingabetaste` zum Aktivieren
+
+**Schritt 3: Kontaktformular ausfüllen**
+
+Die Formularfelder erscheinen in dieser Reihenfolge (Screenreader-Fokusfolge):
+
+1. **Vorname** – empfohlen
+   - Vornamen eingeben
+   - `Tab` zum nächsten Feld
+
+2. **Nachname** – empfohlen
+   - Nachnamen eingeben
+   - `Tab` zum nächsten Feld
+
+3. **E-Mail** – empfohlen
+   - Primäre E-Mail-Adresse eingeben
+   - Sie hören: „E-Mail, Bearbeiten, text@domain.com, editierbare Kombinationsbox“
+
+**Optionale Felder (mit `Tab` durchgehen oder mit `Umschalt+Tab` überspringen):**
+
+4. **Telefon** – Haupttelefonnummer
+5. **Mobil** – Mobiltelefonnummer
+6. **Organisation** – Organisation oder Unternehmen
+7. **Rolle** – Funktion oder Rolle im Unternehmen
+
+**Weitere Abschnitte (weiterblättern oder mit `Tab` erreichen):**
+
+8. Abschnitt **Adresse**
+   - Felder für Straße, Stadt, PLZ, Land
+9. **Weitere E-Mail** – zusätzliche E-Mail-Adressen
+10. **Website** – persönliche oder geschäftliche URL
+11. **Chat (IM)** – IM-Kennungen
+12. **Notizen** – Freitext-Notizen
+
+**Schritt 4: Adressbuch wählen (falls erforderlich)**
+- `Tab` zur Auswahlliste **Adressbuch**
+- `Pfeiltasten` zum Auswählen, z. B. „Persönlich“ oder „Freigegeben“
+- `Eingabetaste` zum Bestätigen
+
+**Schritt 5: Kontakt speichern**
+- `Tab` zur Schaltfläche **Speichern**
+- `Eingabetaste` zum Aktivieren
+- Sie hören: „Kontakt gespeichert“
+- Der Kontakt erscheint in der Kontaktliste
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------------------------------------------------------|----------------------------------------|----------------------------------------------------------|
+| „E-Mail, editierbare Kombinationsbox“ | E-Mail-Feld mit Vorschlägen | E-Mail eingeben, um Vorschläge zu sehen |
+| „Adressbuch auswählen, Kombinationsbox“ | Speicherort des Kontakts wählen | `Pfeiltasten` zum Auswählen, `Eingabetaste` zum Bestätigen |
+| „Kontakt gespeichert“ | Erfolg | Kontakt ist jetzt im Adressbuch |
+| „Bitte geben Sie eine gültige E-Mail-Adresse ein“ | Ungültiges E-Mail-Format | E-Mail-Adresse korrigieren |
+
+**Tastenkombinationen im Kontaktformular:**
+- `Tab` → nächstes Feld
+- `Umschalt+Tab` → vorheriges Feld
+
+### Beschreibungen der visuellen Inhalte
+
+**contacts-add.png:** Dieser statische Screenshot zeigt das Anlegen eines Kontakts in der Adressbuch-Oberfläche von SOGo 6.
+
+**Screenreader-Alternative:** Wenn Sie dieses Bild nicht anzeigen können, verwenden Sie den Abschnitt **Screenreader-Workflow** weiter oben. Er bietet dieselben Informationen in Textform, die für Screenreader geeignet ist.
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

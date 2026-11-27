@@ -139,6 +139,88 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+Dieser Abschnitt beschreibt das Erstellen eines Kalenderereignisses mit Tastatur und Screenreader.
+
+**Schritt 1: Kalendermodul öffnen**
+1. `Tab` zur Modul-Navigation, Pfeiltasten zur Option **Kalender**, `Eingabetaste`
+2. Sie hören: „Kalender, Wochenansicht“
+3. Pfeiltasten zum gewünschten Tag
+
+**Schritt 2: Ereignis erstellen (drei Möglichkeiten)**
+
+**Möglichkeit 1: Plus-Schaltfläche**
+- `Tab` zur Schaltfläche **Create Event** (Ereignis erstellen)
+- Sie hören: „Neues Ereignis, Schaltfläche“
+- `Eingabetaste` – der Ereignisdialog öffnet sich
+
+**Möglichkeit 2: Zeitfenster doppelklicken** *(nur mit Maus)*
+- Suchen Sie das gewünschte Zeitfenster (z. B. Montag 10:00)
+- Doppelklicken Sie darauf
+- Tastaturnutzer: Verwenden Sie stattdessen die Schaltfläche **Create Event** (`Tab`, dann `Eingabetaste`)
+
+**Möglichkeit 3: Datumsauswahl plus Schaltfläche**
+- `Tab` zum Minikalender auf der linken Seite
+- Pfeiltasten zum gewünschten Datum, `Eingabetaste` zur Auswahl
+- `Tab` zur Plus-Schaltfläche, `Eingabetaste` zum Erstellen
+
+**Schritt 3: Ereignisformular ausfüllen**
+
+Die Formularfelder erscheinen in dieser Reihenfolge (Fokusreihenfolge des Screenreaders):
+
+1. **Ereignistitel** – erforderlich
+   - Ereignisnamen eingeben, z. B. „Team-Besprechung“
+   - `Tab` zum nächsten Feld
+2. **Ort** – optional
+   - Ort eingeben, z. B. „Konferenzraum B“
+   - `Tab` zum nächsten Feld
+3. **Startzeit** – Aufbau: Datumsauswahl → Uhrzeitauswahl
+   - Pfeiltasten zur Auswahl des Datums
+   - `Eingabetaste` bestätigen, dann die Uhrzeit wählen
+   - `Tab` zum nächsten Feld
+4. **Endzeit** – gleiches Format wie Startzeit
+5. **Kalender** – Auswahl des Kalenders (sein Name ist das Konto-Kürzel)
+6. **Ganztägig** – Kontrollfeld für ganztägige Ereignisse
+7. **Teilnehmer** – optional
+   - Zum Hinzufügen von Personen: `Tab` zu **Teilnehmer**, `Eingabetaste` zum Erweitern
+   - Erste Buchstaben des Namens eingeben, Pfeiltasten zur Auswahl
+   - `Eingabetaste` zum Übernehmen
+8. **Erinnerung** – optional
+   - `Tab` zu **Add reminder** (Erinnerung hinzufügen), `Eingabetaste` zum Erweitern
+   - Vorlaufzeit mit Pfeiltasten wählen, `Eingabetaste` bestätigen
+
+**Schritt 4: Ereignis speichern**
+- `Tab` zur Schaltfläche **Create Event** (Ereignis erstellen)
+- Sie hören: „Create Event, Schaltfläche“
+- `Eingabetaste` zum Speichern
+
+**Schritt 5: Speichern überprüfen**
+- Sie hören: „Ereignis gespeichert“
+- Das Ereignis erscheint im Kalender zur gewählten Zeit
+- Sie können mit `Tab` zum Ereignistitel springen und die Details lesen
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „Ereignisdialog, Titelfeld“ | Dialog geöffnet, Fokus auf dem Titel | Ereignisdaten eingeben |
+| „Titel ist ungültig“ | Titel leer oder zu kurz | Gültigen Titel eingeben |
+| „Endzeit muss nach der Startzeit liegen“ | Zeitkonflikt | Endzeit anpassen |
+| „Teilnehmer nicht gefunden“ | Ungültige E-Mail-Adresse eingegeben | Adresse korrigieren oder Kontakte durchsuchen |
+| „Ereignis gespeichert“ | Erfolg | Ereignis wurde im Kalender erstellt |
+
+**Tastenkürzel im Ereignisdialog:**
+- `Escape` → Abbrechen/verwerfen
+- `Tab` → Nächstes Feld
+- `Umschalt+Tab` → Vorheriges Feld
+
+### Beschreibungen der visuellen Inhalte
+
+**01-calendar-create-view.png:** Der statische Screenshot zeigt das Kalendermodul in der Navigationsleiste und die Kalenderansicht, in der Sie ein neues Ereignis erstellen.
+
+**Screenreader-Alternative:** Wenn Sie dieses Bild nicht anzeigen können, verwenden Sie den Abschnitt **Screenreader-Workflow** weiter oben. Er bietet dieselben Informationen in Textform, die für Screenreader geeignet ist.
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

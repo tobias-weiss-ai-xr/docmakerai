@@ -108,6 +108,28 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Externen Kalender abonnieren**
+
+**Schritt 1: Zum Kalender-Modul navigieren**
+1. `Tab` (ggf. mehrfach) zur Schaltfläche **Kalender**, dann `Eingabetaste`
+2. Sie hören: „Kalender, Modul-Überschrift“
+
+**Schritt 2: Web-Kalender öffnen**
+1. `Tab` zum Bereich **Web-Kalender**
+2. `Eingabetaste` drücken
+
+**Schritt 3: Feed abonnieren**
+1. `Tab` zum URL-Feld
+2. Die Kalender-URL einfügen
+3. `Eingabetaste` zum Bestätigen
+4. Sie hören die Bestätigung, dass der Kalender hinzugefügt wurde
+
+**Schritt 4: Prüfen**
+1. Mit `Tab` durch die Kalenderliste navigieren
+2. Der abonnierte Kalender erscheint dort
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
