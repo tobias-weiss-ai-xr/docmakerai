@@ -101,6 +101,54 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Kalender freigeben: Kollegen mit Bearbeitungsberechtigung hinzufügen**
+
+**Schritt 1: Kalendermodul öffnen**
+- `Tab` zum Kalender-Modul, dann `Eingabetaste`
+- Sie hören: „Kalender, Modul-Überschrift“
+
+**Schritt 2: Freigaben-Dialog öffnen**
+- `Tab` durch die Kalenderliste
+- Pfeiltasten (auf/ab) zum gewünschten Kalender
+- `Tab` zum **Dreipunkt-Menü** (⋯) daneben, `Eingabetaste` zum Öffnen
+- Pfeiltasten zu **Freigaben…**, `Eingabetaste`
+
+**Schritt 3: Person eintragen**
+- `Tab` zum Eingabefeld
+- Beginnen Sie, den Namen oder die E-Mail-Adresse des Kollegen einzutippen
+- Sie hören: „Bearbeiten, AutoVervollständigung, Vorschläge verfügbar“
+- Pfeil nach unten durch die Vorschläge, `Eingabetaste` zur Auswahl
+
+**Schritt 4: Berechtigung festlegen**
+- `Tab` zum Berechtigungsfeld
+- Wählen Sie „Nur ansehen“ oder Bearbeitungsberechtigung für die Person
+- Sie hören die gewählte Option
+
+**Schritt 5: Bestätigen und speichern**
+- `Tab` zur Schaltfläche **Speichern**
+- `Eingabetaste` zum Übernehmen der Freigabe
+- Sie hören: „Erfolgreich gespeichert“ oder eine ähnliche Bestätigung
+
+**Schritt 6: Überprüfen (Optional)**
+- Öffnen Sie ein privates/Inkognito-Browserfenster
+- Melden Sie sich als der freigegebene Benutzer an
+- Öffnen Sie das Kalendermodul
+- Der freigegebene Kalender erscheint in dessen Liste mit Ihrem Namen
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „Kalender, Modul-Überschrift“ | Kalenderliste geladen | Zur Freigabe-Dialognavigation beginnen |
+| „Freigaben…, Menüpunkt“ | Freigaben-Dialog öffnet sich | Person eintragen |
+| „Bearbeiten, AutoVervollständigung, Vorschläge verfügbar“ | Personensuchfeld aktiv | Kollegenname eingeben und aus Liste wählen |
+| „Ändern, ausgewählt“ | Berechtigungsstufe gesetzt | Stufe bestätigen oder ändern |
+| „Erfolgreich gespeichert“ | Freigabe übernommen | Freigabe ist aktiv – die Person informieren |
+| „Benutzer hat bereits Zugriff“ | Doppelte Freigabe | Berechtigungsstufe ändern oder entfernen und neu hinzufügen |
+| „Ungültiger Benutzer“ | Person in SOGo nicht gefunden | Schreibweise oder vollständige E-Mail-Adresse prüfen |
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

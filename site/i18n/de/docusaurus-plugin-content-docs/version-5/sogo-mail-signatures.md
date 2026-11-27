@@ -103,6 +103,70 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Signatur erstellen**
+
+**Schritt 1: Einstellungen öffnen**
+1. `Tab` (ggf. mehrfach) zum Zahnrad-Symbol (**Einstellungen**) in der oberen Symbolleiste
+2. `Eingabetaste` zum Öffnen der Einstellungen
+3. Sie hören: „Einstellungen-Menü“
+
+**Schritt 2: Zu E-Mail → IMAP-Konten navigieren**
+1. `Tab` durch die Einstellungen-Seitenleiste zur Option **E-Mail**
+2. `Eingabetaste`, um die E-Mail-Optionen zu erweitern
+3. Pfeiltasten oder `Tab` zum Link **IMAP-Konten**
+4. `Eingabetaste`, um die Kontenliste zu öffnen
+5. Sie hören: „IMAP-Konten“
+
+**Schritt 3: Konto öffnen und neue Identität anlegen**
+1. `Tab` zu Ihrem E-Mail-Konto in der Liste, `Eingabetaste` zum Öffnen
+2. `Tab` zur Schaltfläche **Neue Identität**, `Eingabetaste`
+3. Sie hören: „Neue Identität, Dialog“ oder Ähnliches
+
+**Schritt 4: Identität benennen und Signatur schreiben**
+1. `Tab` zum Namensfeld
+2. Geben Sie einen Namen ein (z. B. „Beruflich“)
+3. `Tab` zum Signatur-Textfeld
+4. Geben Sie Ihren Signaturtext ein (Name, Funktion, Kontaktdaten)
+5. Sie hören: „Name, Bearbeiten“ und danach „Signatur, Inhalt bearbeitbar“
+
+**Schritt 5: Signaturplatzierung festlegen**
+1. `Tab` zum Reiter **Allgemein** der Identität und öffnen Sie ihn
+2. Wählen Sie dort, ob und wohin die Signatur automatisch eingefügt wird
+3. Sie hören: „Allgemein, Reiter“
+
+**Schritt 6: Identität speichern**
+1. `Tab` zur Schaltfläche **Speichern**
+2. `Eingabetaste` zum Übernehmen der Änderungen
+3. Sie hören: „Signatur gespeichert“ oder „E-Mail-Einstellungen gespeichert“
+
+**Absenderidentität wechseln (beim Verfassen)**
+
+**Schritt 1: Verfassen-Fenster öffnen**
+1. Im Posteingang `c` drücken oder `Tab` zum Stiftsymbol (**Verfassen**), dann `Eingabetaste`
+
+**Schritt 2: Absenderadresse ändern**
+1. `Tab` zum Feld **Von**
+2. Sie hören: „Von, [aktuelle Adresse]“
+3. `Tab` zum **X** neben Ihrer E-Mail-Adresse, `Eingabetaste`
+4. Die Liste der verfügbaren Identitäten öffnet sich darüber
+5. Pfeiltasten zur gewünschten Identität, `Eingabetaste` zur Auswahl
+6. Sie hören: „Von, [gewählte Identität]“
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „IMAP-Konten, Überschrift“ | Konten- und Identitätseinstellungen geladen | Identitäten hinzufügen oder bearbeiten |
+| „Neue Identität, Schaltfläche“ | Neue Identität mit eigener Signatur anlegen | `Eingabetaste` zum Starten |
+| „Signatur, Bearbeiten“ | Signatur-Textfeld fokussiert | Signaturtext eingeben |
+| „Platzierung, Kombinationsfeld“ | Modus des Signatur-Einfügens | Pfeiltasten zur Auswahl der Option |
+| „Speichern, Schaltfläche“ | Änderungen bereit zum Übernehmen | `Eingabetaste` zum Speichern |
+| „E-Mail-Einstellungen gespeichert“ | Einstellungen erfolgreich aktualisiert | Mit der nächsten Aufgabe fortfahren |
+| „Von, Kombinationsfeld“ | Auswahl der Absenderidentität | Pfeiltasten zum Wechseln der Identität |
+| „Signatur löschen, Schaltfläche“ | Diese Signatur entfernen | `Eingabetaste`, dann bestätigen |
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:

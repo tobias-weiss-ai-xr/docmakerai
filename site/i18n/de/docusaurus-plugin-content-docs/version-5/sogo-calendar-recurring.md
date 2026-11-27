@@ -174,6 +174,51 @@ Diese Anwendung unterstützt die Tastaturnavigation. Keine Maus erforderlich.
 3. Aktionsschaltflächen → `Leertaste` oder `Eingabetaste` zum Aktivieren
 4. Formulare → `Tab` zwischen Feldern, Pfeiltasten für Dropdowns
 
+### Screenreader-Workflow
+
+**Wiederkehrendes Ereignis anlegen**
+
+**Schritt 1: Neues Ereignis anlegen**
+1. `Tab` (ggf. mehrfach) zur Seitenleiste
+2. `Pfeiltasten` zu **Kalender**
+3. `N` oder `+` für ein neues Ereignis drücken
+
+**Schritt 2: Wiederholungseinstellungen öffnen**
+1. Der Ereignis-Dialog öffnet sich
+2. Mit `Tab` zum Wiederholungsfeld navigieren
+3. `Leertaste` drücken, um den Wiederholungsbereich aufzuklappen
+
+**Schritt 3: Wiederholungshäufigkeit festlegen**
+1. Fokus auf die Auswahlliste für die Häufigkeit setzen
+2. Mit `Pfeiltasten` auswählen (Täglich/Wöchentlich/Monatlich/Jährlich)
+3. `Eingabetaste` drücken
+
+**Schritt 4: Wiederholungsdetails festlegen**
+1. Mit `Tab` zum Intervallfeld navigieren (z. B. „Alle 2 Tage“)
+2. Intervallzahl eingeben, Einheit mit `Pfeiltasten` auswählen
+3. Mit `Tab` zu Enddatum bzw. Anzahl der Wiederholungen navigieren
+4. Festlegen, wann die Wiederholung endet
+
+**Schritt 5: Wiederkehrendes Ereignis speichern**
+1. Mit `Tab` zur Schaltfläche **Speichern** navigieren
+2. `Eingabetaste` drücken
+3. Sie hören eine Bestätigung, dass die Serie angelegt wurde
+
+**Häufige Screenreader-Ansagen:**
+
+| Ansage | Bedeutung | Aktion |
+|--------|-----------|--------|
+| „Wiederholung, Kontrollkästchen“ | Wiederholung verfügbar | `Leertaste` zum Aktivieren |
+| „Häufigkeit, Optionsfeld“ | Wie oft wiederholt wird | Mit `Pfeiltasten` den Typ auswählen |
+| „Alle, Bearbeiten“ | Wiederholungsintervall | Zahl eingeben, Einheit auswählen |
+| „Bis, Datumsauswahl“ | Ende der Wiederholung | Mit `Tab` navigieren, Enddatum wählen |
+| „Wiederholungen, Bearbeiten“ | Wie oft wiederholt wird | Zahl eingeben oder leer lassen |
+| „Wiederkehrendes Ereignis erstellt“ | Erfolg | Die Ereignisserie ist gespeichert |
+
+### Beschreibungen der visuellen Inhalte
+
+**calendar-recurring.png:** Dieser statische Screenshot zeigt das Erstellen eines wiederkehrenden Ereignisses in SOGo 5.
+
 ### Hochkontrastmodus
 
 SOGo unterstützt den Hochkontrast- und Dunkelmodus. Aktivierung über Benutzereinstellungen oder systemweite Barrierefreiheitseinstellungen:
