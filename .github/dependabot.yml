@@ -6,6 +6,19 @@ updates:
       interval: "weekly"
     versioning-strategy: increase
     open-pull-requests-limit: 10
+    groups:
+      # Docusaurus ships as a lockstep monorepo - individual component bumps
+      # create version skew and break the build (3.10.2 fragments, 2026-11-27).
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
+          - "docusaurus"
+      react-stack:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
 
   - package-ecosystem: "github-actions"
     directory: "/"

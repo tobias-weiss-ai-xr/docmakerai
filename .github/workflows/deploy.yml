@@ -76,6 +76,11 @@ jobs:
           retention-days: 1
 
   deploy:
+    # Serialize against preview deploys (same repo-wide group) so concurrent
+    # peaceiris pushes to gh-pages cannot race non-fast-forward.
+    concurrency:
+      group: gh-pages-writer
+      cancel-in-progress: false
     name: Deploy to GitHub Pages
     needs: [detect-changes, build]
     runs-on: ubuntu-latest

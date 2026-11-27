@@ -18,6 +18,11 @@ jobs:
   deploy-preview:
     name: Build & Deploy Preview
     runs-on: ubuntu-latest
+    # Serialize against all other gh-pages writers (previews + production):
+    # concurrent peaceiris pushes race non-fast-forward on gh-pages.
+    concurrency:
+      group: gh-pages-writer
+      cancel-in-progress: false
     defaults:
       run:
         working-directory: site

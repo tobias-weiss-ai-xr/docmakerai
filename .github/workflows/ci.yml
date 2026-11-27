@@ -121,6 +121,7 @@ jobs:
 
   coverage-guard:
     name: Coverage Trend Guard
+    needs: [python-quality]
     runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     steps:
@@ -220,6 +221,7 @@ jobs:
 
   bundle-size:
     name: Bundle Size Budget
+    needs: [build-site]
     runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     permissions:
