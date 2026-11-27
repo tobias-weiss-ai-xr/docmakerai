@@ -127,13 +127,26 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # python-quality does not yet run pytest with --cov (fail_under=94 in
+      # pyproject assumes capture/tests, which have no stable runner env), so
+      # no coverage artifact exists and the guard stays skipped until the
+      # coverage wiring lands. Tolerate the missing artifact instead of
+      # failing every PR (seen 2026-11-27 on the dependabot wave).
       - name: Download PR coverage
         uses: actions/download-artifact@v5
         with:
           name: coverage-report-${{ github.sha }}
           path: coverage-pr/
+        continue-on-error: true
+
+      - name: Skip guard when PR coverage is absent
+        if: hashFiles('coverage-pr/coverage.xml') == ''
+        run: |
+          echo "::notice::No coverage.xml artifact for this PR - python-quality"
+          echo "::notice::does not run pytest with --cov yet. Guard skipped."
 
       - name: Fetch baseline coverage from main
+        if: hashFiles('coverage-pr/coverage.xml') != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -153,7 +166,7 @@ jobs:
           fi
 
       - name: Run coverage guard
-        if: hashFiles('coverage-base/coverage.xml') != ''
+        if: hashFiles('coverage-pr/coverage.xml') != '' && hashFiles('coverage-base/coverage.xml') != ''
         run: |
           python3 scripts/check_coverage_trend.py \
             --baseline coverage-base/coverage.xml \
