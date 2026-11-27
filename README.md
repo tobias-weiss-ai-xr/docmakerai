@@ -94,6 +94,21 @@ python capture/optimize.py
 python capture/optimize.py --dry-run
 ```
 
+## Pre-push Quality Gate
+
+Before every push, run the unified gate script — it mirrors the CI pipeline
+(lint, unit tests, typecheck, dual-locale build, e2e):
+
+```bash
+scripts/check-all.sh --fast   # quick gate: syntax, ruff lint, pytest
+scripts/check-all.sh --full   # fast + ruff format, typecheck, site build
+scripts/check-all.sh --e2e    # full + Playwright end-to-end tests
+```
+
+The script exits non-zero on the first failing check, so a failing push never
+reaches the remote. `--fast` is the default when no mode is given; see
+`scripts/check-all.sh --help` for details.
+
 ## Project Structure
 
 ```
