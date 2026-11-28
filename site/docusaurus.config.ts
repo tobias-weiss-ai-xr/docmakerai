@@ -92,14 +92,14 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
       navbar: {
         title: 'SOGo User Guide',
         logo: {
-          alt: 'SOGo Logo',
+          alt: 'SOGo User Guide Logo',
           src: 'img/logo.svg',
           // Default brand target; src/theme/Navbar/Logo overrides this
           // per version (brand follows the version being read).

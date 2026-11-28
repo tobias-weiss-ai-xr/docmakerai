@@ -34,7 +34,7 @@ export default function PageSEO({
     : siteConfig.title;
 
   const finalDescription = description ?? siteConfig.tagline;
-  const finalImage = image ?? `${siteConfig.url}${siteConfig.baseUrl}img/docusaurus-social-card.jpg`;
+  const finalImage = image ?? `${siteConfig.url}${siteConfig.baseUrl}img/social-card.jpg`;
   const finalLocale = locale ?? i18n.currentLocale;
 
   const structuredData = {
