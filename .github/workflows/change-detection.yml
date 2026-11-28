@@ -67,7 +67,7 @@ jobs:
 
       - name: Post issue if drift detected
         if: steps.drift.outputs.drifted == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
