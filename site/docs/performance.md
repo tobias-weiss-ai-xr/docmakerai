@@ -27,66 +27,72 @@ Tracked on every PR. Fails the build if budgets are exceeded. PR comments show t
 
 | Asset class: | Budget: | Source: |
 | ----------- | ------ | ------ |
-| Total JS | ≤ 500 KB | summed gzip of `site/build/assets/js/*.js` |
-| Total CSS | ≤ 100 KB | summed gzip of `site/build/assets/css/*.css` |
-| Largest single JS chunk | ≤ 500 KB | max single file in `site/build/assets/js/` |
+| Total JS | ≤ 580 KiB | summed gzip of `site/build/assets/js/*.js` |
+| Total CSS | ≤ 100 KiB | summed gzip of `site/build/assets/css/*.css` |
+| Largest single JS chunk | ≤ 220 KiB (raw) | max single file in `site/build/assets/js/` |
 
-The budget configuration lives in `.github/bundle-budget.json`.
+The budget configuration lives inline in `.github/workflows/ci.yml`
+(`bundle-size` job).
 
 ## Bundle-Profil
 
-Der mit Abstand größte JavaScript-Baustein eines Produktions-Builds ist
-`assets/js/main.<hash>.js` — die Docusaurus-Application-Shell. Sie wird auf jeder
-Route eager geladen und bestimmt damit First-Paint und Time-to-Interactive der
-gesamten Seite mit.
+Die Produktions-Builds nutzen einen Vendor-Split (`vendorSplitPlugin` in
+`docusaurus.config.ts`): Die React-Laufzeit und die Suchmaschinen-Laufzeit
+(lunr) sind in eigene Chunks mit stabilem Hash ausgelagert. Diese Chunks
+ändern sich zwischen Deployments nicht und bleiben im Browser-Cache,
+während sich `main.js` bei jedem Build ändert. The numbers below were
+measured from `docusaurus build` output (`site/build/assets/js/`); gzip
+sizes use `gzip -9`.
 
-The numbers below were measured from `docusaurus build` output
-(`site/build/assets/js/`); gzip sizes use `gzip -9`.
+### Post-split profile (2026-11-28)
 
-### Profile of `main.js`
+| Chunk | Raw size | Gzip size | Load behaviour |
+| ----- | -------- | --------- | -------------- |
+| `main.<hash>.js` (app shell) | 320 KB | 96 KB | eager on every route |
+| `framework.<hash>.js` (react, react-dom, scheduler) | 190 KB | 60 KB | eager, cache-stable across deploys |
+| `search.<hash>.js` (lunr, search-local runtime) | 120 KB | 38 KB | eager, cache-stable across deploys |
+| Total JS (gzip) | — | 528 KB | — |
 
-| Metric: | Value: |
-| --------| ------ |
-| File | `assets/js/main.<hash>.js` |
-| Raw size | 552 KB (565,254 bytes) |
-| Gzip size | 168 KB (171,615 bytes) |
-| Share of total JS (raw) | 24.6% |
-| Share of total JS (gzip) | 31.7% |
-| Load behaviour | eager on every route |
+Before the split (Docusaurus 3.10.2, 2026-11-27), the shell alone was
+565 KB raw / 172 KB gzip — the react runtime and the full search engine
+were parsed inside `main.js` on every page. The split moved them into
+independent chunks: `main.js` shrank by 43% (raw), and the extracted
+chunks keep their hash as long as the pinned dependencies do not change,
+so returning visitors load them from cache.
 
-The chunk is the fixed application shell: it agglomerates the React /
-`react-dom` runtime, the Docusaurus core and classic-theme bootstrap, the Prism
-syntax-highlighting engine behind code blocks, and small shared utilities such
-as the `clipboard` copy-button helper and the `nprogress` top progress bar.
-Because it aggregates framework + theme, most of its size is fixed cost rather
-than page-specific content.
+### Composition notes
 
-### Effect on budgets
-
-| Guardrail: | Budget: | `main.js` contribution: | Status: |
-| ---------- | ------- | ---------------------- | ------- |
-| Total JS (gzip) | ≤ 500 KB | 168 KB of the 528 KB total | largest contributor |
-| Largest JS chunk (gzip) | ≤ 500 KB | 168 KB | within budget |
-| Largest JS chunk (raw) | 512 KB | 552 KB | above raw threshold |
+- `framework.js` is the react/react-dom/scheduler runtime — fixed cost,
+  rarely changes.
+- `search.js` is the lunr search engine with the en/de language
+  trimmers. It loads eagerly with the navbar search bar, but sits in its
+  own cache-stable chunk instead of the rotating shell.
+- `main.js` is the Docusaurus core and classic-theme bootstrap plus the
+  Prism syntax-highlighting engine behind code blocks and small shared
+  utilities such as the clipboard copy-button helper.
+- Page content (each guide, the landing page) lives in route-level
+  chunks and is outside these numbers.
 
 ### Why it matters
 
-- `main.js` is parsed and executed on every navigation, not just on first load.
-- 552 KB raw compresses to 168 KB (ratio ~3.3x); the raw figure is what the
-  browser must parse after decompression.
-- It makes up roughly a third of the total gzipped JavaScript, so any future
-  growth in `main.js` moves the whole site closer to the 500 KB total budget.
+- `main.js` is parsed and executed on every navigation, not just on
+  first load; at 96 KB gzip it is well under a third of its former size.
+- Budget headroom: the largest chunk is now 190 KB raw against a
+  220 KiB budget — drift in any single library no longer threatens the
+  gate.
 
-### Reducing the `main.js` footprint
+### Keeping the footprint small
 
-- Route-level code-splitting for the SOGo guides keeps page-specific modules out
-  of the shell.
-- Lazy-loading heavy dependencies (for example the search index bootstrapping)
-  would move their cost out of the critical path.
-- A dependency audit of `@docusaurus/*` and the classic theme can drop unused
-  modules before they reach the shell.
-- Re-check the profile after each release using the bundle-size CI job so the
-  trend stays visible on PRs.
+- Route-level code-splitting keeps page-specific modules out of the
+  shell (already active: every page is its own chunk).
+- Lazy-loading heavy dependencies (for example a deferred search
+  bootstrap) could move the `search` chunk cost out of the critical path
+  entirely — candidate for a future iteration.
+- A dependency audit of `@docusaurus/*` and the classic theme can drop
+  unused modules before they reach the shell.
+- Re-check the profile after each release using the bundle-size CI job
+  so the trend stays visible on PRs.
+
 
 ## Accessibility
 

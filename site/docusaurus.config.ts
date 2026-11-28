@@ -1,6 +1,55 @@
 import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import type {Config, Plugin} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+
+/**
+ * Split stable vendor code out of the application shell (main.js).
+ *
+ * main.js is eager on every route; react/react-dom/scheduler alone are
+ * ~150 KB raw in it. Extracting them into a separate chunk changes their
+ * cache behaviour: the vendor chunk hash stays stable across deploys, so
+ * returning visitors keep it cached while app code (main.js) rotates.
+ * Same for the eagerly-included search runtime (lunr + language trimmers).
+ * Total JS is unchanged; the largest single chunk and main.js shrink.
+ * Measured 2026-11-28 (see docs/performance.md).
+ */
+function vendorSplitPlugin(): Plugin {
+  return {
+    name: 'vendor-split',
+    configureWebpack(_config, isServer) {
+      if (isServer) {
+        return {};
+      }
+      if (isServer) {
+        return {};
+      }
+      return {
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              framework: {
+                test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+                name: 'framework',
+                chunks: 'all',
+                priority: 60,
+                enforce: true,
+                reuseExistingChunk: true,
+              },
+              search: {
+                test: /[\\/]node_modules[\\/](@easyops-cn[\\/][^\\/]+|lunr[^\\/]*)[\\/]/,
+                name: 'search',
+                chunks: 'all',
+                priority: 55,
+                enforce: true,
+                reuseExistingChunk: true,
+              },
+            },
+          },
+        },
+      };
+    },
+  };
+}
 
 const config: Config = {
   title: 'SOGo User Guide',
@@ -65,6 +114,7 @@ const config: Config = {
   ],
 
   plugins: [
+    vendorSplitPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {

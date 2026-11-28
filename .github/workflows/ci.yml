@@ -254,14 +254,14 @@ jobs:
         run: |
           set -euo pipefail
           # Budgets (gzip for totals, raw for largest chunk)
-          # Re-baselined 2026-11-27 (af47c56b..): the docs-improvement campaign
-          # added the landing page, offline search and DE content, growing the
-          # JS bundle ~5-10% (measured: JS gzip 539065 B, largest chunk raw
-          # 565214 B). ~12% headroom over measured reality; shrink again when
-          # T-06 bundle optimizations land.
-          JS_BUDGET=$((600 * 1024))
+          # Re-baselined 2026-11-28 after the vendor-split plugin landed
+          # (docusaurus.config.ts): react/react-dom/scheduler + the eager
+          # search runtime now live in their own cache-stable chunks.
+          # Measured post-split: JS gzip 527754 B total, largest chunk raw
+          # 189663 B (framework chunk), main.js gz 95627 B (was 565192/171599).
+          JS_BUDGET=$((580 * 1024))
           CSS_BUDGET=$((100 * 1024))
-          CHUNK_BUDGET=$((620 * 1024))
+          CHUNK_BUDGET=$((220 * 1024))
 
           # Calculate gzip sizes
           js_total=$(find site/build/assets/js -name '*.js' -exec cat {} + 2>/dev/null | gzip -9 | wc -c)
