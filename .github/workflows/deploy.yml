@@ -10,7 +10,11 @@ permissions:
 
 concurrency:
   group: deploy
-  cancel-in-progress: true
+  # Queue instead of cancel: e2e.yml waits for the Pages deploy of its exact
+  # commit, so cancelling a queued deploy breaks that run's wait step
+  # (seen during the 10-merge dependabot burst on 2026-11-28). The deploy
+  # job itself is serialized repo-wide by the gh-pages-writer job group.
+  cancel-in-progress: false
 
 jobs:
   detect-changes:
