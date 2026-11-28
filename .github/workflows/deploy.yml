@@ -20,7 +20,7 @@ jobs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
       - uses: actions/checkout@v7
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v4
         id: filter
         if: github.event_name == 'push'
         with:
