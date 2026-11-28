@@ -1,5 +1,5 @@
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SOGo User Guide">
-  <!-- Brand badge: SOGo User Guide (docmakerai). Deep green = --ifm-color-primary, mint accent = dark-mode primary. -->
+  <!-- Brand badge: SOGo User Guide (docmakerai). Deep green = primary color, mint accent = dark-mode primary. -->
   <rect x="0" y="0" width="128" height="128" rx="29" fill="#1a5a3a"/>
   <!-- open book -->
   <path d="M32 44 C42 37.5 55 37.5 63 43 L63 89 C55 83.5 42 83.5 32 90 Z" fill="#ffffff"/>
