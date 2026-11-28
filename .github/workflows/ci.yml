@@ -45,7 +45,7 @@ jobs:
       run:
         working-directory: .
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Cache Python dependencies
         uses: actions/cache@v5
@@ -104,7 +104,7 @@ jobs:
     runs-on: [self-hosted, ci]
     if: always()
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install Python deps for accessibility
         run: pip3 install -r capture/requirements.txt --break-system-packages --quiet || true
@@ -125,7 +125,7 @@ jobs:
     runs-on: [self-hosted, ci]
     if: github.event_name == 'pull_request'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       # python-quality does not yet run pytest with --cov (fail_under=94 in
       # pyproject assumes capture/tests, which have no stable runner env), so
@@ -180,7 +180,7 @@ jobs:
       run:
         working-directory: site
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Cache npm dependencies
         uses: actions/cache@v5
@@ -224,7 +224,7 @@ jobs:
     runs-on: [self-hosted, ci]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Run Lighthouse CI against live site
         uses: treosh/lighthouse-ci-action@v11
@@ -242,7 +242,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Download build artifact
         uses: actions/download-artifact@v5
